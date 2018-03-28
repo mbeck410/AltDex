@@ -53,10 +53,10 @@ class IndexCurrent(models.Model):
 
 class CoinDay(models.Model):
     coin = models.ForeignKey(Coin, on_delete=models.CASCADE)
-    open = models.DecimalField(max_digits=50, decimal_places=50)
-    high = models.DecimalField(max_digits=50, decimal_places=50)
-    low = models.DecimalField(max_digits=50, decimal_places=50)
-    day = models.DateField(blank=True)
+    open = models.DecimalField(max_digits=50, decimal_places=25)
+    high = models.DecimalField(max_digits=50, decimal_places=25)
+    low = models.DecimalField(max_digits=50, decimal_places=25)
+    day = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.coin.name + ' - ' + str(self.day)
@@ -64,10 +64,10 @@ class CoinDay(models.Model):
 
 class IndexDay(models.Model):
     index = models.ForeignKey(Index, on_delete=models.CASCADE)
-    open = models.DecimalField(max_digits=50, decimal_places=50)
-    high = models.DecimalField(max_digits=50, decimal_places=50)
-    low = models.DecimalField(max_digits=50, decimal_places=50)
-    day = models.DateField(blank=True)
+    open = models.DecimalField(max_digits=50, decimal_places=25)
+    high = models.DecimalField(max_digits=50, decimal_places=25)
+    low = models.DecimalField(max_digits=50, decimal_places=25)
+    day = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.index.name + ' - ' + str(self.day)

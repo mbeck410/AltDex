@@ -4,5 +4,6 @@ from . import views
 app_name = 'altdexapp'
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('', views.pullcurrent, name='pullcurrent'),
+    path('pulldaily', views.pulldaily, name='pulldaily')
 ]
