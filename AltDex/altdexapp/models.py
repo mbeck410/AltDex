@@ -32,7 +32,10 @@ class CoinCurrent(models.Model):
     timestamp = models.DateTimeField(blank=True)
 
     def __str__(self):
-        return self.coin.name + ' - ' + self.timestamp
+        return self.coin.name + ' - ' + str(self.timestamp)
+
+    class Meta:
+        ordering = ('coin',)
 
 
 class IndexCurrent(models.Model):
@@ -45,7 +48,7 @@ class IndexCurrent(models.Model):
     timestamp = models.DateTimeField(blank=True)
 
     def __str__(self):
-        return self.index.name + ' - ' + self.timestamp
+        return self.index.name + ' - ' + str(self.timestamp)
 
 
 class CoinDay(models.Model):
@@ -56,7 +59,7 @@ class CoinDay(models.Model):
     day = models.DateField(blank=True)
 
     def __str__(self):
-        return self.coin.name + ' - ' + self.day
+        return self.coin.name + ' - ' + str(self.day)
 
 
 class IndexDay(models.Model):
@@ -67,7 +70,7 @@ class IndexDay(models.Model):
     day = models.DateField(blank=True)
 
     def __str__(self):
-        return self.index.name + ' - ' + self.day
+        return self.index.name + ' - ' + str(self.day)
 
 
 
