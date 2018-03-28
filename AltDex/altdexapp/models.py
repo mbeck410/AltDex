@@ -1,0 +1,75 @@
+from django.db import models
+import datetime
+
+
+class Index(models.Model):
+    name = models.CharField(max_length=20)
+    divisor = models.DecimalField(max_digits=10, decimal_places=3)
+
+    def __str__(self):
+        return self.name
+
+
+class Coin(models.Model):
+    name = models.CharField(max_length=25)
+    symbol = models.CharField(max_length=5)
+    indices = models.ManyToManyField(Index)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
+
+
+class CoinCurrent(models.Model):
+    coin = models.ForeignKey(Coin, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=25, decimal_places=2)
+    price_change = models.DecimalField(max_digits=50, decimal_places=25)
+    price_percent_change = models.DecimalField(max_digits=50, decimal_places=25)
+    volume = models.DecimalField(max_digits=50, decimal_places=25)
+    market_cap = models.DecimalField(max_digits=50, decimal_places=25)
+    timestamp = models.DateTimeField(blank=True)
+
+    def __str__(self):
+        return self.coin.name + ' - ' + self.timestamp
+
+
+class IndexCurrent(models.Model):
+    index = models.ForeignKey(Index, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=25, decimal_places=2)
+    price_change = models.DecimalField(max_digits=50, decimal_places=25)
+    price_percent_change = models.DecimalField(max_digits=50, decimal_places=25)
+    volume = models.DecimalField(max_digits=50, decimal_places=25)
+    market_cap = models.DecimalField(max_digits=50, decimal_places=25)
+    timestamp = models.DateTimeField(blank=True)
+
+    def __str__(self):
+        return self.index.name + ' - ' + self.timestamp
+
+
+class CoinDay(models.Model):
+    coin = models.ForeignKey(Coin, on_delete=models.CASCADE)
+    open = models.DecimalField(max_digits=50, decimal_places=50)
+    high = models.DecimalField(max_digits=50, decimal_places=50)
+    low = models.DecimalField(max_digits=50, decimal_places=50)
+    day = models.DateField(blank=True)
+
+    def __str__(self):
+        return self.coin.name + ' - ' + self.day
+
+
+class IndexDay(models.Model):
+    index = models.ForeignKey(Index, on_delete=models.CASCADE)
+    open = models.DecimalField(max_digits=50, decimal_places=50)
+    high = models.DecimalField(max_digits=50, decimal_places=50)
+    low = models.DecimalField(max_digits=50, decimal_places=50)
+    day = models.DateField(blank=True)
+
+    def __str__(self):
+        return self.index.name + ' - ' + self.day
+
+
+
+
+
