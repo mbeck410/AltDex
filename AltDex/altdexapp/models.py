@@ -29,7 +29,7 @@ class CoinCurrent(models.Model):
     price_percent_change = models.DecimalField(max_digits=50, decimal_places=25)
     volume = models.DecimalField(max_digits=50, decimal_places=25)
     market_cap = models.DecimalField(max_digits=50, decimal_places=25)
-    timestamp = models.DateTimeField(blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.coin.name + ' - ' + str(self.timestamp)
@@ -45,7 +45,7 @@ class IndexCurrent(models.Model):
     price_percent_change = models.DecimalField(max_digits=50, decimal_places=25)
     volume = models.DecimalField(max_digits=50, decimal_places=25)
     market_cap = models.DecimalField(max_digits=50, decimal_places=25)
-    timestamp = models.DateTimeField(blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.index.name + ' - ' + str(self.timestamp)
