@@ -10,6 +10,12 @@ import json
 from .models import Index, Coin, CoinCurrent, CoinDay, IndexCurrent, IndexDay
 
 
+def index(request):
+    index_list = Index.objects.order_by('name')
+    coin_list = Coin.objects.order_by('name')
+    context = {'index_list': index_list, 'coin_list': coin_list}
+    return render(request, 'altdexapp/index.html', context)
+
 # View to create a daily CoinDay and IndexDay model from API data
 def pulldaily(request):
     coins = Coin.objects.order_by('name')           # Make list of all coins

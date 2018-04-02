@@ -18,9 +18,6 @@ class Coin(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
-        ordering = ('name',)
-
 
 class CoinCurrent(models.Model):
     coin = models.ForeignKey(Coin, on_delete=models.CASCADE)
@@ -34,8 +31,19 @@ class CoinCurrent(models.Model):
     def __str__(self):
         return self.coin.name + ' - ' + str(self.timestamp)
 
-    class Meta:
-        ordering = ('coin',)
+    def pretty_price_change(self):
+        return '{0:.2f}'.format(self.price_change)
+
+    def pretty_price_percent_change(self):
+        return '{0:.2f}'.format(self.price_percent_change)
+
+    def pretty_volume(self):
+        return '{0:.0f}'.format(self.volume)
+
+    def pretty_market_cap(self):
+        return '{0:.0f}'.format(self.market_cap)
+
+
 
 
 class IndexCurrent(models.Model):
@@ -60,6 +68,12 @@ class CoinDay(models.Model):
 
     def __str__(self):
         return self.coin.name + ' - ' + str(self.day)
+
+    def pretty_high(self):
+        return '{0:.2f}'.format(self.high)
+
+    def pretty_low(self):
+        return '{0:.2f}'.format(self.low)
 
 
 class IndexDay(models.Model):
