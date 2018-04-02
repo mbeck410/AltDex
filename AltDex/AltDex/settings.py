@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_cron',
     'altdexapp.apps.AltdexappConfig',
     'django.contrib.admin',
     'django.contrib.auth',

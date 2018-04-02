@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from decimal import Decimal
 import datetime
@@ -15,6 +15,31 @@ def index(request):
     coin_list = Coin.objects.order_by('name')
     context = {'index_list': index_list, 'coin_list': coin_list}
     return render(request, 'altdexapp/index.html', context)
+
+
+def getdata(request):
+    indices_current = IndexCurrent.objects.all()
+    indices_current_output = []
+    for dex_current in indices_current:
+        indices_current_output.append(dex_current.toDict())
+
+    coins_current_data = CoinCurrent.objects.all()
+    coins_current_output = []
+    for coin_current in coins_current_data:
+        coins_current_output.append(coin_current.toDict())
+
+    indices_day = IndexDay.objects.all()
+    indices_day_output = []
+    for dex_day in indices_day:
+        indices_day_output.append(dex_day.toDict())
+
+    coins_day = CoinDay.objects.all()
+    coins_day_output = []
+    for coin_day in coins_day:
+        coins_day_output.append(coin_day.toDict())
+    return JsonResponse({'indices_current': indices_current_output}, {'coins_current': coins_current_output},
+                        {'indices_day': indices_day_output}, {'coins_day':coins_current_output})
+
 
 # View to create a daily CoinDay and IndexDay model from API data
 def pulldaily(request):
