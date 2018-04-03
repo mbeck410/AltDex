@@ -11,11 +11,9 @@ from .models import Index, Coin, CoinCurrent, CoinDay, IndexCurrent, IndexDay
 
 
 def index(request):
-    index_list = Index.objects.order_by('name')
-    coin_list = Coin.objects.order_by('name')
-    context = {'index_list': index_list, 'coin_list': coin_list}
-    return render(request, 'altdexapp/index.html', context)
-
+    with open('./altdexapp/index.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
 
 
 # View to create a daily CoinDay and IndexDay model from API data
@@ -165,9 +163,22 @@ def getindexday(request):
 def getcoinscurrent(request):
     coins = Coin.objects.all()
     coins_current_output = []
+
     for coin in coins:
+        coin_day = coin.coinday_set.last()
         coin_current = coin.coincurrent_set.last()
-        coins_current_output.append(coin_current.toDict())
+        coin_dict = {   'Symbol': str(coin_current.coin.symbol),
+                        'Name': str(coin_current.coin),
+                        'Market': float("{0:.0f}".format(coin_current.market_cap)),
+                        'Price': float("{0:.2f}".format(coin_current.price)),
+                        'Change': float("{0:.2f}".format(coin_current.price_change)),
+                        '%Chg': float("{0:.2f}".format(coin_current.price_percent_change)),
+                        'High': float("{0:.2f}".format(coin_day.high)),
+                        'Low': float("{0:.2f}".format(coin_day.low)),
+                        'Volume': float("{0:.0f}".format(coin_current.volume))
+                        }
+
+        coins_current_output.append(coin_dict)
 
     return JsonResponse({'coins_current': coins_current_output})
 
@@ -181,10 +192,4 @@ def getcoinsday(request):
 
     return JsonResponse({'coins_day': coins_day_output})
 
-def getlist(request):
-    todos = TodoItem.objects.all()
-    todos_output = []
-    for todo in todos:
-        todos_output.append(todo.toDict())
-    return JsonResponse({'todos': todos_output})
 

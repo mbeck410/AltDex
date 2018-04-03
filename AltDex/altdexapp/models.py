@@ -43,11 +43,6 @@ class CoinCurrent(models.Model):
     def pretty_market_cap(self):
         return '{0:.0f}'.format(self.market_cap)
 
-    def toDict(self):
-        return {'id':self.id, 'coin':self.coin.name, 'price':float(self.price), 'price_change':float(self.price_change),
-                'price_percent':float(self.price_percent_change), 'volume':float(self.volume),
-                'market_cap':float(self.market_cap)}
-
 
 class IndexCurrent(models.Model):
     index = models.ForeignKey(Index, on_delete=models.CASCADE)
@@ -100,7 +95,7 @@ class CoinDay(models.Model):
         return '{0:.2f}'.format(self.low)
 
     def toDict(self):
-        return {'id': self.id, 'coin': self.coin.name, 'open':float(self.open), 'high':float(self.high), 'low':float(self.low)}
+        return {'high': float(self.high), 'low': float(self.low)}
 
 
 class IndexDay(models.Model):
