@@ -44,9 +44,9 @@ class CoinCurrent(models.Model):
         return '{0:.0f}'.format(self.market_cap)
 
     def toDict(self):
-        return {'id':self.id, 'coin':self.coin, 'price':self.price, 'price_change':self.pretty_price_change,
-                'price_percent':self.pretty_price_percent_change, 'volume':self.pretty_volume,
-                'market_cap':self.pretty_market_cap}
+        return {'id':self.id, 'coin':self.coin.name, 'price':float(self.price), 'price_change':float(self.price_change),
+                'price_percent':float(self.price_percent_change), 'volume':float(self.volume),
+                'market_cap':float(self.market_cap)}
 
 
 class IndexCurrent(models.Model):
@@ -61,9 +61,6 @@ class IndexCurrent(models.Model):
     def __str__(self):
         return self.index.name + ' - ' + str(self.timestamp)
 
-    def __str__(self):
-        return self.coin.name + ' - ' + str(self.timestamp)
-
     def pretty_price_change(self):
         return '{0:.2f}'.format(self.price_change)
 
@@ -77,9 +74,10 @@ class IndexCurrent(models.Model):
         return '{0:.0f}'.format(self.market_cap)
 
     def toDict(self):
-        return {'id': self.id, 'index': self.index, 'price': self.price, 'price_change': self.pretty_price_change,
-                'price_percent': self.pretty_price_percent_change, 'volume': self.pretty_volume,
-                'market_cap': self.pretty_market_cap}
+        return {'id': self.id, 'index': self.index.name, 'price': float(self.price),
+                'price_change': float(self.price_change),
+                'price_percent': float(self.price_percent_change), 'volume': float(self.volume),
+                'market_cap': float(self.market_cap)}
 
 
 class CoinDay(models.Model):
@@ -102,7 +100,7 @@ class CoinDay(models.Model):
         return '{0:.2f}'.format(self.low)
 
     def toDict(self):
-        return {'id': self.id, 'coin': self.coin, 'open':self.pretty_open, 'high':self.pretty_high, 'low':self.pretty_low}
+        return {'id': self.id, 'coin': self.coin.name, 'open':float(self.open), 'high':float(self.high), 'low':float(self.low)}
 
 
 class IndexDay(models.Model):
@@ -125,7 +123,7 @@ class IndexDay(models.Model):
         return '{0:.2f}'.format(self.low)
 
     def toDict(self):
-        return {'id': self.id, 'index': self.index, 'open':self.pretty_open, 'high':self.pretty_high, 'low':self.pretty_low}
+        return {'id': self.id, 'index': self.index.name, 'open':float(self.open), 'high':float(self.high), 'low':float(self.low)}
 
 
 

@@ -17,29 +17,6 @@ def index(request):
     return render(request, 'altdexapp/index.html', context)
 
 
-def getdata(request):
-    indices_current = IndexCurrent.objects.all()
-    indices_current_output = []
-    for dex_current in indices_current:
-        indices_current_output.append(dex_current.toDict())
-
-    coins_current_data = CoinCurrent.objects.all()
-    coins_current_output = []
-    for coin_current in coins_current_data:
-        coins_current_output.append(coin_current.toDict())
-
-    indices_day = IndexDay.objects.all()
-    indices_day_output = []
-    for dex_day in indices_day:
-        indices_day_output.append(dex_day.toDict())
-
-    coins_day = CoinDay.objects.all()
-    coins_day_output = []
-    for coin_day in coins_day:
-        coins_day_output.append(coin_day.toDict())
-    return JsonResponse({'indices_current': indices_current_output}, {'coins_current': coins_current_output},
-                        {'indices_day': indices_day_output}, {'coins_day':coins_current_output})
-
 
 # View to create a daily CoinDay and IndexDay model from API data
 def pulldaily(request):
@@ -141,7 +118,6 @@ def pullcurrent(request):
             dex_market_cap += last_update.market_cap
 
         dex_day_data = IndexDay.objects.get(index=dex, day=datetime.date.today())
-        print(dex_day_data.open)
         dex_price_change = Decimal(dex_total_price) - dex_day_data.open
         dex_percent_change = Decimal(dex_price_change) / dex_day_data.open
 
@@ -164,4 +140,51 @@ def pullcurrent(request):
             dex_day_data.save()
 
     return HttpResponse('ok')
+
+
+def getindexcurrent(request):
+    indices = Index.objects.all()
+    indices_current_output = []
+    for dex in indices:
+        dex_current = dex.indexcurrent_set.last()
+        indices_current_output.append(dex_current.toDict())
+
+    return JsonResponse({'indices_current': indices_current_output})
+
+
+def getindexday(request):
+    indices = Index.objects.all()
+    indices_day_output = []
+    for dex in indices:
+        dex_day = dex.indexday_set.last()
+        indices_day_output.append(dex_day.toDict())
+
+    return JsonResponse({'indices_day': indices_day_output})
+
+
+def getcoinscurrent(request):
+    coins = Coin.objects.all()
+    coins_current_output = []
+    for coin in coins:
+        coin_current = coin.coincurrent_set.last()
+        coins_current_output.append(coin_current.toDict())
+
+    return JsonResponse({'coins_current': coins_current_output})
+
+
+def getcoinsday(request):
+    coins = Coin.objects.all()
+    coins_day_output = []
+    for coin in coins:
+        coin_day = coin.coinday_set.last()
+        coins_day_output.append(coin_day.toDict())
+
+    return JsonResponse({'coins_day': coins_day_output})
+
+def getlist(request):
+    todos = TodoItem.objects.all()
+    todos_output = []
+    for todo in todos:
+        todos_output.append(todo.toDict())
+    return JsonResponse({'todos': todos_output})
 
