@@ -1,0 +1,94 @@
+
+
+<html>
+  <head>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  </head>
+  <body>
+    <div id="coin_table">
+      <table >
+          <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Market</th>
+            <th>Last</th>
+            <th>Change</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Volume</th>
+          </tr>
+          <tr v-for="row in rows">
+            <td>{{row.Symbol}}</td>
+            <td>{{row.Name}}</td>
+            <td>{{row.Market}}</td>
+            <td>{{row.Price}}</td>
+            <td>{{row.Change}}</td>
+            <td>{{row.High}}</td>
+            <td>{{row.Low}}</td>
+            <td>{{row.Volume}}</td>
+          </tr>
+      </table>
+    </div>
+
+
+    <script>
+        function http_get(url, success) {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                console.log(this.status);
+                if (this.readyState === 4 && this.status === 200) {
+                    let data = JSON.parse(xhttp.responseText);
+                    success(data);
+                }
+            };
+            xhttp.open("GET", url);
+            xhttp.send();
+        }
+
+        let app = new Vue({
+            el: '#coin_table',
+            data: {
+                ascending: false,
+                sortColumn: '',
+                rows: [],
+            }
+        });
+        //alert(app.message);
+
+        function coin_current() {
+            app.rows = [];
+            let url = '/altdexapp/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
+            //alert('test');
+            http_get(url, function(data) {
+                console.log(data);
+                for (let i = 0; i < data.coins_current.length; ++i) {
+                    app.rows.push(data.coins_current[i]);
+                }
+            });
+        }
+
+        function index_all() {
+            let url = '/altdexapp/getindexall/';
+            //alert('test');
+            http_get(url, function(data) {
+                console.log(data);
+                for (let i = 0; i < data.indices_current.length; ++i) {
+                    app.rows.push(data.indices_current[i]);
+                }
+            });
+        }
+
+        coin_current();
+
+        //setInterval(coin_current, 10000);
+        // console.log(rows);
+
+
+
+    </script>
+  </body>
+</html>
+
+
