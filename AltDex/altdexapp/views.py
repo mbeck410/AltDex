@@ -140,24 +140,36 @@ def pullcurrent(request):
     return HttpResponse('ok')
 
 
+def getindexall(request):
+    indices = Index.objects.all()
+    indices_all_output = []
+    for dex in indices:
+        dex_all = dex.indexcurrent_set.all()
+        index_dict = {  'price': float('{0:.2f}'.format(dex_all.price)),
+                        'market_cap': float('{0:.2f}'.format(dex_all.market_cap)),
+                        'volume': float('{0:.2f}'.format(dex_all.volume)),
+                        'time': str(dex_all.timestamp)
+                        }
+
+        indices_all_output.append(index_dict)
+
+    return JsonResponse({'indices_all': indices_all_output})
+
+
 def getindexcurrent(request):
     indices = Index.objects.all()
-    indices_current_output = []
+    indices_current = []
     for dex in indices:
         dex_current = dex.indexcurrent_set.last()
-        indices_current_output.append(dex_current.toDict())
+        index_dict = {  'price': float('{0:.2f}'.format(dex_current.price)),
+                        'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
+                        'market_cap': float('{0:.2f}'.format(dex_current.market_cap)),
+                        'time': str(dex_current.timestamp)
+                        }
 
-    return JsonResponse({'indices_current': indices_current_output})
+    indices_current.append(index_dict)
 
-
-def getindexday(request):
-    indices = Index.objects.all()
-    indices_day_output = []
-    for dex in indices:
-        dex_day = dex.indexday_set.last()
-        indices_day_output.append(dex_day.toDict())
-
-    return JsonResponse({'indices_day': indices_day_output})
+    return JsonResponse({'indices_current': indices_current})
 
 
 def getcoinscurrent(request):
@@ -169,13 +181,13 @@ def getcoinscurrent(request):
         coin_current = coin.coincurrent_set.last()
         coin_dict = {   'Symbol': str(coin_current.coin.symbol),
                         'Name': str(coin_current.coin),
-                        'Market': float("{0:.0f}".format(coin_current.market_cap)),
-                        'Price': float("{0:.2f}".format(coin_current.price)),
-                        'Change': float("{0:.2f}".format(coin_current.price_change)),
-                        '%Chg': float("{0:.2f}".format(coin_current.price_percent_change)),
-                        'High': float("{0:.2f}".format(coin_day.high)),
-                        'Low': float("{0:.2f}".format(coin_day.low)),
-                        'Volume': float("{0:.0f}".format(coin_current.volume))
+                        'Market': float('{0:.0f}'.format(coin_current.market_cap)),
+                        'Price': float('{0:.2f}'.format(coin_current.price)),
+                        'Change': float('{0:.2f}'.format(coin_current.price_change)),
+                        'Percent Change': float('{0:.2f}'.format(coin_current.price_percent_change)),
+                        'High': float('{0:.2f}'.format(coin_day.high)),
+                        'Low': float('{0:.2f}'.format(coin_day.low)),
+                        'Volume': float('{0:.2f}'.format(coin_current.volume))
                         }
 
         coins_current_output.append(coin_dict)
@@ -183,13 +195,5 @@ def getcoinscurrent(request):
     return JsonResponse({'coins_current': coins_current_output})
 
 
-def getcoinsday(request):
-    coins = Coin.objects.all()
-    coins_day_output = []
-    for coin in coins:
-        coin_day = coin.coinday_set.last()
-        coins_day_output.append(coin_day.toDict())
-
-    return JsonResponse({'coins_day': coins_day_output})
 
 
