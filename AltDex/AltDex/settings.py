@@ -26,7 +26,8 @@ SECRET_KEY = '9k=4b0sj0q8xz&sm85qhvllw&&ha$xv79nusztjj9s#wfmt04u'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'mbeck410.pythonanywhere.com'
+    'mbeck410.pythonanywhere.com',
+    'localhost'
 ]
 
 

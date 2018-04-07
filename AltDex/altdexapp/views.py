@@ -145,11 +145,18 @@ def getindexall(request):
     indices_all_output = []
     for dex in indices:
         dex_all = dex.indexcurrent_set.all()
-        index_dict = {  'price': float('{0:.2f}'.format(dex_all.price)),
-                        'market_cap': float('{0:.2f}'.format(dex_all.market_cap)),
-                        'volume': float('{0:.2f}'.format(dex_all.volume)),
-                        'time': str(dex_all.timestamp)
-                        }
+        prices = []
+        times = []
+        for i in dex_all:
+            prices.append(i.price)
+            times.append(i.timestamp)
+
+        index_dict = {'x': times, 'y': prices, 'type': 'scatter'}
+                        # 'market_cap': float('{0:.0f}'.format(i.market_cap)),
+                        # 'volume': float('{0:.0f}'.format(i.volume)),
+
+
+
 
         indices_all_output.append(index_dict)
 
@@ -163,7 +170,7 @@ def getindexcurrent(request):
         dex_current = dex.indexcurrent_set.last()
         index_dict = {  'price': float('{0:.2f}'.format(dex_current.price)),
                         'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
-                        'market_cap': float('{0:.2f}'.format(dex_current.market_cap)),
+                        'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
                         'time': str(dex_current.timestamp)
                         }
 
@@ -184,10 +191,10 @@ def getcoinscurrent(request):
                         'Market': float('{0:.0f}'.format(coin_current.market_cap)),
                         'Price': float('{0:.2f}'.format(coin_current.price)),
                         'Change': float('{0:.2f}'.format(coin_current.price_change)),
-                        'Percent Change': float('{0:.2f}'.format(coin_current.price_percent_change)),
+                        'percent': float('{0:.2f}'.format(coin_current.price_percent_change)),
                         'High': float('{0:.2f}'.format(coin_day.high)),
                         'Low': float('{0:.2f}'.format(coin_day.low)),
-                        'Volume': float('{0:.2f}'.format(coin_current.volume))
+                        'Volume': float('{0:.0f}'.format(coin_current.volume))
                         }
 
         coins_current_output.append(coin_dict)
