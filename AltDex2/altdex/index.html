@@ -3,7 +3,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
+    
     <style>
         @media screen and (max-width: 1020px) {
             /*#index_chart, table.table1, table.table2 {*/
@@ -28,12 +28,13 @@
 
         .center {
             margin: auto;
-            width: 60%;
+            width: 55em;
         }
 
         table.table1 {
             margin: auto;
-            width: 40%;
+            height: 7em;
+            width: 40em;
             text-align: center;
             table-layout: fixed;
         }
@@ -44,10 +45,10 @@
         }
 
         table.table2 {
-            text-align: center;
+            text-align: right;
             border-collapse: collapse;
             margin: auto;
-            width: 60%;
+            width: 55em;
         }
 
 
@@ -57,9 +58,12 @@
 
         table.table2 th,td {
             border: 0px;
-            padding: 0px;
+            padding: 0.4em;
+            height: 1 em;
         }
 
+        table.table2 th:first-child {text-align: left}
+        table.table2 td:first-child {text-align: left}
 
         [v-cloak] {
             display: none;
@@ -67,24 +71,21 @@
 
 
     </style>
+
 </head>
 
 <body>
 
-<h2 class = "center">Altdex 50</h2>
+<h2 class = "center">Altdex</h2>
 
 <div id="index_chart" class="center"></div>
 
 <div id="index_info">
     <div v-cloak>
         <table class="table1">
-            <tr>
-                <th>Price</th>
-                <th>%Chg</th>
-            </tr>
             <tr v-for="row in rows">
                 <td>{{row.price}}</td>
-                <td>{{row.price_percent}}</td>
+                <td>{{row.price_percent}}%</td>
             </tr>
         </table>
     </div>
@@ -92,30 +93,24 @@
 
 <div id="coin_table">
     <div v-cloak>
-        <table class="table2">
-            <tr >
-                <th>Symbol</th>
-                <th>Name</th>
-                <th>Market</th>
-                <th>Last</th>
-                <th>Change</th>
-                <th>%Chg</th>
-                <th>High</th>
-                <th>Low</th>
-                <th>Volume</th>
-            </tr>
-            <tr v-for="row in rows">
-                <td>{{row.symbol}}</td>
-                <td>{{row.coin}}</td>
-                <td>{{row.market_cap}}</td>
-                <td>{{row.price}}</td>
-                <td>{{row.price_change}}</td>
-                <td>{{row.price_percent_change}}</td>
-                <td>{{row.high}}</td>
-                <td>{{row.low}}</td>
-                <td>{{row.volume}}</td>
-            </tr>
-        </table>
+    <table class="table2">
+        <tr >
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Market</th>
+            <th>Last</th>
+            <th>%Chg(24h)</th>
+            <th>Volume(24h)</th>
+        </tr>
+        <tr v-for="row in rows" class="text-danger">
+            <td>{{row.symbol}}</td>
+            <td>{{row.coin}}</td>
+            <td>${{row.market_cap}}</td>
+            <td>${{row.price}}</td>
+            <td>{{row.price_percent_change}}%</td>
+            <td>${{row.volume}}</td>
+        </tr>
+    </table>
     </div>
 </div>
 
@@ -139,6 +134,40 @@
         }
     });
 
+    //let x0 =
+
+
+    let layout = {
+        padding: 10,
+        fill: '#b3b3ff',
+        autosize: true,
+        // paper_bgcolor: '#000099',
+        // plot_bgcolor: '#000099',
+        xaxis: {
+              // color: '#ffffff',
+            type: 'date',
+            title: 'Date',
+            showgrid: false,
+            range: [(new Date(2018, 3, 13, 0, 0, 0)), (new Date(2018, 3, 14, 0, 0, 0))],
+            zeroline: false,
+            showline: true,
+            autotick: true,
+            ticks: '',
+            showticklabels: true,
+          },
+        yaxis: {
+            // color: '#ffffff',
+            range: [95, 120],
+            //autorange: true,
+            showgrid: true,
+            autotick: true,
+            showline: true,
+            ticks: '',
+            showticklabels: true,
+      },
+    };
+
+
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -154,74 +183,58 @@
 
 
 
+
     function coin_current() {
         app.rows = [];
         let url = '/altdex/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
         //alert('test');
         http_get(url, function (data) {
-            for (let i = 0; i < data.coins_current.length; ++i) {
-                app.rows.push(data.coins_current[i]);
-                console.log(data.coins_current[i])
-            }
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                let entry = data.dict_key[i];
 
+                app.rows.push(entry);
+            }
         });
     }
 
     let line_data = [];
 
+
+    // let rtest = [];
+    // let x0 = String();
+    // let x1 = String();
+
     function index_all() {
+        line_data = [];
         let url = '/altdex/getindexall/';
         //alert('test');
         http_get(url, function (data) {
-            for (let i = 0; i < data.indices_all.length; ++i) {
-                line_data.push(data.indices_all[i]);
-            }
-        });
+            let entry = data.dict_key[0];
+                line_data.push(entry);
+                // x0 = String(entry['x'][0]).replace('T0', '  ').slice(0, -2);
+                // rtest.push(x0);
+                // x1 =String(entry['x'].slice(-1)[0]).replace('T0', '  ').slice(0, -2);
+                // rtest.push(x1);
+        })
     }
+
+
 
     function index_current() {
         app2.rows = [];
         let url = '/altdex/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
-            for (let i = 0; i < data.indices_current.length; ++i) {
-                app2.rows.push(data.indices_current[i]);
-                console.log(app2.rows)
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                app2.rows.push(data.dict_key[i]);
             }
         });
     }
 
+
     coin_current();
     index_current();
     index_all();
-
-
-    let layout = {
-        fill: '#b3b3ff',
-        // paper_bgcolor: '#000099',
-        // plot_bgcolor: '#000099',
-      xaxis: {
-          // color: '#ffffff',
-        title: 'Date',
-        autorange: true,
-        showgrid: false,
-        zeroline: false,
-        showline: true,
-        autotick: true,
-        ticks: '',
-        showticklabels: true,
-      },
-      yaxis: {
-        // color: '#ffffff',
-        title: 'Price',
-        autorange: true,
-        showgrid: true,
-        autotick: true,
-        showline: true,
-        ticks: '',
-        showticklabels: true,
-      },
-    };
 
     Plotly.react('index_chart', line_data, layout);
 
@@ -230,7 +243,20 @@
 
 
 
-    //setInterval(coin_current, 15000);
+
+    //x0.replace(x0.)
+
+    //Plotly.react('index_chart', line_data, layout);
+
+
+    setInterval(function() {
+        coin_current();
+        index_current();
+        index_all();
+         //Plotly.react('index_chart', line_data, layout);
+        // Plotly.react('index_chart')
+    },
+        30000);
 
 
 

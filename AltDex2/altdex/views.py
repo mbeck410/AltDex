@@ -21,7 +21,8 @@ def index(request):
     return HttpResponse(contents)
 
 
-def pullcurrent(request):
+def pullcurrent():
+    print('!!!')
     coins = Coin.objects.order_by('name')
     indices = Index.objects.order_by('name')
     symbols = ''
@@ -57,9 +58,6 @@ def pullcurrent(request):
 
         coin_table.append(new_coin_history)
 
-        coin_stuff = coin_table
-
-        request.session['coin_table'] = coin_stuff
 
     for dex in indices:
         dex_coins = dex.coin_set.all()
@@ -75,7 +73,7 @@ def pullcurrent(request):
         dex_price = float(dex_market_cap) / float(dex.divisor)
         dex_percent_change = float(dex_market_cap) / float(dex.divisor * 100)
 
-        new_dex_history = IndexPrice(index=dex,
+        new_dex_history = IndexPrice(   index=dex,
                                         price=dex_price,
                                         price_change=dex_price_change,
                                         price_percent_change=dex_percent_change,
@@ -85,7 +83,7 @@ def pullcurrent(request):
 
         new_dex_history.save()
 
-    return HttpResponse('ok')
+    return coin_table
 
 
 def getindexall(request):
@@ -105,7 +103,7 @@ def getindexall(request):
 
         indices_all_output.append(index_dict)
 
-    return JsonResponse({'indices_all': indices_all_output})
+    return JsonResponse({'dict_key': indices_all_output})
 
 
 def getindexcurrent(request):
@@ -121,14 +119,41 @@ def getindexcurrent(request):
 
     indices_current.append(index_dict)
 
-    return JsonResponse({'indices_current': indices_current})
+    return JsonResponse({'dict_key': indices_current})
 
 
 def getcoinscurrent(request):
     coin_table = request.session.get('coin_table')
-    print(coin_table)
-    return JsonResponse({'coins_current': coin_table})
+    return JsonResponse({'dict_key': coin_table})
 
+
+class RepeatedTimer(object):
+    def __init__(self, interval, function, *args, **kwargs):
+        self._timer     = None
+        self.function   = function
+        self.interval   = interval
+        self.args       = args
+        self.kwargs     = kwargs
+        self.is_running = False
+        self.start()
+
+    def _run(self):
+        self.is_running = False
+        self.start()
+        self.function(*self.args, **self.kwargs)
+
+    def start(self):
+        if not self.is_running:
+            self._timer = Timer(self.interval, self._run)
+            self._timer.start()
+            self.is_running = True
+
+    def stop(self):
+        self._timer.cancel()
+        self.is_running = False
+
+
+rt = RepeatedTimer(30, pullcurrent) # it auto-starts, no need of rt.start()
 
 
 
