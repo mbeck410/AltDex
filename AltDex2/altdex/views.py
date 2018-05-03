@@ -21,7 +21,7 @@ def index(request):
     return HttpResponse(contents)
 
 
-def pullcurrent():
+def pullcurrent(request):
     print('!!!')
     coins = Coin.objects.order_by('name')
     indices = Index.objects.order_by('name')
@@ -58,6 +58,8 @@ def pullcurrent():
 
         coin_table.append(new_coin_history)
 
+        request.session['coin_table'] = coin_table
+
 
     for dex in indices:
         dex_coins = dex.coin_set.all()
@@ -83,7 +85,9 @@ def pullcurrent():
 
         new_dex_history.save()
 
-    return coin_table
+        # print(coin_table)
+
+    return HttpResponse('ok')
 
 
 def getindexall(request):
@@ -123,7 +127,8 @@ def getindexcurrent(request):
 
 
 def getcoinscurrent(request):
-    coin_table = request.session.get('coin_table')
+    coin_table = request.session['coin_table']
+    # print(coin_table)
     return JsonResponse({'dict_key': coin_table})
 
 
@@ -153,7 +158,7 @@ class RepeatedTimer(object):
         self.is_running = False
 
 
-rt = RepeatedTimer(30, pullcurrent) # it auto-starts, no need of rt.start()
+# rt = RepeatedTimer(30, pullcurrent) # it auto-starts, no need of rt.start()
 
 
 

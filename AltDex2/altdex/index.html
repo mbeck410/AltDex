@@ -52,22 +52,25 @@
         }
 
 
-        table.table2 tr:nth-child(odd) {background-color: #f1f1f1;}
+        table.table2 tr:hover {background-color: #f1f1f1;}
 
         table.table2 tr:first-child {background-color: #629fca;}
 
+        table.table2 tr:nth-child(n+3) {border-top: solid 1px #A9A9A9}
+
         table.table2 th,td {
-            border: 0px;
             padding: 0.4em;
-            height: 1 em;
+            height: 1.0em;
         }
 
-        table.table2 th:first-child {text-align: left}
-        table.table2 td:first-child {text-align: left}
+        table.table2 th:nth-child(-n+2) {text-align: left}
+        table.table2 td:nth-child(-n+2) {text-align: left}
 
         [v-cloak] {
             display: none;
         }
+
+
 
 
     </style>
@@ -94,7 +97,7 @@
 <div id="coin_table">
     <div v-cloak>
     <table class="table2">
-        <tr >
+        <tr>
             <th>Symbol</th>
             <th>Name</th>
             <th>Market</th>
@@ -105,10 +108,10 @@
         <tr v-for="row in rows" class="text-danger">
             <td>{{row.symbol}}</td>
             <td>{{row.coin}}</td>
-            <td>${{row.market_cap}}</td>
+            <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
             <td>${{row.price}}</td>
             <td>{{row.price_percent_change}}%</td>
-            <td>${{row.volume}}</td>
+            <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
         </tr>
     </table>
     </div>
@@ -249,14 +252,14 @@
     //Plotly.react('index_chart', line_data, layout);
 
 
-    setInterval(function() {
-        coin_current();
-        index_current();
-        index_all();
-         //Plotly.react('index_chart', line_data, layout);
-        // Plotly.react('index_chart')
-    },
-        30000);
+    // setInterval(function() {
+    //     coin_current();
+    //     index_current();
+    //     index_all();
+    //      //Plotly.react('index_chart', line_data, layout);
+    //     // Plotly.react('index_chart')
+    // },
+    //     30000);
 
 
 
