@@ -56,7 +56,8 @@
 
         table.table2 tr:first-child {background-color: #629fca;}
 
-        table.table2 tr:nth-child(n+3) {border-top: solid 1px #A9A9A9}
+        table.table2 tr:nth-child(n+3) {border-top: solid 1px lightgray}
+        /*#A9A9A9}*/
 
         table.table2 th,td {
             padding: 0.4em;
@@ -110,7 +111,7 @@
             <td>{{row.coin}}</td>
             <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
             <td>${{row.price}}</td>
-            <td>{{row.price_percent_change}}%</td>
+            <td v-if="row.price_percent_change">{{row.price_percent_change}}%</td>
             <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
         </tr>
     </table>
@@ -140,35 +141,34 @@
     //let x0 =
 
 
-    let layout = {
-        padding: 10,
-        fill: '#b3b3ff',
-        autosize: true,
-        // paper_bgcolor: '#000099',
-        // plot_bgcolor: '#000099',
-        xaxis: {
-              // color: '#ffffff',
-            type: 'date',
-            title: 'Date',
-            showgrid: false,
-            range: [(new Date(2018, 3, 13, 0, 0, 0)), (new Date(2018, 3, 14, 0, 0, 0))],
-            zeroline: false,
-            showline: true,
-            autotick: true,
-            ticks: '',
-            showticklabels: true,
-          },
-        yaxis: {
-            // color: '#ffffff',
-            range: [95, 120],
-            //autorange: true,
-            showgrid: true,
-            autotick: true,
-            showline: true,
-            ticks: '',
-            showticklabels: true,
-      },
-    };
+    // let layout = {
+    //     padding: 10,
+    //     fill: '#b3b3ff',
+    //     autosize: true,
+    //     // paper_bgcolor: '#000099',
+    //     // plot_bgcolor: '#000099',
+    //     xaxis: {
+    //           // color: '#ffffff',
+    //         type: 'date',
+    //         title: 'Date',
+    //         showgrid: false,
+    //         zeroline: false,
+    //         showline: true,
+    //         autotick: true,
+    //         ticks: '',
+    //         showticklabels: true,
+    //       },
+    //     yaxis: {
+    //         // color: '#ffffff',
+    //         range: [95, 120],
+    //         //autorange: true,
+    //         showgrid: true,
+    //         autotick: true,
+    //         showline: true,
+    //         ticks: '',
+    //         showticklabels: true,
+    //   },
+    // };
 
 
     function http_get(url, success) {
@@ -194,7 +194,6 @@
         http_get(url, function (data) {
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
-
                 app.rows.push(entry);
             }
         });
@@ -213,11 +212,42 @@
         //alert('test');
         http_get(url, function (data) {
             let entry = data.dict_key[0];
-                line_data.push(entry);
-                // x0 = String(entry['x'][0]).replace('T0', '  ').slice(0, -2);
-                // rtest.push(x0);
-                // x1 =String(entry['x'].slice(-1)[0]).replace('T0', '  ').slice(0, -2);
-                // rtest.push(x1);
+            line_data.push(entry);
+            let data_length = line_data[0].x.length - 1;
+            let layout = {
+                padding: 10,
+                fill: '#b3b3ff',
+                autosize: true,
+        // paper_bgcolor: '#000099',
+        // plot_bgcolor: '#000099',
+                xaxis: {
+              // color: '#ffffff',
+                    range: [line_data[0].x[0], line_data[0].x[data_length]],
+                    type: 'date',
+                    title: 'Date',
+                    showgrid: false,
+                    zeroline: false,
+                    showline: true,
+                    autotick: true,
+                    ticks: '',
+                    showticklabels: true,
+                },
+                yaxis: {
+                    // color: '#ffffff',
+                    range: [line_data[0].y[0], line_data[0].y[data_length]],
+            //autorange: true,
+                    showgrid: true,
+                    autotick: true,
+                    showline: true,
+                    ticks: '',
+                    showticklabels: true,
+                },
+            };
+            Plotly.react('index_chart', line_data, layout);
+            // console.log(data_length);
+            // console.log(line_data[0].x[data_length]);
+            // console.log(line_data[0].y[data_length])
+
         })
     }
 
@@ -234,12 +264,13 @@
         });
     }
 
+    // Plotly.react('index_chart', line_data, layout);
 
     coin_current();
     index_current();
     index_all();
 
-    Plotly.react('index_chart', line_data, layout);
+
 
 
 
