@@ -31,6 +31,11 @@
             width: 55em;
         }
 
+        #main {
+            width: 55em;
+            margin: auto;
+        }
+
         table.table1 {
             margin: auto;
             height: 7em;
@@ -48,7 +53,7 @@
             text-align: right;
             border-collapse: collapse;
             margin: auto;
-            width: 55em;
+            /*width: 55em;*/
         }
 
 
@@ -79,46 +84,67 @@
 </head>
 
 <body>
+<div>
+    <h2 class = "center">AltDex</h2>
+    <button id="0">AltDex</button>
+    <button id="1">Exchange</button>
+</div>
 
-<h2 class = "center">Altdex</h2>
+<div id="main">
+    <div id="index_chart"></div>
 
-<div id="index_chart" class="center"></div>
+    <div id="index_info">
+        <div v-cloak>
+            <table class="table1">
+                <tr v-for="row in rows">
+                    <td>{{row.price}}</td>
+                    <td>{{row.price_percent}}%</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-<div id="index_info">
-    <div v-cloak>
-        <table class="table1">
-            <tr v-for="row in rows">
-                <td>{{row.price}}</td>
-                <td>{{row.price_percent}}%</td>
+    <div id="coin_table">
+        <div v-cloak>
+        <table class="table2">
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Market</th>
+                <th>Last</th>
+                <th>%Chg(24h)</th>
+                <th>Volume(24h)</th>
+            </tr>
+            <tr v-for="row in rows" class="text-danger">
+                <td>{{row.symbol}}</td>
+                <td>{{row.coin}}</td>
+                <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
+                <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
+                <td>{{row.price_percent_change}}%</td>
+                <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
             </tr>
         </table>
+        </div>
     </div>
 </div>
 
-<div id="coin_table">
-    <div v-cloak>
-    <table class="table2">
-        <tr>
-            <th>Symbol</th>
-            <th>Name</th>
-            <th>Market</th>
-            <th>Last</th>
-            <th>%Chg(24h)</th>
-            <th>Volume(24h)</th>
-        </tr>
-        <tr v-for="row in rows" class="text-danger">
-            <td>{{row.symbol}}</td>
-            <td>{{row.coin}}</td>
-            <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
-            <td>${{row.price}}</td>
-            <td v-if="row.price_percent_change">{{row.price_percent_change}}%</td>
-            <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
-        </tr>
-    </table>
-    </div>
-</div>
+
 
 <script>
+    // Vue.filter('color', function (value) {
+    //     let our_row = this.$refs;
+    //     if (value >= 0) {
+    //         our_row.style.color='green';
+    //         return value
+    //     } else {
+    //         our_row.style.color='red';
+    //         return value;
+    //     }
+    // });
+
+
+    let current_index = 'AltDex';
+
 
     let app = new Vue({
         el: '#coin_table',
@@ -126,7 +152,7 @@
             ascending: false,
             sortColumn: '',
             rows: [],
-        }
+        },
     });
 
     let app2 = new Vue({
@@ -137,39 +163,6 @@
             rows: [],
         }
     });
-
-    //let x0 =
-
-
-    // let layout = {
-    //     padding: 10,
-    //     fill: '#b3b3ff',
-    //     autosize: true,
-    //     // paper_bgcolor: '#000099',
-    //     // plot_bgcolor: '#000099',
-    //     xaxis: {
-    //           // color: '#ffffff',
-    //         type: 'date',
-    //         title: 'Date',
-    //         showgrid: false,
-    //         zeroline: false,
-    //         showline: true,
-    //         autotick: true,
-    //         ticks: '',
-    //         showticklabels: true,
-    //       },
-    //     yaxis: {
-    //         // color: '#ffffff',
-    //         range: [95, 120],
-    //         //autorange: true,
-    //         showgrid: true,
-    //         autotick: true,
-    //         showline: true,
-    //         ticks: '',
-    //         showticklabels: true,
-    //   },
-    // };
-
 
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
@@ -185,16 +178,18 @@
     }
 
 
-
-
-    function coin_current() {
+    function coin_current(index) {
         app.rows = [];
         let url = '/altdex/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
         //alert('test');
         http_get(url, function (data) {
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
-                app.rows.push(entry);
+                let shit = entry.indices;
+                console.log(shit);
+                if(shit.includes(index) === true) {
+                    app.rows.push(entry);
+                }
             }
         });
     }
@@ -214,14 +209,16 @@
             let entry = data.dict_key[0];
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
+            let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y))/10;
+            let y_high = Math.max(...line_data[0].y)+y_range_border;
+            let y_low = Math.min(...line_data[0].y)-y_range_border;
+            console.log(y_low);
+            console.log(y_high);
             let layout = {
                 padding: 10,
                 fill: '#b3b3ff',
                 autosize: true,
-        // paper_bgcolor: '#000099',
-        // plot_bgcolor: '#000099',
                 xaxis: {
-              // color: '#ffffff',
                     range: [line_data[0].x[0], line_data[0].x[data_length]],
                     type: 'date',
                     title: 'Date',
@@ -233,9 +230,7 @@
                     showticklabels: true,
                 },
                 yaxis: {
-                    // color: '#ffffff',
-                    range: [line_data[0].y[0], line_data[0].y[data_length]],
-            //autorange: true,
+                    range: [y_low, y_high],
                     showgrid: true,
                     autotick: true,
                     showline: true,
@@ -266,9 +261,10 @@
 
     // Plotly.react('index_chart', line_data, layout);
 
-    coin_current();
-    index_current();
     index_all();
+    coin_current(current_index);
+    index_current();
+
 
 
 

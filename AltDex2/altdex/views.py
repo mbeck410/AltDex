@@ -23,12 +23,16 @@ def index(request):
 
 def pullcurrent(request):
     print('!!!')
-    coins = Coin.objects.order_by('name')
+    coins_cc = Coin.objects.filter(api='CryptoCompare')
+    coins_cmc = Coin.objects.filter(api='CMC')
     indices = Index.objects.order_by('name')
     symbols = ''
 
-    for coin in coins:
+
+
+    for coin in coins_cc:
         symbols += coin.symbol + ','
+
     symbols = symbols[:-1]
 
     url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols + '&tsyms=USD'
@@ -38,18 +42,22 @@ def pullcurrent(request):
     coin_table = []
     coin_histories = {}
 
-    for coin in coins:
+    for coin in coins_cc:
+        dices = ''
+        indices_in = coin.indices.all()
+
+        for dex in indices_in:
+            dices += str(dex.name)
+
+        print(dices)
 
         new_coin_history = {'coin': coin.name,
                             'symbol': coin.symbol,
                             'price': '{0:.2f}'.format(float(data['RAW'][coin.symbol]['USD']['PRICE'])),
-                            'price_change': float('{0:.2f}'.format(data['RAW'][coin.symbol]['USD']['CHANGEDAY'])),
-                            'price_percent_change': float('{0:.2f}'.format(data['RAW'][coin.symbol]['USD']['CHANGEPCTDAY'])),
+                            'price_percent_change': float('{0:.2f}'.format(data['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR'])),
                             'volume': float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['TOTALVOLUME24H'])),
                             'market_cap': float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['MKTCAP'])),
-                            'open': '{0:.2f}'.format(float(data['RAW'][coin.symbol]['USD']['OPENDAY'])),
-                            'high': '{0:.2f}'.format(float(data['RAW'][coin.symbol]['USD']['HIGHDAY'])),
-                            'low': '{0:.2f}'.format(float(data['RAW'][coin.symbol]['USD']['LOWDAY']))
+                            'indices': dices
                             }
 
         dict_entry = {coin.name: new_coin_history}
@@ -58,26 +66,47 @@ def pullcurrent(request):
 
         coin_table.append(new_coin_history)
 
-        request.session['coin_table'] = coin_table
+    for coin in coins_cmc:
+        url = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
+        r = requests.get(url)
+        data = json.loads(r.text)
 
+        dices = ''
+        indices_in = coin.indices.all()
+
+        for dex in indices_in:
+            dices += str(dex.name)
+
+        print(dices)
+
+        new_coin_history = {'coin': coin.name,
+                            'symbol': coin.symbol,
+                            'price': float('{0:.2f}'.format(data['data']['quotes']['USD']['price'])),
+                            'price_percent_change': float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h'])),
+                            'volume': float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h'])),
+                            'market_cap': float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap'])),
+                            'indices': dices
+                            }
+
+        dict_entry = {coin.name: new_coin_history}
+
+        coin_histories.update(dict_entry)
+
+        coin_table.append(new_coin_history)
 
     for dex in indices:
         dex_coins = dex.coin_set.all()
         dex_market_cap = 0.0
-        dex_price_change = 0.0
 
         for dex_coin in dex_coins:
             this_coin = coin_histories[dex_coin.name]
             dex_market_cap += this_coin['market_cap']
-            dex_price_change += this_coin['price_change']
-
 
         dex_price = float(dex_market_cap) / float(dex.divisor)
-        dex_percent_change = float(dex_market_cap) / float(dex.divisor * 100)
+        dex_percent_change = 0
 
         new_dex_history = IndexPrice(   index=dex,
                                         price=dex_price,
-                                        price_change=dex_price_change,
                                         price_percent_change=dex_percent_change,
                                         market_cap=dex_market_cap,
                                         divisor=dex.divisor
@@ -86,6 +115,7 @@ def pullcurrent(request):
         new_dex_history.save()
 
         # print(coin_table)
+    request.session['coin_table'] = coin_table
 
     return HttpResponse('ok')
 
@@ -121,7 +151,9 @@ def getindexcurrent(request):
                         'time': str(dex_current.timestamp)
                         }
 
-    indices_current.append(index_dict)
+        indices_current.append(index_dict)
+
+    print(indices_current[0])
 
     return JsonResponse({'dict_key': indices_current})
 
