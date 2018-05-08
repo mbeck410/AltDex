@@ -3,7 +3,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    
+
     <style>
         @media screen and (max-width: 1020px) {
             /*#index_chart, table.table1, table.table2 {*/
@@ -14,21 +14,85 @@
                 height: 40%;
                 width: auto;
             }
+
             table.table1 {
                 width: 100%;
                 float: none;
                 table-layout: fixed;
             }
-            p{ font-size: 2em; }
+
+            p {
+                font-size: 2em;
+            }
         }
 
         body {
-            font-family: "Open Sans", verdana, arial, sans-serif;
+            margin: 0;
+            height: 100%;
+            font-family: Inconsolata sans-serif;
         }
 
-        .center {
-            margin: auto;
-            width: 55em;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* main-menu-style */
+        .header-top-menu {
+
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .main-menu {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main-menu li {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            transition: linear .3s;
+        }
+
+        .main-menu li a {
+            color: black;
+            display: block;
+            padding: 10px;
+            transition: linear .3s;
+        }
+
+        /* hover-effects */
+        .main-menu li:hover {
+            background-color: lightgray;
+        }
+
+        /*.main-menu li:hover a {*/
+            /*color: red;*/
+        /*}*/
+
+        /* drop-down-menu-on-hover */
+        .drop-down {
+            position: absolute;
+            width: 100%;
+            display: none;
+            transition: linear .3s;
+            z-index: 2000;
+        }
+
+        .drop-down li:hover {
+            background-color: lightgray;
+        }
+
+        .main-menu li:hover .drop-down {
+            display: block;
+            position: absolute;
         }
 
         #main {
@@ -53,42 +117,58 @@
             text-align: right;
             border-collapse: collapse;
             margin: auto;
-            /*width: 55em;*/
+            width: 55em;
         }
 
+        table.table2 tr:hover {
+            background-color: #f1f1f1;
+        }
 
-        table.table2 tr:hover {background-color: #f1f1f1;}
+        table.table2 tr:first-child {
+            background-color: #629fca;
+        }
 
-        table.table2 tr:first-child {background-color: #629fca;}
+        table.table2 tr:nth-child(n+3) {
+            border-top: solid 1px lightgray
+        }
 
-        table.table2 tr:nth-child(n+3) {border-top: solid 1px lightgray}
-        /*#A9A9A9}*/
-
-        table.table2 th,td {
+        table.table2 th, td {
             padding: 0.4em;
             height: 1.0em;
         }
 
-        table.table2 th:nth-child(-n+2) {text-align: left}
-        table.table2 td:nth-child(-n+2) {text-align: left}
+        table.table2 th:nth-child(-n+2) {
+            text-align: left
+        }
+
+        table.table2 td:nth-child(-n+2) {
+            text-align: left
+        }
 
         [v-cloak] {
             display: none;
         }
-
-
-
 
     </style>
 
 </head>
 
 <body>
-<div>
-    <h2 class = "center">AltDex</h2>
-    <button id="0">AltDex</button>
-    <button id="1">Exchange</button>
+
+
+<div class="header-top-menu">
+    <ul class="main-menu">
+        <li><a href="">About</a></li>
+        <li><a href="">Indices</a>
+            <ul class="drop-down">
+                <li><a onClick="change_index(this)">AltDex</a></li>
+                <li><a onClick="change_index(this)">Exchange</a></li>
+            </ul>
+        </li>
+        <li><a href="">Masternodes</a></li>
+    </ul>
 </div>
+
 
 <div id="main">
     <div id="index_chart"></div>
@@ -106,45 +186,39 @@
 
     <div id="coin_table">
         <div v-cloak>
-        <table class="table2">
-            <tr>
-                <th>Symbol</th>
-                <th>Name</th>
-                <th>Market</th>
-                <th>Last</th>
-                <th>%Chg(24h)</th>
-                <th>Volume(24h)</th>
-            </tr>
-            <tr v-for="row in rows" class="text-danger">
-                <td>{{row.symbol}}</td>
-                <td>{{row.coin}}</td>
-                <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
-                <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
-                <td>{{row.price_percent_change}}%</td>
-                <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
-            </tr>
-        </table>
+            <table class="table2">
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Market</th>
+                    <th>Last</th>
+                    <th>%Chg(24h)</th>
+                    <th>Volume(24h)</th>
+                </tr>
+                <tr v-for="row in rows" class="text-danger">
+                    <td>{{row.symbol}}</td>
+                    <td>{{row.coin}}</td>
+                    <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
+                    <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
+                    <td>{{row.price_percent_change}}%</td>
+                    <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
 
 
-
 <script>
-    // Vue.filter('color', function (value) {
-    //     let our_row = this.$refs;
-    //     if (value >= 0) {
-    //         our_row.style.color='green';
-    //         return value
-    //     } else {
-    //         our_row.style.color='red';
-    //         return value;
-    //     }
-    // });
-
-
     let current_index = 'AltDex';
 
+    function change_index(element) {
+        let text = element.innerHTML;
+        if(current_index != text) {
+            current_index = text;
+            coin_current(current_index);
+        }
+    }
 
     let app = new Vue({
         el: '#coin_table',
@@ -187,7 +261,7 @@
                 let entry = data.dict_key[i];
                 let shit = entry.indices;
                 console.log(shit);
-                if(shit.includes(index) === true) {
+                if (shit.includes(index) === true) {
                     app.rows.push(entry);
                 }
             }
@@ -209,15 +283,20 @@
             let entry = data.dict_key[0];
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
-            let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y))/10;
-            let y_high = Math.max(...line_data[0].y)+y_range_border;
-            let y_low = Math.min(...line_data[0].y)-y_range_border;
+            let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) / 10;
+            let y_high = Math.max(...line_data[0].y) + y_range_border;
+            let y_low = Math.min(...line_data[0].y) - y_range_border;
             console.log(y_low);
             console.log(y_high);
             let layout = {
-                padding: 10,
                 fill: '#b3b3ff',
                 autosize: true,
+                margin: {
+                    l: 50,
+                    r: 50,
+                    b: 50,
+                    t: 50,
+                },
                 xaxis: {
                     range: [line_data[0].x[0], line_data[0].x[data_length]],
                     type: 'date',
@@ -247,7 +326,6 @@
     }
 
 
-
     function index_current() {
         app2.rows = [];
         let url = '/altdex/getindexcurrent/';
@@ -266,14 +344,6 @@
     index_current();
 
 
-
-
-
-
-
-
-
-
     //x0.replace(x0.)
 
     //Plotly.react('index_chart', line_data, layout);
@@ -287,9 +357,6 @@
     //     // Plotly.react('index_chart')
     // },
     //     30000);
-
-
-
 
 
 </script>
