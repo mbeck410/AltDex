@@ -21,6 +21,12 @@ def index(request):
     return HttpResponse(contents)
 
 
+def exchange():
+    with open('./altdex/exchange.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
+
+
 def pullcurrent(request):
     print('!!!')
     coins_cc = Coin.objects.filter(api='CryptoCompare')
@@ -29,11 +35,12 @@ def pullcurrent(request):
     symbols = ''
 
 
-
     for coin in coins_cc:
         symbols += coin.symbol + ','
 
+
     symbols = symbols[:-1]
+
 
     url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols + '&tsyms=USD'
     r = requests.get(url)
@@ -49,7 +56,7 @@ def pullcurrent(request):
         for dex in indices_in:
             dices += str(dex.name)
 
-        print(dices)
+        # print(symbols)
 
         new_coin_history = {'coin': coin.name,
                             'symbol': coin.symbol,
