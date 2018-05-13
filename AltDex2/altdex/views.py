@@ -15,13 +15,13 @@ import json
 from .models import Index, Coin, IndexPrice
 
 
-def index(request):
+def altdex(request):
     with open('./altdex/index.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
 
-def exchange():
+def exchange(request):
     with open('./altdex/exchange.html') as file:
         contents = file.read()
     return HttpResponse(contents)

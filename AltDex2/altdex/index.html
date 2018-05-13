@@ -159,10 +159,10 @@
 <div class="header-top-menu">
     <ul class="main-menu">
         <li><a href="">About</a></li>
-        <li><a href="">Indices</a>
+        <li><a>Indices</a>
             <ul class="drop-down">
-                <li><a id="0" onClick="change_index(this)">AltDex</a></li>
-                <li><a id="1" onClick="change_index(this)">Exchange</a></li>
+                <li><a>AltDex</a></li>
+                <li><a href="/altdex/exchange/">Exchange</a></li>
             </ul>
         </li>
         <li><a href="">Masternodes</a></li>
@@ -212,17 +212,6 @@
 <script>
     let current_index = 'AltDex';
     let current_id = 0;
-
-    function change_index(element) {
-        let text = element.innerHTML;
-        let this_id = element.id;
-        if (current_index != text) {
-            current_index = text;
-            current_id = this_id;
-            coin_current(current_index);
-            index_current(current_id);
-        }
-    }
 
     let app = new Vue({
         el: '#coin_table',
