@@ -29,7 +29,8 @@
         body {
             margin: 0;
             height: 100%;
-            font-family: Inconsolata sans-serif;
+            font-family: Helvetica;
+            background-color: #fbfcfe;
         }
 
         ul {
@@ -55,6 +56,8 @@
         }
 
         .main-menu li {
+            background-color: #244ec3;
+            color: white;
             position: relative;
             width: 100%;
             text-align: center;
@@ -62,7 +65,8 @@
         }
 
         .main-menu li a {
-            color: black;
+            background-color: #244ec3;
+            color: white;
             display: block;
             padding: 10px;
             transition: linear .3s;
@@ -95,9 +99,67 @@
             position: absolute;
         }
 
+
+
         #main {
-            width: 55em;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
             margin: auto;
+        }
+
+        aside {
+            background-color: #ededed;
+            width: 20%;
+        }
+
+        aside > #widget {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px;
+            background-color: white;
+        }
+
+        section {
+            width: 60%;
+            background-color: #ededed;
+        }
+
+        section > div {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px;
+            background-color: white;
+        }
+
+        .w_table {
+            border-collapse: collapse;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #widget_title {
+            font-size: 35px;
+            border-bottom: solid 2px #244ec3;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        .w_table section {
+            font-size: 35px;
+            background-color: white;
+            text-align: left;
+            width: 50%;
+
+        }
+
+       .w_table aside {
+            width: 50%;
+           font-size: 20px;
+           text-align: right;
+
+           background-color: white;
         }
 
         table.table1 {
@@ -106,18 +168,23 @@
             width: 40em;
             text-align: center;
             table-layout: fixed;
+            padding-bottom: 20px;
+            background-color: white;
         }
 
         table.table1 td {
-            font-size: 50px;
+            font-size: 60px;
             text-align: center;
+            padding-bottom: 5px;
         }
+
+
 
         table.table2 {
             text-align: right;
             border-collapse: collapse;
             margin: auto;
-            width: 55em;
+            width: 100%;
         }
 
         table.table2 tr:hover {
@@ -125,11 +192,12 @@
         }
 
         table.table2 tr:first-child {
-            background-color: #629fca;
+            background-color: #244ec3;
+            color: white;
         }
 
         table.table2 tr:nth-child(n+3) {
-            border-top: solid 1px lightgray
+            border-top: solid 1px #ededed
         }
 
         table.table2 th, td {
@@ -158,6 +226,7 @@
 
 <div class="header-top-menu">
     <ul class="main-menu">
+        <li>AltDex</li>
         <li><a href="">About</a></li>
         <li><a href="">Indices</a>
             <ul class="drop-down">
@@ -171,6 +240,26 @@
 
 
 <div id="main">
+    <aside>
+        <div id="widget">
+            <div id="widget_title">AltDex 100</div>
+            <div class = "w_table">
+                    <section v-for="row in rows">
+                        <div>{{row.price}}</div>
+                    </section>
+                    <aside v-for="row in rows">
+                        <ul>
+                            <li>{{row.price_percent}}%</li>
+                            <li>-95</li>
+                        </ul>
+                    </aside>
+
+
+                </tr>
+            </div>
+        </div>
+    </aside>
+    <section>
     <div id="index_chart"></div>
 
     <div id="index_info">
@@ -179,6 +268,10 @@
                 <tr v-for="row in rows">
                     <td>{{row.price}}</td>
                     <td>{{row.price_percent}}%</td>
+                    <tr>
+                    <th>Current</th>
+                    <th>%Chg(24h)</th>
+                </tr>
                 </tr>
             </table>
         </div>
@@ -206,17 +299,20 @@
             </table>
         </div>
     </div>
-</div>
+        </section>
+    <aside>
+        <div id="widget">PLACEHOLDER</div>
+    </aside>
+    </div>
 
+</div>
 
 <script>
     let current_index = 'Exchange';
     let current_id = 1;
 
-    function change_index(element) {
-        let text = element.innerHTML;
-        let this_id = element.id;
-        if (current_index != text) {
+    function change_color(element) {
+        if (value > 0) {
             current_index = text;
             current_id = this_id;
             coin_current(current_index);
@@ -235,6 +331,15 @@
 
     let app2 = new Vue({
         el: '#index_info',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+        }
+    });
+
+    let app3 = new Vue({
+        el: '#widget',
         data: {
             ascending: false,
             sortColumn: '',
@@ -289,7 +394,8 @@
             console.log(y_low);
             console.log(y_high);
             let layout = {
-                fill: '#b3b3ff',
+                title: 'AltDex 100',
+                fillcolor: true,
                 autosize: true,
                 margin: {
                     l: 50,
@@ -323,11 +429,13 @@
 
     function index_current(index_id) {
         app2.rows = [];
+        app3.rows = [];
         let url = '/altdex/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
             // for (let i = 0; i < data.dict_key.length; ++i) {
             app2.rows.push(data.dict_key[index_id]);
+            app3.rows.push(data.dict_key[index_id]);
             // }
         });
     }

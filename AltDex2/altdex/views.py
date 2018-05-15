@@ -16,7 +16,7 @@ from .models import Index, Coin, IndexPrice
 
 
 def altdex(request):
-    with open('./altdex/index.html') as file:
+    with open('./altdex/altdex.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
@@ -138,7 +138,7 @@ def getindexall(request):
             prices.append(i.price)
             times.append(i.timestamp)
 
-        index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter'} #, 'mode': 'lines', 'line': {'color': '#ffffff'}}
+        index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#244ec3'}}
                         # 'market_cap': float('{0:.0f}'.format(i.market_cap)),
                         # 'volume': float('{0:.0f}'.format(i.volume)),
 
