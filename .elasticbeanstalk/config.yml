@@ -1,9 +1,9 @@
 branch-defaults:
-  default:
-    environment: AltDex-test
+  master:
+    environment: AltDex22-dev
     group_suffix: null
 global:
-  application_name: AltDex2
+  application_name: AltDex22
   branch: null
   default_ec2_keyname: aws-eb
   default_platform: Python 3.6
@@ -14,5 +14,5 @@ global:
   platform_version: null
   profile: eb-cli
   repository: null
-  sc: null
+  sc: git
   workspace_type: Application

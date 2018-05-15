@@ -1,13 +1,13 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-from django.urls import reverse
-from decimal import Decimal
-import datetime
+# from django.urls import reverse
+# from decimal import Decimal
+# import datetime
 from threading import Timer
-from time import sleep
-import schedule
-import sched
-import time
+# from time import sleep
+# import schedule
+# import sched
+# import time
 
 import requests
 import json
