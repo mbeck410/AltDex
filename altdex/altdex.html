@@ -11,14 +11,14 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
-        .navbar {
-            margin-bottom: 0;
-            border-radius: 0;
+        .affix {
+            top: 20px;
+            z-index: 9999 !important;
         }
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
         .row.content {
-            height: 450px
+            height: 4484.65px;
         }
 
         /* Set gray background color and 100% height */
@@ -49,6 +49,7 @@
 
         table.table {
             background-color: white;
+            margin: 0px
         }
 
         table.table th {
@@ -70,20 +71,18 @@
             padding: 2px;
         }
 
-        table.widget tr {
-            border: 5px
-        }
-        table.widget th{
+        table.widget th {
             font-size: 30px;
-            border-bottom: solid 1px #244ec3;
+            border-bottom: solid 3px #244ec3;
         }
 
-        table.widget td{
+        table.widget td:first-child {
             text-align: left;
+            font-size: 30px;
         }
 
-        table.widget td:first-child{
-            text-align: left;
+        table.widget td:nth-child(2) {
+
             font-size: 20px;
         }
 
@@ -96,14 +95,12 @@
         /*background-color: white;*/
         /*}*/
 
-
-
         #center > .well {
-            background-color: whitesmoke;
+            background-color: white;
         }
 
         .sidenav > .well {
-            background-color: whitesmoke;
+            background-color: white;
         }
 
         h1 {
@@ -118,26 +115,50 @@
             font-size: 40px;
         }
 
-        #main_index_price {
-            width: 20%;
-            font-size: 30px;
-        }
-
-        #main_index_price > td:first-child {
+        table.table2 {
+            width: 30%;
             font-size: 40px;
         }
 
-        .navbar {
+
+        .my_navbar {
             background-color: #244ec3;
+            color: white;
+            margin: 0;
+            border-radius: 0;
+            border: 0;
+        }
+
+        .my_navbar .navbar-brand {
             color: white;
         }
 
+        .my_navbar .navbar-brand:hover {
+            color: gray;
+        }
+
+        .my_navbar .primary > li a {
+            color: white;
+        }
+
+        .my_navbar .primary > li a:hover {
+            color: gray;
+        }
+
+        .my_navbar .primary .secondary > li a{
+            color: black;
+        }
+
+        .my_drop > a {
+            background-color: #244ec3;
+            color: gray;
+        }
 
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="my_navbar navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -145,17 +166,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="#">AltDex 100</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+            <ul class="primary nav navbar-nav">
+                <li class="my_drop dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="secondary dropdown-menu">
+                        <li><a href="#">Coming Soon</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </div>
@@ -164,7 +187,7 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <div id="widget">
+            <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <table class="widget" v-for="row in rows">
                     <tr>
                         <th>AltDex 100</th>
@@ -172,7 +195,7 @@
                     </tr>
                     <tr>
                         <td>{{row.price}}</td>
-                        <td>{{row.price_percent}}</td>
+                        <td>{{row.price_percent}}%</td>
                     </tr>
                 </table>
                 </ul>
@@ -314,14 +337,14 @@
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
             let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y
-        )) /
-            10;
+                )) /
+                10;
             let y_high = Math.max(...line_data[0].y
-        )
-            +y_range_border;
+                )
+                + y_range_border;
             let y_low = Math.min(...line_data[0].y
-        )
-            -y_range_border;
+                )
+                - y_range_border;
             console.log(y_low);
             console.log(y_high);
 
