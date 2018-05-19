@@ -30,8 +30,7 @@ def exchange(request):
 
 def pullcurrent(request):
     if request.user.is_superuser:
-        coin_table = collect(request)
-        request.session['coin_table'] = coin_table
+        test = collect()
         return render(request, 'pullcurrent.html')
     else:
         return HttpResponse('error')
@@ -78,9 +77,23 @@ def getindexcurrent(request):
 
 
 def getcoinscurrent(request):
-    coin_table = request.session.get('coin_table')
-    if not coin_table:
-        coin_table = pullcurrent(request)
+    coins = Coin.objects.all()
+    coin_table = []
+
+    for this_coin in coins:
+        coin_dict = {   'name': this_coin.name,
+                        'symbol': this_coin.symbol,
+                        'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
+                        'price': float('{0:.2f}'.format(this_coin.price)),
+                        'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
+                        'volume': float('{0:.0f}'.format(this_coin.market_cap)),
+                        'percent_weight': float('{:.3f}'.format(this_coin.percent_weight))
+                        }
+
+        coin_table.append(coin_dict)
+
+    print(coin_table)
+
     return JsonResponse({'dict_key': coin_table})
 
 

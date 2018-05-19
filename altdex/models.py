@@ -16,8 +16,15 @@ class Coin(models.Model):
     indices = models.ManyToManyField(Index)
     api = models.CharField(max_length=25, default='CryptoCompare')
     coin_marketcap_id = models.IntegerField(default=0)
+    price = models.DecimalField(max_digits=25, decimal_places=2)
+    change_24h = models.DecimalField(max_digits=25, decimal_places=2)
+    price_percent_change = models.DecimalField(max_digits=50, decimal_places=25)
+    market_cap = models.DecimalField(max_digits=50, decimal_places=25)
+    volume = models.DecimalField(max_digits=50, decimal_places=25)
+    percent_weight = models.DecimalField(max_digits=50, decimal_places=25)
 
     def __str__(self):
+
         return self.name
 
 

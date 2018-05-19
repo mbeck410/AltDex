@@ -269,10 +269,10 @@
                     </tr>
                     <tr v-for="row in rows">
                         <td>{{row.symbol}}</td>
-                        <td>{{row.coin}}</td>
+                        <td>{{row.name}}</td>
                         <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>{{row.price_percent_change}}%</td>
+                        <td>{{row.price_percent}}%</td>
                         <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>{{row.percent_weight}}%</td>
                     </tr>
@@ -348,13 +348,13 @@
 
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
-                let index_name = entry.indices;
-                if (index_name.includes(index) === true) {
-                    app.rows.push(entry);
-                }
+                // let index_name = entry.indices;
+                // if (index_name.includes(index) === true) {
+                app.rows.push(entry);
             }
-        });
-    }
+        })
+    };
+
 
     function index_current() {
         app2.rows = [];
