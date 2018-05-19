@@ -4,7 +4,7 @@ import json
 from .models import Index, Coin, IndexPrice
 
 
-def collect():
+def collect(request):
     print('!!!')
     coins_cc = Coin.objects.filter(api='CryptoCompare')
     coins_cmc = Coin.objects.filter(api='CMC')
