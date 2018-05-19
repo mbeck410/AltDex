@@ -30,7 +30,7 @@ def exchange(request):
 
 def pullcurrent(request):
     if request.user.is_superuser:
-        coin_table = collect(request)
+        coin_table = collect()
 
         request.session['coin_table'] = coin_table
         return render(request, 'pullcurrent.html')
@@ -82,7 +82,7 @@ def getindexcurrent(request):
 def getcoinscurrent(request):
     coin_table = request.session.get('coin_table')
     if not coin_table:
-        coin_table = collect(request)
+        coin_table = collect()
     return JsonResponse({'dict_key': coin_table})
 
 
