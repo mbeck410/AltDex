@@ -18,13 +18,13 @@
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
         .row.content {
-            height: 4484.65px;
+            /*height: 4484.65px;*/
         }
 
         /* Set gray background color and 100% height */
         .sidenav {
             padding-top: 20px;
-            background-color: #ededed;
+            /*background-color: whitesmoke;*/
             height: 100%;
         }
 
@@ -73,6 +73,7 @@
 
         table.widget th {
             font-size: 30px;
+            background-color: white;
             border-bottom: solid 3px #244ec3;
         }
 
@@ -87,7 +88,7 @@
         }
 
         #center {
-            background-color: #ededed;
+            /*background-color: whitesmoke;*/
             padding-top: 20px;
         }
 
@@ -95,13 +96,15 @@
         /*background-color: white;*/
         /*}*/
 
-        #center > .well {
+        .well {
             background-color: white;
+            box-shadow: 0 0 3px gray;
         }
 
-        .sidenav > .well {
-            background-color: white;
-        }
+        /*.sidenav > .well {*/
+            /*background-color: white;*/
+            /*box-shadow: 0 0 4px gray;*/
+        /*}*/
 
         h1 {
             font-size: 50px;
@@ -120,6 +123,14 @@
             font-size: 40px;
         }
 
+        table.table2:first-child {
+            width: 40%;
+        }
+
+        table.table2:not:first-child {
+            width: 15%;
+            font-size: 30px;
+        }
 
         .my_navbar {
             background-color: #244ec3;
@@ -129,8 +140,12 @@
             border: 0;
         }
 
+
         .my_navbar .navbar-brand {
             color: white;
+            font-size: 30px;
+            text-align: center;
+
         }
 
         .my_navbar .navbar-brand:hover {
@@ -139,14 +154,16 @@
 
         .my_navbar .primary > li a {
             color: white;
+            font-size: 22px;
         }
 
         .my_navbar .primary > li a:hover {
             color: gray;
         }
 
-        .my_navbar .primary .secondary > li a{
+        .my_navbar .primary .secondary > li a {
             color: black;
+            font-size: 22px;
         }
 
         .my_drop > a {
@@ -154,12 +171,23 @@
             color: gray;
         }
 
+
+        .main_div {
+            background-color: #ededed;
+            /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
+        }
+
+        .pos {background-color: green;}
+        .neg {background-color: red;}
+
+
+
     </style>
 </head>
 <body>
 
 <nav class="my_navbar navbar navbar-default">
-    <div class="container-fluid">
+    <div class="test container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
@@ -184,9 +212,9 @@
     </div>
 </nav>
 
-<div class="container-fluid text-center">
+<div class="main_div container-fluid text-center">
     <div class="row content">
-        <div class="col-sm-2 sidenav">
+        <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <table class="widget" v-for="row in rows">
                     <tr>
@@ -196,29 +224,39 @@
                     <tr>
                         <td>{{row.price}}</td>
                         <td>{{row.price_percent}}%</td>
+                         <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
                     </tr>
                 </table>
-                </ul>
+
+            </div>
+            <div>
+                <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
         </div>
         <div id="center" class="col-sm-8 text-left">
-            <div class="well" id="index_info">
-                <h1>AltDex 100</h1>
-                <div v-for="row in rows">
-                    <table class="table2" id="main_index_price">
-                        <tr>
-                            <td>{{row.price}}</td>
-                            <td>{{row.price_percent}}%</td>
-                        </tr>
-                    </table>
-
-                </div>
-
+            <div class="well">
                 <div id="index_chart"></div>
             </div>
-            <div class="well">
-                <h3>Coins</h3>
 
+
+                 <div id="index_info" class="well">
+
+                    <table class="table2" id="main_index_price" v-for="row in rows">
+                        <tr>
+                            <td>ALT100</td>
+                            <td>{{row.price}}</td>
+                            <td class="percent">{{row.price_percent}}%</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+
+
+
+
+
+            <div class="well">
                 <table id="coin_table" class="table table-hover">
                     <tr>
                         <th>Symbol</th>
@@ -227,14 +265,16 @@
                         <th>Last</th>
                         <th>%Chg(24h)</th>
                         <th>Volume(24h)</th>
+                        <th>%Weight</th>
                     </tr>
                     <tr v-for="row in rows">
                         <td>{{row.symbol}}</td>
                         <td>{{row.coin}}</td>
                         <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>{{row.price_percent_change}}%</td>
+                        <td class="percent">{{row.price_percent_change}}%</td>
                         <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td>{{row.percent_weight}}%</td>
                     </tr>
                 </table>
             </div>
@@ -242,7 +282,10 @@
 
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p>ADS</p>
+                <!--<img src="http://www.smedio.com/wp-content/uploads/2016/03/Instagram-818x1136.jpg" class="img-thumbnail">-->
+            </div>
+            <div class="well">
+                <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
         </div>
     </div>
@@ -302,6 +345,7 @@
         let url = '/altdex/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
         //alert('test');
         http_get(url, function (data) {
+
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
                 let index_name = entry.indices;
@@ -326,6 +370,7 @@
     }
 
     let line_data = [];
+    let line_data2 = [];
 
     function index_all(id_num) {
         line_data = [];
@@ -336,15 +381,10 @@
             let entry = full_data[id_num];
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
-            let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y
-                )) /
+            let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
                 10;
-            let y_high = Math.max(...line_data[0].y
-                )
-                + y_range_border;
-            let y_low = Math.min(...line_data[0].y
-                )
-                - y_range_border;
+            let y_high = Math.max(...line_data[0].y) + y_range_border;
+            let y_low = Math.min(...line_data[0].y) - y_range_border;
             console.log(y_low);
             console.log(y_high);
 
@@ -354,7 +394,7 @@
                     l: 50,
                     r: 50,
                     b: 50,
-                    t: 50,
+                    t: 20,
                 },
                 xaxis: {
                     range: [line_data[0].x[0], line_data[0].x[data_length]],
@@ -374,8 +414,9 @@
                     showline: true,
                     ticks: '',
                     showticklabels: true,
-                },
+                }
             };
+
             Plotly.react('index_chart', line_data, layout);
         });
     }

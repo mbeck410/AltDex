@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 # from django.urls import reverse
 # from decimal import Decimal
 # import datetime
-from threading import Timer
+# from threading import Timer
 # from time import sleep
 # import schedule
 # import sched
@@ -13,6 +13,7 @@ import requests
 import json
 from .helpers import collect
 from .models import Index, Coin, IndexPrice
+
 
 
 def altdex(request):
@@ -29,9 +30,8 @@ def exchange(request):
 
 def pullcurrent(request):
     if request.user.is_superuser:
-        coin_table = collect(request)
+        coin_table = collect()
         request.session['coin_table'] = coin_table
-
         return render(request, 'pullcurrent.html')
     else:
         return HttpResponse('error')
@@ -54,6 +54,7 @@ def getindexall(request):
 
         indices_all_output.append(index_dict)
 
+
     return JsonResponse({'dict_key': indices_all_output})
 
 
@@ -63,6 +64,7 @@ def getindexcurrent(request):
     for dex in indices:
         dex_current = dex.indexprice_set.last()
         index_dict = {  'price': float('{0:.2f}'.format(dex_current.price)),
+                        'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
                         'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
                         'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
                         'time': str(dex_current.timestamp)
@@ -82,30 +84,30 @@ def getcoinscurrent(request):
     return JsonResponse({'dict_key': coin_table})
 
 
-class RepeatedTimer(object):
-    def __init__(self, interval, function, *args, **kwargs):
-        self._timer     = None
-        self.function   = function
-        self.interval   = interval
-        self.args       = args
-        self.kwargs     = kwargs
-        self.is_running = False
-        self.start()
-
-    def _run(self):
-        self.is_running = False
-        self.start()
-        self.function(*self.args, **self.kwargs)
-
-    def start(self):
-        if not self.is_running:
-            self._timer = Timer(self.interval, self._run)
-            self._timer.start()
-            self.is_running = True
-
-    def stop(self):
-        self._timer.cancel()
-        self.is_running = False
+# class RepeatedTimer(object):
+#     def __init__(self, interval, function, *args, **kwargs):
+#         self._timer     = None
+#         self.function   = function
+#         self.interval   = interval
+#         self.args       = args
+#         self.kwargs     = kwargs
+#         self.is_running = False
+#         self.start()
+#
+#     def _run(self):
+#         self.is_running = False
+#         self.start()
+#         self.function(*self.args, **self.kwargs)
+#
+#     def start(self):
+#         if not self.is_running:
+#             self._timer = Timer(self.interval, self._run)
+#             self._timer.start()
+#             self.is_running = True
+#
+#     def stop(self):
+#         self._timer.cancel()
+#         self.is_running = False
 
 
 # rt = RepeatedTimer(30, pullcurrent) # it auto-starts, no need of rt.start()

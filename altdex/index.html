@@ -277,7 +277,7 @@
             let y_low = Math.min(...line_data[0].y)-y_range_border;
             console.log(y_low);
             console.log(y_high);
-            let layout = {
+            let layout1 = {
                 fill: '#b3b3ff',
                 autosize: true,
                 margin: {
@@ -306,7 +306,7 @@
                     showticklabels: true,
                 },
             };
-            Plotly.react('index_chart', line_data, layout);
+            Plotly.react('index_chart', line_data, layout1);
         });
     }
 

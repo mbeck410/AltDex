@@ -24,6 +24,7 @@ class Coin(models.Model):
 class IndexPrice(models.Model):
     index = models.ForeignKey(Index, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=25, decimal_places=2)
+    change_24h = models.DecimalField(max_digits=25, decimal_places=2)
     price_percent_change = models.DecimalField(max_digits=50, decimal_places=25)
     market_cap = models.DecimalField(max_digits=50, decimal_places=25)
     timestamp = models.DateTimeField(auto_now_add=True)
