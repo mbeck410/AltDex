@@ -35,8 +35,8 @@ def pullcurrent(request):
         request.session['coin_table'] = coin_table
         return render(request, 'pullcurrent.html')
 
-    # else:
-    #     return HttpResponse('error')
+    else:
+        return HttpResponse('error')
 
 
 def getindexall(request):
