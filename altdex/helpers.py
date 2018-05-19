@@ -149,5 +149,4 @@ def collect():
         # print(coin_table)
     # return coin_table
 
-    def test:
-        print('right track')
+
