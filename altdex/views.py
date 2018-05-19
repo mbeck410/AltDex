@@ -30,7 +30,7 @@ def exchange(request):
 
 def pullcurrent(request):
     if request.user.is_superuser:
-        coin_table = collect()
+        coin_table = collect(request)
 
         request.session['coin_table'] = coin_table
         return render(request, 'pullcurrent.html')
