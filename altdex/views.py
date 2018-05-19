@@ -82,7 +82,7 @@ def getindexcurrent(request):
 def getcoinscurrent(request):
     coin_table = request.session.get('coin_table')
     if not coin_table:
-        coin_table = collect()
+        coin_table = pullcurrent(request)
     return JsonResponse({'dict_key': coin_table})
 
 
