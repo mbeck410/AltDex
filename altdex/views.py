@@ -32,8 +32,8 @@ def pullcurrent(request):
     if request.user.is_superuser:
         coin_table = collect()
 
-    request.session['coin_table'] = coin_table
-    return render(request, 'pullcurrent.html')
+        request.session['coin_table'] = coin_table
+        return render(request, 'pullcurrent.html')
 
     # else:
     #     return HttpResponse('error')
