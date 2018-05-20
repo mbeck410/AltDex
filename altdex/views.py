@@ -92,7 +92,6 @@ def getcoinscurrent(request):
 
         coin_table.append(coin_dict)
 
-    print(coin_table)
 
     return JsonResponse({'dict_key': coin_table})
 

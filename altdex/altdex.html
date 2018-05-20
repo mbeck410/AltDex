@@ -68,28 +68,39 @@
         table.widget {
             background-color: white;
             width: 100%;
-            padding: 2px;
         }
 
-        table.widget th {
-            font-size: 30px;
+        table.widget th{
+            font-size: 25px;
             background-color: white;
             border-bottom: solid 3px #244ec3;
         }
 
         table.widget td:first-child {
-            text-align: left;
-            font-size: 30px;
+
+            font-size: 28px;
         }
 
         table.widget td:nth-child(2) {
-
-            font-size: 20px;
+            text-align: right;
+            font-size: 22px;
         }
+
+        .widget_title {
+            font-size: 30px;
+            border-bottom: 3px solid #244ec3;
+            font-weight: bold;
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+
+
 
         #center {
             /*background-color: whitesmoke;*/
-            padding-top: 20px;
+            padding-top: 22px;
         }
 
         /*#center > div {*/
@@ -177,8 +188,8 @@
             /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
         }
 
-        .pos {background-color: green;}
-        .neg {background-color: red;}
+        .pos {color: green;}
+        .neg {color: red;}
 
 
 
@@ -217,13 +228,10 @@
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <table class="widget" v-for="row in rows">
+                    <div class="widget_title">AltDex 100</div>
                     <tr>
-                        <th>AltDex 100</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>{{row.price}}</td>
-                        <td>{{row.price_percent}}%</td>
+                        <td>{{row.price.toFixed(2)}}</td>
+                        <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                          <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
                     </tr>
                 </table>
@@ -244,8 +252,8 @@
                     <table class="table2" id="main_index_price" v-for="row in rows">
                         <tr>
                             <td>ALT100</td>
-                            <td>{{row.price}}</td>
-                            <td class="percent">{{row.price_percent}}%</td>
+                            <td>{{row.price.toFixed(2)}}</td>
+                            <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</td>
                         </tr>
                     </table>
                 </div>
@@ -272,8 +280,8 @@
                         <td>{{row.name}}</td>
                         <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>{{row.price_percent}}%</td>
-                        <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
+                        <td >${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>{{row.percent_weight}}%</td>
                     </tr>
                 </table>
@@ -305,6 +313,7 @@
             sortColumn: '',
             rows: [],
         },
+
     });
 
     let app2 = new Vue({
