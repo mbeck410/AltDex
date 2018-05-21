@@ -138,9 +138,12 @@
             width: 40%;
         }
 
-        table.table2:not:first-child {
-            width: 15%;
+        .table2 td {
             font-size: 30px;
+        }
+
+        .table2 th:nth-child(2) {
+            font-weight: normal;
         }
 
         .my_navbar {
@@ -191,7 +194,15 @@
         .pos {color: green;}
         .neg {color: red;}
 
+        .row_name {
+            width: 10%;
+        }
 
+        .btn {
+            background-color: #244ec3;
+            color: white;
+            border-radius: 2px;
+        }
 
     </style>
 </head>
@@ -243,6 +254,14 @@
         </div>
         <div id="center" class="col-sm-8 text-left">
             <div class="well">
+                <div>
+                    <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
+                    <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
+                    <button type="button" class="btn" onclick="change_range('seven_day')">7 d</button>
+                    <button type="button" class="btn" onclick="change_range('one_month')">1 m</button>
+                    <button type="button" class="btn" onclick="change_range('three_month')">3 m</button>
+                    <button type="button" class="btn" onclick="change_range('year')">ALL</button>
+                </div>
                 <div id="index_chart"></div>
             </div>
 
@@ -251,19 +270,12 @@
 
                     <table class="table2" id="main_index_price" v-for="row in rows">
                         <tr>
-                            <td>ALT100</td>
-                            <td>{{row.price.toFixed(2)}}</td>
+                            <th>ALT100</th>
+                            <th>{{row.price.toFixed(2)}}</th>
                             <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</td>
                         </tr>
                     </table>
                 </div>
-
-
-
-
-
-
-
             <div class="well">
                 <table id="coin_table" class="table table-hover">
                     <tr>
@@ -271,13 +283,13 @@
                         <th>Name</th>
                         <th>Market</th>
                         <th>Last</th>
-                        <th>%Chg(24h)</th>
-                        <th>Volume(24h)</th>
-                        <th>%Weight</th>
+                        <th>Chg (24h)</th>
+                        <th>Volume (24h)</th>
+                        <th>% Weight</th>
                     </tr>
                     <tr v-for="row in rows">
                         <td>{{row.symbol}}</td>
-                        <td>{{row.name}}</td>
+                        <td class="row_name">{{row.name}}</td>
                         <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
                         <td v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
@@ -305,6 +317,27 @@
 <script>
     let current_index = 'AltDex';
     let current_id = '0';
+
+    let change_range = function (time_frame) {
+        let date_update = new Date();
+        if(time_frame == 'year') {
+            date_update = new Date(new Date().setFullYear(new Date().getFullYear() - 1));
+        } else if(time_frame == 'three_month') {
+            date_update.setMonth(date_update.getMonth()-3);
+        } else if(time_frame == 'one_month') {
+            date_update.setMonth(date_update.getMonth()-1);
+        } else if(time_frame == 'seven_day') {
+            date_update.setDate(date_update.getDate() - 7);
+        } else if(time_frame == 'one_day') {
+            date_update.setDate(date_update.getDate() - 1);
+        } else if(time_frame == 'hour') {
+            date_update.setHours(date_update.getHours() - 1);
+        }
+        let update = {
+            'xaxis.range[0]': date_update    // updates the end of the yaxis range
+        };
+        Plotly.relayout('index_chart', update)
+    };
 
     let app = new Vue({
         el: '#coin_table',

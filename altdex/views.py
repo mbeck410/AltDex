@@ -71,8 +71,6 @@ def getindexcurrent(request):
 
         indices_current.append(index_dict)
 
-    print(indices_current[0])
-
     return JsonResponse({'dict_key': indices_current})
 
 
