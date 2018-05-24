@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AltDex</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+
+        .sidenav {
+            padding-top: 20px;
+            /*background-color: whitesmoke;*/
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #244ec3;
+            color: white;
+            padding: 15px;
+        }
+
+        table.widget {
+            background-color: white;
+            width: 100%;
+        }
+
+        table.widget th{
+            font-size: 25px;
+            background-color: white;
+            border-bottom: solid 3px #244ec3;
+        }
+
+        table.widget td:first-child {
+
+            font-size: 28px;
+        }
+
+        table.widget td:nth-child(2) {
+            text-align: right;
+            font-size: 22px;
+        }
+
+        .widget_title {
+            font-size: 30px;
+            border-bottom: 3px solid #244ec3;
+            font-weight: bold;
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        h2 {
+            margin-top: 0;
+            border-bottom: solid 3px #244ec3;
+        }
+
+
+        #center {
+            /*background-color: whitesmoke;*/
+            padding-top: 22px;
+        }
+
+        /*#center > div {*/
+        /*background-color: white;*/
+        /*}*/
+
+        .well {
+            background-color: white;
+            box-shadow: 0 0 3px gray;
+        }
+
+        .my_navbar {
+            background-color: #244ec3;
+            color: white;
+            margin: 0;
+            border-radius: 0;
+            border: 0;
+        }
+
+
+        .my_navbar .navbar-brand {
+            color: white;
+            font-size: 30px;
+            text-align: center;
+
+        }
+
+        .my_navbar .navbar-brand:hover {
+            color: gray;
+        }
+
+        .my_navbar .primary > li a {
+            color: white;
+            font-size: 22px;
+        }
+
+        .my_navbar .primary > li a:hover {
+            color: gray;
+        }
+
+        .my_navbar .primary .secondary > li a {
+            color: black;
+            font-size: 22px;
+        }
+
+        .my_drop > a {
+            background-color: #244ec3;
+            color: gray;
+        }
+
+
+        .main_div {
+            background-color: #ededed;
+            /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
+        }
+
+        .pos {color: green;}
+        .neg {color: red;}
+</style>
+
+<nav class="my_navbar navbar navbar-default">
+    <div class="test container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/altdex/altdex/">AltDex 100</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="primary nav navbar-nav">
+                <li class="my_drop dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="secondary dropdown-menu">
+                        <li><a href="/altdex/altdex/">AltDex100</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="main_div container-fluid text-center">
+    <div class="row content">
+        <div class="widget_div col-sm-2 sidenav">
+            <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
+                <table class="widget" v-for="row in rows">
+                    <div class="widget_title">AltDex 100</div>
+                    <tr>
+                        <td>{{row.price.toFixed(2)}}</td>
+                        <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
+                         <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
+                    </tr>
+                </table>
+
+            <div>
+                <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
+            </div>
+            </div>
+        </div>
+        <div id="center" class="col-sm-8 text-left">
+            <div class="well">
+                <h2>AltDex</h2>
+                <p>Lorem ipsum dolor sit amet, eos assum volumus at, cum elit insolens maluisset eu. Mel mundi accusamus ad, veri altera et usu. His viderer maluisset accommodare ea, ad liber contentiones eam. Te perpetua cotidieque pro. No quo quaeque impedit appetere, in mel rebum fierent vulputate. Ut minim posidonium mel, sit autem reque tibique et, persius mnesarchum ullamcorper at mei.</p>
+                <p>Laboramus vituperata vix ne. Cu duo decore inimicus honestatis, no ius ipsum everti. Eirmod viderer accusamus nam cu, vim suas ornatus delicatissimi no. Sumo cotidieque mel an. Qui at iudico commodo, ne iriure nonumes delicatissimi qui.</p>
+            </div>
+            <div class="well">
+                <h2>Criteria</h2>
+                <p>Lorem ipsum dolor sit amet, ut per constituto disputando, ex cum ancillae omittantur. Diam accusata adversarium in duo, saepe admodum ea vim. Facer labores eam eu, ad graecis civibus sadipscing pri. Errem quidam cetero sit at.</p>
+                <p>Utamur constituto ius ea. Te patrioque definitiones vel, his delicata salutatus in. Vix ex integre nostrud patrioque, pri amet ridens similique ea, ad vis adhuc nulla dolores. Duo dictas mnesarchum dissentias et, id eum maluisset iracundia dissentiet. Id noluisse euripidis assentior pri, an magna noster sit.</p>
+                <p>An nec nobis ocurreret, soleat ornatus argumentum ne eam, assum facete et duo. Ad facilisi definitiones per. Ea nec nullam graece. Vix probo theophrastus ne, alia tamquam imperdiet cum ad, ne sed saepe tempor. Ea alia ipsum quodsi nec. Exerci labores volumus sit id.</p>
+            </div>
+            <div class="well">
+                <h2>FAQ</h2>
+                Q: something<br>
+                A: wrong
+
+            </div>
+        </div>
+    </div>
+</div>
+    <footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>
+
+<script>
+
+    let app3 = new Vue({
+        el: '#widget',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+        }
+    });
+
+    function http_get(url, success) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            console.log(this.status);
+            if (this.readyState === 4 && this.status === 200) {
+                let data = JSON.parse(xhttp.responseText);
+                success(data);
+            }
+        };
+        xhttp.open("GET", url);
+        xhttp.send();
+
+    }
+
+    function index_current() {
+        app3.rows = [];
+        let url = '/altdex/getindexcurrent/';
+        //alert('test');
+        http_get(url, function (data) {
+            // for (let i = 0; i < data.dict_key.length; ++i) {
+            app3.rows.push(data.dict_key[0]);
+            // }
+        });
+    }
+
+    index_current();
+
+</script>

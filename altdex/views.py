@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 # from django.urls import reverse
 # from decimal import Decimal
 # import datetime
-# from threading import Timer
+from threading import Timer
 # from time import sleep
 # import schedule
 # import sched
@@ -24,6 +24,12 @@ def altdex(request):
 
 def exchange(request):
     with open('./altdex/exchange.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
+
+
+def about(request):
+    with open('./altdex/about.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
@@ -75,17 +81,21 @@ def getindexcurrent(request):
 
 
 def getcoinscurrent(request):
+    index = IndexPrice.objects.last()
     coins = Coin.objects.all()
     coin_table = []
 
+
     for this_coin in coins:
+        percent_weight = '{0:.3f}'.format(float(this_coin.market_cap) / (float(index.market_cap))*100)
+
         coin_dict = {   'name': this_coin.name,
                         'symbol': this_coin.symbol,
                         'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
                         'price': float('{0:.2f}'.format(this_coin.price)),
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
                         'volume': float('{0:.0f}'.format(this_coin.market_cap)),
-                        'percent_weight': float('{:.3f}'.format(this_coin.percent_weight))
+                        'percent_weight': percent_weight
                         }
 
         coin_table.append(coin_dict)
@@ -118,10 +128,10 @@ def getcoinscurrent(request):
 #     def stop(self):
 #         self._timer.cancel()
 #         self.is_running = False
-
-
-# rt = RepeatedTimer(30, pullcurrent) # it auto-starts, no need of rt.start()
-
-
+#
+#
+# rt = RepeatedTimer(30, collect) # it auto-starts, no need of rt.start()
+#
+#
 
 

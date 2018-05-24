@@ -61,9 +61,17 @@
             text-align: right
         }
 
+        /*table.table th:nth-child(5) {*/
+            /*text-align: center*/
+        /*}*/
+
         table.table td:nth-child(n+3) {
             text-align: right
         }
+
+        /*table.table td:nth-child(5) {*/
+            /*text-align: center*/
+        /*}*/
 
         table.widget {
             background-color: white;
@@ -195,18 +203,20 @@
         .neg {color: red;}
 
         .row_name {
-            width: 8%;
-             overflow: hidden;
+            width: 10%;
+            overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
 
         }
+
 
         .btn {
             background-color: #244ec3;
             color: white;
             border-radius: 2px;
         }
+
 
     </style>
 </head>
@@ -229,10 +239,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="secondary dropdown-menu">
-                        <li><a href="#">Coming Soon</a></li>
+                        <li><a href="#">AltDex 100</a></li>
                     </ul>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="/altdex/about/">About</a></li>
             </ul>
         </div>
     </div>
@@ -251,9 +261,9 @@
                     </tr>
                 </table>
 
-            </div>
             <div>
                 <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
+            </div>
             </div>
         </div>
         <div id="center" class="col-sm-8 text-left">
@@ -269,7 +279,6 @@
                 <div id="index_chart"></div>
             </div>
 
-
                  <div id="index_info" class="well">
 
                     <table class="table2" id="main_index_price" v-for="row in rows">
@@ -280,28 +289,31 @@
                         </tr>
                     </table>
                 </div>
+
             <div class="well">
+
                 <table id="coin_table" class="table table-hover">
                     <tr>
                         <th>Symbol</th>
                         <th>Name</th>
-                        <th>Market</th>
+                        <th>Market Cap</th>
                         <th>Last</th>
-                        <th>Chg (24h)</th>
+                        <th>Change (24h)</th>
                         <th>Volume (24h)</th>
                         <th>% Weight</th>
                     </tr>
                     <tr v-for="row in rows">
-                        <td>{{row.symbol}}</td>
+                        <td class="row_symbol">{{row.symbol}}</td>
                         <td class="row_name">{{row.name}}</td>
                         <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
+                        <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                         <td >${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>{{row.percent_weight}}%</td>
                     </tr>
                 </table>
             </div>
+
         </div>
 
         <div class="col-sm-2 sidenav">
@@ -469,8 +481,13 @@
 
     index_current();
     coin_current(current_index);
-    index_all(current_id)
+    index_all(current_id);
 
+    // setInterval(function() {
+    //     coin_current();
+    //     index_current();
+    // },
+    //     30000);
 
 </script>
 </body>

@@ -5,7 +5,7 @@ from .models import Index, Coin, IndexPrice
 
 
 def collect():
-    print('!!!')
+    print('called')
     coins_cc = Coin.objects.filter(api='CryptoCompare')
     coins_cmc = Coin.objects.filter(api='CMC')
     indices = Index.objects.order_by('name')
@@ -142,11 +142,9 @@ def collect():
 
         new_dex_history.save()
 
-        for dex_coin in dex_coins:
-            dex_coin.percent_weight = '{0:.3f}'.format(float(dex_coin.market_cap) / float(dex_market_cap) * 100)
-            dex_coin.save(update_fields=['percent_weight'])
-
         # print(coin_table)
     # return coin_table
+
+    print('done')
 
 
