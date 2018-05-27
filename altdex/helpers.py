@@ -11,6 +11,8 @@ def collect():
     indices = Index.objects.order_by('name')
     symbols = ''
     symbols2 = ''
+    print(0)
+
 
 
     for coin in coins_cc:
@@ -22,13 +24,17 @@ def collect():
     symbols = symbols[:-1]
     symbols2 = symbols2[:-1]
 
+    print(symbols)
+
     url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols + '&tsyms=USD'
     url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols2 + '&tsyms=USD'
     r = requests.get(url)
     r2 = requests.get(url2)
     data = json.loads(r.text)
     data2 = json.loads(r2.text)
+    print(data)
 
+    print('1')
 
     # coin_table = []
     # coin_histories = {}
@@ -86,6 +92,7 @@ def collect():
 
         # coin_table.append(new_coin_history)
 
+    print('2')
 
     for coin in coins_cmc:
         url = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
