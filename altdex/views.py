@@ -53,7 +53,7 @@ def getindexall(request):
             prices.append(i.price)
             times.append(i.timestamp)
 
-        index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#244ec3'},  'mode': 'lines'}
+        index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
                         # 'market_cap': float('{0:.0f}'.format(i.market_cap)),
                         # 'volume': float('{0:.0f}'.format(i.volume)),
 

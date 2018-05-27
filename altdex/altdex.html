@@ -30,7 +30,7 @@
 
         /* Set black background color, white text and some padding */
         footer {
-            background-color: #244ec3;
+            background-color: #222842;
             color: white;
             padding: 15px;
         }
@@ -53,7 +53,7 @@
         }
 
         table.table th {
-            background-color: #244ec3;
+            background-color: #222842;
             color: white;
         }
 
@@ -81,7 +81,7 @@
         table.widget th{
             font-size: 25px;
             background-color: white;
-            border-bottom: solid 3px #244ec3;
+            border-bottom: solid 3px #222842;
         }
 
         table.widget td:first-child {
@@ -96,7 +96,7 @@
 
         .widget_title {
             font-size: 30px;
-            border-bottom: 3px solid #244ec3;
+            border-bottom: 3px solid #222842;
             font-weight: bold;
             width: 100%;
             padding-left: 15px;
@@ -155,7 +155,7 @@
         }
 
         .my_navbar {
-            background-color: #244ec3;
+            background-color: #222842;
             color: white;
             margin: 0;
             border-radius: 0;
@@ -189,7 +189,7 @@
         }
 
         .my_drop > a {
-            background-color: #244ec3;
+            background-color: #222842;
             color: gray;
         }
 
@@ -212,7 +212,7 @@
 
 
         .btn {
-            background-color: #244ec3;
+            background-color: #222842;
             color: white;
             border-radius: 2px;
         }
@@ -293,8 +293,15 @@
             <div class="well">
 
                 <table id="coin_table" class="table table-hover">
+                    <!--<tr id="v-for-object">-->
+                        <!--&lt;!&ndash;<th v-for="row in rows">&ndash;&gt;-->
+                        <!--<th>-->
+                            <!--<a>{{rows.0}}</a>-->
+                        <!--</th>-->
+                    <!--</tr>-->
                     <tr>
-                        <th>Symbol</th>
+                        <th>
+                            <a >Symbol</a></th>
                         <th>Name</th>
                         <th>Market Cap</th>
                         <th>Last</th>
@@ -357,12 +364,21 @@
 
     let app = new Vue({
         el: '#coin_table',
+
         data: {
-            ascending: false,
-            sortColumn: '',
+            sortKey: '',
+            search: '',
+            reverse: false,
+
             rows: [],
         },
+        methods: {
+            sortBy: function (sortKey) {
+                this.reverse = (this.sortKey == sortKey) ? !this.reverse : false;
 
+                this.sortKey = sortKey;
+            },
+        }
     });
 
     let app2 = new Vue({

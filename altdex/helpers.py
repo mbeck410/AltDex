@@ -11,6 +11,7 @@ def collect():
     indices = Index.objects.order_by('name')
     symbols = ''
     symbols2 = ''
+    print(0)
 
     for coin in coins_cc:
         if len(symbols) < 250:
@@ -27,6 +28,8 @@ def collect():
     r2 = requests.get(url2)
     data = json.loads(r.text)
     data2 = json.loads(r2.text)
+
+    print('1')
 
     # coin_table = []
     # coin_histories = {}
@@ -83,6 +86,8 @@ def collect():
         # coin_histories.update(dict_entry)
 
         # coin_table.append(new_coin_history)
+
+    print('2')
 
     for coin in coins_cmc:
         url = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
