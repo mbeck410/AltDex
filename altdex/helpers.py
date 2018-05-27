@@ -13,6 +13,8 @@ def collect():
     symbols2 = ''
     print(0)
 
+
+
     for coin in coins_cc:
         if len(symbols) < 250:
             symbols += coin.symbol + ','
@@ -22,12 +24,15 @@ def collect():
     symbols = symbols[:-1]
     symbols2 = symbols2[:-1]
 
+    print(symbols)
+
     url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols + '&tsyms=USD'
     url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols2 + '&tsyms=USD'
     r = requests.get(url)
     r2 = requests.get(url2)
     data = json.loads(r.text)
     data2 = json.loads(r2.text)
+    print(data)
 
     print('1')
 
