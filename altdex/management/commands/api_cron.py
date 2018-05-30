@@ -15,8 +15,8 @@ class Command(BaseCommand):
             try:
                 test = collect()
                 # print(1)
-                sleep(30)
-                test2 = collect()
+                # sleep(30)
+                # test2 = collect()
                 # print('done')
 
             except:
