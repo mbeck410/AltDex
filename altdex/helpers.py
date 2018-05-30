@@ -1,5 +1,6 @@
 import requests
 import json
+from time import sleep
 
 from .models import Index, Coin, IndexPrice
 
@@ -186,5 +187,7 @@ def collect():
     # return coin_table
 
     print('done')
+    sleep(30)
+
 
 

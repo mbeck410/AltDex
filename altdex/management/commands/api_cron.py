@@ -11,15 +11,16 @@ class Command(BaseCommand):
 
 
     def my_test(self):
-        try:
-            test = collect()
-            print(1)
-            sleep(5)
-            # test2 = collect()
-            print('done')
+        while True:
+            try:
+                test = collect()
+                # print(1)
+                # sleep(5)
+                # test2 = collect()
+                # print('done')
 
-        except:
-            raise CommandError("Error")
+            except:
+                raise CommandError("Error")
 
 
 
