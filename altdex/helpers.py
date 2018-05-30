@@ -17,7 +17,7 @@ def collect():
 
 
     for coin in coins_cc:
-        if len(symbols) < 250:
+        if len(symbols) < 230:
             symbols += coin.symbol + ','
         else:
             symbols2 += coin.symbol + ','
