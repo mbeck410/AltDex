@@ -247,6 +247,10 @@
 
         }
 
+        .time_bts > button:hover {
+            color: lightgray;
+        }
+
 
     </style>
 </head>
@@ -301,7 +305,7 @@
         </div>
         <div id="center" class="col-sm-8 text-left">
             <div class="well">
-                <div>
+                <div class="time_bts">
                     <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
                     <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
                     <button type="button" class="btn" onclick="change_range('seven_day')">7 d</button>
@@ -338,8 +342,7 @@
                         <!--</th>-->
                     <!--</tr>-->
                     <tr>
-                        <th>
-                            <a >Symbol</a></th>
+                        <th><a v-on:click="">Symbol</a></th>
                         <th>Name</th>
                         <th>Market Cap</th>
                         <th>Last</th>
@@ -347,7 +350,7 @@
                         <th>Volume (24h)</th>
                         <th>% Weight</th>
                     </tr>
-                    <tr v-for="row in rows">
+                    <tr v-for="row in sortedArray">
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td class="row_name">{{row.name}}</td>
                         <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
@@ -380,11 +383,12 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 <script>
     let current_index = 'AltDex';
     let current_id = '0';
+    let first_x = 0;
 
     let change_range = function (time_frame) {
         let date_update = new Date();
         if(time_frame == 'year') {
-            date_update = new Date(new Date().setFullYear(new Date().getFullYear() - 1));
+            date_update = first_x;
         } else if(time_frame == 'three_month') {
             date_update.setMonth(date_update.getMonth()-3);
         } else if(time_frame == 'one_month') {
@@ -407,18 +411,36 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
         data: {
             sortKey: '',
-            search: '',
-            reverse: false,
 
             rows: [],
         },
-        methods: {
-            sortBy: function (sortKey) {
-                this.reverse = (this.sortKey == sortKey) ? !this.reverse : false;
+        computed: {
+            sortedArray() {
 
-                this.sortKey = sortKey;
-            },
-        }
+                function compare(a, b) {
+                    if (a.market_cap > b.market_cap)
+                        return -1;
+                    if (a.market_cap < b.market_cap)
+                        return 1;
+                    return 0;
+                }
+                return this.rows.sort(compare);
+            }
+        },
+        // methods:{
+        //     sortTable(column){
+        //         function compare2(a, b) {
+        //             if (a.column > b.column)
+        //                 return -1;
+        //             if (a.column< b.column)
+        //                 return 1;
+        //             return 0;
+        //         }
+        //         return this.rows.sort(compare2)
+        //     }
+        // }
+
+
     });
 
     let app2 = new Vue({
@@ -499,6 +521,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                 10;
             let y_high = Math.max(...line_data[0].y) + y_range_border;
             let y_low = Math.min(...line_data[0].y) - y_range_border;
+            first_x = line_data[0].x[0];
             console.log(y_low);
             console.log(y_high);
 
@@ -539,11 +562,11 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
     coin_current(current_index);
     index_all(current_id);
 
-    // setInterval(function() {
-    //     coin_current();
-    //     index_current();
-    // },
-    //     30000);
+    setInterval(function() {
+        coin_current();
+        // index_current();
+        },
+        30000);
 
 </script>
 </body>

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="alternate" type="application/rss+xml" title="Sludgefeed.com » Feed" href="https://sludgefeed.com/feed/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -228,6 +229,38 @@
         });
     }
 
+       function http_getx(url, success) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            console.log(this.status);
+            if (this.readyState === 4 && this.status === 200) {
+                // let data = JSON.parse(xhttp.responseText);
+                // alert("111")
+                let data = this.responseXML;
+                success(data);
+            }
+        };
+        xhttp.open("GET", url);
+        xhttp.send();
+
+    }
+
+function rss() {
+
+        let url = 'https://sludgefeed.com/feed/';  //"{% url 'altdexapp:getcoinscurrent' %}";
+        //alert('test');
+        http_getx(url, function (data) {
+            console.log(data)
+            // for (let i = 0; i < data.dict_key.length; ++i) {
+            //     let entry = data.dict_key[i];
+            //     // let index_name = entry.indices;
+            //     // if (index_name.includes(index) === true) {
+            //     app.rows.push(entry);
+            // }
+        })
+    };
+
+    rss()
     index_current();
 
 </script>
