@@ -131,7 +131,7 @@ def getcoinscurrent(request):
 #
 #
 # rt = RepeatedTimer(30, collect) # it auto-starts, no need of rt.start()
-#
-#
+
+
 
 
