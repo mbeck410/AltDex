@@ -5,13 +5,13 @@ from .models import Index, Coin, IndexPrice
 
 
 def collect():
-    print('called')
+
     coins_cc = Coin.objects.filter(api='CryptoCompare')
     coins_cmc = Coin.objects.filter(api='CMC')
     indices = Index.objects.order_by('name')
     symbols = ''
     symbols2 = ''
-    print(0)
+
 
 
 
@@ -32,9 +32,9 @@ def collect():
     r2 = requests.get(url2)
     data = json.loads(r.text)
     data2 = json.loads(r2.text)
-    print(data)
 
-    print('1')
+
+
 
     # coin_table = []
     # coin_histories = {}
@@ -92,7 +92,7 @@ def collect():
 
         # coin_table.append(new_coin_history)
 
-    print('2')
+
 
     for coin in coins_cmc:
         url = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
@@ -130,14 +130,16 @@ def collect():
             dex_market_cap += float(dex_coin.market_cap)
 
         dex_price = float(dex_market_cap) / float(dex.divisor)
-        dex_percent_change = 0
+
         length = len(IndexPrice.objects.all())
 
         if length < 2880:
             this_change = 0
+            dex_percent_change = 0
         else:
             last_price = IndexPrice.objects.value(id=length-2880)
             this_change = dex_price - last_price
+            dex_percent_change = this_change / last_price * 100
 
 
 
@@ -155,6 +157,6 @@ def collect():
         # print(coin_table)
     # return coin_table
 
-    print('done')
+
 
 

@@ -1,5 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from ...helpers import collect
+from time import sleep
+
 
 class Command(BaseCommand):
 
@@ -11,9 +13,24 @@ class Command(BaseCommand):
     def my_test(self):
         try:
             test = collect()
-            print('Hey guvna')
+            print('1')
 
         except:
             raise CommandError("Error")
+
+
+
+
+    def test(self):
+        sleep(5)
+        try:
+            # test = collect()
+            print('2')
+
+        except:
+            raise CommandError("Error")
+
+
+
 
 

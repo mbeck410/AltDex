@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <meta charset="UTF-8">
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .affix {
@@ -33,6 +34,7 @@
             background-color: #222842;
             color: white;
             padding: 15px;
+            font-size: 8px;
         }
 
         /* On small screens, set height to 'auto' for sidenav and grid */
@@ -58,7 +60,7 @@
         }
 
         table.table th:nth-child(n+3) {
-            text-align: right
+            text-align: right;
         }
 
         /*table.table th:nth-child(5) {*/
@@ -66,7 +68,15 @@
         /*}*/
 
         table.table td:nth-child(n+3) {
-            text-align: right
+            text-align: right;
+        }
+
+        table.table td:first-child {
+            font-weight: bold;
+        }
+
+        table.table td:nth-child(2) {
+            font-weight: bold;
         }
 
         /*table.table td:nth-child(5) {*/
@@ -138,13 +148,13 @@
         }
 
         table.table2 {
-            width: 30%;
+            width: 45%;
             font-size: 40px;
         }
 
-        table.table2:first-child {
-            width: 40%;
-        }
+        /*table.table2:first-child {*/
+            /*width: 40%;*/
+        /*}*/
 
         .table2 td {
             font-size: 30px;
@@ -227,6 +237,16 @@
             padding-bottom: 5px;
         }
 
+        .table2 .info {
+            font-size: 10px;
+        }
+
+
+        .w_info {
+            font-size: 10px;
+
+        }
+
 
     </style>
 </head>
@@ -264,13 +284,16 @@
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <table class="widget" v-for="row in rows">
                     <div class="widget_title">AltDex 100</div>
+
                     <tr>
                         <td>{{row.price.toFixed(2)}}</td>
                         <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                          <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
                     </tr>
-                </table>
 
+
+                </table>
+                <div class="w_info">AltDex 100 - ALT100 Delayed Price</div>
             <div>
                 <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
@@ -296,6 +319,11 @@
                             <th>ALT100</th>
                             <th>{{row.price.toFixed(2)}}</th>
                             <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</td>
+
+                        </tr>
+                        <tr>
+                            <td class="info">AltDex 100 - ALT100 Delayed Price</td>
+                            <td class="info">Last Update: {{row.time.slice(0,19)}} UTC</td>
                         </tr>
                     </table>
                 </div>
@@ -323,7 +351,7 @@
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td class="row_name">{{row.name}}</td>
                         <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td>${{row.price.toFixed(2).toLocaleString('en', {useGrouping:true})}}</td>
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                         <td >${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>{{row.percent_weight}}%</td>
@@ -334,18 +362,20 @@
         </div>
 
         <div class="col-sm-2 sidenav">
-            <div class="well">
-                <!--<img src="http://www.smedio.com/wp-content/uploads/2016/03/Instagram-818x1136.jpg" class="img-thumbnail">-->
-            </div>
-            <div class="well">
-                <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
-            </div>
+            <!--<div class="well">-->
+                <!--&lt;!&ndash;<img src="http://www.smedio.com/wp-content/uploads/2016/03/Instagram-818x1136.jpg" class="img-thumbnail">&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="well">-->
+                <!--&lt;!&ndash;<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">&ndash;&gt;-->
+            <!--</div>-->
         </div>
     </div>
 </div>
 
 <footer class="container-fluid text-center">
-    <p>Footer Text</p>
+    <p>&#169AltDex 2018. All rights reserved.
+
+The information provided by AltDex is not guaranteed to be complete, accurate or timely. It is provided solely for informational and educational purposes and does not constitute investment advice. It shall not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its content providers are responsible for any damages or losses arising from any use of this information. Past performance is no guarantee of future results.</p>
 </footer>
 <script>
     let current_index = 'AltDex';
