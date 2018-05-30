@@ -47,7 +47,7 @@ def collect():
         for dex in indices_in:
             dices += str(dex.name)
 
-        # print(symbols)
+        print(symbols)
 
         if coin.symbol is 'R':
             coin.price = '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE']))
