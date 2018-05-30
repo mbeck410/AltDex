@@ -21,14 +21,14 @@ class Command(BaseCommand):
 
 
 
-    def test(self):
-        sleep(5)
-        try:
-            # test = collect()
-            print('2')
-
-        except:
-            raise CommandError("Error")
+    # def test(self):
+    #     sleep(5)
+    #     try:
+    #         # test = collect()
+    #         print('2')
+    #
+    #     except:
+    #         raise CommandError("Error")
 
 
 

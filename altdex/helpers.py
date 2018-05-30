@@ -24,7 +24,7 @@ def collect():
     symbols = symbols[:-1]
     symbols2 = symbols2[:-1]
 
-    print(symbols)
+
 
     url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols + '&tsyms=USD'
     url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols2 + '&tsyms=USD'
@@ -91,6 +91,7 @@ def collect():
         # coin_histories.update(dict_entry)
 
         # coin_table.append(new_coin_history)
+
 
 
 
