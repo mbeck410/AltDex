@@ -33,7 +33,6 @@ def collect():
     r2 = requests.get(url2)
     data = json.loads(r.text)
     data2 = json.loads(r2.text)
-    print(data)
 
     print('1')
 
@@ -47,13 +46,12 @@ def collect():
         for dex in indices_in:
             dices += str(dex.name)
 
-        print(symbols)
 
         if coin.symbol is 'R':
-            coin.price = '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE']))
-            coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
-            coin.volume = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
-            coin.market_cap = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP']))
+            coin.price = '{0:.2f}'.format(float(data['RAW'][coin.symbol]['USD']['PRICE']))
+            coin.price_percent_change = float('{0:.2f}'.format(['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
+            coin.volume = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
+            coin.market_cap = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['MKTCAP']))
             coin.percent_weight = 0
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
