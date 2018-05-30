@@ -46,8 +46,7 @@ def collect():
         for dex in indices_in:
             dices += str(dex.name)
 
-
-        if str(coin.symbol) is 'R':
+        if coin.symbol is 'R':
             coin.price = '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE']))
             coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
             coin.volume = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
