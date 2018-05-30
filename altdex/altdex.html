@@ -354,7 +354,8 @@
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td class="row_name">{{row.name}}</td>
                         <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>${{row.price.toFixed(2).toLocaleString('en', {useGrouping:true})}}</td>
+                        <td>${{row.price}}</td>
+                        <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                         <td >${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>{{row.percent_weight}}%</td>
