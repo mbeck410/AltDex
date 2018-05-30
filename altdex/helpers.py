@@ -32,7 +32,7 @@ def collect():
     r2 = requests.get(url2)
     data = json.loads(r.text)
     data2 = json.loads(r2.text)
-
+    print(symbols)
 
 
 
@@ -91,7 +91,7 @@ def collect():
         # coin_histories.update(dict_entry)
 
         # coin_table.append(new_coin_history)
-
+        print('1')
 
 
 
