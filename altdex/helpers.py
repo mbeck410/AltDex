@@ -47,9 +47,9 @@ def collect():
             dices += str(dex.name)
 
 
-        if coin.symbol is 'R':
+        if str(coin.symbol) is 'R':
             coin.price = '{0:.2f}'.format(float(data['RAW'][coin.symbol]['USD']['PRICE']))
-            coin.price_percent_change = float('{0:.2f}'.format(['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
+            coin.price_percent_change = float('{0:.2f}'.format(data['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
             coin.volume = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
             coin.market_cap = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['MKTCAP']))
             coin.percent_weight = 0
