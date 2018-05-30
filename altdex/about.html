@@ -20,9 +20,10 @@
 
         /* Set black background color, white text and some padding */
         footer {
-            background-color: #244ec3;
+            background-color: #222842;
             color: white;
             padding: 15px;
+            font-size: 8px;
         }
 
         table.widget {
@@ -33,7 +34,7 @@
         table.widget th{
             font-size: 25px;
             background-color: white;
-            border-bottom: solid 3px #244ec3;
+            border-bottom: solid 3px #222842;
         }
 
         table.widget td:first-child {
@@ -48,7 +49,7 @@
 
         .widget_title {
             font-size: 30px;
-            border-bottom: 3px solid #244ec3;
+            border-bottom: 3px solid #222842;
             font-weight: bold;
             width: 100%;
             padding-left: 15px;
@@ -75,8 +76,20 @@
             box-shadow: 0 0 3px gray;
         }
 
-        .my_navbar {
-            background-color: #244ec3;
+        h1 {
+            font-size: 50px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        h3 {
+            margin: 0px;
+            padding: 0px;
+            font-size: 40px;
+        }
+
+         .my_navbar {
+            background-color: #222842;
             color: white;
             margin: 0;
             border-radius: 0;
@@ -92,7 +105,7 @@
         }
 
         .my_navbar .navbar-brand:hover {
-            color: gray;
+            color: lightgray;
         }
 
         .my_navbar .primary > li a {
@@ -101,7 +114,7 @@
         }
 
         .my_navbar .primary > li a:hover {
-            color: gray;
+            color: lightgray;
         }
 
         .my_navbar .primary .secondary > li a {
@@ -110,8 +123,18 @@
         }
 
         .my_drop > a {
-            background-color: #244ec3;
-            color: gray;
+            background-color: #222842;
+            color: lightgray;
+        }
+
+        .navbar-brand > img {
+            height: 100%;
+
+        }
+
+        .navbar-brand {
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
 
@@ -119,6 +142,12 @@
             background-color: #ededed;
             /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
         }
+
+        .w_info {
+            font-size: 10px;
+
+        }
+
 
         .pos {color: green;}
         .neg {color: red;}
@@ -132,7 +161,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/altdex/altdex/">AltDex 100</a>
+            <a class="navbar-brand" href="#"><img src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="primary nav navbar-nav">
@@ -141,10 +170,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="secondary dropdown-menu">
-                        <li><a href="/altdex/altdex/">AltDex100</a></li>
+                        <li><a href="#">AltDex 100</a></li>
                     </ul>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="/altdex/about/">About</a></li>
             </ul>
         </div>
     </div>
@@ -156,13 +185,16 @@
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <table class="widget" v-for="row in rows">
                     <div class="widget_title">AltDex 100</div>
+
                     <tr>
                         <td>{{row.price.toFixed(2)}}</td>
                         <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                          <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
                     </tr>
-                </table>
 
+
+                </table>
+                <div class="w_info">AltDex 100 - ALT100 Delayed Price</div>
             <div>
                 <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
