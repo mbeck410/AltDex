@@ -13,7 +13,10 @@ class Command(BaseCommand):
     def my_test(self):
         try:
             test = collect()
-            print('1')
+            print(1)
+            sleep(5)
+            # test2 = collect()
+            print('done')
 
         except:
             raise CommandError("Error")
@@ -21,14 +24,6 @@ class Command(BaseCommand):
 
 
 
-    # def test(self):
-    #     sleep(5)
-    #     try:
-    #         # test = collect()
-    #         print('2')
-    #
-    #     except:
-    #         raise CommandError("Error")
 
 
 
