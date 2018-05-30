@@ -6,13 +6,13 @@ from .models import Index, Coin, IndexPrice
 
 
 def collect():
-    print('called')
+    # print('called')
     coins_cc = Coin.objects.filter(api='CryptoCompare')
     coins_cmc = Coin.objects.filter(api='CMC')
     indices = Index.objects.order_by('name')
     symbols = ''
     symbols2 = ''
-    print(0)
+    # print(0)
 
 
 
@@ -25,7 +25,7 @@ def collect():
     symbols = symbols[:-1]
     symbols2 = symbols2[:-1]
 
-    print(symbols)
+    # print(symbols)
 
     url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols + '&tsyms=USD'
     url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + symbols2 + '&tsyms=USD'
@@ -34,7 +34,7 @@ def collect():
     data = json.loads(r.text)
     data2 = json.loads(r2.text)
 
-    print('1')
+    # print('1')
 
     # coin_table = []
     # coin_histories = {}
@@ -90,7 +90,7 @@ def collect():
 
         # coin_table.append(new_coin_history)
 
-    print('2')
+    # print('2')
 
     for coin in coins_cmc:
         url = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
@@ -154,6 +154,7 @@ def collect():
     # return coin_table
 
     print('done')
+    sleep(30)
 
 
 
