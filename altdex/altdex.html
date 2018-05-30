@@ -476,7 +476,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
     }
 
 
-    function coin_current(index) {
+    function coin_current() {
         app.rows = [];
         let url = '/altdex/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
         //alert('test');
@@ -490,6 +490,21 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
             }
         })
     };
+
+    function update_coin() {
+        let new_coins = [];
+        let url = '/altdex/getcoinscurrent/';
+        http_get(url, function (data) {
+
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                let entry = data.dict_key[i];
+                // let index_name = entry.indices;
+                // if (index_name.includes(index) === true) {
+                new_coins.push(entry);
+            }
+            app.rows = new_coins
+        })
+    }
 
 
     function index_current() {
@@ -563,8 +578,8 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
     index_all(current_id);
 
     setInterval(function() {
-        coin_current();
-        // index_current();
+        update_coin();
+        index_current();
         },
         30000);
 
