@@ -126,7 +126,6 @@ def collect():
         # coin_histories.update(dict_entry)
 
         # coin_table.append(new_coin_history)
-        print(1)
 
     for dex in indices:
         dex_coins = dex.coin_set.all()
@@ -140,7 +139,6 @@ def collect():
         dex_percent_change = 0
         amount_entries = len(dex.indexprice_set.all())
         last_id = dex.indexprice_set.last().id
-        print(2)
 
         if amount_entries < 2189:
             this_change = 0
@@ -148,7 +146,7 @@ def collect():
             price_id = last_id - 2189
             last_price = dex.indexprice_set.get(id=price_id).price
             this_change = float(dex_price) - float(last_price)
-            dex_percent_change = this_change/float(last_price)
+            dex_percent_change = (this_change/float(last_price)) * 100
 
         new_dex_history = IndexPrice(index=dex,
                                      price=dex_price,
