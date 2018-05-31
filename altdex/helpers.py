@@ -145,8 +145,8 @@ def collect():
         else:
             price_id = last_id - 2189
             last_price = dex.indexprice_set.get(id=price_id).price
-            this_change = dex_price - last_price
-            dex_percent_change = this_change/last_price
+            this_change = float(dex_price) - float(last_price)
+            dex_percent_change = this_change/float(last_price)
 
         new_dex_history = IndexPrice(index=dex,
                                      price=dex_price,
