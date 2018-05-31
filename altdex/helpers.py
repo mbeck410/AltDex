@@ -142,7 +142,8 @@ def collect():
         if length < 2189:
             this_change = 0
         else:
-            last_price = IndexPrice.objects.value(id=length-2189)
+            price_id = length - 2189
+            last_price = IndexPrice.objects.filter(id=price_id)
             this_change = dex_price - last_price
 
 
