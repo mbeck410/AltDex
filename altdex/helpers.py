@@ -139,7 +139,7 @@ def collect():
         dex_percent_change = 0
         length = len(dex.indexprice_set.all())
         print(length)
-        print(dex.indexprice_set.last.price)
+        print(dex.indexprice_set.last().id)
 
         if length < 2189:
             this_change = 0
