@@ -17,7 +17,7 @@ def collect():
 
 
     for coin in coins_cc:
-        if len(symbols) < 50:
+        if len(symbols) < 40:
             symbols.append(coin.symbol)
         else:
             symbols2.append(coin.symbol)
