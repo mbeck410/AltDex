@@ -143,7 +143,7 @@ def collect():
             this_change = 0
         else:
             price_id = length - 2189
-            last_price = IndexPrice.objects.filter(id=price_id)
+            last_price = IndexPrice.objects.filter(id=price_id).price
             this_change = dex_price - last_price
 
 
