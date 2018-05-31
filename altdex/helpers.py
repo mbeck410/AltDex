@@ -137,13 +137,13 @@ def collect():
 
         dex_price = float(dex_market_cap) / float(dex.divisor)
         dex_percent_change = 0
-        length = len(IndexPrice.objects.all())
+        length = len(dex.indexprice_set.all())
 
         if length < 2189:
             this_change = 0
         else:
             price_id = length - 2189
-            price_obj = dex.IndexPrice.objects.filter(id=price_id)
+            price_obj = dex.indexprice_set.objects.filter(id=price_id)
             last_price = price_obj.price
             this_change = dex_price - last_price
 
