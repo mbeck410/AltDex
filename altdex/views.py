@@ -92,7 +92,7 @@ def getcoinscurrent(request):
         coin_dict = {   'name': this_coin.name,
                         'symbol': this_coin.symbol,
                         'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
-                        'price': float('{0:.2f}'.format(this_coin.price)),
+                        'price': float(this_coin.price),
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
                         'volume': float('{0:.0f}'.format(this_coin.market_cap)),
                         'percent_weight': percent_weight

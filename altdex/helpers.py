@@ -47,7 +47,7 @@ def collect():
             dices += str(dex.name)
 
         if coin.symbol is 'R':
-            coin.price = '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE']))
+            coin.price = float(data2['RAW'][coin.symbol]['USD']['PRICE'])
             coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
             coin.volume = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
             coin.market_cap = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP']))
@@ -56,7 +56,7 @@ def collect():
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
         elif coin.symbol in symbols:
-            coin.price = '{0:.2f}'.format(float(data['RAW'][coin.symbol]['USD']['PRICE']))
+            coin.price = float(data['RAW'][coin.symbol]['USD']['PRICE'])
             coin.price_percent_change = float('{0:.2f}'.format(data['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
             coin.volume = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
             coin.market_cap = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['MKTCAP']))
@@ -76,7 +76,7 @@ def collect():
             #                     'percent_weight': 0
             #                     }
 
-            coin.price = '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE']))
+            coin.price = float(data2['RAW'][coin.symbol]['USD']['PRICE'])
             coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
             coin.volume = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
             coin.market_cap = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP']))
@@ -105,7 +105,7 @@ def collect():
 
         # print(dices)
 
-        coin.price = float('{0:.2f}'.format(data['data']['quotes']['USD']['price']))
+        coin.price = float(data['data']['quotes']['USD']['price'])
         coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
         coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
         coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
@@ -131,10 +131,10 @@ def collect():
         dex_percent_change = 0
         length = len(IndexPrice.objects.all())
 
-        if length < 2880:
+        if length < 2189:
             this_change = 0
         else:
-            last_price = IndexPrice.objects.value(id=length-2880)
+            last_price = IndexPrice.objects.value(id=length-2189)
             this_change = dex_price - last_price
 
 
@@ -153,7 +153,6 @@ def collect():
         # print(coin_table)
     # return coin_table
 
-    print('done')
     sleep(30)
 
 
