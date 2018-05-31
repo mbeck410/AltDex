@@ -144,6 +144,7 @@ def collect():
         else:
             price_id = length - 2189
             price_obj = dex.indexprice_set.filter(id=price_id)
+            print(price_obj)
             last_price = price_obj.price
             this_change = dex_price - last_price
 
