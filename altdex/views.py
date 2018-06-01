@@ -89,10 +89,16 @@ def getcoinscurrent(request):
     for this_coin in coins:
         percent_weight = '{0:.3f}'.format(float(this_coin.market_cap) / (float(index.market_cap))*100)
 
+        if float(this_coin.price) >= 1:
+            coin_price = float('{0:.2f}'.format(this_coin.price))
+
+        else:
+            coin_price = float('{0:.6f}'.format(this_coin.price))
+
         coin_dict = {   'name': this_coin.name,
                         'symbol': this_coin.symbol,
                         'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
-                        'price': float(this_coin.price),
+                        'price': float(coin_price),
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
                         'volume': float('{0:.0f}'.format(this_coin.market_cap)),
                         'percent_weight': percent_weight

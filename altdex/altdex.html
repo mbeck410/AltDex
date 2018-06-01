@@ -322,7 +322,7 @@
                         <tr>
                             <th>ALT100</th>
                             <th>{{row.price.toFixed(2)}}</th>
-                            <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</td>
+                            <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
 
                         </tr>
                         <tr>
