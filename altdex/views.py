@@ -90,7 +90,8 @@ def getcoinscurrent(request):
         percent_weight = '{0:.3f}'.format(float(this_coin.market_cap) / (float(index.market_cap))*100)
 
         if float(this_coin.price) >= 1:
-            coin_price = float('{0:.2f}'.format(this_coin.price))
+            coin_price = format(float(this_coin.price), '.2f')
+
 
         else:
             coin_price = float('{0:.6f}'.format(this_coin.price))
