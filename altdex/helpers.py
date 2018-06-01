@@ -17,7 +17,7 @@ def collect():
 
 
     for coin in coins_cc:
-        if len(symbols) < 30:
+        if len(symbols) < 40:
             symbols.append(coin.symbol)
         else:
             symbols2.append(coin.symbol)
@@ -27,11 +27,11 @@ def collect():
 
     # print(symbols)
 
-    # url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str1 + '&tsyms=USD'
+    url5 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str1 + '&tsyms=USD'
     url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str2 + '&tsyms=USD'
-    # r = requests.get(url)
+    r5 = requests.get(url5)
     r2 = requests.get(url2)
-    # data = json.loads(r.text)
+    data = json.loads(r5.text)
     data2 = json.loads(r2.text)
 
     # print('1')
@@ -73,16 +73,16 @@ def collect():
         #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
         else:
-            # new_coin_history = {'coin': coin.name,
-            #                     'symbol': coin.symbol,
-            #                     'price': '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE'])),
-            #                     'price_percent_change': float(
-            #                         '{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR'])),
-            #                     'volume': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H'])),
-            #                     'market_cap': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP'])),
-            #                     'indices': dices,
-            #                     'percent_weight': 0
-            #                     }
+            new_coin_history = {'coin': coin.name,
+                                'symbol': coin.symbol,
+                                'price': '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE'])),
+                                'price_percent_change': float(
+                                    '{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR'])),
+                                'volume': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H'])),
+                                'market_cap': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP'])),
+                                'indices': dices,
+                                'percent_weight': 0
+                                }
 
             coin.price = float(data2['RAW'][coin.symbol]['USD']['PRICE'])
             coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
