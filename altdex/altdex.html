@@ -349,7 +349,6 @@
                         <th>Change (24h)</th>
                         <th>Volume (24h)</th>
                         <th>% Weight</th>
-                        <th>API</th>
                     </tr>
                     <tr v-for="row in sortedArray">
                         <td class="row_symbol">{{row.symbol}}</td>
@@ -360,7 +359,6 @@
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                         <td >${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>{{row.percent_weight}}%</td>
-                        <td>{{row.api}}</td>
                     </tr>
                 </table>
             </div>
