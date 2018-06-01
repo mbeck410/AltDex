@@ -399,7 +399,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         } else if(time_frame == 'one_day') {
             date_update.setDate(date_update.getDate() - 1);
         } else if(time_frame == 'hour') {
-            date_update.setHours(date_update.getHours() - 1);
+            date_update.setHours(date_update.getHours() + 6);
         }
         let update = {
             'xaxis.range[0]': date_update    // updates the end of the yaxis range
