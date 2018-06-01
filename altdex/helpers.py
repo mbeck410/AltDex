@@ -17,7 +17,7 @@ def collect():
 
 
     for coin in coins_cc:
-        if len(symbols) < 40:
+        if len(symbols) < 30:
             symbols.append(coin.symbol)
         else:
             symbols2.append(coin.symbol)
@@ -101,8 +101,8 @@ def collect():
     # print('2')
 
     for coin in coins_cmc:
-        url = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
-        r = requests.get(url)
+        url3 = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
+        r = requests.get(url3)
         data = json.loads(r.text)
 
         dices = ''
