@@ -28,11 +28,11 @@ def collect():
     # print(symbols)
 
     url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str1 + '&tsyms=USD'
-    url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str2 + '&tsyms=USD'
+    # url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str2 + '&tsyms=USD'
     r = requests.get(url)
-    r2 = requests.get(url2)
+    # r2 = requests.get(url2)
     data = json.loads(r.text)
-    data2 = json.loads(r2.text)
+    # data2 = json.loads(r2.text)
 
     # print('1')
 
@@ -72,25 +72,25 @@ def collect():
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
-        else:
-            # new_coin_history = {'coin': coin.name,
-            #                     'symbol': coin.symbol,
-            #                     'price': '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE'])),
-            #                     'price_percent_change': float(
-            #                         '{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR'])),
-            #                     'volume': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H'])),
-            #                     'market_cap': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP'])),
-            #                     'indices': dices,
-            #                     'percent_weight': 0
-            #                     }
-
-            coin.price = float(data2['RAW'][coin.symbol]['USD']['PRICE'])
-            coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
-            coin.volume = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
-            coin.market_cap = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP']))
-            coin.percent_weight = 0
-
-            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+        # else:
+        #     # new_coin_history = {'coin': coin.name,
+        #     #                     'symbol': coin.symbol,
+        #     #                     'price': '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE'])),
+        #     #                     'price_percent_change': float(
+        #     #                         '{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR'])),
+        #     #                     'volume': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H'])),
+        #     #                     'market_cap': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP'])),
+        #     #                     'indices': dices,
+        #     #                     'percent_weight': 0
+        #     #                     }
+        #
+        #     coin.price = float(data2['RAW'][coin.symbol]['USD']['PRICE'])
+        #     coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
+        #     coin.volume = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
+        #     coin.market_cap = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP']))
+        #     coin.percent_weight = 0
+        #
+        #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
         # dict_entry = {coin.name: new_coin_history}
 
