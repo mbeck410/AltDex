@@ -9,6 +9,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_3626562850a2809d3d91bb661");</script>
+    <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
     <meta charset="UTF-8">
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -148,7 +150,6 @@
         }
 
         table.table2 {
-            width: 45%;
             font-size: 40px;
         }
 
@@ -251,6 +252,46 @@
             color: lightgray;
         }
 
+        table.table2 {
+            width: 60%;
+            border-right: solid 1px #6dc0eb;
+        }
+
+        .main_price {
+            display: flex;
+        }
+
+        .gainers_losers {
+            margin: auto;
+            text-align: center;
+            width: 40%;
+        }
+
+        .gainers_losers tr:nth-child(2) {
+            font-size: 1.8em;
+        }
+
+        #title_gainers {
+            color: green;
+        }
+
+        #title_losers {
+            color: red;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </style>
 </head>
@@ -316,20 +357,30 @@
                 <div id="index_chart"></div>
             </div>
 
-                 <div id="index_info" class="well">
-
+                 <div id="index_info" class="well main_price">
+                     <!--<div class="index_info1">-->
                     <table class="table2" id="main_index_price" v-for="row in rows">
                         <tr>
                             <th>ALT100</th>
                             <th>{{row.price.toFixed(2)}}</th>
                             <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
-
                         </tr>
                         <tr>
                             <td class="info">AltDex 100 - ALT100 Delayed Price</td>
                             <td class="info">Last Update: {{row.time.slice(0,19)}} UTC</td>
                         </tr>
                     </table>
+                     <table class="gainers_losers">
+                         <tr>
+                             <td id="title_gainers">% Gainers</td>
+                             <td id="title_losers">% Losers</td>
+                         </tr>
+                         <tr>
+                            <td id="gainers"></td>
+                             <td id="losers"></td>
+                        </tr>
+                     </table>
+
                 </div>
 
             <div class="well">
@@ -366,9 +417,7 @@
         </div>
 
         <div class="col-sm-2 sidenav">
-            <!--<div class="well">-->
-                <!--&lt;!&ndash;<img src="http://www.smedio.com/wp-content/uploads/2016/03/Instagram-818x1136.jpg" class="img-thumbnail">&ndash;&gt;-->
-            <!--</div>-->
+                <div class="well feedgrabbr_widget" id="fgid_3626562850a2809d3d91bb661"></div>
             <!--<div class="well">-->
                 <!--&lt;!&ndash;<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">&ndash;&gt;-->
             <!--</div>-->
@@ -385,6 +434,11 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
     let current_index = 'AltDex';
     let current_id = '0';
     let first_x = 0;
+    let amount_gainers = 0;
+    let amount_losers = 0;
+    let dict_loss = [];
+
+
 
     let change_range = function (time_frame) {
         let date_update = new Date();
@@ -450,6 +504,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
             ascending: false,
             sortColumn: '',
             rows: [],
+            rows2: [],
         }
     });
 
@@ -461,6 +516,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
             rows: [],
         }
     });
+
 
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
@@ -479,32 +535,59 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
     function coin_current() {
         app.rows = [];
+        amount_gainers = 0;
+        amount_losers = 0;
+        let dict_loss = [];
         let url = '/altdex/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
         //alert('test');
         http_get(url, function (data) {
 
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
+                if (entry.price_percent > 0) {
+                    amount_gainers ++;
+                }
+                else if (entry.price_percent < 0) {
+                    amount_losers ++;
+                }
+                //
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
                 app.rows.push(entry);
             }
+            let percent_gainers = amount_gainers;
+            gainers_div.innerHTML = percent_gainers.toString() + '%';
+            let percent_losers = amount_losers;
+            losers_div.innerHTML = percent_losers.toString() + '%';
         })
     };
 
     function update_coin() {
         let new_coins = [];
+        amount_gainers = 0;
+        amount_losers = 0;
+        let dict_loss = [];
         let url = '/altdex/getcoinscurrent/';
         http_get(url, function (data) {
 
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
+                if (entry.price_percent > 0) {
+                    amount_gainers ++;
+                }
+                else if (entry.price_percent < 0) {
+                    amount_losers ++;
+                }
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
                 new_coins.push(entry);
             }
-            app.rows = new_coins
-        })
+            app.rows = new_coins;
+            let percent_gainers = amount_gainers;
+            gainers_div.innerHTML = percent_gainers.toString() + '%';
+            let percent_losers = amount_losers;
+            losers_div.innerHTML = percent_losers.toString() + '%';
+        });
     }
 
 
@@ -538,7 +621,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
 
     let line_data = [];
-    let line_data2 = [];
+    // let line_data2 = [];
 
     function index_all(id_num) {
         line_data = [];
@@ -590,10 +673,21 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         });
     }
 
+    let gainers_div = document.querySelector('#gainers');
+    let losers_div = document.querySelector('#losers');
+
+    // function gainers_losers() {
+    //     console.log(amount_gainers);
+    //     let percent_gainers = amount_gainers/100;
+    //     gainers_div.innerHTML = percent_gainers.toString();
+    //     let percent_losers = amount_losers/100;
+    //     losers_div.innerHTML = percent_losers.toString();
+    // }
+
+
     index_current();
     coin_current(current_index);
     index_all(current_id);
-
     setInterval(function() {
         update_coin();
         update_index();

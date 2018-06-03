@@ -17,7 +17,12 @@ class Command(BaseCommand):
 
 
             except:
-                raise CommandError("Error")
+                sleep(30)
+                try:
+                    test2 = collect()
+
+                except:
+                    raise CommandError("Error")
 
 
 

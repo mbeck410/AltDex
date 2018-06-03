@@ -101,7 +101,7 @@ def getcoinscurrent(request):
                         'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
                         'price': float(coin_price),
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
-                        'volume': float('{0:.0f}'.format(this_coin.market_cap)),
+                        'volume': float('{0:.0f}'.format(this_coin.volume)),
                         'percent_weight': percent_weight
                         }
 
