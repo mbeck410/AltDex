@@ -7,124 +7,30 @@ from .models import Index, Coin, IndexPrice
 
 def collect():
     # print('called')
-    coins_cc = Coin.objects.filter(api='CryptoCompare')
-    coins_cmc = Coin.objects.filter(api='CMC')
+    coins = Coin.objects.all()
     indices = Index.objects.order_by('name')
-    symbols = []
-    symbols2 = []
+
     # print(0)
 
+    url = 'http://coincap.io/front'
+    r = requests.get(url)
+    data = json.loads(r.text)
 
+    for coin in coins:
 
-    for coin in coins_cc:
-        if len(symbols) < 40:
-            symbols.append(coin.symbol)
-        else:
-            symbols2.append(coin.symbol)
+        for i in range(len(data) - 1):
+            entry = data[i]
 
-    sym_str1 = ','.join(symbols)
-    sym_str2 = ','.join(symbols2)
+            if entry['short'] == coin.symbol:
+                coin.price = float(entry['price'])
+                coin.price_percent_change = float('{0:.2f}'.format(entry['perc']))
+                coin.volume = float('{0:.0f}'.format(entry['usdVolume']))
+                coin.market_cap = float('{0:.0f}'.format(entry['mktcap']))
+                coin.percent_weight = 0
+                coin.coin_marketcap_id = i
 
-    # print(symbols)
+                coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight', 'coin_marketcap_id'])
 
-    url5 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str1 + '&tsyms=USD'
-    url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str2 + '&tsyms=USD'
-    r5 = requests.get(url5)
-    r2 = requests.get(url2)
-    data = json.loads(r5.text)
-    data2 = json.loads(r2.text)
-
-    # print('1')
-
-    # coin_table = []
-    # coin_histories = {}
-
-    for coin in coins_cc:
-        dices = ''
-        indices_in = coin.indices.all()
-
-        for dex in indices_in:
-            dices += str(dex.name)
-
-        # if coin.symbol is 'R':
-        #     if 'R' in symbols:
-        #         coin.price = float(data['RAW'][coin.symbol]['USD']['PRICE'])
-        #         coin.price_percent_change = float('{0:.2f}'.format(data['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
-        #         coin.volume = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
-        #         coin.market_cap = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['MKTCAP']))
-        #         coin.percent_weight = 0
-        #
-        #     else:
-        #         coin.price = float(data2['RAW'][coin.symbol]['USD']['PRICE'])
-        #         coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
-        #         coin.volume = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
-        #         coin.market_cap = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP']))
-        #         coin.percent_weight = 0
-        #
-        #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-
-        if coin.symbol in symbols:
-            coin.price = float(data['RAW'][coin.symbol]['USD']['PRICE'])
-            coin.price_percent_change = float('{0:.2f}'.format(data['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
-            coin.volume = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
-            coin.market_cap = float('{0:.0f}'.format(data['RAW'][coin.symbol]['USD']['MKTCAP']))
-            coin.percent_weight = 0
-
-            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-
-            # new_coin_history = {'coin': coin.name,
-            #                     'symbol': coin.symbol,
-            #                     'price': '{0:.2f}'.format(float(data2['RAW'][coin.symbol]['USD']['PRICE'])),
-            #                     'price_percent_change': float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR'])),
-            #                     'volume': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H'])),
-            #                     'market_cap': float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP'])),
-            #                     'indices': dices,
-            #                     'percent_weight': 0
-            #                     }
-
-        else:
-            coin.price = float(data2['RAW'][coin.symbol]['USD']['PRICE'])
-            coin.price_percent_change = float('{0:.2f}'.format(data2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
-            coin.volume = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
-            coin.market_cap = float('{0:.0f}'.format(data2['RAW'][coin.symbol]['USD']['MKTCAP']))
-            coin.percent_weight = 0
-
-            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-
-        # dict_entry = {coin.name: new_coin_history}
-
-        # coin_histories.update(dict_entry)
-
-        # coin_table.append(new_coin_history)
-
-    # print('2')
-
-    for coin in coins_cmc:
-        url3 = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
-        r = requests.get(url3)
-        data = json.loads(r.text)
-
-        dices = ''
-        indices_in = coin.indices.all()
-
-        for dex in indices_in:
-            dices += str(dex.name)
-
-        # print(dices)
-
-        coin.price = float(data['data']['quotes']['USD']['price'])
-        coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
-        coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
-        coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
-        coin.percent_weight = 0
-
-        coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-
-        # dict_entry = {coin.name: new_coin_history}
-
-        # coin_histories.update(dict_entry)
-
-        # coin_table.append(new_coin_history)
 
     for dex in indices:
         dex_coins = dex.coin_set.all()
@@ -159,6 +65,7 @@ def collect():
 
         # print(coin_table)
     # return coin_table
+    print('done')
 
     sleep(30)
 

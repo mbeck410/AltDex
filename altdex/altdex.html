@@ -254,7 +254,7 @@
 
         table.table2 {
             width: 60%;
-            border-right: solid 1px #6dc0eb;
+            border-right: solid 1px lightgray;
         }
 
         .main_price {
@@ -277,6 +277,14 @@
 
         #title_losers {
             color: red;
+        }
+
+        #values_main {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: 0;
+            font-size: 25px;
         }
 
 
@@ -363,7 +371,7 @@
                         <tr>
                             <th>ALT100</th>
                             <th>{{row.price.toFixed(2)}}</th>
-                            <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
+                            <td id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}% <br/> {{row.change_24h}}</td>
                         </tr>
                         <tr>
                             <td class="info">AltDex 100 - ALT100 Delayed Price</td>
