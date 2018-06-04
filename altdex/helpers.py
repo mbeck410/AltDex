@@ -102,7 +102,7 @@ def collect():
         new_dex_history.save()
 
 
-    sleep(30)
+    sleep(60)
 
 
 
