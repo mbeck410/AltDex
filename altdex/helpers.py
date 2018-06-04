@@ -27,9 +27,8 @@ def collect():
                 coin.volume = float('{0:.0f}'.format(entry['usdVolume']))
                 coin.market_cap = float('{0:.0f}'.format(entry['mktcap']))
                 coin.percent_weight = 0
-                coin.coin_marketcap_id = i
 
-                coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight', 'coin_marketcap_id'])
+                coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
 
     for dex in indices:
