@@ -64,7 +64,7 @@ def collect():
 
         # print(coin_table)
     # return coin_table
-    print('done')
+
 
     sleep(30)
 
