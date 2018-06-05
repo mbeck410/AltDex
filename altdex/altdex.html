@@ -556,10 +556,10 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                 // if (index_name.includes(index) === true) {
 
             }
-            let percent_gainers = amount_gainers/count;
-            gainers_div.innerHTML = percent_gainers.toString() + '%';
-            let percent_losers = amount_losers/count;
-            losers_div.innerHTML = percent_losers.toString() + '%';
+            let percent_gainers = amount_gainers/count*100;
+            gainers_div.innerHTML = percent_gainers.toString().toFixed(2) + '%';
+            let percent_losers = amount_losers/count*100;
+            losers_div.innerHTML = percent_losers.toString().toFixed(2) + '%';
         })
     };
 
@@ -590,10 +590,10 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
             }
             app.rows = new_coins;
-            let percent_gainers = amount_gainers/count;
-            gainers_div.innerHTML = percent_gainers.toString() + '%';
-            let percent_losers = amount_losers/count;
-            losers_div.innerHTML = percent_losers.toString() + '%';
+            let percent_gainers = amount_gainers/count*100;
+            gainers_div.innerHTML = percent_gainers.toString().toFixed(2) + '%';
+            let percent_losers = amount_losers/count*100;
+            losers_div.innerHTML = percent_losers.toString().toFixed(2) + '%';
         });
     }
 
