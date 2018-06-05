@@ -547,11 +547,12 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                     else if (entry.price_percent < 0) {
                         amount_losers++;
                     }
+                    app.rows.push(entry);
                 }
                 //
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
-                app.rows.push(entry);
+
             }
             let percent_gainers = amount_gainers;
             gainers_div.innerHTML = percent_gainers.toString() + '%';
@@ -578,10 +579,11 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                     else if (entry.price_percent < 0) {
                         amount_losers++;
                     }
+                    new_coins.push(entry);
                 }
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
-                new_coins.push(entry);
+
             }
             app.rows = new_coins;
             let percent_gainers = amount_gainers;
@@ -600,6 +602,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         //alert('test');
         http_get(url, function (data) {
             // for (let i = 0; i < data.dict_key.length; ++i) {
+            console.log(data);
             new_data.push(data.dict_key[index_id]);
             app2.rows = new_data;
             app3.rows = new_data;

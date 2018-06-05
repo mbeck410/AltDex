@@ -323,7 +323,7 @@
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <table class="widget" v-for="row in rows">
-                    <div class="widget_title">AltDex Exchange</div>
+                    <div class="widget_title">AltDex 100</div>
 
                     <tr>
                         <td>{{row.price.toFixed(2)}}</td>
@@ -547,11 +547,12 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                     else if (entry.price_percent < 0) {
                         amount_losers++;
                     }
+                    app.rows.push(entry);
                 }
                 //
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
-                app.rows.push(entry);
+
             }
             let percent_gainers = amount_gainers;
             gainers_div.innerHTML = percent_gainers.toString() + '%';
@@ -578,10 +579,11 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                     else if (entry.price_percent < 0) {
                         amount_losers++;
                     }
+                    new_coins.push(entry);
                 }
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
-                new_coins.push(entry);
+
             }
             app.rows = new_coins;
             let percent_gainers = amount_gainers;
