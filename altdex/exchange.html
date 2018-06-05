@@ -323,7 +323,7 @@
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <table class="widget" v-for="row in rows">
-                    <div class="widget_title">AltDex 100</div>
+                    <div class="widget_title">ALTEXC</div>
 
                     <tr>
                         <td>{{row.price.toFixed(2)}}</td>
@@ -333,7 +333,7 @@
 
 
                 </table>
-                <div class="w_info">AltDex Exchange - ALTEX Delayed Price</div>
+                <div class="w_info">AltDex Exchange - ALTEXC Delayed Price</div>
             <div>
                 <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
@@ -361,7 +361,7 @@
                             <td id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}% <br/> {{row.change_24h}}</td>
                         </tr>
                         <tr>
-                            <td class="info">AltDex Exchange - ALTEX Delayed Price</td>
+                            <td class="info">AltDex Exchange - ALTEXC Delayed Price</td>
                             <td class="info">Last Update: {{row.time.slice(0,19)}} UTC</td>
                         </tr>
                     </table>
@@ -535,6 +535,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         let dict_loss = [];
         let url = '/altdex/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
         //alert('test');
+        let count = 0;
         http_get(url, function (data) {
 
             for (let i = 0; i < data.dict_key.length; ++i) {
@@ -548,15 +549,16 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                         amount_losers++;
                     }
                     app.rows.push(entry);
+                    count++;
                 }
                 //
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
 
             }
-            let percent_gainers = amount_gainers;
+            let percent_gainers = amount_gainers/count;
             gainers_div.innerHTML = percent_gainers.toString() + '%';
-            let percent_losers = amount_losers;
+            let percent_losers = amount_losers/count;
             losers_div.innerHTML = percent_losers.toString() + '%';
         })
     };
@@ -566,6 +568,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         amount_gainers = 0;
         amount_losers = 0;
         let dict_loss = [];
+        let count = 0;
         let url = '/altdex/getcoinscurrent/';
         http_get(url, function (data) {
 
@@ -580,15 +583,16 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                         amount_losers++;
                     }
                     new_coins.push(entry);
+                    count++;
                 }
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
 
             }
             app.rows = new_coins;
-            let percent_gainers = amount_gainers;
+            let percent_gainers = amount_gainers/count;
             gainers_div.innerHTML = percent_gainers.toString() + '%';
-            let percent_losers = amount_losers;
+            let percent_losers = amount_losers/count;
             losers_div.innerHTML = percent_losers.toString() + '%';
         });
     }
@@ -596,6 +600,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
     function index_current(index_id) {
         let new_data = [];
+        let new_widget_data = [];
         app2.rows = [];
         app3.rows = [];
         let url = '/altdex/getindexcurrent/';
@@ -603,8 +608,9 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         http_get(url, function (data) {
             // for (let i = 0; i < data.dict_key.length; ++i) {
             new_data.push(data.dict_key[index_id]);
+            new_widget_data.push(data.dict_key[0]);
             app2.rows = new_data;
-            app3.rows = new_data;
+            app3.rows = new_widget_data;
             // }
         });
     }

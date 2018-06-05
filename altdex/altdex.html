@@ -535,6 +535,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         let dict_loss = [];
         let url = '/altdex/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
         //alert('test');
+        let count = 0;
         http_get(url, function (data) {
 
             for (let i = 0; i < data.dict_key.length; ++i) {
@@ -548,15 +549,16 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                         amount_losers++;
                     }
                     app.rows.push(entry);
+                    count++;
                 }
                 //
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
 
             }
-            let percent_gainers = amount_gainers;
+            let percent_gainers = amount_gainers/count;
             gainers_div.innerHTML = percent_gainers.toString() + '%';
-            let percent_losers = amount_losers;
+            let percent_losers = amount_losers/count;
             losers_div.innerHTML = percent_losers.toString() + '%';
         })
     };
@@ -566,6 +568,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         amount_gainers = 0;
         amount_losers = 0;
         let dict_loss = [];
+        let count = 0;
         let url = '/altdex/getcoinscurrent/';
         http_get(url, function (data) {
 
@@ -580,15 +583,16 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                         amount_losers++;
                     }
                     new_coins.push(entry);
+                    count++;
                 }
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
 
             }
             app.rows = new_coins;
-            let percent_gainers = amount_gainers;
+            let percent_gainers = amount_gainers/count;
             gainers_div.innerHTML = percent_gainers.toString() + '%';
-            let percent_losers = amount_losers;
+            let percent_losers = amount_losers/count;
             losers_div.innerHTML = percent_losers.toString() + '%';
         });
     }

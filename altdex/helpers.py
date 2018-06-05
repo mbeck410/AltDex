@@ -84,7 +84,7 @@ def collect():
         dex_price = float(dex_market_cap) / float(dex.divisor)
         dex_percent_change = 0
         amount_entries = len(dex.indexprice_set.all())
-        
+
         if amount_entries < 2189:
             this_change = 0
 
