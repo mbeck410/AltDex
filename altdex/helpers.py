@@ -33,10 +33,13 @@ def collect():
     # data_2 = json.loads(r2.text)
     # data_3 = json.loads(r3.text)
 
-
-
-
     for coin in coins:
+
+        dices = ''
+        indices_in = coin.indices.all()
+
+        for dex in indices_in:
+            dices += str(dex.name)
 
         # if coin.symbol in symbols:
         #     coin.price = float(data_2['RAW'][coin.symbol]['USD']['PRICE'])
@@ -57,6 +60,7 @@ def collect():
         #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
         # else:
+
         for i in range(len(data_1) - 1):
             entry = data_1[i]
 
@@ -68,7 +72,6 @@ def collect():
                 coin.percent_weight = 0
 
                 coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-
 
     for dex in indices:
         dex_coins = dex.coin_set.all()

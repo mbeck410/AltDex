@@ -81,18 +81,21 @@ def getindexcurrent(request):
 
 
 def getcoinscurrent(request):
-    index = IndexPrice.objects.last()
     coins = Coin.objects.all()
     coin_table = []
 
-
     for this_coin in coins:
-        percent_weight = '{0:.3f}'.format(float(this_coin.market_cap) / (float(index.market_cap))*100)
+        # percent_weight = '{0:.3f}'.format(float(this_coin.market_cap) / (float(index.market_cap))*100)
+
+        dices = ''
+        indices_in = this_coin.indices.all()
+
+        for dex in indices_in:
+            dices += str(dex.name)
+
 
         if float(this_coin.price) >= 1:
             coin_price = format(float(this_coin.price), '.2f')
-
-
         else:
             coin_price = float('{0:.6f}'.format(this_coin.price))
 
@@ -102,7 +105,7 @@ def getcoinscurrent(request):
                         'price': float(coin_price),
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
                         'volume': float('{0:.0f}'.format(this_coin.volume)),
-                        'percent_weight': percent_weight
+                        'indices': dices
                         }
 
         coin_table.append(coin_dict)
