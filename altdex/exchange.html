@@ -557,8 +557,10 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
             }
             let percent_gainers = amount_gainers/count*100;
-            gainers_div.innerHTML = percent_gainers.toString().toFixed(2) + '%';
             let percent_losers = amount_losers/count*100;
+            percent_gainers.toFixed(2);
+            percent_losers.toFixed(2);
+            gainers_div.innerHTML = percent_gainers.toString() + '%';
             losers_div.innerHTML = percent_losers.toString().toFixed(2) + '%';
         })
     };
@@ -591,8 +593,10 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
             }
             app.rows = new_coins;
             let percent_gainers = amount_gainers/count*100;
-            gainers_div.innerHTML = percent_gainers.toString().toFixed(2) + '%';
             let percent_losers = amount_losers/count*100;
+            percent_gainers.toFixed(2);
+            percent_losers.toFixed(2);
+            gainers_div.innerHTML = percent_gainers.toString() + '%';
             losers_div.innerHTML = percent_losers.toString().toFixed(2) + '%';
         });
     }
