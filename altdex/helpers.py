@@ -84,11 +84,12 @@ def collect():
         dex_price = float(dex_market_cap) / float(dex.divisor)
         dex_percent_change = 0
         amount_entries = len(dex.indexprice_set.all())
-        last_id = dex.indexprice_set.last().id
-
+        
         if amount_entries < 2189:
             this_change = 0
+
         else:
+            last_id = dex.indexprice_set.last().id
             price_id = last_id - 2189
             last_price = dex.indexprice_set.get(id=price_id).price
             this_change = float(dex_price) - float(last_price)
