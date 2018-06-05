@@ -516,7 +516,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
-            console.log(this.status);
+            // console.log(this.status);
             if (this.readyState === 4 && this.status === 200) {
                 let data = JSON.parse(xhttp.responseText);
                 success(data);
@@ -651,8 +651,8 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
             let y_high = Math.max(...line_data[0].y) + y_range_border;
             let y_low = Math.min(...line_data[0].y) - y_range_border;
             first_x = line_data[0].x[0];
-            console.log(y_low);
-            console.log(y_high);
+            // console.log(y_low);
+            // console.log(y_high);
 
             let layout = {
                 autosize: true,
