@@ -68,7 +68,8 @@ def getindexcurrent(request):
     indices_current = []
     for dex in indices:
         dex_current = dex.indexprice_set.last()
-        index_dict = {  'price': float('{0:.2f}'.format(dex_current.price)),
+        index_dict = {  'name': dex.name,
+                        'price': float('{0:.2f}'.format(dex_current.price)),
                         'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
                         'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
                         'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),

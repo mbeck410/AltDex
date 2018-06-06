@@ -85,35 +85,40 @@
             /*text-align: center*/
         /*}*/
 
-        table.widget {
-            background-color: white;
+        .w_data {
+            display: flex;
             width: 100%;
         }
 
-        table.widget th{
-            font-size: 25px;
-            background-color: white;
-            border-bottom: solid 3px #222842;
-        }
+        /*table.widget th{*/
+            /*font-size: 2em;*/
+            /*background-color: white;*/
+            /*border-bottom: solid 3px #222842;*/
+            /*text-align: center;*/
+        /*}*/
 
-        table.widget td:first-child {
-
+        .w_data > div:first-child {
+            text-align: center;
             font-size: 28px;
+            width: 50%;
+            margin: auto;
         }
 
-        table.widget td:nth-child(2) {
-            text-align: right;
+        .w_data > div:nth-child(2) {
+            text-align: center;
             font-size: 22px;
+            width: 50%;
+            margin: auto;
         }
 
-        .widget_title {
-            font-size: 30px;
-            border-bottom: 3px solid #222842;
-            font-weight: bold;
-            width: auto;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
+        /*.widget_title {*/
+            /*font-size: 30px;*/
+            /*border-bottom: 3px solid #222842;*/
+            /*font-weight: bold;*/
+            /*width: auto;*/
+            /*padding-left: 15px;*/
+            /*padding-right: 15px;*/
+        /*}*/
 
 
 
@@ -291,6 +296,16 @@
             max-width: 223px;
         }
 
+        .w_name {
+            font-size: 2em;
+            font-weight: normal;
+            text-align: center;
+            border-bottom: 3px solid #222842;
+        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -326,18 +341,17 @@
     <div class="row content">
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
-                <table class="widget" v-for="row in rows">
-                    <div class="widget_title">AltDex 100</div>
+                <div class="widget" v-for="row in rows">
+                        <div class="w_name">{{row.name}}</div>
 
-                    <tr>
-                        <td>{{row.price.toFixed(2)}}</td>
-                        <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
+                    <div class="w_data">
+                        <div>{{row.price.toFixed(2)}}</div>
+                        <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
                          <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
-                    </tr>
+                    </div>
 
-
-                </table>
-                <div class="w_info">AltDex 100 - ALT100 Delayed Price</div>
+                <div class="w_info">{{row.name}} - Delayed Price</div>
+                    </div>
             <div>
                 <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
