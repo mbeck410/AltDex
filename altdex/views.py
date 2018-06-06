@@ -51,10 +51,10 @@ def getindexall(request):
     indices = Index.objects.all()
     indices_all_output = []
     for dex in indices:
-        dex_all = dex.indexprice_set.all()
+        dex_price_entries = dex.indexprice_set.order_by('timestamp')
         prices = []
         times = []
-        for i in dex_all:
+        for i in dex_price_entries:
             prices.append(i.price)
             times.append(i.timestamp)
 
