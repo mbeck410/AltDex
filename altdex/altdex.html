@@ -352,9 +352,9 @@
                         <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
                          <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
                     </div>
-
-                <div class="w_info">{{row.name}} - Delayed Price</div>
                     </div>
+                <div class="w_info">Last Updated Value</div>
+                <div class="w_info">All Values Delayed</div>
             <div>
                 <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
@@ -382,7 +382,7 @@
                             <td id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}% <br/> {{row.change_24h}}</td>
                         </tr>
                         <tr>
-                            <td class="info">AltDex 100 - ALT100 Delayed Price</td>
+                            <td class="info">AltDex 100 - ALT100 Delayed Value</td>
                             <td class="info">Last Update: {{row.time.slice(0,19)}} UTC</td>
                         </tr>
                     </table>
