@@ -402,7 +402,7 @@
                             <td id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}% <br/> {{row.change_24h}}</td>
                         </tr>
                         <tr>
-                            <td class="info">Privacy - ALTPRV Delayed Value</td>
+                            <td class="info">Privacy - ALT100 Delayed Value</td>
                             <td class="info">Last Update: {{row.time.slice(0,19)}} UTC</td>
                         </tr>
                     </table>
@@ -468,7 +468,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 </footer>
 <script>
     let current_index = 'Privacy';
-    let current_id = '2';
+    let current_id = 2;
     let first_x = 0;
     let amount_gainers = 0;
     let amount_losers = 0;
