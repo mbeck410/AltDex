@@ -337,26 +337,31 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
     }
 
-    function index_current() {
+    function index_current(index_id) {
+        let other_data = [];
         app3.rows = [];
         let url = '/altdex/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
-            // for (let i = 0; i < data.dict_key.length; ++i) {
-            app3.rows.push(data.dict_key[0]);
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                other_data.push(data.dict_key[i])
+            }
+            app3.rows = other_data;
             // }
         });
     }
 
-    function update_index() {
-        let new_data = [];
+    function update_index(index_id) {
+
+        let other_data = [];
         let url = '/altdex/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
-            // for (let i = 0; i < data.dict_key.length; ++i) {
-            new_data.push(data.dict_key[0]);
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                other_data.push(data.dict_key[i])
+            }
+            app3.rows = other_data;
             // }
-            app3.rows = new_data
         });
     }
 
