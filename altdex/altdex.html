@@ -88,6 +88,8 @@
         .w_data {
             display: flex;
             width: 100%;
+            border-bottom: 1px solid lightgray;
+            padding-bottom: 5px;
         }
 
         /*table.widget th{*/
@@ -106,10 +108,9 @@
 
         .w_data > div:nth-child(2) {
             text-align: center;
-            font-size: 1.2em;
+            font-size: 1.5em;
             width: 40%;
-            margin-top: 8px;
-            margin-bottom: 8px;
+            margin:auto;
         }
 
         /*.widget_title {*/
@@ -285,13 +286,6 @@
             color: red;
         }
 
-        #values_main {
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: auto;
-            margin-bottom: 0;
-            font-size: 25px;
-        }
 
         #widget {
             width: 223px;
@@ -302,6 +296,14 @@
             font-size: 1.4em;
             font-weight: normal;
             text-align: center;
+        }
+
+       #w_percent {
+           font-size: 0.7em;
+       }
+
+        .w_info {
+            margin-top: 10px;
         }
 
 
@@ -350,13 +352,15 @@
                         <div class="w_name">{{row.name}}</div>
                         <div>
                         <div>{{row.price.toFixed(2)}}</div>
-                        <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
+                        <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
                          <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
                             </div>
                     </div>
                     </div>
-                <div class="w_info">Last Updated Value</div>
-                <div class="w_info">All Values Delayed</div>
+                <div class="w_info">
+                <div>Last Updated Value</div>
+                <div>All Values Delayed</div>
+                    </div>
             <div>
                 <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
