@@ -287,6 +287,10 @@
             font-size: 25px;
         }
 
+        #widget {
+            max-width: 223px;
+        }
+
     </style>
 </head>
 <body>
@@ -513,6 +517,8 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
     });
 
 
+
+
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -603,15 +609,18 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
     function index_current(index_id) {
         let new_data = [];
+        let other_data = [];
         app2.rows = [];
         app3.rows = [];
         let url = '/altdex/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
-            // for (let i = 0; i < data.dict_key.length; ++i) {
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                other_data.push(data.dict_key[i])
+            }
             new_data.push(data.dict_key[index_id]);
             app2.rows = new_data;
-            app3.rows = new_data;
+            app3.rows = other_data;
             // }
         });
     }
