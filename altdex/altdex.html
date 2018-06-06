@@ -683,13 +683,13 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
     let line_data = [];
     // let line_data2 = [];
 
-    function index_all(id_num) {
+    function index_all() {
         line_data = [];
         let url = '/altdex/getindexall/';
         //alert('test');
         http_get(url, function (data) {
             let full_data = data.dict_key;
-            let entry = full_data[id_num];
+            let entry = full_data[0];
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
             let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
