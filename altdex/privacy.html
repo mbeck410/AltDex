@@ -468,7 +468,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 </footer>
 <script>
     let current_index = 'Privacy';
-    let current_id = 2;
+    let current_id = '2';
     let first_x = 0;
     let amount_gainers = 0;
     let amount_losers = 0;
@@ -689,7 +689,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         //alert('test');
         http_get(url, function (data) {
             let full_data = data.dict_key;
-            let entry = full_data[id_num];
+            let entry = full_data[2];
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
             let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
@@ -747,7 +747,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
     index_current(current_id);
     coin_current(current_index);
-    index_all(current_id);
+    index_all();
     setInterval(function() {
         update_coin(current_index);
         update_index(current_id);

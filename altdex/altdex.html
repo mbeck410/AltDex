@@ -468,7 +468,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 </footer>
 <script>
     let current_index = 'AltDex';
-    let current_id = 0;
+    let current_id = '0';
     let first_x = 0;
     let amount_gainers = 0;
     let amount_losers = 0;
@@ -747,7 +747,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
     index_current(current_id);
     coin_current(current_index);
-    index_all(current_id);
+    index_all();
     setInterval(function() {
         update_coin(current_index);
         update_index(current_id);
