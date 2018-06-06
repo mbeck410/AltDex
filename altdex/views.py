@@ -15,7 +15,6 @@ from .helpers import collect
 from .models import Index, Coin, IndexPrice
 
 
-
 def altdex(request):
     with open('./altdex/altdex.html') as file:
         contents = file.read()
@@ -24,6 +23,12 @@ def altdex(request):
 
 def exchange(request):
     with open('./altdex/exchange.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
+
+
+def privacy(request):
+    with open('./altdex/privacy.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
@@ -67,8 +72,17 @@ def getindexcurrent(request):
     indices = Index.objects.all()
     indices_current = []
     for dex in indices:
+        link = ''
+        if dex.name == 'AltDex100':
+            link = '/altdex/altdex/'
+        elif dex.name == 'Exchange':
+            link = '/altdex/exchange'
+        elif dex.name == 'Privacy':
+            link = '/altdex/privacy'
+
         dex_current = dex.indexprice_set.last()
-        index_dict = {  'name': dex.name,
+        index_dict = {  'link': link,
+                        'name': dex.name,
                         'price': float('{0:.2f}'.format(dex_current.price)),
                         'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
                         'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),

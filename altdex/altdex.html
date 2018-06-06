@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>AltDex</title>
+    <title>AltDex 100</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -303,6 +303,14 @@
             text-align: center;
         }
 
+        .w_name > a {
+            color: black;
+        }
+
+        .w_name > a:hover {
+            color: #6dc0eb;
+        }
+
        #w_percent {
            font-size: 0.7em;
        }
@@ -338,6 +346,7 @@
                     <ul class="secondary dropdown-menu">
                         <li><a href="/altdex/altdex/">AltDex 100</a></li>
                         <li><a href="/altdex/exchange/">Exchanges</a></li>
+                        <li><a href="/altdex/privacy/">Privacy</a></li>
                     </ul>
                 </li>
                 <li><a href="/altdex/about/">About</a></li>
@@ -354,7 +363,7 @@
 
 
                     <div class="w_data">
-                        <div class="w_name">{{row.name}}</div>
+                        <div class="w_name"><a :href="row.link">{{row.name}}</a></div>
                         <div>
                         <div>{{row.price.toFixed(2)}}</div>
                         <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>

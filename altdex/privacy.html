@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>AltDex Exchange</title>
+    <title>AltDex Privacy</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -397,12 +397,12 @@
                      <!--<div class="index_info1">-->
                     <table class="table2" id="main_index_price" v-for="row in rows">
                         <tr>
-                            <th>ALTEXC</th>
+                            <th>ALTPRV</th>
                             <th>{{row.price.toFixed(2)}}</th>
                             <td id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}% <br/> {{row.change_24h}}</td>
                         </tr>
                         <tr>
-                            <td class="info">Exchanges - ALTEXC Delayed Value</td>
+                            <td class="info">Privacy - ALTPRV Delayed Value</td>
                             <td class="info">Last Update: {{row.time.slice(0,19)}} UTC</td>
                         </tr>
                     </table>
@@ -467,8 +467,8 @@
 The information provided by AltDex is not guaranteed to be complete, accurate or timely. It is provided solely for informational and educational purposes and does not constitute investment advice. It shall not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its content providers are responsible for any damages or losses arising from any use of this information. Past performance is no guarantee of future results.</p>
 </footer>
 <script>
-    let current_index = 'Exchange';
-    let current_id = '1';
+    let current_index = 'Privacy';
+    let current_id = '2';
     let first_x = 0;
     let amount_gainers = 0;
     let amount_losers = 0;
