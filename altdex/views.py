@@ -98,6 +98,9 @@ def getindexcurrent(request):
 def getcoinscurrent(request):
     coins = Coin.objects.all()
     coin_table = []
+    weight_1 = 0
+    weight_2 = 0
+    weight_3 = 0
 
     for this_coin in coins:
         # percent_weight = '{0:.3f}'.format(float(this_coin.market_cap) / (float(index.market_cap))*100)
@@ -105,9 +108,27 @@ def getcoinscurrent(request):
         dices = ''
         indices_in = this_coin.indices.all()
 
+
         for dex in indices_in:
             dices += str(dex.name)
-
+            if 'AltDex' in dex.name:
+                weight_1 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
+                if weight_1 >= 1:
+                    weight_1 = format(float(weight_1), '.2f')
+                else:
+                    weight_1 = float('{0:.6f}'.format(weight_1))
+            elif 'Privacy' in dex.name:
+                weight_2 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
+                if weight_2 >= 1:
+                    weight_2 = format(float(weight_2), '.2f')
+                else:
+                    weight_2 = float('{0:.6f}'.format(weight_2))
+            elif 'Exchange' in dex.name:
+                weight_3 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
+                if weight_3 >= 1:
+                    weight_3 = format(float(weight_3), '.2f')
+                else:
+                    weight_3 = float('{0:.6f}'.format(weight_3))
 
         if float(this_coin.price) >= 1:
             coin_price = format(float(this_coin.price), '.2f')
@@ -120,7 +141,10 @@ def getcoinscurrent(request):
                         'price': float(coin_price),
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
                         'volume': float('{0:.0f}'.format(this_coin.volume)),
-                        'indices': dices
+                        'indices': dices,
+                        'weight_1': weight_1,
+                        'weight_2': weight_2,
+                        'weight_3': weight_3
                         }
 
         coin_table.append(coin_dict)

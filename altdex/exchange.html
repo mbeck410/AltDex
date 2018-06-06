@@ -345,7 +345,7 @@
                     </a>
                     <ul class="secondary dropdown-menu">
                         <li><a href="/altdex/altdex/">AltDex 100</a></li>
-                        <li><a href="/altdex/exchange/">Exchanges</a></li>
+                        <li><a href="/altdex/exchange/">Exchange</a></li>
                         <li><a href="/altdex/privacy/">Privacy</a></li>
                     </ul>
                 </li>
@@ -445,7 +445,7 @@
                         <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                         <td >${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>{{row.percent_weight}}%</td>
+                        <td>{{row.weight_3}}%</td>
                     </tr>
                 </table>
             </div>
@@ -633,13 +633,14 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                 // if (index_name.includes(index) === true) {
 
             }
-            app.rows = new_coins;
+
             let percent_gainers = amount_gainers/count*100;
             let percent_losers = amount_losers/count*100;
             let new_gain = percent_gainers.toFixed(2);
             let new_lose = percent_losers.toFixed(2);
             gainers_div.innerHTML = new_gain.toString() + '%';
             losers_div.innerHTML = new_lose.toString() + '%';
+            app.rows = new_coins;
         });
     }
 
