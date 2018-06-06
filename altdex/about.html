@@ -33,34 +33,36 @@
             font-size: 8px;
         }
 
-        table.widget {
-            background-color: white;
+        .w_data {
+            display: flex;
             width: 100%;
+            border-bottom: 1px solid lightgray;
+            padding-bottom: 5px;
+            padding-top: 5px;
+
         }
 
-        table.widget th{
-            font-size: 25px;
-            background-color: white;
-            border-bottom: solid 3px #222842;
+
+
+        /*table.widget th{*/
+            /*font-size: 2em;*/
+            /*background-color: white;*/
+            /*border-bottom: solid 3px #222842;*/
+            /*text-align: center;*/
+        /*}*/
+
+        .w_data > div:first-child {
+            text-align: center;
+            font-size: 1.6em;
+            width: 60%;
+            margin: auto;
         }
 
-        table.widget td:first-child {
-
-            font-size: 28px;
-        }
-
-        table.widget td:nth-child(2) {
-            text-align: right;
-            font-size: 22px;
-        }
-
-        .widget_title {
-            font-size: 30px;
-            border-bottom: 3px solid #222842;
-            font-weight: bold;
-            width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
+        .w_data > div:nth-child(2) {
+            text-align: center;
+            font-size: 1.5em;
+            width: 40%;
+            margin:auto;
         }
 
         h2 {
@@ -150,10 +152,6 @@
             /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
         }
 
-        .w_info {
-            font-size: 10px;
-
-        }
 
 
         .pos {color: green;}
@@ -172,7 +170,31 @@
         }
 
         #widget {
+            width: 223px;
             max-width: 223px;
+            padding-top: 14px;
+        }
+
+        .w_name {
+            font-size: 1.4em;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .w_name > a {
+            color: black;
+        }
+
+        .w_name > a:hover {
+            color: #6dc0eb;
+        }
+
+       #w_percent {
+           font-size: 0.7em;
+       }
+
+        .w_info {
+            margin-top: 10px;
         }
 
 </style>
@@ -205,20 +227,24 @@
 
 <div class="main_div container-fluid text-center">
     <div class="row content">
-        <div class="widget_div col-sm-2 sidenav">
+         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
-                <table class="widget" v-for="row in rows">
-                    <div class="widget_title">AltDex 100</div>
+                <div class="widget" v-for="row in rows">
 
-                    <tr>
-                        <td>{{row.price.toFixed(2)}}</td>
-                        <td v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
+
+                    <div class="w_data">
+                        <div class="w_name"><a :href="row.link">{{row.name}}</a></div>
+                        <div>
+                        <div>{{row.price.toFixed(2)}}</div>
+                        <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
                          <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
-                    </tr>
-
-
-                </table>
-                <div class="w_info">AltDex 100 - ALT100 Delayed Price</div>
+                            </div>
+                    </div>
+                    </div>
+                <div class="w_info">
+                <div>Last Updated Value</div>
+                <div>All Values Delayed</div>
+                    </div>
             <div>
                 <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
             </div>
