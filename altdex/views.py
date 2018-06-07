@@ -74,7 +74,7 @@ def getindexcurrent(request):
     for dex in indices:
         link = ''
         if dex.name == 'AltDex100':
-            link = '/altdex'
+            link = '/'
         elif dex.name == 'Exchange':
             link = '/exchange'
         elif dex.name == 'Privacy':
