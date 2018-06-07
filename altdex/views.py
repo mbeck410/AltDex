@@ -111,22 +111,22 @@ def getcoinscurrent(request):
 
         for dex in indices_in:
             dices += str(dex.name)
-            if dex.name == 'Altdex':
+            if dex.name == 'AltDex100':
                 weight_1 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
                 if weight_1 >= 1:
-                    weight_1 = format(float(weight_1), '.2f')
+                    weight_1 = format(float(weight_1), '.3f')
                 else:
                     weight_1 = float('{0:.6f}'.format(weight_1))
             if dex.name == 'Exchange':
                 weight_2 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
                 if weight_2 >= 1:
-                    weight_2 = format(float(weight_2), '.2f')
+                    weight_2 = format(float(weight_2), '.3f')
                 else:
                     weight_2 = float('{0:.6f}'.format(weight_2))
             if dex.name == 'Privacy':
                 weight_3 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
                 if weight_3 >= 1:
-                    weight_3 = format(float(weight_3), '.2f')
+                    weight_3 = format(float(weight_3), '.3f')
                 else:
                     weight_3 = float('{0:.6f}'.format(weight_3))
 
