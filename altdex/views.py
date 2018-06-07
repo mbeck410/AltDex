@@ -16,25 +16,25 @@ from .models import Index, Coin, IndexPrice
 
 
 def altdex(request):
-    with open('./altdex.html') as file:
+    with open('./altdex/altdex.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
 
 def exchange(request):
-    with open('./exchange.html') as file:
+    with open('./altdex/exchange.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
 
 def privacy(request):
-    with open('./privacy.html') as file:
+    with open('./altdex/privacy.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
 
 def about(request):
-    with open('./about.html') as file:
+    with open('./altdex/about.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
