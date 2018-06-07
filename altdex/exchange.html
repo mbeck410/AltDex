@@ -650,7 +650,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         let other_data = [];
         app2.rows = [];
         app3.rows = [];
-        let url = '/getindexcurrent/');
+        let url = '/getindexcurrent/';
         http_get(url, function (data) {
             for (let i = 0; i < data.dict_key.length; ++i) {
                 other_data.push(data.dict_key[i])
