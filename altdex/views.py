@@ -16,7 +16,7 @@ from .models import Index, Coin, IndexPrice
 
 
 def altdex(request):
-    with open('.html') as file:
+    with open('./altdex.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
