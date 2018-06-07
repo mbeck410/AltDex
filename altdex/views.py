@@ -74,11 +74,11 @@ def getindexcurrent(request):
     for dex in indices:
         link = ''
         if dex.name == 'AltDex100':
-            link = '/altdex/altdex/'
+            link = '/altdex'
         elif dex.name == 'Exchange':
-            link = '/altdex/exchange'
+            link = '/exchange'
         elif dex.name == 'Privacy':
-            link = '/altdex/privacy'
+            link = '/privacy'
 
         dex_current = dex.indexprice_set.last()
         index_dict = {  'link': link,
