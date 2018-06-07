@@ -577,7 +577,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         amount_gainers = 0;
         amount_losers = 0;
         let count = 0;
-        let url = '/altdex/getcoinscurrent/';
+        let url = '/getcoinscurrent/';
         http_get(url, function (data) {
 
             for (let i = 0; i < data.dict_key.length; ++i) {
@@ -613,7 +613,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         amount_gainers = 0;
         amount_losers = 0;
         let count = 0;
-        let url = '/altdex/getcoinscurrent/';
+        let url = '/getcoinscurrent/';
         http_get(url, function (data) {
 
             for (let i = 0; i < data.dict_key.length; ++i) {
@@ -650,7 +650,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
         let other_data = [];
         app2.rows = [];
         app3.rows = [];
-        let url = '/altdex/getindexcurrent/';
+        let url = '/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
             for (let i = 0; i < data.dict_key.length; ++i) {
@@ -666,7 +666,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
     function update_index(index_id) {
         let new_data = [];
         let other_data = [];
-        let url = '/altdex/getindexcurrent/';
+        let url = '/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
             for (let i = 0; i < data.dict_key.length; ++i) {
@@ -686,7 +686,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
     function index_all() {
         line_data = [];
-        let url = '/altdex/getindexall/';
+        let url = '/getindexall/';
         //alert('test');
         http_get(url, function (data) {
             let full_data = data.dict_key;
