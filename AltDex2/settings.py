@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     'altdex22-dev.us-west-2.elasticbeanstalk.com',
     '127.0.0.1',
     'altdex.co',
+    'www.altdex.co',
 ]
 
 
