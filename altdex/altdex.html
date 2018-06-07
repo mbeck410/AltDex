@@ -492,7 +492,8 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
             date_update.setHours(date_update.getHours() + 6);
         }
         let update = {
-            'xaxis.range[0]': date_update    // updates the end of the yaxis range
+            'xaxis.range[0]': date_update,    // updates the end of the yaxis range
+            'yaxis.range': auto,
         };
         Plotly.relayout('index_chart', update)
     };
@@ -709,7 +710,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                     t: 20,
                 },
                 xaxis: {
-                    range: [line_data[0].x[0], line_data[0].x[data_length]],
+                    // range: [line_data[0].x[0], line_data[0].x[data_length]],
                     type: 'date',
                     title: 'Date',
                     showgrid: false,
@@ -720,7 +721,7 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
                     showticklabels: true,
                 },
                 yaxis: {
-                    range: [y_low, y_high],
+                    // range: [y_low, y_high],
                     showgrid: true,
                     autotick: true,
                     showline: true,

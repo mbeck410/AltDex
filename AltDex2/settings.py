@@ -29,7 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     'altdex22-dev.us-west-2.elasticbeanstalk.com',
-    '127.0.0.1'
+    '127.0.0.1',
+    'altdex.co',
 ]
 
 
