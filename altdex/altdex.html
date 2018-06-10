@@ -49,6 +49,27 @@
             .row.content {
                 height: auto;
             }
+
+            #index_chart {
+                width: auto;
+                height: 250px;
+            }
+
+            .widget_div {
+                display: none;
+            }
+
+
+
+            .main_price {
+                display: none;
+            }
+
+
+            .gainers_losers {
+                display: none;
+                width: 0%;
+            }
         }
 
         table.table {
@@ -160,21 +181,11 @@
             font-size: 40px;
         }
 
-        table.table2 {
-            font-size: 40px;
-        }
 
         /*table.table2:first-child {*/
             /*width: 40%;*/
         /*}*/
 
-        .table2 td {
-            font-size: 30px;
-        }
-
-        .table2 th:nth-child(2) {
-            font-weight: normal;
-        }
 
         .my_navbar {
             background-color: #222842;
@@ -263,10 +274,7 @@
             color: lightgray;
         }
 
-        table.table2 {
-            width: 60%;
-            border-right: solid 1px lightgray;
-        }
+
 
         .main_price {
             display: flex;
@@ -319,6 +327,88 @@
             margin-top: 10px;
         }
 
+        .main_price {
+            display: flex;
+        }
+
+        .pricing {
+            display: flex;
+            width: 65%;
+            text-align: center;
+
+        }
+
+        .gain {
+            margin: auto;
+        }
+
+        .lose {
+           margin: auto;
+        }
+
+        .gainers_losers {
+            display: flex;
+            width: 35%;
+            text-align: center;
+            border-left: solid 1px lightgray;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        #title_gainers {
+            color: green;
+        }
+
+        #title_losers {
+            color: red;
+        }
+
+        #gainers {
+            font-size: 1.8em;
+        }
+
+        #losers {
+            font-size: 1.8em;
+        }
+
+        .info {
+            font-size: 10px;
+        }
+
+        #middle_price {
+            font-size: 3.0em;
+        }
+
+        #middle_percent {
+            font-size: 1.8em;
+        }
+
+        #values_main {
+            font-size: 2.2em;
+        }
+
+        .dex_name {
+            font-size: 3.0em;
+            font-weight: bold;
+
+        }
+
+        .middle_name {
+            text-align: left;
+            margin: auto;
+        }
+
+        .middle_value {
+            text-align: center;
+            margin: auto;
+        }
+
+        .middle_data {
+            text-align: center;
+            margin: auto;
+        }
 
 
 
@@ -359,7 +449,7 @@
     <div class="row content">
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
-                <div class="widget" v-for="row in rows">
+                <div v-cloak class="widget" v-for="row in rows">
 
 
                     <div class="w_data">
@@ -395,33 +485,37 @@
 
                  <div id="index_info" class="well main_price">
                      <!--<div class="index_info1">-->
-                    <table class="table2" id="main_index_price" v-for="row in rows">
-                        <tr>
-                            <th>ALT100</th>
-                            <th>{{row.price.toFixed(2)}}</th>
-                            <td id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}% <br/> {{row.change_24h}}</td>
-                        </tr>
-                        <tr>
-                            <td class="info">AltDex 100 - ALT100 Delayed Value</td>
-                            <td class="info">Last Update: {{row.time.slice(0,19)}} UTC</td>
-                        </tr>
-                    </table>
-                     <table class="gainers_losers">
-                         <tr>
-                             <td id="title_gainers">% Gainers</td>
-                             <td id="title_losers">% Losers</td>
-                         </tr>
-                         <tr>
-                            <td id="gainers"></td>
-                             <td id="losers"></td>
-                        </tr>
-                     </table>
+                    <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
+                        <div class="middle_name">
+                            <div class="dex_name">ALT100</div>
+                            <div class="info">AltDex 100 - ALT100 Delayed Value</div>
+                        </div>
+                        <div class="middle_value">
+                            <div  id="middle_price">{{row.price.toFixed(2)}}</div>
+                            <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
+                        </div>
+                        <div class="middle_data">
+                            <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
+                            <div  id="middle_percent">{{row.change_24h.toFixed(2)}}</div>
+                        </div>
+                    </div>
 
-                </div>
+
+                     <div class="gainers_losers">
+                         <div class="gain">
+                             <div id="title_gainers">Gainers</div>
+                             <div id="gainers"></div>
+                         </div>
+                         <div class="lose">
+                            <div id="title_losers">Losers</div>
+                            <div id="losers"></div>
+                         </div>
+                     </div>
+                 </div>
 
             <div class="well">
 
-                <table id="coin_table" class="table table-hover">
+                <table v-cloak id="coin_table" class="table table-hover">
                     <!--<tr id="v-for-object">-->
                         <!--&lt;!&ndash;<th v-for="row in rows">&ndash;&gt;-->
                         <!--<th>-->
@@ -431,7 +525,7 @@
                     <tr>
                         <th>Symbol</th>
                         <th>Name</th>
-                        <th>Market Cap</th>
+                        <th >Market Cap</th>
                         <th>Last</th>
                         <th>Change (24h)</th>
                         <th>Volume (24h)</th>
@@ -440,11 +534,11 @@
                     <tr v-for="row in sortedArray">
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td class="row_name">{{row.name}}</td>
-                        <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td >${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price}}</td>
                         <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
-                        <td >${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>{{row.weight_1}}%</td>
                     </tr>
                 </table>
