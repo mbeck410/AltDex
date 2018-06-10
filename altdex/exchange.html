@@ -465,8 +465,8 @@
                      <!--<div class="index_info1">-->
                     <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
                         <div class="middle_name">
-                            <div class="dex_name">ALT100</div>
-                            <div class="info">AltDex 100 - ALT100 Delayed Value</div>
+                            <div class="dex_name">ALTEXC</div>
+                            <div class="info">AltDex Exchange - ALTEXC Delayed Value</div>
                         </div>
                         <div class="middle_value">
                             <div  id="middle_price">{{row.price.toFixed(2)}}</div>
@@ -517,7 +517,7 @@
                         <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
                         <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>{{row.weight_1}}%</td>
+                        <td>{{row.weight_2}}%</td>
                     </tr>
                 </table>
             </div>
@@ -673,8 +673,8 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
             }
             let percent_gainers = amount_gainers/count*100;
             let percent_losers = amount_losers/count*100;
-            let new_gain = percent_gainers.toFixed(2);
-            let new_lose = percent_losers.toFixed(2);
+            let new_gain = percent_gainers.toFixed(1);
+            let new_lose = percent_losers.toFixed(1);
             gainers_div.innerHTML = new_gain.toString() + '%';
             losers_div.innerHTML = new_lose.toString() + '%';
         })
@@ -708,8 +708,8 @@ The information provided by AltDex is not guaranteed to be complete, accurate or
 
             let percent_gainers = amount_gainers/count*100;
             let percent_losers = amount_losers/count*100;
-            let new_gain = percent_gainers.toFixed(2);
-            let new_lose = percent_losers.toFixed(2);
+            let new_gain = percent_gainers.toFixed(1);
+            let new_lose = percent_losers.toFixed(1);
             gainers_div.innerHTML = new_gain.toString() + '%';
             losers_div.innerHTML = new_lose.toString() + '%';
             app.rows = new_coins;
