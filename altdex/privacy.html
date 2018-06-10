@@ -384,7 +384,7 @@
             margin: auto;
         }
 
-        .middle_data {
+        #middle_data {
             text-align: center;
             margin: auto;
         }
@@ -474,9 +474,9 @@
                             <div  id="middle_price">{{row.price.toFixed(2)}}</div>
                             <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
                         </div>
-                        <div id="middle_data" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                            <div id="values_main">{{row.price_percent.toFixed(2)}}%</div>
-                            <div id="middle_percent">{{row.change_24h.toFixed(2)}}</div>
+                        <div id="middle_data">
+                            <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
+                            <div id="middle_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}</div>
                         </div>
                     </div>
 
