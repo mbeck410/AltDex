@@ -864,8 +864,8 @@
             let percent_losers = amount_losers / count * 100;
             let new_gain = percent_gainers;
             let new_lose = percent_losers;
-            gainers_div.innerHTML = new_gain.toString() + '%';
-            losers_div.innerHTML = new_lose.toString() + '%';
+            gainers_div.innerHTML = new_gain.toString().toFixed(0) + '%';
+            losers_div.innerHTML = new_lose.toString().toFixed(0) + '%';
             app.rows = new_coins;
         });
     }
@@ -900,8 +900,8 @@
             let percent_losers = amount_losers / count * 100;
             let new_gain = percent_gainers;
             let new_lose = percent_losers;
-            gainers_div.innerHTML = new_gain.toString() + '%';
-            losers_div.innerHTML = new_lose.toString() + '%';
+            gainers_div.innerHTML = new_gain.toString().toFixed(0) + '%';
+            losers_div.innerHTML = new_lose.toString().toFixed(0 + '%';
             app.rows = new_coins;
         });
     }
