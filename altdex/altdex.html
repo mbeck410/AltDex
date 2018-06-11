@@ -736,6 +736,7 @@
     let current_index = 'AltDex';
     let current_id = '0';
     let first_x = 0;
+    let current_y = 0;
     let amount_gainers = 0;
     let amount_losers = 0;
 
@@ -960,6 +961,7 @@
                 10;
             let y_high = Math.max(...line_data[0].y) + y_range_border;
             let y_low = Math.min(...line_data[0].y) - y_range_border;
+            current_y = line_data[data_length].y;
             first_x = line_data[0].x[0];
             // console.log(y_low);
             // console.log(y_high);
