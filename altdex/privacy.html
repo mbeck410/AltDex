@@ -488,6 +488,21 @@
             text-align: center;
         }
 
+        /* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+
+
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
 
     </style>
 </head>
@@ -648,12 +663,21 @@
 </div>
 
 <footer class="container-fluid text-center">
-    <p id="disclaimer">The information provided by AltDex is not guaranteed to be complete, accurate or timely. It is
-        provided solely for informational and educational purposes and does not constitute investment advice. It shall
-        not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its content
-        providers are responsible for any damages or losses arising from any use of this information. Past performance
-        is no guarantee of future results.</p>
-    <p>&#169AltDex 2018. All rights reserved.</p>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <p id="disclaimer">The information provided by AltDex is not guaranteed to be complete, accurate or timely. It is
+            provided solely for informational and educational purposes and does not constitute investment advice. It shall
+            not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its content
+            providers are responsible for any damages or losses arising from any use of this information. Past performance
+            is no guarantee of future results.</p>
+        <div class="footer_bottom">
+            <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
+            <div><a href="info@altdex.co" class="fa">&#x2709</a><a href="https://twitter.com/altcoindex" class="fa fa-twitter"></a></div>
+            <div class="footer_link">From the creators of <a href="https://sludgefeed.com/">SludgFeed</a></div>
+            <div class="footer_link">Select market data provided by <a href="http://coincap.io/">CoinCap</a> & <a href="https://coinmarketcap.com/">CoinMarketCap</a></div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
 </footer>
 <script>
     let current_index = 'Privacy';
