@@ -502,8 +502,8 @@
             text-align: center;
             font-size: 9px;
             border-bottom: 1px solid darkgray;
-            margin: 8px;
-            padding-bottom: 9px;
+            margin: 11px;
+            padding-bottom: 12px;
         }
 
         .footer_bottom {
@@ -758,7 +758,6 @@
         }
         let update = {
             'xaxis.range[0]': date_update,    // updates the end of the yaxis range
-            'yaxis.autorange': true,
         };
         Plotly.relayout('index_chart', update)
     };
@@ -961,8 +960,8 @@
                 10;
             let y_high = Math.max(...line_data[0].y) + y_range_border;
             let y_low = Math.min(...line_data[0].y) - y_range_border;
-            current_y = line_data[data_length].y;
             first_x = line_data[0].x[0];
+            current_y = line_data[0].y[data_length];
             // console.log(y_low);
             // console.log(y_high);
 
