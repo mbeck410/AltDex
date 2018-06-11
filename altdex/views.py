@@ -75,10 +75,13 @@ def getindexcurrent(request):
         link = ''
         if dex.name == 'AltDex100':
             link = '/'
+            symbol = 'ALT100'
         elif dex.name == 'Exchange':
             link = '/exchange'
+            symbol = 'ALTEXC'
         elif dex.name == 'Privacy':
             link = '/privacy'
+            symbol = 'ALTPRV'
 
         dex_current = dex.indexprice_set.last()
         index_dict = {  'link': link,
@@ -87,7 +90,8 @@ def getindexcurrent(request):
                         'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
                         'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
                         'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
-                        'time': str(dex_current.timestamp)
+                        'time': str(dex_current.timestamp),
+                        'symbol': symbol
                         }
 
         indices_current.append(index_dict)

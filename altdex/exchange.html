@@ -377,7 +377,7 @@
 
         .w_name {
             font-size: 1.4em;
-            font-weight: normal;
+            font-weight: bold;
             text-align: center;
         }
 
@@ -569,7 +569,7 @@
 
 
                     <div class="w_data">
-                        <div class="w_name"><a :href="row.link">{{row.name}}</a></div>
+                        <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
                         <div>
                         <div>{{row.price.toFixed(2)}}</div>
                         <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
