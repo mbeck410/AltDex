@@ -18,8 +18,8 @@
 </script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_ffd55116db5fb3420a5452387");</script>
-    <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+    <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_ebd3b2ea855fd4e14daaf2e86");</script>
+<script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
     <meta charset="UTF-8">
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -58,9 +58,104 @@
             .row.content {
                 height: auto;
             }
+
+            #index_chart {
+                width: auto;
+                height: auto;
+            }
+
+            .widget_div {
+                display: none;
+            }
+
+            .main_price {
+                display: none;
+            }
+
+            .lose {
+                display: none;
+                width: 0;
+            }
+
+            .gain {
+                display: none;
+                width: 0;
+            }
+
+            #coin_name_title {
+                display: none;
+            }
+
+            #coin_name_value {
+                display: none;
+            }
+
+            #coin_market_title {
+                display: none;
+            }
+
+            #coin_market_value {
+                display: none;
+            }
+
+            #coin_volume_title {
+                display: none;
+            }
+
+            #coin_volume_value {
+                display: none;
+            }
+
+            #coin_weight_title {
+                display: none;
+            }
+
+            #coin_weight_value {
+                display: none;
+            }
+
+            #values_main {
+                display: none;
+            }
+
+            #middle_percent {
+                display: none;
+            }
+
+            .middle_data {
+                width: 0;
+            }
+
+            .gainers_losers {
+                display: none;
+                width: 0;
+
+            }
+
+            .main_price {
+                width: 100%;
+            }
+
+            .main_price > div.gainers_losers {
+                width: 0;
+                display: none;
+            }
+
+            .pricing {
+                width: 100%;
+            }
+
+            .middle_name {
+                width: 50%;
+            }
+
+            .middle_value {
+                width: 50%
+            }
+
         }
 
-                table.table {
+        table.table {
             background-color: white;
             margin: 0px
         }
@@ -75,7 +170,7 @@
         }
 
         /*table.table th:nth-child(5) {*/
-            /*text-align: center*/
+        /*text-align: center*/
         /*}*/
 
         table.table td:nth-child(n+3) {
@@ -91,7 +186,7 @@
         }
 
         /*table.table td:nth-child(5) {*/
-            /*text-align: center*/
+        /*text-align: center*/
         /*}*/
 
         .w_data {
@@ -103,13 +198,11 @@
 
         }
 
-
-
         /*table.widget th{*/
-            /*font-size: 2em;*/
-            /*background-color: white;*/
-            /*border-bottom: solid 3px #222842;*/
-            /*text-align: center;*/
+        /*font-size: 2em;*/
+        /*background-color: white;*/
+        /*border-bottom: solid 3px #222842;*/
+        /*text-align: center;*/
         /*}*/
 
         .w_data > div:first-child {
@@ -123,24 +216,21 @@
             text-align: center;
             font-size: 1.5em;
             width: 40%;
-            margin:auto;
+            margin: auto;
         }
 
         /*.widget_title {*/
-            /*font-size: 30px;*/
-            /*border-bottom: 3px solid #222842;*/
-            /*font-weight: bold;*/
-            /*width: auto;*/
-            /*padding-left: 15px;*/
-            /*padding-right: 15px;*/
+        /*font-size: 30px;*/
+        /*border-bottom: 3px solid #222842;*/
+        /*font-weight: bold;*/
+        /*width: auto;*/
+        /*padding-left: 15px;*/
+        /*padding-right: 15px;*/
         /*}*/
-
-
-
 
         #center {
             /*background-color: whitesmoke;*/
-            padding-top: 22px;
+            padding-top: 20px;
         }
 
         /*#center > div {*/
@@ -153,8 +243,8 @@
         }
 
         /*.sidenav > .well {*/
-            /*background-color: white;*/
-            /*box-shadow: 0 0 4px gray;*/
+        /*background-color: white;*/
+        /*box-shadow: 0 0 4px gray;*/
         /*}*/
 
         h1 {
@@ -169,11 +259,9 @@
             font-size: 40px;
         }
 
-
         /*table.table2:first-child {*/
-            /*width: 40%;*/
+        /*width: 40%;*/
         /*}*/
-
 
         .my_navbar {
             background-color: #222842;
@@ -182,7 +270,6 @@
             border-radius: 0;
             border: 0;
         }
-
 
         .my_navbar .navbar-brand {
             color: white;
@@ -214,14 +301,18 @@
             color: lightgray;
         }
 
-
         .main_div {
             background-color: #ededed;
             /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
         }
 
-        .pos {color: green;}
-        .neg {color: red;}
+        .pos {
+            color: green;
+        }
+
+        .neg {
+            color: red;
+        }
 
         .row_name {
             width: 10%;
@@ -230,7 +321,6 @@
             white-space: nowrap;
 
         }
-
 
         .btn {
             background-color: #222842;
@@ -252,7 +342,6 @@
             font-size: 10px;
         }
 
-
         .w_info {
             font-size: 10px;
 
@@ -261,8 +350,6 @@
         .time_bts > button:hover {
             color: lightgray;
         }
-
-
 
         .main_price {
             display: flex;
@@ -286,11 +373,10 @@
             color: red;
         }
 
-
         #widget {
             width: 223px;
             max-width: 223px;
-            padding-top: 14px;
+
         }
 
         .w_name {
@@ -307,9 +393,9 @@
             color: #6dc0eb;
         }
 
-       #w_percent {
-           font-size: 0.7em;
-       }
+        #w_percent {
+            font-size: 0.7em;
+        }
 
         .w_info {
             margin-top: 10px;
@@ -331,7 +417,7 @@
         }
 
         .lose {
-           margin: auto;
+            margin: auto;
         }
 
         .gainers_losers {
@@ -398,6 +484,9 @@
             margin: auto;
         }
 
+        #disclaimer {
+            text-align: center;
+        }
 
 
     </style>
@@ -534,7 +623,14 @@
         </div>
 
         <div class="col-sm-2 sidenav">
-                <div class="well feedgrabbr_widget" id="fgid_ffd55116db5fb3420a5452387"></div>
+            <div class="well">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="3068727453"
+                     data-ad-format="auto"></ins>
+            </div>
+                <div class="feedgrabbr_widget" id="fgid_ebd3b2ea855fd4e14daaf2e86"></div>
             <!--<div class="well">-->
                 <!--&lt;!&ndash;<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">&ndash;&gt;-->
             <!--</div>-->
