@@ -10,17 +10,27 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
     <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-103693878-2');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-103693878-2');
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_ebd3b2ea855fd4e14daaf2e86");</script>
-<script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+    <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array();
+    fg_widgets.push("fgid_ebd3b2ea855fd4e14daaf2e86");</script>
+    <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     <meta charset="UTF-8">
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -501,7 +511,7 @@
             text-align: left;
         }
 
-         /* Style all font awesome icons */
+        /* Style all font awesome icons */
         .fa {
 
             font-size: 16px;
@@ -519,10 +529,7 @@
 
         /* Set a specific color for each brand */
 
-
-
         /* Twitter */
-
 
 
     </style>
@@ -537,7 +544,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
+            <a class="navbar-brand" href="/"><img
+                    src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="primary nav navbar-nav">
@@ -567,19 +575,22 @@
                     <div class="w_data">
                         <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
                         <div>
-                        <div>{{row.price.toFixed(2)}}</div>
-                        <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
-                         <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
+                            <div>{{row.price.toFixed(2)}}</div>
+                            <div id="w_percent"
+                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                {{row.price_percent.toFixed(2)}}%
                             </div>
+                            <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
+                        </div>
                     </div>
-                    </div>
+                </div>
                 <div class="w_info">
-                <div>Last Updated Value</div>
-                <div>All Values Delayed</div>
-                    </div>
-            <div>
-                <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
-            </div>
+                    <div>Last Updated Value</div>
+                    <div>All Values Delayed</div>
+                </div>
+                <div>
+                    <!--<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">-->
+                </div>
             </div>
         </div>
         <div id="center" class="col-sm-8 text-left">
@@ -595,49 +606,53 @@
                 <div id="index_chart"></div>
             </div>
 
-                 <div id="index_info" class="well main_price">
-                     <!--<div class="index_info1">-->
-                    <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
-                        <div class="middle_name">
-                            <div class="dex_name">ALTPRV</div>
-                            <div class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+            <div id="index_info" class="well main_price">
+                <!--<div class="index_info1">-->
+                <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
+                    <div class="middle_name">
+                        <div class="dex_name">ALTPRV</div>
+                        <div class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+                    </div>
+                    <div class="middle_value">
+                        <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                        <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
+                    </div>
+                    <div class="middle_data">
+                        <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                            {{row.price_percent.toFixed(2)}}%
                         </div>
-                        <div class="middle_value">
-                            <div  id="middle_price">{{row.price.toFixed(2)}}</div>
-                            <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
-                        </div>
-                        <div class="middle_data">
-                            <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
-                            <div id="middle_percent" v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{row.change_24h.toFixed(2)}}</div>
+                        <div id="middle_percent" v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
+                            {{row.change_24h.toFixed(2)}}
                         </div>
                     </div>
+                </div>
 
 
-                     <div class="gainers_losers">
-                         <div class="gain">
-                             <div id="title_gainers">Gainers</div>
-                             <div id="gainers"></div>
-                         </div>
-                         <div class="lose">
-                            <div id="title_losers">Losers</div>
-                            <div id="losers"></div>
-                         </div>
-                     </div>
-                 </div>
+                <div class="gainers_losers">
+                    <div class="gain">
+                        <div id="title_gainers">Gainers</div>
+                        <div id="gainers"></div>
+                    </div>
+                    <div class="lose">
+                        <div id="title_losers">Losers</div>
+                        <div id="losers"></div>
+                    </div>
+                </div>
+            </div>
 
             <div class="well">
 
                 <table v-cloak id="coin_table" class="table table-hover">
                     <!--<tr id="v-for-object">-->
-                        <!--&lt;!&ndash;<th v-for="row in rows">&ndash;&gt;-->
-                        <!--<th>-->
-                            <!--<a>{{rows.0}}</a>-->
-                        <!--</th>-->
+                    <!--&lt;!&ndash;<th v-for="row in rows">&ndash;&gt;-->
+                    <!--<th>-->
+                    <!--<a>{{rows.0}}</a>-->
+                    <!--</th>-->
                     <!--</tr>-->
                     <tr>
                         <th>Symbol</th>
                         <th>Name</th>
-                        <th >Market Cap</th>
+                        <th>Market Cap</th>
                         <th>Last</th>
                         <th>Change (24h)</th>
                         <th>Volume (24h)</th>
@@ -646,10 +661,12 @@
                     <tr v-for="row in sortedArray">
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td class="row_name">{{row.name}}</td>
-                        <td >${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price}}</td>
                         <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
-                        <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</td>
+                        <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">
+                            {{row.price_percent.toFixed(2)}}%
+                        </td>
                         <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>{{row.weight_3}}%</td>
                     </tr>
@@ -660,24 +677,24 @@
 
         <div class="col-sm-2 sidenav">
             <div class="well">
-            <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9873470958093574"
-     data-ad-slot="5597159466"
-     data-ad-format="auto"></ins>
-                </div>
-                <div class="well">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="5597159466"
+                     data-ad-format="auto"></ins>
+            </div>
+            <div class="well">
                 <div class="feedgrabbr_widget" id="fgid_ebd3b2ea855fd4e14daaf2e86"></div>
             </div>
             <div class="well">
-            <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9873470958093574"
-     data-ad-slot="5597159466"
-     data-ad-format="auto"></ins>
-                </div>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="5597159466"
+                     data-ad-format="auto"></ins>
+            </div>
             <!--<div class="well">-->
-                <!--&lt;!&ndash;<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">&ndash;&gt;-->
+            <!--&lt;!&ndash;<img src="https://static.wixstatic.com/media/98a7ed_6ed40a1d847b4f60be28c9fe224852e9~mv2.gif" class="img-thumbnail">&ndash;&gt;-->
             <!--</div>-->
         </div>
     </div>
@@ -686,16 +703,21 @@
 <footer class="container-fluid text-center">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-        <p id="disclaimer">The information provided by AltDex is not guaranteed to be complete, accurate or timely. It is
-            provided solely for informational and educational purposes and does not constitute investment advice. It shall
+        <p id="disclaimer">The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
+            is
+            provided solely for informational and educational purposes and does not constitute investment advice. It
+            shall
             not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its content
-            providers are responsible for any damages or losses arising from any use of this information. Past performance
+            providers are responsible for any damages or losses arising from any use of this information. Past
+            performance
             is no guarantee of future results.</p>
         <div class="footer_bottom">
             <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
-            <div><a href="info@altdex.co" class="fa">&#x2709</a><a href="https://twitter.com/altcoindex" class="fa fa-twitter"></a></div>
+            <div><a href="info@altdex.co" class="fa">&#x2709</a><a href="https://twitter.com/altcoindex"
+                                                                   class="fa fa-twitter"></a></div>
             <div class="footer_link">From the creators of <a href="https://sludgefeed.com/">SludgFeed</a></div>
-            <div class="footer_link">Select market data provided by <a href="http://coincap.io/">CoinCap</a> & <a href="https://coinmarketcap.com/">CoinMarketCap</a></div>
+            <div class="footer_link">Select market data provided by <a href="http://coincap.io/">CoinCap</a> & <a
+                    href="https://coinmarketcap.com/">CoinMarketCap</a></div>
         </div>
     </div>
     <div class="col-sm-2"></div>
@@ -709,20 +731,19 @@
     let dict_loss = [];
 
 
-
     let change_range = function (time_frame) {
         let date_update = new Date();
-        if(time_frame == 'year') {
+        if (time_frame == 'year') {
             date_update = first_x;
-        } else if(time_frame == 'three_month') {
-            date_update.setMonth(date_update.getMonth()-3);
-        } else if(time_frame == 'one_month') {
-            date_update.setMonth(date_update.getMonth()-1);
-        } else if(time_frame == 'seven_day') {
+        } else if (time_frame == 'three_month') {
+            date_update.setMonth(date_update.getMonth() - 3);
+        } else if (time_frame == 'one_month') {
+            date_update.setMonth(date_update.getMonth() - 1);
+        } else if (time_frame == 'seven_day') {
             date_update.setDate(date_update.getDate() - 7);
-        } else if(time_frame == 'one_day') {
+        } else if (time_frame == 'one_day') {
             date_update.setDate(date_update.getDate() - 1);
-        } else if(time_frame == 'hour') {
+        } else if (time_frame == 'hour') {
             date_update.setHours(date_update.getHours() + 6);
         }
         let update = {
@@ -749,6 +770,7 @@
                         return 1;
                     return 0;
                 }
+
                 return this.rows.sort(compare);
             }
         },
@@ -786,8 +808,6 @@
             rows: [],
         }
     });
-
-
 
 
     function http_get(url, success) {
@@ -835,8 +855,8 @@
                 // if (index_name.includes(index) === true) {
 
             }
-            let percent_gainers = amount_gainers/count*100;
-            let percent_losers = amount_losers/count*100;
+            let percent_gainers = amount_gainers / count * 100;
+            let percent_losers = amount_losers / count * 100;
             let new_gain = percent_gainers.toFixed(1);
             let new_lose = percent_losers.toFixed(1);
             gainers_div.innerHTML = new_gain.toString() + '%';
@@ -870,8 +890,8 @@
 
             }
 
-            let percent_gainers = amount_gainers/count*100;
-            let percent_losers = amount_losers/count*100;
+            let percent_gainers = amount_gainers / count * 100;
+            let percent_losers = amount_losers / count * 100;
             let new_gain = percent_gainers.toFixed(1);
             let new_lose = percent_losers.toFixed(1);
             gainers_div.innerHTML = new_gain.toString() + '%';
@@ -916,8 +936,8 @@
     }
 
 
-
     let line_data = [];
+
     // let line_data2 = [];
 
     function index_all(id_num) {
@@ -985,9 +1005,9 @@
     index_current(current_id);
     coin_current(current_index);
     index_all();
-    setInterval(function() {
-        update_coin(current_index);
-        update_index(current_id);
+    setInterval(function () {
+            update_coin(current_index);
+            update_index(current_id);
         },
         30000);
 
