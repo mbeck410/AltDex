@@ -535,6 +535,15 @@
             margin-bottom: 20px;
          }
 
+        .footer_link {
+            display: flex;
+            margin: auto;
+        }
+
+        #footer_left_link {
+            border-right: 1px solid gray;
+        }
+
 
     </style>
 </head>
@@ -713,14 +722,20 @@
 <footer class="container-fluid text-center">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-        <p id="disclaimer">The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
+        <div id="disclaimer">
+            <p>The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
             is
             provided solely for informational and educational purposes and does not constitute investment advice. It
             shall
             not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its content
             providers are responsible for any damages or losses arising from any use of this information. Past
             performance
-            is no guarantee of future results.</p>
+            is no guarantee of future results.<p>
+            <div id="footer_links">
+                <div id="footer_left_link"><a href="">Terms of Service</a></div>
+                <div><a href="/privacy_policy/">Privacy Policy</a></div>
+            </div>
+        </div>
         <div class="footer_bottom">
             <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
             <div><a href="info@altdex.co" class="fa">&#x2709</a><a href="https://twitter.com/altcoindex"

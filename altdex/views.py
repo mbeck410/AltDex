@@ -39,6 +39,12 @@ def about(request):
     return HttpResponse(contents)
 
 
+def privacy_policy(request):
+    with open('./altdex/p_policy.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
+
+
 def pullcurrent(request):
     if request.user.is_superuser:
         test = collect()
