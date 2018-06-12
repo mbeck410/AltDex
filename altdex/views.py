@@ -39,8 +39,8 @@ def about(request):
     return HttpResponse(contents)
 
 
-def privacypolicy(request):
-    with open('./altdex/privacypolicy.html') as file:
+def privacy_policy(request):
+    with open('./altdex/privacy_policy.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
