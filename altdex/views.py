@@ -40,7 +40,7 @@ def about(request):
 
 
 def privacypolicy(request):
-    with open('./altdex/PrivacyPolicy.html') as file:
+    with open('./altdex/privacypolicy.html') as file:
         contents = file.read()
     return HttpResponse(contents)
 
