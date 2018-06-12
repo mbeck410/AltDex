@@ -120,43 +120,53 @@
                 display: none;
             }
 
-            #values_main {
-                display: none;
-            }
-
-            #middle_percent {
-                display: none;
-            }
-
-            .middle_data {
-                width: 0;
-            }
 
             .gainers_losers {
                 display: none;
-                width: 0;
+                margin: auto;
 
             }
 
-            .main_price {
-                width: 100%;
+            #index_chart {
+                height: 300px;
             }
 
             .main_price > div.gainers_losers {
-                width: 0;
+                margin: auto;
                 display: none;
             }
 
-            .pricing {
+            #main_index_price {
+                margin-top: auto;
+                margin-bottom: auto;
+                margin-left: 0;
+                margin-right: 0;
                 width: 100%;
             }
 
+            .pricing {
+                margin: auto;
+            }
+
             .middle_name {
-                width: 50%;
+                display: none;
             }
 
             .middle_value {
-                width: 50%
+                margin: auto;
+            }
+
+            .middle_data {
+                margin: auto;
+            }
+
+
+            #right_bar {
+                display: none;
+            }
+
+            .info {
+                display: none;
             }
 
         }
@@ -667,24 +677,24 @@
                     <!--</tr>-->
                     <tr>
                         <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Market Cap</th>
+                        <th id="coin_name_title">Name</th>
+                        <th id="coin_market_title">Market Cap</th>
                         <th>Last</th>
                         <th>Change (24h)</th>
-                        <th>Volume (24h)</th>
-                        <th>% Weight</th>
+                        <th id="coin_volume_title">Volume (24h)</th>
+                        <th id="coin_weight_title">% Weight</th>
                     </tr>
                     <tr v-for="row in sortedArray">
                         <td class="row_symbol">{{row.symbol}}</td>
-                        <td class="row_name">{{row.name}}</td>
-                        <td>${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td id="coin_name_value" class="row_name">{{row.name}}</td>
+                        <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price}}</td>
                         <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">
                             {{row.price_percent.toFixed(2)}}%
                         </td>
-                        <td>${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>{{row.weight_3}}%</td>
+                        <td id="coin_volume_value">${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td id="coin_weight_value">{{row.weight_3}}%</td>
                     </tr>
                 </table>
             </div>
@@ -695,7 +705,7 @@
                      data-ad-format="auto"></ins>
         </div>
 
-        <div class="col-sm-2 sidenav">
+        <div id="right_bar" class="col-sm-2 sidenav">
             <div class="well">
                 <ins class="adsbygoogle"
                      style="display:block"
