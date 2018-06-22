@@ -146,6 +146,7 @@ def getcoinscurrent(request):
             coin_price = float('{0:.6f}'.format(this_coin.price))
 
         coin_dict = {   'name': this_coin.name,
+                        'website': this_coin.website,
                         'symbol': this_coin.symbol,
                         'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
                         'price': float(coin_price),
