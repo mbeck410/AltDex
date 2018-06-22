@@ -22,6 +22,7 @@ class Coin(models.Model):
     market_cap = models.DecimalField(max_digits=50, decimal_places=25)
     volume = models.DecimalField(max_digits=50, decimal_places=25)
     percent_weight = models.DecimalField(max_digits=50, decimal_places=25)
+    website = models.CharField(max_length=50, default='')
 
     def __str__(self):
 
