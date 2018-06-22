@@ -683,7 +683,7 @@
                     </tr>
                     <tr v-for="row in sortedArray">
                         <td class="row_symbol">{{row.symbol}}</td>
-                        <td id="coin_name_value" class="row_name"><a :href="row.website">{{row.name}}</a></td>
+                        <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">{{row.name}}</a></td>
                         <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price}}</td>
                         <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
