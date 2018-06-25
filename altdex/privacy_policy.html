@@ -176,8 +176,7 @@
         }
 
         .w_name {
-            font-size: 1.4em;
-            font-weight: normal;
+            font-weight: bold;
             text-align: center;
         }
 
@@ -189,9 +188,9 @@
             color: #6dc0eb;
         }
 
-        #w_percent {
-            font-size: 0.7em;
-        }
+        /*#w_percent {*/
+            /*font-size: 0.7em;*/
+        /*}*/
 
         .w_info {
             margin-top: 10px;
@@ -289,7 +288,7 @@
 
 
                     <div class="w_data">
-                        <div class="w_name"><a :href="row.link">{{row.name}}</a></div>
+                        <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
                         <div>
                             <div>{{row.price.toFixed(2)}}</div>
                             <div id="w_percent"
