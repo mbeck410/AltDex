@@ -285,9 +285,7 @@
     <div class="row content">
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
-                <div class="widget" v-for="row in rows">
-
-
+                <div v-cloak class="widget" v-for="row in rows">
                     <div class="w_data">
                         <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
                         <div>
