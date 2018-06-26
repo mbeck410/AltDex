@@ -42,27 +42,18 @@
 
         }
 
-
-
-        /*table.widget th{*/
-            /*font-size: 2em;*/
-            /*background-color: white;*/
-            /*border-bottom: solid 3px #222842;*/
-            /*text-align: center;*/
-        /*}*/
-
         .w_data > div:first-child {
             text-align: center;
-            font-size: 1.6em;
-            width: 60%;
+            font-size: 1.6vw;
+            /*width: 60%;*/
             margin: auto;
         }
 
         .w_data > div:nth-child(2) {
             text-align: center;
-            font-size: 1.5em;
-            width: 40%;
-            margin:auto;
+            font-size: 1.4vw;
+            /*width: 40%;*/
+            margin: auto;
         }
 
         h2 {
@@ -170,13 +161,12 @@
         }
 
         #widget {
-            width: 223px;
-            max-width: 223px;
             padding-top: 14px;
+            padding-bottom: 14px;
+            margin: auto;
         }
 
         .w_name {
-            font-size: 1.4em;
             font-weight: normal;
             text-align: center;
         }
@@ -289,7 +279,7 @@
 
 
                     <div class="w_data">
-                        <div class="w_name"><a :href="row.link">{{row.name}}</a></div>
+                        <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
                         <div>
                         <div>{{row.price.toFixed(2)}}</div>
                         <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
