@@ -119,6 +119,23 @@ def clear_price():
 
     print('Done')
 
+def first_weight():
+    indices = Index.objects.all()
+
+    for index in indices:
+        divisor = 0
+        price = index.indexprice_set.last()
+        coins = index.coin_set.all()
+
+        for coin in coins:
+            divisor += coin.market_cap
+
+        divisor /= 100
+
+        setattr(index, 'divisor', divisor)
+        setattr(price, 'price', 100)
+
+
 
 
 
