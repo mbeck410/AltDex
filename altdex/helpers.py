@@ -115,11 +115,7 @@ def clear_price():
     n = 1
     entries = IndexPrice.objects.all()
     print('Deleting...')
-    for i in len(entries):
-        entries[i].delete()
-        if i == 200*n:
-            print('...')
-            n += 1
+    entries.delete()
 
     print('Done')
 
