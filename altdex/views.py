@@ -141,9 +141,9 @@ def getcoinscurrent(request):
                     weight_3 = float('{0:.6f}'.format(weight_3))
 
         if float(this_coin.price) >= 1:
-            coin_price = float('{0:.2f}'.format(this_coin.price))
+            coin_price = '{0:.2f}'.format(this_coin.price)
         else:
-            coin_price = float('{0:.6f}'.format(this_coin.price))
+            coin_price = '{0:.6f}'.format(this_coin.price)
 
         coin_dict = {   'name': this_coin.name,
                         'website': this_coin.website,
