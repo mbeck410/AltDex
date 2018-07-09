@@ -111,6 +111,14 @@ def collect():
 
     sleep(60)
 
+def clear_price():
+    entries = IndexPrice.objects.all()
+    for entry in entries:
+        entry.delete()
+
+    print('Done')
+
+
 
 
 
