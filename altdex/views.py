@@ -149,7 +149,7 @@ def getcoinscurrent(request):
                         'website': this_coin.website,
                         'symbol': this_coin.symbol,
                         'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
-                        'price': '{0:.2f}'.format(float(coin_price)),
+                        'price': coin_price,
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
                         'volume': float('{0:.0f}'.format(this_coin.volume)),
                         'indices': dices,
