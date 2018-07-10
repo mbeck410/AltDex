@@ -25,4 +25,3 @@ class Command(BaseCommand):
         else:
             return
 
-        
