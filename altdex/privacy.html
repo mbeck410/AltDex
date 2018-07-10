@@ -743,6 +743,9 @@
     let first_x = 0;
     let amount_gainers = 0;
     let amount_losers = 0;
+    let last_y = 0;
+    let y_low = 0;
+    let y_high = 0;
 
     let change_range = function (time_frame) {
         let date_update = new Date();
@@ -928,6 +931,7 @@
     function index_current(index_id) {
         let new_data = [];
         let other_data = [];
+        last_y = 0;
         app2.rows = [];
         app3.rows = [];
         let url = '/getindexcurrent/';
@@ -937,6 +941,7 @@
                 other_data.push(data.dict_key[i])
             }
             new_data.push(data.dict_key[index_id]);
+            last_y = data.dict_key[index_id].price;
             app2.rows = new_data;
             app3.rows = other_data;
             // }
