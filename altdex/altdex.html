@@ -789,7 +789,7 @@
         if (Object.keys(y_update).length != 0) {
             update.append(y_update)
         }
-
+        Plotly.relayout('index_chart', update)
     };
 
     let app = new Vue({
