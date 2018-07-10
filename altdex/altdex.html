@@ -787,7 +787,7 @@
             'xaxis.range[0]': date_update,    // updates the end of the xaxis range
         };
         if (Object.keys(y_update).length != 0) {
-            update.append(y_update)
+            update = extend(update, y_update);
         }
         Plotly.relayout('index_chart', update)
     };
