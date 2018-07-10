@@ -980,8 +980,8 @@
             let data_length = line_data[0].x.length - 1;
             let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
                 10;
-            let y_high = Math.max(...line_data[0].y) + y_range_border;
-            let y_low = Math.min(...line_data[0].y) - y_range_border;
+            y_high = Math.max(...line_data[0].y) + y_range_border;
+            y_low = Math.min(...line_data[0].y) - y_range_border;
             first_x = line_data[0].x[0];
             // console.log(y_low);
             // console.log(y_high);
