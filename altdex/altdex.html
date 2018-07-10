@@ -762,7 +762,8 @@
     let amount_gainers = 0;
     let amount_losers = 0;
     let last_y = 0;
-    let y_update = {};
+    let y_low = 0;
+    let y_high = 0;
 
     let change_range = function (time_frame) {
         let date_update = new Date();
@@ -770,27 +771,29 @@
         let update = {};
         if (time_frame == 'year') {
             date_update = first_x;
+            y_update = [y_low, y_high]
         } else if (time_frame == 'three_month') {
             date_update.setMonth(date_update.getMonth() - 3);
+            y_update = [y_low, y_high]
         } else if (time_frame == 'one_month') {
             date_update.setMonth(date_update.getMonth() - 1);
+            y_update = [y_low, y_high]
         } else if (time_frame == 'seven_day') {
             date_update.setDate(date_update.getDate() - 7);
+            y_update = [last_y-15, last_y+15]
         } else if (time_frame == 'one_day') {
             date_update.setDate(date_update.getDate() - 1);
+            y_update = [last_y-5, last_y+5]
         } else if (time_frame == 'hour') {
             date_update.setHours(date_update.getHours() + 6);
-            y_update = [last_y-0.5, last_y+0.5]
+            y_update = [last_y-1, last_y+1]
         }
-        if (Object.keys(y_update).length == 0) {
-            update = {
-                'xaxis.range[0]': date_update}    // updates the end of the x axis range
-        } else {
-            update = {
-                'xaxis.range[0]': date_update,  // updates the end of the x axis range
-                'yaxis.range': y_update         // updates the y axis range
-            }
-        }
+
+        update = {
+            'xaxis.range[0]': date_update,  // updates the end of the x axis range
+            'yaxis.range': y_update         // updates the y axis range
+        };
+
         Plotly.relayout('index_chart', update)
     };
 
@@ -993,8 +996,8 @@
             let data_length = line_data[0].x.length - 1;
             let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
                 10;
-            let y_high = Math.max(...line_data[0].y) + y_range_border;
-            let y_low = Math.min(...line_data[0].y) - y_range_border;
+            y_high = Math.max(...line_data[0].y) + y_range_border;
+            y_low = Math.min(...line_data[0].y) - y_range_border;
             first_x = line_data[0].x[0];
             // console.log(y_low);
             // console.log(y_high);
