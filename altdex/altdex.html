@@ -766,8 +766,6 @@
 
     let change_range = function (time_frame) {
         let date_update = new Date();
-        let y_low = 0;
-        let y_high = 0;
         let y_update =  {};
         if (time_frame == 'year') {
             date_update = first_x;
@@ -788,11 +786,10 @@
         let update = {
             'xaxis.range[0]': date_update,    // updates the end of the xaxis range
         };
-        if (Object.keys(myObject).length == 0) {
+        if (Object.keys(y_update).length != 0) {
             update.append(y_update)
         }
 
-        Plotly.relayout('index_chart', update)
     };
 
     let app = new Vue({
