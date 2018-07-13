@@ -756,19 +756,19 @@
             x_update = [first_x, last_x];
             y_update = [y_low, y_high];
         } else if (time_frame == 'three_month') {
-            date_update.setMonth(date_update.getUTCMonth() - 3);
+            date_update.setMonth(date_update.getMonth() - 3);
             x_update = [date_update, last_x];
             y_update = [y_low, y_high];
         } else if (time_frame == 'one_month') {
-            date_update.setMonth(date_update.getUTCMonth() - 1);
+            date_update.setMonth(date_update.getMonth() - 1);
             x_update = [date_update, last_x];
             y_update = [y_low, y_high]
         } else if (time_frame == 'seven_day') {
-            date_update.setDate(date_update.getUTCDate() - 7);
+            date_update.setDate(date_update.getDate() - 7);
             x_update = [date_update, last_x];
             y_update = [last_y-15, last_y+15]
         } else if (time_frame == 'one_day') {
-            date_update.setDate(date_update.getUTCDate() - 1);
+            date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
             y_update = [last_y-8, last_y+8]
         } else if (time_frame == 'hour') {
