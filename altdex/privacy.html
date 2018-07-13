@@ -772,7 +772,7 @@
             x_update = [date_update, last_x];
             y_update = [last_y-8, last_y+8]
         } else if (time_frame == 'hour') {
-            date_update.setHours(date_update.getUTCHours() - 1);
+            date_update.setHours(date_update.getHours() - 1);
             x_update = [date_update, last_x];
             y_update = [last_y-2, last_y+2]
         }
