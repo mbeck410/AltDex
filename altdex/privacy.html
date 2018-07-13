@@ -740,6 +740,7 @@
     let current_index = 'Privacy';
     let current_id = '2';
     let first_x = 0;
+    let last_x = 0;
     let amount_gainers = 0;
     let amount_losers = 0;
     let last_y = 0;
@@ -749,29 +750,34 @@
     let change_range = function (time_frame) {
         let date_update = new Date();
         let y_update =  [];
-        let update = {};
+        let x_update = [];
         if (time_frame == 'year') {
-            date_update = first_x;
-            y_update = [y_low, y_high]
+            x_update = [first_x, last_x];
+            y_update = [y_low, y_high];
         } else if (time_frame == 'three_month') {
             date_update.setMonth(date_update.getMonth() - 3);
-            y_update = [y_low, y_high]
+            x_update = [date_update, last_x];
+            y_update = [y_low, y_high];
         } else if (time_frame == 'one_month') {
             date_update.setMonth(date_update.getMonth() - 1);
+            x_update = [date_update, last_x];
             y_update = [y_low, y_high]
         } else if (time_frame == 'seven_day') {
             date_update.setDate(date_update.getDate() - 7);
+            x_update = [date_update, last_x];
             y_update = [last_y-15, last_y+15]
         } else if (time_frame == 'one_day') {
             date_update.setDate(date_update.getDate() - 1);
+            x_update = [date_update, last_x];
             y_update = [last_y-8, last_y+8]
         } else if (time_frame == 'hour') {
             date_update.setHours(date_update.getHours() + 6);
+            x_update = [date_update, last_x];
             y_update = [last_y-2, last_y+2]
         }
 
-        update = {
-            'xaxis.range[0]': date_update,  // updates the end of the x axis range
+        let update = {
+            'xaxis.range': x_update,  // updates the end of the x axis range
             'yaxis.range': y_update         // updates the y axis range
         };
 
@@ -982,6 +988,7 @@
             y_high = Math.max(...line_data[0].y) + y_range_border;
             y_low = Math.min(...line_data[0].y) - y_range_border;
             first_x = line_data[0].x[0];
+            last_x = line_data[0].x[data_length];
             // console.log(y_low);
             // console.log(y_high);
 

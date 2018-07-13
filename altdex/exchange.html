@@ -755,7 +755,6 @@
     let change_range = function (time_frame) {
         let date_update = new Date();
         let y_update =  [];
-        let update = {};
         if (time_frame == 'year') {
             date_update = first_x;
             y_update = [y_low, y_high]
@@ -776,7 +775,7 @@
             y_update = [last_y-2, last_y+2]
         }
 
-        update = {
+        let update = {
             'xaxis.range[0]': date_update,  // updates the end of the x axis range
             'yaxis.range': y_update         // updates the y axis range
         };
