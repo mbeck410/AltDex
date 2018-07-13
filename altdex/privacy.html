@@ -748,7 +748,8 @@
     let y_high = 0;
 
     let change_range = function (time_frame) {
-        let date_update = new Date();
+        let now = new Date();
+        let date_update = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
         let y_update =  [];
         let x_update = [];
         if (time_frame == 'year') {
@@ -771,7 +772,7 @@
             x_update = [date_update, last_x];
             y_update = [last_y-8, last_y+8]
         } else if (time_frame == 'hour') {
-            date_update.setHours(last_x.getUTCHours() - 1);
+            date_update.setHours(date_update.getUTCHours() - 1);
             x_update = [date_update, last_x];
             y_update = [last_y-2, last_y+2]
         }
