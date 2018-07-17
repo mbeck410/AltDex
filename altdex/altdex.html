@@ -945,7 +945,7 @@
         last_y = 0;
         //alert('test');
         http_get(url, function (data) {
-            for (let i = data.dict_key.length-1; i <= 0; --i) {
+            for (let i = 0; i < data.dict_key.length; ++i) {
                 other_data.push(data.dict_key[i])
             }
             new_data.push(data.dict_key[index_id]);
@@ -962,7 +962,7 @@
         let url = '/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
-            for (let i = data.dict_key.length-1; i <= 0; --i) {
+            for (let i = 0; i < data.dict_key.length; ++i) {
                 other_data.push(data.dict_key[i])
             }
             new_data.push(data.dict_key[index_id]);

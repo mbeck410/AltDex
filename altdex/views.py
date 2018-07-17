@@ -75,7 +75,7 @@ def getindexall(request):
 
 
 def getindexcurrent(request):
-    indices = Index.objects.all()
+    indices = Index.objects.order_by('id')
     indices_current = []
     for dex in indices:
         link = ''
