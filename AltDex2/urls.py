@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('altdex.urls')),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path(r'^health/?', include('health_check.urls')),
 ]
