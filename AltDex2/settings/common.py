@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'd$tbu2e=mu(8ntx8w!9^ll_s1g)(74w7ogu=5u3$m_59#e5z84'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -24,7 +24,7 @@ SECRET_KEY = 'd$tbu2e=mu(8ntx8w!9^ll_s1g)(74w7ogu=5u3$m_59#e5z84'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = [
     'localhost',
