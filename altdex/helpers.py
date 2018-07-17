@@ -7,7 +7,7 @@ from .models import Index, Coin, IndexPrice
 
 def collect():
     coins = Coin.objects.all()
-    indices = Index.objects.order_by('id')
+    indices = Index.objects.all()
     # coins_cc = Coin.objects.filter(api='CryptoCompare')
     # symbols = []
     # symbols2 = []
