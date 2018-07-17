@@ -85,6 +85,19 @@
         }
 
         /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 1200px) {
+            #right_bar {
+                display: none;
+            }
+            .widget_div {
+                display: none;
+            }
+
+            #w_ad {
+                display: none;
+            }
+        }
+
         @media screen and (max-width: 767px) {
             .sidenav {
                 height: auto;
