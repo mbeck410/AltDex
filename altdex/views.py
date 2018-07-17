@@ -54,7 +54,7 @@ def pullcurrent(request):
 
 
 def getindexall(request):
-    indices = Index.objects.all()
+    indices = Index.objects.order_by('id')
     indices_all_output = []
     for dex in indices:
         dex_price_entries = dex.indexprice_set.order_by('timestamp')
