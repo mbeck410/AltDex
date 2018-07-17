@@ -766,6 +766,7 @@
     let last_y = 0;
     let y_low = 0;
     let y_high = 0;
+    let price_change = 0;
 
     let change_range = function (time_frame) {
         let now = new Date();
@@ -957,6 +958,7 @@
             last_y = data.dict_key[index_id].price;
             app2.rows = new_data;
             app3.rows = other_data;
+            price_change = data.dict_key[index_id].change_24h
             // }
         });
     }
