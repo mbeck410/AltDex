@@ -375,6 +375,10 @@
             margin_top: 20px
         }
 
+        [v-cloak] {
+            display: none;
+        }
+
     </style>
 </head>
 
@@ -402,6 +406,7 @@
                         <li><a href="/privacy/">Privacy</a></li>
                     </ul>
                 </li>
+                <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
                 <li><a href="/about/">About</a></li>
             </ul>
         </div>
@@ -412,7 +417,7 @@
     <div class="row content">
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
-                <div class="widget" v-for="row in rows">
+                <div v-cloak class="widget" v-for="row in rows">
 
 
                     <div class="w_data">
