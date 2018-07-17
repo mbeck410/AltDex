@@ -124,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 
 # Internationalization
