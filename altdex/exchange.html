@@ -776,7 +776,7 @@
         } else if (time_frame == 'one_day') {
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
-            y_update = [last_y-8, last_y+8]
+            y_update = [last_y-10, last_y+10]
         } else if (time_frame == 'hour') {
             date_update.setHours(date_update.getHours() - 1);
             x_update = [date_update, last_x];
@@ -946,7 +946,7 @@
         app3.rows = [];
         let url = '/getindexcurrent/';
         http_get(url, function (data) {
-            for (let i = 0; i < data.dict_key.length; ++i) {
+            for (let i = data.dict_key.length-1; i <= 0; --i) {
                 other_data.push(data.dict_key[i])
             }
             new_data.push(data.dict_key[index_id]);
@@ -963,7 +963,7 @@
         let url = '/getindexcurrent/';
         //alert('test');
         http_get(url, function (data) {
-            for (let i = 0; i < data.dict_key.length; ++i) {
+            for (let i = data.dict_key.length-1; i <= 0; --i) {
                 other_data.push(data.dict_key[i])
             }
             new_data.push(data.dict_key[index_id]);
