@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="shortcut icon" type="image/png" href="https://sludgefeed.com/wp-content/uploads/2018/06/Altdex-favicon-32x32.png"/>
+    <link rel="shortcut icon" type="image/png"
+          href="https://sludgefeed.com/wp-content/uploads/2018/06/Altdex-favicon-32x32.png"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -85,7 +86,6 @@
                 display: none;
             }
 
-
             .gainers_losers {
                 display: none;
                 margin: auto;
@@ -124,7 +124,6 @@
             .middle_data {
                 margin: auto;
             }
-
 
             #right_bar {
                 display: none;
@@ -178,7 +177,6 @@
             /*border-bottom: solid 3px #244ec3;*/
         }
 
-
         #center {
             /*background-color: whitesmoke;*/
             padding-top: 20px;
@@ -205,14 +203,13 @@
             font-size: 40px;
         }
 
-         .my_navbar {
+        .my_navbar {
             background-color: #222842;
             color: white;
             margin: 0;
             border-radius: 0;
             border: 0;
         }
-
 
         .my_navbar .navbar-brand {
             color: white;
@@ -254,23 +251,25 @@
             padding-bottom: 5px;
         }
 
-
         .main_div {
             background-color: #ededed;
             /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
         }
 
+        .pos {
+            color: green;
+        }
 
-
-        .pos {color: green;}
-        .neg {color: red;}
+        .neg {
+            color: red;
+        }
 
         h4 {
             font-weight: bold;
         }
 
         /*h2 {*/
-            /*font-weight: bold;*/
+        /*font-weight: bold;*/
         /*}*/
 
         .about_display {
@@ -295,9 +294,9 @@
             color: #6dc0eb;
         }
 
-       #w_percent {
-           font-size: 0.7em;
-       }
+        #w_percent {
+            font-size: 0.7em;
+        }
 
         .w_info {
             margin-top: 20px;
@@ -329,7 +328,7 @@
         }
 
         /* Style all font awesome icons */
-         /* Style all font awesome icons */
+        /* Style all font awesome icons */
         .fa {
             font-size: 18px;
         }
@@ -342,13 +341,12 @@
 
         #footer_ad {
             margin-bottom: 20px;
-         }
+        }
 
         .footer_pages {
             display: flex;
             margin: auto;
         }
-
 
         .footer_pages > div {
             margin: auto;
@@ -360,7 +358,7 @@
             padding-right: 19px;
         }
 
-</style>
+    </style>
 </head>
 
 <body>
@@ -372,7 +370,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
+            <a class="navbar-brand" href="/"><img
+                    src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="primary nav navbar-nav">
@@ -394,7 +393,7 @@
 
 <div class="main_div container-fluid text-center">
     <div class="row content">
-         <div class="widget_div col-sm-2 sidenav">
+        <div class="widget_div col-sm-2 sidenav">
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <div class="widget" v-for="row in rows">
 
@@ -402,114 +401,134 @@
                     <div class="w_data">
                         <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
                         <div>
-                        <div>{{row.price.toFixed(2)}}</div>
-                        <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent.toFixed(2)}}%</div>
-                         <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
+                            <div>{{row.price.toFixed(2)}}</div>
+                            <div id="w_percent"
+                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                {{row.price_percent.toFixed(2)}}%
                             </div>
+                            <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
+                        </div>
                     </div>
-                    </div>
+                </div>
                 <div class="w_info">
-                <div>Last Updated Value</div>
-                <div>All Values Delayed</div>
-                    </div>
+                    <div>Last Updated Value</div>
+                    <div>All Values Delayed</div>
+                </div>
             </div>
-                <div id="w_ad">
+            <div id="w_ad">
                 <ins class="adsbygoogle"
-     style="display:inline-block;width:225px;height:330px"
-     data-ad-client="ca-pub-9873470958093574"
-     data-ad-slot="5347610936"></ins></div>
+                     style="display:inline-block;width:225px;height:330px"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="5347610936"></ins>
             </div>
         </div>
-        <div id="center" class="col-sm-8 text-left about_display">
-            <div class="well text">
-                <h2>AltDex</h2>
-                <p>AltDex provides market capitalization-weighted crypto indices that act as benchmarks across multiple digital asset categories.</p>
-            </div>
-            <div class="well text">
-                <h2>Criteria</h2>
-                <p>AltDex leverages an adjusted market cap-weighted approach as the main filtering criteria for each of our indices. Each index will be reviewed and re-balanced on the first of every month.</p>
-                <h4>General Exclusion Criteria</h4>
-                <ul>
-                    <li>No stablecoins, egregious forks, or well-documented scam coins.</li>
-                    <li>No coins with less than 5% circulating supply.</li>
-                    <li>No coins with less than 1-month trading history.</li>
-                </ul>
-                <h4>General Weighting Criteria</h4>
-                <ul>
-                    <li>All coins within a selected index will be weighted according to market cap-averaged from over 90 exchanges and 22,000 trading pairs.</li>
-                    <li>Weighting is automatically updated every 5 minutes.</li>
-                </ul>
-                <h4>AltDex 100(ALT100)</h4>
-                <p>The AltDex 100 is the best single-gauge of the large-cap cryptocurrencies and tokens.</p>
-                <ul>
-                    <li>Number of Constituents: 100</li>
-                    <li>Trailing 30-day average for daily trading volume must be higher than $100,000</li>
-                </ul>
-                <h4>AltDex Exchange Token Index (ALTEXC)</h4>
-                <p>The AltDex Exchange Token Index defines and monitors the industry&#8217;s leading crypto exchange tokens.</p>
-                <ul>
-                    <li>Number of Constituents: 25</li>
-                    <li>Trailing 30-day average for daily trading volume must be higher than $5,000,000</li>
-                </ul>
-                <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
-                <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on privacy or security.</p>
-                <ul>
-                    <li>Number of Constituents: 15</li>
-                    <li>Trailing 30-day average for daily trading volume must be higher than $10,000,000</li>
-                </ul>
-                <p><i>Note: This section will be updated with the release of each new index to clearly outline each index&#8217;s constituent inclusion criteria.</i></p>
-            </div>
-            <div class="well text">
-                <h2>FAQ</h2>
-                <p>Q: When was AltDex started?<br>
-                A: AltDex was launched in June of 2018, on the backdrop of a major push towards the mainstream adoption of cryptocurrency.</p>
-                <p></p>
-                Q: When will new indices be released?<br>
-                A: There is no pre-determined release schedule. All announcements will be made on our official Twitter account: @altcoindex</p>
-                <p></p>
-                <p>Q: Can I submit my project for inclusion in a specific index?<br>
-                A: Yes, we considered all projects that fit the provided criteria. To request a review, submit your project info and a statement on why your project should be included to info@altdex.co</p>
-                <p></p>
-                <p>Q: Can I add an AltDex widget or API to my site?<br>
-                A: Soon, we are in the process of providing support to select websites and companies interested in displaying the AltDex indices.</p>
-                <p></p>
-                <p>Q: Are there options for advertisers?<br>
-                A: Yes, we offer targeted advertising packages. Interested parties should contact us at info@altdex.co</p>
-                <p></p>
-                <p>Q: Are the AltDex indices investment vehicles?<br>
-                A: No. AltDex is simply a market monitoring tool and should not be construed as an investment tool, or as the basis for any investment.</p>
-                <p></p>
-                <p>Q: Who manages AltDex?<br>
+    <div id="center" class="col-sm-8 text-left about_display">
+        <div class="well text">
+            <h2>AltDex</h2>
+            <p>AltDex provides market capitalization-weighted crypto indices that act as benchmarks across multiple
+                digital asset categories.</p>
+        </div>
+        <div class="well text">
+            <h2>Criteria</h2>
+            <p>AltDex leverages an adjusted market cap-weighted approach as the main filtering criteria for each of our
+                indices. Each index will be reviewed and re-balanced on the first of every month.</p>
+            <h4>General Exclusion Criteria</h4>
+            <ul>
+                <li>No stablecoins, egregious forks, or well-documented scam coins.</li>
+                <li>No coins with less than 5% circulating supply.</li>
+                <li>No coins with less than 1-month trading history.</li>
+            </ul>
+            <h4>General Weighting Criteria</h4>
+            <ul>
+                <li>All coins within a selected index will be weighted according to market cap-averaged from over 90
+                    exchanges and 22,000 trading pairs.
+                </li>
+                <li>Weighting is automatically updated every 5 minutes.</li>
+            </ul>
+            <h4>AltDex 100(ALT100)</h4>
+            <p>The AltDex 100 is the best single-gauge of the large-cap cryptocurrencies and tokens.</p>
+            <ul>
+                <li>Number of Constituents: 100</li>
+                <li>Trailing 30-day average for daily trading volume must be higher than $100,000</li>
+            </ul>
+            <h4>AltDex Exchange Token Index (ALTEXC)</h4>
+            <p>The AltDex Exchange Token Index defines and monitors the industry&#8217;s leading crypto exchange
+                tokens.</p>
+            <ul>
+                <li>Number of Constituents: 25</li>
+                <li>Trailing 30-day average for daily trading volume must be higher than $5,000,000</li>
+            </ul>
+            <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
+            <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on privacy or
+                security.</p>
+            <ul>
+                <li>Number of Constituents: 15</li>
+                <li>Trailing 30-day average for daily trading volume must be higher than $10,000,000</li>
+            </ul>
+            <p><i>Note: This section will be updated with the release of each new index to clearly outline each index&#8217;s
+                constituent inclusion criteria.</i></p>
+        </div>
+        <div class="well text">
+            <h2>FAQ</h2>
+            <p>Q: When was AltDex started?<br>
+                A: AltDex was launched in June of 2018, on the backdrop of a major push towards the mainstream adoption
+                of cryptocurrency.</p>
+            <p></p>
+            Q: When will new indices be released?<br>
+            A: There is no pre-determined release schedule. All announcements will be made on our official Twitter
+            account: @altcoindex</p>
+            <p></p>
+            <p>Q: Can I submit my project for inclusion in a specific index?<br>
+                A: Yes, we considered all projects that fit the provided criteria. To request a review, submit your
+                project info and a statement on why your project should be included to info@altdex.co</p>
+            <p></p>
+            <p>Q: Can I add an AltDex widget or API to my site?<br>
+                A: Soon, we are in the process of providing support to select websites and companies interested in
+                displaying the AltDex indices.</p>
+            <p></p>
+            <p>Q: Are there options for advertisers?<br>
+                A: Yes, we offer targeted advertising packages. Interested parties should contact us at info@altdex.co
+            </p>
+            <p></p>
+            <p>Q: Are the AltDex indices investment vehicles?<br>
+                A: No. AltDex is simply a market monitoring tool and should not be construed as an investment tool, or
+                as the basis for any investment.</p>
+            <p></p>
+            <p>Q: Who manages AltDex?<br>
                 A: AltDex is managed by the same team of economists and researchers that created SludgeFeed.</p>
 
 
-            </div>
-            </div>
-            <div id="right_bar" class="col-sm-2 text-left">
-        <ins id="side_ad" class="adsbygoogle"
-     style="display:inline-block;width:225px;height:600px"
-     data-ad-client="ca-pub-9873470958093574"
-     data-ad-slot="2227010612"></ins>
+        </div>
     </div>
-
-
+    <div id="right_bar" class="col-sm-2 sidenav">
+        <div>
+            <ins id="side_ad" class="adsbygoogle"
+                 style="display:inline-block;width:225px;height:600px"
+                 data-ad-client="ca-pub-9873470958093574"
+                 data-ad-slot="2227010612"></ins>
+        </div>
+    </div>
     </div>
 </div>
-    <footer class="container-fluid text-center">
+</div>
+<footer class="container-fluid text-center">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
         <div id="disclaimer">
             <p>The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
-            is
-            provided solely for informational and educational purposes and does not constitute investment advice. It
-            shall
-            not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its content
-            providers are responsible for any damages or losses arising from any use of this information. Past
-            performance
-            is no guarantee of future results.<p>
+                is
+                provided solely for informational and educational purposes and does not constitute investment advice. It
+                shall
+                not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its
+                content
+                providers are responsible for any damages or losses arising from any use of this information. Past
+                performance
+                is no guarantee of future results.
+            <p>
             <div class="footer_pages">
-                    <div id="footer_left_link"><a href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="/privacy_policy/">Privacy Policy</a></div>
-                </div>
+                <div id="footer_left_link"><a href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
+                        href="/privacy_policy/">Privacy Policy</a></div>
+            </div>
         </div>
         <div class="footer_bottom">
             <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
@@ -578,8 +597,8 @@
 
     index_current();
 
-    setInterval(function() {
-        update_index();
+    setInterval(function () {
+            update_index();
         },
         30000);
 
