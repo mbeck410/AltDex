@@ -600,6 +600,23 @@
 </head>
 <body>
 
+<div class="js-cookiebar cookiebar position--fixed width--100 block" style="display:none">
+      <div class="card margin">
+        <div class="mw--48 flex flex--column justify--center center">
+          <div class="card-content">
+            <h2 class="card-title">[YOUR_SITE] uses cookies</h2>
+            <p>"AltDex uses cookies to improve your experience. Disabling them may negatively impact your experience, but you can opt-out if you wish."<a href="/terms" target="_blank" class="link">terms and conditions</a> and <a href="/privacy" target="_blank" class="link">privacy statement</a>. By continuing on this site and accepting our cookies you agree to the collection of information
+              on this basis by us and by third parties on the platform. Please customize your cookie settings below.</p>
+              <div class="card-action flex--row justify--space-between p-top--1 p-bottom--1">
+                <button type="button" class="button button--blue flex width--100 justify--center" id="cookiebutton" onclick="onCookieButtonClick()">Accept</button>
+                  <button type="button" class="button button--blue flex width--100 justify--center"><a href="/privacy_policy/">Opt Out</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button button--orange js-change-cookie">Change Cookie</button>
+
 <nav class="my_navbar navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
