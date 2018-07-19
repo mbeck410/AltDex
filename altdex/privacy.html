@@ -913,6 +913,7 @@
             ascending: false,
             sortColumn: '',
             rows: [],
+            rows2: [],
         }
     });
 
@@ -933,11 +934,12 @@
 
 
     function top_gainers_losers() {
-        // app4.rows = [];
+        app4.rows = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
-
-            console.log(data.dictkey);
+            for (let i = 0; i < data.dict_key[2].length; i++)
+                app4.rows = data.dictkey[2][0]
+                console.log(app4.rows)
         })
     }
 
@@ -952,7 +954,7 @@
         //alert('test');
         let count = 0;
         http_get(url, function (data) {
-            console.log(data.dict_key[2].price_change);
+
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
                 let index_name = entry.indices;
@@ -1127,7 +1129,6 @@
     index_current(current_id);
     coin_current(current_index);
     index_all();
-    top_gainers_losers();
     setInterval(function () {
             update_coin(current_index);
             update_index(current_id);
