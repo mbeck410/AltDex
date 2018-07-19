@@ -177,7 +177,7 @@ def gainers_losers(request):
     #
     #     indices_gain_lose.append(data_dict)
 
-    return JsonResponse({'dict_key': 'Test'})
+    return JsonResponse({'dict_key': 7})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):

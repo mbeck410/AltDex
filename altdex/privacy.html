@@ -952,7 +952,7 @@
         //alert('test');
         let count = 0;
         http_get(url, function (data) {
-
+            console.log(data.dict_key[2].price_change);
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
                 let index_name = entry.indices;
