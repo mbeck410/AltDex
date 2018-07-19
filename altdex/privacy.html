@@ -588,9 +588,12 @@
 
         #top_gain_lose {
             margin: auto;
-            display: flex;
             margin-bottom: 20px;
             text-align: center;
+        }
+
+        #gl_data {
+            display: flex;
         }
 
         .gl_name {
@@ -634,7 +637,8 @@
         }
 
         .gl_index {
-            font-size: 3.0vw
+            font-size: 3.0vw;
+            font-weight: bold;
         }
 
 
@@ -795,8 +799,9 @@
         <div id="right_bar" class="col-sm-2 sidenav">
             <div v-cloak class="well" id="top_gain_lose">
                 <div class="gl_index">ALTPRV</div>
+                <div id="gl_data">
                 <div id="top_gainers">
-                    <div id="gainerz" class="gl_title">Top Gainers</div>
+                    <div id="gainerz" class="gl_title">Biggest<\br>Gainers</div>
                     <div class="gl_data" v-for="row in rows2">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">${{row.price}}</div>
@@ -804,13 +809,14 @@
                     </div>
                 </div>
                 <div id="top_losers">
-                    <div id="lozerz" class="gl_title">Top Losers</div>
+                    <div id="lozerz" class="gl_title">Biggest<\br>Losers</div>
                     <div class="gl_data" v-for="row in rows">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">${{row.price}}</div>
                         <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</div>
                     </div>
                 </div>
+                    </div>
             </div>
             <ins id="side_ad" class="adsbygoogle"
                  style="display:inline-block;width:225px;height:600px"
