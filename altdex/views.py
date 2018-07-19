@@ -177,18 +177,30 @@ def gainers_losers(request):
 
 
         for loser_coin in losers:
+
+            if float(loser_coin.price) >= 1:
+                coin_price = '{:,.2f}'.format(float(loser_coin.price))
+            else:
+                coin_price = '{0:.6f}'.format(float(loser_coin.price))
+
             losers_dict = { 'symbol': loser_coin.symbol,
-                            'price': loser_coin.price,
-                            'price_percent': loser_coin.price_percent_change}
+                            'price': coin_price,
+                            'price_percent': '{:,.2f}'.format(float(loser_coin.price_percent_change))}
 
             loser_index_array.append(losers_dict)
 
         loser_array.append(loser_index_array)
 
         for gainer_coin in gainers:
+
+            if float(gainer_coin.price) >= 1:
+                coin_price = '{:,.2f}'.format(float(gainer_coin.price))
+            else:
+                coin_price = '{0:.6f}'.format(float(gainer_coin.price))
+
             gainers_dict = {'symbol': gainer_coin.symbol,
-                            'price': gainer_coin.price,
-                            'price_percent': gainer_coin.price_percent_change}
+                            'price': coin_price,
+                            'price_percent': '{:,.2f}'.format(float(gainer_coin.price_percent_change))}
 
             gainer_index_array.append(gainers_dict)
 
