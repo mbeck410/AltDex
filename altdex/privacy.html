@@ -611,7 +611,8 @@
             border-top: 1px solid lightgray;
         }
 
-        .gl_data > div:last-child {
+        .gl_data:last-child {
+            border-top: 1px solid lightgray;
             padding-top: 5px;
             padding-bottom: 0;
         }
@@ -622,6 +623,14 @@
 
         #lozerz {
             background-color: red;
+        }
+
+        #top_losers {
+            width: 50%;
+        }
+
+        #top_gainers {
+            width: 50%
         }
 
 
@@ -785,16 +794,16 @@
                     <div id="gainerz" class="gl_title">Top Gainers</div>
                     <div class="gl_data" v-for="row in rows2">
                         <div class="gl_name">{{row.symbol}}</div>
-                        <div class="gl_price">{{row.price}}</div>
-                        <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}</div>
+                        <div class="gl_price">${{row.price}}</div>
+                        <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</div>
                     </div>
                 </div>
                 <div id="top_losers">
                     <div id="lozerz" class="gl_title">Top Losers</div>
                     <div class="gl_data" v-for="row in rows">
                         <div class="gl_name">{{row.symbol}}</div>
-                        <div class="gl_price">{{row.price}}</div>
-                        <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}</div>
+                        <div class="gl_price">${{row.price}}</div>
+                        <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</div>
                     </div>
                 </div>
             </div>
