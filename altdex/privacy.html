@@ -740,14 +740,16 @@
         </div>
 
         <div id="right_bar" class="col-sm-2 sidenav">
-            <div class="well" id="top_gain_lose" v-for="row in rows">
-                <div id="top_gainers">
-                    <div class="gl_name">{{row.gainers.name}}</div>
-                    <div class="gl_price">{{row.gainers.price}}</div>
+            <div v-cloak=" " class="well" id="top_gain_lose">
+                <div id="top_gainers"  v-for="row in rows">
+                    <div class="gl_name">{{row.symbol}}</div>
+                    <div class="gl_price">{{row.price}}</div>
+                    <div class="gl_price">{{row.price_percent}}</div>
                 </div>
-                <div id="top_losers">
-                    <div class="gl_name">{{row.losers.name}}</div>
-                    <div class="gl_price">{{row.losers.price}}</div>
+                <div id="top_losers"  v-for="row2 in rows2">
+                    <div class="gl_name">{{row2.symbol}}</div>
+                    <div class="gl_price">{{row2.price}}</div>
+                    <div class="gl_percent">{{row2.price_percent}}</div>
                 </div>
             </div>
             <ins id="side_ad" class="adsbygoogle"
@@ -937,9 +939,10 @@
         app4.rows = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
-            for (let i = 0; i < data.dict_key[2].length; i++)
-                app4.rows = data.dictkey[2][0]
-                console.log(app4.rows)
+            for (let i = 0; i < data.losers.length; i++)
+                app4.rows.append(data.gainers[i])
+                app4.rows2.append(data.losers[i])
+
         })
     }
 
@@ -1129,6 +1132,7 @@
     index_current(current_id);
     coin_current(current_index);
     index_all();
+    top_gainers_losers();
     setInterval(function () {
             update_coin(current_index);
             update_index(current_id);
