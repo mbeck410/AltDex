@@ -170,7 +170,7 @@ def gainers_losers(request):
     gainer_array = []
 
     for index in indices:
-        losers = index.coin_set.order_by('price_percent_change')
+        losers = index.coin_set.order_by('price_percent_change')[:5]
         # gainers = index.coin_set.order_by('-price')[:5]
 
 
