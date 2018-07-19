@@ -596,6 +596,61 @@
             margin-bottom: 20px
         }
 
+        #top_gain_lose {
+            margin: auto;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #gl_data {
+            display: flex;
+        }
+
+        .gl_name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .gl_title {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #222842;
+            color: white;
+        }
+
+        .gl_data {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-top: 1px solid lightgray;
+        }
+
+        .gl_data:last-child {
+            border-top: 1px solid lightgray;
+            padding-top: 10px;
+            padding-bottom: 0;
+        }
+
+        #gainerz {
+            background-color: green;
+        }
+
+        #lozerz {
+            background-color: red;
+        }
+
+        #top_losers {
+            width: 50%;
+        }
+
+        #top_gainers {
+            width: 50%
+        }
+
+        .gl_index {
+            font-size: 3.0vw;
+            font-weight: bold;
+        }
+
 
 
     </style>
@@ -753,6 +808,27 @@
         </div>
 
         <div id="right_bar" class="col-lg-2 sidenav">
+            <div v-cloak class="well" id="top_gain_lose">
+                <div class="gl_index">ALT100</div>
+                <div id="gl_data">
+                <div id="top_gainers">
+                    <div id="gainerz" class="gl_title">Biggest<br>Gainers</div>
+                    <div class="gl_data" v-for="row in rows2">
+                        <div class="gl_name">{{row.symbol}}</div>
+                        <div class="gl_price">${{row.price}}</div>
+                        <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</div>
+                    </div>
+                </div>
+                <div id="top_losers">
+                    <div id="lozerz" class="gl_title">Biggest<br>Losers</div>
+                    <div class="gl_data" v-for="row in rows">
+                        <div class="gl_name">{{row.symbol}}</div>
+                        <div class="gl_price">${{row.price}}</div>
+                        <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</div>
+                    </div>
+                </div>
+                    </div>
+            </div>
             <ins id="side_ad" class="adsbygoogle"
      style="display:inline-block;width:225px;height:600px"
      data-ad-client="ca-pub-9873470958093574"
@@ -904,6 +980,16 @@
         }
     });
 
+    let app4 = new Vue({
+        el: '#top_gain_lose',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+            rows2: [],
+        }
+    });
+
 
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
@@ -954,6 +1040,20 @@
             losers_div.innerHTML = new_lose.toString() + '%';
             app.rows = new_coins;
         });
+    }
+
+    function top_gainers_losers() {
+        app4.rows = [];
+        let url = '/gainers_losers/';
+        http_get(url, function (data) {
+            for (let i = 0; i < data.losers[0].length; i++) {
+                app4.rows.push(data.losers[0][i]);
+                }
+
+            for (let i = 0; i < data.gainers[0].length; i++) {
+                app4.rows2.push(data.gainers[0][i]);
+                }
+        })
     }
 
     function update_coin(index) {
@@ -1095,6 +1195,7 @@
 
     index_current(current_id);
     coin_current(current_index);
+    top_gainers_losers();
     index_all();
     setInterval(function () {
             update_coin(current_index);
