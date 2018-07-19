@@ -615,14 +615,14 @@
         #gainerz {
             color: white;
             background-color: green;
-            text-align: left;
+            text-align: center;
         }
 
         #lozerz {
             color: white;
             background-color: red;
-            text-align: left;
-            padding-top: 10px;
+            text-align: center;
+            margin-top: 10px;
         }
 
         .gl_name {
@@ -800,7 +800,7 @@
             <div v-cloak class="well" id="top_gain_lose">
                 <div id="gl_all">
                 <div id="top_gainers">
-                    <div id="gainerz" class="gl_title">Biggest Gainers:</div>
+                    <div id="gainerz" class="gl_title">Biggest Gainers</div>
                     <div class="gl_data" v-for="row in rows2">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">${{row.price}}</div>
@@ -808,7 +808,7 @@
                     </div>
                 </div>
                 <div id="top_losers">
-                    <div id="lozerz" class="gl_title">Biggest Losers:</div>
+                    <div id="lozerz" class="gl_title">Biggest Losers</div>
                     <div class="gl_data" v-for="row in rows">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">${{row.price}}</div>
