@@ -941,7 +941,9 @@
         http_get(url, function (data) {
             for (let i = 0; i < data.losers.length; i++)
                 // app4.rows.append(data.gainers[i])
-                app4.rows.append(data.losers[i])
+                console.log(data.losers[i]);
+                app4.rows.append(data.losers[i]);
+                console.log(data.losers[i])
 
         })
     }
