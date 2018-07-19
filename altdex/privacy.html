@@ -586,7 +586,23 @@
             margin-bottom: 20px
         }
 
-        
+        #top_gain_lose {
+            display: flex;
+            margin: auto;
+        }
+
+        .gl_name {
+            font-weight: bold;
+            margin-bottom: 1px;
+        }
+
+        #top_gainers {
+            margin-bottom: 3px;
+        }
+
+        #top_losers {
+            margin-bottom: 3px;
+        }
 
 
     </style>
@@ -746,12 +762,12 @@
                 <div id="top_gainers"  v-for="row in rows2">
                     <div class="gl_name">{{row.symbol}}</div>
                     <div class="gl_price">{{row.price}}</div>
-                    <div class="gl_percent">{{row.price_percent}}</div>
+                    <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}</div>
                 </div>
                 <div id="top_losers"  v-for="row in rows">
                     <div class="gl_name">{{row.symbol}}</div>
                     <div class="gl_price">{{row.price}}</div>
-                    <div class="gl_percent">{{row.price_percent}}</div>
+                    <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}</div>
                 </div>
             </div>
             <ins id="side_ad" class="adsbygoogle"
