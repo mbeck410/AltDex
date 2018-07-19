@@ -595,13 +595,18 @@
 
         .gl_name {
             font-weight: bold;
-            margin-bottom: 1px;
+            font-size: 15px;
         }
 
         .gl_title {
-            font-size: 20px;
+            font-size: 17px;
             font-weight: bold;
-            margin-bottom: 2px;
+            margin-bottom: 5px;
+        }
+
+        .gl_data {
+            margin-bottom: 5px;
+            border-bottom: 1px solid lightgray;
         }
 
 
@@ -763,7 +768,7 @@
             <div v-cloak=" " class="well" id="top_gain_lose">
                 <div id="top_gainers">
                     <div class="gl_title">Top Gainers</div>
-                    <div v-for="row in rows2">
+                    <div class="gl_data" v-for="row in rows2">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">{{row.price}}</div>
                         <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}</div>
@@ -771,7 +776,7 @@
                 </div>
                 <div id="top_losers">
                     <div class="gl_title">Top Losers</div>
-                    <div v-for="row in rows">
+                    <div class="gl_data" v-for="row in rows">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">{{row.price}}</div>
                         <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}</div>
