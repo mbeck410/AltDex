@@ -592,10 +592,6 @@
             text-align: center;
         }
 
-        #gl_data {
-            display: flex;
-        }
-
         .gl_name {
             font-weight: bold;
             font-size: 14px;
@@ -604,37 +600,33 @@
         .gl_title {
             font-size: 18px;
             font-weight: bold;
-            background-color: #222842;
-            color: white;
         }
 
         .gl_data {
             padding-top: 10px;
             padding-bottom: 10px;
             border-top: 1px solid lightgray;
+            display: flex;
         }
 
         .gl_data:last-child {
             border-top: 1px solid lightgray;
             padding-top: 10px;
             padding-bottom: 0;
+            display: flex;
         }
 
         #gainerz {
-            background-color: green;
+            color: green;
         }
 
         #lozerz {
-            background-color: red;
+            color: red;
         }
 
-        #top_losers {
-            width: 50%;
-        }
 
-        #top_gainers {
-            width: 50%
-        }
+
+
 
 
 
@@ -794,9 +786,9 @@
 
         <div id="right_bar" class="col-sm-2 sidenav">
             <div v-cloak class="well" id="top_gain_lose">
-                <div id="gl_data">
+                <div id="gl_all">
                 <div id="top_gainers">
-                    <div id="gainerz" class="gl_title">Biggest<br>Gainers</div>
+                    <div id="gainerz" class="gl_title">Biggest Gainers:</div>
                     <div class="gl_data" v-for="row in rows2">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">${{row.price}}</div>
@@ -804,7 +796,7 @@
                     </div>
                 </div>
                 <div id="top_losers">
-                    <div id="lozerz" class="gl_title">Biggest<br>Losers</div>
+                    <div id="lozerz" class="gl_title">Biggest Losers:</div>
                     <div class="gl_data" v-for="row in rows">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">${{row.price}}</div>
