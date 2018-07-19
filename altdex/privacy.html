@@ -601,14 +601,27 @@
         .gl_title {
             font-size: 17px;
             font-weight: bold;
-            margin-bottom: 5px;
             background-color: #222842;
             color: white;
         }
 
         .gl_data {
-            margin-top: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
             border-top: 1px solid lightgray;
+        }
+
+        .gl_data > div:last-child {
+            padding-top: 5px;
+            padding-bottom: 0;
+        }
+
+        #gainerz {
+            background-color: green;
+        }
+
+        #lozerz {
+            background-color: red;
         }
 
 
@@ -767,9 +780,9 @@
         </div>
 
         <div id="right_bar" class="col-sm-2 sidenav">
-            <div v-cloak=" " class="well" id="top_gain_lose">
+            <div v-cloak class="well" id="top_gain_lose">
                 <div id="top_gainers">
-                    <div class="gl_title">Top Gainers</div>
+                    <div id="gainerz" class="gl_title">Top Gainers</div>
                     <div class="gl_data" v-for="row in rows2">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">{{row.price}}</div>
@@ -777,7 +790,7 @@
                     </div>
                 </div>
                 <div id="top_losers">
-                    <div class="gl_title">Top Losers</div>
+                    <div id="lozerz" class="gl_title">Top Losers</div>
                     <div class="gl_data" v-for="row in rows">
                         <div class="gl_name">{{row.symbol}}</div>
                         <div class="gl_price">{{row.price}}</div>
