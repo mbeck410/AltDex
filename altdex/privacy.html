@@ -627,7 +627,7 @@
 
         .gl_name {
                 font-weight: bold;
-                font-size: 0.8vw;
+                font-size: 0.9vw;
                 width: 25%;
                 text-align: left;
             }
@@ -1005,12 +1005,12 @@
         let lose_data = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
-            for (let i = 0; i < data.losers[0].length; i++) {
-                lose_data.push(data.losers[0][i]);
+            for (let i = 0; i < data.losers[2].length; i++) {
+                lose_data.push(data.losers[2][i]);
                 }
 
-            for (let i = 0; i < data.gainers[0].length; i++) {
-                gain_data.push(data.gainers[0][i]);
+            for (let i = 0; i < data.gainers[2].length; i++) {
+                gain_data.push(data.gainers[2][i]);
                 }
 
             app4.rows = lose_data;
