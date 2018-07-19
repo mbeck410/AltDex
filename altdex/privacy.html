@@ -741,11 +741,11 @@
 
         <div id="right_bar" class="col-sm-2 sidenav">
             <div v-cloak=" " class="well" id="top_gain_lose">
-                <div id="top_gainers"  v-for="row in rows">
-                    <div class="gl_name">{{row.symbol}}</div>
-                    <div class="gl_price">{{row.price}}</div>
-                    <div class="gl_price">{{row.price_percent}}</div>
-                </div>
+                <!--<div id="top_gainers"  v-for="row in rows">-->
+                    <!--<div class="gl_name">{{row.symbol}}</div>-->
+                    <!--<div class="gl_price">{{row.price}}</div>-->
+                    <!--<div class="gl_price">{{row.price_percent}}</div>-->
+                <!--</div>-->
                 <div id="top_losers"  v-for="row2 in rows2">
                     <div class="gl_name">{{row2.symbol}}</div>
                     <div class="gl_price">{{row2.price}}</div>
@@ -915,7 +915,7 @@
             ascending: false,
             sortColumn: '',
             rows: [],
-            rows2: [],
+            // rows2: [],
         }
     });
 
@@ -940,8 +940,8 @@
         let url = '/gainers_losers/';
         http_get(url, function (data) {
             for (let i = 0; i < data.losers.length; i++)
-                app4.rows.append(data.gainers[i])
-                app4.rows2.append(data.losers[i])
+                // app4.rows.append(data.gainers[i])
+                app4.rows.append(data.losers[i])
 
         })
     }

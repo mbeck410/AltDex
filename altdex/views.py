@@ -180,14 +180,15 @@ def gainers_losers(request):
 
             loser_array.append(losers_dict)
 
-        for gainer_coin in gainers:
-            gainers_dict = {'symbol': gainer_coin.symbol,
-                            'price': gainer_coin.price,
-                            'price_percent': gainer_coin.price_percent_change}
+        # for gainer_coin in gainers:
+        #     gainers_dict = {'symbol': gainer_coin.symbol,
+        #                     'price': gainer_coin.price,
+        #                     'price_percent': gainer_coin.price_percent_change}
+        #
+        #     gainer_array.append(gainers_dict)
 
-            gainer_array.append(gainers_dict)
-
-    return JsonResponse({'gainers': gainer_array, 'losers': loser_array})
+    return JsonResponse({'losers': loser_array})
+    # 'gainers': gainer_array,
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
