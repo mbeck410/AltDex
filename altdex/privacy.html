@@ -592,13 +592,9 @@
             text-align: center;
         }
 
-        .gl_name {
-            font-weight: bold;
-            font-size: 14px;
-        }
 
         .gl_title {
-            font-size: 18px;
+            font-size: 1.8vw;
             font-weight: bold;
         }
 
@@ -616,19 +612,41 @@
             display: flex;
         }
 
+        .gl_data:first-child {
+            border-top: 0;
+            padding-top: 10px;
+            padding-bottom: 0;
+            display: flex;
+        }
+
+
         #gainerz {
             color: green;
+            text-align: left;
         }
 
         #lozerz {
             color: red;
+            text-align: left;
+            padding-top: 15px;
         }
 
+        .gl_name {
+                font-weight: bold;
+                font-size: 14px;
+                width: 25%;
+                text-align: left;
+            }
 
+        .gl_price {
+            text-align: center;
+            width: 45%;
+        }
 
-
-
-
+        .gl_percent {
+            text-align: right;
+            width: 30%;
+        }
 
 
 
