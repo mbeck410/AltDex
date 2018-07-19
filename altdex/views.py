@@ -171,8 +171,9 @@ def gainers_losers(request):
 
     for index in indices:
         losers = index.coin_set.order_by('price_percent_change')[:5]
-        # gainers = index.coin_set.order_by('-price')[:5]
+        gainers = index.coin_set.order_by('-price_percent_change')[:5]
         loser_index_array = []
+        gainer_index_array = []
 
 
         for loser_coin in losers:
@@ -184,14 +185,16 @@ def gainers_losers(request):
 
         loser_array.append(loser_index_array)
 
-        # for gainer_coin in gainers:
-        #     gainers_dict = {'symbol': gainer_coin.symbol,
-        #                     'price': gainer_coin.price,
-        #                     'price_percent': gainer_coin.price_percent_change}
-        #
-        #     gainer_array.append(gainers_dict)
+        for gainer_coin in gainers:
+            gainers_dict = {'symbol': gainer_coin.symbol,
+                            'price': gainer_coin.price,
+                            'price_percent': gainer_coin.price_percent_change}
 
-    return JsonResponse({'losers': loser_array})
+            gainer_index_array.append(gainers_dict)
+
+        gainer_array.append(gainer_index_array)
+
+    return JsonResponse({'losers': loser_array, 'gainers': gainer_array})
     # 'gainers': gainer_array,
 
 # class RepeatedTimer(object):
