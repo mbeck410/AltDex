@@ -933,12 +933,11 @@
 
 
     function top_gainers_losers() {
-        app4.rows = [];
+        // app4.rows = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
 
-            console.log(data.dictkey[2]);
-            app4.rows = data.dictkey[2]
+            console.log(data.dictkey);
         })
     }
 

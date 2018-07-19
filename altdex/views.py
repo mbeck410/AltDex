@@ -165,19 +165,19 @@ def getcoinscurrent(request):
 
 
 def gainers_losers(request):
-    indices = Index.objects.order_by('id')
-    indices_gain_lose = []
+    # indices = Index.objects.order_by('id')
+    # indices_gain_lose = []
+    #
+    # for index in indices:
+    #     losers = index.coin_set.order_by('price')[:5]
+    #     gainers = reversed(losers)
+    #
+    #     data_dict = { 'losers': losers,
+    #                   'gainers': gainers}
+    #
+    #     indices_gain_lose.append(data_dict)
 
-    for index in indices:
-        losers = index.coin_set.order_by('price')[:5]
-        gainers = reversed(losers)
-
-        data_dict = { 'losers': losers,
-                      'gainers': gainers}
-
-        indices_gain_lose.append(data_dict)
-
-    return JsonResponse({'dict_key': data_dict})
+    return JsonResponse({'dict_key': 'Test'})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
