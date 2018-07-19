@@ -640,12 +640,6 @@
             width: 50%
         }
 
-        /*.gl_index {*/
-            /*font-size: 3.0vw;*/
-            /*font-weight: bold;*/
-        /*}*/
-
-
     </style>
 </head>
 <body>
@@ -1038,16 +1032,20 @@
     };
 
     function top_gainers_losers() {
-        app4.rows = [];
+        let gain_data = [];
+        let lose_data = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
-            for (let i = 0; i < data.losers[1].length; i++) {
-                app4.rows.push(data.losers[1][i]);
+            for (let i = 0; i < data.losers[0].length; i++) {
+                lose_data.push(data.losers[0][i]);
                 }
 
-            for (let i = 0; i < data.gainers[1].length; i++) {
-                app4.rows2.push(data.gainers[1][i]);
+            for (let i = 0; i < data.gainers[0].length; i++) {
+                gain_data.push(data.gainers[0][i]);
                 }
+
+            app4.rows = lose_data;
+            app4.rows2 = gain_data;
         })
     }
 
@@ -1196,6 +1194,7 @@
     index_all();
     top_gainers_losers();
     setInterval(function () {
+            top_gainers_losers();
             update_coin(current_index);
             update_index(current_id);
         },

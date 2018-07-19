@@ -636,10 +636,6 @@
             width: 50%
         }
 
-        .gl_index {
-            font-size: 3.0vw;
-            font-weight: bold;
-        }
 
 
 
@@ -798,7 +794,6 @@
 
         <div id="right_bar" class="col-sm-2 sidenav">
             <div v-cloak class="well" id="top_gain_lose">
-                <div class="gl_index">ALTPRV</div>
                 <div id="gl_data">
                 <div id="top_gainers">
                     <div id="gainerz" class="gl_title">Biggest<br>Gainers</div>
@@ -1002,16 +997,20 @@
 
 
     function top_gainers_losers() {
-        app4.rows = [];
+        let gain_data = [];
+        let lose_data = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
-            for (let i = 0; i < data.losers[2].length; i++) {
-                app4.rows.push(data.losers[2][i]);
+            for (let i = 0; i < data.losers[0].length; i++) {
+                lose_data.push(data.losers[0][i]);
                 }
 
-            for (let i = 0; i < data.gainers[2].length; i++) {
-                app4.rows2.push(data.gainers[2][i]);
+            for (let i = 0; i < data.gainers[0].length; i++) {
+                gain_data.push(data.gainers[0][i]);
                 }
+
+            app4.rows = lose_data;
+            app4.rows2 = gain_data;
         })
     }
 
@@ -1203,6 +1202,7 @@
     index_all();
     top_gainers_losers();
     setInterval(function () {
+            top_gainers_losers();
             update_coin(current_index);
             update_index(current_id);
         },
