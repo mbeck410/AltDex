@@ -602,48 +602,60 @@
             text-align: center;
         }
 
-        #gl_data {
-            display: flex;
-        }
-
-        .gl_name {
-            font-weight: bold;
-            font-size: 14px;
-        }
 
         .gl_title {
-            font-size: 18px;
+            font-size: 1.2vw;
             font-weight: bold;
-            background-color: #222842;
-            color: white;
+            padding-bottom: 3px;
+            padding-top: 3px;
         }
 
         .gl_data {
             padding-top: 10px;
             padding-bottom: 10px;
-            border-top: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+            display: flex;
         }
 
         .gl_data:last-child {
-            border-top: 1px solid lightgray;
+            border-bottom: 0;
             padding-top: 10px;
             padding-bottom: 0;
+            display: flex;
         }
 
         #gainerz {
-            background-color: green;
+            color: white;
+            background-color: #222842;
+            text-align: center;
         }
 
         #lozerz {
-            background-color: red;
+            color: white;
+            background-color: #222842;
+            text-align: center;
+            margin-top: 10px;
         }
 
-        #top_losers {
-            width: 50%;
+        .gl_name {
+                font-weight: bold;
+                font-size: 0.9vw;
+                width: 22%;
+                text-align: left;
+            }
+
+        .gl_price {
+            text-align: right;
+            width: 45%;
         }
 
-        #top_gainers {
-            width: 50%
+        .gl_percent {
+            text-align: right;
+            width: 33%;
+        }
+
+        .r_ad {
+            margin-bottom: 20px;
         }
 
     </style>
@@ -801,6 +813,11 @@
         </div>
 
         <div id="right_bar" class="col-lg-2 sidenav">
+            <div class="r_ad">
+            <ins class="adsbygoogle"
+                         style="display:inline-block;width:225px;height:190px"
+                         data-ad-client="ca-pub-9873470958093574"
+                 data-ad-slot="5347610936"></ins></div>
             <div v-cloak class="well" id="top_gain_lose">
                 <div id="gl_data">
                 <div id="top_gainers">
@@ -829,10 +846,7 @@
 
             <div class="well feedgrabbr_widget" id="fgid_ffd55116db5fb3420a5452387"></div>
 
-            <ins class="adsbygoogle"
-     style="display:inline-block;width:225px;height:600px"
-     data-ad-client="ca-pub-9873470958093574"
-     data-ad-slot="2227010612"></ins>
+
 
         </div>
 
