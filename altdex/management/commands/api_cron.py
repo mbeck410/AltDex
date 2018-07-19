@@ -25,7 +25,7 @@ class Command(BaseCommand):
                     sleep(60)
                     try:
                         test2 = collect()
-                        
+
                     except:
                         raise CommandError("Error")
 

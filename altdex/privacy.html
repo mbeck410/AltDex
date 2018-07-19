@@ -732,6 +732,16 @@
                     </tr>
                 </table>
             </div>
+            <div class="well" id="top_gain_lose" v-for="row in rows">
+                <div id="top_gainers">
+                    <div class="gl_name">{{row.gainers.name}}</div>
+                    <div class="gl_price">{{row.gainers.price}}</div>
+                </div>
+                <div id="top_losers">
+                    <div class="gl_name">{{row.losers.name}}</div>
+                    <div class="gl_price">{{row.losers.price}}</div>
+                </div>
+            </div>
             <ins id="footer_ad" class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9873470958093574"
@@ -897,6 +907,15 @@
         }
     });
 
+    let app4 = new Vue({
+        el: '#top_gain_lose',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+        }
+    });
+
 
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
@@ -910,6 +929,17 @@
         xhttp.open("GET", url);
         xhttp.send();
 
+    }
+
+
+    function top_gainers_losers() {
+        app4.rows = [];
+        let url = '/gainers_losers/';
+        http_get(url, function (data) {
+
+            console.log(data.dictkey[2]);
+            app4.rows = data.dictkey[2]
+        })
     }
 
 
@@ -1098,6 +1128,7 @@
     index_current(current_id);
     coin_current(current_index);
     index_all();
+    top_gainers_losers();
     setInterval(function () {
             update_coin(current_index);
             update_index(current_id);
