@@ -93,14 +93,14 @@ def collect():
             this_change = 0
 
         else:
-            price_id = amount_entries - 300
+            price_id = amount_entries - 999
             last_price = dex.indexprice_set.all()[price_id].price
             this_change = float(dex_price) - float(last_price)
             dex_percent_change = (this_change/float(last_price)) * 100
 
         new_dex_history = IndexPrice(index=dex,
                                      price=dex_price,
-                                     change_24h=-5,
+                                     change_24h=this_change,
                                      price_percent_change=dex_percent_change,
                                      market_cap=dex_market_cap,
                                      divisor=dex.divisor
