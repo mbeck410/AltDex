@@ -172,6 +172,7 @@ def gainers_losers(request):
     for index in indices:
         losers = index.coin_set.order_by('price_percent_change')[:5]
         # gainers = index.coin_set.order_by('-price')[:5]
+        loser_index_array = []
 
 
         for loser_coin in losers:
@@ -179,7 +180,9 @@ def gainers_losers(request):
                             'price': loser_coin.price,
                             'price_percent': loser_coin.price_percent_change}
 
-            loser_array.append(losers_dict)
+            loser_index_array.append(losers_dict)
+
+        loser_array.append(loser_index_array)
 
         # for gainer_coin in gainers:
         #     gainers_dict = {'symbol': gainer_coin.symbol,
