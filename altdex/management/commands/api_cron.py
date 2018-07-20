@@ -12,22 +12,22 @@ class Command(BaseCommand):
 
     def my_test(self):
         while True:
-            # try:
+            try:
                 test = collect()
 
-            #
-            # except:
-            #     sleep(60)
-            #     try:
-            #         test2 = collect()
-            #
-            #     except:
-            #         sleep(60)
-            #         try:
-            #             test2 = collect()
-            #
-            #         except:
-            #             raise CommandError("Error")
+
+            except:
+                sleep(60)
+                try:
+                    test2 = collect()
+
+                except:
+                    sleep(60)
+                    try:
+                        test3 = collect()
+
+                    except:
+                        raise CommandError("Error")
 
 
 
