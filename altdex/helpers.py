@@ -26,8 +26,10 @@ def collect():
     # url3 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str2 + '&tsyms=USD'
 
     r1 = requests.get(url1)
-    # r2 = requests.get(url2)
-    # r3 = requests.get(url3)
+
+    while r1.status_code != 200:
+        sleep(30)
+        r1 = requests.get(url1)
 
     data_1 = json.loads(r1.text)
     # data_2 = json.loads(r2.text)
