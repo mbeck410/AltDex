@@ -69,6 +69,11 @@ def collect():
                 if entry['short'] == 'CMT':
                     url2 = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
                     r2 = requests.get(url2)
+
+                    while r2.status_code != 200:
+                        sleep(30)
+                        r2 = requests.get(url2)
+
                     data = json.loads(r2.text)
 
                     coin.price = float(data['data']['quotes']['USD']['price'])
@@ -95,7 +100,7 @@ def collect():
             this_change = 0
 
         else:
-            price_id = amount_entries - 999
+            price_id = amount_entries - 1374
             last_price = dex.indexprice_set.all()[price_id].price
             this_change = float(dex_price) - float(last_price)
             dex_percent_change = (this_change/float(last_price)) * 100
