@@ -148,12 +148,26 @@ def getcoinscurrent(request):
         name_lower = str(this_coin.name).lower()
         no_space = name_lower.replace(' ', '')
 
+        if ' ' in name_lower:
+            hyphened_name = name_lower.replace(' ', '-')
+            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
+
         if no_space == 'bytecoin':
-            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+str(this_coin.name).lower()+'-bcn.png'
+            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+name_lower+'-bcn.png'
         elif no_space == 'navcoin':
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
         elif no_space == 'bitcoinprivate':
-            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
+            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bitcoin-private.png'
+        elif no_space == 'golem':
+            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/golem-network-tokens.png'
+        elif no_space == 'iost':
+            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
+        elif no_space == 'nebulas':
+            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
+        elif no_space == 'polymath':
+            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/polymath-network.png'
+        elif no_space == 'cortex':
+            coin_icon_url == 'http: // www.cortexlabs.ai / cortexImg / logo.png'
         else:
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
 
