@@ -146,32 +146,39 @@ def getcoinscurrent(request):
             coin_price = '{0:.6f}'.format(float(this_coin.price))
 
         name_lower = str(this_coin.name).lower()
-        no_space = name_lower.replace(' ', '')
-
-
-
-        if no_space == 'bytecoin':
-            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+name_lower+'-bcn.png'
-        elif no_space == 'navcoin':
-            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
-        elif no_space == 'bitcoinprivate':
-            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bitcoin-private.png'
-        elif no_space == 'golem':
-            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/golem-network-tokens.png'
-        elif no_space == 'iost':
-            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
-        elif no_space == 'nebulas':
-            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
-        elif no_space == 'polymath':
-            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/polymath-network.png'
-        elif no_space == 'cortex':
-            coin_icon_url == 'http: // www.cortexlabs.ai / cortexImg / logo.png'
-        else:
-            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
-
         if ' ' in name_lower:
             hyphened_name = name_lower.replace(' ', '-')
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
+
+        else:
+            no_space = name_lower.replace(' ', '')
+
+            if no_space == 'bytecoin':
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'-bcn.png'
+            elif no_space == 'navcoin':
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
+            elif no_space == 'bitcoinprivate':
+                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bitcoin-private.png'
+            elif no_space == 'golem':
+                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/golem-network-tokens.png'
+            elif no_space == 'iost':
+                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
+            elif no_space == 'nebulas':
+                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
+            elif no_space == 'bibox':
+                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bibox-token.png'
+            elif no_space == 'cortex':
+                coin_icon_url == 'http://www.cortexlabs.ai/cortexImg/logo.png'
+            else:
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
+
+        if str(this_coin.symbol).lower() == 'poly':
+            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/polymath-network.png'
+
+        if str(this_coin.symbol).lower() == 'switcheo':
+            coin_icon_url = 'https: // switcheo.network / favicon.ico'
+
+
 
         coin_dict = {   'name': this_coin.name,
                         'website': this_coin.website,
