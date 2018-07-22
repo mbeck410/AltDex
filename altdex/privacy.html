@@ -121,6 +121,10 @@
                 padding: 15px;
             }
 
+            #top_prices {
+                display: none;
+            }
+
             .row.content {
                 height: auto;
             }
@@ -687,14 +691,15 @@
             font-size: 14px;
             background-color: #222842;
             color: white;
+            padding-left: 15px;
         }
 
     </style>
 </head>
 <body>
 
-<div id="top_prices" class="test container-fluid" v-for="row in rows">
-    <div>{{row.icon}}{{row.price}}</div>
+<div id="top_prices" class="container-fluid text-right" v-for="row in rows">
+    <div><img :src="row.icon">{{row.price}}</div>
 </div>
 
 <nav class="my_navbar navbar navbar-default">
