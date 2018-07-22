@@ -659,12 +659,21 @@
             margin-bottom: 20px;
         }
 
+        #myNavbar {
+            display: flex;
+        }
+
+        #twitter_link {
+            text-align: right;
+            margin: auto;
+        }
+
     </style>
 </head>
 <body>
 
 <nav class="my_navbar navbar navbar-default">
-    <div class="container-fluid">
+    <div class="test container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
@@ -675,6 +684,7 @@
                     src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
+            <div>
             <ul class="primary nav navbar-nav">
                 <li class="my_drop dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
@@ -689,6 +699,11 @@
                 <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
+            </div>
+            <div id="twitter_link"><a class="twitter-follow-button"
+  href="https://twitter.com/altcoindex"
+  data-size="large">
+Follow @TwitterDev</a></div>
         </div>
     </div>
 </nav>
