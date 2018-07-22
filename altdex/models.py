@@ -23,6 +23,8 @@ class Coin(models.Model):
     volume = models.DecimalField(max_digits=50, decimal_places=25)
     percent_weight = models.DecimalField(max_digits=50, decimal_places=25)
     website = models.CharField(max_length=50, default='')
+    icon = models.CharField(max_length=150,
+                            default='https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + str(name) + '.png')
 
     def __str__(self):
 
