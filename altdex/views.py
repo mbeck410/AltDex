@@ -148,9 +148,7 @@ def getcoinscurrent(request):
         name_lower = str(this_coin.name).lower()
         no_space = name_lower.replace(' ', '')
 
-        if ' ' in name_lower:
-            hyphened_name = name_lower.replace(' ', '-')
-            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
+
 
         if no_space == 'bytecoin':
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+name_lower+'-bcn.png'
@@ -170,6 +168,10 @@ def getcoinscurrent(request):
             coin_icon_url == 'http: // www.cortexlabs.ai / cortexImg / logo.png'
         else:
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
+
+        if ' ' in name_lower:
+            hyphened_name = name_lower.replace(' ', '-')
+            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
 
         coin_dict = {   'name': this_coin.name,
                         'website': this_coin.website,
