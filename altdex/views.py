@@ -158,20 +158,21 @@ def getcoinscurrent(request):
             elif no_space == 'navcoin':
                 coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
             elif no_space == 'bitcoinprivate':
-                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bitcoin-private.png'
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bitcoin-private.png'
             elif no_space == 'golem':
-                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/golem-network-tokens.png'
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/golem-network-tokens.png'
             elif no_space == 'iost':
-                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
             elif no_space == 'nebulas':
-                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
-            elif no_space == 'cortex':
-                coin_icon_url == 'http://www.cortexlabs.ai/cortexImg/logo.png'
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
             else:
                 coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
 
-        if no_space == 'poly':
-            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/polymath-network.png'
+        if no_space == 'polymath':
+            coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/polymath-network.png'
+
+        if no_space == 'cortex':
+            coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/cortex.png'
 
         if no_space == 'switcheo':
             coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/switcheo.png'
