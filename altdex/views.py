@@ -170,13 +170,13 @@ def getcoinscurrent(request):
             else:
                 coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
 
-        if str(this_coin.symbol).lower() == 'poly':
+        if no_space == 'poly':
             coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/polymath-network.png'
 
-        if str(this_coin.symbol).lower() == 'switcheo':
+        if no_space == 'switcheo':
             coin_icon_url = 'https://switcheo.network/favicon.ico'
 
-        if str(this_coin.symbol).lower() == 'bibox':
+        if no_space == 'bibox':
             coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bibox-token.png'
 
 
