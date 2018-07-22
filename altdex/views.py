@@ -145,6 +145,8 @@ def getcoinscurrent(request):
         else:
             coin_price = '{0:.6f}'.format(float(this_coin.price))
 
+        coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+str(this_coin.name).lower()+'png'
+
         coin_dict = {   'name': this_coin.name,
                         'website': this_coin.website,
                         'symbol': this_coin.symbol,
@@ -155,7 +157,8 @@ def getcoinscurrent(request):
                         'indices': dices,
                         'weight_1': weight_1,
                         'weight_2': weight_2,
-                        'weight_3': weight_3
+                        'weight_3': weight_3,
+                        'icon': coin_icon_url
                         }
 
         coin_table.append(coin_dict)
