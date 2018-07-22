@@ -155,7 +155,7 @@ def getcoinscurrent(request):
         elif no_space == 'bitcoinprivate':
             coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
         else:
-            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+str(this_coin.name).lower()+'.png'
+            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
 
         coin_dict = {   'name': this_coin.name,
                         'website': this_coin.website,
