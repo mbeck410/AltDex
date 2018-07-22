@@ -106,7 +106,7 @@ def getindexcurrent(request):
 
 
 def getcoinscurrent(request):
-    coins = Coin.objects.all()
+    coins = Coin.objects.order_by('market_cap')
     coin_table = []
     weight_1 = 0
     weight_2 = 0
@@ -178,7 +178,7 @@ def getcoinscurrent(request):
             coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/switcheo.png'
 
         if no_space == 'bibox':
-            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bibox-token.png'
+            coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/bibox-token.png'
 
 
 

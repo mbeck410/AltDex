@@ -680,12 +680,21 @@
             padding-right: 0
         }
 
+        #top_prices {
+            width: 100%;
+            height: 25px;
+            display: flex;
+            font-size: 14px;
+            background-color: #222842;
+            color: white;
+        }
+
     </style>
 </head>
 <body>
 
-<div id="top_prices" class="test container-fluid">
-
+<div id="top_prices" class="test container-fluid" v-for="row in rows">
+    <div>{{row.icon}}{{row.price}}</div>
 </div>
 
 <nav class="my_navbar navbar navbar-default">
@@ -1037,6 +1046,14 @@ Follow @TwitterDev</a></div>
         }
     });
 
+    let app5 = new Vue({
+        el: '#top_prices',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+        }
+    });
 
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
@@ -1076,7 +1093,8 @@ Follow @TwitterDev</a></div>
         app.rows = [];
         amount_gainers = 0;
         amount_losers = 0;
-        let dict_loss = [];
+        let dict = [];
+        let top_bar = [];
         let divisor = 0;
         let url = '/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
         //alert('test');
@@ -1086,6 +1104,9 @@ Follow @TwitterDev</a></div>
             for (let i = 0; i < data.dict_key.length; ++i) {
                 let entry = data.dict_key[i];
                 let index_name = entry.indices;
+                if (i < 5) {
+                    top_bar.push(entry)
+                }
                 if (index_name.includes(index) === true) {
                     if (entry.price_percent > 0) {
                         amount_gainers++;
@@ -1093,7 +1114,7 @@ Follow @TwitterDev</a></div>
                     else if (entry.price_percent < 0) {
                         amount_losers++;
                     }
-                    app.rows.push(entry);
+                    dict.push(entry);
                     count++;
                     divisor += entry.market_cap
                 }
@@ -1102,6 +1123,8 @@ Follow @TwitterDev</a></div>
                 // if (index_name.includes(index) === true) {
 
             }
+            app5.rows = top_bar;
+            app.rows = dict;
             let percent_gainers = amount_gainers / count * 100;
             let percent_losers = amount_losers / count * 100;
             let new_gain = percent_gainers.toFixed(1);
@@ -1115,6 +1138,7 @@ Follow @TwitterDev</a></div>
         let new_coins = [];
         amount_gainers = 0;
         amount_losers = 0;
+        let top_bar = [];
         let count = 0;
         let url = '/getcoinscurrent/';
         http_get(url, function (data) {
@@ -1133,6 +1157,9 @@ Follow @TwitterDev</a></div>
                     count++;
                 }
                 // let index_name = entry.indices;
+                if (i < 5) {
+                    top_bar.push(entry);
+                }
                 // if (index_name.includes(index) === true) {
 
             }
@@ -1144,6 +1171,7 @@ Follow @TwitterDev</a></div>
             gainers_div.innerHTML = new_gain.toString() + '%';
             losers_div.innerHTML = new_lose.toString() + '%';
             app.rows = new_coins;
+            app5.rows = top_bar;
         });
     }
 
