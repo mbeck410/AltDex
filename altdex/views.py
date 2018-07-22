@@ -145,10 +145,15 @@ def getcoinscurrent(request):
         else:
             coin_price = '{0:.6f}'.format(float(this_coin.price))
 
-        if str(this_coin.name).lower() is 'bytecoin':
+        name_lower = str(this_coin.name).lower()
+        no_space = name_lower.replace(' ', '')
+
+        if no_space == 'bytecoin':
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+str(this_coin.name).lower()+'-bcn.png'
-        elif str(this_coin.name).lower() is 'navcoin':
+        elif no_space == 'navcoin':
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
+        elif no_space == 'bitcoinprivate':
+            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
         else:
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+str(this_coin.name).lower()+'.png'
 
