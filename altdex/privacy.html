@@ -336,7 +336,7 @@
             margin: 0;
             border-radius: 0;
             border: 0;
-            display: flex;
+
         }
 
         .my_navbar .navbar-brand {
@@ -666,6 +666,14 @@
             margin-bottom: 20px;
         }
 
+        #myNavbar {
+            display: flex;
+        }
+
+        #twitter_link {
+            text-align: right;
+        }
+
 
 
     </style>
@@ -807,8 +815,8 @@ Follow @TwitterDev</a></div>
                     <tr v-for="row in sortedArray">
                         <!--<img src="https://github.com/dziungles/cryptocurrency-logos/blob/master/coins/16x16/aces.png?raw=true">-->
                         <td class="row_symbol">{{row.symbol}}</td>
-                        <td id="coin_name_value" class="row_name"><a :href="row.website"
-                                                                     target="_blank"><img :src="row.icon"> &nbsp; {{row.name}}</a></td>
+                        <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
+                            <img :src="row.icon"></a> &nbsp; <a :href="row.website" target="_blank">{{row.name}}</a></td>
                         <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
                         <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->

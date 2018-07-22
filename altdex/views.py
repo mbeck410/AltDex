@@ -176,7 +176,7 @@ def getcoinscurrent(request):
         if str(this_coin.symbol).lower() == 'switcheo':
             coin_icon_url = 'https://switcheo.network/favicon.ico'
 
-        if no_space == 'bibox':
+        if str(this_coin.symbol).lower() == 'bibox':
             coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bibox-token.png'
 
 
