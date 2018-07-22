@@ -165,8 +165,6 @@ def getcoinscurrent(request):
                 coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
             elif no_space == 'nebulas':
                 coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
-            elif no_space == 'bibox':
-                coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bibox-token.png'
             elif no_space == 'cortex':
                 coin_icon_url == 'http://www.cortexlabs.ai/cortexImg/logo.png'
             else:
@@ -176,7 +174,10 @@ def getcoinscurrent(request):
             coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/polymath-network.png'
 
         if str(this_coin.symbol).lower() == 'switcheo':
-            coin_icon_url = 'https: // switcheo.network / favicon.ico'
+            coin_icon_url = 'https://switcheo.network/favicon.ico'
+
+        if no_space == 'bibox':
+            coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bibox-token.png'
 
 
 

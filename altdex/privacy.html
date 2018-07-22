@@ -53,6 +53,22 @@
     fg_widgets.push("fgid_fe56c6facc85556433ea1b5c1");</script>
     <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({
             google_ad_client: "ca-pub-6108390557757563",
@@ -320,6 +336,7 @@
             margin: 0;
             border-radius: 0;
             border: 0;
+            display: flex;
         }
 
         .my_navbar .navbar-brand {
@@ -667,6 +684,7 @@
                     src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
+            <div>
             <ul class="primary nav navbar-nav">
                 <li class="my_drop dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
@@ -681,6 +699,11 @@
                 <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
+            </div>
+            <div id="twitter_link"><a class="twitter-follow-button"
+  href="https://twitter.com/altcoindex"
+  data-size="large">
+Follow @TwitterDev</a></div>
         </div>
     </div>
 </nav>
