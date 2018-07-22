@@ -687,16 +687,16 @@
 
         #twitter_link {
             text-align: right;
-            /*height: 50px;*/
-            padding-right: 0;
+            height: 50px;
+            padding-top: 11px;
+        }
+
+        #twitter_link2 {
+            display: none;
         }
 
         #barz {
-            display: flex;
-        }
-
-        #mobile_time {
-            display: none;
+            padding-right: 0;
         }
 
         /*#top_prices {*/
@@ -709,12 +709,20 @@
             /*padding-left: 15px;*/
         /*}*/
 
+        .navbar-header {
+            display: flex;
+        }
+
     </style>
 </head>
 <body>
 
 <!--<div id="top_prices" class="container-fluid text-right" v-for="row in rows">-->
     <!--<div><img :src="row.icon">{{row.price}}</div>-->
+
+<div id="twitter_link2"><a class="twitter-follow-button"
+  href="https://twitter.com/altcoindex" data-show-count="false">
+Follow @TwitterDev</a></div>
 <!--</div>-->
 
 <nav class="my_navbar navbar navbar-default">
@@ -727,13 +735,8 @@
             </button>
             <a class="navbar-brand" href="/"><img
                     src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
-            <div id="twitter_link2"><a class="twitter-follow-button"
-  href="https://twitter.com/altcoindex" data-show-count="false">
-Follow @TwitterDev</a></div>
-    </div>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-            <div>
             <ul class="primary nav navbar-nav">
                 <li class="my_drop dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
@@ -748,12 +751,11 @@ Follow @TwitterDev</a></div>
                 <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
-            </div>
-        </div>
-        <div id="twitter_link"><a class="twitter-follow-button"
+            <div id="twitter_link"><a class="twitter-follow-button"
   href="https://twitter.com/altcoindex"
   data-size="large">
 Follow @TwitterDev</a></div>
+        </div>
     </div>
 </nav>
 
@@ -803,25 +805,22 @@ Follow @TwitterDev</a></div>
 
             <div id="index_info" class="well main_price">
                 <!--<div class="index_info1">-->
-                <div v-cloak class="pricing" id="middle_price_app" v-for="row in rows">
-                    <div id="main_index_price">
-                        <div class="middle_name">
-                            <div class="dex_name">ALTPRV</div>
-                            <div class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+                <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
+                    <div class="middle_name">
+                        <div class="dex_name">ALTPRV</div>
+                        <div class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+                    </div>
+                    <div class="middle_value">
+                        <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                        <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
+                    </div>
+                    <div class="middle_data">
+                        <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                            {{row.price_percent.toFixed(2)}}%
                         </div>
-                        <div class="middle_value">
-                            <div id="middle_price">{{row.price.toFixed(2)}}</div>
-                            <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
+                        <div id="middle_percent" v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
+                            {{row.change_24h.toFixed(2)}}
                         </div>
-                        <div class="middle_data">
-                            <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                {{row.price_percent.toFixed(2)}}%
-                            </div>
-                            <div id="middle_percent" v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
-                                {{row.change_24h.toFixed(2)}}
-                            </div>
-                        </div>
-                        <div id="mobile_time">Last Update: {{row.time.slice(0,19)}} UTC</div>
                     </div>
                 </div>
 
