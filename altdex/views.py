@@ -174,7 +174,7 @@ def getcoinscurrent(request):
             coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/polymath-network.png'
 
         if no_space == 'switcheo':
-            coin_icon_url = 'https://switcheo.network/favicon.ico'
+            coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/switcheo.png'
 
         if no_space == 'bibox':
             coin_icon_url == 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bibox-token.png'
