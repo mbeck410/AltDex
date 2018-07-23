@@ -53,6 +53,15 @@ def pullcurrent(request):
         return HttpResponse('error')
 
 
+def testing(request):
+    if request.user.is_superuser:
+        with open('./altdex/testing.html') as file:
+            contents = file.read()
+            return HttpResponse(contents)
+    else:
+        return HttpResponse('error')
+
+
 def getindexall(request):
     indices = Index.objects.order_by('id')
     indices_all_output = []

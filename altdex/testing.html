@@ -702,15 +702,19 @@
             padding-right: 0;
         }
 
-        /*#top_prices {*/
-            /*width: 100%;*/
-            /*height: 25px;*/
-            /*display: flex;*/
-            /*font-size: 14px;*/
-            /*background-color: #222842;*/
-            /*color: white;*/
-            /*padding-left: 15px;*/
-        /*}*/
+        #top_prices {
+            width: 100%;
+            height: 25px;
+            display: flex;
+            font-size: 16px;
+            background-color: #222842;
+            color: white;
+            padding-left: 15px;
+        }
+
+        #top_icon {
+            display: flex;
+        }
 
 
     </style>
@@ -724,6 +728,10 @@
 <!--</div>-->
 
 <nav class="my_navbar navbar navbar-default">
+    <div id="top_prices" v-for="row in rows">
+        <div id="top_icon">{{row.icon}} &nbsp; {{row.price}}</div>
+        <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"> {{row.price_percent}}</div>
+    </div>
     <div id="barz" class="test container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -947,6 +955,7 @@ Follow @TwitterDev</a></div>
     <div class="col-sm-2"></div>
 </footer>
 <script>
+    let top_bois = ['BTC', 'LTC', 'ETH'];
     let current_index = 'Privacy';
     let current_id = '2';
     let first_x = 0;
@@ -1181,7 +1190,7 @@ Follow @TwitterDev</a></div>
                     count++;
                 }
                 // let index_name = entry.indices;
-                if (i < 5) {
+                if (entry.symbol in top_bois) {
                     top_bar.push(entry);
                 }
                 // if (index_name.includes(index) === true) {
