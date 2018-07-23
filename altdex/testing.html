@@ -749,9 +749,9 @@
             display: flex;
         }
 
-        #coin_table > td:first-child {
-            border: 0;
-        }
+         .table-hover:first-child {
+             border: 0;
+         }
 
     </style>
 </head>
@@ -998,7 +998,7 @@ Follow @TwitterDev</a></div>
     let dark_bt = document.querySelector('#dark_bt');
     let main_div = document.querySelector('#main_div');
     let wells = document.getElementsByClassName('well');
-    let coin_row = document.getElementsByClassName('coin_row');
+    let table_hover = document.getElementsByClassName('table_hover');
     let w_name = document.getElementsByClassName('w_name');
 
     dark_bt.onclick = function () {
@@ -1013,16 +1013,15 @@ Follow @TwitterDev</a></div>
                 w_name[i].style.color = '#D0D0D0'
             }
 
-            for (let i=0; i<coin_row.length; i++) {
-                coin_row[i].style.backgroundColor = '#484848';
-                coin_row[i].style.borderColor = '#282828';
+            for (let i=0; i<table_hover.length; i++) {
+                table_hover[i].style.backgroundColor = '#484848';
+                table_hover[i].style.borderColor = '#282828';
             }
             // w_name.style.color = '#F5F5F5';
 
             for (let i = 0; i < wells.length; i++) {
                 wells[i].style.backgroundColor = '#484848';
                 wells[i].style.color = '#D0D0D0';
-                wells[i].style.borderColor = '#282828';
             }
 
             plot_bg = '#484848';
@@ -1038,8 +1037,8 @@ Follow @TwitterDev</a></div>
                 w_name[i].style.color = 'black'
             }
 
-            for (let i=0; i<coin_row.length; i++) {
-                coin_row[i].style.backgroundColor = 'white';
+            for (let i=0; i<table_hover.length; i++) {
+                table_hover[i].style.backgroundColor = 'white';
             }
 
             // w_name.style.color = 'black';
