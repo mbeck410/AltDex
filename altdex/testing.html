@@ -723,7 +723,7 @@
     <div class="test container-fluid">
         <div id="top_prices" v-for="row in rows">
         <div id="top_icon">{{row.icon}} &nbsp; {{row.price}}</div>
-        <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"> {{row.price_percent}}</div>
+        <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"> {{row.price_percent}}%</div>
     </div>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
