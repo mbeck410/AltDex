@@ -749,7 +749,7 @@
             display: flex;
         }
 
-         .table-hover:first-child {
+         .coin_row:first-child > td {
              border: 0;
          }
 
@@ -801,7 +801,7 @@ Follow @TwitterDev</a></div>
                 <div class="well">
                     <div v-cloak class="widget" v-for="row in rows">
                         <div class="w_data">
-                            <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
+                            <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
                             <div>
                                 <div>{{row.price.toFixed(2)}}</div>
                                 <div id="w_percent"
@@ -998,8 +998,8 @@ Follow @TwitterDev</a></div>
     let dark_bt = document.querySelector('#dark_bt');
     let main_div = document.querySelector('#main_div');
     let wells = document.getElementsByClassName('well');
-    let table_hover = document.getElementsByClassName('table_hover');
-    let w_name = document.getElementsByClassName('w_name');
+    let w_name_link = document.getElementsByClassName('w_name_link');
+    let coin_row = document.getElementsByClassName('coin_row');
 
     dark_bt.onclick = function () {
         let mode = this.innerHTML;
@@ -1009,19 +1009,20 @@ Follow @TwitterDev</a></div>
         if (mode === 'Dark') {
             main_div.style.backgroundColor = '#282828';
 
-            for (let i=0; i<w_name.length; i++) {
-                w_name[i].style.color = '#D0D0D0'
+            for (let i=0; i<w_name_link.length; i++) {
+                w_name_link[i].style.color = '#D0D0D0'
             }
 
-            for (let i=0; i<table_hover.length; i++) {
-                table_hover[i].style.backgroundColor = '#484848';
-                table_hover[i].style.borderColor = '#282828';
+            for (let i=0; i<coin_row.length; i++) {
+                coin_row[i].style.backgroundColor = '#484848';
+                coin_row[i].style.borderColor = '#282828';
             }
             // w_name.style.color = '#F5F5F5';
 
             for (let i = 0; i < wells.length; i++) {
                 wells[i].style.backgroundColor = '#484848';
                 wells[i].style.color = '#D0D0D0';
+                wells[i].style.borderColor = '#282828';
             }
 
             plot_bg = '#484848';
@@ -1033,12 +1034,12 @@ Follow @TwitterDev</a></div>
         } else {
             main_div.style.backgroundColor = '#ededed';
 
-            for (let i=0; i<w_name.length; i++) {
-                w_name[i].style.color = 'black'
+            for (let i=0; i<w_name_link.length; i++) {
+                w_name_link[i].style.color = 'black'
             }
 
-            for (let i=0; i<table_hover.length; i++) {
-                table_hover[i].style.backgroundColor = 'white';
+            for (let i=0; i<coin_row.length; i++) {
+                coin_row[i].style.backgroundColor = 'white';
             }
 
             // w_name.style.color = 'black';
@@ -1060,7 +1061,7 @@ Follow @TwitterDev</a></div>
             'yaxis.color': plot_lines,         // updates the y axis range
             'xaxis.color': plot_lines         // updates the y axis range
         };
-
+        layout.xaxis.plotbg_color('#484848');
         Plotly.relayout('index_chart', update)
     };
 
