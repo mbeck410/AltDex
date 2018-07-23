@@ -720,11 +720,11 @@
     </style>
 </head>
 <body>
-<nav class="my_navbar navbar navbar-default">
-    <div id="top_prices" v-for="row in rows">
+<div id="top_prices" v-for="row in rows">
         <div id="top_icon">{{row.icon}} &nbsp; {{row.price}}</div>
         <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"> {{row.price_percent}}</div>
     </div>
+<nav class="my_navbar navbar navbar-default">
     <div id="barz" class="test container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -1312,12 +1312,12 @@ Follow @TwitterDev</a></div>
     coin_current(current_index);
     index_all();
     top_gainers_losers();
-    setInterval(function () {
-            top_gainers_losers();
-            update_coin(current_index);
-            update_index(current_id);
-        },
-        30000);
+    // setInterval(function () {
+    //         top_gainers_losers();
+    //         update_coin(current_index);
+    //         update_index(current_id);
+    //     },
+    //     30000);
 
 </script>
 </body>
