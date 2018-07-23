@@ -996,7 +996,7 @@ Follow @TwitterDev</a></div>
     let main_div = document.querySelector('#main_div');
     let wells = document.getElementsByClassName('well');
     let coin_row = document.getElementsByClassName('coin_row');
-    // let w_name = document.querySelector('#w_name');
+    let w_name = document.getElementsByClassName('w_name');
 
     dark_bt.onclick = function () {
         let mode = this.innerHTML;
@@ -1007,6 +1007,9 @@ Follow @TwitterDev</a></div>
             main_div.style.backgroundColor = '#282828';
 
             for (let i=0; i<coin_row.length; i++) {
+                w_name[i].style.color = '#D0D0D0'
+            }
+            for (let i=0; i<coin_row.length; i++) {
                 coin_row[i].style.backgroundColor = '#484848';
                 coin_row[i].style.borderColor = '#282828';
             }
@@ -1014,12 +1017,12 @@ Follow @TwitterDev</a></div>
 
             for (let i = 0; i < wells.length; i++) {
                 wells[i].style.backgroundColor = '#484848';
-                wells[i].style.color = '#F5F5F5';
+                wells[i].style.color = '#D0D0D0';
                 wells[i].style.borderColor = '#282828';
             }
 
             plot_bg = '#484848';
-            plot_lines = '#F5F5F5';
+            plot_lines = '#D0D0D0';
 
             this.style.backgroundColor = '#6dc0eb';
             this.innerHTML = 'Light'
