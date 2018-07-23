@@ -52,7 +52,7 @@
     <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array();
     fg_widgets.push("fgid_fe56c6facc85556433ea1b5c1");</script>
     <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
     <script>window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
@@ -69,16 +69,16 @@
 
   return t;
 }(document, "script", "twitter-wjs"));</script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-6108390557757563",
-            enable_page_level_ads: true
-        });
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <!--<script>-->
+        <!--(adsbygoogle = window.adsbygoogle || []).push({-->
+            <!--google_ad_client: "ca-pub-6108390557757563",-->
+            <!--enable_page_level_ads: true-->
+        <!--});-->
+        <!--(adsbygoogle = window.adsbygoogle || []).push({});-->
+        <!--(adsbygoogle = window.adsbygoogle || []).push({});-->
+        <!--(adsbygoogle = window.adsbygoogle || []).push({});-->
+        <!--(adsbygoogle = window.adsbygoogle || []).push({});-->
+    <!--</script>-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
     <style>
@@ -698,9 +698,7 @@
             display: none;
         }
 
-        #barz {
-            padding-right: 0;
-        }
+
 
         #top_prices {
             width: 100%;
@@ -720,12 +718,13 @@
     </style>
 </head>
 <body>
-<div id="top_prices" v-for="row in rows">
+
+<nav class="my_navbar navbar navbar-default">
+    <div class="test container-fluid">
+        <div id="top_prices" v-for="row in rows">
         <div id="top_icon">{{row.icon}} &nbsp; {{row.price}}</div>
         <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"> {{row.price_percent}}</div>
     </div>
-<nav class="my_navbar navbar navbar-default">
-    <div id="barz" class="test container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
