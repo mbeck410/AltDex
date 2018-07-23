@@ -272,6 +272,7 @@
 
         table.table td:first-child {
             font-weight: bold;
+            border-top: 0;
         }
 
         table.table td:nth-child(2) {
@@ -1007,12 +1008,14 @@ Follow @TwitterDev</a></div>
 
             for (let i=0; i<coin_row.length; i++) {
                 coin_row[i].style.backgroundColor = '#484848';
+                coin_row[i].style.borderColor = '#282828';
             }
             // w_name.style.color = '#F5F5F5';
 
             for (let i = 0; i < wells.length; i++) {
                 wells[i].style.backgroundColor = '#484848';
                 wells[i].style.color = '#F5F5F5';
+                wells[i].style.borderColor = '#282828';
             }
 
             plot_bg = '#484848';
