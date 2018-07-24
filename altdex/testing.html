@@ -1132,23 +1132,24 @@
             current_dir: 'desc'
         },
         methods: {
-            sort: function(s) {
-                if(s === this.current_sort) {
+            sort: function (s) {
+                if (s === this.current_sort) {
                     this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
                 }
                 this.current_sort = s;
-                }
-            },
+            }
+        },
         computed: {
             sortedCoins: function () {
-                return this.rows.sort((a,b) => {
-                let modifier = 1;
-                if(this.current_dir === 'desc') modifier = -1;
-                if(a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
-                if(a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
-                return 0;
-            });
-        }
+                return this.rows.sort((a, b) => {
+                    let modifier = 1;
+                    if (this.current_dir === 'desc') modifier = -1;
+                    if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
+                    if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
+                    return 0;
+                });
+            },
+        },
     });
 
     let app2 = new Vue({
