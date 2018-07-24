@@ -883,13 +883,13 @@
 
                 <table v-cloak id="coin_table" class="table table-hover">
                     <tr id="table_head">
-                        <th @click="sort('symbol')">Symbol<i class="fas fa-sort"></i></th>
-                        <th @click="sort('name')" id="coin_name_title">Name<i class="fas fa-sort"></i></th>
-                        <th @click="sort('market_cap')" id="coin_market_title">Market Cap<i class="fas fa-sort"></i></th>
-                        <th @click="sort('price')">Last f0dc</th>
-                        <th @click="sort('price_percent')">Change (24h) f0dc</th>
-                        <th @click="sort('volume')" id="coin_volume_title">Volume (24h)<i class="fas fa-sort"></i></th>
-                        <th @click="sort('weight_3')" id="coin_weight_title">% Weight<i class="fas fa-sort"></i></th>
+                        <th @click="sort('symbol')">Symbol &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('name')" id="coin_name_title">Name &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('market_cap')" id="coin_market_title">Market Cap &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price')">Last &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price_percent')">Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('volume')" id="coin_volume_title">Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('weight_3')" id="coin_weight_title">% Weight &nbsp; <i class="fas fa-sort"></i></th>
                     </tr>
                     <tr class="coin_row" v-for="row in sortedCoins">
                         <!--<img src="https://github.com/dziungles/cryptocurrency-logos/blob/master/coins/16x16/aces.png?raw=true">-->
