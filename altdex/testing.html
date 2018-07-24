@@ -1003,8 +1003,8 @@ Follow @TwitterDev</a></div>
 
     dark_bt.onclick = function () {
         let mode = this.innerHTML;
-        let plot_bg = '';
         let plot_lines = '';
+        let grid_color = '';
 
         if (mode === 'Dark') {
             main_div.style.backgroundColor = '#282828';
@@ -1025,8 +1025,8 @@ Follow @TwitterDev</a></div>
                 wells[i].style.borderColor = '#282828';
             }
 
-            plot_bg = '#484848';
             plot_lines = '#D0D0D0';
+            grid_color = '#808080';
 
             this.style.backgroundColor = '#6dc0eb';
             this.innerHTML = 'Light'
@@ -1049,18 +1049,21 @@ Follow @TwitterDev</a></div>
                 wells[i].style.backgroundColor = 'white';
             }
 
-            plot_bg = 'white';
+
             plot_lines = 'default';
+            grid_color = 'default';
 
             this.style.backgroundColor = '#484848';
             this.innerHTML = 'Dark'
         }
 
         let update = {
-            // 'plotbg_color': plot_bg,  // updates the end of the x axis range
-            // 'paperbg_color': plot_bg,  // updates the end of the x axis range
+
             'yaxis.color': plot_lines,         // updates the y axis range
-            'xaxis.color': plot_lines         // updates the y axis range
+            'xaxis.color': plot_lines,         // updates the y axis range
+            'xaxis.linecolor': plot_lines,         // updates the y axis range
+            'yaxis.linecolor': plot_lines,
+            'yaxis.gridcolor': grid_color// updates the y axis range
         };
 
         Plotly.relayout('index_chart', update)
