@@ -33,6 +33,9 @@
     <meta name="twitter:description" content="Market Capitalization-Weighted Cryptocurrency Privacy Coin Index">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
     <link rel="shortcut icon" type="image/png"
           href="https://sludgefeed.com/wp-content/uploads/2018/06/Altdex-favicon-32x32.png"/>
     <script>
@@ -735,6 +738,10 @@
             background-color: #f5f5f5;
         }
 
+        #table_head {
+            cursor: pointer;
+        }
+
 
     </style>
 </head>
@@ -867,21 +874,23 @@
 
                 <table v-cloak id="coin_table" class="table table-hover">
                     <tr id="table_head">
-                        <th>Symbol</th>
-                        <th id="coin_name_title">Name</th>
-                        <th id="coin_market_title">Market Cap</th>
-                        <th>Last</th>
-                        <th>Change (24h)</th>
-                        <th id="coin_volume_title">Volume (24h)</th>
-                        <th id="coin_weight_title">% Weight</th>
+                        <th @click="sort('symbol')">Symbol &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('name')" id="coin_name_title">Name &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('market_cap')" id="coin_market_title">Market Cap &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price')">Last &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price_percent')">Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('volume')" id="coin_volume_title">Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('weight_3')" id="coin_weight_title">% Weight &nbsp; <i class="fas fa-sort"></i></th>
                     </tr>
-                    <tr class="coin_row" v-for="row in sortedArray">
+                    <tr class="coin_row" v-for="row in sortedCoins">
+                        <!--<img src="https://github.com/dziungles/cryptocurrency-logos/blob/master/coins/16x16/aces.png?raw=true">-->
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
                             <img :src="row.icon"></a> &nbsp; <a :href="row.website" target="_blank">{{row.name}}</a>
                         </td>
                         <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.pretty_price.toLocaleString('en', {useGrouping:true})}}</td>
+                        <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">
                             {{row.price_percent.toFixed(2)}}%
                         </td>
@@ -990,79 +999,6 @@
     let y_low = 0;
     let y_high = 0;
     let price_change = 0;
-    // let dark_bt = document.querySelector('#dark_bt');
-    // let main_div = document.querySelector('#main_div');
-    // let wells = document.getElementsByClassName('well');
-    // let w_name_link = document.getElementsByClassName('w_name_link');
-    // let coin_row = document.getElementsByClassName('coin_row');
-
-    // dark_bt.onclick = function () {
-    //     let mode = this.innerHTML;
-    //     let plot_lines = '';
-    //     let grid_color = '';
-    //
-    //     if (mode === 'Dark') {
-    //         main_div.style.backgroundColor = '#282828';
-    //
-    //         for (let i = 0; i < w_name_link.length; i++) {
-    //             w_name_link[i].style.color = '#D0D0D0'
-    //         }
-    //
-    //         for (let i = 0; i < coin_row.length; i++) {
-    //             coin_row[i].style.backgroundColor = '#484848';
-    //             coin_row[i].style.borderColor = '#282828';
-    //         }
-    //         // w_name.style.color = '#F5F5F5';
-    //
-    //         for (let i = 0; i < wells.length; i++) {
-    //             wells[i].style.backgroundColor = '#484848';
-    //             wells[i].style.color = '#D0D0D0';
-    //             wells[i].style.borderColor = '#282828';
-    //         }
-    //
-    //         plot_lines = '#D0D0D0';
-    //         grid_color = '#707070';
-    //
-    //         this.style.backgroundColor = '#6dc0eb';
-    //         this.innerHTML = 'Light'
-    //
-    //     } else {
-    //         main_div.style.backgroundColor = '#ededed';
-    //
-    //         for (let i = 0; i < w_name_link.length; i++) {
-    //             w_name_link[i].style.color = 'black'
-    //         }
-    //
-    //         for (let i = 0; i < coin_row.length; i++) {
-    //             coin_row[i].style.backgroundColor = 'white';
-    //         }
-    //
-    //         // w_name.style.color = 'black';
-    //
-    //         for (let i = 0; i < wells.length; i++) {
-    //             wells[i].style.color = 'black';
-    //             wells[i].style.backgroundColor = 'white';
-    //         }
-    //
-    //
-    //         plot_lines = 'default';
-    //         grid_color = 'default';
-    //
-    //         this.style.backgroundColor = '#484848';
-    //         this.innerHTML = 'Dark'
-    //     }
-    //
-    //     let update = {
-    //
-    //         'yaxis.color': plot_lines,         // updates the y axis range
-    //         'xaxis.color': plot_lines,         // updates the y axis range
-    //         'xaxis.linecolor': plot_lines,         // updates the y axis range
-    //         'yaxis.linecolor': plot_lines,
-    //         'yaxis.gridcolor': grid_color// updates the y axis range
-    //     };
-    //
-    //     Plotly.relayout('index_chart', update)
-    // };
 
     let change_range = function (time_frame) {
         let now = new Date();
@@ -1113,36 +1049,30 @@
         el: '#coin_table',
 
         data: {
-            sortKey: '',
-
             rows: [],
+            current_sort: 'market_cap',
+            current_dir: 'desc'
         },
-        computed: {
-            sortedArray() {
-
-                function compare(a, b) {
-                    if (a.market_cap > b.market_cap)
-                        return -1;
-                    if (a.market_cap < b.market_cap)
-                        return 1;
-                    return 0;
+        methods: {
+            sort: function (s) {
+                if (s === this.current_sort) {
+                    this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
                 }
-
-                return this.rows.sort(compare);
+                this.current_sort = s;
             }
         },
-        // methods:{
-        //     sortTable(column){
-        //         function compare2(a, b) {
-        //             if (a.column > b.column)
-        //                 return -1;
-        //             if (a.column< b.column)
-        //                 return 1;
-        //             return 0;
-        //         }
-        //         return this.rows.sort(compare2)
-        //     }
-        // }
+        computed: {
+            sortedCoins: function () {
+                return this.rows.sort((a, b) => {
+                    let modifier = 1;
+                    if (this.current_dir === 'desc') modifier = -1;
+                    if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
+                    if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
+                    return 0;
+                });
+            },
+        },
+    });
 
 
     });
