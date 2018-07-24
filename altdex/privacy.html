@@ -862,7 +862,7 @@
             <div class="well">
 
                 <table v-cloak id="coin_table" class="table table-hover">
-                    <tr>
+                    <tr id="table_head">
                         <th>Symbol</th>
                         <th id="coin_name_title">Name</th>
                         <th id="coin_market_title">Market Cap</th>
@@ -1371,6 +1371,8 @@
                     b: 50,
                     t: 20,
                 },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
                 xaxis: {
                     range: [line_data[0].x[0], line_data[0].x[data_length]],
                     type: 'date',
