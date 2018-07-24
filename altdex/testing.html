@@ -875,15 +875,15 @@
 
                 <table v-cloak id="coin_table" class="table table-hover">
                     <tr id="table_head">
-                        <th>Symbol</th>
-                        <th id="coin_name_title">Name</th>
-                        <th id="coin_market_title">Market Cap</th>
-                        <th>Last</th>
-                        <th>Change (24h)</th>
-                        <th id="coin_volume_title">Volume (24h)</th>
-                        <th id="coin_weight_title">% Weight</th>
+                        <th @click="sort('symbol')">Symbol</th>
+                        <th @click="sort('name')" id="coin_name_title">Name</th>
+                        <th @click="sort('market_cap')" id="coin_market_title">Market Cap</th>
+                        <th @click="sort('price')">Last</th>
+                        <th @click="sort('price_percent')">Change (24h)</th>
+                        <th @click="sort('volume')" id="coin_volume_title">Volume (24h)</th>
+                        <th @click="sort('weight_3')" id="coin_weight_title">% Weight</th>
                     </tr>
-                    <tr class="coin_row" v-for="row in sortedArray">
+                    <tr class="coin_row" v-for="row in sortedCoins">
                         <!--<img src="https://github.com/dziungles/cryptocurrency-logos/blob/master/coins/16x16/aces.png?raw=true">-->
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
@@ -1127,38 +1127,28 @@
         el: '#coin_table',
 
         data: {
-            sortKey: 'market_cap',
-
             rows: [],
+            current_sort: 'market_cap',
+            current_dir: 'desc'
         },
-        computed: {
-            sortedArray() {
-
-                function compare(a, b) {
-                    if (a.sortKey > b.sortKey)
-                        return -1;
-                    if (a.sortKey < b.sortKey)
-                        return 1;
-                    return 0;
+        methods: {
+            sort: function(s) {
+                if(s === this.current_sort) {
+                    this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
                 }
-
-                return this.rows.sort(compare);
-            }
-        },
-        // methods:{
-        //     sortTable(column){
-        //         function compare2(a, b) {
-        //             if (a.column > b.column)
-        //                 return -1;
-        //             if (a.column< b.column)
-        //                 return 1;
-        //             return 0;
-        //         }
-        //         return this.rows.sort(compare2)
-        //     }
-        // }
-
-
+                this.current_sort = s;
+                }
+            },
+        computed: {
+            sortedCoins: function () {
+                return this.rows.sort((a,b) => {
+                let modifier = 1;
+                if(this.current_dir === 'desc') modifier = -1;
+                if(a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
+                if(a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
+                return 0;
+            });
+        }
     });
 
     let app2 = new Vue({
