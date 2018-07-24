@@ -696,11 +696,11 @@
             padding-top: 11px;
         }
 
-        #dark_bt {
-            text-align: right;
-            background-color: #484848;
-            color: white;
-        }
+        /*#dark_bt {*/
+            /*text-align: right;*/
+            /*background-color: #484848;*/
+            /*color: white;*/
+        /*}*/
 
         #table_head > th {
             border: 0;
@@ -986,79 +986,79 @@
     let y_low = 0;
     let y_high = 0;
     let price_change = 0;
-    let dark_bt = document.querySelector('#dark_bt');
-    let main_div = document.querySelector('#main_div');
-    let wells = document.getElementsByClassName('well');
-    let w_name_link = document.getElementsByClassName('w_name_link');
-    let coin_row = document.getElementsByClassName('coin_row');
+    // let dark_bt = document.querySelector('#dark_bt');
+    // let main_div = document.querySelector('#main_div');
+    // let wells = document.getElementsByClassName('well');
+    // let w_name_link = document.getElementsByClassName('w_name_link');
+    // let coin_row = document.getElementsByClassName('coin_row');
 
-    dark_bt.onclick = function () {
-        let mode = this.innerHTML;
-        let plot_lines = '';
-        let grid_color = '';
-
-        if (mode === 'Dark') {
-            main_div.style.backgroundColor = '#282828';
-
-            for (let i = 0; i < w_name_link.length; i++) {
-                w_name_link[i].style.color = '#D0D0D0'
-            }
-
-            for (let i = 0; i < coin_row.length; i++) {
-                coin_row[i].style.backgroundColor = '#484848';
-                coin_row[i].style.borderColor = '#282828';
-            }
-            // w_name.style.color = '#F5F5F5';
-
-            for (let i = 0; i < wells.length; i++) {
-                wells[i].style.backgroundColor = '#484848';
-                wells[i].style.color = '#D0D0D0';
-                wells[i].style.borderColor = '#282828';
-            }
-
-            plot_lines = '#D0D0D0';
-            grid_color = '#707070';
-
-            this.style.backgroundColor = '#6dc0eb';
-            this.innerHTML = 'Light'
-
-        } else {
-            main_div.style.backgroundColor = '#ededed';
-
-            for (let i = 0; i < w_name_link.length; i++) {
-                w_name_link[i].style.color = 'black'
-            }
-
-            for (let i = 0; i < coin_row.length; i++) {
-                coin_row[i].style.backgroundColor = 'white';
-            }
-
-            // w_name.style.color = 'black';
-
-            for (let i = 0; i < wells.length; i++) {
-                wells[i].style.color = 'black';
-                wells[i].style.backgroundColor = 'white';
-            }
-
-
-            plot_lines = 'default';
-            grid_color = 'default';
-
-            this.style.backgroundColor = '#484848';
-            this.innerHTML = 'Dark'
-        }
-
-        let update = {
-
-            'yaxis.color': plot_lines,         // updates the y axis range
-            'xaxis.color': plot_lines,         // updates the y axis range
-            'xaxis.linecolor': plot_lines,         // updates the y axis range
-            'yaxis.linecolor': plot_lines,
-            'yaxis.gridcolor': grid_color// updates the y axis range
-        };
-
-        Plotly.relayout('index_chart', update)
-    };
+    // dark_bt.onclick = function () {
+    //     let mode = this.innerHTML;
+    //     let plot_lines = '';
+    //     let grid_color = '';
+    //
+    //     if (mode === 'Dark') {
+    //         main_div.style.backgroundColor = '#282828';
+    //
+    //         for (let i = 0; i < w_name_link.length; i++) {
+    //             w_name_link[i].style.color = '#D0D0D0'
+    //         }
+    //
+    //         for (let i = 0; i < coin_row.length; i++) {
+    //             coin_row[i].style.backgroundColor = '#484848';
+    //             coin_row[i].style.borderColor = '#282828';
+    //         }
+    //         // w_name.style.color = '#F5F5F5';
+    //
+    //         for (let i = 0; i < wells.length; i++) {
+    //             wells[i].style.backgroundColor = '#484848';
+    //             wells[i].style.color = '#D0D0D0';
+    //             wells[i].style.borderColor = '#282828';
+    //         }
+    //
+    //         plot_lines = '#D0D0D0';
+    //         grid_color = '#707070';
+    //
+    //         this.style.backgroundColor = '#6dc0eb';
+    //         this.innerHTML = 'Light'
+    //
+    //     } else {
+    //         main_div.style.backgroundColor = '#ededed';
+    //
+    //         for (let i = 0; i < w_name_link.length; i++) {
+    //             w_name_link[i].style.color = 'black'
+    //         }
+    //
+    //         for (let i = 0; i < coin_row.length; i++) {
+    //             coin_row[i].style.backgroundColor = 'white';
+    //         }
+    //
+    //         // w_name.style.color = 'black';
+    //
+    //         for (let i = 0; i < wells.length; i++) {
+    //             wells[i].style.color = 'black';
+    //             wells[i].style.backgroundColor = 'white';
+    //         }
+    //
+    //
+    //         plot_lines = 'default';
+    //         grid_color = 'default';
+    //
+    //         this.style.backgroundColor = '#484848';
+    //         this.innerHTML = 'Dark'
+    //     }
+    //
+    //     let update = {
+    //
+    //         'yaxis.color': plot_lines,         // updates the y axis range
+    //         'xaxis.color': plot_lines,         // updates the y axis range
+    //         'xaxis.linecolor': plot_lines,         // updates the y axis range
+    //         'yaxis.linecolor': plot_lines,
+    //         'yaxis.gridcolor': grid_color// updates the y axis range
+    //     };
+    //
+    //     Plotly.relayout('index_chart', update)
+    // };
 
     let change_range = function (time_frame) {
         let now = new Date();
