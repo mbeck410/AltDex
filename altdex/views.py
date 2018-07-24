@@ -195,13 +195,13 @@ def getcoinscurrent(request):
                         'website': this_coin.website,
                         'symbol': this_coin.symbol,
                         'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
-                        'price': coin_price,
+                        'price': float(coin_price),
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
                         'volume': float('{0:.0f}'.format(this_coin.volume)),
                         'indices': dices,
-                        'weight_1': weight_1,
-                        'weight_2': weight_2,
-                        'weight_3': weight_3,
+                        'weight_1': float(weight_1),
+                        'weight_2': float(weight_2),
+                        'weight_3': float(weight_3),
                         'icon': coin_icon_url
                         }
 
