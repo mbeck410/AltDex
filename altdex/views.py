@@ -150,9 +150,9 @@ def getcoinscurrent(request):
                     weight_3 = float('{0:.6f}'.format(weight_3))
 
         if float(this_coin.price) >= 1:
-            coin_price = float('{:,.2f}'.format(this_coin.price))
+            coin_price = '{:,.2f}'.format(float(this_coin.price))
         else:
-            coin_price = float('{0:.6f}'.format(this_coin.price))
+            coin_price = '{0:.6f}'.format(float(this_coin.price))
 
         name_lower = str(this_coin.name).lower()
         if ' ' in name_lower:
@@ -189,13 +189,11 @@ def getcoinscurrent(request):
         if no_space == 'bibox':
             coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/bibox-token.png'
 
-
-
         coin_dict = {   'name': this_coin.name,
                         'website': this_coin.website,
                         'symbol': this_coin.symbol,
                         'market_cap': float('{0:.0f}'.format(this_coin.market_cap)),
-                        'price': coin_price,
+                        'price': float(coin_price),
                         'price_percent': float('{0:.2f}'.format(this_coin.price_percent_change)),
                         'volume': float('{0:.0f}'.format(this_coin.volume)),
                         'indices': dices,
