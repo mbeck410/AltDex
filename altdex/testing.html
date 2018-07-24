@@ -990,7 +990,7 @@
     <div class="col-sm-2"></div>
 </footer>
 <script>
-    let top_bois = ['BTC', 'LTC', 'ETH'];
+    // let top_bois = ['BTC', 'LTC', 'ETH'];
     let current_index = 'Privacy';
     let current_id = '2';
     let first_x = 0;
@@ -1127,7 +1127,7 @@
         el: '#coin_table',
 
         data: {
-            sortKey: '',
+            sortKey: 'market_cap',
 
             rows: [],
         },
@@ -1135,9 +1135,9 @@
             sortedArray() {
 
                 function compare(a, b) {
-                    if (a.market_cap > b.market_cap)
+                    if (a.sortKey > b.sortKey)
                         return -1;
-                    if (a.market_cap < b.market_cap)
+                    if (a.sortKey < b.sortKey)
                         return 1;
                     return 0;
                 }
