@@ -855,7 +855,7 @@ Follow @TwitterDev</a></div>
                 <div id="top_gainers">
                     <div id="gainerz" class="gl_title">Biggest Gainers</div>
                     <div class="gl_data" v-for="row in rows2">
-                        <div class="gl_name">{{row.symbol}}</div>
+                        <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
                         <div class="gl_price">${{row.price}}</div>
                         <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</div>
                     </div>
@@ -863,7 +863,7 @@ Follow @TwitterDev</a></div>
                 <div id="top_losers">
                     <div id="lozerz" class="gl_title">Biggest Losers</div>
                     <div class="gl_data" v-for="row in rows">
-                        <div class="gl_name">{{row.symbol}}</div>
+                        <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
                         <div class="gl_price">${{row.price}}</div>
                         <div class="gl_percent"v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{row.price_percent}}%</div>
                     </div>

@@ -915,7 +915,7 @@
                     <div id="top_gainers">
                         <div id="gainerz" class="gl_title">Biggest Gainers</div>
                         <div class="gl_data" v-for="row in rows2">
-                            <div class="gl_name">{{row.symbol}}</div>
+                            <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
                             <div class="gl_price">${{row.price}}</div>
                             <div class="gl_percent"
                                  v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
@@ -926,7 +926,7 @@
                     <div id="top_losers">
                         <div id="lozerz" class="gl_title">Biggest Losers</div>
                         <div class="gl_data" v-for="row in rows">
-                            <div class="gl_name">{{row.symbol}}</div>
+                            <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
                             <div class="gl_price">${{row.price}}</div>
                             <div class="gl_percent"
                                  v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
@@ -942,7 +942,7 @@
                      data-ad-client="ca-pub-9873470958093574"
                      data-ad-slot="5347610936"></ins>
             </div>
-            <div class="well">
+            <div id="news_feed" class="well">
                 <div class="feedgrabbr_widget" id="fgid_fe56c6facc85556433ea1b5c1"></div>
             </div>
         </div>
@@ -1002,6 +1002,7 @@
     let wells = document.getElementsByClassName('well');
     let w_name_link = document.getElementsByClassName('w_name_link');
     let coin_row = document.getElementsByClassName('coin_row');
+    let news_feed = document.querySelector('#news_feed');
 
     dark_bt.onclick = function () {
         let mode = this.innerHTML;
@@ -1009,26 +1010,27 @@
         let grid_color = '';
 
         if (mode === 'Dark') {
-            main_div.style.backgroundColor = '#282828';
+            main_div.style.backgroundColor = '#262626';
 
             for (let i = 0; i < w_name_link.length; i++) {
                 w_name_link[i].style.color = '#D0D0D0'
             }
 
             for (let i = 0; i < coin_row.length; i++) {
-                coin_row[i].style.backgroundColor = '#414141';
-                coin_row[i].style.borderColor = '#282828';
+                coin_row[i].style.backgroundColor = '#484848';
+                coin_row[i].style.borderColor = '#262626';
             }
             // w_name.style.color = '#F5F5F5';
 
             for (let i = 0; i < wells.length; i++) {
-                wells[i].style.backgroundColor = '#414141';
+                wells[i].style.backgroundColor = '#444444';
                 wells[i].style.color = '#D0D0D0';
-                wells[i].style.borderColor = '#282828';
+                wells[i].style.borderColor = '#262626';
             }
 
             plot_lines = '#D0D0D0';
             grid_color = '#707070';
+            news_feed.style.color = white;
 
             this.style.backgroundColor = '#6dc0eb';
             this.innerHTML = 'Light'
