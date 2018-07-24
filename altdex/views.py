@@ -231,6 +231,7 @@ def gainers_losers(request):
                 coin_price = '{0:.6f}'.format(float(loser_coin.price))
 
             losers_dict = { 'symbol': loser_coin.symbol,
+                            'website': loser_coin.website,
                             'price': coin_price,
                             'price_percent': '{:,.2f}'.format(float(loser_coin.price_percent_change))}
 
