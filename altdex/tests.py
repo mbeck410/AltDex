@@ -4,6 +4,3 @@ from django.test import TestCase
 
 
 from .models import Index
-
-def print_coins(index):
-    coins =

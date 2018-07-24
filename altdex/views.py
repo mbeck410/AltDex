@@ -133,26 +133,26 @@ def getcoinscurrent(request):
             if dex.name == 'AltDex100':
                 weight_1 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
                 if weight_1 >= 1:
-                    weight_1 = float('{0:.3f}'.format(weight_1))
+                    weight_1 = format(float(weight_1), '.3f')
                 else:
                     weight_1 = float('{0:.6f}'.format(weight_1))
             if dex.name == 'Exchange':
                 weight_2 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
                 if weight_2 >= 1:
-                    weight_2 = float('{0:.3f}'.format(weight_2))
+                    weight_2 = format(float(weight_2), '.3f')
                 else:
                     weight_2 = float('{0:.6f}'.format(weight_2))
             if dex.name == 'Privacy':
                 weight_3 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
                 if weight_3 >= 1:
-                    weight_3 = float('{0:.3f}'.format(weight_3))
+                    weight_3 = format(float(weight_3), '.3f')
                 else:
                     weight_3 = float('{0:.6f}'.format(weight_3))
 
         if float(this_coin.price) >= 1:
-            coin_price = float('{:,.2f}'.format(this_coin.price))
+            coin_price = '{:,.2f}'.format(float(this_coin.price))
         else:
-            coin_price = float('{0:.6f}'.format(this_coin.price))
+            coin_price = '{0:.6f}'.format(float(this_coin.price))
 
         name_lower = str(this_coin.name).lower()
         if ' ' in name_lower:
