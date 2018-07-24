@@ -1057,7 +1057,8 @@ Follow @TwitterDev</a></div>
         }
 
         let update = {
-            'plotbg_color': plot_bg,  // updates the end of the x axis range
+            // 'plotbg_color': plot_bg,  // updates the end of the x axis range
+            // 'paperbg_color': plot_bg,  // updates the end of the x axis range
             'yaxis.color': plot_lines,         // updates the y axis range
             'xaxis.color': plot_lines         // updates the y axis range
         };
@@ -1370,8 +1371,6 @@ Follow @TwitterDev</a></div>
             // console.log(y_high);
 
             let layout = {
-                plotbg_color: '#484848',
-                paperbg_color: '#484848',
                 autosize: true,
                 margin: {
                     l: 50,
@@ -1379,6 +1378,8 @@ Follow @TwitterDev</a></div>
                     b: 50,
                     t: 20,
                 },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
                 xaxis: {
                     range: [line_data[0].x[0], line_data[0].x[data_length]],
                     type: 'date',
