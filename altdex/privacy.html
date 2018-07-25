@@ -106,12 +106,13 @@
             height: 100%;
         }
 
+        /* Set black background color, white text and some padding */
+
         /* On small screens, set height to 'auto' for sidenav and grid */
         @media screen and (max-width: 1200px) {
             #right_bar {
                 display: none;
             }
-
             .widget_div {
                 display: none;
             }
@@ -125,10 +126,6 @@
             .sidenav {
                 height: auto;
                 padding: 15px;
-            }
-
-            #top_prices {
-                display: none;
             }
 
             .row.content {
@@ -190,6 +187,7 @@
                 display: none;
             }
 
+
             .gainers_losers {
                 display: none;
                 margin: auto;
@@ -229,6 +227,10 @@
                 margin: auto;
             }
 
+            #w_ad {
+                margin: auto;
+            }
+
             #right_bar {
                 display: none;
             }
@@ -237,26 +239,15 @@
                 display: none;
             }
 
-            #mobile_time {
-                width: 100%;
-                text-align: center;
-                display: flex;
-            }
-
             #twitter_link {
                 display: none;
-            }
-
-            #twitter_link2 {
-                display: inline;
             }
 
         }
 
         table.table {
             background-color: white;
-            margin: 0;
-            border: 0;
+            margin: 0px
         }
 
         table.table th {
@@ -332,15 +323,7 @@
         .well {
             background-color: white;
             box-shadow: 0 0 3px gray;
-            border: 0;
         }
-
-        /*.well {*/
-        /*background-color: #484848;*/
-        /*box-shadow: none;*/
-        /*color: white;*/
-        /*border-color: #484848;*/
-        /*}*/
 
         /*.sidenav > .well {*/
         /*background-color: white;*/
@@ -369,7 +352,6 @@
             margin: 0;
             border-radius: 0;
             border: 0;
-
         }
 
         .my_navbar .navbar-brand {
@@ -402,12 +384,10 @@
             color: lightgray;
         }
 
-        #main_div {
+        .main_div {
             background-color: #ededed;
             /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
         }
-
-        /*#282828*/
 
         .pos {
             color: green;
@@ -477,8 +457,8 @@
         }
 
         #widget {
-            padding-bottom: 14px;
             margin: auto;
+            padding-bottom: 14px;
         }
 
         .w_name {
@@ -568,7 +548,6 @@
         .dex_name {
             font-size: 3.0em;
             font-weight: bold;
-
         }
 
         .middle_name {
@@ -610,7 +589,8 @@
             text-align: left;
         }
 
-        /* Style all font awesome icons */
+
+         /* Style all font awesome icons */
         .fa {
             font-size: 18px;
         }
@@ -621,25 +601,31 @@
             text-decoration: none;
         }
 
-        #footer_ad {
-            margin-bottom: 20px;
-        }
-
         .footer_pages {
             display: flex;
             margin: auto;
         }
+
 
         .footer_pages > div {
             margin: auto;
             padding: auto;
         }
 
+        #side_ad {
+            margin-bottom: 20px
+        }
+
+        #footer_ad {
+            margin-bottom: 20px;
+         }
+
         #top_gain_lose {
             margin: auto;
             margin-bottom: 20px;
             text-align: center;
         }
+
 
         .gl_title {
             font-size: 1.0vw;
@@ -651,7 +637,14 @@
         .gl_data {
             padding-top: 10px;
             padding-bottom: 10px;
-            border-top: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+            display: flex;
+        }
+
+        .gl_data:last-child {
+            border-bottom: 0;
+            padding-top: 10px;
+            padding-bottom: 0;
             display: flex;
         }
 
@@ -669,11 +662,11 @@
         }
 
         .gl_name {
-            font-weight: bold;
-            font-size: 0.9vw;
-            width: 22%;
-            text-align: left;
-        }
+                font-weight: bold;
+                font-size: 0.9vw;
+                width: 22%;
+                text-align: left;
+            }
 
         .gl_price {
             text-align: right;
@@ -699,40 +692,9 @@
             padding-top: 11px;
         }
 
-        /*#dark_bt {*/
-            /*text-align: right;*/
-            /*background-color: #484848;*/
-            /*color: white;*/
-        /*}*/
-
-        #table_head > th {
-            border: 0;
+        #barz {
+            padding-right: 0
         }
-
-        #right_nav {
-            margin-right: 15px;
-            display: flex;
-            margin-left: auto;
-        }
-
-        #right_nav > div {
-            padding-left: 15px;
-        }
-
-        #navy {
-            display: flex;
-            padding-right: 0;
-        }
-
-        /*#email_bt {*/
-            /*color: white;*/
-            /*background-color: #fa3838;*/
-        /*}*/
-
-        /*#contact {*/
-            /*margin: auto;*/
-            /*font-size: 1.2vw;*/
-        /*}*/
 
         .gl_data:hover {
             background-color: #f5f5f5;
@@ -742,13 +704,12 @@
             cursor: pointer;
         }
 
-
     </style>
 </head>
 <body>
 
 <nav class="my_navbar navbar navbar-default">
-    <div id="navy" class="container-fluid">
+    <div id="barz" class="test container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
@@ -773,21 +734,10 @@
                 <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
-        </div>
-        <!--<div>-->
-            <!--<button id="dark_bt" type="button" class="btn navbar-btn">Dark</button>-->
-        <!--</div>-->
-        <div id="right_nav">
-            <!--<div id="contact">Contact Us:</div>-->
-            <!--<div>-->
-                <!--<a href="mailto:admin@altdex.co">-->
-                    <!--<button id="email_bt" type="button" class="btn navbar-btn">&#x2709 Email</button>-->
-                <!--</a>-->
-            <!--</div>-->
             <div id="twitter_link"><a class="twitter-follow-button"
-                                      href="https://twitter.com/altcoindex"
-                                      data-size="large">
-                Follow @TwitterDev</a></div>
+  href="https://twitter.com/altcoindex"
+  data-size="large">
+Follow @TwitterDev</a></div>
         </div>
     </div>
 </nav>
