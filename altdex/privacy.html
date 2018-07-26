@@ -132,7 +132,6 @@
                 height: auto;
             }
 
-
             #index_chart {
                 width: auto;
                 height: auto;
@@ -244,18 +243,11 @@
                 display: none;
             }
 
-            .primary {
-                display: flex;
-                text-align: center;
-                margin-bottom: 0;
-                margin-top: 0;
-            }
-
         }
 
         table.table {
             background-color: white;
-            margin: 0px;
+            margin: 0px
         }
 
         table.table th {
@@ -715,9 +707,15 @@
 <nav class="my_navbar navbar navbar-default">
     <div id="barz" class="test container-fluid">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="/"><img
                     src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
         </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="primary nav navbar-nav">
                 <li class="my_drop dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
