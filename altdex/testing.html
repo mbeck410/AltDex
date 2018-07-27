@@ -284,6 +284,10 @@
             font-weight: bold;
         }
 
+        table.table td:nth-child(-n+7) {
+            border-top: 0;
+        }
+
         /*table.table td:nth-child(5) {*/
         /*text-align: center*/
         /*}*/
@@ -809,7 +813,6 @@
           }
           .t--light .t-coin_row {
               background-color: white;
-              border-color: #262626;
           }
           .t--light w_name {
               color: black;
@@ -831,14 +834,34 @@
                 background-color: #ededed;
             }
 
-        .t--dark uw-text {
+        .t--dark .uw-text {
             color:#D0D0D0;
         }
 
 
     </style>
+
 </head>
 <body>
+<script>
+        let dark_bt = document.querySelector('#dark_bt');
+        let body = document.querySelector('body');
+        let mode = localStorage.getItem("mode");
+
+    if (mode === null) {
+        body.classList.add('t--light');
+        dark_bt.innerHTML = 'Dark'
+    } else if (mode === 'dark'){
+        body.classList.remove('t--light');
+        body.classList.add('t--dark');
+        dark_bt.innerHTML = 'Light';
+
+    } else {
+        body.classList.remove('t--dark');
+        body.classList.add('t--light');
+        dark_bt.innerHTML = 'Dark';
+    }
+    </script>
 
 <nav class="my_navbar navbar navbar-default">
     <div id="barz" class="test container-fluid">
@@ -1087,18 +1110,10 @@ Follow @TwitterDev</a></div>
     // let coin_row = document.getElementsByClassName('coin_row');
     // let news_feed = document.querySelector('#news_feed');
 
-    if (mode === null) {
-        body.classList.add('t--light');
+    if (body.classList.contains('t--light'))  {
         dark_bt.innerHTML = 'Dark'
-    } else if (mode === 'dark'){
-        body.classList.remove('t--light');
-        body.classList.add('t--dark');
-        dark_bt.innerHTML = 'Light';
-
-    } else {
-        body.classList.remove('t--dark');
-        body.classList.add('t--light');
-        dark_bt.innerHTML = 'Dark';
+    } else if (body.classList.contains('t--dark')){
+        dark_bt.innerHTML = 'Light'
     }
 
     dark_bt.onclick = function () {
