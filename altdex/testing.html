@@ -723,9 +723,8 @@
         }
 
         #table_head > th {
-            border: 0;
+            border-bottom: 1px solid lightgray;
         }
-
 
         .t--dark {
             background-color: #262626;
@@ -1081,8 +1080,10 @@ Follow @TwitterDev</a></div>
     }
 
     dark_bt.onclick = function () {
-
+        let plot_lines = '';
+        let grid_color = '';
         if (body.classList.contains('t--light')) {
+            plot_lines = '';
           body.classList.remove('t--light');
           body.classList.add('t--dark');
           dark_bt.innerHTML = 'Light';
@@ -1093,7 +1094,19 @@ Follow @TwitterDev</a></div>
           body.classList.add('t--light');
           dark_bt.innerHTML = 'Dark';
           localStorage.setItem("mode", "light");
+          grid_color: 'default';
+          plot_lines: 'default';
         }
+            let update = {
+
+            'yaxis.color': plot_lines,         // updates the y axis range
+            'xaxis.color': plot_lines,         // updates the y axis range
+            'xaxis.linecolor': plot_lines,         // updates the y axis range
+            'yaxis.linecolor': plot_lines,
+            'yaxis.gridcolor': grid_color// updates the y axis range
+        };
+
+        Plotly.relayout('index_chart', update)
     };
 
 
@@ -1429,16 +1442,7 @@ Follow @TwitterDev</a></div>
     //         this.innerHTML = 'Dark'
     //     }
     //
-    //     let update = {
-    //
-    //         'yaxis.color': plot_lines,         // updates the y axis range
-    //         'xaxis.color': plot_lines,         // updates the y axis range
-    //         'xaxis.linecolor': plot_lines,         // updates the y axis range
-    //         'yaxis.linecolor': plot_lines,
-    //         'yaxis.gridcolor': grid_color// updates the y axis range
-    //     };
-    //
-    //     Plotly.relayout('index_chart', update)
+
     // };
 
     function index_all() {
