@@ -770,6 +770,7 @@
             }
             .t--dark #dark_bt {
             background-color: #6dc0eb;
+                content: 'Light';
         }
             .t--dark .feedgrabbr_widget{
                 color :#D0D0D0;
@@ -811,6 +812,7 @@
           }
         .t--light #dark_bt {
             background-color: #262626;
+            content: 'Dark';
         }
         .t--light .feedgrabbr_widget{
                 color: black;
@@ -846,7 +848,7 @@
   href="https://twitter.com/altcoindex"
   data-size="large">
 Follow @TwitterDev</a></div>
-        <div id="dark_bt_div"><button id="dark_bt" type="button" class="btn navbar-btn t-dark_bt">Dark</button></div>
+        <div id="dark_bt_div"><button id="dark_bt" type="button" class="btn navbar-btn t-dark_bt"></button></div>
         </div>
         </div>
 </nav>
@@ -1071,9 +1073,11 @@ Follow @TwitterDev</a></div>
     if (mode === 'light') {
         body.classList.remove('t--dark');
         body.classList.add('t--light');
+        dark_bt.innerHTML = 'Dark';
     } else {
         body.classList.remove('t--light');
         body.classList.add('t--dark');
+        dark_bt.innerHTML = 'Light';
     }
 
     dark_bt.onclick = function () {
@@ -1081,82 +1085,18 @@ Follow @TwitterDev</a></div>
         if (body.classList.contains('t--light')) {
           body.classList.remove('t--light');
           body.classList.add('t--dark');
+          dark_bt.innerHTML = 'Light';
           localStorage.setItem("mode", "dark");
         }
         else {
           body.classList.remove('t--dark');
           body.classList.add('t--light');
+          dark_bt.innerHTML = 'Dark';
           localStorage.setItem("mode", "light");
         }
     };
 
-    //     let mode = this.innerHTML;
-    //     let plot_lines = '';
-    //     let grid_color = '';
-    //
-    //     if (mode === 'Dark') {
-    //         main_div.style.backgroundColor = '#262626';
-    //
-    //         for (let i = 0; i < w_name_link.length; i++) {
-    //             w_name_link[i].style.color = '#D0D0D0'
-    //         }
-    //
-    //         for (let i = 0; i < coin_row.length; i++) {
-    //             coin_row[i].style.backgroundColor = '#484848';
-    //             coin_row[i].style.borderColor = '#262626';
-    //         }
-    //         // w_name.style.color = '#F5F5F5';
-    //
-    //         for (let i = 0; i < wells.length; i++) {
-    //             wells[i].style.backgroundColor = '#444444';
-    //             wells[i].style.color = '#D0D0D0';
-    //             wells[i].style.borderColor = '#262626';
-    //         }
-    //
-    //         plot_lines = '#D0D0D0';
-    //         grid_color = '#707070';
-    //         news_feed.style.color = white;
-    //
-    //         this.style.backgroundColor = '#6dc0eb';
-    //         this.innerHTML = 'Light'
-    //
-    //     } else {
-    //         main_div.style.backgroundColor = '#ededed';
-    //
-    //         for (let i = 0; i < w_name_link.length; i++) {
-    //             w_name_link[i].style.color = 'black'
-    //         }
-    //
-    //         for (let i = 0; i < coin_row.length; i++) {
-    //             coin_row[i].style.backgroundColor = 'white';
-    //         }
-    //
-    //         // w_name.style.color = 'black';
-    //
-    //         for (let i = 0; i < wells.length; i++) {
-    //             wells[i].style.color = 'black';
-    //             wells[i].style.backgroundColor = 'white';
-    //         }
-    //
-    //
-    //         plot_lines = 'default';
-    //         grid_color = 'default';
-    //
-    //         this.style.backgroundColor = '#484848';
-    //         this.innerHTML = 'Dark'
-    //     }
-    //
-    //     let update = {
-    //
-    //         'yaxis.color': plot_lines,         // updates the y axis range
-    //         'xaxis.color': plot_lines,         // updates the y axis range
-    //         'xaxis.linecolor': plot_lines,         // updates the y axis range
-    //         'yaxis.linecolor': plot_lines,
-    //         'yaxis.gridcolor': grid_color// updates the y axis range
-    //     };
-    //
-    //     Plotly.relayout('index_chart', update)
-    // };
+
 
 
     let change_range = function (time_frame) {
@@ -1433,7 +1373,73 @@ Follow @TwitterDev</a></div>
 
     let line_data = [];
 
-    // let line_data2 = [];
+    //     let mode = this.innerHTML;
+    //     let plot_lines = '';
+    //     let grid_color = '';
+    //
+    //     if (mode === 'Dark') {
+    //         main_div.style.backgroundColor = '#262626';
+    //
+    //         for (let i = 0; i < w_name_link.length; i++) {
+    //             w_name_link[i].style.color = '#D0D0D0'
+    //         }
+    //
+    //         for (let i = 0; i < coin_row.length; i++) {
+    //             coin_row[i].style.backgroundColor = '#484848';
+    //             coin_row[i].style.borderColor = '#262626';
+    //         }
+    //         // w_name.style.color = '#F5F5F5';
+    //
+    //         for (let i = 0; i < wells.length; i++) {
+    //             wells[i].style.backgroundColor = '#444444';
+    //             wells[i].style.color = '#D0D0D0';
+    //             wells[i].style.borderColor = '#262626';
+    //         }
+    //
+    //         plot_lines = '#D0D0D0';
+    //         grid_color = '#707070';
+    //         news_feed.style.color = white;
+    //
+    //         this.style.backgroundColor = '#6dc0eb';
+    //         this.innerHTML = 'Light'
+    //
+    //     } else {
+    //         main_div.style.backgroundColor = '#ededed';
+    //
+    //         for (let i = 0; i < w_name_link.length; i++) {
+    //             w_name_link[i].style.color = 'black'
+    //         }
+    //
+    //         for (let i = 0; i < coin_row.length; i++) {
+    //             coin_row[i].style.backgroundColor = 'white';
+    //         }
+    //
+    //         // w_name.style.color = 'black';
+    //
+    //         for (let i = 0; i < wells.length; i++) {
+    //             wells[i].style.color = 'black';
+    //             wells[i].style.backgroundColor = 'white';
+    //         }
+    //
+    //
+    //         plot_lines = 'default';
+    //         grid_color = 'default';
+    //
+    //         this.style.backgroundColor = '#484848';
+    //         this.innerHTML = 'Dark'
+    //     }
+    //
+    //     let update = {
+    //
+    //         'yaxis.color': plot_lines,         // updates the y axis range
+    //         'xaxis.color': plot_lines,         // updates the y axis range
+    //         'xaxis.linecolor': plot_lines,         // updates the y axis range
+    //         'yaxis.linecolor': plot_lines,
+    //         'yaxis.gridcolor': grid_color// updates the y axis range
+    //     };
+    //
+    //     Plotly.relayout('index_chart', update)
+    // };
 
     function index_all(id_num) {
         line_data = [];
@@ -1453,7 +1459,7 @@ Follow @TwitterDev</a></div>
             // console.log(y_low);
             // console.log(y_high);
 
-            let layout = {
+            let layout_light = {
                 autosize: true,
                 margin: {
                     l: 50,
@@ -1484,7 +1490,45 @@ Follow @TwitterDev</a></div>
                 }
             };
 
-            Plotly.react('index_chart', line_data, layout);
+            let layout_dark = {
+                autosize: true,
+                margin: {
+                    l: 50,
+                    r: 50,
+                    b: 50,
+                    t: 20,
+                },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                xaxis: {
+                    color: '#D0D0D0',
+                    linecolor: '#D0D0D0',
+                    range: [line_data[0].x[0], line_data[0].x[data_length]],
+                    type: 'date',
+                    title: 'Date',
+                    showgrid: false,
+                    zeroline: false,
+                    showline: true,
+                    autotick: true,
+                    ticks: '',
+                    showticklabels: true,
+                    gridcolor:
+                },
+                yaxis: {
+                    range: [y_low, y_high],
+                    showgrid: true,
+                    autotick: true,
+                    showline: true,
+                    ticks: '',
+                    showticklabels: true,
+                    gridcolor: '#707070'
+                }
+            };
+            if (mode === 'light') {
+                Plotly.react('index_chart', line_data, layout_light);
+            } else {
+                Plotly.react('index_chart', line_data, layout_dark);
+            }
         });
     }
 
