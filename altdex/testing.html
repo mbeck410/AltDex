@@ -831,10 +831,14 @@
                 background-color: #ededed;
             }
 
+        .t--dark uw-text {
+            color:#D0D0D0;
+        }
+
 
     </style>
 </head>
-<body class="t--dark">
+<body>
 
 <nav class="my_navbar navbar navbar-default">
     <div id="barz" class="test container-fluid">
@@ -1083,7 +1087,10 @@ Follow @TwitterDev</a></div>
     // let coin_row = document.getElementsByClassName('coin_row');
     // let news_feed = document.querySelector('#news_feed');
 
-    if (mode === 'dark') {
+    if (mode === null) {
+        body.classList.add('t--light');
+        dark_bt.innerHTML = 'Dark'
+    } else if (mode === 'dark'){
         body.classList.remove('t--light');
         body.classList.add('t--dark');
         dark_bt.innerHTML = 'Light';
@@ -1097,7 +1104,7 @@ Follow @TwitterDev</a></div>
     dark_bt.onclick = function () {
         let plot_lines = '';
         let grid_color = '';
-        if (body.classList.contains('t--light') || ) {
+        if (body.classList.contains('t--light'))  {
             plot_lines = '#D0D0D0';
             body.classList.remove('t--light');
               body.classList.add('t--dark');
