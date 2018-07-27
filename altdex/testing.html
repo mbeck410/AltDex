@@ -844,22 +844,22 @@
 </head>
 <body>
 <script>
-        let dark_bt = document.querySelector('#dark_bt');
-        let body = document.querySelector('body');
-        let mode = localStorage.getItem("mode");
 
-    if (mode === null) {
-        body.classList.add('t--light');
-        dark_bt.innerHTML = 'Dark'
-    } else if (mode === 'dark'){
-        body.classList.remove('t--light');
-        body.classList.add('t--dark');
-        dark_bt.innerHTML = 'Light';
-
-    } else {
-        body.classList.remove('t--dark');
-        body.classList.add('t--light');
-        dark_bt.innerHTML = 'Dark';
+    //     let body = document.querySelector('body');
+    //     let mode = localStorage.getItem("mode");
+    //
+    // if (mode === null) {
+    //     localStorage.setItem("mode", "light");
+    //     body.classList.add('t--light');
+    //     // dark_bt.innerHTML = 'Dark';
+    // } else if (mode === 'dark'){
+    //     body.classList.remove('t--light');
+    //     body.classList.add('t--dark');
+    //     // dark_bt.innerHTML = 'Light';
+    // } else {
+    //     body.classList.remove('t--dark');
+    //     body.classList.add('t--light');
+    //     // dark_bt.innerHTML = 'Dark';
     }
     </script>
 
@@ -888,7 +888,7 @@
   href="https://twitter.com/altcoindex"
   data-size="large">
 Follow @TwitterDev</a></div>
-        <div id="dark_bt_div"><button id="dark_bt" type="button" class="btn navbar-btn t-dark_bt"></button></div>
+        <div id="dark_bt_div"><button id="dark_bt" type="button" class="btn navbar-btn t-dark_bt">Mode</button></div>
         </div>
         </div>
 </nav>
@@ -1110,10 +1110,18 @@ Follow @TwitterDev</a></div>
     // let coin_row = document.getElementsByClassName('coin_row');
     // let news_feed = document.querySelector('#news_feed');
 
-    if (body.classList.contains('t--light'))  {
-        dark_bt.innerHTML = 'Dark'
-    } else if (body.classList.contains('t--dark')){
-        dark_bt.innerHTML = 'Light'
+    if (mode === null) {
+        localStorage.setItem("mode", "light");
+        body.classList.add('t--light');
+        // dark_bt.innerHTML = 'Dark';
+    } else if (mode === 'dark'){
+        body.classList.remove('t--light');
+        body.classList.add('t--dark');
+        // dark_bt.innerHTML = 'Light';
+    } else {
+        body.classList.remove('t--dark');
+        body.classList.add('t--light');
+        // dark_bt.innerHTML = 'Dark';
     }
 
     dark_bt.onclick = function () {
@@ -1123,14 +1131,12 @@ Follow @TwitterDev</a></div>
             plot_lines = '#D0D0D0';
             body.classList.remove('t--light');
               body.classList.add('t--dark');
-              dark_bt.innerHTML = 'Light';
               localStorage.setItem("mode", "dark");
               grid_color = '#707070';
         }
         else {
           body.classList.remove('t--dark');
           body.classList.add('t--light');
-          dark_bt.innerHTML = 'Dark';
           localStorage.setItem("mode", "light");
           grid_color: 'default';
           plot_lines: 'default';
