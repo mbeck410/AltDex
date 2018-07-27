@@ -727,8 +727,12 @@
             border: 0;
         }
 
-        .t-coin_row:first-child > th {
-            border-top: 0;
+        .t-coin_row {
+            border-bottom: 1px solid lightgray;
+        }
+
+        .t-coin_row:last-child {
+            border: 0;
         }
 
         .t--dark {
@@ -840,28 +844,7 @@
 
 
     </style>
-
 </head>
-<body>
-<script>
-
-    //     let body = document.querySelector('body');
-    //     let mode = localStorage.getItem("mode");
-    //
-    // if (mode === null) {
-    //     localStorage.setItem("mode", "light");
-    //     body.classList.add('t--light');
-    //     // dark_bt.innerHTML = 'Dark';
-    // } else if (mode === 'dark'){
-    //     body.classList.remove('t--light');
-    //     body.classList.add('t--dark');
-    //     // dark_bt.innerHTML = 'Light';
-    // } else {
-    //     body.classList.remove('t--dark');
-    //     body.classList.add('t--light');
-    //     // dark_bt.innerHTML = 'Dark';
-    }
-    </script>
 
 <nav class="my_navbar navbar navbar-default">
     <div id="barz" class="test container-fluid">
@@ -1091,7 +1074,9 @@ Follow @TwitterDev</a></div>
 </footer>
 <script>
     // let top_bois = ['BTC', 'LTC', 'ETH'];
+    // let mode = localStorage.getItem("mode");
     let mode = localStorage.getItem("mode");
+let body = document.querySelector('body');
     let current_index = 'Privacy';
     let current_id = '2';
     let first_x = 0;
@@ -1103,26 +1088,28 @@ Follow @TwitterDev</a></div>
     let y_high = 0;
     let price_change = 0;
     let dark_bt = document.querySelector('#dark_bt');
-    let body = document.querySelector('body');
+    // let body = document.querySelector('body');
     // let main_div = document.querySelector('#main_div');
     // let wells = document.getElementsByClassName('well');
     // let w_name_link = document.getElementsByClassName('w_name_link');
     // let coin_row = document.getElementsByClassName('coin_row');
     // let news_feed = document.querySelector('#news_feed');
 
-    if (mode === null) {
-        localStorage.setItem("mode", "light");
-        body.classList.add('t--light');
-        // dark_bt.innerHTML = 'Dark';
-    } else if (mode === 'dark'){
-        body.classList.remove('t--light');
-        body.classList.add('t--dark');
-        // dark_bt.innerHTML = 'Light';
-    } else {
-        body.classList.remove('t--dark');
-        body.classList.add('t--light');
-        // dark_bt.innerHTML = 'Dark';
-    }
+
+if (mode === null) {
+            localStorage.setItem("mode", "light");
+            body.classList.add('t--light');
+            // dark_bt.innerHTML = 'Dark';
+        } else if (mode === 'dark'){
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+            // dark_bt.innerHTML = 'Light';
+        } else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+            // dark_bt.innerHTML = 'Dark';
+        }
+
 
     dark_bt.onclick = function () {
         let plot_lines = '';
