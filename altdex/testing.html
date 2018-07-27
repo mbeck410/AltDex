@@ -1289,14 +1289,12 @@
     // Coin Table App
     let app = new Vue({
         el: '#coin_table',
-
         data: {
             rows: [],
             current_sort: 'market_cap',
             current_dir: 'desc'
         },
 
-        // Sort Table
         methods: {
             sort: function (s) {
                 if (s === this.current_sort) {
@@ -1305,8 +1303,6 @@
                 this.current_sort = s;
             }
         },
-
-        // Sort Table
         computed: {
             sortedCoins: function () {
                 return this.rows.sort((a, b) => {
@@ -1419,7 +1415,6 @@
                     divisor += entry.market_cap
                 }
             }
-            app5.rows = top_bar;
             app.rows = dict;
             let percent_gainers = amount_gainers / count * 100;
             let percent_losers = amount_losers / count * 100;
