@@ -1063,7 +1063,7 @@ Follow @TwitterDev</a></div>
     let y_high = 0;
     let price_change = 0;
     let dark_bt = document.querySelector('#dark_bt');
-    const body = document.querySelector('body');
+    let body = document.querySelector('body');
     // let main_div = document.querySelector('#main_div');
     // let wells = document.getElementsByClassName('well');
     // let w_name_link = document.getElementsByClassName('w_name_link');
@@ -1441,7 +1441,7 @@ Follow @TwitterDev</a></div>
     //     Plotly.relayout('index_chart', update)
     // };
 
-    function index_all(id_num) {
+    function index_all() {
         line_data = [];
         let url = '/getindexall/';
         //alert('test');
@@ -1512,7 +1512,6 @@ Follow @TwitterDev</a></div>
                     autotick: true,
                     ticks: '',
                     showticklabels: true,
-                    gridcolor:
                 },
                 yaxis: {
                     range: [y_low, y_high],
@@ -1524,13 +1523,16 @@ Follow @TwitterDev</a></div>
                     gridcolor: '#707070'
                 }
             };
+
             if (mode === 'light') {
                 Plotly.react('index_chart', line_data, layout_light);
             } else {
                 Plotly.react('index_chart', line_data, layout_dark);
             }
+
         });
     }
+
 
     let gainers_div = document.querySelector('#gainers');
     let losers_div = document.querySelector('#losers');
@@ -1548,6 +1550,7 @@ Follow @TwitterDev</a></div>
     coin_current(current_index);
     index_all();
     top_gainers_losers();
+    Plotly.react('index_chart', line_data, layout_dark);
     // setInterval(function () {
     //         top_gainers_losers();
     //         update_coin(current_index);
