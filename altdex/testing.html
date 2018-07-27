@@ -260,23 +260,74 @@
                 margin-bottom: 0;
                 margin-top: 0;
             }
-
         }
 
+
+        /*Main Stuff*/
+
+        #center {
+            padding-top: 20px;
+        }
+
+        .well {
+            background-color: white;
+            box-shadow: 0 0 3px gray;
+            border: 0;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        h3 {
+            margin: 0px;
+            padding: 0px;
+            font-size: 40px;
+        }
+
+        .main_div {
+            background-color: #ededed;
+        }
+
+        .pos {
+            color: green;
+        }
+
+        .neg {
+            color: red;
+        }
+
+
+        /*Coin Table Style*/
         table.table {
             background-color: white;
             margin: 0;
         }
 
+
+        /*Table Headers*/
         table.table th {
             background-color: #222842;
             color: white;
+        }
+
+        #table_head {
+            cursor: pointer;
+            border-top: 0;
+        }
+
+        #table_head > th {
+            border: 0;
         }
 
         table.table th:nth-child(n+3) {
             text-align: right;
         }
 
+
+        /*Table Rows*/
         table.table td:nth-child(n+3) {
             text-align: right;
         }
@@ -291,6 +342,51 @@
 
         table.table td:nth-child(-n+7) {
             border-top: 0;
+        }
+
+        .t-coin_row {
+            border-bottom: 1px solid lightgray;
+        }
+
+        .t-coin_row:last-child {
+            border: 0;
+        }
+
+        .row_name {
+            width: 10%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+        }
+
+
+        /*Widget*/
+        #widget {
+            margin: auto;
+            padding-bottom: 14px;
+        }
+
+        .t-w_name {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .w_name > a {
+            color: black;
+        }
+
+        .w_name > a:hover {
+            color: #6dc0eb;
+        }
+
+        #w_percent {
+            font-size: 0.7em;
+        }
+
+        .w_info {
+            margin-top: 20px;
+            font-size: 10px;
         }
 
         .w_data {
@@ -315,28 +411,13 @@
             margin: auto;
         }
 
-        #center {
-            padding-top: 20px;
+        .w_info {
+            font-size: 10px;
         }
 
-        .well {
-            background-color: white;
-            box-shadow: 0 0 3px gray;
-            border: 0;
-        }
 
-        h1 {
-            font-size: 50px;
-            margin: 0px;
-            padding: 0px;
-        }
 
-        h3 {
-            margin: 0px;
-            padding: 0px;
-            font-size: 40px;
-        }
-
+        /*Navbar*/
         .my_navbar {
             background-color: #222842;
             color: white;
@@ -375,32 +456,6 @@
             color: lightgray;
         }
 
-        .main_div {
-            background-color: #ededed;
-        }
-
-        .pos {
-            color: green;
-        }
-
-        .neg {
-            color: red;
-        }
-
-        .row_name {
-            width: 10%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-
-        }
-
-        .btn {
-            background-color: #222842;
-            color: white;
-            border-radius: 2px;
-        }
-
         .navbar-brand > img {
             height: 100%;
 
@@ -411,13 +466,14 @@
             padding-bottom: 5px;
         }
 
-        .table2 .info {
-            font-size: 10px;
+        .btn {
+            background-color: #222842;
+            color: white;
+            border-radius: 2px;
         }
 
-        .w_info {
+        .table2 .info {
             font-size: 10px;
-
         }
 
         .time_bts > button:hover {
@@ -444,33 +500,6 @@
 
         #title_losers {
             color: red;
-        }
-
-        #widget {
-            margin: auto;
-            padding-bottom: 14px;
-        }
-
-        .t-w_name {
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .w_name > a {
-            color: black;
-        }
-
-        .w_name > a:hover {
-            color: #6dc0eb;
-        }
-
-        #w_percent {
-            font-size: 0.7em;
-        }
-
-        .w_info {
-            margin-top: 20px;
-            font-size: 10px;
         }
 
         .main_price {
@@ -555,6 +584,7 @@
             width: 25%;
         }
 
+        /*Footer*/
         footer {
             background-color: #222842;
             color: white;
@@ -617,6 +647,7 @@
         }
 
 
+        /*Gainers/Losers*/
         .gl_title {
             font-size: 1.0vw;
             font-weight: bold;
@@ -664,6 +695,10 @@
             width: 33%;
         }
 
+        .gl_data:hover {
+            background-color: #f5f5f5;
+        }
+
         .r_ad {
             margin-bottom: 20px;
         }
@@ -678,14 +713,9 @@
             padding-top: 11px;
         }
 
-        .gl_data:hover {
-            background-color: #f5f5f5;
-        }
 
-        #table_head {
-            cursor: pointer;
-            border-top: 0;
-        }
+
+
 
         #nav_butts {
             display: flex;
@@ -698,30 +728,14 @@
             margin-left: 15px;
         }
 
-        #table_head > th {
-            border: 0;
-        }
 
-        .t-coin_row {
-            border-bottom: 1px solid lightgray;
-        }
-
-        .t-coin_row:last-child {
-            border: 0;
-        }
-
-        .uw-headline {
-            color: white;
-            background-color: blue;
-        }
 
         /*Themes*/
-            /*Dark Themes*/
 
+        /*Dark Theme*/
         .t--dark {
             background-color: #262626;
             color: #D0D0D0;
-
             -webkit-font-smoothing: antialiased !important;
             text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
             -webkit-text-stroke: 1px transparent;
@@ -849,22 +863,6 @@
 </head>
 
 <body>
-<script>
-    let mode = localStorage.getItem("mode");
-    let body = document.querySelector('body');
-
-    // Getting and Setting Theme from localStorage 'mode'
-    if (mode === null) {
-            localStorage.setItem("mode", "light");
-            body.classList.add('t--light');
-        } else if (mode === 'dark'){
-            body.classList.remove('t--light');
-            body.classList.add('t--dark');
-        } else {
-            body.classList.remove('t--dark');
-            body.classList.add('t--light');
-        }
-        </script>
 
 <!--NavBar-->
 <nav class="my_navbar navbar navbar-default">
@@ -1196,17 +1194,17 @@
     let mode = localStorage.getItem("mode");
     let body = document.querySelector('body');
 
-    // // Getting and Setting Theme from localStorage 'mode'
-    // if (mode === null) {
-    //         localStorage.setItem("mode", "light");
-    //         body.classList.add('t--light');
-    //     } else if (mode === 'dark'){
-    //         body.classList.remove('t--light');
-    //         body.classList.add('t--dark');
-    //     } else {
-    //         body.classList.remove('t--dark');
-    //         body.classList.add('t--light');
-    //     }
+    // Getting and Setting Theme from localStorage 'mode'
+    if (mode === null) {
+            localStorage.setItem("mode", "light");
+            body.classList.add('t--light');
+        } else if (mode === 'dark'){
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+        } else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+        }
 
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
