@@ -332,6 +332,7 @@
         .well {
             background-color: white;
             box-shadow: 0 0 3px gray;
+            border: 0;
         }
 
         /*.sidenav > .well {*/
@@ -523,11 +524,11 @@
         }
 
         #title_gainers {
-            color: green;
+            color: #00ff00;
         }
 
         #title_losers {
-            color: red;
+            color: #ec1313;
         }
 
         #gainers {
@@ -707,11 +708,118 @@
 
         #table_head {
             cursor: pointer;
+            border-top: 0;
         }
+
+        #nav_butts {
+            display: flex;
+            float: right;
+        }
+
+        #dark_bt {
+            background-color: #484848;
+            border: 1px solid white;
+            margin-left: 15px;
+        }
+
+        #table_head > th {
+            border: 0;
+        }
+
+
+        .t--dark {
+            background-color: #262626;
+            color: #D0D0D0;
+
+            -webkit-font-smoothing: antialiased !important;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  -webkit-text-stroke: 1px transparent;
+        }
+          .t--dark .t-main_div{
+              background-color: #262626;
+          }
+          .t--dark .t-w_name_link {
+              color: #D0D0D0;
+          }
+          .t--dark .t-coin_row {
+              background-color: #484848;
+              border-color: #262626;
+          }
+           .t--dark .t-w_name {
+              color: #D0D0D0;
+          }
+          .t--dark .well{
+              background-color: #444444;
+              color: #D0D0D0;
+          }
+
+          .t--dark .pos {
+                color: #00ff00;
+            }
+            .t--dark .neg {
+                color: #ec1313;
+            }
+
+            .t--dark #title_gainers {
+                color: #00ff00;
+                /*color: green;*/
+            }
+            .t--dark #title_losers {
+                /*color: #ec1313;*/
+                color: red;
+            }
+            .t--dark #dark_bt {
+            background-color: #6dc0eb;
+        }
+            .t--dark .feedgrabbr_widget{
+                color :#D0D0D0;
+            }
+
+          .t--light {
+              background-color: #ededed;
+              color: black;
+            }
+            .t--light .t-pos {
+                color: green;
+            }
+            .t--light .t-neg {
+                color: red;
+            }
+            .t--light #title_gainers {
+                color: green;
+                /*color: #00ff00;*/
+            }
+            .t--light #title_losers {
+                color: red;
+            }
+          .t--light .t-main_div {
+              background-color: #ededed;
+          }
+          .t--light .t-w_name_link {
+              color: black;
+          }
+          .t--light .t-coin_row {
+              background-color: white;
+              border-color: #262626;
+          }
+          .t--light .t-w_name {
+              color: black;
+          }
+          .t--light .t-well {
+              background-color: white;
+              color: black;
+          }
+        .t--light #dark_bt {
+            background-color: #262626;
+        }
+        .t--light .feedgrabbr_widget{
+                color: black;
+            }
+
 
     </style>
 </head>
-<body>
+<body class="t--dark">
 
 <nav class="my_navbar navbar navbar-default">
     <div id="barz" class="test container-fluid">
@@ -733,23 +841,24 @@
                 <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
-        <button id="dark_bt" class="btn navbar_btn">Dark</button>
+        <div id="nav_butts">
             <div id="twitter_link"><a class="twitter-follow-button"
   href="https://twitter.com/altcoindex"
   data-size="large">
 Follow @TwitterDev</a></div>
+        <div id="dark_bt_div"><button id="dark_bt" type="button" class="btn navbar-btn t-dark_bt">Dark</button></div>
         </div>
-    </div>
+        </div>
 </nav>
 
-<div id="main_div" class="container-fluid text-center">
+<div class="t-main_div container-fluid text-center">
     <div class="row content">
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" data-spy="affix" data-offset-top="50.8">
-                <div class="well">
+                <div class="t-well well">
                     <div v-cloak class="widget" v-for="row in rows">
                         <div class="w_data">
-                            <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
+                            <div class="t-w_name"><a class="t-w_name_link" :href="row.link">{{row.symbol}}</a></div>
                             <div>
                                 <div>{{row.price.toFixed(2)}}</div>
                                 <div id="w_percent"
@@ -774,7 +883,7 @@ Follow @TwitterDev</a></div>
             </div>
         </div>
         <div id="center" class="col-sm-8 text-left">
-            <div class="well">
+            <div class="t-well well">
                 <div class="time_bts">
                     <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
                     <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
@@ -786,7 +895,7 @@ Follow @TwitterDev</a></div>
                 <div id="index_chart"></div>
             </div>
 
-            <div id="index_info" class="well main_price">
+            <div id="index_info" class="t-well main_price well">
                 <!--<div class="index_info1">-->
                 <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
                     <div class="middle_name">
@@ -820,7 +929,7 @@ Follow @TwitterDev</a></div>
                 </div>
             </div>
 
-            <div class="well">
+            <div class="t-well well">
 
                 <table v-cloak id="coin_table" class="table table-hover">
                     <tr id="table_head">
@@ -832,7 +941,7 @@ Follow @TwitterDev</a></div>
                         <th @click="sort('volume')" id="coin_volume_title">Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('weight_3')" id="coin_weight_title">% Weight &nbsp; <i class="fas fa-sort"></i></th>
                     </tr>
-                    <tr class="coin_row" v-for="row in sortedCoins">
+                    <tr class="t-coin_row" v-for="row in sortedCoins">
                         <!--<img src="https://github.com/dziungles/cryptocurrency-logos/blob/master/coins/16x16/aces.png?raw=true">-->
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
@@ -863,7 +972,7 @@ Follow @TwitterDev</a></div>
                      data-ad-client="ca-pub-9873470958093574"
                      data-ad-slot="5347610936"></ins>
             </div>
-            <div v-cloak class="well" id="top_gain_lose">
+            <div v-cloak class="t-well well" id="top_gain_lose">
                 <div id="gl_all">
                     <div id="top_gainers">
                         <div id="gainerz" class="gl_title">Biggest Gainers</div>
@@ -895,7 +1004,7 @@ Follow @TwitterDev</a></div>
                      data-ad-client="ca-pub-9873470958093574"
                      data-ad-slot="5347610936"></ins>
             </div>
-            <div id="news_feed" class="well">
+            <div id="news_feed" class=".t-well well">
                 <div class="feedgrabbr_widget" id="fgid_fe56c6facc85556433ea1b5c1"></div>
             </div>
         </div>
@@ -940,6 +1049,7 @@ Follow @TwitterDev</a></div>
 </footer>
 <script>
     // let top_bois = ['BTC', 'LTC', 'ETH'];
+    let mode = localStorage.getItem("mode");
     let current_index = 'Privacy';
     let current_id = '2';
     let first_x = 0;
@@ -951,80 +1061,102 @@ Follow @TwitterDev</a></div>
     let y_high = 0;
     let price_change = 0;
     let dark_bt = document.querySelector('#dark_bt');
-    let main_div = document.querySelector('#main_div');
-    let wells = document.getElementsByClassName('well');
-    let w_name_link = document.getElementsByClassName('w_name_link');
-    let coin_row = document.getElementsByClassName('coin_row');
-    let news_feed = document.querySelector('#news_feed');
+    const body = document.querySelector('body');
+    // let main_div = document.querySelector('#main_div');
+    // let wells = document.getElementsByClassName('well');
+    // let w_name_link = document.getElementsByClassName('w_name_link');
+    // let coin_row = document.getElementsByClassName('coin_row');
+    // let news_feed = document.querySelector('#news_feed');
+
+    if (mode === 'light') {
+        body.classList.remove('t--dark');
+        body.classList.add('t--light');
+    } else {
+        body.classList.remove('t--light');
+        body.classList.add('t--dark');
+    }
 
     dark_bt.onclick = function () {
-        let mode = this.innerHTML;
-        let plot_lines = '';
-        let grid_color = '';
 
-        if (mode === 'Dark') {
-            main_div.style.backgroundColor = '#262626';
-
-            for (let i = 0; i < w_name_link.length; i++) {
-                w_name_link[i].style.color = '#D0D0D0'
-            }
-
-            for (let i = 0; i < coin_row.length; i++) {
-                coin_row[i].style.backgroundColor = '#484848';
-                coin_row[i].style.borderColor = '#262626';
-            }
-            // w_name.style.color = '#F5F5F5';
-
-            for (let i = 0; i < wells.length; i++) {
-                wells[i].style.backgroundColor = '#444444';
-                wells[i].style.color = '#D0D0D0';
-                wells[i].style.borderColor = '#262626';
-            }
-
-            plot_lines = '#D0D0D0';
-            grid_color = '#707070';
-            news_feed.style.color = white;
-
-            this.style.backgroundColor = '#6dc0eb';
-            this.innerHTML = 'Light'
-
-        } else {
-            main_div.style.backgroundColor = '#ededed';
-
-            for (let i = 0; i < w_name_link.length; i++) {
-                w_name_link[i].style.color = 'black'
-            }
-
-            for (let i = 0; i < coin_row.length; i++) {
-                coin_row[i].style.backgroundColor = 'white';
-            }
-
-            // w_name.style.color = 'black';
-
-            for (let i = 0; i < wells.length; i++) {
-                wells[i].style.color = 'black';
-                wells[i].style.backgroundColor = 'white';
-            }
-
-
-            plot_lines = 'default';
-            grid_color = 'default';
-
-            this.style.backgroundColor = '#484848';
-            this.innerHTML = 'Dark'
+        if (body.classList.contains('t--light')) {
+          body.classList.remove('t--light');
+          body.classList.add('t--dark');
+          localStorage.setItem("mode", "dark");
         }
-
-        let update = {
-
-            'yaxis.color': plot_lines,         // updates the y axis range
-            'xaxis.color': plot_lines,         // updates the y axis range
-            'xaxis.linecolor': plot_lines,         // updates the y axis range
-            'yaxis.linecolor': plot_lines,
-            'yaxis.gridcolor': grid_color// updates the y axis range
-        };
-
-        Plotly.relayout('index_chart', update)
+        else {
+          body.classList.remove('t--dark');
+          body.classList.add('t--light');
+          localStorage.setItem("mode", "light");
+        }
     };
+
+    //     let mode = this.innerHTML;
+    //     let plot_lines = '';
+    //     let grid_color = '';
+    //
+    //     if (mode === 'Dark') {
+    //         main_div.style.backgroundColor = '#262626';
+    //
+    //         for (let i = 0; i < w_name_link.length; i++) {
+    //             w_name_link[i].style.color = '#D0D0D0'
+    //         }
+    //
+    //         for (let i = 0; i < coin_row.length; i++) {
+    //             coin_row[i].style.backgroundColor = '#484848';
+    //             coin_row[i].style.borderColor = '#262626';
+    //         }
+    //         // w_name.style.color = '#F5F5F5';
+    //
+    //         for (let i = 0; i < wells.length; i++) {
+    //             wells[i].style.backgroundColor = '#444444';
+    //             wells[i].style.color = '#D0D0D0';
+    //             wells[i].style.borderColor = '#262626';
+    //         }
+    //
+    //         plot_lines = '#D0D0D0';
+    //         grid_color = '#707070';
+    //         news_feed.style.color = white;
+    //
+    //         this.style.backgroundColor = '#6dc0eb';
+    //         this.innerHTML = 'Light'
+    //
+    //     } else {
+    //         main_div.style.backgroundColor = '#ededed';
+    //
+    //         for (let i = 0; i < w_name_link.length; i++) {
+    //             w_name_link[i].style.color = 'black'
+    //         }
+    //
+    //         for (let i = 0; i < coin_row.length; i++) {
+    //             coin_row[i].style.backgroundColor = 'white';
+    //         }
+    //
+    //         // w_name.style.color = 'black';
+    //
+    //         for (let i = 0; i < wells.length; i++) {
+    //             wells[i].style.color = 'black';
+    //             wells[i].style.backgroundColor = 'white';
+    //         }
+    //
+    //
+    //         plot_lines = 'default';
+    //         grid_color = 'default';
+    //
+    //         this.style.backgroundColor = '#484848';
+    //         this.innerHTML = 'Dark'
+    //     }
+    //
+    //     let update = {
+    //
+    //         'yaxis.color': plot_lines,         // updates the y axis range
+    //         'xaxis.color': plot_lines,         // updates the y axis range
+    //         'xaxis.linecolor': plot_lines,         // updates the y axis range
+    //         'yaxis.linecolor': plot_lines,
+    //         'yaxis.gridcolor': grid_color// updates the y axis range
+    //     };
+    //
+    //     Plotly.relayout('index_chart', update)
+    // };
 
 
     let change_range = function (time_frame) {
