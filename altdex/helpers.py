@@ -100,7 +100,7 @@ def collect():
             this_change = 0
 
         else:
-            price_id = amount_entries - 1374
+            price_id = amount_entries - 1182
             last_price = dex.indexprice_set.all()[price_id].price
             this_change = float(dex_price) - float(last_price)
             dex_percent_change = (this_change/float(last_price)) * 100
