@@ -234,10 +234,7 @@
             }
 
             #main_index_price {
-                margin-top: auto;
-                margin-bottom: auto;
-                margin-left: 0;
-                margin-right: 0;
+                margin: auto
                 width: 100%;
             }
 
@@ -246,15 +243,17 @@
             }
 
             .middle_name {
-                display: inline-block;
+                display: inline;
             }
 
             .middle_value {
                 margin: auto;
+                font-size: 1.4vw;
             }
 
             .middle_data {
                 margin: auto;
+                font-size: 1.0vw;
             }
 
             #w_ad {
@@ -1020,7 +1019,7 @@
                     <!--Index Change-->
                     <div class="middle_data">
                         <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                            {{row.price_percent.toFixed(2)}}%
+                            {{row.price_percent.toFixed(2)}}%1234
                         </div>
                         <div id="middle_percent" v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
                             {{row.change_24h.toFixed(2)}}
