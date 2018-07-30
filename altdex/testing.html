@@ -46,6 +46,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!--News Widget-->
     <script>
         if (typeof (fg_widgets) === "undefined") {
             fg_widgets = new Array();
@@ -133,6 +135,27 @@
         }
 
         @media screen and (max-width: 767px) {
+            .well {
+                padding: 5px;
+                border-radius: 2px;
+                box-shadow: none;
+                margin: 5px;
+                margin-top: 0;
+            }
+
+            .t-main_div {
+                padding: 5px;
+            }
+
+            .col-sm-8 {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .time_bts {
+                display: none;
+            }
+
             .sidenav {
                 height: auto;
                 padding: 15px;
@@ -259,6 +282,10 @@
                 text-align: center;
                 margin-bottom: 0;
                 margin-top: 0;
+            }
+
+            #index_chart {
+                display: none;
             }
         }
 
@@ -713,8 +740,13 @@
         }
 
 
-        .uw_text {
-            color: black;
+        .feedgrabbr_widget .uw_text {
+            color: #f5f5f5;
+        }
+
+        .uw-rss {
+            color: pink;
+            font-size: 100px;
         }
 
 
@@ -742,7 +774,7 @@
             -webkit-text-stroke: 1px transparent;
         }
 
-        .t--dark .uw_text {
+        .t--dark .feedgrabbr_widget .uw_text {
             color: #D0D0D0;
         }
 
@@ -815,8 +847,8 @@
             color: black;
         }
 
-        .t--light .uw_text {
-            color: black;
+        .t--light .feedgrabbr_widget .uw_text {
+            color: greenyellow;
         }
 
         .t--light .t-pos {
