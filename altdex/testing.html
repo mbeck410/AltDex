@@ -188,13 +188,13 @@
                 width: 0;
             }
 
-            /*#coin_name_title {*/
-                /*display: none;*/
-            /*}*/
+            #coin_symbol_title {
+                display: none;
+            }
 
-            /*#coin_name_value {*/
-                /*display: none;*/
-            /*}*/
+            #coin_symbol_value {
+                display: none;
+            }
 
             #coin_market_title {
                 display: none;
@@ -244,22 +244,19 @@
             .middle_name {
                 display: inline;
                 text-align: center;
+                font-size: 3.8vw;
             }
 
             .middle_value {
                 margin: auto;
-                font-size: 2.4vw;
+                font-size: 3.0vw;
             }
 
             .middle_data {
                 margin: auto;
-                font-size: 2.1vw;
+                font-size: 2.4vw;
             }
-
-            #w_ad {
-                margin: auto;
-            }
-
+            
             #right_bar {
                 display: none;
             }
@@ -1056,7 +1053,7 @@
 
                     <!--Table Headers-->
                     <tr id="table_head">
-                        <th @click="sort('symbol')">
+                        <th @click="sort('symbol')" id="coin_symbol_title">
                             Symbol &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('name')" id="coin_name_title">
                             Name &nbsp; <i class="fas fa-sort"></i></th>
@@ -1076,7 +1073,7 @@
                     <tr class="t-coin_row" v-for="row in sortedCoins">
 
                         <!--Symbol-->
-                        <td class="row_symbol">{{row.symbol}}</td>
+                        <td id="coin_symbol_value" class="row_symbol">{{row.symbol}}</td>
 
                         <!--Name-->
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
