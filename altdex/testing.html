@@ -188,9 +188,9 @@
                 width: 0;
             }
 
-            /*#coin_name_title {*/
-                /*display: none;*/
-            /*}*/
+            #coin_name_title {
+                display: none;
+            }
 
             #coin_name_value {
                 display: none;
@@ -227,14 +227,13 @@
 
             }
 
-
             .main_price > div.gainers_losers {
                 margin: auto;
                 display: none;
             }
 
             #main_index_price {
-                margin: auto
+                margin: 0;
                 width: 100%;
             }
 
@@ -248,12 +247,12 @@
 
             .middle_value {
                 margin: auto;
-                font-size: 1.4vw;
+                font-size: 2.0vw;
             }
 
             .middle_data {
                 margin: auto;
-                font-size: 1.0vw;
+                font-size: 1.8vw;
             }
 
             #w_ad {
@@ -1019,7 +1018,7 @@
                     <!--Index Change-->
                     <div class="middle_data">
                         <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                            {{row.price_percent.toFixed(2)}}%1234
+                            {{row.price_percent.toFixed(2)}}%
                         </div>
                         <div id="middle_percent" v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
                             {{row.change_24h.toFixed(2)}}
