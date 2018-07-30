@@ -166,9 +166,8 @@
             }
 
 
-            #index_chart {
-                width: auto;
-                height: auto;
+            #chart_div {
+                display: none;
             }
 
             .widget_div {
@@ -189,9 +188,9 @@
                 width: 0;
             }
 
-            #coin_name_title {
-                display: none;
-            }
+            /*#coin_name_title {*/
+                /*display: none;*/
+            /*}*/
 
             #coin_name_value {
                 display: none;
@@ -228,9 +227,6 @@
 
             }
 
-            #index_chart {
-                height: 300px;
-            }
 
             .main_price > div.gainers_losers {
                 margin: auto;
@@ -250,7 +246,7 @@
             }
 
             .middle_name {
-                display: none;
+                display: inline-block;
             }
 
             .middle_value {
@@ -282,10 +278,6 @@
                 text-align: center;
                 margin-bottom: 0;
                 margin-top: 0;
-            }
-
-            #index_chart {
-                display: none;
             }
         }
 
@@ -991,7 +983,7 @@
         <div id="center" class="col-sm-8 text-left">
 
             <!--Index Price Chart-->
-            <div class="t-well well">
+            <div id="chart_div" class="t-well well">
 
                 <!--Resize Buttons-->
                 <div class="time_bts">
