@@ -36,6 +36,23 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
+    <script>window.twttr = (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function (f) {
+            t._e.push(f);
+        };
+
+        return t;
+    }(document, "script", "twitter-wjs"));</script>
+
     <style>
 
         .affix {
@@ -1014,6 +1031,10 @@
             display: none;
         }
 
+        #side_ad {
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 
@@ -1083,12 +1104,12 @@
                     <div>Last Updated Value</div>
                     <div>All Values Delayed</div>
                 </div>
-            </div>
-            <div id="w_ad">
+                <div id="w_ad">
                 <ins class="adsbygoogle"
                      style="display:inline-block;width:225px;height:300px"
                      data-ad-client="ca-pub-9873470958093574"
                      data-ad-slot="5347610936"></ins>
+            </div>
             </div>
         </div>
 <div id="center" class="col-sm-8 text-left about_display">
