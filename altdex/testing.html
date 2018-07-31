@@ -137,6 +137,10 @@
         }
 
         @media screen and (max-width: 767px) {
+            #left_ad {
+                display: none;
+            }
+
             .well {
                 padding: 5px;
                 border-radius: 2px;
@@ -190,6 +194,12 @@
                 border: 0;
                 padding-left: 15px;
                 padding-right: 15px;
+                display: flex;
+                font-size: 1.0vw;
+            }
+
+            .w_name_link {
+                color: #6dc0eb;
             }
 
             #w_percent{
@@ -312,9 +322,8 @@
                 height: 75px;
             }
 
-            .widget {
-                display: flex;
-                font-size: .8vw;
+            .affix-top {
+                padding: 0;
             }
 
             #barz {
@@ -427,9 +436,8 @@
 
 
         /*Widget*/
-        #widget {
+        #widget_fixed {
             margin: auto;
-            padding-bottom: 14px;
         }
 
         .t-w_name {
@@ -987,7 +995,7 @@
 
         <!--Fix Left Sidebar-->
         <div class="widget_div col-sm-2 sidenav">
-            <div id="widget" data-spy="affix" data-offset-top="50.8">
+            <div id="widget_fixed" data-spy="affix" data-offset-top="50.8">
 
                 <!--Index Price Widget-->
                 <div id="w_well" class="well">
@@ -1011,7 +1019,7 @@
                 </div>
 
                 <!--Fixed Ad-->
-                <div>
+                <div id="left_ad">
                     <ins class="adsbygoogle"
                          style="display:inline-block;width:225px;height:300px"
                          data-ad-client="ca-pub-9873470958093574"
@@ -1406,7 +1414,7 @@
 
     // Widget App
     let app3 = new Vue({
-        el: '#widget',
+        el: '#widget_fixed',
         data: {
             ascending: false,
             sortColumn: '',
