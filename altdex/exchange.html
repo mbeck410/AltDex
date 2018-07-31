@@ -266,6 +266,10 @@
 
         }
 
+        .light_bule_links {
+            color:#6dc0eb
+        }
+
         /*Main Stuff*/
 
         #center {
@@ -1019,7 +1023,7 @@
                         <!--<img src="https://github.com/dziungles/cryptocurrency-logos/blob/master/coins/16x16/aces.png?raw=true">-->
                         <td class="row_symbol">{{row.symbol}}</td>
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
-                            <img :src="row.icon"></a> &nbsp; <a :href="row.website" target="_blank">{{row.name}}</a>
+                            <img :src="row.icon"></a> &nbsp; <a class="light_blue_links" :href="row.website" target="_blank">{{row.name}}</a>
                         </td>
                         <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
                         <td>${{row.pretty_price.toLocaleString('en', {useGrouping:true})}}</td>
@@ -1052,7 +1056,7 @@
                     <div id="top_gainers">
                         <div id="gainerz" class="gl_title">Biggest Gainers</div>
                         <div class="gl_data" v-for="row in rows2">
-                            <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
+                            <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a></div>
                             <div class="gl_price">${{row.price}}</div>
                             <div class="gl_percent"
                                  v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
@@ -1063,7 +1067,7 @@
                     <div id="top_losers">
                         <div id="lozerz" class="gl_title">Biggest Losers</div>
                         <div class="gl_data" v-for="row in rows">
-                            <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
+                            <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a></div>
                             <div class="gl_price">${{row.price}}</div>
                             <div class="gl_percent"
                                  v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
@@ -1109,23 +1113,23 @@
                 is no guarantee of future results.
             <p>
             <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your experience, but
-                you can opt-out if you wish <a href="/privacy_policy/">Privacy Policy</a>.
+                you can opt-out if you wish <a class="light_blue_links" href="/privacy_policy/">Privacy Policy</a>.
             </p>
             <div class="footer_pages">
-                <div id="footer_left_link"><a href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
-                        href="/privacy_policy/">Privacy Policy</a></div>
+                <div id="footer_left_link"><a class="light_blue_links" href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
+                        class="light_blue_links" href="/privacy_policy/">Privacy Policy</a></div>
             </div>
         </div>
         <div class="footer_bottom">
             <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
-            <div><a href="mailto:admin@altdex.co" class="fa" target="_blank">&#x2709</a><a
+            <div><a class="light_blue_links" href="mailto:admin@altdex.co" class="fa" target="_blank">&#x2709</a><a
                     href="https://twitter.com/altcoindex"
                     class="fa fa-twitter" target="_blank"></a></div>
-            <div class="footer_link">From the creators of <a href="https://sludgefeed.com/"
+            <div class="footer_link">From the creators of <a class="light_blue_links" href="https://sludgefeed.com/"
                                                              target="_blank">SludgeFeed</a></div>
-            <div class="footer_link">Select market data provided by <a href="http://coincap.io/"
+            <div class="footer_link">Select market data provided by <a class="light_blue_links" href="http://coincap.io/"
                                                                        target="_blank">CoinCap</a> & <a
-                    href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
+                    class="light_blue_links" href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
         </div>
     </div>
     <div class="col-sm-2"></div>
