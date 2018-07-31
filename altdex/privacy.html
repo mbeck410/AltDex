@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <title>AltDex Privacy Coin Index</title>
 
+    <!--Meta Inf0-->
+    <meta charset="UTF-8">
     <meta name="description" content="Market Capitalization-Weighted Cryptocurrency Privacy Coin Index">
     <meta name="keywords"
           content="Cryptocurrency, Bitcoin, AltDex, Index, Altcoin, coin, chart, Investing, Exchange, Trading, Market, price">
     <meta name="author" content="Peer, LLC">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <meta name="twitter:image" content="https://sludgefeed.com/wp-content/uploads/2018/07/Altdex-Laptop-Logo.png">
     <meta name="twitter:site" content="@altcoindex">
-    <title>AltDex Privacy Coin Index</title>
-
     <meta property="fb:app_id" content="250619782212260">
 
 
@@ -23,39 +21,40 @@
     <meta property="og:site" content="https://www.altdex.co/"/> <!-- website link -->
     <meta property="og:title" content="AltDex Privacy Coin Index"/> <!-- title shown in the actual shared post -->
     <meta property="og:description" content="Market Capitalization-Weighted Cryptocurrency Privacy Coin Index"/>
+
     <!-- description shown in the actual shared post -->
     <meta property="og:url" content="https://www.altdex.co/"/> <!-- where do you want your post to link to -->
     <meta property="og:type" content="article"/>
-
     <meta name="twitter:card" content="summary_large_image">
-
     <meta name="twitter:title" content="AltDex Privacy Coin Index">
     <meta name="twitter:description" content="Market Capitalization-Weighted Cryptocurrency Privacy Coin Index">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
 
+    <!--Links-->
+        <!--Fonts/Characters-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <!--Symbol-->
     <link rel="shortcut icon" type="image/png"
           href="https://sludgefeed.com/wp-content/uploads/2018/06/Altdex-favicon-32x32.png"/>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-103693878-2');
-    </script>
+    <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!--Javascript for plugins-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array();
-    fg_widgets.push("fgid_fe56c6facc85556433ea1b5c1");</script>
+
+    <!--News Widget-->
+    <script>
+        if (typeof (fg_widgets) === "undefined") {
+            fg_widgets = new Array();
+        }
+        fg_widgets.push("fgid_fe56c6facc85556433ea1b5c1");
+        fg_widgets.push("fgid_832d88b852364aa8e599fe55f");
+    </script>
     <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>window.twttr = (function (d, s, id) {
@@ -74,18 +73,31 @@
 
         return t;
     }(document, "script", "twitter-wjs"));</script>
+
+    <!--Google ad/webdata-->
+     Global site tag (gtag.js) - Google Analytics
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-6108390557757563",
-            enable_page_level_ads: true
-        });
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-103693878-2');
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta charset="UTF-8">
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6108390557757563",
+    enable_page_level_ads: true
+    });
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .affix {
@@ -245,24 +257,71 @@
 
         }
 
-        table.table {
-            background-color: white;
-            margin: 0px
+               /*Main Stuff*/
+
+        #center {
+            padding-top: 20px;
         }
 
+        .well {
+            background-color: white;
+            box-shadow: 0 0 3px gray;
+            border: 0;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        h3 {
+            margin: 0px;
+            padding: 0px;
+            font-size: 40px;
+        }
+
+        .main_div {
+            background-color: #ededed;
+        }
+
+        .pos {
+            color: green;
+        }
+
+        .neg {
+            color: red;
+        }
+
+
+        /*Coin Table Style*/
+        table.table {
+            background-color: white;
+            margin: 0;
+        }
+
+
+        /*Table Headers*/
         table.table th {
             background-color: #222842;
             color: white;
+        }
+
+        #table_head {
+            cursor: pointer;
+            border-top: 0;
+        }
+
+        #table_head > th {
+            border: 0;
         }
 
         table.table th:nth-child(n+3) {
             text-align: right;
         }
 
-        /*table.table th:nth-child(5) {*/
-        /*text-align: center*/
-        /*}*/
 
+        /*Table Rows*/
         table.table td:nth-child(n+3) {
             text-align: right;
         }
@@ -275,9 +334,53 @@
             font-weight: bold;
         }
 
-        /*table.table td:nth-child(5) {*/
-        /*text-align: center*/
-        /*}*/
+        table.table td:nth-child(-n+7) {
+            border-top: 0;
+        }
+
+        .coin_row {
+            border-bottom: 1px solid lightgray;
+        }
+
+        .coin_row:last-child {
+            border: 0;
+        }
+
+        .row_name {
+            width: 10%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        /*Widget*/
+        #widget {
+            margin: auto;
+            padding-bottom: 14px;
+        }
+
+        .w_name {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .w_name > a {
+            color: black;
+        }
+
+        .w_name > a:hover {
+            color: #6dc0eb;
+        }
+
+        #w_percent {
+            font-size: 0.7em;
+        }
+
+        .w_info {
+            margin-top: 20px;
+            font-size: 10px;
+        }
 
         .w_data {
             display: flex;
@@ -298,54 +401,16 @@
         .w_data > div:nth-child(2) {
             text-align: center;
             font-size: 1.4vw;
-            /*width: 40%;*/
             margin: auto;
         }
 
-        /*.widget_title {*/
-        /*font-size: 30px;*/
-        /*border-bottom: 3px solid #222842;*/
-        /*font-weight: bold;*/
-        /*width: auto;*/
-        /*padding-left: 15px;*/
-        /*padding-right: 15px;*/
-        /*}*/
-
-        #center {
-            /*background-color: whitesmoke;*/
-            padding-top: 20px;
+        .w_info {
+            font-size: 10px;
         }
 
-        /*#center > div {*/
-        /*background-color: white;*/
-        /*}*/
 
-        .well {
-            background-color: white;
-            box-shadow: 0 0 3px gray;
-        }
 
-        /*.sidenav > .well {*/
-        /*background-color: white;*/
-        /*box-shadow: 0 0 4px gray;*/
-        /*}*/
-
-        h1 {
-            font-size: 50px;
-            margin: 0px;
-            padding: 0px;
-        }
-
-        h3 {
-            margin: 0px;
-            padding: 0px;
-            font-size: 40px;
-        }
-
-        /*table.table2:first-child {*/
-        /*width: 40%;*/
-        /*}*/
-
+        /*Navbar*/
         .my_navbar {
             background-color: #222842;
             color: white;
@@ -384,33 +449,6 @@
             color: lightgray;
         }
 
-        .main_div {
-            background-color: #ededed;
-            /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
-        }
-
-        .pos {
-            color: green;
-        }
-
-        .neg {
-            color: red;
-        }
-
-        .row_name {
-            width: 10%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-
-        }
-
-        .btn {
-            background-color: #222842;
-            color: white;
-            border-radius: 2px;
-        }
-
         .navbar-brand > img {
             height: 100%;
 
@@ -421,13 +459,14 @@
             padding-bottom: 5px;
         }
 
-        .table2 .info {
-            font-size: 10px;
+        .btn {
+            background-color: #222842;
+            color: white;
+            border-radius: 2px;
         }
 
-        .w_info {
+        .table2 .info {
             font-size: 10px;
-
         }
 
         .time_bts > button:hover {
@@ -454,33 +493,6 @@
 
         #title_losers {
             color: red;
-        }
-
-        #widget {
-            margin: auto;
-            padding-bottom: 14px;
-        }
-
-        .w_name {
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .w_name > a {
-            color: black;
-        }
-
-        .w_name > a:hover {
-            color: #6dc0eb;
-        }
-
-        #w_percent {
-            font-size: 0.7em;
-        }
-
-        .w_info {
-            margin-top: 20px;
-            font-size: 10px;
         }
 
         .main_price {
@@ -514,11 +526,11 @@
         }
 
         #title_gainers {
-            color: green;
+            color: #00ff00;
         }
 
         #title_losers {
-            color: red;
+            color: #ec1313;
         }
 
         #gainers {
@@ -565,6 +577,7 @@
             width: 25%;
         }
 
+        /*Footer*/
         footer {
             background-color: #222842;
             color: white;
@@ -627,6 +640,7 @@
         }
 
 
+        /*Gainers/Losers*/
         .gl_title {
             font-size: 1.0vw;
             font-weight: bold;
@@ -643,9 +657,6 @@
 
         .gl_data:last-child {
             border-bottom: 0;
-            padding-top: 10px;
-            padding-bottom: 0;
-            display: flex;
         }
 
         #gainerz {
@@ -658,7 +669,6 @@
             color: white;
             background-color: #222842;
             text-align: center;
-            margin-top: 10px;
         }
 
         .gl_name {
@@ -678,6 +688,10 @@
             width: 33%;
         }
 
+        .gl_data:hover {
+            background-color: #f5f5f5;
+        }
+
         .r_ad {
             margin-bottom: 20px;
         }
@@ -692,56 +706,221 @@
             padding-top: 11px;
         }
 
-        .gl_data:hover {
-            background-color: #f5f5f5;
+        #nav_butts {
+            display: flex;
+            float: right;
         }
 
-        #table_head {
-            cursor: pointer;
+        #dark_bt {
+            background-color: #444444;
+            border: 1px solid white;
+            margin-left: 15px;
+        }
+
+
+
+        /*Themes*/
+
+        /*Dark Theme*/
+        .t--dark {
+            background-color: #262626;
+            color: #D0D0D0;
+            -webkit-font-smoothing: antialiased !important;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+            -webkit-text-stroke: 1px transparent;
+        }
+
+        .t--dark .main_div{
+            background-color: #262626;
+        }
+
+        .t--dark .w_name_link {
+            color: #D0D0D0;
+        }
+
+        .t--dark .coin_row {
+            background-color: #444444;
+            border-color: #808080;
+        }
+
+        .t--dark .w_name {
+            color: #D0D0D0;
+            font-weight: bold;
+        }
+
+        .t--dark .well {
+            background-color: #444444;
+            color: #D0D0D0;
+        }
+
+        .t--dark .pos {
+            color: #00ff00;
+        }
+
+        .t--dark .neg {
+            color: #ec1313;
+        }
+
+        .t--dark #title_gainers {
+            color: #00ff00
+        }
+
+        .t--dark #title_losers {
+            color: #ec1313;
+        }
+
+        .t--dark #dark_bt {
+            background-color: #6dc0eb;
+            content: 'Light';
+        }
+
+        .t--dark .gl_data:hover {
+            color: black;
+        }
+
+        .t--dark .gl_data {
+            border-color: #808080;
+        }
+
+        .t--dark .w_data {
+            border-color: #808080;
+        }
+
+
+        .t--dark .coin_row:hover {
+            color: black;
+            background-color: #ededed;
+        }
+
+        .t--dark .feedgrabbr_widget2 {
+            display: inline;
+        }
+
+        .t--dark .feedgrabbr_widget {
+            display: none;
+        }
+
+            /*Light Mode*/
+
+        .t--light {
+            background-color: #ededed;
+            color: black;
+        }
+
+        .t--light .pos {
+            color: green;
+        }
+
+        .t--light .neg {
+            color: red;
+        }
+
+        .t--light #title_gainers {
+            color: green;
+            /*color: #00ff00;*/
+        }
+
+        .t--light #title_losers {
+            color: red;
+        }
+
+        .t--light .main_div {
+            background-color: #ededed;
+        }
+
+        .t--light .w_name_link {
+            color: black;
+            font-weight: bold;
+        }
+
+        .t--light .coin_row {
+            background-color: white;
+        }
+
+        .t--light .w_name {
+            color: black;
+            font-weight: bold;
+        }
+
+        .t--light .well {
+            background-color: white;
+            color: black;
+        }
+
+        .t--light #dark_bt {
+            background-color: #262626;
+        }
+
+        .t--light .coin_row:hover {
+            color: black;
+            background-color: #ededed;
+        }
+
+        .t--light .feedgrabbr_widget {
+            display: initial;
+        }
+
+        .t--light .feedgrabbr_widget2 {
+            display: none;
         }
 
     </style>
 </head>
+
 <body>
 
+<!--NavBar-->
 <nav class="my_navbar navbar navbar-default">
     <div id="barz" class="test container-fluid">
+
+        <!--Icon-->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand" href="/"><img
                     src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="primary nav navbar-nav">
-                <li class="my_drop dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="secondary dropdown-menu">
-                        <li><a href="/">AltDex 100</a></li>
-                        <li><a href="/exchange">Exchange</a></li>
-                        <li><a href="/privacy">Privacy</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-            <div id="twitter_link"><a class="twitter-follow-button"
-  href="https://twitter.com/altcoindex"
-  data-size="large">
-Follow @TwitterDev</a></div>
+
+        <!--Links-->
+        <ul class="primary nav navbar-nav">
+
+            <!--Indices Dropdown-->
+            <li class="my_drop dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
+                    <span class="caret"></span>
+                </a>
+                <ul class="secondary dropdown-menu">
+                    <li><a href="/">AltDex 100</a></li>
+                    <li><a href="/exchange">Exchange</a></li>
+                    <li><a href="/privacy">Privacy</a></li>
+                </ul>
+            </li>
+            <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
+            <li><a href="/about">About</a></li>
+
+        </ul>
+
+        <!--Twitter/Mode Buttons-->
+        <div id="nav_butts">
+            <div id="twitter_link">
+                <a class="twitter-follow-button"
+                   href="https://twitter.com/altcoindex"
+                   data-size="large">Follow @TwitterDev</a>
+            </div>
+            <div id="dark_bt_div">
+                <button id="dark_bt" type="button" class="btn navbar-btn dark_bt">Mode</button>
+            </div>
         </div>
     </div>
 </nav>
 
+<!--Main Div-->
 <div class="main_div container-fluid text-center">
     <div class="row content">
+
+        <!--Fix Left Sidebar-->
         <div class="widget_div col-sm-2 sidenav">
             <div id="widget" data-spy="affix" data-offset-top="50.8">
+
+                <!--Index Price Widget-->
                 <div class="well">
                     <div v-cloak class="widget" v-for="row in rows">
                         <div class="w_data">
@@ -761,6 +940,8 @@ Follow @TwitterDev</a></div>
                         <div>All Values Delayed</div>
                     </div>
                 </div>
+
+                <!--Fixed Ad-->
                 <div>
                     <ins class="adsbygoogle"
                          style="display:inline-block;width:225px;height:300px"
@@ -769,8 +950,14 @@ Follow @TwitterDev</a></div>
                 </div>
             </div>
         </div>
+
+        <!--Center Div-->
         <div id="center" class="col-sm-8 text-left">
-            <div class="well">
+
+            <!--Index Price Chart-->
+            <div id="chart_div" class="well">
+
+                <!--Resize Buttons-->
                 <div class="time_bts">
                     <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
                     <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
@@ -779,20 +966,30 @@ Follow @TwitterDev</a></div>
                     <button type="button" class="btn" onclick="change_range('three_month')">3 m</button>
                     <button type="button" class="btn" onclick="change_range('year')">ALL</button>
                 </div>
+
+                <!--Chart-->
                 <div id="index_chart"></div>
             </div>
 
-            <div id="index_info" class="well main_price">
-                <!--<div class="index_info1">-->
+            <!--Main Index Info Div-->
+            <div id="index_info" class="main_price well">
+
+                <!--Index Data-->
                 <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
+
+                    <!--Index Name-->
                     <div class="middle_name">
                         <div class="dex_name">ALTPRV</div>
                         <div class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
                     </div>
+
+                    <!--Index Value-->
                     <div class="middle_value">
                         <div id="middle_price">{{row.price.toFixed(2)}}</div>
                         <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
                     </div>
+
+                    <!--Index Change-->
                     <div class="middle_data">
                         <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
                             {{row.price_percent.toFixed(2)}}%
@@ -803,12 +1000,16 @@ Follow @TwitterDev</a></div>
                     </div>
                 </div>
 
-
+                <!--Number Gainers/Losers-->
                 <div class="gainers_losers">
+
+                    <!--Gainers-->
                     <div class="gain">
                         <div id="title_gainers">Gainers</div>
                         <div id="gainers"></div>
                     </div>
+
+                    <!--Losers-->
                     <div class="lose">
                         <div id="title_losers">Losers</div>
                         <div id="losers"></div>
@@ -816,35 +1017,60 @@ Follow @TwitterDev</a></div>
                 </div>
             </div>
 
+            <!--Coin Table-->
             <div class="well">
+                <table v-cloak id="coin_table" class="table">
 
-                <table v-cloak id="coin_table" class="table table-hover">
+                    <!--Table Headers-->
                     <tr id="table_head">
-                        <th @click="sort('symbol')">Symbol &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('name')" id="coin_name_title">Name &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('market_cap')" id="coin_market_title">Market Cap &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('price')">Last &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('price_percent')">Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('volume')" id="coin_volume_title">Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('market_cap')" id="coin_weight_title">% Weight &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('symbol')" id="coin_symbol_title">
+                            Symbol &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('name')" id="coin_name_title">
+                            Name &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('market_cap')" id="coin_market_title">
+                            Market Cap &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price')">
+                            Last &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price_percent')">
+                            Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('volume')" id="coin_volume_title">
+                            Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('weight_3')" id="coin_weight_title">
+                            % Weight &nbsp; <i class="fas fa-sort"></i></th>
                     </tr>
+
+                    <!--Table Rows-->
                     <tr class="coin_row" v-for="row in sortedCoins">
-                        <!--<img src="https://github.com/dziungles/cryptocurrency-logos/blob/master/coins/16x16/aces.png?raw=true">-->
-                        <td class="row_symbol">{{row.symbol}}</td>
+
+                        <!--Symbol-->
+                        <td id="coin_symbol_value" class="row_symbol">{{row.symbol}}</td>
+
+                        <!--Name-->
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
                             <img :src="row.icon"></a> &nbsp; <a :href="row.website" target="_blank">{{row.name}}</a>
                         </td>
+
+                        <!--Market Cap-->
                         <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>${{row.pretty_price.toLocaleString('en', {useGrouping:true})}}</td>
-                        <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
+
+                        <!--Last-->
+                        <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
+
+                        <!--Percent_Change-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">
                             {{row.price_percent.toFixed(2)}}%
                         </td>
+
+                        <!--Volume-->
                         <td id="coin_volume_value">${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
+
+                        <!--% Weight-->
                         <td id="coin_weight_value">{{row.weight_3}}%</td>
                     </tr>
                 </table>
             </div>
+
+            <!--Footer Ad-->
             <ins id="footer_ad" class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9873470958093574"
@@ -852,15 +1078,22 @@ Follow @TwitterDev</a></div>
                  data-ad-format="auto"></ins>
         </div>
 
+        <!--Right Bar-->
         <div id="right_bar" class="col-sm-2 sidenav">
+
+            <!--Top Ad-->
             <div class="r_ad">
                 <ins class="adsbygoogle"
                      style="display:inline-block;width:225px;height:190px"
                      data-ad-client="ca-pub-9873470958093574"
                      data-ad-slot="5347610936"></ins>
             </div>
+
+            <!--Top Gainers/Losers-->
             <div v-cloak class="well" id="top_gain_lose">
                 <div id="gl_all">
+
+                    <!--Gainers-->
                     <div id="top_gainers">
                         <div id="gainerz" class="gl_title">Biggest Gainers</div>
                         <div class="gl_data" v-for="row in rows2">
@@ -872,6 +1105,8 @@ Follow @TwitterDev</a></div>
                             </div>
                         </div>
                     </div>
+
+                    <!--Losers-->
                     <div id="top_losers">
                         <div id="lozerz" class="gl_title">Biggest Losers</div>
                         <div class="gl_data" v-for="row in rows">
@@ -885,22 +1120,30 @@ Follow @TwitterDev</a></div>
                     </div>
                 </div>
             </div>
+
+            <!--Middle Ad-->
             <div class="r_ad">
                 <ins class="adsbygoogle"
                      style="display:inline-block;width:225px;height:190px"
                      data-ad-client="ca-pub-9873470958093574"
                      data-ad-slot="5347610936"></ins>
             </div>
-            <div class="well">
+
+            <!--News Widget-->
+            <div id="news_feed" class="well">
                 <div class="feedgrabbr_widget" id="fgid_fe56c6facc85556433ea1b5c1"></div>
+                <div class="feedgrabbr_widget2" id="fgid_832d88b852364aa8e599fe55f"></div>
             </div>
         </div>
     </div>
 </div>
 
+<!--Footer-->
 <footer class="container-fluid text-center">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
+
+        <!--Disclaimer-->
         <div id="disclaimer">
             <p>The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
                 is
@@ -915,11 +1158,15 @@ Follow @TwitterDev</a></div>
             <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your experience, but
                 you can opt-out if you wish <a href="/privacy_policy/">Privacy Policy</a>.
             </p>
+
+            <!--Page Links-->
             <div class="footer_pages">
                 <div id="footer_left_link"><a href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
                         href="/privacy_policy/">Privacy Policy</a></div>
             </div>
         </div>
+
+        <!--Other Links-->
         <div class="footer_bottom">
             <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
             <div><a href="mailto:admin@altdex.co" class="fa" target="_blank">&#x2709</a><a
@@ -934,7 +1181,10 @@ Follow @TwitterDev</a></div>
     </div>
     <div class="col-sm-2"></div>
 </footer>
+
+<!--Javascript-->
 <script>
+    // Variables
     let current_index = 'Privacy';
     let current_id = '2';
     let first_x = 0;
@@ -945,28 +1195,79 @@ Follow @TwitterDev</a></div>
     let y_low = 0;
     let y_high = 0;
     let price_change = 0;
+    let dark_bt = document.querySelector('#dark_bt');
+    let mode = localStorage.getItem("mode");
+    let body = document.querySelector('body');
 
+    // Getting and Setting Theme from localStorage 'mode'
+    if (mode === null) {
+            localStorage.setItem("mode", "light");
+            body.classList.add('t--light');
+        } else if (mode === 'dark'){
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+        } else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+        }
+
+    // Changing Mode/Theme on button click
+    dark_bt.onclick = function () {
+        let plot_lines = '';        //Index axis color
+        let grid_color = '';        //Index grid color
+
+        // Light to Dark
+        if (body.classList.contains('t--light'))  {
+            plot_lines = '#D0D0D0';
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+            localStorage.setItem("mode", "dark");
+            grid_color = '#707070';
+        }
+
+        // Dark to Light
+        else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+            localStorage.setItem("mode", "light");
+            grid_color = 'default';
+            plot_lines = 'default';
+        }
+
+        // Updating Index Chart
+        let update = {
+            'yaxis.color': plot_lines,
+            'xaxis.color': plot_lines,
+            'xaxis.linecolor': plot_lines,
+            'yaxis.linecolor': plot_lines,
+            'yaxis.gridcolor': grid_color
+        };
+        Plotly.relayout('index_chart', update)
+    };
+
+    //Chart Resize Button Functions
     let change_range = function (time_frame) {
         let now = new Date();
         let date_update = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
         let y_update = [];
         let x_update = [];
-        if (time_frame == 'year') {
+
+        if (time_frame === 'year') {                                //Range: Year
             x_update = [first_x, last_x];
-            y_update = [y_low, y_high];
-        } else if (time_frame == 'three_month') {
+            y_update = [y_low, y_high];//
+        } else if (time_frame === 'three_month') {                  //Range: 3 Months
             date_update.setMonth(date_update.getMonth() - 3);
             x_update = [date_update, last_x];
             y_update = [y_low, y_high];
-        } else if (time_frame == 'one_month') {
+        } else if (time_frame === 'one_month') {                    //Range: 1 Month
             date_update.setMonth(date_update.getMonth() - 1);
             x_update = [date_update, last_x];
             y_update = [y_low, y_high]
-        } else if (time_frame == 'seven_day') {
+        } else if (time_frame === 'seven_day') {                    //Range: 7 Day
             date_update.setDate(date_update.getDate() - 7);
             x_update = [date_update, last_x];
             y_update = [last_y - 20, last_y + 20]
-        } else if (time_frame == 'one_day') {
+        } else if (time_frame === 'one_day') {                      //Range: 24 Hour
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
             let buffer = Math.abs(price_change) + 3;
@@ -977,28 +1278,29 @@ Follow @TwitterDev</a></div>
             } else {
                 y_update = [last_y - 8, last_y + 8]
             }
-        } else if (time_frame == 'hour') {
+        } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
             x_update = [date_update, last_x];
             y_update = [last_y - 4, last_y + 4]
         }
 
         let update = {
-            'xaxis.range': x_update,  // updates the end of the x axis range
+            'xaxis.range': x_update,        // updates the end of the x axis range
             'yaxis.range': y_update         // updates the y axis range
         };
 
         Plotly.relayout('index_chart', update)
     };
 
+    // Coin Table App
     let app = new Vue({
         el: '#coin_table',
-
         data: {
             rows: [],
             current_sort: 'market_cap',
             current_dir: 'desc'
         },
+
         methods: {
             sort: function (s) {
                 if (s === this.current_sort) {
@@ -1020,6 +1322,7 @@ Follow @TwitterDev</a></div>
         },
     });
 
+    // Index Data App
     let app2 = new Vue({
         el: '#index_info',
         data: {
@@ -1030,6 +1333,8 @@ Follow @TwitterDev</a></div>
         }
     });
 
+
+    // Widget App
     let app3 = new Vue({
         el: '#widget',
         data: {
@@ -1039,6 +1344,7 @@ Follow @TwitterDev</a></div>
         }
     });
 
+    // Top Gainers/Losers Apps
     let app4 = new Vue({
         el: '#top_gain_lose',
         data: {
@@ -1049,15 +1355,7 @@ Follow @TwitterDev</a></div>
         }
     });
 
-    let app5 = new Vue({
-        el: '#top_prices',
-        data: {
-            ascending: false,
-            sortColumn: '',
-            rows: [],
-        }
-    });
-
+    // API Pulls
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -1073,6 +1371,7 @@ Follow @TwitterDev</a></div>
     }
 
 
+    // Top Gainers/Losers Pull
     function top_gainers_losers() {
         let gain_data = [];
         let lose_data = [];
@@ -1092,6 +1391,7 @@ Follow @TwitterDev</a></div>
     }
 
 
+    // Coin Table Pull
     function coin_current(index) {
         app.rows = [];
         amount_gainers = 0;
@@ -1099,8 +1399,7 @@ Follow @TwitterDev</a></div>
         let dict = [];
         let top_bar = [];
         let divisor = 0;
-        let url = '/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
-        //alert('test');
+        let url = '/getcoinscurrent/';
         let count = 0;
         http_get(url, function (data) {
 
@@ -1121,12 +1420,7 @@ Follow @TwitterDev</a></div>
                     count++;
                     divisor += entry.market_cap
                 }
-                //
-                // let index_name = entry.indices;
-                // if (index_name.includes(index) === true) {
-
             }
-            app5.rows = top_bar;
             app.rows = dict;
             let percent_gainers = amount_gainers / count * 100;
             let percent_losers = amount_losers / count * 100;
@@ -1137,6 +1431,7 @@ Follow @TwitterDev</a></div>
         })
     };
 
+    // Coin Table Updates
     function update_coin(index) {
         let new_coins = [];
         amount_gainers = 0;
@@ -1160,7 +1455,7 @@ Follow @TwitterDev</a></div>
                     count++;
                 }
                 // let index_name = entry.indices;
-                if (i < 5) {
+                if (entry.symbol in top_bois) {
                     top_bar.push(entry);
                 }
                 // if (index_name.includes(index) === true) {
@@ -1179,6 +1474,7 @@ Follow @TwitterDev</a></div>
     }
 
 
+    // Index Data Pull
     function index_current(index_id) {
         let new_data = [];
         let other_data = [];
@@ -1200,6 +1496,7 @@ Follow @TwitterDev</a></div>
         });
     }
 
+    // Index Data Update
     function update_index(index_id) {
         let new_data = [];
         let other_data = [];
@@ -1217,12 +1514,10 @@ Follow @TwitterDev</a></div>
         });
     }
 
-
     let line_data = [];
 
-    // let line_data2 = [];
-
-    function index_all(id_num) {
+    // Index Chart Pull
+    function index_all() {
         line_data = [];
         let url = '/getindexall/';
         //alert('test');
@@ -1240,7 +1535,7 @@ Follow @TwitterDev</a></div>
             // console.log(y_low);
             // console.log(y_high);
 
-            let layout = {
+            let layout_light = {
                 autosize: true,
                 margin: {
                     l: 50,
@@ -1271,26 +1566,62 @@ Follow @TwitterDev</a></div>
                 }
             };
 
-            Plotly.react('index_chart', line_data, layout);
+            let layout_dark = {
+                autosize: true,
+                margin: {
+                    l: 50,
+                    r: 50,
+                    b: 50,
+                    t: 20,
+                },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                xaxis: {
+                    color: '#D0D0D0',
+                    linecolor: '#D0D0D0',
+                    range: [line_data[0].x[0], line_data[0].x[data_length]],
+                    type: 'date',
+                    title: 'Date',
+                    showgrid: false,
+                    zeroline: false,
+                    showline: true,
+                    autotick: true,
+                    ticks: '',
+                    showticklabels: true,
+                },
+                yaxis: {
+                    color: '#D0D0D0',
+                    linecolor: '#D0D0D0',
+                    range: [y_low, y_high],
+                    showgrid: true,
+                    autotick: true,
+                    showline: true,
+                    ticks: '',
+                    showticklabels: true,
+                    gridcolor: '#707070'
+                }
+            };
+
+            if (mode === 'light') {
+                Plotly.react('index_chart', line_data, layout_light);
+            } else {
+                Plotly.react('index_chart', line_data, layout_dark);
+            }
+
         });
     }
+
 
     let gainers_div = document.querySelector('#gainers');
     let losers_div = document.querySelector('#losers');
 
-    // function gainers_losers() {
-    //     console.log(amount_gainers);
-    //     let percent_gainers = amount_gainers/100;
-    //     gainers_div.innerHTML = percent_gainers.toString();
-    //     let percent_losers = amount_losers/100;
-    //     losers_div.innerHTML = percent_losers.toString();
-    // }
 
 
     index_current(current_id);
     coin_current(current_index);
     index_all();
     top_gainers_losers();
+    Plotly.react('index_chart', line_data, layout_dark);
     setInterval(function () {
             top_gainers_losers();
             update_coin(current_index);

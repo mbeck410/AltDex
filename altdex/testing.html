@@ -764,20 +764,20 @@
             -webkit-text-stroke: 1px transparent;
         }
 
-        .t--dark .t-main_div{
+        .t--dark .main_div{
             background-color: #262626;
         }
 
-        .t--dark .t-w_name_link {
+        .t--dark .w_name_link {
             color: #D0D0D0;
         }
 
-        .t--dark .t-coin_row {
+        .t--dark .coin_row {
             background-color: #444444;
             border-color: #808080;
         }
 
-        .t--dark .t-w_name {
+        .t--dark .w_name {
             color: #D0D0D0;
             font-weight: bold;
         }
@@ -821,7 +821,7 @@
         }
 
 
-        .t--dark .t-coin_row:hover {
+        .t--dark .coin_row:hover {
             color: black;
             background-color: #ededed;
         }
@@ -841,11 +841,11 @@
             color: black;
         }
 
-        .t--light .t-pos {
+        .t--light .pos {
             color: green;
         }
 
-        .t--light .t-neg {
+        .t--light .neg {
             color: red;
         }
 
@@ -858,28 +858,24 @@
             color: red;
         }
 
-        .t--light .t-main_div {
+        .t--light .main_div {
             background-color: #ededed;
         }
 
-        .t--light .t-w_name_link {
+        .t--light .w_name_link {
             color: black;
             font-weight: bold;
         }
 
-        .t--light .t-coin_row {
+        .t--light .coin_row {
             background-color: white;
         }
 
-        .t--light .t-w_name {
+        .t--light .w_name {
             color: black;
             font-weight: bold;
         }
 
-        .t--light .t-well {
-            background-color: white;
-            color: black;
-        }
 
         .t--light #dark_bt {
             background-color: #262626;
@@ -940,14 +936,14 @@
                    data-size="large">Follow @TwitterDev</a>
             </div>
             <div id="dark_bt_div">
-                <button id="dark_bt" type="button" class="btn navbar-btn t-dark_bt">Mode</button>
+                <button id="dark_bt" type="button" class="btn navbar-btn dark_bt">Mode</button>
             </div>
         </div>
     </div>
 </nav>
 
 <!--Main Div-->
-<div class="t-main_div container-fluid text-center">
+<div class="main_div container-fluid text-center">
     <div class="row content">
 
         <!--Fix Left Sidebar-->
@@ -955,10 +951,10 @@
             <div id="widget" data-spy="affix" data-offset-top="50.8">
 
                 <!--Index Price Widget-->
-                <div class="t-well well">
+                <div class="well">
                     <div v-cloak class="widget" v-for="row in rows">
                         <div class="w_data">
-                            <div class="t-w_name"><a class="t-w_name_link" :href="row.link">{{row.symbol}}</a></div>
+                            <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
                             <div>
                                 <div>{{row.price.toFixed(2)}}</div>
                                 <div id="w_percent"
@@ -989,7 +985,7 @@
         <div id="center" class="col-sm-8 text-left">
 
             <!--Index Price Chart-->
-            <div id="chart_div" class="t-well well">
+            <div id="chart_div" class="well">
 
                 <!--Resize Buttons-->
                 <div class="time_bts">
@@ -1006,7 +1002,7 @@
             </div>
 
             <!--Main Index Info Div-->
-            <div id="index_info" class="t-well main_price well">
+            <div id="index_info" class="main_price well">
 
                 <!--Index Data-->
                 <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
@@ -1052,7 +1048,7 @@
             </div>
 
             <!--Coin Table-->
-            <div class="t-well well">
+            <div class="well">
                 <table v-cloak id="coin_table" class="table">
 
                     <!--Table Headers-->
@@ -1074,7 +1070,7 @@
                     </tr>
 
                     <!--Table Rows-->
-                    <tr class="t-coin_row" v-for="row in sortedCoins">
+                    <tr class="coin_row" v-for="row in sortedCoins">
 
                         <!--Symbol-->
                         <td id="coin_symbol_value" class="row_symbol">{{row.symbol}}</td>
@@ -1124,7 +1120,7 @@
             </div>
 
             <!--Top Gainers/Losers-->
-            <div v-cloak class="t-well well" id="top_gain_lose">
+            <div v-cloak class="well" id="top_gain_lose">
                 <div id="gl_all">
 
                     <!--Gainers-->
@@ -1164,7 +1160,7 @@
             </div>
 
             <!--News Widget-->
-            <div id="news_feed" class=".t-well well">
+            <div id="news_feed" class="well">
                 <div class="feedgrabbr_widget" id="fgid_fe56c6facc85556433ea1b5c1"></div>
                 <div class="feedgrabbr_widget2" id="fgid_832d88b852364aa8e599fe55f"></div>
             </div>
