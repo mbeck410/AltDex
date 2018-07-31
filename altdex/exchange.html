@@ -75,7 +75,7 @@
     }(document, "script", "twitter-wjs"));</script>
 
     <!--Google ad/webdata-->
-     Global site tag (gtag.js) - Google Analytics
+     <!--Global site tag (gtag.js) - Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -919,7 +919,7 @@
                 <div class="well">
                     <div v-cloak class="widget" v-for="row in rows">
                         <div class="w_data">
-                            <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
+                            <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
                             <div>
                                 <div>{{row.price.toFixed(2)}}</div>
                                 <div id="w_percent"
