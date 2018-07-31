@@ -145,7 +145,7 @@
                 margin-top: 0;
             }
 
-            .t-main_div {
+            .main_div {
                 padding: 5px;
             }
 
@@ -172,7 +172,7 @@
                 display: none;
             }
 
-            .widget_div {
+            #w_well {
                 display: none;
             }
 
@@ -247,6 +247,7 @@
                 display: inline;
                 text-align: center;
                 font-size: 3.0vw;
+                margin: auto;
             }
 
             .middle_value {
@@ -951,7 +952,7 @@
             <div id="widget" data-spy="affix" data-offset-top="50.8">
 
                 <!--Index Price Widget-->
-                <div class="well">
+                <div id="w_well" class="well">
                     <div v-cloak class="widget" v-for="row in rows">
                         <div class="w_data">
                             <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
