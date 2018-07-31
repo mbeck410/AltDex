@@ -11,6 +11,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!--Google ad/webdata-->
+        <!--Global site tag (gtag.js) - Google Analytics-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-103693878-2');
+    </script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({
             google_ad_client: "ca-pub-6108390557757563",
@@ -151,6 +166,10 @@
             }
 
             .info {
+                display: none;
+            }
+
+            #dark_bt {
                 display: none;
             }
 
@@ -388,38 +407,657 @@
             margin_top: 20px
         }
 
+                       /*Main Stuff*/
+
+        #center {
+            padding-top: 20px;
+        }
+
+        .well {
+            background-color: white;
+            box-shadow: 0 0 3px gray;
+            border: 0;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        h3 {
+            margin: 0px;
+            padding: 0px;
+            font-size: 40px;
+        }
+
+        .main_div {
+            background-color: #ededed;
+        }
+
+        .pos {
+            color: green;
+        }
+
+        .neg {
+            color: red;
+        }
+
+
+        /*Coin Table Style*/
+        table.table {
+            background-color: white;
+            margin: 0;
+        }
+
+
+        /*Table Headers*/
+        table.table th {
+            background-color: #222842;
+            color: white;
+        }
+
+        #table_head {
+            cursor: pointer;
+            border-top: 0;
+        }
+
+        #table_head > th {
+            border: 0;
+        }
+
+        table.table th:nth-child(n+3) {
+            text-align: right;
+        }
+
+
+        /*Table Rows*/
+        table.table td:nth-child(n+3) {
+            text-align: right;
+        }
+
+        table.table td:first-child {
+            font-weight: bold;
+        }
+
+        table.table td:nth-child(2) {
+            font-weight: bold;
+        }
+
+        table.table td:nth-child(-n+7) {
+            border-top: 0;
+        }
+
+        .coin_row {
+            border-bottom: 1px solid lightgray;
+        }
+
+        .coin_row:last-child {
+            border: 0;
+        }
+
+        .row_name {
+            width: 10%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        /*Widget*/
+        #widget {
+            margin: auto;
+            padding-bottom: 14px;
+        }
+
+        .w_name {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .w_name > a {
+            color: black;
+        }
+
+        .w_name > a:hover {
+            color: #6dc0eb;
+        }
+
+        #w_percent {
+            font-size: 0.7em;
+        }
+
+        .w_info {
+            margin-top: 20px;
+            font-size: 10px;
+        }
+
+        .w_data {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid lightgray;
+            padding-bottom: 5px;
+            padding-top: 5px;
+
+        }
+
+        .w_data > div:first-child {
+            text-align: center;
+            font-size: 1.6vw;
+            /*width: 60%;*/
+            margin: auto;
+        }
+
+        .w_data > div:nth-child(2) {
+            text-align: center;
+            font-size: 1.4vw;
+            margin: auto;
+        }
+
+        .w_info {
+            font-size: 10px;
+        }
+
+
+
+        /*Navbar*/
+        .my_navbar {
+            background-color: #222842;
+            color: white;
+            margin: 0;
+            border-radius: 0;
+            border: 0;
+        }
+
+        .my_navbar .navbar-brand {
+            color: white;
+            font-size: 30px;
+            text-align: center;
+
+        }
+
+        .my_navbar .navbar-brand:hover {
+            color: lightgray;
+        }
+
+        .my_navbar .primary > li a {
+            color: white;
+            font-size: 22px;
+        }
+
+        .my_navbar .primary > li a:hover {
+            color: lightgray;
+        }
+
+        .my_navbar .primary .secondary > li a {
+            color: black;
+            font-size: 22px;
+        }
+
+        .my_drop > a {
+            background-color: #222842;
+            color: lightgray;
+        }
+
+        .navbar-brand > img {
+            height: 100%;
+
+        }
+
+        .navbar-brand {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .btn {
+            background-color: #222842;
+            color: white;
+            border-radius: 2px;
+        }
+
+        .table2 .info {
+            font-size: 10px;
+        }
+
+        .time_bts > button:hover {
+            color: lightgray;
+        }
+
+        .main_price {
+            display: flex;
+        }
+
+        .gainers_losers {
+            margin: auto;
+            text-align: center;
+            width: 40%;
+        }
+
+        .gainers_losers tr:nth-child(2) {
+            font-size: 1.8em;
+        }
+
+        #title_gainers {
+            color: green;
+        }
+
+        #title_losers {
+            color: red;
+        }
+
+        .main_price {
+            display: flex;
+        }
+
+        .pricing {
+            display: flex;
+            width: 70%;
+            text-align: center;
+
+        }
+
+        .gain {
+            margin: auto;
+        }
+
+        .lose {
+            margin: auto;
+        }
+
+        .gainers_losers {
+            display: flex;
+            width: 30%;
+            text-align: center;
+            border-left: solid 1px lightgray;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        #title_gainers {
+            color: #00ff00;
+        }
+
+        #title_losers {
+            color: #ec1313;
+        }
+
+        #gainers {
+            font-size: 1.8em;
+        }
+
+        #losers {
+            font-size: 1.8em;
+        }
+
+        .info {
+            font-size: 10px;
+        }
+
+        #middle_price {
+            font-size: 3.0em;
+        }
+
+        #middle_percent {
+            font-size: 1.8em;
+        }
+
+        #values_main {
+            font-size: 2.2em;
+        }
+
+        .dex_name {
+            font-size: 3.0em;
+            font-weight: bold;
+        }
+
+        .middle_name {
+            text-align: left;
+            width: 45%;
+        }
+
+        .middle_value {
+            text-align: center;
+            width: 30%;
+        }
+
+        .middle_data {
+            text-align: center;
+            width: 25%;
+        }
+
+        /*Footer*/
+        footer {
+            background-color: #222842;
+            color: white;
+            padding: 15px;
+            font-size: 11px;
+        }
+
+        #disclaimer {
+            text-align: center;
+            font-size: 9px;
+            border-bottom: 1px solid darkgray;
+            margin: 11px;
+            padding-bottom: 12px;
+        }
+
+        .footer_bottom {
+            display: flex;
+        }
+
+        .footer_link {
+            margin: auto;
+            text-align: left;
+        }
+
+
+         /* Style all font awesome icons */
+        .fa {
+            font-size: 18px;
+        }
+
+        /* Add a hover effect if you want */
+        .fa:hover {
+            opacity: 0.7;
+            text-decoration: none;
+        }
+
+        .footer_pages {
+            display: flex;
+            margin: auto;
+        }
+
+
+        .footer_pages > div {
+            margin: auto;
+            padding: auto;
+        }
+
+        #side_ad {
+            margin-bottom: 20px
+        }
+
+        #footer_ad {
+            margin-bottom: 20px;
+         }
+
+        #top_gain_lose {
+            margin: auto;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+
+        /*Gainers/Losers*/
+        .gl_title {
+            font-size: 1.0vw;
+            font-weight: bold;
+            padding-bottom: 3px;
+            padding-top: 3px;
+        }
+
+        .gl_data {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid lightgray;
+            display: flex;
+        }
+
+        .gl_data:last-child {
+            border-bottom: 0;
+        }
+
+        #gainerz {
+            color: white;
+            background-color: #222842;
+            text-align: center;
+        }
+
+        #lozerz {
+            color: white;
+            background-color: #222842;
+            text-align: center;
+        }
+
+        .gl_name {
+                font-weight: bold;
+                font-size: 0.9vw;
+                width: 22%;
+                text-align: left;
+            }
+
+        .gl_price {
+            text-align: right;
+            width: 45%;
+        }
+
+        .gl_percent {
+            text-align: right;
+            width: 33%;
+        }
+
+        .gl_data:hover {
+            background-color: #f5f5f5;
+        }
+
+        .r_ad {
+            margin-bottom: 20px;
+        }
+
+        #myNavbar {
+            display: flex;
+        }
+
+        #twitter_link {
+            text-align: right;
+            height: 50px;
+            padding-top: 11px;
+        }
+
+        #nav_butts {
+            display: flex;
+            float: right;
+        }
+
+        #dark_bt {
+            background-color: #444444;
+            border: 1px solid white;
+            margin-left: 15px;
+        }
+
+
+
+        /*Themes*/
+
+        /*Dark Theme*/
+        .t--dark {
+            background-color: #262626;
+            color: #D0D0D0;
+            -webkit-font-smoothing: antialiased !important;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+            -webkit-text-stroke: 1px transparent;
+        }
+
+        .t--dark .main_div{
+            background-color: #262626;
+        }
+
+        .t--dark .w_name_link {
+            color: #D0D0D0;
+        }
+
+        .t--dark .coin_row {
+            background-color: #444444;
+            border-color: #808080;
+        }
+
+        .t--dark .w_name {
+            color: #D0D0D0;
+            font-weight: bold;
+        }
+
+        .t--dark .well {
+            background-color: #444444;
+            color: #D0D0D0;
+        }
+
+        .t--dark .pos {
+            color: #00ff00;
+        }
+
+        .t--dark .neg {
+            color: #ec1313;
+        }
+
+        .t--dark #title_gainers {
+            color: #00ff00
+        }
+
+        .t--dark #title_losers {
+            color: #ec1313;
+        }
+
+        .t--dark #dark_bt {
+            background-color: #6dc0eb;
+            content: 'Light';
+        }
+
+        .t--dark .gl_data:hover {
+            color: black;
+        }
+
+        .t--dark .gl_data {
+            border-color: #808080;
+        }
+
+        .t--dark .w_data {
+            border-color: #808080;
+        }
+
+
+        .t--dark .coin_row:hover {
+            color: black;
+            background-color: #ededed;
+        }
+
+        .t--dark .feedgrabbr_widget2 {
+            display: inline;
+        }
+
+        .t--dark .feedgrabbr_widget {
+            display: none;
+        }
+
+            /*Light Mode*/
+
+        .t--light {
+            background-color: #ededed;
+            color: black;
+        }
+
+        .t--light .pos {
+            color: green;
+        }
+
+        .t--light .neg {
+            color: red;
+        }
+
+        .t--light #title_gainers {
+            color: green;
+            /*color: #00ff00;*/
+        }
+
+        .t--light #title_losers {
+            color: red;
+        }
+
+        .t--light .main_div {
+            background-color: #ededed;
+        }
+
+        .t--light .w_name_link {
+            color: black;
+            font-weight: bold;
+        }
+
+        .t--light .coin_row {
+            background-color: white;
+        }
+
+        .t--light .w_name {
+            color: black;
+            font-weight: bold;
+        }
+
+        .t--light .well {
+            background-color: white;
+            color: black;
+        }
+
+        .t--light #dark_bt {
+            background-color: #262626;
+        }
+
+        .t--light .coin_row:hover {
+            color: black;
+            background-color: #ededed;
+        }
+
+        .t--light .feedgrabbr_widget {
+            display: initial;
+        }
+
+        .t--light .feedgrabbr_widget2 {
+            display: none;
+        }
+
     </style>
 </head>
+
 <body>
 
-
-
+<!--NavBar-->
 <nav class="my_navbar navbar navbar-default">
-    <div class="test container-fluid">
+    <div id="barz" class="test container-fluid">
+
+        <!--Icon-->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand" href="/"><img
                     src="https://sludgefeed.com/wp-content/uploads/2018/05/AltDex-Logo-liteblue-navy-680x200-2.png"></a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="primary nav navbar-nav">
-                <li class="my_drop dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="secondary dropdown-menu">
-                        <li><a href="/">AltDex 100</a></li>
-                        <li><a href="/exchange/">Exchange</a></li>
-                        <li><a href="/privacy/">Privacy</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
-                <li><a href="/about/">About</a></li>
-            </ul>
+
+        <!--Links-->
+        <ul class="primary nav navbar-nav">
+
+            <!--Indices Dropdown-->
+            <li class="my_drop dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Indices
+                    <span class="caret"></span>
+                </a>
+                <ul class="secondary dropdown-menu">
+                    <li><a href="/">AltDex 100</a></li>
+                    <li><a href="/exchange">Exchange</a></li>
+                    <li><a href="/privacy">Privacy</a></li>
+                </ul>
+            </li>
+            <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
+            <li><a href="/about">About</a></li>
+
+        </ul>
+
+        <!--Twitter/Mode Buttons-->
+        <div id="nav_butts">
+            <div id="twitter_link">
+                <a class="twitter-follow-button"
+                   href="https://twitter.com/altcoindex"
+                   data-size="large">Follow @TwitterDev</a>
+            </div>
+            <div id="dark_bt_div">
+                <button id="dark_bt" type="button" class="btn navbar-btn dark_bt">Mode</button>
+            </div>
         </div>
     </div>
 </nav>
@@ -430,7 +1068,7 @@
             <div id="widget" class="well" data-spy="affix" data-offset-top="50.8">
                 <div v-cloak class="widget" v-for="row in rows">
                     <div class="w_data">
-                        <div class="w_name"><a :href="row.link">{{row.symbol}}</a></div>
+                        <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
                         <div>
                             <div>{{row.price.toFixed(2)}}</div>
                             <div id="w_percent"
@@ -638,6 +1276,40 @@
 </footer>
 
 <script>
+
+    let dark_bt = document.querySelector('#dark_bt');
+    let mode = localStorage.getItem("mode");
+    let body = document.querySelector('body');
+
+    // Getting and Setting Theme from localStorage 'mode'
+    if (mode === null) {
+            localStorage.setItem("mode", "light");
+            body.classList.add('t--light');
+        } else if (mode === 'dark'){
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+        } else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+        }
+
+     dark_bt.onclick = function () {
+
+        // Light to Dark
+        if (body.classList.contains('t--light'))  {
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+            localStorage.setItem("mode", "dark");
+        }
+
+        // Dark to Light
+        else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+            localStorage.setItem("mode", "light");
+        }
+
+    };
 
     let app3 = new Vue({
         el: '#widget',
