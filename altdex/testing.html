@@ -137,6 +137,12 @@
         }
 
         @media screen and (max-width: 767px) {
+            .affix {
+                top: 0;
+                z-index: 9999 !important;
+                width: 100%;
+                display: flex
+            }
             #left_ad {
                 display: none;
             }
@@ -195,7 +201,7 @@
                 padding-left: 15px;
                 padding-right: 15px;
                 display: flex;
-                font-size: 1.0vw;
+                font-size: 1.4vw;
             }
 
             .w_name_link {
@@ -259,10 +265,10 @@
 
             }
 
-            /*.main_price > div.gainers_losers {*/
-                /*margin: auto;*/
-                /*display: none;*/
-            /*}*/
+            .main_price > div.gainers_losers {
+                margin: auto;
+                display: none;
+            }
 
             #main_index_price {
                 margin: 0;
@@ -334,6 +340,13 @@
                 padding-top: 0px;
             }
 
+            #footer_ad {
+                padding: 0;
+            }
+
+            .w_data {
+                border: 0;
+            }
 
         }
 
