@@ -1213,563 +1213,563 @@
                          data-ad-slot="5597159466"
                          data-ad-format="auto"></ins>
                 </div>
+            </div>
+        </div>
+        <!--Right Bar-->
+        <div id="right_bar" class="col-sm-2 sidenav">
 
-                <!--Right Bar-->
-                <div id="right_bar" class="col-sm-2 sidenav">
+            <!--Top Ad-->
+            <div class="r_ad">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:225px;height:190px"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="5347610936"></ins>
+            </div>
 
-                    <!--Top Ad-->
-                    <div class="r_ad">
-                        <ins class="adsbygoogle"
-                             style="display:inline-block;width:225px;height:190px"
-                             data-ad-client="ca-pub-9873470958093574"
-                             data-ad-slot="5347610936"></ins>
-                    </div>
+            <!--Top Gainers/Losers-->
+            <div v-cloak class="well" id="top_gain_lose">
+                <div id="gl_all">
 
-                    <!--Top Gainers/Losers-->
-                    <div v-cloak class="well" id="top_gain_lose">
-                        <div id="gl_all">
-
-                            <!--Gainers-->
-                            <div id="top_gainers">
-                                <div id="gainerz" class="gl_title">Biggest Gainers</div>
-                                <div class="gl_data" v-for="row in rows2">
-                                    <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
-                                    <div class="gl_price">${{row.price}}</div>
-                                    <div class="gl_percent"
-                                         v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                        {{row.price_percent}}%
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Losers-->
-                            <div id="top_losers">
-                                <div id="lozerz" class="gl_title">Biggest Losers</div>
-                                <div class="gl_data" v-for="row in rows">
-                                    <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
-                                    <div class="gl_price">${{row.price}}</div>
-                                    <div class="gl_percent"
-                                         v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                        {{row.price_percent}}%
-                                    </div>
-                                </div>
+                    <!--Gainers-->
+                    <div id="top_gainers">
+                        <div id="gainerz" class="gl_title">Biggest Gainers</div>
+                        <div class="gl_data" v-for="row in rows2">
+                            <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
+                            <div class="gl_price">${{row.price}}</div>
+                            <div class="gl_percent"
+                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                {{row.price_percent}}%
                             </div>
                         </div>
                     </div>
 
-                    <!--Middle Ad-->
-                    <div class="r_ad">
-                        <ins class="adsbygoogle"
-                             style="display:inline-block;width:225px;height:190px"
-                             data-ad-client="ca-pub-9873470958093574"
-                             data-ad-slot="5347610936"></ins>
-                    </div>
-
-                    <!--News Widget-->
-                    <div id="news_feed" class="well">
-                        <div class="feedgrabbr_widget" id="fgid_fe56c6facc85556433ea1b5c1"></div>
-                        <div class="feedgrabbr_widget2" id="fgid_832d88b852364aa8e599fe55f"></div>
+                    <!--Losers-->
+                    <div id="top_losers">
+                        <div id="lozerz" class="gl_title">Biggest Losers</div>
+                        <div class="gl_data" v-for="row in rows">
+                            <div class="gl_name"><a :href="row.website" target="_blank">{{row.symbol}}</a></div>
+                            <div class="gl_price">${{row.price}}</div>
+                            <div class="gl_percent"
+                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                {{row.price_percent}}%
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!--Middle Ad-->
+            <div class="r_ad">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:225px;height:190px"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="5347610936"></ins>
+            </div>
+
+            <!--News Widget-->
+            <div id="news_feed" class="well">
+                <div class="feedgrabbr_widget" id="fgid_fe56c6facc85556433ea1b5c1"></div>
+                <div class="feedgrabbr_widget2" id="fgid_832d88b852364aa8e599fe55f"></div>
             </div>
         </div>
-
-        <!--Footer-->
-        <footer class="container-fluid text-center">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-
-                <!--Disclaimer-->
-                <div id="disclaimer">
-                    <p>The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
-                        is
-                        provided solely for informational and educational purposes and does not constitute investment
-                        advice. It
-                        shall
-                        not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor
-                        its
-                        content
-                        providers are responsible for any damages or losses arising from any use of this information.
-                        Past
-                        performance
-                        is no guarantee of future results.
-                    <p>
-                    <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your
-                        experience, but
-                        you can opt-out if you wish <a href="/privacy_policy/">Privacy Policy</a>.
-                    </p>
-
-                    <!--Page Links-->
-                    <div class="footer_pages">
-                        <div id="footer_left_link"><a href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
-                                href="/privacy_policy/">Privacy Policy</a></div>
-                    </div>
-                </div>
-
-                <!--Other Links-->
-                <div class="footer_bottom">
-                    <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
-                    <div><a href="mailto:admin@altdex.co" class="fa" target="_blank">&#x2709</a><a
-                            href="https://twitter.com/altcoindex"
-                            class="fa fa-twitter" target="_blank"></a></div>
-                    <div class="footer_link">From the creators of <a href="https://sludgefeed.com/"
-                                                                     target="_blank">SludgeFeed</a></div>
-                    <div class="footer_link">Select market data provided by <a href="http://coincap.io/"
-                                                                               target="_blank">CoinCap</a> & <a
-                            href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
-                </div>
-            </div>
-            <div class="col-sm-2"></div>
-        </footer>
     </div>
 </div>
 
-        <!--Javascript-->
-        <script>
-            // Variables
+<!--Footer-->
+<footer class="container-fluid text-center">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
 
-            let current_index = 'Privacy';
-            let current_id = '2';
-            let first_x = 0;
-            let last_x = 0;
-            let amount_gainers = 0;
-            let amount_losers = 0;
-            let last_y = 0;
-            let y_low = 0;
-            let y_high = 0;
-            let price_change = 0;
-            let dark_bt = document.querySelector('#dark_bt');
-            let mode = localStorage.getItem("mode");
-            let body = document.querySelector('body');
+        <!--Disclaimer-->
+        <div id="disclaimer">
+            <p>The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
+                is
+                provided solely for informational and educational purposes and does not constitute investment
+                advice. It
+                shall
+                not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor
+                its
+                content
+                providers are responsible for any damages or losses arising from any use of this information.
+                Past
+                performance
+                is no guarantee of future results.
+            <p>
+            <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your
+                experience, but
+                you can opt-out if you wish <a href="/privacy_policy/">Privacy Policy</a>.
+            </p>
 
-            // Getting and Setting Theme from localStorage 'mode'
-            if (mode === null) {
-                localStorage.setItem("mode", "light");
-                body.classList.add('t--light');
-            } else if (mode === 'dark') {
-                body.classList.remove('t--light');
-                body.classList.add('t--dark');
+            <!--Page Links-->
+            <div class="footer_pages">
+                <div id="footer_left_link"><a href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
+                        href="/privacy_policy/">Privacy Policy</a></div>
+            </div>
+        </div>
+
+        <!--Other Links-->
+        <div class="footer_bottom">
+            <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
+            <div><a href="mailto:admin@altdex.co" class="fa" target="_blank">&#x2709</a><a
+                    href="https://twitter.com/altcoindex"
+                    class="fa fa-twitter" target="_blank"></a></div>
+            <div class="footer_link">From the creators of <a href="https://sludgefeed.com/"
+                                                             target="_blank">SludgeFeed</a></div>
+            <div class="footer_link">Select market data provided by <a href="http://coincap.io/"
+                                                                       target="_blank">CoinCap</a> & <a
+                    href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</footer>
+
+
+<!--Javascript-->
+<script>
+    // Variables
+
+    let current_index = 'Privacy';
+    let current_id = '2';
+    let first_x = 0;
+    let last_x = 0;
+    let amount_gainers = 0;
+    let amount_losers = 0;
+    let last_y = 0;
+    let y_low = 0;
+    let y_high = 0;
+    let price_change = 0;
+    let dark_bt = document.querySelector('#dark_bt');
+    let mode = localStorage.getItem("mode");
+    let body = document.querySelector('body');
+
+    // Getting and Setting Theme from localStorage 'mode'
+    if (mode === null) {
+        localStorage.setItem("mode", "light");
+        body.classList.add('t--light');
+    } else if (mode === 'dark') {
+        body.classList.remove('t--light');
+        body.classList.add('t--dark');
+    } else {
+        body.classList.remove('t--dark');
+        body.classList.add('t--light');
+    }
+
+    // Changing Mode/Theme on button click
+    dark_bt.onclick = function () {
+        let plot_lines = '';        //Index axis color
+        let grid_color = '';        //Index grid color
+
+        // Light to Dark
+        if (body.classList.contains('t--light')) {
+            plot_lines = '#D0D0D0';
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+            localStorage.setItem("mode", "dark");
+            grid_color = '#707070';
+        }
+
+        // Dark to Light
+        else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+            localStorage.setItem("mode", "light");
+            grid_color = 'default';
+            plot_lines = 'default';
+        }
+
+        // Updating Index Chart
+        let update = {
+            'yaxis.color': plot_lines,
+            'xaxis.color': plot_lines,
+            'xaxis.linecolor': plot_lines,
+            'yaxis.linecolor': plot_lines,
+            'yaxis.gridcolor': grid_color
+        };
+        Plotly.relayout('index_chart', update)
+    };
+
+    //Chart Resize Button Functions
+    let change_range = function (time_frame) {
+        let now = new Date();
+        let date_update = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
+        let y_update = [];
+        let x_update = [];
+
+        if (time_frame === 'year') {                                //Range: Year
+            x_update = [first_x, last_x];
+            y_update = [y_low, y_high];//
+        } else if (time_frame === 'three_month') {                  //Range: 3 Months
+            date_update.setMonth(date_update.getMonth() - 3);
+            x_update = [date_update, last_x];
+            y_update = [y_low, y_high];
+        } else if (time_frame === 'one_month') {                    //Range: 1 Month
+            date_update.setMonth(date_update.getMonth() - 1);
+            x_update = [date_update, last_x];
+            y_update = [y_low, y_high]
+        } else if (time_frame === 'seven_day') {                    //Range: 7 Day
+            date_update.setDate(date_update.getDate() - 7);
+            x_update = [date_update, last_x];
+            y_update = [last_y - 20, last_y + 20]
+        } else if (time_frame === 'one_day') {                      //Range: 24 Hour
+            date_update.setDate(date_update.getDate() - 1);
+            x_update = [date_update, last_x];
+            let buffer = Math.abs(price_change) + 3;
+            if (price_change >= 5) {
+                y_update = [last_y - buffer, last_y + 3]
+            } else if (price_change <= -5) {
+                y_update = [last_y - 3, last_y + buffer]
             } else {
-                body.classList.remove('t--dark');
-                body.classList.add('t--light');
+                y_update = [last_y - 8, last_y + 8]
+            }
+        } else if (time_frame === 'hour') {                         //Range: Hour
+            date_update.setHours(date_update.getHours() - 1);
+            x_update = [date_update, last_x];
+            y_update = [last_y - 4, last_y + 4]
+        }
+
+        let update = {
+            'xaxis.range': x_update,        // updates the end of the x axis range
+            'yaxis.range': y_update         // updates the y axis range
+        };
+
+        Plotly.relayout('index_chart', update)
+    };
+
+    // Coin Table App
+    let app = new Vue({
+        el: '#coin_table',
+        data: {
+            rows: [],
+            current_sort: 'market_cap',
+            current_dir: 'desc'
+        },
+
+        methods: {
+            sort: function (s) {
+                if (s === this.current_sort) {
+                    this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
+                }
+                this.current_sort = s;
+            }
+        },
+        computed: {
+            sortedCoins: function () {
+                return this.rows.sort((a, b) => {
+                    let modifier = 1;
+                    if (this.current_dir === 'desc') modifier = -1;
+                    if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
+                    if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
+                    return 0;
+                });
+            },
+        },
+    });
+
+    // Index Data App
+    let app2 = new Vue({
+        el: '#index_info',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+            rows2: [],
+        }
+    });
+
+
+    // Widget App
+    let app3 = new Vue({
+        el: '#widget_fixed',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+        }
+    });
+
+    // Top Gainers/Losers Apps
+    let app4 = new Vue({
+        el: '#top_gain_lose',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+            rows2: [],
+        }
+    });
+
+    // API Pulls
+    function http_get(url, success) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            // console.log(this.status);
+            if (this.readyState === 4 && this.status === 200) {
+                let data = JSON.parse(xhttp.responseText);
+                success(data);
+            }
+        };
+        xhttp.open("GET", url);
+        xhttp.send();
+
+    }
+
+
+    // Top Gainers/Losers Pull
+    function top_gainers_losers() {
+        let gain_data = [];
+        let lose_data = [];
+        let url = '/gainers_losers/';
+        http_get(url, function (data) {
+            for (let i = 0; i < data.losers[2].length; i++) {
+                lose_data.push(data.losers[2][i]);
             }
 
-            // Changing Mode/Theme on button click
-            dark_bt.onclick = function () {
-                let plot_lines = '';        //Index axis color
-                let grid_color = '';        //Index grid color
+            for (let i = 0; i < data.gainers[2].length; i++) {
+                gain_data.push(data.gainers[2][i]);
+            }
 
-                // Light to Dark
-                if (body.classList.contains('t--light')) {
-                    plot_lines = '#D0D0D0';
-                    body.classList.remove('t--light');
-                    body.classList.add('t--dark');
-                    localStorage.setItem("mode", "dark");
-                    grid_color = '#707070';
+            app4.rows = lose_data;
+            app4.rows2 = gain_data;
+        })
+    }
+
+
+    // Coin Table Pull
+    function coin_current(index) {
+        app.rows = [];
+        amount_gainers = 0;
+        amount_losers = 0;
+        let dict = [];
+        let top_bar = [];
+        let divisor = 0;
+        let url = '/getcoinscurrent/';
+        let count = 0;
+        http_get(url, function (data) {
+
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                let entry = data.dict_key[i];
+                let index_name = entry.indices;
+                if (i < 5) {
+                    top_bar.push(entry)
                 }
-
-                // Dark to Light
-                else {
-                    body.classList.remove('t--dark');
-                    body.classList.add('t--light');
-                    localStorage.setItem("mode", "light");
-                    grid_color = 'default';
-                    plot_lines = 'default';
+                if (index_name.includes(index) === true) {
+                    if (entry.price_percent > 0) {
+                        amount_gainers++;
+                    }
+                    else if (entry.price_percent < 0) {
+                        amount_losers++;
+                    }
+                    dict.push(entry);
+                    count++;
+                    divisor += entry.market_cap
                 }
+            }
+            app.rows = dict;
+            let percent_gainers = amount_gainers / count * 100;
+            let percent_losers = amount_losers / count * 100;
+            let new_gain = percent_gainers.toFixed(1);
+            let new_lose = percent_losers.toFixed(1);
+            gainers_div.innerHTML = new_gain.toString() + '%';
+            losers_div.innerHTML = new_lose.toString() + '%';
+        })
+    };
 
-                // Updating Index Chart
-                let update = {
-                    'yaxis.color': plot_lines,
-                    'xaxis.color': plot_lines,
-                    'xaxis.linecolor': plot_lines,
-                    'yaxis.linecolor': plot_lines,
-                    'yaxis.gridcolor': grid_color
-                };
-                Plotly.relayout('index_chart', update)
+    // Coin Table Updates
+    function update_coin(index) {
+        let new_coins = [];
+        amount_gainers = 0;
+        amount_losers = 0;
+        let top_bar = [];
+        let count = 0;
+        let url = '/getcoinscurrent/';
+        http_get(url, function (data) {
+
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                let entry = data.dict_key[i];
+                let index_name = entry.indices;
+                if (index_name.includes(index) === true) {
+                    if (entry.price_percent > 0) {
+                        amount_gainers++;
+                    }
+                    else if (entry.price_percent < 0) {
+                        amount_losers++;
+                    }
+                    new_coins.push(entry);
+                    count++;
+                }
+                // let index_name = entry.indices;
+                if (entry.symbol in top_bois) {
+                    top_bar.push(entry);
+                }
+                // if (index_name.includes(index) === true) {
+
+            }
+
+            let percent_gainers = amount_gainers / count * 100;
+            let percent_losers = amount_losers / count * 100;
+            let new_gain = percent_gainers.toFixed(1);
+            let new_lose = percent_losers.toFixed(1);
+            gainers_div.innerHTML = new_gain.toString() + '%';
+            losers_div.innerHTML = new_lose.toString() + '%';
+            app.rows = new_coins;
+            app5.rows = top_bar;
+        });
+    }
+
+
+    // Index Data Pull
+    function index_current(index_id) {
+        let new_data = [];
+        let other_data = [];
+        last_y = 0;
+        app2.rows = [];
+        app3.rows = [];
+        let url = '/getindexcurrent/';
+        //alert('test');
+        http_get(url, function (data) {
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                other_data.push(data.dict_key[i])
+            }
+            new_data.push(data.dict_key[index_id]);
+            last_y = data.dict_key[index_id].price;
+            app2.rows = new_data;
+            app3.rows = other_data;
+            price_change = data.dict_key[index_id].change_24h
+            // }
+        });
+    }
+
+    // Index Data Update
+    function update_index(index_id) {
+        let new_data = [];
+        let other_data = [];
+        let url = '/getindexcurrent/';
+        //alert('test');
+        http_get(url, function (data) {
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                other_data.push(data.dict_key[i])
+            }
+            new_data.push(data.dict_key[index_id]);
+            app2.rows = new_data;
+            app3.rows = other_data;
+            price_change = data.dict_key[index_id].change_24h
+            // }
+        });
+    }
+
+    let line_data = [];
+
+    // Index Chart Pull
+    function index_all() {
+        line_data = [];
+        let url = '/getindexall/';
+        //alert('test');
+        http_get(url, function (data) {
+            let full_data = data.dict_key;
+            let entry = full_data[2];
+            line_data.push(entry);
+            let data_length = line_data[0].x.length - 1;
+            let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
+                10;
+            y_high = Math.max(...line_data[0].y) + y_range_border;
+            y_low = Math.min(...line_data[0].y) - y_range_border;
+            first_x = line_data[0].x[0];
+            last_x = line_data[0].x[data_length];
+            // console.log(y_low);
+            // console.log(y_high);
+
+            let layout_light = {
+                autosize: true,
+                margin: {
+                    l: 50,
+                    r: 50,
+                    b: 50,
+                    t: 20,
+                },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                xaxis: {
+                    range: [line_data[0].x[0], line_data[0].x[data_length]],
+                    type: 'date',
+                    title: 'Date',
+                    showgrid: false,
+                    zeroline: false,
+                    showline: true,
+                    autotick: true,
+                    ticks: '',
+                    showticklabels: true,
+                },
+                yaxis: {
+                    range: [y_low, y_high],
+                    showgrid: true,
+                    autotick: true,
+                    showline: true,
+                    ticks: '',
+                    showticklabels: true,
+                }
             };
 
-            //Chart Resize Button Functions
-            let change_range = function (time_frame) {
-                let now = new Date();
-                let date_update = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
-                let y_update = [];
-                let x_update = [];
-
-                if (time_frame === 'year') {                                //Range: Year
-                    x_update = [first_x, last_x];
-                    y_update = [y_low, y_high];//
-                } else if (time_frame === 'three_month') {                  //Range: 3 Months
-                    date_update.setMonth(date_update.getMonth() - 3);
-                    x_update = [date_update, last_x];
-                    y_update = [y_low, y_high];
-                } else if (time_frame === 'one_month') {                    //Range: 1 Month
-                    date_update.setMonth(date_update.getMonth() - 1);
-                    x_update = [date_update, last_x];
-                    y_update = [y_low, y_high]
-                } else if (time_frame === 'seven_day') {                    //Range: 7 Day
-                    date_update.setDate(date_update.getDate() - 7);
-                    x_update = [date_update, last_x];
-                    y_update = [last_y - 20, last_y + 20]
-                } else if (time_frame === 'one_day') {                      //Range: 24 Hour
-                    date_update.setDate(date_update.getDate() - 1);
-                    x_update = [date_update, last_x];
-                    let buffer = Math.abs(price_change) + 3;
-                    if (price_change >= 5) {
-                        y_update = [last_y - buffer, last_y + 3]
-                    } else if (price_change <= -5) {
-                        y_update = [last_y - 3, last_y + buffer]
-                    } else {
-                        y_update = [last_y - 8, last_y + 8]
-                    }
-                } else if (time_frame === 'hour') {                         //Range: Hour
-                    date_update.setHours(date_update.getHours() - 1);
-                    x_update = [date_update, last_x];
-                    y_update = [last_y - 4, last_y + 4]
+            let layout_dark = {
+                autosize: true,
+                margin: {
+                    l: 50,
+                    r: 50,
+                    b: 50,
+                    t: 20,
+                },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                xaxis: {
+                    color: '#D0D0D0',
+                    linecolor: '#D0D0D0',
+                    range: [line_data[0].x[0], line_data[0].x[data_length]],
+                    type: 'date',
+                    title: 'Date',
+                    showgrid: false,
+                    zeroline: false,
+                    showline: true,
+                    autotick: true,
+                    ticks: '',
+                    showticklabels: true,
+                },
+                yaxis: {
+                    color: '#D0D0D0',
+                    linecolor: '#D0D0D0',
+                    range: [y_low, y_high],
+                    showgrid: true,
+                    autotick: true,
+                    showline: true,
+                    ticks: '',
+                    showticklabels: true,
+                    gridcolor: '#707070'
                 }
-
-                let update = {
-                    'xaxis.range': x_update,        // updates the end of the x axis range
-                    'yaxis.range': y_update         // updates the y axis range
-                };
-
-                Plotly.relayout('index_chart', update)
             };
 
-            // Coin Table App
-            let app = new Vue({
-                el: '#coin_table',
-                data: {
-                    rows: [],
-                    current_sort: 'market_cap',
-                    current_dir: 'desc'
-                },
-
-                methods: {
-                    sort: function (s) {
-                        if (s === this.current_sort) {
-                            this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
-                        }
-                        this.current_sort = s;
-                    }
-                },
-                computed: {
-                    sortedCoins: function () {
-                        return this.rows.sort((a, b) => {
-                            let modifier = 1;
-                            if (this.current_dir === 'desc') modifier = -1;
-                            if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
-                            if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
-                            return 0;
-                        });
-                    },
-                },
-            });
-
-            // Index Data App
-            let app2 = new Vue({
-                el: '#index_info',
-                data: {
-                    ascending: false,
-                    sortColumn: '',
-                    rows: [],
-                    rows2: [],
-                }
-            });
-
-
-            // Widget App
-            let app3 = new Vue({
-                el: '#widget_fixed',
-                data: {
-                    ascending: false,
-                    sortColumn: '',
-                    rows: [],
-                }
-            });
-
-            // Top Gainers/Losers Apps
-            let app4 = new Vue({
-                el: '#top_gain_lose',
-                data: {
-                    ascending: false,
-                    sortColumn: '',
-                    rows: [],
-                    rows2: [],
-                }
-            });
-
-            // API Pulls
-            function http_get(url, success) {
-                let xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    // console.log(this.status);
-                    if (this.readyState === 4 && this.status === 200) {
-                        let data = JSON.parse(xhttp.responseText);
-                        success(data);
-                    }
-                };
-                xhttp.open("GET", url);
-                xhttp.send();
-
+            if (mode === 'light') {
+                Plotly.react('index_chart', line_data, layout_light);
+            } else {
+                Plotly.react('index_chart', line_data, layout_dark);
             }
 
-
-            // Top Gainers/Losers Pull
-            function top_gainers_losers() {
-                let gain_data = [];
-                let lose_data = [];
-                let url = '/gainers_losers/';
-                http_get(url, function (data) {
-                    for (let i = 0; i < data.losers[2].length; i++) {
-                        lose_data.push(data.losers[2][i]);
-                    }
-
-                    for (let i = 0; i < data.gainers[2].length; i++) {
-                        gain_data.push(data.gainers[2][i]);
-                    }
-
-                    app4.rows = lose_data;
-                    app4.rows2 = gain_data;
-                })
-            }
+        });
+    }
 
 
-            // Coin Table Pull
-            function coin_current(index) {
-                app.rows = [];
-                amount_gainers = 0;
-                amount_losers = 0;
-                let dict = [];
-                let top_bar = [];
-                let divisor = 0;
-                let url = '/getcoinscurrent/';
-                let count = 0;
-                http_get(url, function (data) {
-
-                    for (let i = 0; i < data.dict_key.length; ++i) {
-                        let entry = data.dict_key[i];
-                        let index_name = entry.indices;
-                        if (i < 5) {
-                            top_bar.push(entry)
-                        }
-                        if (index_name.includes(index) === true) {
-                            if (entry.price_percent > 0) {
-                                amount_gainers++;
-                            }
-                            else if (entry.price_percent < 0) {
-                                amount_losers++;
-                            }
-                            dict.push(entry);
-                            count++;
-                            divisor += entry.market_cap
-                        }
-                    }
-                    app.rows = dict;
-                    let percent_gainers = amount_gainers / count * 100;
-                    let percent_losers = amount_losers / count * 100;
-                    let new_gain = percent_gainers.toFixed(1);
-                    let new_lose = percent_losers.toFixed(1);
-                    gainers_div.innerHTML = new_gain.toString() + '%';
-                    losers_div.innerHTML = new_lose.toString() + '%';
-                })
-            };
-
-            // Coin Table Updates
-            function update_coin(index) {
-                let new_coins = [];
-                amount_gainers = 0;
-                amount_losers = 0;
-                let top_bar = [];
-                let count = 0;
-                let url = '/getcoinscurrent/';
-                http_get(url, function (data) {
-
-                    for (let i = 0; i < data.dict_key.length; ++i) {
-                        let entry = data.dict_key[i];
-                        let index_name = entry.indices;
-                        if (index_name.includes(index) === true) {
-                            if (entry.price_percent > 0) {
-                                amount_gainers++;
-                            }
-                            else if (entry.price_percent < 0) {
-                                amount_losers++;
-                            }
-                            new_coins.push(entry);
-                            count++;
-                        }
-                        // let index_name = entry.indices;
-                        if (entry.symbol in top_bois) {
-                            top_bar.push(entry);
-                        }
-                        // if (index_name.includes(index) === true) {
-
-                    }
-
-                    let percent_gainers = amount_gainers / count * 100;
-                    let percent_losers = amount_losers / count * 100;
-                    let new_gain = percent_gainers.toFixed(1);
-                    let new_lose = percent_losers.toFixed(1);
-                    gainers_div.innerHTML = new_gain.toString() + '%';
-                    losers_div.innerHTML = new_lose.toString() + '%';
-                    app.rows = new_coins;
-                    app5.rows = top_bar;
-                });
-            }
+    let gainers_div = document.querySelector('#gainers');
+    let losers_div = document.querySelector('#losers');
 
 
-            // Index Data Pull
-            function index_current(index_id) {
-                let new_data = [];
-                let other_data = [];
-                last_y = 0;
-                app2.rows = [];
-                app3.rows = [];
-                let url = '/getindexcurrent/';
-                //alert('test');
-                http_get(url, function (data) {
-                    for (let i = 0; i < data.dict_key.length; ++i) {
-                        other_data.push(data.dict_key[i])
-                    }
-                    new_data.push(data.dict_key[index_id]);
-                    last_y = data.dict_key[index_id].price;
-                    app2.rows = new_data;
-                    app3.rows = other_data;
-                    price_change = data.dict_key[index_id].change_24h
-                    // }
-                });
-            }
+    index_current(current_id);
+    coin_current(current_index);
+    index_all();
+    top_gainers_losers();
+    // setInterval(function () {
+    //         top_gainers_losers();
+    //         update_coin(current_index);
+    //         update_index(current_id);
+    //     },
+    //     30000);
 
-            // Index Data Update
-            function update_index(index_id) {
-                let new_data = [];
-                let other_data = [];
-                let url = '/getindexcurrent/';
-                //alert('test');
-                http_get(url, function (data) {
-                    for (let i = 0; i < data.dict_key.length; ++i) {
-                        other_data.push(data.dict_key[i])
-                    }
-                    new_data.push(data.dict_key[index_id]);
-                    app2.rows = new_data;
-                    app3.rows = other_data;
-                    price_change = data.dict_key[index_id].change_24h
-                    // }
-                });
-            }
-
-            let line_data = [];
-
-            // Index Chart Pull
-            function index_all() {
-                line_data = [];
-                let url = '/getindexall/';
-                //alert('test');
-                http_get(url, function (data) {
-                    let full_data = data.dict_key;
-                    let entry = full_data[2];
-                    line_data.push(entry);
-                    let data_length = line_data[0].x.length - 1;
-                    let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
-                        10;
-                    y_high = Math.max(...line_data[0].y) + y_range_border;
-                    y_low = Math.min(...line_data[0].y) - y_range_border;
-                    first_x = line_data[0].x[0];
-                    last_x = line_data[0].x[data_length];
-                    // console.log(y_low);
-                    // console.log(y_high);
-
-                    let layout_light = {
-                        autosize: true,
-                        margin: {
-                            l: 50,
-                            r: 50,
-                            b: 50,
-                            t: 20,
-                        },
-                        paper_bgcolor: 'rgba(0,0,0,0)',
-                        plot_bgcolor: 'rgba(0,0,0,0)',
-                        xaxis: {
-                            range: [line_data[0].x[0], line_data[0].x[data_length]],
-                            type: 'date',
-                            title: 'Date',
-                            showgrid: false,
-                            zeroline: false,
-                            showline: true,
-                            autotick: true,
-                            ticks: '',
-                            showticklabels: true,
-                        },
-                        yaxis: {
-                            range: [y_low, y_high],
-                            showgrid: true,
-                            autotick: true,
-                            showline: true,
-                            ticks: '',
-                            showticklabels: true,
-                        }
-                    };
-
-                    let layout_dark = {
-                        autosize: true,
-                        margin: {
-                            l: 50,
-                            r: 50,
-                            b: 50,
-                            t: 20,
-                        },
-                        paper_bgcolor: 'rgba(0,0,0,0)',
-                        plot_bgcolor: 'rgba(0,0,0,0)',
-                        xaxis: {
-                            color: '#D0D0D0',
-                            linecolor: '#D0D0D0',
-                            range: [line_data[0].x[0], line_data[0].x[data_length]],
-                            type: 'date',
-                            title: 'Date',
-                            showgrid: false,
-                            zeroline: false,
-                            showline: true,
-                            autotick: true,
-                            ticks: '',
-                            showticklabels: true,
-                        },
-                        yaxis: {
-                            color: '#D0D0D0',
-                            linecolor: '#D0D0D0',
-                            range: [y_low, y_high],
-                            showgrid: true,
-                            autotick: true,
-                            showline: true,
-                            ticks: '',
-                            showticklabels: true,
-                            gridcolor: '#707070'
-                        }
-                    };
-
-                    if (mode === 'light') {
-                        Plotly.react('index_chart', line_data, layout_light);
-                    } else {
-                        Plotly.react('index_chart', line_data, layout_dark);
-                    }
-
-                });
-            }
-
-
-            let gainers_div = document.querySelector('#gainers');
-            let losers_div = document.querySelector('#losers');
-
-
-            index_current(current_id);
-            coin_current(current_index);
-            index_all();
-            top_gainers_losers();
-            // setInterval(function () {
-            //         top_gainers_losers();
-            //         update_coin(current_index);
-            //         update_index(current_id);
-            //     },
-            //     30000);
-
-        </script>
+</script>
 </body>
 </html>
