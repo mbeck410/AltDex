@@ -37,14 +37,21 @@ def collect():
 
     for coin in coins:
 
-        # if coin.symbol in symbols:
-        #     coin.price = float(data_2['RAW'][coin.symbol]['USD']['PRICE'])
-        #     coin.price_percent_change = '{0:.2f}'.format(float(data_2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
-        #     coin.volume = '{0:.0f}'.format(float(data_2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
-        #     coin.market_cap = '{0:.0f}'.format(float(data_2['RAW'][coin.symbol]['USD']['MKTCAP']))
-        #     coin.percent_weight = 0
-        #
-        #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+        if coin.name == 'Pundi X':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/2603/'
+            r2 = requests.get(url2)
+            while r2.status_code != 200:
+                sleep(30)
+                r2 = requests.get(url2)
+            data_2 = json.loads(r2.text)
+
+            coin.price = float(data_2['RAW'][coin.symbol]['USD']['PRICE'])
+            coin.price_percent_change = '{0:.2f}'.format(float(data_2['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
+            coin.volume = '{0:.0f}'.format(float(data_2['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
+            coin.market_cap = '{0:.0f}'.format(float(data_2['RAW'][coin.symbol]['USD']['MKTCAP']))
+            coin.percent_weight = 0
+
+            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
         #
         # elif coin.symbol in symbols2:
         #     coin.price = float(data_3['RAW'][coin.symbol]['USD']['PRICE'])
@@ -54,7 +61,6 @@ def collect():
         #     coin.percent_weight = 0
         #
         #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-
         for i in range(len(data_1) - 1):
             entry = data_1[i]
             if coin.symbol == '$PAC':
