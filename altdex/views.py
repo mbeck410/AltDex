@@ -197,9 +197,6 @@ def getcoinscurrent(request):
         if no_space == 'polymath':
             coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/polymath-network.png'
 
-        if no_space == 'cortex':
-            coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/cortex.png'
-
         if no_space == 'switcheo':
             coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/switcheo.png'
 
