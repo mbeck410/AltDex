@@ -404,10 +404,13 @@
 
         .info {
             font-size: 10px;
+            width: 50%;
         }
 
         #middle_price {
             font-size: 3.0em;
+            width: 50%;
+            text-align: center;
         }
 
         #middle_percent {
@@ -421,24 +424,26 @@
         .dex_name {
             font-size: 3.0em;
             font-weight: bold;
-            text-align: center;
+            text-align: left;
+            width: 50%;
         }
 
         .middle_name {
             text-align: left;
-            width: 45%;
+            width: 100%;
             display: flex;
         }
 
         .middle_value {
             text-align: center;
-            width: 30%;
+            width: 100%;
             display: flex;
         }
 
         .middle_data {
             text-align: center;
             width: 25%;
+            margin: auto;
         }
 
         /*Footer*/
@@ -501,6 +506,10 @@
             text-align: center;
         }
 
+        #middle_stuff {
+            width: 60%;
+        }
+
         /*Gainers/Losers*/
         .gl_title {
             font-size: 1.0vw;
@@ -551,6 +560,10 @@
 
         .gl_data:hover {
             background-color: #f5f5f5;
+        }
+
+        #delayed_text {
+            text-align: left;
         }
 
         .r_ad {
@@ -907,6 +920,10 @@
                 font-size: 3.0vw;
             }
 
+            #middle_price {
+                width: 50%;
+            }
+
             .middle_data {
                 margin: auto;
                 font-size: 2.4vw;
@@ -1087,9 +1104,8 @@
             <div id="index_info" class="main_price well">
 
                 <!--Index Data-->
-                <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
-
-                    <div>
+                <div v-cloak class="pricing">
+                    <div id="middle_stuff" id="main_index_price" v-for="row in rows">
                         <!--Index Name-->
                         <div class="middle_name">
                             <div class="dex_name">ALTPRV</div>
@@ -1104,15 +1120,14 @@
                     </div>
 
                     <div class="middle_data">
-                        <div id="values_main"
+                        <div id="values_main">
                              v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
                             {{row.price_percent.toFixed(2)}}%
-                        </div>
-                        <div id="middle_percent"
+                        <div id="middle_percent">
                              v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
                             {{row.change_24h.toFixed(2)}}
-                        </div>
                     </div>
+
 
                     <!--Number Gainers/Losers-->
                     <div class="gainers_losers">
@@ -1120,13 +1135,15 @@
                         <!--Gainers-->
                         <div class="gain">
                             <div id="title_gainers">Gainers</div>
-                            <div id="gainers"></div>
+                            <!--<div id="gainers"></div>-->
+                            <div>90.02</div>
                         </div>
 
                         <!--Losers-->
                         <div class="lose">
                             <div id="title_losers">Losers</div>
-                            <div id="losers"></div>
+                            <!--<div id="losers"></div>-->
+                            <div>9.98</div>
                         </div>
                     </div>
                 </div>
