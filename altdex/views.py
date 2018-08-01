@@ -191,11 +191,15 @@ def getcoinscurrent(request):
                 coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
             elif no_space == 'nebulas':
                 coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
+            elif no_space == 'bibox':
+                coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/bibox-token.png'
+            elif no_space == 'polymath':
+                coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/polymath-network.png'
             else:
                 coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
+
         #
-        if no_space == 'polymath':
-            coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/polymath-network.png'
+
         #
         # if no_space == 'cortex':
         #     coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/cortex.png'
@@ -203,8 +207,7 @@ def getcoinscurrent(request):
         # if no_space == 'switcheo':
         #     coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/switcheo.png'
         #
-        if no_space == 'bibox':
-            coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/bibox-token.png'
+        if
 
         coin_dict = {   'name': this_coin.name,
                         'website': this_coin.website,
