@@ -66,6 +66,7 @@ def getindexall(request):
     indices = Index.objects.order_by('id')
     indices_all_output = []
     for dex in indices:
+
         dex_price_entries = dex.indexprice_set.order_by('timestamp')
         prices = []
         times = []
@@ -107,7 +108,7 @@ def getindexcurrent(request):
                         'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
                         'time': str(dex_current.timestamp),
                         'symbol': symbol
-                        }
+                    }
 
         indices_current.append(index_dict)
 
@@ -120,6 +121,7 @@ def getcoinscurrent(request):
     weight_1 = 0
     weight_2 = 0
     weight_3 = 0
+    weight_4 = 0
 
     for this_coin in coins:
         # percent_weight = '{0:.3f}'.format(float(this_coin.market_cap) / (float(index.market_cap))*100)
@@ -148,6 +150,13 @@ def getcoinscurrent(request):
                     weight_3 = float('{0:.3f}'.format(weight_3))
                 else:
                     weight_3 = float('{0:.6f}'.format(weight_3))
+
+            if dex.name == 'Masternode':
+                weight_4 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
+                if weight_4 >= 1:
+                    weight_4 = float('{0:.3f}'.format(weight_3))
+                else:
+                    weight_4 = float('{0:.6f}'.format(weight_3))
 
         if float(this_coin.price) >= 1:
             coin_price = '{:,.2f}'.format(float(this_coin.price))
@@ -201,6 +210,7 @@ def getcoinscurrent(request):
                         'weight_1': weight_1,
                         'weight_2': weight_2,
                         'weight_3': weight_3,
+                        'weight_4': weight_4,
                         'icon': coin_icon_url
                         }
 
