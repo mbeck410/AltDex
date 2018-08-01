@@ -130,18 +130,24 @@ def clear_price():
 def first_weight():
     index = Index.objects.filter(name='Masternode')
 
-
+    cap = 0
     divisor = 0
-    price = index.indexprice_set.last()
+    # price = index.indexprice_set.last()
     coins = index.coin_set.all()
 
     for coin in coins:
-        divisor += coin.market_cap
+        cap += coin.market_cap
 
-    divisor /= 100
+    divisor = cap/100
 
     setattr(index, 'divisor', divisor)
-    setattr(price, 'price', 100)
+    new_price = IndexPrice(index=index,
+                           price=100,
+                           change_24h=0,
+                           price_percent_change=0,
+                           market_cap=cap,
+                           divisor=divisor
+                           )
 
 
 

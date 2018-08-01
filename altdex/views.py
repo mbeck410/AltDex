@@ -91,7 +91,7 @@ def getindexall(request):
 def getindexcurrent(request):
     indices = Index.objects.order_by('id')
     indices_current = []
-    
+
     for dex in indices:
         if dex.name != 'Null':
             link = ''
@@ -105,7 +105,7 @@ def getindexcurrent(request):
                 link = '/privacy'
                 symbol = 'ALTPRV'
             elif dex.name == 'Masternode':
-                link = '/masternodes'
+                link = '/masternode'
                 symbol = 'ALTMSN'
 
             dex_current = dex.indexprice_set.last()
