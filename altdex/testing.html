@@ -838,12 +838,10 @@
 
             .lose {
                 display: none;
-                width: 0;
             }
 
             .gain {
                 display: none;
-                width: 0;
             }
 
             #coin_symbol_title {
@@ -1091,8 +1089,6 @@
                 <!--Index Data-->
                 <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
 
-                    <div id="main_price_flex">
-
                         <!--Index Name-->
                         <div class="middle_name">
                             <div class="dex_name">ALTPRV</div>
@@ -1109,16 +1105,7 @@
                                 {{row.change_24h.toFixed(2)}}
                             </div>
                         </div>
-                    </div>
-
-                        <!--Index Value-->
-                    <div class="middle_value">
-                        <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
-                        <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
-                    </div>
-
-
-
+                    
                     <!--Number Gainers/Losers-->
                     <div class="gainers_losers">
 
@@ -1133,6 +1120,12 @@
                             <div id="title_losers">Losers</div>
                             <div id="losers"></div>
                         </div>
+                    </div>
+
+                    <!--Index Value-->
+                    <div class="middle_value">
+                        <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+                        <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
                     </div>
                 </div>
             </div>
