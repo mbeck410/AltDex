@@ -206,8 +206,7 @@ def getcoinscurrent(request):
         #
         # if no_space == 'switcheo':
         #     coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/switcheo.png'
-        #
-        if
+        
 
         coin_dict = {   'name': this_coin.name,
                         'website': this_coin.website,
