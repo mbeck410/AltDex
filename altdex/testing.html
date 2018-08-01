@@ -1101,17 +1101,19 @@
                 <!--Index Data-->
                 <div v-cloak class="pricing">
                     <div id="main_index_price" v-for="row in rows">
+                        <div>
 
-                        <!--Index Name-->
-                        <div class="middle_name">
-                            <div class="dex_name">ALTPRV</div>
-                            <div id="middle_price">{{row.price.toFixed(2)}}</div>
-                        </div>
+                            <!--Index Name-->
+                            <div class="middle_name">
+                                <div class="dex_name">ALTPRV</div>
+                                <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                            </div>
 
-                        <!--Index Value-->
-                        <div class="middle_value">
-                            <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
-                            <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
+                            <!--Index Value-->
+                            <div class="middle_value">
+                                <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+                                <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
+                            </div>
                         </div>
 
 
