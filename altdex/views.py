@@ -193,8 +193,8 @@ def getcoinscurrent(request):
                 coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
             elif no_space == 'bibox':
                 coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/bibox-token.png'
-            # elif no_space == 'polymath':
-            #     coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/polymath-network.png'
+            elif no_space == 'polymath':
+                coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/polymath-network.png'
             else:
                 coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
 
