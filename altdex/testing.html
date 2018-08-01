@@ -748,6 +748,7 @@
             }
 
             .affix {
+                top: 0;
                 z-index: 9999 !important;
                 width: 100%;
                 display: flex;
@@ -958,12 +959,20 @@
                 border-bottom: none;
                 padding-top: 3px;
                 padding-bottom: 3px;
+                font-size: 4.0vw;
             }
 
             .widget {
                width: 20%;
                 margin: auto;
-                font-size: 4.0vw;
+            }
+
+            #w_price {
+                font-size: 3.5vw;
+            }
+
+            .w_name{
+                font-size: 3.5vw;
             }
 
         }
@@ -1030,7 +1039,7 @@
                         <div class="w_data">
                             <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
                             <div>
-                                <div>{{row.price.toFixed(2)}}</div>
+                                <div id="w_price">{{row.price.toFixed(2)}}</div>
                                 <div id="w_percent"
                                      v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
                                     {{row.price_percent.toFixed(2)}}%
