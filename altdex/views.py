@@ -32,6 +32,10 @@ def privacy(request):
         contents = file.read()
     return HttpResponse(contents)
 
+def masternode(request):
+    with open('./altdex/masternode.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
 
 def about(request):
     with open('./altdex/about.html') as file:
@@ -100,7 +104,7 @@ def getindexcurrent(request):
                 link = '/privacy'
                 symbol = 'ALTPRV'
             elif dex.name == 'Masternode':
-                link = '/masternode'
+                link = '/masternodes'
                 symbol = 'ALTMSN'
 
             dex_current = dex.indexprice_set.last()
