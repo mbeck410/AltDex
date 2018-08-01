@@ -1117,104 +1117,105 @@
                             <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
                             <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
                         </div>
-                    </div>
-
-                    <div class="middle_data">
-                        <div id="values_main">
-                            v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                            {{row.price_percent.toFixed(2)}}%
-                            <div id="middle_percent">
-                                v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
-                                {{row.change_24h.toFixed(2)}}
-                            </div>
 
 
-                            <!--Number Gainers/Losers-->
-                            <div class="gainers_losers">
-
-                                <!--Gainers-->
-                                <div class="gain">
-                                    <div id="title_gainers">Gainers</div>
-                                    <!--<div id="gainers"></div>-->
-                                    <div>90.02</div>
+                        <div class="middle_data">
+                            <div id="values_main">
+                                v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                {{row.price_percent.toFixed(2)}}%
+                                <div id="middle_percent">
+                                    v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
+                                    {{row.change_24h.toFixed(2)}}
                                 </div>
 
-                                <!--Losers-->
-                                <div class="lose">
-                                    <div id="title_losers">Losers</div>
-                                    <!--<div id="losers"></div>-->
-                                    <div>9.98</div>
+
+                                <!--Number Gainers/Losers-->
+                                <div class="gainers_losers">
+
+                                    <!--Gainers-->
+                                    <div class="gain">
+                                        <div id="title_gainers">Gainers</div>
+                                        <!--<div id="gainers"></div>-->
+                                        <div>90.02</div>
+                                    </div>
+
+                                    <!--Losers-->
+                                    <div class="lose">
+                                        <div id="title_losers">Losers</div>
+                                        <!--<div id="losers"></div>-->
+                                        <div>9.98</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!--Coin Table-->
-                    <div class="well">
-                        <table v-cloak id="coin_table" class="table">
-
-                            <!--Table Headers-->
-                            <tr id="table_head">
-                                <th @click="sort('symbol')" id="coin_symbol_title">
-                                    Symbol &nbsp; <i class="fas fa-sort"></i></th>
-                                <th @click="sort('name')" id="coin_name_title">
-                                    Name &nbsp; <i class="fas fa-sort"></i></th>
-                                <th @click="sort('market_cap')" id="coin_market_title">
-                                    Market Cap &nbsp; <i class="fas fa-sort"></i></th>
-                                <th @click="sort('price')">
-                                    Last &nbsp; <i class="fas fa-sort"></i></th>
-                                <th @click="sort('price_percent')">
-                                    Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
-                                <th @click="sort('volume')" id="coin_volume_title">
-                                    Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
-                                <th @click="sort('weight_3')" id="coin_weight_title">
-                                    % Weight &nbsp; <i class="fas fa-sort"></i></th>
-                            </tr>
-
-                            <!--Table Rows-->
-                            <tr class="coin_row" v-for="row in sortedCoins">
-
-                                <!--Symbol-->
-                                <td id="coin_symbol_value" class="row_symbol">{{row.symbol}}</td>
-
-                                <!--Name-->
-                                <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
-                                    <img :src="row.icon"></a> &nbsp; <a :href="row.website"
-                                                                        target="_blank">{{row.name}}</a>
-                                </td>
-
-                                <!--Market Cap-->
-                                <td id="coin_market_value">${{row.market_cap.toLocaleString('en',
-                                    {useGrouping:true})}}
-                                </td>
-
-                                <!--Last-->
-                                <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
-
-                                <!--Percent_Change-->
-                                <td class="row_percent"
-                                    v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">
-                                    {{row.price_percent.toFixed(2)}}%
-                                </td>
-
-                                <!--Volume-->
-                                <td id="coin_volume_value">${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
-
-                                <!--% Weight-->
-                                <td id="coin_weight_value">{{row.weight_3}}%</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <!--Footer Ad-->
-                    <ins id="footer_ad" class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-9873470958093574"
-                         data-ad-slot="5597159466"
-                         data-ad-format="auto"></ins>
                 </div>
             </div>
+            <!--Coin Table-->
+            <div class="well">
+                <table v-cloak id="coin_table" class="table">
+
+                    <!--Table Headers-->
+                    <tr id="table_head">
+                        <th @click="sort('symbol')" id="coin_symbol_title">
+                            Symbol &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('name')" id="coin_name_title">
+                            Name &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('market_cap')" id="coin_market_title">
+                            Market Cap &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price')">
+                            Last &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price_percent')">
+                            Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('volume')" id="coin_volume_title">
+                            Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('weight_3')" id="coin_weight_title">
+                            % Weight &nbsp; <i class="fas fa-sort"></i></th>
+                    </tr>
+
+                    <!--Table Rows-->
+                    <tr class="coin_row" v-for="row in sortedCoins">
+
+                        <!--Symbol-->
+                        <td id="coin_symbol_value" class="row_symbol">{{row.symbol}}</td>
+
+                        <!--Name-->
+                        <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
+                            <img :src="row.icon"></a> &nbsp; <a :href="row.website"
+                                                                target="_blank">{{row.name}}</a>
+                        </td>
+
+                        <!--Market Cap-->
+                        <td id="coin_market_value">${{row.market_cap.toLocaleString('en',
+                            {useGrouping:true})}}
+                        </td>
+
+                        <!--Last-->
+                        <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
+
+                        <!--Percent_Change-->
+                        <td class="row_percent"
+                            v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">
+                            {{row.price_percent.toFixed(2)}}%
+                        </td>
+
+                        <!--Volume-->
+                        <td id="coin_volume_value">${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
+
+                        <!--% Weight-->
+                        <td id="coin_weight_value">{{row.weight_3}}%</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Footer Ad-->
+            <ins id="footer_ad" class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9873470958093574"
+                 data-ad-slot="5597159466"
+                 data-ad-format="auto"></ins>
         </div>
+
         <!--Right Bar-->
         <div id="right_bar" class="col-sm-2 sidenav">
 
