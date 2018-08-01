@@ -737,6 +737,14 @@
                 /*display: none;*/
             /*}*/
 
+            #left_bar {
+                width: 20%;
+            }
+
+            #center{
+                width: 80%
+            }
+
             #w_ad {
                 display: none;
             }
@@ -823,7 +831,6 @@
                 padding-bottom: 0;
                 display: flex;
                 font-size: 1.4vw;
-                width: 100%;
             }
 
             .w_name_link {
@@ -914,6 +921,7 @@
 
             .middle_value {
                 margin: auto;
+                font-size: 3.0vw;
             }
 
             .middle_data {
@@ -980,13 +988,13 @@
                 margin: auto;
             }
 
-            #w_price {
-                font-size: 3.3vw;
-            }
+            /*#w_price {*/
+                /*font-size: 3.3vw;*/
+            /*}*/
 
-            .w_name{
-                font-size: 3.3vw;
-            }
+            /*.w_name{*/
+                /*font-size: 3.3vw;*/
+            /*}*/
 
         }
 
@@ -1043,7 +1051,7 @@
     <div class="row content">
 
         <!--Fix Left Sidebar-->
-        <div class="widget_div col-sm-2 sidenav">
+        <div id="left_bar" class="widget_div col-sm-2 sidenav">
             <div id="widget_fixed" data-spy="affix" data-offset-top="50.8">
 
                 <!--Index Price Widget-->
@@ -1106,12 +1114,12 @@
                     <!--Index Name-->
                     <div class="middle_name">
                         <div class="dex_name">ALTPRV</div>
-                        <div class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+                        <div id="middle_price">{{row.price.toFixed(2)}}</div>
                     </div>
 
                     <!--Index Value-->
                     <div class="middle_value">
-                        <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                        <div class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
                         <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
                     </div>
 
