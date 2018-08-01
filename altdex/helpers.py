@@ -86,7 +86,7 @@ def collect():
 
     for dex in indices:
 
-        if dex.name != 'Null':
+        # if dex.name != 'Null':
             dex_coins = dex.coin_set.all()
             dex_market_cap = 0.0
 

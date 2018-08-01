@@ -91,6 +91,7 @@ def getindexall(request):
 def getindexcurrent(request):
     indices = Index.objects.order_by('id')
     indices_current = []
+    
     for dex in indices:
         if dex.name != 'Null':
             link = ''
