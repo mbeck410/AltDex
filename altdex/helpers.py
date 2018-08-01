@@ -86,10 +86,10 @@ def collect():
 
     for dex in indices:
 
+        if dex.name != 'Null':
             dex_coins = dex.coin_set.all()
             dex_market_cap = 0.0
 
-            # for i in range(len(coin_table)):
             for dex_coin in dex_coins:
                 dex_market_cap += float(dex_coin.market_cap)
 
@@ -97,7 +97,7 @@ def collect():
             dex_percent_change = 0
             amount_entries = len(dex.indexprice_set.all())
 
-            if amount_entries < 1351:
+            if amount_entries < 900:
                 this_change = 0
 
             else:

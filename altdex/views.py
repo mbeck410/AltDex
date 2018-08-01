@@ -104,7 +104,7 @@ def getindexcurrent(request):
                 link = '/privacy'
                 symbol = 'ALTPRV'
             elif dex.name == 'Masternode':
-                link = '/masternode'
+                link = '/masternodes'
                 symbol = 'ALTMSN'
 
             dex_current = dex.indexprice_set.last()
