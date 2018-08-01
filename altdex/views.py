@@ -88,29 +88,33 @@ def getindexcurrent(request):
     indices = Index.objects.order_by('id')
     indices_current = []
     for dex in indices:
-        link = ''
-        if dex.name == 'AltDex100':
-            link = '/'
-            symbol = 'ALT100'
-        elif dex.name == 'Exchange':
-            link = '/exchange'
-            symbol = 'ALTEXC'
-        elif dex.name == 'Privacy':
-            link = '/privacy'
-            symbol = 'ALTPRV'
+        if dex.name != 'Null':
+            link = ''
+            if dex.name == 'AltDex100':
+                link = '/'
+                symbol = 'ALT100'
+            elif dex.name == 'Exchange':
+                link = '/exchange'
+                symbol = 'ALTEXC'
+            elif dex.name == 'Privacy':
+                link = '/privacy'
+                symbol = 'ALTPRV'
+            elif dex.name == 'MasterNode':
+                link = '/masternode'
+                symbol = 'ALTMSN'
 
-        dex_current = dex.indexprice_set.last()
-        index_dict = {  'link': link,
-                        'name': dex.name,
-                        'price': float('{0:.2f}'.format(dex_current.price)),
-                        'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
-                        'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
-                        'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
-                        'time': str(dex_current.timestamp),
-                        'symbol': symbol
-                    }
+            dex_current = dex.indexprice_set.last()
+            index_dict = {  'link': link,
+                            'name': dex.name,
+                            'price': float('{0:.2f}'.format(dex_current.price)),
+                            'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
+                            'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
+                            'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
+                            'time': str(dex_current.timestamp),
+                            'symbol': symbol
+                        }
 
-        indices_current.append(index_dict)
+            indices_current.append(index_dict)
 
     return JsonResponse({'dict_key': indices_current})
 
@@ -129,34 +133,34 @@ def getcoinscurrent(request):
         dices = ''
         indices_in = this_coin.indices.all()
 
-
         for dex in indices_in:
-            dices += str(dex.name)
-            if dex.name == 'AltDex100':
-                weight_1 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
-                if weight_1 >= 1:
-                    weight_1 = float('{0:.3f}'.format(weight_1))
-                else:
-                    weight_1 = float('{0:.6f}'.format(weight_1))
-            if dex.name == 'Exchange':
-                weight_2 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
-                if weight_2 >= 1:
-                    weight_2 = float('{0:.3f}'.format(weight_2))
-                else:
-                    weight_2 = float('{0:.6f}'.format(weight_2))
-            if dex.name == 'Privacy':
-                weight_3 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
-                if weight_3 >= 1:
-                    weight_3 = float('{0:.3f}'.format(weight_3))
-                else:
-                    weight_3 = float('{0:.6f}'.format(weight_3))
+            if str(dex.name) is not 'Null':
+                dices += str(dex.name)
+                if dex.name == 'AltDex100':
+                    weight_1 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
+                    if weight_1 >= 1:
+                        weight_1 = float('{0:.3f}'.format(weight_1))
+                    else:
+                        weight_1 = float('{0:.6f}'.format(weight_1))
+                if dex.name == 'Exchange':
+                    weight_2 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
+                    if weight_2 >= 1:
+                        weight_2 = float('{0:.3f}'.format(weight_2))
+                    else:
+                        weight_2 = float('{0:.6f}'.format(weight_2))
+                if dex.name == 'Privacy':
+                    weight_3 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
+                    if weight_3 >= 1:
+                        weight_3 = float('{0:.3f}'.format(weight_3))
+                    else:
+                        weight_3 = float('{0:.6f}'.format(weight_3))
 
-            if dex.name == 'Masternode':
-                weight_4 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
-                if weight_4 >= 1:
-                    weight_4 = float('{0:.3f}'.format(weight_3))
-                else:
-                    weight_4 = float('{0:.6f}'.format(weight_3))
+                if dex.name == 'Masternode':
+                    weight_4 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
+                    if weight_4 >= 1:
+                        weight_4 = float('{0:.3f}'.format(weight_4))
+                    else:
+                        weight_4 = float('{0:.6f}'.format(weight_4))
 
         if float(this_coin.price) >= 1:
             coin_price = '{:,.2f}'.format(float(this_coin.price))
@@ -226,43 +230,44 @@ def gainers_losers(request):
     gainer_array = []
 
     for index in indices:
-        losers = index.coin_set.order_by('price_percent_change')[:5]
-        gainers = index.coin_set.order_by('-price_percent_change')[:5]
-        loser_index_array = []
-        gainer_index_array = []
+        if str(index.name) is not 'Null':
+            losers = index.coin_set.order_by('price_percent_change')[:5]
+            gainers = index.coin_set.order_by('-price_percent_change')[:5]
+            loser_index_array = []
+            gainer_index_array = []
 
 
-        for loser_coin in losers:
+            for loser_coin in losers:
 
-            if float(loser_coin.price) >= 1:
-                coin_price = '{:,.2f}'.format(float(loser_coin.price))
-            else:
-                coin_price = '{0:.6f}'.format(float(loser_coin.price))
+                if float(loser_coin.price) >= 1:
+                    coin_price = '{:,.2f}'.format(float(loser_coin.price))
+                else:
+                    coin_price = '{0:.6f}'.format(float(loser_coin.price))
 
-            losers_dict = { 'symbol': loser_coin.symbol,
-                            'website': loser_coin.website,
-                            'price': coin_price,
-                            'price_percent': '{:,.2f}'.format(float(loser_coin.price_percent_change))}
+                losers_dict = { 'symbol': loser_coin.symbol,
+                                'website': loser_coin.website,
+                                'price': coin_price,
+                                'price_percent': '{:,.2f}'.format(float(loser_coin.price_percent_change))}
 
-            loser_index_array.append(losers_dict)
+                loser_index_array.append(losers_dict)
 
-        loser_array.append(loser_index_array)
+            loser_array.append(loser_index_array)
 
-        for gainer_coin in gainers:
+            for gainer_coin in gainers:
 
-            if float(gainer_coin.price) >= 1:
-                coin_price = '{:,.2f}'.format(float(gainer_coin.price))
-            else:
-                coin_price = '{0:.6f}'.format(float(gainer_coin.price))
+                if float(gainer_coin.price) >= 1:
+                    coin_price = '{:,.2f}'.format(float(gainer_coin.price))
+                else:
+                    coin_price = '{0:.6f}'.format(float(gainer_coin.price))
 
-            gainers_dict = {'symbol': gainer_coin.symbol,
-                            'website': gainer_coin.website,
-                            'price': coin_price,
-                            'price_percent': '{:,.2f}'.format(float(gainer_coin.price_percent_change))}
+                gainers_dict = {'symbol': gainer_coin.symbol,
+                                'website': gainer_coin.website,
+                                'price': coin_price,
+                                'price_percent': '{:,.2f}'.format(float(gainer_coin.price_percent_change))}
 
-            gainer_index_array.append(gainers_dict)
+                gainer_index_array.append(gainers_dict)
 
-        gainer_array.append(gainer_index_array)
+            gainer_array.append(gainer_index_array)
 
     return JsonResponse({'losers': loser_array, 'gainers': gainer_array})
     # 'gainers': gainer_array,
