@@ -134,7 +134,7 @@ def getcoinscurrent(request):
         indices_in = this_coin.indices.all()
 
         for dex in indices_in:
-            if str(dex.name) is not 'Null':
+            if dex.name != 'Null':
                 dices += str(dex.name)
                 if dex.name == 'AltDex100':
                     weight_1 = this_coin.market_cap/dex.indexprice_set.last().market_cap * 100
@@ -230,7 +230,7 @@ def gainers_losers(request):
     gainer_array = []
 
     for index in indices:
-        if str(index.name) is not 'Null':
+        if index.name != 'Null':
             losers = index.coin_set.order_by('price_percent_change')[:5]
             gainers = index.coin_set.order_by('-price_percent_change')[:5]
             loser_index_array = []
