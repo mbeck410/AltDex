@@ -434,6 +434,7 @@
         .middle_name {
             text-align: left;
             width: 45%;
+            display: flex;
         }
 
         .middle_value {
@@ -586,7 +587,9 @@
             margin-left: 15px;
         }
 
-
+        #main_price_flex {
+            display: flex
+        }
 
         /*Themes*/
 
@@ -729,7 +732,7 @@
             display: none;
         }
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (min-width: 768px) and (max-width: 1200px) {
             #right_bar {
                 display: none;
             }
@@ -755,16 +758,16 @@
                 padding: 0;
             }
 
-            /*.affix-top {*/
-                /*width: 98%;*/
-                /*padding-right: 5px;*/
-                /*padding-left: 5px;*/
-            /*}*/
+            .affix-top {
+                width: auto;
+                padding-right: 5px;
+                padding-left: 5px;
+            }
 
             .affix {
                 top: 0;
                 z-index: 9999 !important;
-                width: 100%;
+                width: auto;
                 display: flex;
                 padding-right: 5px;
                 padding-left: 5px;
@@ -831,6 +834,7 @@
                 padding-bottom: 0;
                 display: flex;
                 font-size: 1.4vw;
+                width: auto;
             }
 
             .w_name_link {
@@ -913,7 +917,6 @@
             }
 
             .middle_name {
-                display: inline;
                 text-align: center;
                 font-size: 3.0vw;
                 margin: auto;
@@ -933,9 +936,7 @@
                 display: none;
             }
 
-            .info {
-                display: none;
-            }
+
 
             #twitter_link {
                 display: none;
@@ -1111,20 +1112,15 @@
                 <!--Index Data-->
                 <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
 
-                    <!--Index Name-->
-                    <div class="middle_name">
-                        <div class="dex_name">ALTPRV</div>
-                        <div id="middle_price">{{row.price.toFixed(2)}}</div>
-                    </div>
+                    <div id="main_price_flex">
 
-                    <!--Index Value-->
-                    <div class="middle_value">
-                        <div class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
-                        <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
-                    </div>
+                        <!--Index Name-->
+                        <div class="middle_name">
+                            <div class="dex_name">ALTPRV</div>
+                            <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                        </div>
 
-                    <!--Index Change-->
-                    <div class="middle_data">
+                        <div class="middle_data">
                         <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
                             {{row.price_percent.toFixed(2)}}%
                         </div>
@@ -1132,6 +1128,15 @@
                             {{row.change_24h.toFixed(2)}}
                         </div>
                     </div>
+
+                        <!--Index Value-->
+                    <div class="middle_value">
+                        <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+                        <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
+                    </div>
+
+                    <!--Index Change-->
+
                 </div>
 
                 <!--Number Gainers/Losers-->
