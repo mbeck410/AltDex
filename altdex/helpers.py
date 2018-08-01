@@ -57,8 +57,12 @@ def collect():
 
         for i in range(len(data_1) - 1):
             entry = data_1[i]
+            if coin.symbol == '$PAC':
+                symbol = 'PAC'
+            else:
+                symbol = coin.symbol
 
-            if entry['short'] == coin.symbol:
+            if entry['short'] == symbol:
 
                 coin.price = float(entry['price'])
                 coin.price_percent_change = '{0:.2f}'.format(float(entry['perc']))
