@@ -433,6 +433,7 @@
         .middle_value {
             text-align: center;
             width: 30%;
+            display: flex;
         }
 
         .middle_data {
@@ -968,10 +969,11 @@
             }
 
             #w_price {
-            font-size: 3.3vw;
+                font-size: 3.3vw;
             }
+
             .w_name{
-            font-size: 3.3vw;
+                font-size: 3.3vw;
             }
 
         }
@@ -1107,14 +1109,15 @@
                                 {{row.change_24h.toFixed(2)}}
                             </div>
                         </div>
+                    </div>
 
                         <!--Index Value-->
-                        <div class="middle_value">
-                            <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
-                            <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
-                        </div>
-
+                    <div class="middle_value">
+                        <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed Value</div>
+                        <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
                     </div>
+
+
 
                     <!--Number Gainers/Losers-->
                     <div class="gainers_losers">
