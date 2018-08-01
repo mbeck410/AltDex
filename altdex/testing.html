@@ -1106,6 +1106,7 @@
                 <!--Index Data-->
                 <div v-cloak class="pricing">
                     <div id="middle_stuff" id="main_index_price" v-for="row in rows">
+
                         <!--Index Name-->
                         <div class="middle_name">
                             <div class="dex_name">ALTPRV</div>
@@ -1121,31 +1122,31 @@
 
                         <div class="middle_data">
                             <div id="values_main"
-                                v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
                                 {{row.price_percent.toFixed(2)}}%
                                 <div id="middle_percent"
-                                    v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
+                                     v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
                                     {{row.change_24h.toFixed(2)}}
                                 </div>
+                            </div>
+                        </div>
 
 
-                                <!--Number Gainers/Losers-->
-                                <div class="gainers_losers">
+                        <!--Number Gainers/Losers-->
+                        <div class="gainers_losers">
 
-                                    <!--Gainers-->
-                                    <div class="gain">
-                                        <div id="title_gainers">Gainers</div>
-                                        <!--<div id="gainers"></div>-->
-                                        <div>90.02</div>
-                                    </div>
+                            <!--Gainers-->
+                            <div class="gain">
+                                <div id="title_gainers">Gainers</div>
+                                <!--<div id="gainers"></div>-->
+                                <div>90.02</div>
+                            </div>
 
-                                    <!--Losers-->
-                                    <div class="lose">
-                                        <div id="title_losers">Losers</div>
-                                        <!--<div id="losers"></div>-->
-                                        <div>9.98</div>
-                                    </div>
-                                </div>
+                            <!--Losers-->
+                            <div class="lose">
+                                <div id="title_losers">Losers</div>
+                                <!--<div id="losers"></div>-->
+                                <div>9.98</div>
                             </div>
                         </div>
                     </div>
