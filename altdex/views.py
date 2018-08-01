@@ -172,27 +172,27 @@ def getcoinscurrent(request):
             coin_price = '{0:.6f}'.format(float(this_coin.price))
 
         name_lower = str(this_coin.name).lower()
-        # if ' ' in name_lower:
-        #     hyphened_name = name_lower.replace(' ', '-')
-        #     coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
-        #
-        # else:
-        #     no_space = name_lower.replace(' ', '')
-        #
-        #     if no_space == 'bytecoin':
-        #         coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'-bcn.png'
-        #     elif no_space == 'navcoin':
-        #         coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
-        #     elif no_space == 'bitcoinprivate':
-        #         coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bitcoin-private.png'
-        #     elif no_space == 'golem':
-        #         coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/golem-network-tokens.png'
-        #     elif no_space == 'iost':
-        #         coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
-        #     elif no_space == 'nebulas':
-        #         coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
-        #     else:
-        #         coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
+        if ' ' in name_lower:
+            hyphened_name = name_lower.replace(' ', '-')
+            coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
+
+        else:
+            no_space = name_lower.replace(' ', '')
+
+            if no_space == 'bytecoin':
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'-bcn.png'
+            elif no_space == 'navcoin':
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nav-coin.png'
+            elif no_space == 'bitcoinprivate':
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/bitcoin-private.png'
+            elif no_space == 'golem':
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/golem-network-tokens.png'
+            elif no_space == 'iost':
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/iostoken.png'
+            elif no_space == 'nebulas':
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/nebulas-token.png'
+            else:
+                coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/'+no_space+'.png'
         #
         # if no_space == 'polymath':
         #     coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/polymath-network.png'
@@ -219,7 +219,7 @@ def getcoinscurrent(request):
                         'weight_2': weight_2,
                         'weight_3': weight_3,
                         'weight_4': weight_4,
-                        'icon': name_lower
+                        'icon': coin_icon_url
                         }
 
         coin_table.append(coin_dict)
