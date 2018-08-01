@@ -1373,12 +1373,12 @@
         let lose_data = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
-            for (let i = 0; i < data.losers[4].length; i++) {
-                lose_data.push(data.losers[4][i]);
+            for (let i = 0; i < data.losers[3].length; i++) {
+                lose_data.push(data.losers[3][i]);
             }
 
-            for (let i = 0; i < data.gainers[4].length; i++) {
-                gain_data.push(data.gainers[4][i]);
+            for (let i = 0; i < data.gainers[3].length; i++) {
+                gain_data.push(data.gainers[3][i]);
             }
 
             app4.rows = lose_data;
@@ -1467,7 +1467,7 @@
         //alert('test');
         http_get(url, function (data) {
             let full_data = data.dict_key;
-            let entry = full_data[4];
+            let entry = full_data[3];
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
             let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
