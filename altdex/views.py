@@ -219,7 +219,7 @@ def getcoinscurrent(request):
                         'weight_2': weight_2,
                         'weight_3': weight_3,
                         'weight_4': weight_4,
-                        'icon': coin_icon_url
+                        'icon': name_lower
                         }
 
         coin_table.append(coin_dict)
