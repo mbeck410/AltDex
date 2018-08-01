@@ -156,7 +156,6 @@ def getcoinscurrent(request):
                     weight_3 = float('{0:.3f}'.format(weight_3))
                 else:
                     weight_3 = float('{0:.6f}'.format(weight_3))
-
             if dex.name == 'Masternode':
                 weight_4 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
                 dices += str(dex.name)
@@ -164,6 +163,8 @@ def getcoinscurrent(request):
                     weight_4 = float('{0:.3f}'.format(weight_4))
                 else:
                     weight_4 = float('{0:.6f}'.format(weight_4))
+            else:
+                continue
 
         if float(this_coin.price) >= 1:
             coin_price = '{:,.2f}'.format(float(this_coin.price))
