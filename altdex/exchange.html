@@ -1081,7 +1081,7 @@
                 <!--Fixed Ad-->
                 <div id="left_ad">
                     <ins class="adsbygoogle"
-                         style="display:inline-block;width:225px;height:300px"
+                         style="display:inline-block;width:225px;height:250px"
                          data-ad-client="ca-pub-9873470958093574"
                          data-ad-slot="5347610936"></ins>
                 </div>
@@ -1198,7 +1198,7 @@
                         <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
 
                         <!--Last-->
-                        <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
+                        <td>${{row.pretty_price.toLocaleString('en', {useGrouping:true})}}</td>
 
                         <!--Percent_Change-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">

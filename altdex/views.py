@@ -177,9 +177,14 @@ def getcoinscurrent(request):
             coin_price = '{0:.6f}'.format(float(this_coin.price))
 
         name_lower = str(this_coin.name).lower()
-        if ' ' in name_lower:
+        if name_lower == 'metaverse ep':
+            coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/metaverse.png'
+
+        elif ' ' in name_lower:
+
             hyphened_name = name_lower.replace(' ', '-')
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
+
 
         else:
             no_space = name_lower.replace(' ', '')
@@ -200,8 +205,8 @@ def getcoinscurrent(request):
                 coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/bibox-token.png'
             elif no_space == 'polymath':
                 coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/polymath-network.png'
-            elif no_space == 'metaverseep':
-                coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/metaverse.png'
+            # elif no_space == 'metaverseep':
+            #     coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/metaverse.png'
             else:
                 coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/'+no_space+'.png'
 
