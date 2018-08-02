@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!--Google ad/webdata-->
-        <!--Global site tag (gtag.js) - Google Analytics-->
+    <!--Global site tag (gtag.js) - Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -54,144 +54,19 @@
     }(document, "script", "twitter-wjs"));</script>
 
     <style>
-
+        /* Remove the navbar's default margin-bottom and rounded borders */
         .affix {
             top: 20px;
             z-index: 9999 !important;
             width: 14.7%;
         }
 
-        @media screen and (max-width: 1200px) {
-            #right_bar {
-                display: none;
-            }
-            .widget_div {
-                display: none;
-            }
-
-            #w_ad {
-                display: none;
-            }
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            /*height: 4484.65px;*/
         }
 
-        @media screen and (max-width: 767px) {
-            .sidenav {
-                height: auto;
-                padding: 15px;
-            }
-
-            .row.content {
-                height: auto;
-            }
-
-            #index_chart {
-                width: auto;
-                height: auto;
-            }
-
-            .widget_div {
-                display: none;
-            }
-
-            .main_price {
-                display: none;
-            }
-
-            .lose {
-                display: none;
-                width: 0;
-            }
-
-            .gain {
-                display: none;
-                width: 0;
-            }
-
-            #coin_name_title {
-                display: none;
-            }
-
-            #coin_name_value {
-                display: none;
-            }
-
-            #coin_market_title {
-                display: none;
-            }
-
-            #coin_market_value {
-                display: none;
-            }
-
-            #coin_volume_title {
-                display: none;
-            }
-
-            #coin_volume_value {
-                display: none;
-            }
-
-            #coin_weight_title {
-                display: none;
-            }
-
-            #coin_weight_value {
-                display: none;
-            }
-
-            .gainers_losers {
-                display: none;
-                margin: auto;
-
-            }
-
-            #index_chart {
-                height: 300px;
-            }
-
-            .main_price > div.gainers_losers {
-                margin: auto;
-                display: none;
-            }
-
-            #main_index_price {
-                margin-top: auto;
-                margin-bottom: auto;
-                margin-left: 0;
-                margin-right: 0;
-                width: 100%;
-            }
-
-            .pricing {
-                margin: auto;
-            }
-
-            .middle_name {
-                display: none;
-            }
-
-            .middle_value {
-                margin: auto;
-            }
-
-            .middle_data {
-                margin: auto;
-            }
-
-            #right_bar {
-                display: none;
-            }
-
-            .info {
-                display: none;
-            }
-
-            #dark_bt {
-                display: none;
-            }
-
-        }
-
+        /* Set gray background color and 100% height */
         .sidenav {
             padding-top: 20px;
             /*background-color: whitesmoke;*/
@@ -199,236 +74,10 @@
         }
 
         /* Set black background color, white text and some padding */
-        footer {
-            background-color: #222842;
-            color: white;
-            padding: 15px;
-            font-size: 8px;
-        }
 
-        .w_data {
-            display: flex;
-            width: 100%;
-            border-bottom: 1px solid lightgray;
-            padding-bottom: 5px;
-            padding-top: 5px;
+        /* On small screens, set height to 'auto' for sidenav and grid */
 
-        }
-
-        .w_data > div:first-child {
-            text-align: center;
-            font-size: 1.6vw;
-            /*width: 60%;*/
-            margin: auto;
-        }
-
-        .w_data > div:nth-child(2) {
-            text-align: center;
-            font-size: 1.4vw;
-            /*width: 40%;*/
-            margin: auto;
-        }
-
-        h2 {
-            margin-top: 0;
-            /*border-bottom: solid 3px #244ec3;*/
-        }
-
-        #center {
-            /*background-color: whitesmoke;*/
-            padding-top: 20px;
-        }
-
-        /*#center > div {*/
-        /*background-color: white;*/
-        /*}*/
-
-        .well {
-            background-color: white;
-            box-shadow: 0 0 3px gray;
-        }
-
-        h1 {
-            font-size: 50px;
-            margin: 0px;
-            padding: 0px;
-        }
-
-        h3 {
-            margin: 0px;
-            padding: 0px;
-            font-size: 40px;
-        }
-
-        .my_navbar {
-            background-color: #222842;
-            color: white;
-            margin: 0;
-            border-radius: 0;
-            border: 0;
-        }
-
-        .my_navbar .navbar-brand {
-            color: white;
-            font-size: 30px;
-            text-align: center;
-
-        }
-
-        .my_navbar .navbar-brand:hover {
-            color: lightgray;
-        }
-
-        .my_navbar .primary > li a {
-            color: white;
-            font-size: 22px;
-        }
-
-        .my_navbar .primary > li a:hover {
-            color: lightgray;
-        }
-
-        .my_navbar .primary .secondary > li a {
-            color: black;
-            font-size: 22px;
-        }
-
-        .my_drop > a {
-            background-color: #222842;
-            color: lightgray;
-        }
-
-        .navbar-brand > img {
-            height: 100%;
-
-        }
-
-        .navbar-brand {
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-
-        .main_div {
-            background-color: #ededed;
-            /*background-image: linear-gradient(135deg, #cad5f5, #dddddd);*/
-        }
-
-        .pos {
-            color: green;
-        }
-
-        .neg {
-            color: red;
-        }
-
-        h4 {
-            font-weight: bold;
-        }
-
-        /*h2 {*/
-        /*font-weight: bold;*/
-        /*}*/
-
-        .about_display {
-            font-size: 1.2em;
-        }
-
-        #widget {
-            padding-bottom: 14px;
-            margin: auto;
-        }
-
-        .w_name {
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .w_name > a {
-            color: black;
-        }
-
-        .w_name > a:hover {
-            color: #6dc0eb;
-        }
-
-        #w_percent {
-            font-size: 0.7em;
-        }
-
-        .w_info {
-            margin-top: 20px;
-            font-size: 10px;
-        }
-
-        footer {
-            background-color: #222842;
-            color: white;
-            padding: 15px;
-            font-size: 11px;
-        }
-
-        #disclaimer {
-            text-align: center;
-            font-size: 9px;
-            border-bottom: 1px solid darkgray;
-            margin: 11px;
-            padding-bottom: 12px;
-        }
-
-        .footer_bottom {
-            display: flex;
-        }
-
-        .footer_link {
-            margin: auto;
-            text-align: left;
-        }
-
-        /* Style all font awesome icons */
-        /* Style all font awesome icons */
-        .fa {
-            font-size: 18px;
-        }
-
-        /* Add a hover effect if you want */
-        .fa:hover {
-            opacity: 0.7;
-            text-decoration: none;
-        }
-
-        #footer_ad {
-            margin-bottom: 20px;
-        }
-
-        .footer_pages {
-            display: flex;
-            margin: auto;
-        }
-
-        .footer_pages > div {
-            margin: auto;
-            padding: auto;
-        }
-
-        .text {
-            padding-left: 19px;
-            padding-right: 19px;
-        }
-
-        #w_ad {
-                margin-top: 20px;
-            }
-
-        #side_ad {
-            margin-bottom: 20px;
-            margin_top: 20px
-        }
-
-        [v-cloak] {
-            display: none;
-        }
-
-                       /*Main Stuff*/
+        /*Main Stuff*/
 
         #center {
             padding-top: 20px;
@@ -463,14 +112,12 @@
         .neg {
             color: red;
         }
-
 
         /*Coin Table Style*/
         table.table {
             background-color: white;
             margin: 0;
         }
-
 
         /*Table Headers*/
         table.table th {
@@ -491,7 +138,6 @@
             text-align: right;
         }
 
-
         /*Table Rows*/
         table.table td:nth-child(n+3) {
             text-align: right;
@@ -509,11 +155,11 @@
             border-top: 0;
         }
 
-        .coin_row {
+        .t-coin_row {
             border-bottom: 1px solid lightgray;
         }
 
-        .coin_row:last-child {
+        .t-coin_row:last-child {
             border: 0;
         }
 
@@ -524,14 +170,12 @@
             white-space: nowrap;
         }
 
-
         /*Widget*/
-        #widget {
+        #widget_fixed {
             margin: auto;
-            padding-bottom: 14px;
         }
 
-        .w_name {
+        .t-w_name {
             font-weight: bold;
             text-align: center;
         }
@@ -578,8 +222,6 @@
         .w_info {
             font-size: 10px;
         }
-
-
 
         /*Navbar*/
         .my_navbar {
@@ -673,8 +315,6 @@
         .pricing {
             display: flex;
             width: 70%;
-            text-align: center;
-
         }
 
         .gain {
@@ -714,14 +354,13 @@
 
         .info {
             font-size: 10px;
+            width: 50%;
         }
 
         #middle_price {
             font-size: 3.0em;
-        }
-
-        #middle_percent {
-            font-size: 1.8em;
+            width: 50%;
+            text-align: center;
         }
 
         #values_main {
@@ -731,21 +370,27 @@
         .dex_name {
             font-size: 3.0em;
             font-weight: bold;
+            text-align: left;
+            width: 60%;
+            padding-left: 10px;
         }
 
         .middle_name {
             text-align: left;
-            width: 45%;
+            width: 100%;
+            display: flex;
         }
 
         .middle_value {
             text-align: center;
-            width: 30%;
+            width: 100%;
+            display: flex;
         }
 
         .middle_data {
             text-align: center;
             width: 25%;
+            margin: auto;
         }
 
         /*Footer*/
@@ -773,8 +418,7 @@
             text-align: left;
         }
 
-
-         /* Style all font awesome icons */
+        /* Style all font awesome icons */
         .fa {
             font-size: 18px;
         }
@@ -790,7 +434,6 @@
             margin: auto;
         }
 
-
         .footer_pages > div {
             margin: auto;
             padding: auto;
@@ -802,14 +445,13 @@
 
         #footer_ad {
             margin-bottom: 20px;
-         }
+        }
 
         #top_gain_lose {
             margin: auto;
             margin-bottom: 20px;
             text-align: center;
         }
-
 
         /*Gainers/Losers*/
         .gl_title {
@@ -843,11 +485,11 @@
         }
 
         .gl_name {
-                font-weight: bold;
-                font-size: 0.9vw;
-                width: 22%;
-                text-align: left;
-            }
+            font-weight: bold;
+            font-size: 0.9vw;
+            width: 22%;
+            text-align: left;
+        }
 
         .gl_price {
             text-align: right;
@@ -861,6 +503,10 @@
 
         .gl_data:hover {
             background-color: #f5f5f5;
+        }
+
+        #delayed_text {
+            text-align: left;
         }
 
         .r_ad {
@@ -888,8 +534,13 @@
             margin-left: 15px;
         }
 
-        .light_blue_links {
-            color: #6dc0eb;
+        #main_index_price {
+            width: 100%;
+            display: flex;
+        }
+
+        #middle_shit {
+            width: 75%;
         }
 
         /*Themes*/
@@ -899,11 +550,11 @@
             background-color: #262626;
             color: #D0D0D0;
             -webkit-font-smoothing: antialiased !important;
-            text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
             -webkit-text-stroke: 1px transparent;
         }
 
-        .t--dark .main_div{
+        .t--dark .main_div {
             background-color: #262626;
         }
 
@@ -959,7 +610,6 @@
             border-color: #808080;
         }
 
-
         .t--dark .coin_row:hover {
             color: black;
             background-color: #ededed;
@@ -973,7 +623,7 @@
             display: none;
         }
 
-            /*Light Mode*/
+        /*Light Mode*/
 
         .t--light {
             background-color: #ededed;
@@ -1015,16 +665,11 @@
             font-weight: bold;
         }
 
-        .t--light .well {
-            background-color: white;
-            color: black;
-        }
-
         .t--light #dark_bt {
             background-color: #262626;
         }
 
-        .t--light .coin_row:hover {
+        .t--light .t-coin_row:hover {
             color: black;
             background-color: #ededed;
         }
@@ -1035,6 +680,277 @@
 
         .t--light .feedgrabbr_widget2 {
             display: none;
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1200px) {
+            #right_bar {
+                display: none;
+            }
+
+            /*.widget_div {*/
+            /*display: none;*/
+            /*}*/
+            #left_bar {
+                width: 20%;
+            }
+
+            #center {
+                width: 80%
+            }
+
+            #w_ad {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+
+            #center {
+                width: 100%;
+            }
+
+            .affix-top {
+                width: 96%;
+                top: 0;
+            }
+
+            .affix {
+                top: 0;
+                z-index: 9999 !important;
+                width: 100%;
+                display: flex;
+            }
+
+            #left_ad {
+                display: none;
+            }
+
+            .well {
+                padding: 5px;
+                border-radius: 2px;
+                box-shadow: none;
+                margin: 10px;
+                margin-top: 0;
+            }
+
+            .w_info {
+                display: none;
+            }
+
+            .widget_div {
+                padding: 0;
+            }
+
+            .main_div {
+                padding: 5px;
+            }
+
+            .col-sm-8 {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .time_bts {
+                display: none;
+            }
+
+            .sidenav {
+                height: auto;
+                padding: 0;
+            }
+
+            .row.content {
+                height: auto;
+            }
+
+            #chart_div {
+                display: none;
+            }
+
+            #w_well {
+                border-radius: 0;
+                box-shadow: none;
+                background-color: #222842;
+                color: white;
+                margin: auto;
+                border: 0;
+                padding-left: 5px;
+                padding-right: 5px;
+                display: flex;
+                width: 100%;
+            }
+
+            .w_name_link {
+                font-size: 3.2vw
+            }
+
+            .t--light .w_name_link {
+                color: #6dc0eb;
+            }
+
+            .t--dark .w_name_link {
+                color: #6dc0eb;
+            }
+
+            #w_percent {
+                display: none;
+            }
+
+            .lose {
+                display: none;
+            }
+
+            .gain {
+                display: none;
+            }
+
+            #coin_symbol_title {
+                display: none;
+            }
+
+            #coin_symbol_value {
+                display: none;
+            }
+
+            #coin_market_title {
+                display: none;
+            }
+
+            #coin_market_value {
+                display: none;
+            }
+
+            #coin_volume_title {
+                display: none;
+            }
+
+            #coin_volume_value {
+                display: none;
+            }
+
+            #coin_weight_title {
+                display: none;
+            }
+
+            #coin_weight_value {
+                display: none;
+            }
+
+            .gainers_losers {
+                display: none;
+                margin: auto;
+
+            }
+
+            .main_price > div.gainers_losers {
+                margin: auto;
+                display: none;
+            }
+
+            #main_index_price {
+                margin: 0;
+                width: 100%;
+            }
+
+            .pricing {
+                /*margin: auto;*/
+                width: 100%;
+            }
+
+            .middle_name {
+                text-align: center;
+                font-size: 3.0vw;
+                margin: auto;
+            }
+
+            .middle_value {
+                margin: auto;
+                font-size: 3.0vw;
+            }
+
+            #middle_price {
+                width: 40%;
+                text-align: left;
+            }
+
+            .middle_data {
+                margin: auto;
+                font-size: 2.4vw;
+            }
+
+            #right_bar {
+                display: none;
+            }
+
+            #twitter_link {
+                display: none;
+            }
+
+            .primary {
+                display: none;
+            }
+
+            #nav_butts {
+                display: none
+            }
+
+            #barz {
+                display: flex;
+            }
+
+            .main_div {
+                padding-top: 0px;
+            }
+
+            #footer_ad {
+                padding: 0;
+            }
+
+            .w_data {
+                border-bottom: none;
+                padding: 0;
+                /*padding-top: 3px;*/
+                /*padding-bottom: 3px;*/
+            }
+
+            .widget {
+                width: 25%;
+                text-align: center;
+                padding-left: 3px;
+                padding-right: 3px;
+            }
+
+            #w_price {
+                font-size: 3.0vw;
+            }
+
+            .w_name {
+                font-size: 3.0vw;
+            }
+
+            #delayed_text {
+                display: none;
+            }
+
+            #middle_time {
+                width: 100%;
+                text-align: center;
+                text-size: 10px;
+                padding-bottom: 5px;
+            }
+
+            .my_navbar {
+                width: 100%;
+            }
+
+            .r_ad {
+                display: none;
+            }
+
+            .adsbygoogle {
+                display: none;
+            }
+
         }
 
     </style>
@@ -1087,14 +1003,18 @@
 
 <div class="main_div container-fluid text-center">
     <div class="row content">
-        <div class="widget_div col-sm-2 sidenav">
-            <div id="widget" data-spy="affix" data-offset-top="50.8">
-                <div class="well">
+
+        <!--Fix Left Sidebar-->
+        <div id="left_bar" class="widget_div col-sm-2 sidenav">
+            <div id="widget_fixed" data-spy="affix" data-offset-top="50.8">
+
+                <!--Index Price Widget-->
+                <div id="w_well" class="well">
                     <div v-cloak class="widget" v-for="row in rows">
                         <div class="w_data">
                             <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
                             <div>
-                                <div>{{row.price.toFixed(2)}}</div>
+                                <div id="w_price">{{row.price.toFixed(2)}}</div>
                                 <div id="w_percent"
                                      v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
                                     {{row.price_percent.toFixed(2)}}%
@@ -1108,7 +1028,9 @@
                         <div>All Values Delayed</div>
                     </div>
                 </div>
-                <div>
+
+                <!--Fixed Ad-->
+                <div id="left_ad">
                     <ins class="adsbygoogle"
                          style="display:inline-block;width:225px;height:300px"
                          data-ad-client="ca-pub-9873470958093574"
@@ -1116,103 +1038,115 @@
                 </div>
             </div>
         </div>
-    <div id="center" class="col-sm-8 text-left about_display">
-        <div class="well text">
-            <h2>AltDex</h2>
-            <p>AltDex provides market capitalization-weighted crypto indices that act as benchmarks across multiple
-                digital asset categories.</p>
-        </div>
-        <div class="well text">
-            <h2>Criteria</h2>
-            <p>AltDex leverages an adjusted market cap-weighted approach as the main filtering criteria for each of our
-                indices. Each index will be reviewed and re-balanced on the first of every month.</p>
-            <h4>General Exclusion Criteria</h4>
-            <ul>
-                <li>No stablecoins, egregious forks, or well-documented scam coins.</li>
-                <li>No coins with less than 5% circulating supply.</li>
-                <li>No coins with less than 1-month trading history.</li>
-            </ul>
-            <h4>General Weighting Criteria</h4>
-            <ul>
-                <li>All coins within a selected index will be weighted according to market cap-averaged from over 90
-                    exchanges and 22,000 trading pairs.
-                </li>
-                <li>Weighting is automatically updated every 5 minutes.</li>
-                <li>Each index has a starting value of <b>100</b>.</li>
-            </ul>
-            <h4>AltDex 100 (ALT100)</h4>
-            <p>The AltDex 100 is the best single-gauge of the large-cap cryptocurrencies and tokens.</p>
-            <ul>
-                <li>Number of Constituents: 100</li>
-                <li>Trailing 30 day average daily trading volume $100,000.</li>
-            </ul>
-            <h4>AltDex Exchange Token Index (ALTEXC)</h4>
-            <p>The AltDex Exchange Token Index defines and monitors the industry&#8217;s leading crypto exchange
-                tokens.</p>
-            <ul>
-                <li>Number of Constituents: 25</li>
-                <li>Market capitalization greater than $5,000,000.</li>
-            </ul>
-            <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
-            <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on privacy or
-                security.</p>
-            <ul>
-                <li>Number of Constituents: 17</li>
-                <li>Market capitalization greater than $10,000,000.</li>
-            </ul>
-            <h4>AltDex Masternode Index (ALTMSN)</h4>
-            <p>The AltDex Masternode Index defines and monitors cryptocurrencies that leverage masternodes to support
-                network functionality without hyperinflation.</p>
+
+
+        <div id="center" class="col-sm-8 text-left about_display">
+            <div class="well text">
+                <h2>AltDex</h2>
+                <p>AltDex provides market capitalization-weighted crypto indices that act as benchmarks across multiple
+                    digital asset categories.</p>
+            </div>
+            <div class="well text">
+                <h2>Criteria</h2>
+                <p>AltDex leverages an adjusted market cap-weighted approach as the main filtering criteria for each of
+                    our
+                    indices. Each index will be reviewed and re-balanced on the first of every month.</p>
+                <h4>General Exclusion Criteria</h4>
+                <ul>
+                    <li>No stablecoins, egregious forks, or well-documented scam coins.</li>
+                    <li>No coins with less than 5% circulating supply.</li>
+                    <li>No coins with less than 1-month trading history.</li>
+                </ul>
+                <h4>General Weighting Criteria</h4>
+                <ul>
+                    <li>All coins within a selected index will be weighted according to market cap-averaged from over 90
+                        exchanges and 22,000 trading pairs.
+                    </li>
+                    <li>Weighting is automatically updated every 5 minutes.</li>
+                    <li>Each index has a starting value of <b>100</b>.</li>
+                </ul>
+                <h4>AltDex 100 (ALT100)</h4>
+                <p>The AltDex 100 is the best single-gauge of the large-cap cryptocurrencies and tokens.</p>
+                <ul>
+                    <li>Number of Constituents: 100</li>
+                    <li>Trailing 30 day average daily trading volume $100,000.</li>
+                </ul>
+                <h4>AltDex Exchange Token Index (ALTEXC)</h4>
+                <p>The AltDex Exchange Token Index defines and monitors the industry&#8217;s leading crypto exchange
+                    tokens.</p>
+                <ul>
+                    <li>Number of Constituents: 25</li>
+                    <li>Market capitalization greater than $5,000,000.</li>
+                </ul>
+                <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
+                <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on privacy or
+                    security.</p>
+                <ul>
+                    <li>Number of Constituents: 17</li>
+                    <li>Market capitalization greater than $10,000,000.</li>
+                </ul>
+                <h4>AltDex Masternode Index (ALTMSN)</h4>
+                <p>The AltDex Masternode Index defines and monitors cryptocurrencies that leverage masternodes to
+                    support
+                    network functionality without hyperinflation.</p>
                 <ul>
                     <li>Number of Constituents: 15</li>
                     <li>Market capitalization greater than $10,000,000.</li>
                 </ul>
-            <p><i>Note: This section will be updated with the release of each new index to clearly outline each index&#8217;s
-                constituent inclusion criteria.</i></p>
-        </div>
-        <div class="well text">
-            <h2>FAQ</h2>
-            <p>Q: When was AltDex started?<br>
-                A: AltDex was launched in June of 2018, on the backdrop of a major push towards the mainstream adoption
-                of cryptocurrency.</p>
-            <p></p>
-            Q: When will new indices be released?<br>
-            A: There is no pre-determined release schedule. All announcements will be made on our official Twitter
-            account: <a class="light_blue_links" href="https://twitter.com/altcoindex" target="_blank">@altcoindex</a></p>
-            <p></p>
-            <p>Q: Can I submit my project for inclusion in a specific index?<br>
-                A: Yes, we considered all projects that fit the provided criteria. To request a review, submit your
-                project info and a statement on why your project should be included to <a class="light_blue_links" href="mailto:admin@altdex.co" target="_blank">admin@altdex.co</a></p>
-            <p></p>
-            <p>Q: Can I add an AltDex widget or API to my site?<br>
-                A: Soon, we are in the process of providing support to select websites and companies interested in
-                displaying the AltDex indices.</p>
-            <p></p>
-            <p>Q: Are there options for advertisers?<br>
-                A: Yes, we offer targeted advertising packages. Interested parties should contact us at <a class="light_blue_links" href="mailto:admin@altdex.co" target="_blank">admin@altdex.co</a>
-            </p>
-            <p></p>
-            <p>Q: Are the AltDex indices investment vehicles?<br>
-                A: No. AltDex is simply a market monitoring tool and should not be construed as an investment tool, or
-                as the basis for any investment.</p>
-            <p></p>
-            <p>Q: Who manages AltDex?<br>
-                A: AltDex is managed by the same team of economists and researchers that created SludgeFeed.</p>
+                <p><i>Note: This section will be updated with the release of each new index to clearly outline each
+                    index&#8217;s
+                    constituent inclusion criteria.</i></p>
+            </div>
+            <div class="well text">
+                <h2>FAQ</h2>
+                <p>Q: When was AltDex started?<br>
+                    A: AltDex was launched in June of 2018, on the backdrop of a major push towards the mainstream
+                    adoption
+                    of cryptocurrency.</p>
+                <p></p>
+                Q: When will new indices be released?<br>
+                A: There is no pre-determined release schedule. All announcements will be made on our official Twitter
+                account: <a class="light_blue_links" href="https://twitter.com/altcoindex"
+                            target="_blank">@altcoindex</a></p>
+                <p></p>
+                <p>Q: Can I submit my project for inclusion in a specific index?<br>
+                    A: Yes, we considered all projects that fit the provided criteria. To request a review, submit your
+                    project info and a statement on why your project should be included to <a class="light_blue_links"
+                                                                                              href="mailto:admin@altdex.co"
+                                                                                              target="_blank">admin@altdex.co</a>
+                </p>
+                <p></p>
+                <p>Q: Can I add an AltDex widget or API to my site?<br>
+                    A: Soon, we are in the process of providing support to select websites and companies interested in
+                    displaying the AltDex indices.</p>
+                <p></p>
+                <p>Q: Are there options for advertisers?<br>
+                    A: Yes, we offer targeted advertising packages. Interested parties should contact us at <a
+                            class="light_blue_links" href="mailto:admin@altdex.co" target="_blank">admin@altdex.co</a>
+                </p>
+                <p></p>
+                <p>Q: Are the AltDex indices investment vehicles?<br>
+                    A: No. AltDex is simply a market monitoring tool and should not be construed as an investment tool,
+                    or
+                    as the basis for any investment.</p>
+                <p></p>
+                <p>Q: Who manages AltDex?<br>
+                    A: AltDex is managed by the same team of economists and researchers that created SludgeFeed.</p>
 
 
+            </div>
+        </div>
+        <div id="right_bar" class="col-sm-2 sidenav">
+            <div>
+                <ins id="side_ad" class="adsbygoogle"
+                     style="display:inline-block;width:225px;height:600px"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="2227010612"></ins>
+            </div>
         </div>
     </div>
-    <div id="right_bar" class="col-sm-2 sidenav">
-        <div>
-            <ins id="side_ad" class="adsbygoogle"
-                 style="display:inline-block;width:225px;height:600px"
-                 data-ad-client="ca-pub-9873470958093574"
-                 data-ad-slot="2227010612"></ins>
-        </div>
-    </div>
-    </div>
 </div>
-</div>
+
 <footer class="container-fluid text-center">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
@@ -1227,19 +1161,25 @@
                 performance
                 is no guarantee of future results.
             <p>
-            <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your experience, but you can opt-out if you wish <a href="/privacy_policy/">Privacy Policy</a>.
-</p>
+            <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your experience, but
+                you can opt-out if you wish <a href="/privacy_policy/">Privacy Policy</a>.
+            </p>
             <div class="footer_pages">
-                <div id="footer_left_link"><a class="light_blue_links" href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
-                        class="light_blue_links" href="/privacy_policy/">Privacy Policy</a></div>
+                <div id="footer_left_link"><a class="light_blue_links" href="/about/">About</a> &nbsp; &nbsp; | &nbsp;
+                    &nbsp; <a
+                            class="light_blue_links" href="/privacy_policy/">Privacy Policy</a></div>
             </div>
         </div>
         <div class="footer_bottom">
             <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
-            <div><a href="mailto:admin@altdex.co" class="fa light_blue_links" target="_blank">&#x2709</a><a href="https://twitter.com/altcoindex"
-                                                                   class="fa fa-twitter light_blue_links" target="_blank"></a></div>
-            <div class="footer_link">From the creators of <a class="light_blue_links" href="https://sludgefeed.com/" target="_blank">SludgeFeed</a></div>
-            <div class="footer_link">Select market data provided by <a class="light_blue_links" href="http://coincap.io/" target="_blank">CoinCap</a> & <a
+            <div><a href="mailto:admin@altdex.co" class="fa light_blue_links" target="_blank">&#x2709</a><a
+                    href="https://twitter.com/altcoindex"
+                    class="fa fa-twitter light_blue_links" target="_blank"></a></div>
+            <div class="footer_link">From the creators of <a class="light_blue_links" href="https://sludgefeed.com/"
+                                                             target="_blank">SludgeFeed</a></div>
+            <div class="footer_link">Select market data provided by <a class="light_blue_links"
+                                                                       href="http://coincap.io/"
+                                                                       target="_blank">CoinCap</a> & <a
                     class="light_blue_links" href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
         </div>
     </div>
@@ -1254,20 +1194,20 @@
 
     // Getting and Setting Theme from localStorage 'mode'
     if (mode === null) {
-            localStorage.setItem("mode", "light");
-            body.classList.add('t--light');
-        } else if (mode === 'dark'){
-            body.classList.remove('t--light');
-            body.classList.add('t--dark');
-        } else {
-            body.classList.remove('t--dark');
-            body.classList.add('t--light');
-        }
+        localStorage.setItem("mode", "light");
+        body.classList.add('t--light');
+    } else if (mode === 'dark') {
+        body.classList.remove('t--light');
+        body.classList.add('t--dark');
+    } else {
+        body.classList.remove('t--dark');
+        body.classList.add('t--light');
+    }
 
-     dark_bt.onclick = function () {
+    dark_bt.onclick = function () {
 
         // Light to Dark
-        if (body.classList.contains('t--light'))  {
+        if (body.classList.contains('t--light')) {
             body.classList.remove('t--light');
             body.classList.add('t--dark');
             localStorage.setItem("mode", "dark");
@@ -1283,7 +1223,7 @@
     };
 
     let app3 = new Vue({
-        el: '#widget',
+        el: '#widget_fixed',
         data: {
             ascending: false,
             sortColumn: '',
