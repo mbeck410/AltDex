@@ -105,7 +105,7 @@
         /* Remove the navbar's default margin-bottom and rounded borders */
         .affix {
             top: 20px;
-            z-index: 2000 !important;
+            z-index: 9999 !important;
             width: 14.7%;
         }
 
@@ -124,149 +124,6 @@
         /* Set black background color, white text and some padding */
 
         /* On small screens, set height to 'auto' for sidenav and grid */
-        @media screen and (max-width: 1200px) {
-            #right_bar {
-                display: none;
-            }
-
-            .widget_div {
-                display: none;
-            }
-
-            #w_ad {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 767px) {
-            .sidenav {
-                height: auto;
-                padding: 15px;
-            }
-
-            .row.content {
-                height: auto;
-            }
-
-            #index_chart {
-                width: auto;
-                height: auto;
-            }
-
-            .widget_div {
-                display: none;
-            }
-
-            .main_price {
-                display: none;
-            }
-
-            #dark_bt {
-                display: none;
-            }
-
-            .lose {
-                display: none;
-                width: 0;
-            }
-
-            .gain {
-                display: none;
-                width: 0;
-            }
-
-            #coin_name_title {
-                display: none;
-            }
-
-            #coin_name_value {
-                display: none;
-            }
-
-            #coin_market_title {
-                display: none;
-            }
-
-            #coin_market_value {
-                display: none;
-            }
-
-            #coin_volume_title {
-                display: none;
-            }
-
-            #coin_volume_value {
-                display: none;
-            }
-
-            #coin_weight_title {
-                display: none;
-            }
-
-            #coin_weight_value {
-                display: none;
-            }
-
-            .gainers_losers {
-                display: none;
-                margin: auto;
-
-            }
-
-            #index_chart {
-                height: 300px;
-            }
-
-            .main_price > div.gainers_losers {
-                margin: auto;
-                display: none;
-            }
-
-            #main_index_price {
-                margin-top: auto;
-                margin-bottom: auto;
-                margin-left: 0;
-                margin-right: 0;
-                width: 100%;
-            }
-
-            .pricing {
-                margin: auto;
-            }
-
-            .middle_name {
-                display: none;
-            }
-
-            .middle_value {
-                margin: auto;
-            }
-
-            .middle_data {
-                margin: auto;
-            }
-
-            #w_ad {
-                margin: auto;
-            }
-
-            #right_bar {
-                display: none;
-            }
-
-            .info {
-                display: none;
-            }
-
-            #twitter_link {
-                display: none;
-            }
-
-            .primary {
-                display: flex;
-            }
-
-        }
 
         /*Main Stuff*/
 
@@ -304,13 +161,11 @@
             color: red;
         }
 
-
         /*Coin Table Style*/
         table.table {
             background-color: white;
             margin: 0;
         }
-
 
         /*Table Headers*/
         table.table th {
@@ -331,7 +186,6 @@
             text-align: right;
         }
 
-
         /*Table Rows*/
         table.table td:nth-child(n+3) {
             text-align: right;
@@ -349,11 +203,11 @@
             border-top: 0;
         }
 
-        .coin_row {
+        .t-coin_row {
             border-bottom: 1px solid lightgray;
         }
 
-        .coin_row:last-child {
+        .t-coin_row:last-child {
             border: 0;
         }
 
@@ -364,14 +218,12 @@
             white-space: nowrap;
         }
 
-
         /*Widget*/
-        #widget {
+        #widget_fixed {
             margin: auto;
-            padding-bottom: 14px;
         }
 
-        .w_name {
+        .t-w_name {
             font-weight: bold;
             text-align: center;
         }
@@ -418,12 +270,6 @@
         .w_info {
             font-size: 10px;
         }
-
-        .light_blue_links {
-            color:#6dc0eb
-        }
-
-
 
         /*Navbar*/
         .my_navbar {
@@ -517,8 +363,6 @@
         .pricing {
             display: flex;
             width: 70%;
-            text-align: center;
-
         }
 
         .gain {
@@ -558,14 +402,13 @@
 
         .info {
             font-size: 10px;
+            width: 50%;
         }
 
         #middle_price {
             font-size: 3.0em;
-        }
-
-        #middle_percent {
-            font-size: 1.8em;
+            width: 50%;
+            text-align: center;
         }
 
         #values_main {
@@ -575,21 +418,27 @@
         .dex_name {
             font-size: 3.0em;
             font-weight: bold;
+            text-align: left;
+            width: 60%;
+            padding-left: 10px;
         }
 
         .middle_name {
             text-align: left;
-            width: 45%;
+            width: 100%;
+            display: flex;
         }
 
         .middle_value {
             text-align: center;
-            width: 30%;
+            width: 100%;
+            display: flex;
         }
 
         .middle_data {
             text-align: center;
             width: 25%;
+            margin: auto;
         }
 
         /*Footer*/
@@ -617,8 +466,7 @@
             text-align: left;
         }
 
-
-         /* Style all font awesome icons */
+        /* Style all font awesome icons */
         .fa {
             font-size: 18px;
         }
@@ -634,7 +482,6 @@
             margin: auto;
         }
 
-
         .footer_pages > div {
             margin: auto;
             padding: auto;
@@ -646,14 +493,13 @@
 
         #footer_ad {
             margin-bottom: 20px;
-         }
+        }
 
         #top_gain_lose {
             margin: auto;
             margin-bottom: 20px;
             text-align: center;
         }
-
 
         /*Gainers/Losers*/
         .gl_title {
@@ -687,11 +533,11 @@
         }
 
         .gl_name {
-                font-weight: bold;
-                font-size: 0.9vw;
-                width: 22%;
-                text-align: left;
-            }
+            font-weight: bold;
+            font-size: 0.9vw;
+            width: 22%;
+            text-align: left;
+        }
 
         .gl_price {
             text-align: right;
@@ -705,6 +551,10 @@
 
         .gl_data:hover {
             background-color: #f5f5f5;
+        }
+
+        #delayed_text {
+            text-align: left;
         }
 
         .r_ad {
@@ -732,7 +582,14 @@
             margin-left: 15px;
         }
 
+        #main_index_price {
+            width: 100%;
+            display: flex;
+        }
 
+        #middle_shit {
+            width: 75%;
+        }
 
         /*Themes*/
 
@@ -741,11 +598,11 @@
             background-color: #262626;
             color: #D0D0D0;
             -webkit-font-smoothing: antialiased !important;
-            text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
             -webkit-text-stroke: 1px transparent;
         }
 
-        .t--dark .main_div{
+        .t--dark .main_div {
             background-color: #262626;
         }
 
@@ -801,7 +658,6 @@
             border-color: #808080;
         }
 
-
         .t--dark .coin_row:hover {
             color: black;
             background-color: #ededed;
@@ -815,7 +671,7 @@
             display: none;
         }
 
-            /*Light Mode*/
+        /*Light Mode*/
 
         .t--light {
             background-color: #ededed;
@@ -857,11 +713,6 @@
             font-weight: bold;
         }
 
-        .t--light .well {
-            background-color: white;
-            color: black;
-        }
-
         .t--light #dark_bt {
             background-color: #262626;
         }
@@ -877,6 +728,278 @@
 
         .t--light .feedgrabbr_widget2 {
             display: none;
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1200px) {
+            #right_bar {
+                display: none;
+            }
+
+            /*.widget_div {*/
+            /*display: none;*/
+            /*}*/
+            #left_bar {
+                width: 20%;
+            }
+
+            #center {
+                width: 80%
+            }
+
+            #w_ad {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+
+
+            #center {
+                width: 100%;
+            }
+
+            .affix-top {
+                width: 96%;
+                top: 0;
+            }
+
+            .affix {
+                top: 0;
+                z-index: 9999 !important;
+                width: 100%;
+                display: flex;
+            }
+
+            #left_ad {
+                display: none;
+            }
+
+            .well {
+                padding: 5px;
+                border-radius: 2px;
+                box-shadow: none;
+                margin: 10px;
+                margin-top: 0;
+            }
+
+            .w_info {
+                display: none;
+            }
+
+            .widget_div {
+                padding: 0;
+            }
+
+            .main_div {
+                padding: 5px;
+            }
+
+            .col-sm-8 {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .time_bts {
+                display: none;
+            }
+
+            .sidenav {
+                height: auto;
+                padding: 0;
+            }
+
+            .row.content {
+                height: auto;
+            }
+
+            #chart_div {
+                display: none;
+            }
+
+            #w_well {
+                border-radius: 0;
+                box-shadow: none;
+                background-color: #222842;
+                color: white;
+                margin: auto;
+                border: 0;
+                padding-left: 5px;
+                padding-right: 5px;
+                display: flex;
+                width: 100%;
+            }
+
+            .w_name_link {
+                font-size: 3.2vw
+            }
+
+            .t--light .w_name_link {
+                color: #6dc0eb;
+            }
+
+            .t--dark .w_name_link {
+                color: #6dc0eb;
+            }
+
+            #w_percent {
+                display: none;
+            }
+
+            .lose {
+                display: none;
+            }
+
+            .gain {
+                display: none;
+            }
+
+            #coin_symbol_title {
+                display: none;
+            }
+
+            #coin_symbol_value {
+                display: none;
+            }
+
+            #coin_market_title {
+                display: none;
+            }
+
+            #coin_market_value {
+                display: none;
+            }
+
+            #coin_volume_title {
+                display: none;
+            }
+
+            #coin_volume_value {
+                display: none;
+            }
+
+            #coin_weight_title {
+                display: none;
+            }
+
+            #coin_weight_value {
+                display: none;
+            }
+
+            .gainers_losers {
+                display: none;
+                margin: auto;
+
+            }
+
+            .main_price > div.gainers_losers {
+                margin: auto;
+                display: none;
+            }
+
+            #main_index_price {
+                margin: 0;
+                width: 100%;
+            }
+
+            .pricing {
+                /*margin: auto;*/
+                width: 100%;
+            }
+
+            .middle_name {
+                text-align: center;
+                font-size: 3.0vw;
+                margin: auto;
+            }
+
+            .middle_value {
+                margin: auto;
+                font-size: 3.0vw;
+            }
+
+            #middle_price {
+                width: 40%;
+                text-align: left;
+            }
+
+            .middle_data {
+                margin: auto;
+                font-size: 2.4vw;
+            }
+
+            #right_bar {
+                display: none;
+            }
+
+            #twitter_link {
+                display: none;
+            }
+
+            .primary {
+                display: none;
+            }
+
+            #nav_butts {
+                display: none
+            }
+
+            #barz {
+                display: flex;
+            }
+
+            .main_div {
+                padding-top: 0px;
+            }
+
+            #footer_ad {
+                padding: 0;
+            }
+
+            .w_data {
+                border-bottom: none;
+                padding: 0;
+                /*padding-top: 3px;*/
+                /*padding-bottom: 3px;*/
+            }
+
+            .widget {
+                width: 25%;
+                text-align: center;
+                padding-left: 3px;
+                padding-right: 3px;
+            }
+
+            #w_price {
+                font-size: 3.0vw;
+            }
+
+            .w_name {
+                font-size: 3.0vw;
+            }
+
+            #delayed_text {
+                display: none;
+            }
+
+            #middle_time {
+                width: 100%;
+                text-align: center;
+                text-size: 10px;
+                padding-bottom: 5px;
+            }
+
+            .my_navbar {
+                width: 100%;
+            }
+
+            .r_ad {
+                display: none;
+            }
+
+            .adsbygoogle {
+                display: none;
+            }
+
         }
 
     </style>
@@ -927,16 +1050,21 @@
     </div>
 </nav>
 
+<!--Main Div-->
 <div class="main_div container-fluid text-center">
     <div class="row content">
-        <div class="widget_div col-lg-2 sidenav">
-            <div id="widget" data-spy="affix" data-offset-top="50.8">
-                <div class="well">
+
+        <!--Fix Left Sidebar-->
+        <div id="left_bar" class="widget_div col-sm-2 sidenav">
+            <div id="widget_fixed" data-spy="affix" data-offset-top="50.8">
+
+                <!--Index Price Widget-->
+                <div id="w_well" class="well">
                     <div v-cloak class="widget" v-for="row in rows">
                         <div class="w_data">
                             <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
                             <div>
-                                <div>{{row.price.toFixed(2)}}</div>
+                                <div id="w_price">{{row.price.toFixed(2)}}</div>
                                 <div id="w_percent"
                                      v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
                                     {{row.price_percent.toFixed(2)}}%
@@ -950,18 +1078,18 @@
                         <div>All Values Delayed</div>
                     </div>
                 </div>
-                <!--<ins class="adsbygoogle"-->
-                <!--style="display:inline-block;width:180px;height:200px"-->
-                <!--data-ad-client="ca-pub-9873470958093574"-->
-                <!--data-ad-slot="9616365337"></ins></div>-->
-                <div id="w_ad">
+
+                <!--Fixed Ad-->
+                <div id="left_ad">
                     <ins class="adsbygoogle"
-                         style="display:inline-block;width:225px;height:250px"
+                         style="display:inline-block;width:225px;height:300px"
                          data-ad-client="ca-pub-9873470958093574"
                          data-ad-slot="5347610936"></ins>
                 </div>
             </div>
         </div>
+
+
         <div id="center" class="col-lg-8 text-left">
             <div class="well">
                 <div class="time_bts">
@@ -975,33 +1103,52 @@
                 <div id="index_chart"></div>
             </div>
 
-            <div id="index_info" class="well main_price">
-                <!--<div class="index_info1">-->
-                <div v-cloak class="pricing" id="main_index_price" v-for="row in rows">
-                    <div class="middle_name">
-                        <div class="dex_name">ALTMSN</div>
-                        <div class="info">AltDex Masternode Index - ALTMSN Delayed Value</div>
-                    </div>
-                    <div class="middle_value">
-                        <div id="middle_price">{{row.price.toFixed(2)}}</div>
-                        <div class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
-                    </div>
-                    <div class="middle_data">
-                        <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                            {{row.price_percent.toFixed(2)}}%
+            <!--Main Index Info Div-->
+            <div id="index_info" class="main_price well">
+
+                <!--Index Data-->
+                <div v-cloak class="pricing">
+                    <div id="main_index_price" v-for="row in rows">
+                        <div id="middle_shit">
+
+                            <!--Index Name-->
+                            <div class="middle_name">
+                                <div class="dex_name">ALTMSN</div>
+                                <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                            </div>
+
+                            <!--Index Value-->
+                            <div class="middle_value">
+                                <div id="delayed_text" class="info">AltDex Masternode Index - ALTMSN Delayed Value
+                                </div>
+                                <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
+                            </div>
                         </div>
-                        <div id="middle_percent" v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
-                            {{row.change_24h.toFixed(2)}}
+
+
+                        <div class="middle_data">
+                            <div id="values_main"
+                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                {{row.price_percent.toFixed(2)}}%
+                                <div id="middle_percent"
+                                     v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
+                                    {{row.change_24h.toFixed(2)}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
+                <!--Number Gainers/Losers-->
                 <div class="gainers_losers">
+
+                    <!--Gainers-->
                     <div class="gain">
                         <div id="title_gainers">Gainers</div>
                         <div id="gainers"></div>
                     </div>
+
+                    <!--Losers-->
                     <div class="lose">
                         <div id="title_losers">Losers</div>
                         <div id="losers"></div>
@@ -1298,7 +1445,7 @@
     });
 
     let app3 = new Vue({
-        el: '#widget',
+        el: '#widget_fixed',
         data: {
             ascending: false,
             sortColumn: '',
