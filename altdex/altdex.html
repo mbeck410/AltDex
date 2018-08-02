@@ -943,6 +943,10 @@
                 display: none
             }
 
+            #index_chart {
+                display: none;
+            }
+
             #barz {
                 display: flex;
             }
@@ -1089,8 +1093,13 @@
             </div>
         </div>
 
-        <div id="center" class="col-lg-8 text-left">
-            <div class="well">
+        <!--Center Div-->
+        <div id="center" class="col-sm-8 text-left">
+
+            <!--Index Price Chart-->
+            <div id="chart_div" class="well">
+
+                <!--Resize Buttons-->
                 <div class="time_bts">
                     <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
                     <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
@@ -1099,6 +1108,8 @@
                     <button type="button" class="btn" onclick="change_range('three_month')">3 m</button>
                     <button type="button" class="btn" onclick="change_range('year')">ALL</button>
                 </div>
+
+                <!--Chart-->
                 <div id="index_chart"></div>
             </div>
 

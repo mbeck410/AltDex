@@ -1089,8 +1089,13 @@
         </div>
 
 
+        <!--Center Div-->
         <div id="center" class="col-sm-8 text-left">
-            <div class="well">
+
+            <!--Index Price Chart-->
+            <div id="chart_div" class="well">
+
+                <!--Resize Buttons-->
                 <div class="time_bts">
                     <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
                     <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
@@ -1099,6 +1104,8 @@
                     <button type="button" class="btn" onclick="change_range('three_month')">3 m</button>
                     <button type="button" class="btn" onclick="change_range('year')">ALL</button>
                 </div>
+
+                <!--Chart-->
                 <div id="index_chart"></div>
             </div>
 
@@ -1112,7 +1119,7 @@
 
                             <!--Index Name-->
                             <div class="middle_name">
-                                <div class="dex_name">ALTEXC/div>
+                                <div class="dex_name">ALTEXC</div>
                                 <div id="middle_price">{{row.price.toFixed(2)}}</div>
                             </div>
 
