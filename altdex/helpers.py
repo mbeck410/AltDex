@@ -40,9 +40,11 @@ def collect():
         if coin.name == 'Pundi X':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/2603/'
             r2 = requests.get(url2)
+
             while r2.status_code != 200:
                 sleep(30)
                 r2 = requests.get(url2)
+
             data_2 = json.loads(r2.text)
 
             coin.price = float(data_2['data']['quotes']['USD']['price'])
@@ -108,7 +110,7 @@ def collect():
             dex_percent_change = 0
             amount_entries = len(dex.indexprice_set.all())
 
-            if amount_entries < 900:
+            if amount_entries < 1300:
                 this_change = 0
 
             else:
