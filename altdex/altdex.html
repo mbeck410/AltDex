@@ -1166,54 +1166,82 @@
                 </div>
             </div>
 
+            <!--Coin Table-->
             <div class="well">
+                <table v-cloak id="coin_table" class="table">
 
-                <table v-cloak id="coin_table" class="table table-hover">
+                    <!--Table Headers-->
                     <tr id="table_head">
-                        <th @click="sort('symbol')">Symbol &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('name')" id="coin_name_title">Name &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('market_cap')" id="coin_market_title">Market Cap &nbsp; <i
-                                class="fas fa-sort"></i></th>
-                        <th @click="sort('price')">Last &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('price_percent')">Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('volume')" id="coin_volume_title">Volume (24h) &nbsp; <i
-                                class="fas fa-sort"></i></th>
-                        <th @click="sort('market_cap')" id="coin_weight_title">% Weight &nbsp; <i
-                                class="fas fa-sort"></i></th>
+                        <th @click="sort('symbol')" id="coin_symbol_title">
+                            Symbol &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('name')" id="coin_name_title">
+                            Name &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('market_cap')" id="coin_market_title">
+                            Market Cap &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price')">
+                            Last &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('price_percent')">
+                            Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('volume')" id="coin_volume_title">
+                            Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
+                        <th @click="sort('weight_3')" id="coin_weight_title">
+                            % Weight &nbsp; <i class="fas fa-sort"></i></th>
                     </tr>
+
+                    <!--Table Rows-->
                     <tr class="coin_row" v-for="row in sortedCoins">
-                        <!--<img src="https://github.com/dziungles/cryptocurrency-logos/blob/master/coins/16x16/aces.png?raw=true">-->
-                        <td class="row_symbol">{{row.symbol}}</td>
+
+                        <!--Symbol-->
+                        <td id="coin_symbol_value" class="row_symbol">{{row.symbol}}</td>
+
+                        <!--Name-->
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
                             <img :src="row.icon"></a> &nbsp; <a class="light_blue_links" :href="row.website" target="_blank">{{row.name}}</a>
                         </td>
+
+                        <!--Market Cap-->
                         <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td>${{row.pretty_price.toLocaleString('en', {useGrouping:true})}}</td>
-                        <!--.toFixed(2).toLocaleString('en', {useGrouping:true})-->
+
+                        <!--Last-->
+                        <td>${{row.price.toLocaleString('en', {useGrouping:true})}}</td>
+
+                        <!--Percent_Change-->
                         <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">
                             {{row.price_percent.toFixed(2)}}%
                         </td>
+
+                        <!--Volume-->
                         <td id="coin_volume_value">${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
-                        <td id="coin_weight_value">{{row.weight_1}}%</td>
+
+                        <!--% Weight-->
+                        <td id="coin_weight_value">{{row.weight_3}}%</td>
                     </tr>
                 </table>
             </div>
-            <ins id="footer_ad" class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9873470958093574"
-                 data-ad-slot="5597159466"
-                 data-ad-format="auto"></ins>
+            <!--Footer Ad-->
+<ins id="footer_ad" class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9873470958093574"
+     data-ad-slot="5597159466"
+     data-ad-format="auto"></ins>
         </div>
 
-        <div id="right_bar" class="col-lg-2 sidenav">
+        <!--Right Bar-->
+        <div id="right_bar" class="col-sm-2 sidenav">
+
+            <!--Top Ad-->
             <div class="r_ad">
                 <ins class="adsbygoogle"
                      style="display:inline-block;width:225px;height:190px"
                      data-ad-client="ca-pub-9873470958093574"
                      data-ad-slot="5347610936"></ins>
             </div>
+
+            <!--Top Gainers/Losers-->
             <div v-cloak class="well" id="top_gain_lose">
-                <div id="gl_data">
+                <div id="gl_all">
+
+                    <!--Gainers-->
                     <div id="top_gainers">
                         <div id="gainerz" class="gl_title">Biggest Gainers</div>
                         <div class="gl_data" v-for="row in rows2">
@@ -1225,6 +1253,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!--Losers-->
                     <div id="top_losers">
                         <div id="lozerz" class="gl_title">Biggest Losers</div>
                         <div class="gl_data" v-for="row in rows">
@@ -1239,6 +1269,7 @@
                 </div>
             </div>
 
+            <!--Middle Ad-->
             <div class="r_ad">
                 <ins class="adsbygoogle"
                      style="display:inline-block;width:225px;height:190px"
@@ -1246,24 +1277,29 @@
                      data-ad-slot="5347610936"></ins>
             </div>
 
-            <div class="well">
+            <!--News Widget-->
+            <div id="news_feed" class="well">
                 <div class="feedgrabbr_widget" id="fgid_ffd55116db5fb3420a5452387"></div>
                 <div class="feedgrabbr_widget2" id="fgid_e193389b25317bb961e6b582a"></div>
             </div>
-            <ins class="adsbygoogle"
-                     style="display:inline-block;width:225px;height:300px"
+
+            <div class="r_ad">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:225px;height:190px"
                      data-ad-client="ca-pub-9873470958093574"
                      data-ad-slot="5347610936"></ins>
-
+            </div>
         </div>
-
     </div>
-
 </div>
 
+<!--Footer-->
+
 <footer class="container-fluid text-center">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+        <!--Disclaimer-->
         <div id="disclaimer">
             <p>The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
                 is
@@ -1275,18 +1311,21 @@
                 performance
                 is no guarantee of future results.
             <p>
-
             <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your experience, but
                 you can opt-out if you wish <a class="light_blue_links" href="/privacy_policy/">Privacy Policy</a>.
             </p>
+
+            <!--Page Links-->
             <div class="footer_pages">
-                <div id="footer_left_link"><a class="light_blue_links" href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a class="light_blue_links"
-                        href="/privacy_policy/">Privacy Policy</a></div>
+                <div id="footer_left_link"><a class="light_blue_links" href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
+                        class="light_blue_links" href="/privacy_policy/">Privacy Policy</a></div>
             </div>
         </div>
+
+        <!--Other Links-->
         <div class="footer_bottom">
             <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
-            <div><a class="light_blue_links fa" href="mailto:admin@altdex.co" target="_blank">&#x2709</a> <a
+            <div><a href="mailto:admin@altdex.co" class="fa light_blue_links" target="_blank">&#x2709</a><a
                     href="https://twitter.com/altcoindex"
                     class="fa fa-twitter light_blue_links" target="_blank"></a></div>
             <div class="footer_link">From the creators of <a class="light_blue_links" href="https://sludgefeed.com/"
@@ -1296,7 +1335,7 @@
                     class="light_blue_links" href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
         </div>
     </div>
-    <div class="col-lg-2"></div>
+    <div class="col-sm-2"></div>
 </footer>
 <!--Javascript-->
 <script>
