@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>AltDex | Exchange Index (ALTEXC)</title>
+    <title>AltDex | Exchange Token Index (ALTEXC)</title>
 
     <!--Meta Inf0-->
     <meta charset="UTF-8">
-    <meta name="description" content="The market-cap weighted AltDex Exchange Token Index tracks the industry’s leading cryptocurrency exchange tokens.">
+    <meta name="description"
+          content="The market cap-weighted AltDex Exchange Token Index tracks the industry’s leading cryptocurrency exchange tokens.">
     <meta name="keywords"
           content="Cryptocurrency, Bitcoin, AltDex, Index, Altcoin, coin, chart, Investing, Exchange, Trading, Market, price">
     <meta name="author" content="Peer, LLC">
@@ -75,7 +76,7 @@
     }(document, "script", "twitter-wjs"));</script>
 
     <!--Google ad/webdata-->
-        <!--Global site tag (gtag.js) - Google Analytics-->
+     <!--Global site tag (gtag.js) - Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -93,7 +94,6 @@
     google_ad_client: "ca-pub-6108390557757563",
     enable_page_level_ads: true
     });
-    (adsbygoogle = window.adsbygoogle || []).push({});
     (adsbygoogle = window.adsbygoogle || []).push({});
     (adsbygoogle = window.adsbygoogle || []).push({});
     (adsbygoogle = window.adsbygoogle || []).push({});
@@ -993,6 +993,7 @@
             #middle_time {
                 width: 100%;
                 text-align: center;
+                text-size: 10px;
                 padding-bottom: 5px;
             }
 
@@ -1287,6 +1288,12 @@
                 <div class="feedgrabbr_widget" id="fgid_ebd3b2ea855fd4e14daaf2e86"></div>
                 <div class="feedgrabbr_widget2" id="fgid_9f812ca49f268ac46a24c3fb3"></div>
             </div>
+            <div class="r_ad">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:225px;height:190px"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="5347610936"></ins>
+            </div>
         </div>
     </div>
 </div>
@@ -1355,15 +1362,15 @@
 
     // Getting and Setting Theme from localStorage 'mode'
     if (mode === null) {
-        localStorage.setItem("mode", "light");
-        body.classList.add('t--light');
-    } else if (mode === 'dark') {
-        body.classList.remove('t--light');
-        body.classList.add('t--dark');
-    } else {
-        body.classList.remove('t--dark');
-        body.classList.add('t--light');
-    }
+            localStorage.setItem("mode", "light");
+            body.classList.add('t--light');
+        } else if (mode === 'dark'){
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+        } else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+        }
 
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
@@ -1371,7 +1378,7 @@
         let grid_color = '';        //Index grid color
 
         // Light to Dark
-        if (body.classList.contains('t--light')) {
+        if (body.classList.contains('t--light'))  {
             plot_lines = '#D0D0D0';
             body.classList.remove('t--light');
             body.classList.add('t--dark');
@@ -1446,14 +1453,15 @@
         Plotly.relayout('index_chart', update)
     };
 
+    // Coin Table App
     let app = new Vue({
         el: '#coin_table',
-
         data: {
             rows: [],
             current_sort: 'market_cap',
             current_dir: 'desc'
         },
+
         methods: {
             sort: function (s) {
                 if (s === this.current_sort) {
@@ -1475,6 +1483,7 @@
         },
     });
 
+    // Index Data App
     let app2 = new Vue({
         el: '#index_info',
         data: {
@@ -1485,6 +1494,8 @@
         }
     });
 
+
+    // Widget App
     let app3 = new Vue({
         el: '#widget_fixed',
         data: {
@@ -1494,6 +1505,7 @@
         }
     });
 
+    // Top Gainers/Losers Apps
     let app4 = new Vue({
         el: '#top_gain_lose',
         data: {
@@ -1504,7 +1516,7 @@
         }
     });
 
-
+    // API Pulls
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -1520,43 +1532,7 @@
     }
 
 
-    function coin_current(index) {
-        app.rows = [];
-        amount_gainers = 0;
-        amount_losers = 0;
-        let dict_loss = [];
-        let url = '/getcoinscurrent/';  //"{% url 'altdexapp:getcoinscurrent' %}";
-        //alert('test');
-        let count = 0;
-        http_get(url, function (data) {
-
-            for (let i = 0; i < data.dict_key.length; ++i) {
-                let entry = data.dict_key[i];
-                let index_name = entry.indices;
-                if (index_name.includes(index) === true) {
-                    if (entry.price_percent > 0) {
-                        amount_gainers++;
-                    }
-                    else if (entry.price_percent < 0) {
-                        amount_losers++;
-                    }
-                    app.rows.push(entry);
-                    count++;
-                }
-                //
-                // let index_name = entry.indices;
-                // if (index_name.includes(index) === true) {
-
-            }
-            let percent_gainers = amount_gainers / count * 100;
-            let percent_losers = amount_losers / count * 100;
-            let new_gain = percent_gainers.toFixed(1);
-            let new_lose = percent_losers.toFixed(1);
-            gainers_div.innerHTML = new_gain.toString() + '%';
-            losers_div.innerHTML = new_lose.toString() + '%';
-        })
-    };
-
+    // Top Gainers/Losers Pull
     function top_gainers_losers() {
         let gain_data = [];
         let lose_data = [];
@@ -1575,10 +1551,53 @@
         })
     }
 
+
+    // Coin Table Pull
+    function coin_current(index) {
+        app.rows = [];
+        amount_gainers = 0;
+        amount_losers = 0;
+        let dict = [];
+        let top_bar = [];
+        let divisor = 0;
+        let url = '/getcoinscurrent/';
+        let count = 0;
+        http_get(url, function (data) {
+
+            for (let i = 0; i < data.dict_key.length; ++i) {
+                let entry = data.dict_key[i];
+                let index_name = entry.indices;
+                if (i < 5) {
+                    top_bar.push(entry)
+                }
+                if (index_name.includes(index) === true) {
+                    if (entry.price_percent > 0) {
+                        amount_gainers++;
+                    }
+                    else if (entry.price_percent < 0) {
+                        amount_losers++;
+                    }
+                    dict.push(entry);
+                    count++;
+                    divisor += entry.market_cap
+                }
+            }
+            app.rows = dict;
+            let percent_gainers = amount_gainers / count * 100;
+            let percent_losers = amount_losers / count * 100;
+            let new_gain = percent_gainers.toFixed(1);
+            let new_lose = percent_losers.toFixed(1);
+            gainers_div.innerHTML = new_gain.toString() + '%';
+            losers_div.innerHTML = new_lose.toString() + '%';
+        })
+    };
+
+    // Coin Table Updates
     function update_coin(index) {
         let new_coins = [];
         amount_gainers = 0;
         amount_losers = 0;
+        let top_bar = [];
         let count = 0;
         let url = '/getcoinscurrent/';
         http_get(url, function (data) {
@@ -1597,6 +1616,9 @@
                     count++;
                 }
                 // let index_name = entry.indices;
+                if (entry.symbol in top_bois) {
+                    top_bar.push(entry);
+                }
                 // if (index_name.includes(index) === true) {
 
             }
@@ -1608,10 +1630,12 @@
             gainers_div.innerHTML = new_gain.toString() + '%';
             losers_div.innerHTML = new_lose.toString() + '%';
             app.rows = new_coins;
+            app5.rows = top_bar;
         });
     }
 
 
+    // Index Data Pull
     function index_current(index_id) {
         let new_data = [];
         let other_data = [];
@@ -1619,6 +1643,7 @@
         app2.rows = [];
         app3.rows = [];
         let url = '/getindexcurrent/';
+        //alert('test');
         http_get(url, function (data) {
             for (let i = 0; i < data.dict_key.length; ++i) {
                 other_data.push(data.dict_key[i])
@@ -1632,6 +1657,7 @@
         });
     }
 
+    // Index Data Update
     function update_index(index_id) {
         let new_data = [];
         let other_data = [];
@@ -1648,7 +1674,6 @@
             // }
         });
     }
-
 
     let line_data = [];
 
@@ -1750,6 +1775,7 @@
 
     let gainers_div = document.querySelector('#gainers');
     let losers_div = document.querySelector('#losers');
+
 
 
     index_current(current_id);
