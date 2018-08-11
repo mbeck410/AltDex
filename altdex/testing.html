@@ -1101,17 +1101,19 @@
             </div>
 
             <!--Main Index Info Div-->
-                <div class="container">
+                <div class="container  well ">
 
                     <!--Index Data-->
                     <ul class="nav nav-pills">
-                        <li class="active"><a data-toggle="pill" href="#index_info">Price</a></li>
+                        <li class="active"><a data-toggle="pill" href="#tester">Price</a></li>
                         <li><a data-toggle="pill" href="#price_info">Info</a></li>
                     </ul>
 
                     <div class="tab-content">
                         <!--Main Index Info Div-->
-                        <div id="index_info" class="main_price well">
+                        <div class="main_price tab-pane fade in active" id="tester">
+
+                            <div id="index_info">
 
                             <!--Index Data-->
                             <div v-cloak class="pricing">
@@ -1165,9 +1167,10 @@
                                 </div>
                             </div>
                         </div>
+                            </div>
 
                         <!--Index Info-->
-                        <div id="price_info" class="tab-pane fade well">
+                        <div id="price_info" class="tab-pane fade">
                             <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
                             <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on
                                 privacy or
@@ -1179,7 +1182,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!--Coin Table-->
             <div class="well">
