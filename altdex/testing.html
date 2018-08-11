@@ -1101,7 +1101,6 @@
             </div>
 
             <!--Main Index Info Div-->
-            <div class="well">
                 <div class="container">
 
                     <!--Index Data-->
@@ -1111,7 +1110,8 @@
                     </ul>
 
                     <div class="tab-content">
-                        <div id="index_info" class="main_price tab-pane fade in active" >
+                        <!--Main Index Info Div-->
+                        <div id="index_info" class="main_price well">
 
                             <!--Index Data-->
                             <div v-cloak class="pricing">
@@ -1127,10 +1127,10 @@
                                         <!--Index Value-->
                                         <div class="middle_value">
                                             <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV
-                                                Delayed
-                                                Value
+                                                Delayed Value
                                             </div>
-                                            <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC
+                                            <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}}
+                                                UTC
                                             </div>
                                         </div>
                                     </div>
@@ -1148,7 +1148,6 @@
                                     </div>
                                 </div>
                             </div>
-
 
                             <!--Number Gainers/Losers-->
                             <div class="gainers_losers">
@@ -1168,7 +1167,7 @@
                         </div>
 
                         <!--Index Info-->
-                        <div id="price_info" class="tab-pane fade">
+                        <div id="price_info" class="tab-pane fade well">
                             <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
                             <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on
                                 privacy or
