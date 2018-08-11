@@ -586,13 +586,18 @@
             width: 75%;
         }
 
-        .container {
+        #info_switch {
             width: 100%;
+            padding: 0;
         }
 
         #middle_time {
             width: 40%;
             text-align: center;
+        }
+
+        .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+            background-color: #222842;
         }
 
         /*Themes*/
@@ -1106,7 +1111,7 @@
             </div>
 
             <!--Main Index Info Div-->
-                <div class="container  well ">
+                <div class="container" id="info_switch">
 
                     <!--Index Data-->
                     <ul class="nav nav-pills">
@@ -1116,7 +1121,7 @@
 
                     <div class="tab-content">
                         <!--Main Index Info Div-->
-                        <div class="tab-pane fade in active" id="price_info">
+                        <div class="tab-pane fade in active well" id="price_info">
 
                             <div id="index_info" class="main_price">
 
@@ -1175,7 +1180,7 @@
                             </div>
 
                         <!--Index Info-->
-                        <div id="info" class="tab-pane fade">
+                        <div id="info" class="tab-pane fade well">
                             <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
                             <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on
                                 privacy or
