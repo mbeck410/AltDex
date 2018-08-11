@@ -596,6 +596,7 @@
 
         #middle_time {
             text-align: center;
+            width: 50%;
         }
 
         /*Themes*/
@@ -1115,12 +1116,12 @@
 
                     <!--Index Data-->
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#price">Price</a></li>
+                        <li class="active"><a data-toggle="pill" href="#price">Price</a></li>
                         <li><a data-toggle="tab" href="#price_info">Info</a></li>
                     </ul>
 
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="price">
+                        <div id="price" class="tab-pane fade in active">
                             <div v-cloak class="pricing">
                                 <div id="main_index_price" v-for="row in rows">
                                     <div id="middle_shit">
