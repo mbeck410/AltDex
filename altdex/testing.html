@@ -590,6 +590,10 @@
             width: 75%;
         }
 
+        #price {
+            display: flex;
+        }
+
         /*Themes*/
 
         /*Dark Theme*/
@@ -1105,78 +1109,79 @@
 
                 <div class="container">
 
-                <!--Index Data-->
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#price">Price</a></li>
-                    <li><a data-toggle="tab" href="#price_info">Info</a></li>
-                </ul>
+                    <!--Index Data-->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#price">Price</a></li>
+                        <li><a data-toggle="tab" href="#price_info">Info</a></li>
+                    </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="price">
-                        <div v-cloak class="pricing">
-                            <div id="main_index_price" v-for="row in rows">
-                                <div id="middle_shit">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="price">
+                            <div v-cloak class="pricing">
+                                <div id="main_index_price" v-for="row in rows">
+                                    <div id="middle_shit">
 
-                                    <!--Index Name-->
-                                    <div class="middle_name">
-                                        <div class="dex_name">ALTPRV</div>
-                                        <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                                        <!--Index Name-->
+                                        <div class="middle_name">
+                                            <div class="dex_name">ALTPRV</div>
+                                            <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                                        </div>
+
+                                        <!--Index Value-->
+                                        <div class="middle_value">
+                                            <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV
+                                                Delayed
+                                                Value
+                                            </div>
+                                            <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <!--Index Value-->
-                                    <div class="middle_value">
-                                        <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV Delayed
-                                            Value
-                                        </div>
-                                        <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC
+
+                                    <div class="middle_data">
+                                        <div id="values_main"
+                                             v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                            {{row.price_percent.toFixed(2)}}%
+                                            <div id="middle_percent"
+                                                 v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
+                                                {{row.change_24h.toFixed(2)}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
+                            <!--Number Gainers/Losers-->
+                            <div class="gainers_losers">
 
-                                <div class="middle_data">
-                                    <div id="values_main"
-                                         v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                        {{row.price_percent.toFixed(2)}}%
-                                        <div id="middle_percent"
-                                             v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
-                                            {{row.change_24h.toFixed(2)}}
-                                        </div>
-                                    </div>
+                                <!--Gainers-->
+                                <div class="gain">
+                                    <div id="title_gainers">Gainers</div>
+                                    <div id="gainers"></div>
+                                </div>
+
+                                <!--Losers-->
+                                <div class="lose">
+                                    <div id="title_losers">Losers</div>
+                                    <div id="losers"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!--Number Gainers/Losers-->
-                        <div class="gainers_losers">
-
-                            <!--Gainers-->
-                            <div class="gain">
-                                <div id="title_gainers">Gainers</div>
-                                <div id="gainers"></div>
-                            </div>
-
-                            <!--Losers-->
-                            <div class="lose">
-                                <div id="title_losers">Losers</div>
-                                <div id="losers"></div>
-                            </div>
+                        <!--Index Info-->
+                        <div id="price_info" class="tab-pane fade">
+                            <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
+                            <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on
+                                privacy or
+                                security.</p>
+                            <ul>
+                                <li>Number of Constituents: 17</li>
+                                <li>Market capitalization greater than $10,000,000.</li>
+                            </ul>
                         </div>
-                    </div>
-
-                    <!--Index Info-->
-                    <div id="price_info" class="tab-pane fade">
-                        <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
-                        <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on
-                            privacy or
-                            security.</p>
-                        <ul>
-                            <li>Number of Constituents: 17</li>
-                            <li>Market capitalization greater than $10,000,000.</li>
-                        </ul>
                     </div>
                 </div>
-                    </div>
             </div>
 
             <!--Coin Table-->
