@@ -5,7 +5,8 @@
 
     <!--Meta Inf0-->
     <meta charset="UTF-8">
-    <meta name="description" content="The market-cap weighted AltDex 100 Index tracks large-cap cryptocurrencies and tokens.">
+    <meta name="description"
+          content="The market-cap weighted AltDex 100 Index tracks large-cap cryptocurrencies and tokens.">
     <meta name="keywords"
           content="Cryptocurrency, Bitcoin, AltDex, Index, Altcoin, coin, chart, Investing, Exchange, Trading, Market, price">
     <meta name="author" content="Peer, LLC">
@@ -30,11 +31,12 @@
     <meta name="twitter:description" content="Market Capitalization-Weighted Cryptocurrency Index">
 
     <!--Links-->
-        <!--Fonts/Characters-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!--Fonts/Characters-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!--Symbol-->
+    <!--Symbol-->
     <link rel="shortcut icon" type="image/png"
           href="https://sludgefeed.com/wp-content/uploads/2018/06/Altdex-favicon-32x32.png"/>
 
@@ -77,7 +79,7 @@
     }(document, "script", "twitter-wjs"));</script>
 
     <!--Google ad/webdata-->
-     <!--Global site tag (gtag.js) - Google Analytics-->
+    <!--Global site tag (gtag.js) - Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -602,6 +604,29 @@
             color: #6dc0eb;;
         }
 
+        .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+            background-color: #222842;
+            margin-bottom: 7px;
+            border-radius: 2px;
+            padding-bottom: 6px;
+            padding-top: 6px;
+            padding-right: 12px;
+            padding-left: 12px;
+        }
+
+        .nav-pills > li > a {
+            border-radius: 2px;
+            padding-bottom: 6px;
+            padding-top: 6px;
+            padding-right: 12px;
+            padding-left: 12px;
+            color: #6dc0eb;
+        }
+
+        .nav-pills > li > a:hover {
+            background-color: darkgray;
+        }
+
         /*Themes*/
 
         /*Dark Theme*/
@@ -763,7 +788,6 @@
         }
 
         @media screen and (max-width: 767px) {
-
 
             #center {
                 width: 100%;
@@ -1125,54 +1149,82 @@
             </div>
 
             <!--Main Index Info Div-->
-            <div id="index_info" class="main_price well">
+            <div class="container" id="info_switch">
 
                 <!--Index Data-->
-                <div v-cloak class="pricing">
-                    <div id="main_index_price" v-for="row in rows">
-                        <div id="middle_shit">
+                <ul class="nav nav-pills">
+                    <li class="active"><a data-toggle="pill" href="#price_info">Price</a></li>
+                    <li><a data-toggle="pill" href="#info">Info</a></li>
+                </ul>
 
-                            <!--Index Name-->
-                            <div class="middle_name">
-                                <div class="dex_name">ALT100</div>
-                                <div id="middle_price">{{row.price.toFixed(2)}}</div>
-                            </div>
+                <div class="tab-content">
+                    <!--Main Index Info Div-->
+                    <div class="tab-pane fade in active well" id="price_info">
 
-                            <!--Index Value-->
-                            <div class="middle_value">
-                                <div id="delayed_text" class="info">AltDex 100 Cryptocurrency Index - ALT100 Delayed Value
+                        <div id="index_info" class="main_price">
+
+                            <!--Index Data-->
+                            <div v-cloak class="pricing">
+                                <div id="main_index_price" v-for="row in rows">
+                                    <div id="middle_shit">
+
+                                        <!--Index Name-->
+                                        <div class="middle_name">
+                                            <div class="dex_name">ALTPRV</div>
+                                            <div id="middle_price">{{row.price.toFixed(2)}}</div>
+                                        </div>
+
+                                        <!--Index Value-->
+                                        <div class="middle_value">
+                                            <div id="delayed_text" class="info">AltDex Privacy Coin Index - ALTPRV
+                                                Delayed Value
+                                            </div>
+                                            <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}}
+                                                UTC
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="middle_data">
+                                        <div id="values_main"
+                                             v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                            {{row.price_percent.toFixed(2)}}%
+                                            <div id="middle_percent"
+                                                 v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
+                                                {{row.change_24h.toFixed(2)}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}} UTC</div>
                             </div>
-                        </div>
 
+                            <!--Number Gainers/Losers-->
+                            <div class="gainers_losers">
 
-                        <div class="middle_data">
-                            <div id="values_main"
-                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                {{row.price_percent.toFixed(2)}}%
-                                <div id="middle_percent"
-                                     v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
-                                    {{row.change_24h.toFixed(2)}}
+                                <!--Gainers-->
+                                <div class="gain">
+                                    <div id="title_gainers">Gainers</div>
+                                    <div id="gainers"></div>
+                                </div>
+
+                                <!--Losers-->
+                                <div class="lose">
+                                    <div id="title_losers">Losers</div>
+                                    <div id="losers"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!--Number Gainers/Losers-->
-                <div class="gainers_losers">
-
-                    <!--Gainers-->
-                    <div class="gain">
-                        <div id="title_gainers">Gainers</div>
-                        <div id="gainers"></div>
-                    </div>
-
-                    <!--Losers-->
-                    <div class="lose">
-                        <div id="title_losers">Losers</div>
-                        <div id="losers"></div>
+                    <!--Index Info-->
+                    <div id="info" class="tab-pane fade well">
+                        <h4><b>AltDex 100 (ALT100)</b></h4>
+                        <p>The AltDex 100 is the best single-gauge of the large-cap cryptocurrencies and tokens.</p>
+                        <ul>
+                            <li>Number of Constituents: 100</li>
+                            <li>Trailing 30 day average daily trading volume $100,000.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1207,7 +1259,8 @@
 
                         <!--Name-->
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
-                            <img :src="row.icon"></a> &nbsp; <a class="light_blue_links" :href="row.website" target="_blank">{{row.name}}</a>
+                            <img :src="row.icon"></a> &nbsp; <a class="light_blue_links" :href="row.website"
+                                                                target="_blank">{{row.name}}</a>
                         </td>
 
                         <!--Market Cap-->
@@ -1230,11 +1283,11 @@
                 </table>
             </div>
             <!--Footer Ad-->
-<ins id="footer_ad" class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9873470958093574"
-     data-ad-slot="5597159466"
-     data-ad-format="auto"></ins>
+            <ins id="footer_ad" class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9873470958093574"
+                 data-ad-slot="5597159466"
+                 data-ad-format="auto"></ins>
         </div>
 
         <!--Right Bar-->
@@ -1256,7 +1309,8 @@
                     <div id="top_gainers">
                         <div id="gainerz" class="gl_title">Biggest Gainers</div>
                         <div class="gl_data" v-for="row in rows2">
-                            <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a></div>
+                            <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
+                            </div>
                             <div class="gl_price">${{row.price}}</div>
                             <div class="gl_percent"
                                  v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
@@ -1269,7 +1323,8 @@
                     <div id="top_losers">
                         <div id="lozerz" class="gl_title">Biggest Losers</div>
                         <div class="gl_data" v-for="row in rows">
-                            <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a></div>
+                            <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
+                            </div>
                             <div class="gl_price">${{row.price}}</div>
                             <div class="gl_percent"
                                  v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
@@ -1328,8 +1383,9 @@
 
             <!--Page Links-->
             <div class="footer_pages">
-                <div id="footer_left_link"><a class="light_blue_links" href="/about/">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
-                        class="light_blue_links" href="/privacy_policy/">Privacy Policy</a></div>
+                <div id="footer_left_link"><a class="light_blue_links" href="/about/">About</a> &nbsp; &nbsp; | &nbsp;
+                    &nbsp; <a
+                            class="light_blue_links" href="/privacy_policy/">Privacy Policy</a></div>
             </div>
         </div>
 
@@ -1341,7 +1397,8 @@
                     class="fa fa-twitter light_blue_links" target="_blank"></a></div>
             <div class="footer_link">From the creators of <a class="light_blue_links" href="https://sludgefeed.com/"
                                                              target="_blank">SludgeFeed</a></div>
-            <div class="footer_link">Select market data provided by <a class="light_blue_links" href="http://coincap.io/"
+            <div class="footer_link">Select market data provided by <a class="light_blue_links"
+                                                                       href="http://coincap.io/"
                                                                        target="_blank">CoinCap</a> & <a
                     class="light_blue_links" href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
         </div>
