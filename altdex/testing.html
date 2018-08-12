@@ -617,13 +617,13 @@
         /*Loader Animation*/
 
         #loader {
-          /*position: absolute;*/
+          position: relative;
           /*left: 50%;*/
           /*top: 50%;*/
           z-index: 1;
           width: 100px;
           height: 100px;
-          margin: -75px 0 0 -75px;
+          /*margin: -75px 0 0 -75px;*/
           border: 16px solid #f3f3f3;
           border-radius: 50%;
           border-top: 16px solid #6dc0eb;
@@ -1882,10 +1882,8 @@
             } else {
                 Plotly.react('index_chart', line_data, layout_dark);
             }
-
-            loader();
-
         });
+        loader();
     }
 
 
