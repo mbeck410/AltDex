@@ -330,7 +330,7 @@
             font-size: 10px;
         }
 
-        .time_bts > button:hover {
+        #time_bts > button:hover {
             color: lightgray;
         }
 
@@ -614,6 +614,63 @@
             padding-left: 12px;
         }
 
+        /*Loader Animation*/
+
+        #loader {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          z-index: 1;
+          width: 150px;
+          height: 150px;
+          margin: -75px 0 0 -75px;
+          border: 16px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 16px solid #6dc0eb;
+          width: 120px;
+          height: 120px;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        /* Add animation to "page content" */
+        .animate-bottom {
+          position: relative;
+          -webkit-animation-name: animatebottom;
+          -webkit-animation-duration: 1s;
+          animation-name: animatebottom;
+          animation-duration: 1s
+        }
+
+        @-webkit-keyframes animatebottom {
+          from { bottom:-100px; opacity:0 }
+          to { bottom:0px; opacity:1 }
+        }
+
+        @keyframes animatebottom {
+          from{ bottom:-100px; opacity:0 }
+          to{ bottom:0; opacity:1 }
+        }
+
+        #index_chart {
+          display: none;
+          text-align: center;
+        }
+
+        #time_bts {
+            display: none;
+        }
+
         /*Themes*/
 
         /*Dark Theme*/
@@ -821,7 +878,7 @@
                 padding-right: 10px;
             }
 
-            .time_bts {
+            #time_bts {
                 display: none;
             }
 
@@ -1019,7 +1076,7 @@
     </style>
 </head>
 
-<body>
+<body onload="loader()" style="margin:0;">
 
 <!--NavBar-->
 <nav class="my_navbar navbar navbar-default">
@@ -1110,8 +1167,10 @@
             <!--Index Price Chart-->
             <div id="chart_div" class="well">
 
+                <div id="loader"></div>
+
                 <!--Resize Buttons-->
-                <div class="time_bts">
+                <div id="time_bts" class="animate-bottom">
                     <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
                     <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
                     <button type="button" class="btn" onclick="change_range('seven_day')">7 d</button>
@@ -1121,7 +1180,7 @@
                 </div>
 
                 <!--Chart-->
-                <div id="index_chart"></div>
+                <div id="index_chart" class="animate-bottom"></div>
             </div>
 
             <!--Main Index Info Div-->
@@ -1412,6 +1471,18 @@
     } else {
         body.classList.remove('t--dark');
         body.classList.add('t--light');
+    }
+
+    let myVar;
+
+    function loader() {
+        myVar = setTimeout(showPage, 3000);
+    }
+
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("time_bts").style.display = "block";
+      document.getElementById("index_chart").style.display = "block";
     }
 
     // Changing Mode/Theme on button click
