@@ -631,6 +631,7 @@
           height: 75px;
           -webkit-animation: spin 2s linear infinite;
           animation: spin 2s linear infinite;
+            text-align: center;
         }
 
         @-webkit-keyframes spin {
@@ -662,13 +663,8 @@
           to{ bottom:0; opacity:1 }
         }
 
-        #index_chart {
+        #chart_objects {
           display: none;
-          text-align: center;
-        }
-
-        #time_bts {
-            display: none;
         }
 
         /*Themes*/
@@ -1170,17 +1166,19 @@
                 <div id="loader"></div>
 
                 <!--Resize Buttons-->
-                <div id="time_bts" class="animate-bottom">
-                    <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
-                    <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
-                    <button type="button" class="btn" onclick="change_range('seven_day')">7 d</button>
-                    <button type="button" class="btn" onclick="change_range('one_month')">1 m</button>
-                    <button type="button" class="btn" onclick="change_range('three_month')">3 m</button>
-                    <button type="button" class="btn" onclick="change_range('year')">ALL</button>
-                </div>
+                <div id="chart_objects" class="animate-bottom">
+                    <div id="time_bts">
+                        <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
+                        <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
+                        <button type="button" class="btn" onclick="change_range('seven_day')">7 d</button>
+                        <button type="button" class="btn" onclick="change_range('one_month')">1 m</button>
+                        <button type="button" class="btn" onclick="change_range('three_month')">3 m</button>
+                        <button type="button" class="btn" onclick="change_range('year')">ALL</button>
+                    </div>
 
-                <!--Chart-->
-                <div id="index_chart" class="animate-bottom"></div>
+                    <!--Chart-->
+                    <div id="index_chart"></div>
+                </div>
             </div>
 
             <!--Main Index Info Div-->
@@ -1482,8 +1480,7 @@
 
     function showPage() {
       document.getElementById("loader").style.display = "none";
-      document.getElementById("index_chart").style.display = "block";
-      document.getElementById("time_bts").style.display = "block";
+      document.getElementById("chart_objects").style.display = "block";
     }
 
     // Changing Mode/Theme on button click
