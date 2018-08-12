@@ -617,7 +617,7 @@
         /*Loader Animation*/
 
         #loader {
-          position: absolute;
+          /*position: absolute;*/
           left: 50%;
           top: 50%;
           z-index: 1;
@@ -627,8 +627,8 @@
           border: 16px solid #f3f3f3;
           border-radius: 50%;
           border-top: 16px solid #6dc0eb;
-          width: 80px;
-          height: 80px;
+          width: 75px;
+          height: 75px;
           -webkit-animation: spin 2s linear infinite;
           animation: spin 2s linear infinite;
         }
@@ -1485,8 +1485,6 @@
       document.getElementById("time_bts").style.display = "block";
       document.getElementById("index_chart").style.display = "block";
     }
-
-    index_chart.onload.loader();
 
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
