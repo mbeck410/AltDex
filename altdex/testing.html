@@ -621,14 +621,14 @@
           left: 50%;
           top: 50%;
           z-index: 1;
-          width: 150px;
-          height: 150px;
+          width: 100px;
+          height: 100px;
           margin: -75px 0 0 -75px;
           border: 16px solid #f3f3f3;
           border-radius: 50%;
           border-top: 16px solid #6dc0eb;
-          width: 120px;
-          height: 120px;
+          width: 80px;
+          height: 80px;
           -webkit-animation: spin 2s linear infinite;
           animation: spin 2s linear infinite;
         }
@@ -645,7 +645,7 @@
 
         /* Add animation to "page content" */
         .animate-bottom {
-          position: relative;
+          /*position: relative;*/
           -webkit-animation-name: animatebottom;
           -webkit-animation-duration: 1s;
           animation-name: animatebottom;
@@ -1461,6 +1461,7 @@
     let mode = localStorage.getItem("mode");
     let body = document.querySelector('body');
 
+
     // Getting and Setting Theme from localStorage 'mode'
     if (mode === null) {
         localStorage.setItem("mode", "light");
@@ -1484,6 +1485,8 @@
       document.getElementById("time_bts").style.display = "block";
       document.getElementById("index_chart").style.display = "block";
     }
+
+    index_chart.onload.loader();
 
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
@@ -1881,6 +1884,8 @@
             } else {
                 Plotly.react('index_chart', line_data, layout_dark);
             }
+
+            loader();
 
         });
     }
