@@ -1472,12 +1472,6 @@
         body.classList.add('t--light');
     }
 
-    let myVar;
-
-    function loader() {
-        myVar = setTimeout(showPage, 3000);
-    }
-
     function showPage() {
       document.getElementById("loader").style.display = "none";
       document.getElementById("chart_objects").style.display = "block";
@@ -1880,7 +1874,7 @@
                 Plotly.react('index_chart', line_data, layout_dark);
             }
         });
-        loader();
+        showPage();
     }
 
 
