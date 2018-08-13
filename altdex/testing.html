@@ -1869,12 +1869,11 @@
             };
 
             if (mode === 'light') {
-                Plotly.react('index_chart', line_data, layout_light);
+                Plotly.react('index_chart', line_data, layout_light).then(showPage());
             } else {
-                Plotly.react('index_chart', line_data, layout_dark);
+                Plotly.react('index_chart', line_data, layout_dark).then(showPage());
             }
         });
-        showPage();
     }
 
 
