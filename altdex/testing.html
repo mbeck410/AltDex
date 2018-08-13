@@ -663,14 +663,14 @@
           to{ bottom:0; opacity:1 }
         }
 
-        #chart_objects {
-          display: none;
-            width: 100%;
-        }
+        /*#chart_objects {*/
+          /*display: none;*/
+            /*width: 100%;*/
+        /*}*/
 
-        #index_chart {
-            width: 100%;
-        }
+        /*#index_chart {*/
+            /*width: 100%;*/
+        /*}*/
 
         /*Themes*/
 
@@ -1171,8 +1171,8 @@
                 <div id="loader"></div>
 
                 <!--Resize Buttons-->
-                <div id="chart_objects" class="animate-bottom">
-                    <div id="time_bts">
+                <!--<div id="chart_objects">-->
+                    <div id="time_bts" class="animate-bottom">
                         <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
                         <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
                         <button type="button" class="btn" onclick="change_range('seven_day')">7 d</button>
@@ -1182,8 +1182,8 @@
                     </div>
 
                     <!--Chart-->
-                    <div id="index_chart"></div>
-                </div>
+                    <div id="index_chart" class="animate-bottom"></div>
+                <!--</div>-->
             </div>
 
             <!--Main Index Info Div-->
@@ -1479,7 +1479,8 @@
 
     function showPage() {
       document.getElementById("loader").style.display = "none";
-      document.getElementById("chart_objects").style.display = "block";
+      document.getElementById("time_bts").style.display = "block";
+      document.getElementById("index_chart").style.display = "block";
     }
 
     // Changing Mode/Theme on button click
