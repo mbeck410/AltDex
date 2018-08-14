@@ -1490,7 +1490,7 @@
         } else if (time_frame === 'seven_day') {                    //Range: 7 Day
             date_update.setDate(date_update.getDate() - 7);
             x_update = [date_update, last_x];
-            y_update = [last_y - 20, last_y + 20]
+            y_update = [last_y - 10, last_y + 30]
         } else if (time_frame === 'one_day') {                      //Range: 24 Hour
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
@@ -1505,7 +1505,7 @@
         } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
             x_update = [date_update, last_x];
-            y_update = [last_y - 2, last_y + 2]
+            y_update = [last_y - 1, last_y + 3]
         }
 
         let update = {
