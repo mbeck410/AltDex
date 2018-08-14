@@ -180,11 +180,12 @@ def getcoinscurrent(request):
         if name_lower == 'metaverse ep':
             coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/metaverse.png'
 
-        elif ' ' in name_lower:
+        elif name_lower == 'stakenet':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2633.png'
 
+        elif ' ' in name_lower:
             hyphened_name = name_lower.replace(' ', '-')
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
-
 
         else:
             no_space = name_lower.replace(' ', '')
