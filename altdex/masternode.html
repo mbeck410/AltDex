@@ -104,6 +104,19 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
+    <script>
+        // Getting and Setting Theme from localStorage 'mode'
+        if (mode === null) {
+            localStorage.setItem("mode", "light");
+            body.classList.add('t--light');
+        } else if (mode === 'dark') {
+            body.classList.remove('t--light');
+            body.classList.add('t--dark');
+        } else {
+            body.classList.remove('t--dark');
+            body.classList.add('t--light');
+        }
+    </script>
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .affix {
@@ -1422,18 +1435,6 @@
     let dark_bt = document.querySelector('#dark_bt');
     let mode = localStorage.getItem("mode");
     let body = document.querySelector('body');
-
-    // Getting and Setting Theme from localStorage 'mode'
-    if (mode === null) {
-        localStorage.setItem("mode", "light");
-        body.classList.add('t--light');
-    } else if (mode === 'dark') {
-        body.classList.remove('t--light');
-        body.classList.add('t--dark');
-    } else {
-        body.classList.remove('t--dark');
-        body.classList.add('t--light');
-    }
 
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
