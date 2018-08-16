@@ -104,19 +104,6 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    <script>
-        // Getting and Setting Theme from localStorage 'mode'
-        if (mode === null) {
-            localStorage.setItem("mode", "light");
-            body.classList.add('t--light');
-        } else if (mode === 'dark') {
-            body.classList.remove('t--light');
-            body.classList.add('t--dark');
-        } else {
-            body.classList.remove('t--dark');
-            body.classList.add('t--light');
-        }
-    </script>
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .affix {
@@ -1436,6 +1423,18 @@
     let mode = localStorage.getItem("mode");
     let body = document.querySelector('body');
 
+    // Getting and Setting Theme from localStorage 'mode'
+    if (mode === null) {
+        localStorage.setItem("mode", "light");
+        body.classList.add('t--light');
+    } else if (mode === 'dark') {
+        body.classList.remove('t--light');
+        body.classList.add('t--dark');
+    } else {
+        body.classList.remove('t--dark');
+        body.classList.add('t--light');
+    }
+
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
         let plot_lines = '';        //Index axis color
@@ -1496,9 +1495,9 @@
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
             let buffer = Math.abs(price_change) + 3;
-            if (price_change >= 3) {
+            if (price_change >= 5) {
                 y_update = [last_y - buffer, last_y + 3]
-            } else if (price_change <= -3) {
+            } else if (price_change <= -5) {
                 y_update = [last_y - 3, last_y + buffer]
             } else {
                 y_update = [last_y - 5, last_y + 5]
