@@ -1499,7 +1499,7 @@
             } else if (price_change <= -3) {
                 y_update = [last_y - 3, last_y + buffer]
             } else {
-                y_update = [last_y - 3, last_y + 7]
+                y_update = [last_y - 3, last_y + 3]
             }
         } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
