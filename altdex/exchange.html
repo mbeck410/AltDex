@@ -639,6 +639,44 @@
             text-align: center;
         }
 
+        #loader {
+              position: relative;
+              left: 46%;
+              top: 50%;
+              z-index: 1;
+              /*width: 75px;*/
+              /*height: 75px;*/
+              /*margin: -75px 0 0 -75px;*/
+              border: 10px solid lightgray;
+              border-radius: 50%;
+              border-top: 10px solid #6dc0eb;
+              width: 75px;
+              height: 75px;
+              -webkit-animation: spin 2s linear infinite;
+              animation: spin 2s linear infinite;
+            /*text-align: center;*/
+        }
+
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        @-webkit-keyframes animatebottom {
+          from { bottom:-100px; opacity:0 }
+          to { bottom:0px; opacity:1 }
+        }
+
+        @keyframes animatebottom {
+          from{ bottom:-100px; opacity:0 }
+          to{ bottom:0; opacity:1 }
+        }
+
         /*Themes*/
 
         /*Dark Theme*/
@@ -1156,6 +1194,8 @@
                     <button type="button" class="btn" onclick="change_range('year')">ALL</button>
                 </div>
 
+                <div id="loader"></div>
+
                 <!--Chart-->
                 <div id="index_chart"></div>
             </div>
@@ -1445,6 +1485,12 @@
     } else {
         body.classList.remove('t--dark');
         body.classList.add('t--light');
+    }
+
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+      // document.getElementById("time_bts").style.display = "block";
+      document.getElementById("index_chart").style.display = "block";
     }
 
     // Changing Mode/Theme on button click
@@ -1818,9 +1864,9 @@
             };
 
             if (mode === 'light') {
-                Plotly.react('index_chart', line_data, layout_light);
+                Plotly.react('index_chart', line_data, layout_light).then(showPage());
             } else {
-                Plotly.react('index_chart', line_data, layout_dark);
+                Plotly.react('index_chart', line_data, layout_dark).then(showPage());
             }
 
         });
