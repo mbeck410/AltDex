@@ -676,6 +676,10 @@
           to{ bottom:0; opacity:1 }
         }
 
+        #twitter_link2 {
+            display: none;
+        }
+
         /*Themes*/
 
         /*Dark Theme*/
@@ -840,6 +844,7 @@
 
             #center {
                 width: 100%;
+                padding-top: 12px;
             }
 
             .affix-top {
@@ -972,7 +977,6 @@
             .gainers_losers {
                 display: none;
                 margin: auto;
-
             }
 
             .main_price > div.gainers_losers {
@@ -1015,16 +1019,21 @@
                 display: none;
             }
 
-            #twitter_link {
-                display: none;
-            }
-
             .primary {
                 display: none;
             }
 
             #nav_butts {
-                display: none
+                margin: auto;
+                margin-right: 0;
+            }
+
+            #dark_bt{
+                margin-left: 7px;
+            }
+
+            #index_chart {
+                display: none;
             }
 
             #barz {
@@ -1032,7 +1041,7 @@
             }
 
             .main_div {
-                padding-top: 0px;
+                padding-top: 0;
             }
 
             #footer_ad {
@@ -1072,9 +1081,9 @@
                 padding-bottom: 5px;
             }
 
-            .my_navbar {
-                width: 100%;
-            }
+            /*.my_navbar {*/
+                /*width: 100%;*/
+            /*}*/
 
             .r_ad {
                 display: none;
@@ -1084,6 +1093,18 @@
                 display: none;
             }
 
+            #info_bts {
+                padding-left: 10px;
+            }
+
+            #twitter_link2 {
+                display: block;
+                margin-top: 11px;
+            }
+
+            #twitter_link {
+                display: none;
+            }
         }
 
     </style>
@@ -1126,6 +1147,12 @@
                 <a class="twitter-follow-button"
                    href="https://twitter.com/altcoindex"
                    data-size="large">Follow @TwitterDev</a>
+            </div>
+            <div id="twitter_link2">
+                <a class="twitter-follow-button"
+                   href="https://twitter.com/altcoindex"
+                   data-size="large"
+                data-show-count="false">Follow @TwitterDev</a>
             </div>
             <div id="dark_bt_div">
                 <button id="dark_bt" type="button" class="btn navbar-btn dark_bt">Mode</button>
@@ -1199,7 +1226,7 @@
             <div class="container" id="info_switch">
 
                 <!--Index Data-->
-                <ul class="nav nav-pills">
+                <ul id="info_bts" class="nav nav-pills">
                     <li class="active"><a data-toggle="pill" href="#price_info">Price</a></li>
                     <li><a data-toggle="pill" href="#info">Info</a></li>
                 </ul>
