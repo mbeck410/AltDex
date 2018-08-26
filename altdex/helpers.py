@@ -28,7 +28,7 @@ def collect():
     r1 = requests.get(url1)
 
     while r1.status_code != 200:
-        sleep(30)
+        sleep(10)
         r1 = requests.get(url1)
 
     data_1 = json.loads(r1.text)
@@ -42,7 +42,7 @@ def collect():
             r2 = requests.get(url2)
 
             while r2.status_code != 200:
-                sleep(30)
+                sleep(10)
                 r2 = requests.get(url2)
 
             data_2 = json.loads(r2.text)
@@ -84,7 +84,7 @@ def collect():
                         r2 = requests.get(url2)
 
                         while r2.status_code != 200:
-                            sleep(30)
+                            sleep(10)
                             r2 = requests.get(url2)
 
                         data = json.loads(r2.text)
@@ -129,8 +129,8 @@ def collect():
 
             new_dex_history.save()
 
-
     sleep(60)
+
 
 def clear_price():
     n = 1
@@ -139,6 +139,7 @@ def clear_price():
     entries.delete()
 
     print('Done')
+
 
 def first_weight():
     index = Index.objects.filter(name='Masternode')
