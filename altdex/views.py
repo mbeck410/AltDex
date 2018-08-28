@@ -112,8 +112,10 @@ def getindexcurrent(request):
             index_dict = {  'link': link,
                             'name': dex.name,
                             'price': float('{0:.2f}'.format(dex_current.price)),
-                            'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
-                            'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
+                            # 'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
+                            # 'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
+                            'change_24h': '--',
+                            'price_percent': '--',
                             'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
                             'time': str(dex_current.timestamp),
                             'symbol': symbol
