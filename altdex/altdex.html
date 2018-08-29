@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="description"
           content="The market-cap weighted AltDex 100 Index tracks large-cap cryptocurrencies and tokens.">
-        <meta name="keywords"
+    <meta name="keywords"
           content="Cryptocurrency, Bitcoin, AltDex, Index, Altcoin, coin, chart, Investing, Exchange, Trading,
           Market, price, masternode, masternodes, crypto, ICO, ETF, BTC, XRP, Ripple, ETH, Ethereum">
     <meta name="author" content="Peer, LLC">
@@ -644,41 +644,61 @@
         }
 
         #loader {
-              position: relative;
-              left: 46%;
-              top: 50%;
-              z-index: 1;
-              /*width: 75px;*/
-              /*height: 75px;*/
-              /*margin: -75px 0 0 -75px;*/
-              border: 10px solid lightgray;
-              border-radius: 50%;
-              border-top: 10px solid #6dc0eb;
-              width: 75px;
-              height: 75px;
-              -webkit-animation: spin 2s linear infinite;
-              animation: spin 2s linear infinite;
+            position: relative;
+            left: 46%;
+            top: 50%;
+            z-index: 1;
+            /*width: 75px;*/
+            /*height: 75px;*/
+            /*margin: -75px 0 0 -75px;*/
+            border: 10px solid lightgray;
+            border-radius: 50%;
+            border-top: 10px solid #6dc0eb;
+            width: 75px;
+            height: 75px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
             /*text-align: center;*/
         }
 
         @-webkit-keyframes spin {
-          0% { -webkit-transform: rotate(0deg); }
-          100% { -webkit-transform: rotate(360deg); }
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
         }
 
         @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @-webkit-keyframes animatebottom {
-          from { bottom:-100px; opacity:0 }
-          to { bottom:0px; opacity:1 }
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
+            to {
+                bottom: 0px;
+                opacity: 1
+            }
         }
 
         @keyframes animatebottom {
-          from{ bottom:-100px; opacity:0 }
-          to{ bottom:0; opacity:1 }
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
+            to {
+                bottom: 0;
+                opacity: 1
+            }
         }
 
         #temp {
@@ -1033,7 +1053,7 @@
                 margin-right: 0;
             }
 
-            #dark_bt{
+            #dark_bt {
                 margin-left: 7px;
             }
 
@@ -1087,9 +1107,8 @@
             }
 
             /*.my_navbar {*/
-                /*width: 100%;*/
+            /*width: 100%;*/
             /*}*/
-
             .r_ad {
                 display: none;
             }
@@ -1157,8 +1176,8 @@
                 <a class="twitter-follow-button"
                    href="https://twitter.com/altcoindex"
                    data-size="large"
-                data-show-count="false"
-                data-show-screen-name="false">Follow @TwitterDev</a>
+                   data-show-count="false"
+                   data-show-screen-name="false">Follow @TwitterDev</a>
             </div>
             <div id="dark_bt_div">
                 <button id="dark_bt" type="button" class="btn navbar-btn dark_bt">Mode</button>
@@ -1183,7 +1202,7 @@
                             <div>
                                 <div id="w_price">{{row.price.toFixed(2)}}</div>
                                 <div id="w_percent">--%
-                                     <!--v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">-->
+                                    <!--v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">-->
                                     <!--{{row.price_percent.toFixed(2)}}%-->
                                 </div>
                                 <!--v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}"-->
@@ -1268,10 +1287,10 @@
 
                                     <div class="middle_data">
                                         <div id="values_main">--
-                                             <!--v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">-->
+                                            <!--v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">-->
                                             <!--{{row.price_percent.toFixed(2)}}%-->
                                             <div id="middle_percent">--%
-                                                 <!--v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">-->
+                                                <!--v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">-->
                                                 <!--{{row.change_24h.toFixed(2)}}-->
                                             </div>
                                         </div>
@@ -1301,7 +1320,8 @@
                     <!--Index Info-->
                     <div id="info" class="tab-pane fade well">
                         <h4><b>AltDex 100 (ALT100)</b></h4>
-                        <p>The AltDex 100 is a market capitalization-weighted benchmark index for large-cap cryptocurrencies and tokens.</p>
+                        <p>The AltDex 100 is a market capitalization-weighted benchmark index for large-cap
+                            cryptocurrencies and tokens.</p>
                         <ul>
                             <li>Number of Constituents: 100</li>
                             <li>Trailing 30 day average daily trading volume $100,000.</li>
@@ -1473,7 +1493,8 @@
 
         <!--Other Links-->
         <div class="footer_bottom">
-            <div class="footer_link">&#169AltDex 2018. All rights reserved.</div>
+            <div class="footer_link">&#169<a href="https://www.peerco.io/" class="light_blue_links" target="_blank">
+                Peer, LLC.</a> All rights reserved.</div>
             <div><a href="mailto:admin@altdex.co" class="fa light_blue_links" target="_blank">&#x2709</a><a
                     href="https://twitter.com/altcoindex"
                     class="fa fa-twitter light_blue_links" target="_blank"></a></div>
@@ -1517,9 +1538,9 @@
     }
 
     function showPage() {
-      document.getElementById("loader").style.display = "none";
-      // document.getElementById("time_bts").style.display = "block";
-      document.getElementById("index_chart").style.display = "block";
+        document.getElementById("loader").style.display = "none";
+        // document.getElementById("time_bts").style.display = "block";
+        document.getElementById("index_chart").style.display = "block";
     }
 
     // Changing Mode/Theme on button click
