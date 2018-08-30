@@ -1177,7 +1177,7 @@
                         <div class="w_data">
                             <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
                             <div>
-                                <div id="w_price" v-bind:style="{color.red: row.price_percent < 0, color.green: row.price_percent > 0}">
+                                <div id="w_price">
                                   {{row.price.toFixed(2)}}
                                 </div>
                                 <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
@@ -1289,7 +1289,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="temp">* 24 hour calculations have been reset following routine maintenence.</div>
+                        <!-- <div id="temp">* 24 hour calculations have been reset following routine maintenence.</div> -->
                     </div>
 
                     <!--Index Info-->
