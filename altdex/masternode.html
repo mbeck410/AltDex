@@ -638,10 +638,6 @@
             text-align: center;
         }
 
-        #coin_symbol_mobile {
-          display: none;
-        }
-
         #loader {
               position: relative;
               left: 46%;
@@ -950,9 +946,9 @@
                 display: none;
             }
 
-            /* #coin_symbol_title {
+            #coin_symbol_title {
                 display: none;
-            } */
+            }
 
             #coin_symbol_value {
                 display: none;
@@ -974,11 +970,11 @@
                 display: none;
             }
 
-            #coin_name_title {
+            #coin_weight_title {
                 display: none;
             }
 
-            #coin_name_value {
+            #coin_weight_value {
                 display: none;
             }
 
@@ -1339,9 +1335,6 @@
 
                         <!--Symbol-->
                         <td id="coin_symbol_value" class="row_symbol">{{row.symbol}}</td>
-                        <td id="coin_symbol_mobile" class="row_name"><a :href="row.website" target="_blank">
-                            <img :src="row.icon"></a> &nbsp; <a class="light_blue_links" :href="row.website"
-                                                                target="_blank">{{row.symbol}}</a>
 
                         <!--Name-->
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
