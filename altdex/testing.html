@@ -1648,12 +1648,13 @@
 
     // Index Metrics Pull
     function index_metrics() {
-        let dex_data = [];
+        <!-- let dex_data = []; -->
         let url = '/index_data/';
         http_get(url, function (data) {
-          console.log(data)
+          for (let i=0; i<data.dict_key.length; i++) {
+            console.log(data.dict_key[i]);
+          }
         })
-        console.log(data)
     }
 
 
@@ -1664,7 +1665,6 @@
         let lose_data = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
-          console.log(data)
             for (let i = 0; i < data.losers[2].length; i++) {
                 lose_data.push(data.losers[2][i]);
             }
@@ -1675,6 +1675,7 @@
 
             app4.rows = lose_data;
             app4.rows2 = gain_data;
+            console.log(data)
         })
     }
 
