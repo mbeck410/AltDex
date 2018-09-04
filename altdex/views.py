@@ -273,6 +273,7 @@ def index_data(request):
 
     return JsonResponse({'dict_key': index_data_sets})
 
+
 def gainers_losers(request):
     indices = Index.objects.order_by('id')
     loser_array = []
