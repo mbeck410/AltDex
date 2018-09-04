@@ -1653,6 +1653,7 @@
         http_get(url, function (data) {
           console.log(data)
         })
+        console.log(data)
     }
 
 
@@ -1663,6 +1664,7 @@
         let lose_data = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
+          console.log(data)
             for (let i = 0; i < data.losers[2].length; i++) {
                 lose_data.push(data.losers[2][i]);
             }
