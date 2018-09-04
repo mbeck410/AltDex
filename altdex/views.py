@@ -255,24 +255,23 @@ def index_data(request):
     for index in indices:
         entries = index.indexprice_set.order_by('-timestamp')
         latest_entry = entries[0]
-        # second_latest = entries[1]
+        second_latest = entries[1]
         current_price = latest_entry.price
         current_date = latest_entry.timestamp
-        # for last in reversed(entries):
-        #     early_time = last.timestamp
-        #     day_change = 0
-            # if int(early_time.day()) == int(current_date.day())-1:
-            #     if early_time.hour() + early_time.minute() == current_date.hour() + current_date.minute():
-            #         day_change = current_price - last.price
-            # elif int(early_time.day()) == int(current_date.day())-2:
-            #     day_change = second_latest.change_24h
-            #     break
+        for last in reversed(entries):
+            early_time = last.timestamp
+            day_change = 0
+            if int(early_time.day()) == int(current_date.day())-1:
+                if early_time.hour() + early_time.minute() == current_date.hour() + current_date.minute():
+                    day_change = current_price - last.price
+            elif int(early_time.day()) == int(current_date.day())-2:
+                day_change = second_latest.change_24h
+                break
 
-        change_dict = {'day_change': current_date,
-                        'price': current_price}
+        change_dict = {'day_change': day_change}
         index_data_sets.append(change_dict)
 
-    return JsonResponse({'dict_key': coin_table})
+    return JsonResponse({'dict_key': index_data_sets})
 
 def gainers_losers(request):
     indices = Index.objects.order_by('id')
