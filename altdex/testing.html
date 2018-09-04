@@ -1648,11 +1648,12 @@
 
     // Index Metrics Pull
     function index_metrics() {
-        <!-- let dex_data = []; -->
+        let dex_data = [];
         let url = '/index_data/';
         http_get(url, function (data) {
           for (let i=0; i<data.dict_key.length; i++) {
-            console.log(data.dict_key[i]);
+            dex_data.push(data.dict_key[i])
+            console.log(dex_data);
           }
         })
     }
