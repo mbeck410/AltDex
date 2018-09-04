@@ -1350,11 +1350,13 @@
                     <tr class="coin_row" v-for="row in sortedCoins">
 
                         <!--Symbol-->
-                        <td id="coin_symbol_value" class="row_symbol"><div id="mobile_symbol"><a :href="row.website" target="_blank">
-                            <img :src="row.icon"></a>  &nbsp; <a class="light_blue_links" :href="row.website"
-                                                                target="_blank">{{row.symbol}}</a>
-                                                                <div id="desktop_symbol">{{row.symbol}}
-                                                                </div>
+                        <td id="coin_symbol_value" class="row_symbol">
+                          <div id="mobile_symbol">
+                            <a :href="row.website" target="_blank"><img :src="row.icon"></a>
+                            &nbsp; <a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
+                          </div>
+
+                          <div id="desktop_symbol">{{row.symbol}}</div>
                         </td>
 
                         <!--Name-->

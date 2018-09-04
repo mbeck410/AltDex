@@ -680,6 +680,10 @@
             color: orangered;
         }
 
+        #mobile_symbol {
+          display: none;
+        }
+
         /*Themes*/
 
         /*Dark Theme*/
@@ -942,13 +946,17 @@
                 display: none;
             }
 
-            #coin_symbol_title {
+            #desktop_symbol {
                 display: none;
             }
 
-            #coin_symbol_value {
-                display: none;
+            #mobile_symbol {
+              display: inline;
             }
+
+            /* #coin_symbol_value {
+                display: none;
+            } */
 
             #coin_market_title {
                 display: none;
@@ -966,17 +974,25 @@
                 display: none;
             }
 
-            #coin_weight_title {
+            #coin_name_title {
                 display: none;
             }
 
-            #coin_weight_value {
+            #coin_name_value {
                 display: none;
             }
 
             .gainers_losers {
                 display: none;
                 margin: auto;
+            }
+
+            .coin_row > td {
+              width: 25%
+            }
+
+            .coin_row > th {
+              width 25%
             }
 
             .main_price > div.gainers_losers {
@@ -1331,7 +1347,14 @@
                     <tr class="coin_row" v-for="row in sortedCoins">
 
                         <!--Symbol-->
-                        <td id="coin_symbol_value" class="row_symbol">{{row.symbol}}</td>
+                        <td id="coin_symbol_value" class="row_symbol">
+                          <div id="mobile_symbol">
+                            <a :href="row.website" target="_blank"><img :src="row.icon"></a>
+                            &nbsp; <a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
+                          </div>
+
+                          <div id="desktop_symbol">{{row.symbol}}</div>
+                        </td>
 
                         <!--Name-->
                         <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
