@@ -1646,7 +1646,7 @@
 
     }
 
-    // Top Gainers/Losers Pull
+    // Index Metrics Pull
     function index_metrics() {
         let dex_data = [];
         let url = '/index_data/';
@@ -1904,6 +1904,7 @@
     index_current(current_id);
     coin_current(current_index);
     index_all();
+    index_metrics();
     top_gainers_losers();
     // setInterval(function () {
     //         top_gainers_losers();
