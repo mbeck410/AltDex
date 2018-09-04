@@ -1598,7 +1598,7 @@
         },
     });
 
-    // Index Data App
+    // Index Middle Price
     let app2 = new Vue({
         el: '#index_info',
         data: {
@@ -1645,6 +1645,16 @@
         xhttp.send();
 
     }
+
+    // Top Gainers/Losers Pull
+    function index_metrics() {
+        let dex_data = [];
+        let url = '/index_data/';
+        http_get(url, function (data) {
+          console.log(data)
+        })
+    }
+
 
 
     // Top Gainers/Losers Pull

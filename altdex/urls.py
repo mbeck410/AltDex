@@ -12,9 +12,9 @@ urlpatterns = [
     path('getindexcurrent/', views.getindexcurrent, name='getindexcurrent'),
     path('getindexall/', views.getindexall, name='getindexall'),
     path('getcoinscurrent/', views.getcoinscurrent, name='getcoinscurrent'),
+    path('index_data/', views.index_data, name='index_data'),
     path('privacy_policy/', views.privacy_policy, name='privacy_policy'),
     path('gainers_losers/', views.gainers_losers, name='gainers_losers'),
     path('about/', views.about, name='about'),
     path('testing/', views.testing, name='testing'),
 ]
-
