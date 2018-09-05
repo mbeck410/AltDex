@@ -253,11 +253,12 @@ def getindexperformance(request):
     performance_table = []
     indices = Index.objects.order_by('id')
     for index in indices:
-        entries = index.indexprice_set.order_by('-timestamp')
-        latest_entry = entries[0]
+        if index.name != 'Null':
+        # entries = index.indexprice_set.order_by('-timestamp')
+        # latest_entry = entries[0]
     #     second_latest = entries[1]
-        current_price = latest_entry.price
-        current_date = latest_entry.timestamp
+        # current_price = latest_entry.price
+        # current_date = latest_entry.timestamp
     #     for last in reversed(entries):
     #         early_time = last.timestamp
     #         day_change = 0
@@ -268,9 +269,12 @@ def getindexperformance(request):
     #             day_change = second_latest.change_24h
     #             break
     #
-        change_dict = {'day_change': current_price,
-                        'time': current_date}
+        change_dict = {'day_change': 5,
+                        'time': 'eight'}
+
         performance_table.append(change_dict)
+
+    else: continue
 
     return JsonResponse({'dict_key': performance_table})
 
