@@ -269,7 +269,7 @@ def getindexperformance(request):
     #             day_change = second_latest.change_24h
     #             break
     #
-        change_dict = {'day_change': 5,
+            change_dict = {'day_change': 5,
                         'time': 'eight'}
 
         performance_table.append(change_dict)
