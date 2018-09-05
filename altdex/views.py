@@ -270,7 +270,7 @@ def getindexperformance(request):
     #
         change_dict = {'day_change': current_price,
                         'time': current_date}
-    #     performance_table.append(change_dict)
+        performance_table.append(change_dict)
 
     return JsonResponse({'dict_key': performance_table})
 
