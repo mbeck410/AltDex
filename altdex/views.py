@@ -261,20 +261,24 @@ def getindexperformance(request):
             second_latest = entries[1]
             current_price = latest_entry.price
             current_date = latest_entry.timestamp
-            for last in reversed(entries):
-                early_time = last.timestamp
-                day_change = 0
-                if int(early_time.day()) == int(current_date.day())-1:
-                    if early_time.hour() + early_time.minute() == current_date.hour() + current_date.minute():
-                        day_change = current_price - last.price
-                elif int(early_time.day()) == int(current_date.day())-2:
-                    day_change = second_latest.change_24h
-                    break
+            second_latest_price = second_latest.price
+            second_latestt_date = second_latest.timestamp
+            # for last in reversed(entries):
+            #     early_time = last.timestamp
+            #     day_change = 0
+            #     if int(early_time.day()) == int(current_date.day())-1:
+            #         if early_time.hour() + early_time.minute() == current_date.hour() + current_date.minute():
+            #             day_change = current_price - last.price
+            #     elif int(early_time.day()) == int(current_date.day())-2:
+            #         day_change = second_latest.change_24h
+            #         break
 
 
             change_dict = {'day_change': current_price,
-                        'time': current_date,
-                        'test': day_change}
+                        'time': current_date
+                        'one': second_latest_price,
+                        'two': second_latestt_date,
+                        }
 
             performance_table.append(change_dict)
 
