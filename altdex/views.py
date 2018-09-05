@@ -262,7 +262,7 @@ def getindexperformance(request):
             current_price = latest_entry.price
             current_date = latest_entry.timestamp
             second_latest_price = second_latest.price
-            second_latestt_date = second_latest.timestamp
+            second_latestt_date = second_latest.timestamp.hour()
             # for last in reversed(entries):
             #     early_time = last.timestamp
             #     day_change = 0
