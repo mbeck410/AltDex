@@ -250,7 +250,7 @@ def getcoinscurrent(request):
 
 
 def getindexperformance(request):
-    # performance_table = []
+    performance_table = [5, 6, 12, 'testing']
     # indices = Index.objects.order_by('id')
     # for index in indices:
     #     entries = index.indexprice_set.order_by('-timestamp')
@@ -271,7 +271,7 @@ def getindexperformance(request):
     #     change_dict = {'day_change': day_change}
     #     performance_table.append(change_dict)
 
-    return JsonResponse({'dict_key': 5})
+    return JsonResponse({'dict_key': performance_table})
 
 def gainers_losers(request):
     indices = Index.objects.order_by('id')
