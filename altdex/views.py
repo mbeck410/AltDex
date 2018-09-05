@@ -277,7 +277,7 @@ def getindexperformance(request):
                 if strip_time = yesterday:
                     day_change = current_price - last.price
                     break
-                elif int(index.id - last.id > 1300)
+                elif int(index.id - last.id > 1300):
                     day_change = second_latest.change_24h
                     break
 
