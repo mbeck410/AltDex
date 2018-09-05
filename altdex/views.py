@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-# from datetime import timedelta
+from datetime import timedelta
 # from django.urls import reverse
 # from decimal import Decimal
 # from datetime
@@ -256,10 +256,10 @@ def getindexperformance(request):
     for index in indices:
 
         if index.name != 'Null':
-
             entries = index.indexprice_set.order_by('-timestamp')
             latest_entry = entries[0]
             second_latest = entries[1]
+
             current_price = latest_entry.price
             current_date = latest_entry.timestamp
             current_seconds = current_date.second
@@ -267,18 +267,20 @@ def getindexperformance(request):
 
             yesterday = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
 
-            # for last in reversed(entries):
-            #     early_time = last.timestamp
-            #     day_change = 0
-            #     if int(early_time.day()) == int(current_date.day())-1:
-            #         if early_time.hour() + early_time.minute() == current_date.hour() + current_date.minute():
-            #             day_change = current_price - last.price
-            #     elif int(early_time.day()) == int(current_date.day())-2:
-            #         day_change = second_latest.change_24h
-            #         break
+            for last in entries:
+                last_24_time = last.timestamp
+                last_seconds = last_24_time.second
+                last_micro = last_24_time.microsecond
+                day_change = 0
+                strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
+                if strip_time = yesterday
+                    day_change = current_price - last.price
+                    break
+                elif int(index.id - last.id > 1300)
+                    day_change = second_latest.change_24h
+                    break
 
-
-            change_dict = {'day_change': current_price,
+            change_dict = {'day_change': day_change,
                         'time': current_date,
                         'one': yesterday,
                         }
