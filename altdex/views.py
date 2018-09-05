@@ -249,41 +249,25 @@ def getcoinscurrent(request):
     return JsonResponse({'dict_key': coin_table})
 
 
-def index_data(request):
+def getindexperformance(request):
     indices = Index.objects.order_by('id')
-    indices_current = []
+    for index in indices:
+        entries = index.indexprice_set.order_by('-timestamp')
+        latest_entry = entries[0]
+        second_latest = entries[1]
+        current_price = latest_entry.price
+        current_date = latest_entry.timestamp
+        for last in reversed(entries):
+            early_time = last.timestamp
+            day_change = 0
+            if int(early_time.day()) == int(current_date.day())-1:
+                if early_time.hour() + early_time.minute() == current_date.hour() + current_date.minute():
+                    day_change = current_price - last.price
+            elif int(early_time.day()) == int(current_date.day())-2:
+                day_change = second_latest.change_24h
+                break
 
-    for dex in indices:
-        if dex.name != 'Null':
-            link = ''
-            if dex.name == 'AltDex100':
-                link = '/'
-                symbol = 'ALT100'
-            elif dex.name == 'Exchange':
-                link = '/exchange'
-                symbol = 'ALTEXC'
-            elif dex.name == 'Privacy':
-                link = '/privacy'
-                symbol = 'ALTPRV'
-            elif dex.name == 'Masternode':
-                link = '/masternode'
-                symbol = 'ALTMSN'
-
-            dex_current = dex.indexprice_set.last()
-            index_dict = {  'link': link,
-                            'name': dex.name,
-                            'price': float('{0:.2f}'.format(dex_current.price)),
-                            'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
-                            'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
-                            'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
-                            'time': str(dex_current.timestamp),
-                            'symbol': symbol
-                        }
-
-            indices_current.append(index_dict)
-
-    return JsonResponse({'dict_key': indices_current})
-
+        change_dict = {'day_change': day_change}
 
 def gainers_losers(request):
     indices = Index.objects.order_by('id')
