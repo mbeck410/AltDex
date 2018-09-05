@@ -274,7 +274,7 @@ def getindexperformance(request):
 
         performance_table.append(change_dict)
 
-    else: continue
+        else: continue
 
     return JsonResponse({'dict_key': performance_table})
 
