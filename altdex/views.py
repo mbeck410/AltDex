@@ -265,7 +265,7 @@ def getindexperformance(request):
             current_seconds = current_date.second
             currrent_microseconds = current_date.microsecond
 
-            yesterday = current_date - timedelta(days=1)
+            yesterday = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
 
             # for last in reversed(entries):
             #     early_time = last.timestamp
@@ -281,7 +281,6 @@ def getindexperformance(request):
             change_dict = {'day_change': current_price,
                         'time': current_date,
                         'one': yesterday,
-                        'tow': currrent_microseconds
                         }
 
             performance_table.append(change_dict)
