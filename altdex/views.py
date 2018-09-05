@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 # from django.urls import reverse
 # from decimal import Decimal
-from datetime import datetime, minute, month, day, hour
+import datetime
 # from threading import Timer
 # from time import sleep
 # import schedule
