@@ -275,7 +275,7 @@ def getindexperformance(request):
 
 
             change_dict = {'day_change': current_price,
-                        'time': current_date
+                        'time': current_date,
                         'one': second_latest_price,
                         'two': second_latestt_date,
                         }
