@@ -1649,11 +1649,13 @@
     // Index Metrics Pull
     function index_metrics() {
         let dex_data = [];
-        let url = '/index_data/';
+        let url = '/getindexperformance/';
         http_get(url, function (data) {
           for (let i=0; i < data.dict_key.length; i++) {
             dex_data.push(data.dict_key[i])
+            console.log(dex_data)
           }
+          console.log(dex_data)
         })
     }
 
