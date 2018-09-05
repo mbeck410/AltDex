@@ -273,7 +273,8 @@ def getindexperformance(request):
                 last_micro = last_24_time.microsecond
                 day_change = 0
                 strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
-                if strip_time = yesterday
+
+                if strip_time = yesterday:
                     day_change = current_price - last.price
                     break
                 elif int(index.id - last.id > 1300)
