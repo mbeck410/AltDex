@@ -261,8 +261,7 @@ def getindexperformance(request):
             second_latest = entries[1]
             current_price = latest_entry.price
             current_date = latest_entry.timestamp
-            second_latest_price = second_latest.price
-            second_latestt_date = second_latest.timestamp.hour
+            yesterday = latest_entry.timedelta(1)
             # for last in reversed(entries):
             #     early_time = last.timestamp
             #     day_change = 0
@@ -276,8 +275,7 @@ def getindexperformance(request):
 
             change_dict = {'day_change': current_price,
                         'time': current_date,
-                        'one': second_latest_price,
-                        'two': second_latestt_date,
+                        'one': yesterday
                         }
 
             performance_table.append(change_dict)
