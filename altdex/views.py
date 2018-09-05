@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-from datetime import timedelta
+# from datetime import timedelta
 # from django.urls import reverse
 # from decimal import Decimal
 # from datetime
@@ -262,7 +262,7 @@ def getindexperformance(request):
             second_latest = entries[1]
             current_price = latest_entry.price
             current_date = latest_entry.timestamp
-            yesterday = latest_entry.timedelta(1)
+            yesterday = current_date - timedelta(1)
             # for last in reversed(entries):
             #     early_time = last.timestamp
             #     day_change = 0
