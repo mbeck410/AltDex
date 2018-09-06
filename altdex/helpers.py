@@ -128,7 +128,7 @@ def collect():
 
                 if strip_time == yesterday2:
                     this_change = dex_price - last.price
-                    dex_percent_change = this_change/last.price
+                    dex_percent_change = this_change / last.price
                     break
                 elif int(index.id - last.id > 1300):
                     this_change = latest_entry.change_24h
