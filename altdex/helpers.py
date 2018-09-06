@@ -1,6 +1,7 @@
 import requests
 import json
 from time import sleep
+from datetime import timedelta
 
 from .models import Index, Coin, IndexPrice
 
