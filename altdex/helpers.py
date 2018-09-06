@@ -1,7 +1,6 @@
 import requests
 import json
 from time import sleep
-from datetime import timedelta
 
 from .models import Index, Coin, IndexPrice
 
@@ -103,38 +102,22 @@ def collect():
         if dex.name != 'Null':
             dex_coins = dex.coin_set.all()
             dex_market_cap = 0.0
-            dex_percent_change = 0
 
             for dex_coin in dex_coins:
                 dex_market_cap += float(dex_coin.market_cap)
 
             dex_price = float(dex_market_cap) / float(dex.divisor)
+            dex_percent_change = 0
+            amount_entries = len(dex.indexprice_set.all())
 
-            entries = dex.indexprice_set.order_by('-timestamp')
-            latest_entry = entries[0]
+            if amount_entries < 1300:
+                this_change = 0
 
-            current_date = latest_entry.timestamp
-            current_seconds = current_date.second
-            currrent_microseconds = current_date.microsecond
-
-            yesterday = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
-            yesterday2 = current_date + timedelta(minutes=1)
-
-            for last in entries:
-                last_24_time = last.timestamp
-                last_seconds = last_24_time.second
-                last_micro = last_24_time.microsecond
-                day_change = 0
-                strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
-
-                if strip_time == yesterday2:
-                    this_change = dex_price - last.price
-                    dex_percent_change = this_change/last.price
-                    break
-                elif int(index.id - last.id > 1300):
-                    this_change = latest_entry.change_24h
-                    dex_percent_change = latest_entry.price_percent_change
-                    break
+            else:
+                price_id = amount_entries - 1110
+                last_price = dex.indexprice_set.all()[price_id].price
+                this_change = float(dex_price) - float(last_price)
+                dex_percent_change = (this_change/float(last_price)) * 100
 
             new_dex_history = IndexPrice(index=dex,
                                          price=dex_price,
