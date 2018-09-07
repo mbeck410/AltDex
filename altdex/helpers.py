@@ -113,16 +113,12 @@ def collect():
             entries = dex.indexprice_set.order_by('-timestamp')
             latest_entry = entries[0]
 
-            print(latest_entry)
-
             current_date = latest_entry.timestamp
             current_seconds = current_date.second
             currrent_microseconds = current_date.microsecond
 
             yesterday = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
             yesterday2 = yesterday + timedelta(minutes=1)
-
-            print(yesterday2)
 
             for last in entries:
                 last_24_time = last.timestamp
@@ -132,14 +128,15 @@ def collect():
                 strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
                 if strip_time == yesterday2:
+                    print('!!!')
                     this_change = float(dex_price) - float(last.price)
                     dex_percent_change = float(this_change) / float(last.price)
-                    print('!!!')
+                    print(dex_percent_change)
                     break
-                elif int(index.id - last.id) > 1300:
+                elif abs(int(latest_entry.id - last.id)) > 1300:
+                    print('!!')
                     this_change = latest_entry.change_24h
                     dex_percent_change = latest_entry.price_percent_change
-                    print('!!')
                     break
 
             new_dex_history = IndexPrice(index=dex,
