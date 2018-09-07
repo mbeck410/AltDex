@@ -1,7 +1,7 @@
 import requests
 import json
 from time import sleep
-from datetime import timedelta, datetime
+from datetime import timedelta
 
 from .models import Index, Coin, IndexPrice
 
@@ -113,7 +113,7 @@ def collect():
             entries = dex.indexprice_set.order_by('-timestamp')
             latest_entry = entries[0]
 
-            current_date = datetime.datetime.now()
+            current_date = latest_entry.timestamp
             current_seconds = current_date.second
             currrent_microseconds = current_date.microsecond
 
