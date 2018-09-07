@@ -113,7 +113,7 @@ def collect():
             entries = dex.indexprice_set.order_by('-timestamp')
             latest_entry = entries[0]
 
-            current_date = latest_entry.timestamp
+            current_date = datetime.datetime.now()
             current_seconds = current_date.second
             currrent_microseconds = current_date.microsecond
 
@@ -129,9 +129,9 @@ def collect():
 
                 if strip_time == yesterday2:
                     this_change = float(dex_price) - float(last.price)
-                    dex_percent_change = (float(this_change) / float(last.price)) * 100
+                    dex_percent_change = float(this_change) / float(last.price) * 100
                     break
-                elif ((latest_entry.id - last.id) % 4) > 1300:
+                elif int(latest_entry.id) - int(last.id) > 7000:
                     this_change = latest_entry.change_24h
                     dex_percent_change = latest_entry.price_percent_change
                     break
