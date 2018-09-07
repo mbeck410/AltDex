@@ -266,20 +266,14 @@ def getindexperformance(request):
             currrent_microseconds = current_date.microsecond
 
             yesterday = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
+            test = entries.objects.get(timestamp=yesterday)
 
-            for last in entries:
-                last_24_time = last.timestamp
-                last_seconds = last_24_time.second
-                last_micro = last_24_time.microsecond
-                day_change = 0
-                strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
-
-                if strip_time == yesterday:
-                    day_change = current_price - last.price
-                    break
-                elif int(index.id - last.id > 1300):
-                    day_change = second_latest.change_24h
-                    break
+            if test in entries:
+                day_change = current_price - test.price
+                break
+            else:
+                day_change = second_latest.change_24h
+                break
 
             change_dict = {'day_change': day_change,
                         'time': current_date,
