@@ -133,7 +133,7 @@ def collect():
                     dex_percent_change = float(this_change) / float(last.price)
                     print(dex_percent_change)
                     break
-                elif abs(int(len(entries) - int(last.id) % 4)) > 1500:
+                elif int(latest_entry.id) - int(last.id) > 7000:
                     print('!!')
                     this_change = latest_entry.change_24h
                     dex_percent_change = latest_entry.price_percent_change
