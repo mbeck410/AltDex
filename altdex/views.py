@@ -278,7 +278,6 @@ def getindexperformance(request):
 
                 if strip_time == seven:
                     week_change = current_price - last.price
-                    continue
 
                 if strip_time == one_m:
                     month_change = current_price - last.price
