@@ -269,7 +269,7 @@ def getindexperformance(request):
             one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
-            for i in len(entries)-1:
+            for i in (len(entries)-1):
                 last_7_time = entries[i].timestamp
                 last_seconds = last_7_time.second
                 last_micro = last_7_time.microsecond
@@ -283,7 +283,7 @@ def getindexperformance(request):
                 elif i > 9000:
                     break
 
-            for i in len(entries2) - 1:
+            for i in (len(entries2) - 1):
                 last_month_time = entries2[i].timestamp
                 last_seconds2 = last_month_time.second
                 last_micro2 = last_month_time.microsecond
@@ -294,7 +294,7 @@ def getindexperformance(request):
                 if strip_time == one_m:
                     month_change = current_price - entries2[i].price
                     break
-                elif i > len(entries2)/2:
+                elif i > int(len(entries2)/2):
                     break
 
             change_dict = {'seven': seven,
