@@ -265,7 +265,7 @@ def getindexperformance(request):
             current_seconds = current_date.second
             currrent_microseconds = current_date.microsecond
 
-            one_m = current_date - timedelta(months=1, seconds=current_seconds, microseconds=currrent_microseconds)
+            one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
             for last in entries:
