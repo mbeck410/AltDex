@@ -265,25 +265,34 @@ def getindexperformance(request):
             current_seconds = current_date.second
             currrent_microseconds = current_date.microsecond
 
-            yesterday = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
+            one_m = current_date - timedelta(months=1, seconds=current_seconds, microseconds=currrent_microseconds)
+            three_month = current_date - timedelta(months=3, seconds=current_seconds, microseconds=currrent_microseconds)
+            seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
             for last in entries:
                 last_24_time = last.timestamp
                 last_seconds = last_24_time.second
                 last_micro = last_24_time.microsecond
-                day_change = 0
+                week_change = 0.0
+                month_change = 0.0
+                three_change = 0.0
                 strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
-                if strip_time == yesterday:
-                    day_change = current_price - last.price
-                    break
-                elif int(latest_entry.id - last.id) % 4 > 1300:
-                    day_change = second_latest.change_24h
-                    break
+                if strip_time == seven:
+                    week_change = current_price - last.price
 
-            change_dict = {'day_change': day_change,
-                        'time': current_date,
-                        'one': yesterday,
+                if strip_time == one_m:
+                    month_change = current_price - last.price
+
+                if strip_time == three_month:
+                    three_change = current_price - last.price
+
+            change_dict = {'seven': seven,
+                            'week': week_change,
+                        'month': one_m,
+                        'month_change': month_change,
+                        '3_month': three_month,
+                        'three': three_change,
                         }
 
             performance_table.append(change_dict)
