@@ -265,7 +265,7 @@ def getindexperformance(request):
             current_seconds = current_date.second
             currrent_microseconds = current_date.microsecond
 
-            # one_m = current_date - timedelta(months=1, seconds=current_seconds, microseconds=currrent_microseconds)
+            one_m = current_date - timedelta(months=1, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
             for last in entries:
@@ -273,20 +273,21 @@ def getindexperformance(request):
                 last_seconds = last_24_time.second
                 last_micro = last_24_time.microsecond
                 week_change = 0.0
-                # month_change = 0.0
+                month_change = 0.0
                 strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
                 if strip_time == seven:
                     week_change = current_price - last.price
-                    break
+                    continue
 
-                # if strip_time == one_m:
-                #     month_change = current_price - last.price
+                if strip_time == one_m:
+                    month_change = current_price - last.price
+                    break
 
             change_dict = {'seven': seven,
                             'week': week_change,
-                        # 'month': one_m,
-                        # 'month_change': month_change,
+                            'month': one_m,
+                            'month_change': month_change,
                         }
 
             performance_table.append(change_dict)
