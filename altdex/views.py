@@ -266,7 +266,7 @@ def getindexperformance(request):
             current_seconds = current_date.second
             currrent_microseconds = current_date.microsecond
 
-            one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
+            # one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
             for i in (len(entries)-1):
@@ -274,7 +274,7 @@ def getindexperformance(request):
                 last_seconds = last_7_time.second
                 last_micro = last_7_time.microsecond
                 week_change = 0.0
-                month_change = 0.0
+                # month_change = 0.0
                 strip_time = last_7_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
                 if strip_time == seven:
@@ -283,24 +283,24 @@ def getindexperformance(request):
                 elif i > 9000:
                     break
 
-            for i in (len(entries2) - 1):
-                last_month_time = entries2[i].timestamp
-                last_seconds2 = last_month_time.second
-                last_micro2 = last_month_time.microsecond
-                week_change = 0.0
-                month_change = 0.0
-                strip_time = last_month_time - timedelta(seconds=last_seconds2, microseconds=last_micro2)
-
-                if strip_time == one_m:
-                    month_change = current_price - entries2[i].price
-                    break
-                elif i > int(len(entries2)/2):
-                    break
+            # for i in (len(entries2) - 1):
+            #     last_month_time = entries2[i].timestamp
+            #     last_seconds2 = last_month_time.second
+            #     last_micro2 = last_month_time.microsecond
+            #     week_change = 0.0
+            #     month_change = 0.0
+            #     strip_time = last_month_time - timedelta(seconds=last_seconds2, microseconds=last_micro2)
+            #
+            #     if strip_time == one_m:
+            #         month_change = current_price - entries2[i].price
+            #         break
+            #     elif i > int(len(entries2)/2):
+            #         break
 
             change_dict = {'seven': seven,
                             'week': week_change,
-                            'month': one_m,
-                            'month_change': month_change,
+                            # 'month': one_m,
+                            # 'month_change': month_change,
                         }
 
             performance_table.append(change_dict)
