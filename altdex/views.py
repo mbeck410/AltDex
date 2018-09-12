@@ -257,7 +257,7 @@ def getindexperformance(request):
 
         if index.name != 'Null':
             entries = index.indexprice_set.order_by('-timestamp')
-            # entries2 = index.indexprice_set.order_by('timestamp')
+            entries2 = index.indexprice_set.order_by('timestamp')
             latest_entry = entries[0]
 
             current_price = latest_entry.price
@@ -266,12 +266,12 @@ def getindexperformance(request):
             currrent_microseconds = current_date.microsecond
 
             week_change = 0.0
-            # month_change = 0.0
+            month_change = 0.0
 
-            # one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
+            one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
-            for i in range(4000, 10000):
+            for i in range(0, len(entries)):
                 last_time = entries[i].timestamp
                 last_seconds = last_time.second
                 last_micro = last_time.microsecond
@@ -279,24 +279,14 @@ def getindexperformance(request):
 
                 if strip_time == seven:
                     week_change = current_price - entries[i].price
+                if strip_time == one_m:
+                    month_change = current_price - entries[i].price
                     break
-
-            # for i in (len(entries2) - 1):
-            #     last_month_time = entries2[i].timestamp
-            #     last_seconds2 = last_month_time.second
-            #     last_micro2 = last_month_time.microsecond
-            #     week_change = 0.0
-            #     month_change = 0.0
-            #     strip_time2 = last_month_time - timedelta(seconds=last_seconds2, microseconds=last_micro2)
-            #
-                # if strip_time == one_m:
-                #     month_change = current_price - entries[i].price
-                #     break
 
             change_dict = {'seven': seven,
                             'week': week_change,
-                            # 'month': one_m,
-                            # 'month_change': month_change,
+                            'month': one_m,
+                            'month_change': month_change,
                         }
 
             performance_table.append(change_dict)
