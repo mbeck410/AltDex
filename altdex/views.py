@@ -274,8 +274,8 @@ def getindexperformance(request):
 
             for i in range(5000, 9000):
                 last_time = entries[i].timestamp
-                last_seconds = last_7_time.second
-                last_micro = last_7_time.microsecond
+                last_seconds = last_time.second
+                last_micro = last_time.microsecond
                 strip_time = last_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
                 if strip_time == seven:
