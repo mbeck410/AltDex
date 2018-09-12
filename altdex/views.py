@@ -15,6 +15,9 @@ import json
 from .helpers import collect
 from .models import Index, Coin, IndexPrice
 
+month_index = 0
+week_index = 0
+
 
 def altdex(request):
     with open('./altdex/altdex.html') as file:
@@ -279,15 +282,19 @@ def getindexperformance(request):
 
                 if strip_time == seven:
                     week_change = current_price - entries[i].price
+                    week_index = i
 
                 if strip_time == one_m:
                     month_change = current_price - entries[i].price
+                    month_index = i
                     break
 
             change_dict = {'seven': seven,
                             'week': week_change,
                             'month': one_m,
                             'month_change': month_change,
+                            'week_index': week_index,
+                            'month_index':month_index
                         }
 
             performance_table.append(change_dict)
