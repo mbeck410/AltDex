@@ -271,7 +271,7 @@ def getindexperformance(request):
             # one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
-            for i in range(0, len(entries)):
+            for i in range(4000, 10000):
                 last_time = entries[i].timestamp
                 last_seconds = last_time.second
                 last_micro = last_time.microsecond
