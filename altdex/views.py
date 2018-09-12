@@ -294,8 +294,9 @@ def getindexperformance(request):
                     month_change = current_price - entries[month_index].price
                     break
 
-            # week_prices = entries[:week_index]
-            # top_price = week_prices.latest('price')
+            week_prices = entries[:week_index]
+            top_prices = week_prices.order_by('price')
+            top_price = top_prices[0]
 
             change_dict = {'seven': seven,
                             'week': week_change,
@@ -303,7 +304,7 @@ def getindexperformance(request):
                             'month_change': month_change,
                             'week_index': week_index,
                             'month_index':month_index,
-                            # 'top_price': top_price
+                            'top_price': top_price
                         }
 
             performance_table.append(change_dict)
