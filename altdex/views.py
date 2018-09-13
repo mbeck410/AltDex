@@ -17,8 +17,8 @@ from .models import Index, Coin, IndexPrice
 
 month_index = 0
 week_index = 0
-week_high_index = 0
-week_low_index = 0
+# week_high_index = 0
+# week_low_index = 0
 month_high_index = 0
 month_low_index = 0
 
@@ -274,8 +274,8 @@ def getindexperformance(request):
 
             week_change = 0.0
             month_change = 0.0
-            week_low = current_price
-            week_high = current_price
+            # week_low = current_price
+            # week_high = current_price
             month_high = current_price
             month_low = current_price
 
@@ -300,10 +300,10 @@ def getindexperformance(request):
                 if strip_time == seven:
                     week_change = current_price - entries[i].price
                     week_index = i
-                    week_high = month_high
-                    week_low = month_low
-                    week_high_index = month_high_index
-                    week_low_index = month_low_index
+                    # week_high = month_high
+                    # week_low = month_low
+                    # week_high_index = month_high_index
+                    # week_low_index = month_low_index
 
                 if strip_time == one_m:
                     month_change = current_price - entries[i].price
@@ -313,8 +313,8 @@ def getindexperformance(request):
                 if i > 35000:
                     week_change = current_price - entries[week_index].price
                     month_change = current_price - entries[month_index].price
-                    week_high = entries[week_high_index].price
-                    week_low = entries[week_low_index].price
+                    # week_high = entries[week_high_index].price
+                    # week_low = entries[week_low_index].price
                     break
 
             # week_prices = entries[:week_index]
@@ -327,8 +327,8 @@ def getindexperformance(request):
                             'month_change': month_change,
                             'week_index': week_index,
                             'month_index':month_index,
-                            'week_high': week_high,
-                            'week_low': week_low,
+                            # 'week_high': week_high,
+                            # 'week_low': week_low,
                             'month_high': month_high,
                             'month_low':month_low
                         }
