@@ -281,7 +281,7 @@ def getindexperformance(request):
             month_high = current_price
             month_low = current_price
 
-            one_day = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
+            # one_day = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
             one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
@@ -299,9 +299,9 @@ def getindexperformance(request):
                 last_micro = last_time.microsecond
                 strip_time = last_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
-                if strip_time == one_day:
-                    day_high = month_high
-                    day_low = month_low
+                # if strip_time == one_day:
+                #     day_high = month_high
+                #     day_low = month_low
 
                 if strip_time == seven:
                     week_change = current_price - entries[i].price
