@@ -15,8 +15,8 @@ import json
 from .helpers import collect
 from .models import Index, Coin, IndexPrice
 
-# month_index = 0
-# week_index = 0
+month_index = 0
+week_index = 0
 # week_high_index = 0
 # week_low_index = 0
 # month_high_index = 0
@@ -305,7 +305,7 @@ def getindexperformance(request):
 
                 if strip_time == seven:
                     week_change = current_price - entries[i].price
-                    # week_index = i
+                    week_index = i
                     week_high = month_high
                     week_low = month_low
                     # week_high_index = month_high_index
@@ -313,7 +313,7 @@ def getindexperformance(request):
 
                 if strip_time == one_m:
                     month_change = current_price - entries[i].price
-                    # month_index = i
+                    month_index = i
                     break
 
                 if i > 35000:
