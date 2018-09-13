@@ -274,12 +274,14 @@ def getindexperformance(request):
 
             week_change = 0.0
             month_change = 0.0
+            day_low = current_price
+            day_high = current_price
             week_low = current_price
             week_high = current_price
             month_high = current_price
             month_low = current_price
 
-
+            one_day = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
             one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
@@ -297,9 +299,13 @@ def getindexperformance(request):
                 last_micro = last_time.microsecond
                 strip_time = last_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
+                if strip_time == one_day:
+                    day_high = month_high
+                    day_low = month_low
+
                 if strip_time == seven:
                     week_change = current_price - entries[i].price
-                    week_index = i
+                    # week_index = i
                     week_high = month_high
                     week_low = month_low
                     # week_high_index = month_high_index
@@ -307,7 +313,7 @@ def getindexperformance(request):
 
                 if strip_time == one_m:
                     month_change = current_price - entries[i].price
-                    month_index = i
+                    # month_index = i
                     break
 
                 if i > 35000:
@@ -328,7 +334,9 @@ def getindexperformance(request):
                             'week_high': week_high,
                             'week_low': week_low,
                             'month_high': month_high,
-                            'month_low':month_low
+                            'month_low':month_low,
+                            'day_high': day_high,
+                            'day_low': day_low
                         }
 
             performance_table.append(change_dict)
