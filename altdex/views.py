@@ -17,6 +17,10 @@ from .models import Index, Coin, IndexPrice
 
 month_index = 0
 week_index = 0
+week_high_index = 0
+week_low_index = 0
+month_high_index = 0
+month_low_index = 0
 
 
 def altdex(request):
@@ -270,11 +274,24 @@ def getindexperformance(request):
 
             week_change = 0.0
             month_change = 0.0
+            week_low = current_price
+            week_high = current_price
+            month_high = current_price
+            month_low = current_price
+
 
             one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
             for i in range(0, len(entries)):
+                if entries[i].price > month_high:
+                    month_high = entries[i].price
+                    month_high_index = i
+
+                if entries[i].price < month_low:
+                    month_low = entries[i].price
+                    month_low_index = i
+
                 last_time = entries[i].timestamp
                 last_seconds = last_time.second
                 last_micro = last_time.microsecond
@@ -283,6 +300,10 @@ def getindexperformance(request):
                 if strip_time == seven:
                     week_change = current_price - entries[i].price
                     week_index = i
+                    week_high = month_high
+                    week_low = month_low
+                    week_high_index = month_high_index
+                    week_low_index month_low_index
 
                 if strip_time == one_m:
                     month_change = current_price - entries[i].price
@@ -292,11 +313,13 @@ def getindexperformance(request):
                 if i > 35000:
                     week_change = current_price - entries[week_index].price
                     month_change = current_price - entries[month_index].price
+                    week_high = entries[week_high_index].price
+                    week_low = entries[week_low_index].price
                     break
 
-            week_prices = entries[:week_index]
-            top_prices = week_prices.order_by('price')
-            top_price = top_prices[0]
+            # week_prices = entries[:week_index]
+            # top_prices = week_prices.order_by('price')
+            # top_price = top_prices[0]
 
             change_dict = {'seven': seven,
                             'week': week_change,
@@ -304,7 +327,10 @@ def getindexperformance(request):
                             'month_change': month_change,
                             'week_index': week_index,
                             'month_index':month_index,
-                            'top_price': top_price
+                            'week_high': week_high,
+                            'week_low': week_low,
+                            'month_high': month_high,
+                            'month_low':month_low
                         }
 
             performance_table.append(change_dict)
