@@ -299,7 +299,7 @@ def getindexperformance(request):
                 last_micro = last_time.microsecond
                 strip_time = last_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
-                if i == 1200:
+                if strip_time == one_day:
                     day_high = month_high
                     day_low = month_low
 
@@ -329,8 +329,8 @@ def getindexperformance(request):
                             'week': week_change,
                             'month': one_m,
                             'month_change': month_change,
-                            # 'week_index': week_index,
-                            # 'month_index':month_index,
+                            'week_index': week_index,
+                            'month_index':month_index,
                             'week_high': week_high,
                             'week_low': week_low,
                             'month_high': month_high,
