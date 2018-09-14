@@ -281,7 +281,7 @@ def getindexperformance(request):
             month_high = current_price
             month_low = current_price
 
-            # one_day = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
+            one_day = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
             one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
             seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
