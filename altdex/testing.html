@@ -628,10 +628,6 @@
           font-size: 3.0vw;
         }
 
-        .p_tab {
-          width: 33%;
-        }
-
         /*Loader Animation*/
 
         #loader {
@@ -683,6 +679,10 @@
 
         #time_bts {
             display: none;
+        }
+
+        .p_tab {
+          width: 33%
         }
 
         /*#chart_objects {*/
@@ -1221,10 +1221,9 @@
 
 
                     <div class="tab-content">
-                    <div id="index_info" class="main_price">
-
-                      <!--Index Data-->
                       <div class="tab-pane fade in active" id="price_info">
+                          <div id="index_info" class="main_price">
+                          <!--Index Data-->
                           <div v-cloak class="pricing">
                               <div id="main_index_price" v-for="row in rows">
                                   <div id="middle_shit">
@@ -1280,7 +1279,6 @@
 
                     <!-- Info Tab -->
                     <div id="info" class="tab-pane fade">
-                      <div>
                         <h4>AltDex Privacy Coin Index (ALTPRV)</h4>
                         <p>The AltDex Privacy Coin Index defines and monitors cryptocurrencies and tokens focused on
                             privacy or
@@ -1290,7 +1288,6 @@
                             <li>Market capitalization greater than $10,000,000.</li>
                         </ul>
                         <p><a href="/about/">Learn More</a></p>
-                      </div>
                     </div>
 
                     <!-- Performace Tab -->
