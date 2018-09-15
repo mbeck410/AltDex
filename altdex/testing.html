@@ -615,7 +615,7 @@
         }
 
         .bar {
-          width: 10vw;
+          /* width: 100%; */
           height: 0.4vw;
           background-color: green;
           text-align: right;
@@ -648,6 +648,7 @@
 
         .range_data {
           display: flex;
+          width: 100%;
         }
 
         .range_low {
@@ -656,6 +657,10 @@
 
         .range_high {
           text-align: right;
+        }
+
+        .period_data {
+          display: flex;
         }
 
         /*Loader Animation*/
@@ -1328,12 +1333,25 @@
                       </div>
 
                       <div id="period_changes" class="p_tab">
-                        <div class="change">7.89</div>
-                        <div class="change">3.33</div>
-                        <div class="change">-1.57</div>
+                        <div class="period_data">
+                          <div>24 Hour:</div>
+                          <div class="change">7.89</div>
+                          <div class="change">1.25%</div>
+                        </div>
+                        <div class="period_data">
+                          <div>7 Day:</div>
+                          <div class="change">7.89</div>
+                          <div class="change">1.25%</div>
+                        </div>
+                        <div class="period_data">
+                          <div>1 Month:</div>
+                          <div class="change">7.89</div>
+                          <div class="change">1.25%</div>
+                        </div>
                       </div>
 
                       <div id="ranges" class="p_tab">
+
                         <div id="day_range">
                           <div class="range_data">
                             <div class="range_low">
@@ -1347,6 +1365,7 @@
                           </div>
                           <div class=bar></div>
                         </div>
+
                         <div id="week_range">
                           <div class="range_data">
                             <div class="range_low">
@@ -1360,6 +1379,7 @@
                           </div>
                           <div class=bar></div>
                         </div>
+
                         <div id="month_range">
                           <div class="range_data">
                             <div class="range_low">
