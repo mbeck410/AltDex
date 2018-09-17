@@ -1818,12 +1818,9 @@
         let dex_data = [];
         let url = '/getindexperformance/';
         http_get(url, function (data) {
-          for (let i=0; i < data.dict_key.length; i++) {
-            if (i=index_id) {
-              dex_data.push(data.dict_key[i])
-              console.log(dex_data)
-            }
-          }
+          <!-- for (let i=0; i < data.dict_key.length; i++) {
+            if (i=index_id) { -->
+          dex_data.push(data.dict_key[index_id])
           console.log(dex_data)
         })
     }
