@@ -617,7 +617,7 @@
         .bar {
           /* width: 100%; */
           height: 0.4vw;
-          background-color: green;
+          background-color: #6dc0eb;
           text-align: right;
           margin: auto;
           margin-bottom: 1.0vw;
@@ -629,7 +629,7 @@
 
         #performance_price {
           margin: auto;
-          width: 27%;
+          width: 30%;
           text-align: center;
         }
 
@@ -639,8 +639,8 @@
 
         #period_changes {
           text-align: center;
-          font-size: 1.3vw;
-          width: 40%;
+          font-size: 1.6vw;
+          width: 37%;
         }
 
         #ranges {
@@ -1389,6 +1389,10 @@
                             </div>
                           </div>
                           <div class=bar></div>
+                          <div id="day_slider">
+                            <i class="fa fa-caret-up"></i>
+                            <div id="day_slider_value"></div>
+                          </div>
                         </div>
 
                         <div id="week_range">
@@ -1403,6 +1407,10 @@
                             </div>
                           </div>
                           <div class=bar></div>
+                          <div id="week_slider">
+                            <i class="fa fa-caret-up"></i>
+                            <div id="week_slider_value"></div>
+                          </div>
                         </div>
 
                         <div id="month_range">
@@ -1417,6 +1425,10 @@
                             </div>
                           </div>
                           <div class=bar></div>
+                          <div id="month_slider">
+                            <i class="fa fa-caret-up"></i>
+                            <div id="month_slider_value"></div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1716,6 +1728,12 @@
 
         Plotly.relayout('index_chart', update)
     };
+
+    // Slider Function
+    function slider(div, value) {
+      this_div = document.getElementById(div)
+      this_div.innerHTML = value
+    }
 
     // Coin Table App
     let app = new Vue({
@@ -2060,6 +2078,7 @@
     index_all();
     index_metrics();
     top_gainers_losers();
+    slider('day_slider_value', 51.47)
     // setInterval(function () {
     //         top_gainers_losers();
     //         update_coin(current_index);
