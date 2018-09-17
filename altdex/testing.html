@@ -620,7 +620,7 @@
           background-color: #6dc0eb;
           text-align: right;
           margin: auto;
-          margin-bottom: 1.0vw;
+          /* margin-bottom: 1.0vw; */
         }
 
         #performance {
@@ -1814,13 +1814,15 @@
     }
 
     // Index Metrics Pull
-    function index_metrics() {
+    function index_metrics(index_id) {
         let dex_data = [];
         let url = '/getindexperformance/';
         http_get(url, function (data) {
           for (let i=0; i < data.dict_key.length; i++) {
-            dex_data.push(data.dict_key[i])
-            console.log(dex_data)
+            if (i=index_id) {
+              dex_data.push(data.dict_key[i])
+              console.log(dex_data)
+            }
           }
           console.log(dex_data)
         })
@@ -2076,7 +2078,7 @@
     index_current(current_id);
     coin_current(current_index);
     index_all();
-    index_metrics();
+    index_metrics(current_id);
     top_gainers_losers();
     slider('day_slider_value', 51.47)
     // setInterval(function () {
