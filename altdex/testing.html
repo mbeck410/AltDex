@@ -650,7 +650,7 @@
         }
 
         #perf_dex_name {
-          font-size: 2.0vw;
+          font-size: 2.5vw;
           font-weight: bold;
         }
 
@@ -672,20 +672,22 @@
         .period_data {
           display: flex;
           width: 100%;
-          margin: auto;
           height: 33%;
         }
 
         .data_period {
           width: 33%;
+          margin: auto;
         }
 
         .perf_change {
           width: 33%;
+          margin: auto;
         }
 
         .perf_percent {
           width: 33%;
+          margin: auto;
         }
 
         /*Loader Animation*/
@@ -1272,7 +1274,7 @@
                     <ul class="nav nav-pills">
                       <li class="active"><a data-toggle="pill" href="#price_info">Home</a></li>
                       <li><a data-toggle="pill" href="#info">Info</a></li>
-                      <li><a data-toggle="pill" href="#performance">Performance</a></li>
+                      <li><a data-toggle="pill" href="#performance_tab">Performance</a></li>
                     </ul>
 
 
@@ -1347,7 +1349,8 @@
                     </div>
 
                     <!-- Performace Tab -->
-                    <div class="tab-pane fade" id="performance">
+                    <div class="tab-pane fade" id="performance_tab">
+                      <div id="performance">
                       <div id="performance_price">
                         <div id="perf_dex_name">ALTPRV</div>
                         <div id="performance_current">88.50</div>
@@ -1416,6 +1419,7 @@
                           <div class=bar></div>
                         </div>
                       </div>
+                    </div>
                     </div>
                   </div>
                   </div>
