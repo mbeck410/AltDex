@@ -1355,7 +1355,6 @@
                     <!-- Performace Tab -->
                     <div class="tab-pane fade" id="performance_tab">
                       <div id="performance">
-                        <div id="bullshit" v-for="row in rows">
                       <div id="performance_price">
                         <div id="perf_dex_name">ALTPRV</div>
                         <div id="performance_current">88.50</div>
@@ -1437,7 +1436,6 @@
                         </div>
                       </div>
                     </div>
-                  </div>
                   </div>
                     </div>
                   </div>
@@ -1805,16 +1803,6 @@
         }
     });
 
-    // Performance App
-    let app5 = new Vue({
-      el: '#performance_tab',
-      data{
-        ascending: false,
-        sortColumn: '',
-        rows: [],
-      }
-    })
-
     // API Pulls
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
@@ -1836,7 +1824,6 @@
         let url = '/getindexperformance/';
         http_get(url, function (data) {
           dex_data.push(data.dict_key[2])
-          app5.rows = dex_data;
         })
     }
 
