@@ -1358,7 +1358,7 @@
                       <div id="performance_price">
                         <div id="perf_dex_name">ALTPRV</div>
                         <div id="performance_current">88.50</div>
-                        <div id="performance_time">Last Update: 22:25:13.89 UTC</div>
+                        <div id="performance_time"></div>
                       </div>
 
                       <div id="period_changes" class="p_tab">
@@ -1956,9 +1956,11 @@
             last_y = data.dict_key[index_id].price;
             app2.rows = new_data;
             app3.rows = other_data;
-            price_change = data.dict_key[index_id].change_24h
-            price_percent = data.dict_key[index_id].price_percent
-            now_price = data.dict_key[index_id].price
+            price_change = data.dict_key[index_id].change_24h.toFixed(2)
+            price_percent = data.dict_key[index_id].price_percent.toFixed(2).toString + '%'
+            now_price = data.dict_key[index_id].price.toFixed(2)
+            pretty_time = 'Last Update' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
+            set_value('performance_time', pretty_time)
             set_value('perf_day_change', price_change);
             set_value('performance_current', now_price);
             set_value('perf_day_percent', price_percent);
@@ -1980,9 +1982,11 @@
             new_data.push(data.dict_key[index_id]);
             app2.rows = new_data;
             app3.rows = other_data;
-            price_change = data.dict_key[index_id].change_24h
-            price_percent = data.dict_key[index_id].price_percent
-            now_price = data.dict_key[index_id].price
+            price_change = data.dict_key[index_id].change_24h.toFixed(2)
+            price_percent = data.dict_key[index_id].price_percent.toFixed(2).toString + '%'
+            now_price = data.dict_key[index_id].price.toFixed(2)
+            pretty_time = 'Last Update' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
+            set_value('performance_time', pretty_time)
             set_value('perf_day_change', price_change);
             set_value('performance_current', now_price);
             set_value('day_slider_value', now_price);
