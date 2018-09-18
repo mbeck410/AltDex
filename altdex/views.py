@@ -331,8 +331,7 @@ def getindexperformance(request):
                     week_low = '-'
                     break
 
-            change_dict = {'seven': seven,
-                            'week': week_change,
+            change_dict = { 'week': week_change,
                             'month': one_m,
                             'month_change': month_change,
                             # 'week_index': week_index,
@@ -345,9 +344,6 @@ def getindexperformance(request):
                             'day_low': day_low,
                             'month_percent': str('{0:.2f}'.format(month_percent)) + '%',
                             'week_percent': str('{0:.2f}'.format(week_percent)) + '%',
-                            'current': current_price,
-                            'day_percent': latest_entry.price_percent_change,
-                            'day_change': latest_entry.change_24h,
                         }
 
             performance_table.append(change_dict)
