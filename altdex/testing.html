@@ -1744,20 +1744,20 @@
       this_div = document.getElementById(div)
       this_div.innerHTML = value
       if (value > 0) {
-        if (body.classList.contains('t--light')) {
-          this_div.color = green;
-        }
-        else {
-          this_div.color = #00ff00;
-        }
+        // if (body.classList.contains('t--light')) {
+        this_div.color = green;
+        // }
+        // else {
+        //  this_div.color = #00ff00;
+        // }
       }
       else if (value < 0) {
-        if (body.classList.contains('t--light')) {
-          this_div.color = red;
-        }
-        else {
-          this_div.color = #ec1313;
-        }
+      //  if (body.classList.contains('t--light')) {
+        this_div.color = red;
+  //      }
+    //    else {
+        //  this_div.color = #ec1313;
+      //  }
       }
     }
 
@@ -1983,7 +1983,7 @@
             now_price = data.dict_key[index_id].price.toFixed(2)
             pretty_time = 'Last Update: ' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
             set_value('performance_time', pretty_time)
-            set_value_color('perf_day_change', price_change);
+            set_value('perf_day_change', price_change);
             set_value('performance_current', now_price);
             set_value('perf_day_percent', price_percent);
             set_value('day_slider_value', now_price);
@@ -2011,7 +2011,7 @@
             now_price = data.dict_key[index_id].price.toFixed(2)
             pretty_time = 'Last Update: ' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
             set_value('performance_time', pretty_time)
-            set_value_color('perf_day_change', price_change);
+            set_value('perf_day_change', price_change);
             set_value('performance_current', now_price);
             set_value('day_slider_value', now_price);
             set_value('perf_day_percent', price_percent);
