@@ -1814,13 +1814,11 @@
     }
 
     // Index Metrics Pull
-    function index_metrics(index_id) {
+    function index_metrics() {
         let dex_data = [];
         let url = '/getindexperformance/';
         http_get(url, function (data) {
-          <!-- for (let i=0; i < data.dict_key.length; i++) {
-            if (i=index_id) { -->
-          dex_data.push(data.dict_key[index_id])
+          dex_data.push(data.dict_key[2])
           console.log(dex_data)
         })
     }
@@ -2075,7 +2073,7 @@
     index_current(current_id);
     coin_current(current_index);
     index_all();
-    index_metrics(current_id);
+    index_metrics();
     top_gainers_losers();
     slider('day_slider_value', 51.47)
     // setInterval(function () {
