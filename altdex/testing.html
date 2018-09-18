@@ -1653,23 +1653,19 @@
     }
 
     function change_color(div) {
-      my_div = document.getElementById(div)
-      color = my_div.style.color;
+      let my_div = document.getElementById(div);
+      let color = my_div.style.color;
       if (color === 'green') {
         my_div.style.color = '#00ff00';
-        color = '#00ff00'
       }
-      if (color === '#00ff00') {
+      else if (color === '#00ff00') {
         my_div.style.color = 'green';
-        color = 'green';
       }
-      if (color === 'red') {
+      else if (color === 'red') {
         my_div.style.color = '#ec1313';
-        color = '#ec1313'
       }
-      if (color === '#ec1313') {
+      else if (color === '#ec1313') {
         my_div.style.color = 'red';
-        color = 'red'
       }
     }
 
