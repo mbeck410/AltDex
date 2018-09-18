@@ -305,6 +305,11 @@ def getindexperformance(request):
                     day_high = month_high
                     day_low = month_low
 
+                if i > 1300:
+                    if day_high == day_low:
+                        day_high = month_high
+                        day_low = month_low
+
                 if strip_time == seven:
                     week_change = current_price - entries[i].price
                     week_index = i
