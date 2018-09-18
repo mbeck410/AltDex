@@ -1354,7 +1354,8 @@
 
                     <!-- Performace Tab -->
                     <div class="tab-pane fade" id="performance_tab">
-                      <div id="performance" v-for="row in rows">
+                      <div id="performance">
+                        <div v-for="row in rows">
                       <div id="performance_price">
                         <div id="perf_dex_name">ALTPRV</div>
                         <div id="performance_current">88.50</div>
@@ -1436,6 +1437,7 @@
                         </div>
                       </div>
                     </div>
+                  </div>
                     </div>
                   </div>
                   </div>
@@ -1804,7 +1806,7 @@
 
     // Performance App
     let app5 = new Vue({
-      el: '#performance_tab',
+      el: '#performance',
       data{
         ascending: false,
         sortColumn: '',
