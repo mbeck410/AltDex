@@ -342,8 +342,8 @@ def getindexperformance(request):
                             'month_low':month_low,
                             'day_high': day_high,
                             'day_low': day_low,
-                            'month_percent': str('{0:.2f}'.format(month_percent)) + '%',
-                            'week_percent': str('{0:.2f}'.format(week_percent)) + '%',
+                            'month_percent': '{0:.2f}'.format(month_percent),
+                            'week_percent': '{0:.2f}'.format(week_percent),
                         }
 
             performance_table.append(change_dict)
