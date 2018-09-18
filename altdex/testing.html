@@ -1822,11 +1822,15 @@
         let dex_data = [];
         let url = '/getindexperformance/';
         http_get(url, function (data) {
-          set_value('performance_current', data.dict_key[2]['current'])
-          set_value('perf_week_change', data.dict_key[2]['week'])
-          set_value('perf_month_change', data.dict_key[2]['month'])
-          set_value('day_low', data.dict_key[2]['day_low'])
-          set_value('day_high', data.dict_key[2]['day_high'])
+          set_value('performance_current', data.dict_key[2]['current']);
+          set_value('perf_week_change', data.dict_key[2]['week']);
+          set_value('perf_month_change', data.dict_key[2]['month_change']);
+          set_value('day_low', data.dict_key[2]['day_low']);
+          set_value('day_high', data.dict_key[2]['day_high']);
+          set_value('week_low', data.dict_key[2]['week_low']);
+          set_value('month_high', data.dict_key[2]['month_high']);
+          set_value('perf_week_percent', data.dict_key[2]['week_percent']);
+          set_value('perf_month_percent', data.dict_key[2]['month_percent']);
         })
     }
 
