@@ -336,7 +336,10 @@ def getindexperformance(request):
                             'month_high': month_high,
                             'month_low':month_low,
                             'day_high': day_high,
-                            'day_low': day_low
+                            'day_low': day_low,
+                            'current': current_price,
+                            'day_percent': latest_entry.price_percent_change,
+                            'day_change': latest_entry.change_24h,
                         }
 
             performance_table.append(change_dict)

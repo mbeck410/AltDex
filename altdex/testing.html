@@ -1364,18 +1364,18 @@
                       <div id="period_changes" class="p_tab">
                         <div class="period_data">
                           <div class="data_period">24 Hour:</div>
-                          <div class="perf_change">7.89</div>
-                          <div class="perf_percent">1.25%</div>
+                          <div class="perf_change" id="perf_day_change"></div>
+                          <div class="perf_percent" id="perf_day_percent"></div>
                         </div>
                         <div class="period_data">
                           <div class="data_period">7 Day:</div>
-                          <div class="perf_change">{{row.week}}</div>
-                          <div class="perf_percent">1.25%</div>
+                          <div class="perf_change" id="perf_week_change"></div>
+                          <div class="perf_percent" id ="perf_week_percent"></div>
                         </div>
                         <div class="period_data">
                           <div class="data_period">1 Month:</div>
-                          <div class="perf_change">{{row.month}}</div>
-                          <div class="perf_percent">1.25%</div>
+                          <div class="perf_change" id="perf_month_change">{{row.month}}</div>
+                          <div class="perf_percent" id="perf_month_percent">1.25%</div>
                         </div>
                       </div>
 
@@ -1385,11 +1385,11 @@
                           <div class="range_data">
                             <div class="range_low">
                               <div>Day Low</div>
-                              <div>71.02</div>
+                              <div id="day_low"></div>
                             </div>
                             <div class="range_high">
                               <div>Day High</div>
-                              <div>88.89</div>
+                              <div id="day_high"></div>
                             </div>
                           </div>
                           <div class=bar></div>
@@ -1402,12 +1402,12 @@
                         <div id="week_range">
                           <div class="range_data">
                             <div class="range_low">
-                              <div>1 Month Low</div>
-                              <div>71.02</div>
+                              <div>7 Day Low</div>
+                              <div id="week_low"></div>
                             </div>
                             <div class="range_high">
-                              <div>1 Month High</div>
-                              <div>88.89</div>
+                              <div>7 Day High</div>
+                              <div id="week_high"></div>
                             </div>
                           </div>
                           <div class=bar></div>
@@ -1420,12 +1420,12 @@
                         <div id="month_range">
                           <div class="range_data">
                             <div class="range_low">
-                              <div>3 Month Low</div>
-                              <div>71.02</div>
+                              <div>1 Month Low</div>
+                              <div id="month_low"></div>
                             </div>
                             <div class="range_high">
-                              <div>3 Month High</div>
-                              <div>88.89</div>
+                              <div>1 Month High</div>
+                              <div id="month_high"></div>
                             </div>
                           </div>
                           <div class=bar></div>
@@ -1733,8 +1733,8 @@
         Plotly.relayout('index_chart', update)
     };
 
-    // Slider Function
-    function slider(div, value) {
+    // Div Values Function
+    function set_value(div, value) {
       this_div = document.getElementById(div)
       this_div.innerHTML = value
     }
@@ -1823,6 +1823,11 @@
         let url = '/getindexperformance/';
         http_get(url, function (data) {
           dex_data.push(data.dict_key[2])
+          set_value('performance_current', dex_data.current_price)
+          set_value('perf_day_change', dex_data.day_change)
+          set_value('perf_day_percent', dex_data.day_percent)
+          set_value('perf_week_change', dex_data.week)
+          set_value('perf_month_change', dex_data.month)
         })
     }
 
@@ -2078,7 +2083,6 @@
     index_all();
     index_metrics();
     top_gainers_losers();
-    slider('day_slider_value', 51.47)
     // setInterval(function () {
     //         top_gainers_losers();
     //         update_coin(current_index);
