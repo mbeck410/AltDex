@@ -1744,20 +1744,20 @@
       this_div = document.getElementById(div)
       this_div.innerHTML = value
       if (value > 0) {
-        // if (body.classList.contains('t--light')) {
-        this_div.color = green;
-        // }
-        // else {
-        //  this_div.color = #00ff00;
-        // }
+        if (body.classList.contains('t--light')) {
+          this_div.color = 'green';
+        }
+         else {
+          this_div.color = '#00ff00';
+         }
       }
       else if (value < 0) {
-      //  if (body.classList.contains('t--light')) {
-        this_div.color = red;
-  //      }
-    //    else {
-        //  this_div.color = #ec1313;
-      //  }
+        if (body.classList.contains('t--light')) {
+          this_div.color = 'red';
+        }
+        else {
+          this_div.color = '#ec1313';
+        }
       }
     }
 
