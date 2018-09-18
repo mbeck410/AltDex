@@ -1761,6 +1761,27 @@
       }
     }
 
+    function set_value_percent(div, value) {
+      this_div = document.getElementById(div)
+      this_div.innerHTML = String(value) + '%'
+      if (value > 0) {
+        if (body.classList.contains('t--light')) {
+          this_div.style.color = 'green';
+        }
+        else {
+          this_div.style.color = '#00ff00';
+        }
+      }
+      else if (value < 0) {
+        if (body.classList.contains('t--light')) {
+          this_div.style.color = 'red';
+        }
+        else {
+          this_div.style.color = '#ec1313';
+        }
+      }
+    }
+
     // Coin Table App
     let app = new Vue({
         el: '#coin_table',
@@ -1852,8 +1873,8 @@
           set_value('week_high', data.dict_key[2]['week_high']);
           set_value('month_low', data.dict_key[2]['month_low']);
           set_value('month_high', data.dict_key[2]['month_high']);
-          set_value('perf_week_percent', data.dict_key[2]['week_percent']);
-          set_value('perf_month_percent', data.dict_key[2]['month_percent']);
+          set_value_percent('perf_week_percent', data.dict_key[2]['week_percent']);
+          set_value_percent('perf_month_percent', data.dict_key[2]['month_percent']);
         })
     }
 
@@ -1979,13 +2000,13 @@
             app2.rows = new_data;
             app3.rows = other_data;
             price_change = data.dict_key[index_id].change_24h.toFixed(2)
-            price_percent = String(data.dict_key[index_id].price_percent.toFixed(2)) + '%'
+            price_percent = data.dict_key[index_id].price_percent.toFixed(2)
             now_price = data.dict_key[index_id].price.toFixed(2)
             pretty_time = 'Last Update: ' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
             set_value('performance_time', pretty_time)
-            set_value('perf_day_change', price_change);
+            set_value_color('perf_day_change', price_change);
             set_value('performance_current', now_price);
-            set_value('perf_day_percent', price_percent);
+            set_value_percent('perf_day_percent', price_percent);
             set_value('day_slider_value', now_price);
             set_value('week_slider_value', now_price);
             set_value('month_slider_value', now_price);
@@ -2007,14 +2028,14 @@
             app2.rows = new_data;
             app3.rows = other_data;
             price_change = data.dict_key[index_id].change_24h.toFixed(2)
-            price_percent = String(data.dict_key[index_id].price_percent.toFixed(2)) + '%'
+            price_percent = data.dict_key[index_id].price_percent.toFixed(2)
             now_price = data.dict_key[index_id].price.toFixed(2)
             pretty_time = 'Last Update: ' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
             set_value('performance_time', pretty_time)
-            set_value('perf_day_change', price_change);
+            set_value_color('perf_day_change', price_change);
             set_value('performance_current', now_price);
             set_value('day_slider_value', now_price);
-            set_value('perf_day_percent', price_percent);
+            set_value_percent('perf_day_percent', price_percent);
             set_value('week_slider_value', now_price);
             set_value('month_slider_value', now_price);
             // }
