@@ -1652,6 +1652,23 @@
       document.getElementById("index_chart").style.display = "block";
     }
 
+    function change_color(div) {
+      my_div = getElementById(div)
+      color = my_div.style.color;
+      if (color ='green') {
+        my_div.style.color = '#00ff00';
+      }
+      else if (color = '#00ff00') {
+        my_div.style.color = 'green'
+      }
+      else if (color ='red') {
+        my_div.style.color = '#ec1313';
+      }
+      else if (color = '#ec1313') {
+        my_div.style.color = 'red'
+      }
+    }
+
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
         let plot_lines = '';        //Index axis color
@@ -1664,6 +1681,12 @@
             body.classList.add('t--dark');
             localStorage.setItem("mode", "dark");
             grid_color = '#707070';
+            change_color('perf_day_change')
+            change_color('perf_day_percent')
+            change_color('perf_week_change')
+            change_color('perf_week_percent')
+            change_color('perf_month_change')
+            change_color('perf_month_percent')
         }
 
         // Dark to Light
@@ -1673,6 +1696,12 @@
             localStorage.setItem("mode", "light");
             grid_color = 'default';
             plot_lines = 'default';
+            change_color('perf_day_change')
+            change_color('perf_day_percent')
+            change_color('perf_week_change')
+            change_color('perf_week_percent')
+            change_color('perf_month_change')
+            change_color('perf_month_percent')
         }
 
         // Updating Index Chart
