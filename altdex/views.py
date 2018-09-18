@@ -310,21 +310,21 @@ def getindexperformance(request):
                     week_index = i
                     week_high = month_high
                     week_low = month_low
-                    week_percent = week_change / entries[i].price
+                    week_percent = week_change / entries[i].price * 100
                     # week_high_index = month_high_index
                     # week_low_index = month_low_index
 
                 if strip_time == one_m:
                     month_change = current_price - entries[i].price
                     month_index = i
-                    month_percent = month_change / entries[i].price
+                    month_percent = month_change / entries[i].price * 100
                     break
 
                 if i > 35000:
                     week_change = current_price - entries[8660].price
                     month_change = current_price - entries[32600].price
-                    week_percent = week_change / entries[8660].price
-                    month_percent = month_change / entries[32600].price
+                    week_percent = week_change / entries[8660].price * 100
+                    month_percent = month_change / entries[32600].price * 100
                     # week_high = entries[week_high_index].price
                     # week_low = entries[week_low_index].price
                     week_high = '-'
@@ -343,11 +343,11 @@ def getindexperformance(request):
                             'month_low':month_low,
                             'day_high': day_high,
                             'day_low': day_low,
-                            'month_percent': month_percent,
-                            'week_percent': week_percent,
-                            # 'current': current_price,
-                            # 'day_percent': latest_entry.price_percent_change,
-                            # 'day_change': latest_entry.change_24h,
+                            'month_percent': str('{0:.2f}'.format(month_percent)) + '%',
+                            'week_percent': str('{0:.2f}'.format(week_percent)) + '%',
+                            'current': current_price,
+                            'day_percent': latest_entry.price_percent_change,
+                            'day_change': latest_entry.change_24h,
                         }
 
             performance_table.append(change_dict)

@@ -1974,6 +1974,11 @@
             app2.rows = new_data;
             app3.rows = other_data;
             price_change = data.dict_key[index_id].change_24h
+            price_percent = data.dict_key[index_id].price_percent
+            now_price = data.dict_key[index_id].price
+            set_value('perf_day_change', price_change);
+            set_value('performance_current', now_price);
+            set_value('perf_day_percent', price_percent);
             // }
         });
     }
