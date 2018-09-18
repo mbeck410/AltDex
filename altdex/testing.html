@@ -1745,18 +1745,18 @@
       this_div.innerHTML = value
       if (value > 0) {
         if (body.classList.contains('t--light')) {
-          this_div.color = 'green';
+          this_div.style.color = 'green';
         }
-         else {
-          this_div.color = '#00ff00';
-         }
+        else {
+          this_div.style.color = '#00ff00';
+        }
       }
       else if (value < 0) {
         if (body.classList.contains('t--light')) {
-          this_div.color = 'red';
+          this_div.style.color = 'red';
         }
         else {
-          this_div.color = '#ec1313';
+          this_div.style.color = '#ec1313';
         }
       }
     }
