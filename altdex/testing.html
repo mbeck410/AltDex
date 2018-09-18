@@ -1357,25 +1357,25 @@
                       <div id="performance">
                       <div id="performance_price">
                         <div id="perf_dex_name">ALTPRV</div>
-                        <div id="performance_current">88.50</div>
+                        <div id="performance_current"></div>
                         <div id="performance_time"></div>
                       </div>
 
                       <div id="period_changes" class="p_tab">
                         <div class="period_data">
                           <div class="data_period">24 Hour:</div>
-                          <div class="perf_change" id="perf_day_change"></div>
-                          <div class="perf_percent" id="perf_day_percent"></div>
+                          <div class="perf_change" id="perf_day_change" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"></div>
+                          <div class="perf_percent" id="perf_day_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"></div>
                         </div>
                         <div class="period_data">
                           <div class="data_period">7 Day:</div>
-                          <div class="perf_change" id="perf_week_change"></div>
-                          <div class="perf_percent" id ="perf_week_percent"></div>
+                          <div class="perf_change" id="perf_week_change" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"></div>
+                          <div class="perf_percent" id ="perf_week_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"></div>
                         </div>
                         <div class="period_data">
                           <div class="data_period">1 Month:</div>
-                          <div class="perf_change" id="perf_month_change">{{row.month}}</div>
-                          <div class="perf_percent" id="perf_month_percent">1.25%</div>
+                          <div class="perf_change" id="perf_month_change" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"></div>
+                          <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}"></div>
                         </div>
                       </div>
 
@@ -1957,14 +1957,16 @@
             app2.rows = new_data;
             app3.rows = other_data;
             price_change = data.dict_key[index_id].change_24h.toFixed(2)
-            price_percent = data.dict_key[index_id].price_percent.toFixed(2).toString + '%'
+            price_percent = String(data.dict_key[index_id].price_percent.toFixed(2)) + '%'
             now_price = data.dict_key[index_id].price.toFixed(2)
-            pretty_time = 'Last Update' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
+            pretty_time = 'Last Update: ' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
             set_value('performance_time', pretty_time)
             set_value('perf_day_change', price_change);
             set_value('performance_current', now_price);
             set_value('perf_day_percent', price_percent);
             set_value('day_slider_value', now_price);
+            set_value('week_slider_value', now_price);
+            set_value('month_slider_value', now_price);
             // }
         });
     }
@@ -1983,14 +1985,16 @@
             app2.rows = new_data;
             app3.rows = other_data;
             price_change = data.dict_key[index_id].change_24h.toFixed(2)
-            price_percent = data.dict_key[index_id].price_percent.toFixed(2).toString + '%'
+            price_percent = String(data.dict_key[index_id].price_percent.toFixed(2)) + '%'
             now_price = data.dict_key[index_id].price.toFixed(2)
-            pretty_time = 'Last Update' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
+            pretty_time = 'Last Update: ' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
             set_value('performance_time', pretty_time)
             set_value('perf_day_change', price_change);
             set_value('performance_current', now_price);
             set_value('day_slider_value', now_price);
             set_value('perf_day_percent', price_percent);
+            set_value('week_slider_value', now_price);
+            set_value('month_slider_value', now_price);
             // }
         });
     }
