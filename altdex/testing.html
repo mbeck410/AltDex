@@ -1912,7 +1912,9 @@
           set_value('month_high', data.dict_key[2]['month_high']);
           set_value_percent('perf_week_percent', data.dict_key[2]['week_percent']);
           set_value_percent('perf_month_percent', data.dict_key[2]['month_percent']);
-          set_slider('day_slider', data.dict_key[2]['day_low'], data.dict_key[2]['day_high'], data.dict_key[2]['current'])
+          set_slider('day_slider', data.dict_key[2]['day_low'], data.dict_key[2]['day_high'], data.dict_key[2]['current']);
+          set_slider('week_slider', data.dict_key[2]['week_low'], data.dict_key[2]['week_high'], data.dict_key[2]['current']);
+          set_slider('month_slider', data.dict_key[2]['month_low'], data.dict_key[2]['month_high'], data.dict_key[2]['current']);
         })
     }
 
