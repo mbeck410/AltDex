@@ -694,7 +694,7 @@
         .slider {
           text-align: center;
           width: 15%;
-          margin-left: 20%;
+          margin-left: 100%;
         }
 
         /*Loader Animation*/
@@ -1675,6 +1675,15 @@
       }
     }
 
+    function set_slider(div, range_low, range_high, current) {
+      let my_div = document.getElementById(div)
+      let range = range_high - range_low
+      let difference = current - range_low
+      let percent = difference / range * 100
+      let pretty_percent = String(percent.toFixed(0))+'%'
+      my_div.style.marginLeft = percent
+    }
+
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
         let plot_lines = '';        //Index axis color
@@ -1892,6 +1901,9 @@
     // Index Metrics Pull
     function index_metrics() {
         let dex_data = [];
+        let day_range = 0;
+        let week_range = 0;
+        let month_range = 0;
         let url = '/getindexperformance/';
         http_get(url, function (data) {
           set_value_color('perf_week_change', data.dict_key[2]['week']);
