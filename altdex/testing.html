@@ -694,7 +694,6 @@
         .slider {
           text-align: center;
           width: 15%;
-          margin-left: 85%;
         }
 
         /*Loader Animation*/
@@ -1681,7 +1680,7 @@
       let difference = current - range_low
       let percent = difference / range * 85
       let pretty_percent = '\'' + String(percent.toFixed(0)) + '%' + '\''
-      console.log(pretty_percent)
+      my_div.style.marginLeft = pretty_percent
     }
 
     // Changing Mode/Theme on button click
