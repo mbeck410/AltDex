@@ -343,7 +343,8 @@ def getindexperformance(request):
                     # week_low = '-'
                     break
 
-            change_dict = { 'week': week_change,
+            change_dict = { 'current': current_price,
+                            'week': week_change,
                             'month': one_m,
                             'month_change': month_change,
                             # 'week_index': week_index,

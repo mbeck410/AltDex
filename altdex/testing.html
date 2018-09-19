@@ -1679,9 +1679,9 @@
       let my_div = document.getElementById(div)
       let range = range_high - range_low
       let difference = current - range_low
-      let percent = difference / range * 100
-      let pretty_percent = String(percent.toFixed(0))+'%'
-      my_div.style.marginLeft = percent
+      let percent = difference / range * 85
+      let pretty_percent = '\'' + String(percent.toFixed(0)) + '%' + '\''
+      console.log(pretty_percent)
     }
 
     // Changing Mode/Theme on button click
@@ -1901,9 +1901,6 @@
     // Index Metrics Pull
     function index_metrics() {
         let dex_data = [];
-        let day_range = 0;
-        let week_range = 0;
-        let month_range = 0;
         let url = '/getindexperformance/';
         http_get(url, function (data) {
           set_value_color('perf_week_change', data.dict_key[2]['week']);
@@ -1916,6 +1913,7 @@
           set_value('month_high', data.dict_key[2]['month_high']);
           set_value_percent('perf_week_percent', data.dict_key[2]['week_percent']);
           set_value_percent('perf_month_percent', data.dict_key[2]['month_percent']);
+          set_slider('day_slider', data.dict_key[2]['day_low'], data.dict_key[2]['day_high'], data.dict_key[2]['current'])
         })
     }
 
