@@ -634,6 +634,16 @@
             background-color: #444444;
         }
 
+        #info_switch {
+            width: 100%;
+            padding: 0;
+        }
+
+        #middle_time {
+            width: 40%;
+            text-align: center;
+        }
+
         .bar {
           width: 85%;
           height: 0.4vw;
@@ -729,11 +739,6 @@
 
         .period_data:nth-child(2) {
           border-bottom: solid 1px gray;
-        }
-
-        #ranges > div {
-          margin-top: .5vw
-          margin-bottom: .5vw
         }
 
         /*Loader Animation*/
@@ -1012,6 +1017,10 @@
             .col-sm-8 {
                 padding-left: 10px;
                 padding-right: 10px;
+            }
+
+            #performance_btn {
+              display: none;
             }
 
             .time_bts {
@@ -1385,7 +1394,7 @@
                 <ul id="info_bts" class="nav nav-pills">
                     <li class="active"><a data-toggle="pill" href="#price_info">Price</a></li>
                     <li><a data-toggle="pill" href="#info">Info</a></li>
-                    <li><a data-toggle="pill" href="#performance_tab">Performance</a></li>
+                    <li id="performance_btn"><a data-toggle="pill" href="#performance_tab">Performance</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -1457,6 +1466,7 @@
                         </ul>
                         <p><a href="/about/" class="light_blue_links">Learn More</a></p>
                     </div>
+                    
                     <!-- Performace Tab -->
                     <div class="tab-pane fade well" id="performance_tab">
                       <div id="performance">

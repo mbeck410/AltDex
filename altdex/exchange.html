@@ -639,6 +639,103 @@
             text-align: center;
         }
 
+        .bar {
+          width: 85%;
+          height: 0.4vw;
+          background-color: #6dc0eb;
+          text-align: center;
+          margin: auto;
+          /* margin-bottom: 1.0vw; */
+        }
+
+        #performance {
+          display: flex;
+        }
+
+        #performance_price {
+          margin: auto;
+          width: 30%;
+          text-align: center;
+        }
+
+        #performance_current {
+          font-size: 3.0vw;
+        }
+
+        #period_changes {
+          text-align: center;
+          font-size: 2.0vw;
+          width: 30%;
+        }
+
+        #ranges {
+          text-align: right;
+          margin: auto;
+          width: 40%
+        }
+
+        #perf_dex_name {
+          font-size: 2.5vw;
+          font-weight: bold;
+        }
+
+        #labels {
+          font-size: 1.0vw;
+          display: flex;
+        }
+
+        .range_data {
+          display: flex;
+          width: 85%;
+          margin: auto;
+        }
+
+        .range_low {
+          width: 50%;
+          text-align: left;
+        }
+
+        .range_high {
+          text-align: right;
+          width: 50%;
+        }
+
+        .period_data {
+          display: flex;
+          width: 100%;
+          height: 33%;
+        }
+
+        .data_period {
+          width: 16%;
+          text-align: right;
+          margin: auto;
+          font-size: 1.3vw;
+        }
+
+        .perf_change {
+          width: 42%;
+          margin: auto;
+        }
+
+        .perf_percent {
+          width: 42%;
+          margin: auto;
+        }
+
+        .slider {
+          text-align: center;
+          width: 15%;
+        }
+
+        .period_data:first-child {
+          border-bottom: solid 1px gray;
+        }
+
+        .period_data:nth-child(2) {
+          border-bottom: solid 1px gray;
+        }
+
         #loader {
               position: relative;
               left: 46%;
@@ -1037,6 +1134,10 @@
                 margin: auto;
             }
 
+            #performance_btn {
+              display: none;
+            }
+
             .middle_value {
                 margin: auto;
                 font-size: 3.0vw;
@@ -1338,6 +1439,93 @@
                         </ul>
                         <p><a href="/about/" class="light_blue_links">Learn More</a></p>
                     </div>
+                    <!-- Performace Tab -->
+                    <div class="tab-pane fade well" id="performance_tab">
+                      <div id="performance">
+                      <div id="performance_price">
+                        <div id="perf_dex_name">ALTEXC</div>
+                        <div id="performance_current"></div>
+                        <div id="performance_time"></div>
+                      </div>
+
+                      <div id="period_changes" class="p_tab">
+                        <div class="period_data">
+                          <div class="data_period">24h</div>
+                          <div class="perf_change" id="perf_day_change"></div>
+                          <div class="perf_percent" id="perf_day_percent"></div>
+                        </div>
+                        <div class="period_data">
+                          <div class="data_period">7d</div>
+                          <div class="perf_change" id="perf_week_change"></div>
+                          <div class="perf_percent" id ="perf_week_percent"></div>
+                        </div>
+                        <div class="period_data">
+                          <div class="data_period">1m</div>
+                          <div class="perf_change" id="perf_month_change"></div>
+                          <div class="perf_percent" id="perf_month_percent"></div>
+                        </div>
+                      </div>
+
+                      <div id="ranges" class="p_tab">
+
+
+                        <div id="day_range">
+                          <div class="range_data">
+                            <div class="range_low">
+                              <div>Day Low</div>
+                              <div id="day_low"></div>
+                            </div>
+                            <div class="range_high">
+                              <div>Day High</div>
+                              <div id="day_high"></div>
+                            </div>
+                          </div>
+                          <div class=bar></div>
+
+                          <div id="day_slider" class="slider">
+                            <i class="fa fa-caret-up"></i>
+                            <div id="day_slider_value"></div>
+                          </div>
+                        </div>
+
+                        <div id="week_range">
+                          <div class="range_data">
+                            <div class="range_low">
+                              <div>7 Day Low</div>
+                              <div id="week_low"></div>
+                            </div>
+                            <div class="range_high">
+                              <div>7 Day High</div>
+                              <div id="week_high"></div>
+                            </div>
+                          </div>
+                          <div class=bar></div>
+                          <div id="week_slider" class="slider">
+                            <i class="fa fa-caret-up"></i>
+                            <div id="week_slider_value"></div>
+                          </div>
+                        </div>
+
+                        <div id="month_range">
+                          <div class="range_data">
+                            <div class="range_low">
+                              <div>1 Month Low</div>
+                              <div id="month_low"></div>
+                            </div>
+                            <div class="range_high">
+                              <div>1 Month High</div>
+                              <div id="month_high"></div>
+                            </div>
+                          </div>
+                          <div class=bar></div>
+                          <div id="month_slider" class="slider">
+                            <i class="fa fa-caret-up"></i>
+                            <div id="month_slider_value"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
 
@@ -1560,10 +1748,43 @@
       document.getElementById("index_chart").style.display = "block";
     }
 
+    function change_color(div) {
+      let my_div = document.getElementById(div);
+      let color = my_div.style.color;
+      console.log(color)
+      if (color === 'green') {
+        my_div.style.color = 'rgb(0, 255, 0)';
+      }
+      else if (color === 'rgb(0, 255, 0)') {
+        my_div.style.color = 'green';
+      }
+      else if (color === 'red') {
+        my_div.style.color = 'rgb(236, 19, 19)';
+      }
+      else if (color === 'rgb(236, 19, 19)') {
+        my_div.style.color = 'red';
+      }
+    }
+
+    function set_slider(div, range_low, range_high, current) {
+      let my_div = document.getElementById(div)
+      let range = range_high - range_low
+      let difference = current - range_low
+      let percent = difference / range * 85
+      let pretty_percent = String(percent.toFixed(0)) + '%'
+      my_div.style.marginLeft = pretty_percent
+    }
+
     // Changing Mode/Theme on button click
     dark_bt.onclick = function () {
         let plot_lines = '';        //Index axis color
         let grid_color = '';        //Index grid color
+        change_color('perf_day_change')
+        change_color('perf_day_percent')
+        change_color('perf_week_change')
+        change_color('perf_week_percent')
+        change_color('perf_month_change')
+        change_color('perf_month_percent')
 
         // Light to Dark
         if (body.classList.contains('t--light')) {
@@ -1640,6 +1861,55 @@
 
         Plotly.relayout('index_chart', update)
     };
+
+    // Div Values Function
+    function set_value(div, value) {
+      this_div = document.getElementById(div)
+      this_div.innerHTML = value
+    }
+
+    // Div Colored Values Functions
+    function set_value_color(div, value) {
+      this_div = document.getElementById(div)
+      this_div.innerHTML = value
+      if (value > 0) {
+        if (body.classList.contains('t--light')) {
+          this_div.style.color = 'green';
+        }
+        else {
+          this_div.style.color = 'rgb(0, 255, 0)';
+        }
+      }
+      else if (value < 0) {
+        if (body.classList.contains('t--light')) {
+          this_div.style.color = 'red';
+        }
+        else {
+          this_div.style.color = 'rgb(236, 19, 19)';
+        }
+      }
+    }
+
+    function set_value_percent(div, value) {
+      this_div = document.getElementById(div)
+      this_div.innerHTML = String(value) + '%'
+      if (value > 0) {
+        if (body.classList.contains('t--light')) {
+          this_div.style.color = 'green';
+        }
+        else {
+          this_div.style.color = '#00ff00';
+        }
+      }
+      else if (value < 0) {
+        if (body.classList.contains('t--light')) {
+          this_div.style.color = 'red';
+        }
+        else {
+          this_div.style.color = '#ec1313';
+        }
+      }
+    }
 
 
     let app = new Vue({
@@ -1752,6 +2022,27 @@
         });
     }
 
+    // Index Metrics Pull
+    function index_metrics() {
+        let dex_data = [];
+        let url = '/getindexperformance/';
+        http_get(url, function (data) {
+          set_value_color('perf_week_change', data.dict_key[1]['week']);
+          set_value_color('perf_month_change', data.dict_key[1]['month_change']);
+          set_value('day_low', data.dict_key[1]['day_low']);
+          set_value('day_high', data.dict_key[1]['day_high']);
+          set_value('week_low', data.dict_key[1]['week_low']);
+          set_value('week_high', data.dict_key[1]['week_high']);
+          set_value('month_low', data.dict_key[1]['month_low']);
+          set_value('month_high', data.dict_key[1]['month_high']);
+          set_value_percent('perf_week_percent', data.dict_key[1]['week_percent']);
+          set_value_percent('perf_month_percent', data.dict_key[1]['month_percent']);
+          set_slider('day_slider', data.dict_key[1]['day_low'], data.dict_key[1]['day_high'], data.dict_key[1]['current']);
+          set_slider('week_slider', data.dict_key[1]['week_low'], data.dict_key[1]['week_high'], data.dict_key[1]['current']);
+          set_slider('month_slider', data.dict_key[1]['month_low'], data.dict_key[1]['month_high'], data.dict_key[1]['current']);
+        })
+    }
+
     function top_gainers_losers() {
         let gain_data = [];
         let lose_data = [];
@@ -1820,8 +2111,17 @@
             last_y = data.dict_key[index_id].price;
             app2.rows = new_data;
             app3.rows = other_data;
-            price_change = data.dict_key[index_id].change_24h
-            // }
+            price_change = data.dict_key[index_id].change_24h.toFixed(2)
+            price_percent = data.dict_key[index_id].price_percent.toFixed(2)
+            now_price = data.dict_key[index_id].price.toFixed(2)
+            pretty_time = 'Last Update: ' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
+            set_value('performance_time', pretty_time)
+            set_value_color('perf_day_change', price_change);
+            set_value('performance_current', now_price);
+            set_value_percent('perf_day_percent', price_percent);
+            set_value('day_slider_value', now_price);
+            set_value('week_slider_value', now_price);
+            set_value('month_slider_value', now_price);
         });
     }
 
@@ -1947,6 +2247,7 @@
     index_current(current_id);
     coin_current(current_index);
     index_all();
+    index_metrics();
     top_gainers_losers();
     setInterval(function () {
             top_gainers_losers();
