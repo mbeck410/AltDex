@@ -1724,10 +1724,6 @@
     let dark_bt = document.querySelector('#dark_bt');
     let mode = localStorage.getItem("mode");
     let body = document.querySelector('body');
-    let day_h = 0;
-    let day_l = 0;
-    let 7_low = 0;
-    let 7_high = 0;
 
     // Getting and Setting Theme from localStorage 'mode'
     if (mode === null) {
@@ -1839,9 +1835,14 @@
         } else if (time_frame === 'one_day') {                      //Range: 24 Hour
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
-            let day_range = day_h - day_l
-            let buffer = day_range / 10
-            y_updat = [day_l - buffer, day_h + buffer]
+            let buffer = Math.abs(price_change) + 3;
+            if (price_change >= 3) {
+                y_update = [last_y - buffer, last_y + 3]
+            } else if (price_change <= -3) {
+                y_update = [last_y - 3, last_y + buffer]
+            } else {
+                y_update = [last_y - 3, last_y + 3]
+            }
         } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
             x_update = [date_update, last_x];
@@ -2034,10 +2035,6 @@
           set_slider('day_slider', data.dict_key[3]['day_low'], data.dict_key[3]['day_high'], data.dict_key[3]['current']);
           set_slider('week_slider', data.dict_key[3]['week_low'], data.dict_key[3]['week_high'], data.dict_key[3]['current']);
           set_slider('month_slider', data.dict_key[3]['month_low'], data.dict_key[3]['month_high'], data.dict_key[3]['current']);
-          day_l = data.dict_key[3]['day_low']
-          day_h = data.dict_key[3]['day_high']
-          7_high = data.dict_key[3]['week_high']
-          7_low = data.dict_key[3]['week_low']
         })
     }
 
