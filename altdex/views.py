@@ -423,6 +423,7 @@ def rsi_calc(request):
     index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
+    new_new_prices = new_prices.filter(timestamp__minute=0)
     for price in new_prices:
         displayed_prices.append(price.timestamp)
     return JsonResponse({'prices': displayed_prices})
