@@ -412,7 +412,7 @@ def gainers_losers(request):
     return JsonResponse({'losers': loser_array, 'gainers': gainer_array})
     # 'gainers': gainer_array,
 
-def rsi_calc
+def rsi_calc(request):
     rs_value = 0
     rsi_value = 0
     n = 14
