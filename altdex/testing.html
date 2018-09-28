@@ -1958,7 +1958,7 @@
     }
 
     function rsi_pull() {
-      let url - '/rsi_calc/';
+      let url = '/rsi_calc/';
       http_get(url, function (data) {
         console.log(data)
     }
@@ -2208,11 +2208,11 @@
     let losers_div = document.querySelector('#losers');
 
 
-    // index_current(current_id);
-    // coin_current(current_index);
-    // index_all();
-    // index_metrics();
-    // top_gainers_losers();
+    index_current(current_id);
+    coin_current(current_index);
+    index_all();
+    index_metrics();
+    top_gainers_losers();
     rsi_pull();
     // setInterval(function () {
     //         top_gainers_losers();
