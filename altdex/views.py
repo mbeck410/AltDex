@@ -413,6 +413,7 @@ def gainers_losers(request):
     # 'gainers': gainer_array,
 
 def rsi_calc(request):
+    displayed_prices = [];
     rs_value = 0
     rsi_value = 0
     n = 14
@@ -421,8 +422,10 @@ def rsi_calc(request):
     smooth_rs = 0
     index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
+    for price in prices:
     # prices.filter(timestamp__hour=19)
-    return JsonResponse({'prices': prices})
+        displayed_prices.append(price.timestamp)
+    return JsonResponse({'prices': displayed_prices})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
