@@ -418,10 +418,12 @@ def rsi_calc(request):
     final_data = []
     rs_value = 0
     rsi_value = 0
-    n = 14
+    n_constant = 14
     avg_gain = 0
     avg_loss = 0
     smooth_rs = 0
+    gain = 0
+    loss = 0
     index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
@@ -446,8 +448,40 @@ def rsi_calc(request):
 
     for i in range(1, len(displayed_prices)):
         this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
-        final_data.append(this_price_change)
+        if i < 14:
+            if this_price_change => 0:
+                gain += this_price_change
+            else:
+                lose += abs(this_price_change)
 
+        if i = 14:
+            avg_gain = gain / n_constant
+            avg_lose = lose / n_constant
+            rs_value = avg_gain / avg_loss
+            rsi_value = 100 - (100 / (1 + rs_value))
+
+            interval_data = {'rsi': rsi_value,
+                             'timestamp': displayed_prices[i]['date']}
+
+            final_data.append(interval_data)
+
+        else:
+            if this_price_change => 0:
+                this_gain = this_price_change
+                this_loss = 0
+            else:
+                this_loss = abs(this_price_change)
+                this_gain = 0
+
+            avg_gain = (avg_gain *(n_constant - 1) + this_gain) / n_constant
+            avg_lose = (avg_lose *(n_constant - 1) + this_loss) / n_constant
+
+            rs_value = avg_gain / avg_lose
+
+            rsi_value = 100 - (100 / (1 + rs_value))
+
+            interval_data = {'rsi': rsi_value,
+                             'timestamp': displayed_prices[i]['date']}
 
     return JsonResponse({'prices': final_data})
 
