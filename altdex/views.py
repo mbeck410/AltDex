@@ -416,14 +416,6 @@ def rsi_calc(request):
     day = 0
     displayed_prices = []
     final_data = []
-    rs_value = 0
-    rsi_value = 0
-    n_constant = 14
-    avg_gain = 0
-    avg_loss = 0
-    smooth_rs = 0
-    gain = 0
-    loss = 0
     index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
@@ -455,8 +447,8 @@ def rsi_calc(request):
                 lose += abs(this_price_change)
 
         if i == 14:
-            avg_gain = gain / n_constant
-            avg_lose = lose / n_constant
+            avg_gain = gain / 14
+            avg_lose = lose / 14
             rs_value = avg_gain / avg_loss
             rsi_value = 100 - (100 / (1 + rs_value))
 
@@ -473,8 +465,8 @@ def rsi_calc(request):
                 this_loss = abs(this_price_change)
                 this_gain = 0
 
-            avg_gain = (avg_gain *(n_constant - 1) + this_gain) / n_constant
-            avg_lose = (avg_lose *(n_constant - 1) + this_loss) / n_constant
+            avg_gain = (avg_gain *(13) + this_gain) / 14
+            avg_lose = (avg_lose *(13) + this_loss) / 14
 
             rs_value = avg_gain / avg_lose
 
@@ -482,6 +474,8 @@ def rsi_calc(request):
 
             interval_data = {'rsi': rsi_value,
                              'timestamp': displayed_prices[i]['date']}
+
+            final_data.append(interval_data)
 
     return JsonResponse({'prices': final_data})
 
