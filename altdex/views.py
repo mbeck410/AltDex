@@ -427,7 +427,10 @@ def rsi_calc(request):
     for price in new_prices:
         this_day = price.timestamp.day
         if this_day != day:
-            displayed_prices.append(price.timestamp)
+            info = {'date': price.timestamp,
+                    'price': price.price}
+                    
+            displayed_prices.append(info)
             day = this_day
     return JsonResponse({'prices': displayed_prices})
 
