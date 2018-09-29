@@ -454,6 +454,8 @@ def rsi_calc(request):
         if i == 14:
             avg_gain = 0
             avg_lose = 0
+            rs_value = 0
+            rsi_value = 0
 
             if this_price_change >= 0:
                 gain += this_price_change
