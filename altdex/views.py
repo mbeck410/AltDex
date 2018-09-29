@@ -450,7 +450,8 @@ def rsi_calc(request):
                 gain += this_price_change
             else:
                 lose += abs(this_price_change)
-                final_data.append(rsi_value)
+
+            final_data.append(gain)
 
         if i == 14:
             avg_gain = 0
