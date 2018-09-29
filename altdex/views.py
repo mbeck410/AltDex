@@ -438,45 +438,45 @@ def rsi_calc(request):
             displayed_prices.append(info)
             day = this_day
 
-    gain = 0
-    lose = 0
-    save_gain = 0
-    save_lose = 0
-
-    for i in range(1, len(displayed_prices)):
-        rs_value = 0
-        rsi_value = 0
-        this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
-        if i < 14:
-            if this_price_change >= 0:
-                gain += this_price_change
-            else:
-                lose += abs(this_price_change)
-
-        if i == 14:
-            avg_gain = 0
-            avg_lose = 0
-
-            if this_price_change >= 0:
-                gain += this_price_change
-            else:
-                lose += abs(this_price_change)
-
-            avg_gain = float(gain) / 14
-            avg_lose = float(lose) / 14
-            rs_value = float(avg_gain) / float(avg_loss)
-            rsi_value = 100 - (100 / (1 + float(rs_value)))
-            #
-            # interval_data = {'rsi': rsi_value,
-            #                  'timestamp': displayed_prices[i]['date']}
-            #
-            # final_data.append(interval_data)
-            #
-            # save_gain = avg_gain
-            # save_lose = avg_lose
-
-            final_data.append(rs_value)
-            final_data.append(rsi_value)
+    # gain = 0
+    # lose = 0
+    # save_gain = 0
+    # save_lose = 0
+    #
+    # for i in range(1, len(displayed_prices)):
+    #     rs_value = 0
+    #     rsi_value = 0
+    #     this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
+    #     if i < 14:
+    #         if this_price_change >= 0:
+    #             gain += this_price_change
+    #         else:
+    #             lose += abs(this_price_change)
+    #
+    #     if i == 14:
+    #         avg_gain = 0
+    #         avg_lose = 0
+    #
+    #         if this_price_change >= 0:
+    #             gain += this_price_change
+    #         else:
+    #             lose += abs(this_price_change)
+    #
+    #         avg_gain = float(gain) / 14
+    #         avg_lose = float(lose) / 14
+    #         rs_value = float(avg_gain) / float(avg_loss)
+    #         rsi_value = 100 - (100 / (1 + float(rs_value)))
+    #         #
+    #         # interval_data = {'rsi': rsi_value,
+    #         #                  'timestamp': displayed_prices[i]['date']}
+    #         #
+    #         # final_data.append(interval_data)
+    #         #
+    #         # save_gain = avg_gain
+    #         # save_lose = avg_lose
+    #
+    #         final_data.append(rs_value)
+    #         final_data.append(rsi_value)
 
         # else:
             # avg_gain = 0
@@ -504,7 +504,7 @@ def rsi_calc(request):
             # save_gain = avg_gain
             # save_lose = avg_lose
 
-    return JsonResponse({'prices': final_data})
+    return JsonResponse({'prices': displayed_prices})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
