@@ -413,6 +413,7 @@ def gainers_losers(request):
     # 'gainers': gainer_array,
 
 def rsi_calc(request):
+    day = 0
     displayed_prices = []
     rs_value = 0
     rsi_value = 0
@@ -420,22 +421,14 @@ def rsi_calc(request):
     avg_gain = 0
     avg_loss = 0
     smooth_rs = 0
-    day = 0
     index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
     for price in new_prices:
         this_day = price.timestamp.day
-
-        if day != this_day:
-            info = {'change_24h': price.change_24,
-                    'timestamp': price.timestamp}
-
-        displayed_prices.append(info)
-        day = this_day
-
-
-
+        if this_day != day:
+            displayed_prices.append(price.timestamp)
+            day = this_day
     return JsonResponse({'prices': displayed_prices})
 
 # class RepeatedTimer(object):
