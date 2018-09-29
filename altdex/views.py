@@ -428,7 +428,7 @@ def rsi_calc(request):
         this_day = price.timestamp.day
         day_diff = abs(this_day - day)
 
-        if day_diff === 2:
+        if day_diff == 2:
             missing_day = this_day - timedelta(days = 1)
             missing_price = price.price - price.change_24h
             s_info = {'date' :missing_day,
