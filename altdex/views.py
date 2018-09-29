@@ -438,15 +438,18 @@ def rsi_calc(request):
             displayed_prices.append(info)
             day = this_day
 
-    gain = 0
-    lose = 0
-    save_gain = 0
-    save_lose = 0
-    rs_value = 0
-    rsi_value = 0
+    gain = 0.0
+    lose = 0.0
+    save_gain = 0.0
+    save_lose = 0.0
+    rs_value = 0.0
+    rsi_value = 0.0
+    avg_gain = 0.0
+    avg_lose = 0.0
 
     for i in range(1, len(displayed_prices)):
         this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
+
         if i < 14:
             if this_price_change >= 0:
                 gain += this_price_change
@@ -454,9 +457,6 @@ def rsi_calc(request):
                 lose += abs(this_price_change)
 
         elif i == 14:
-            avg_gain = 0
-            avg_lose = 0
-
             if this_price_change >= 0:
                 gain += this_price_change
             else:
@@ -475,8 +475,8 @@ def rsi_calc(request):
 
             final_data.append(rs_value)
             final_data.append(rsi_value)
-            save_gain = avg_gain
-            save_lose = avg_lose
+            # save_gain = avg_gain
+            # save_lose = avg_lose
 
         else:
             if this_price_change >= 0:
@@ -486,8 +486,8 @@ def rsi_calc(request):
                 this_lose = abs(this_price_change)
                 this_gain = 0
 
-            avg_gain = ((float(save_gain) * 13) + this_gain) / 14
-            avg_lose = ((float(save_lose) * 13) + this_lose) / 14
+            # avg_gain = ((float(save_gain) * 13) + this_gain) / 14
+            # avg_lose = ((float(save_lose) * 13) + this_lose) / 14
 
             # rs_value = float(avg_gain) / float(avg_lose)
             #
@@ -498,11 +498,11 @@ def rsi_calc(request):
 
             # final_data.append(interval_data)
 
-            final_data.append(avg_gain)
-            final_data.append(avg_lose)
-
-            save_gain = avg_gain
-            save_lose = avg_lose
+            # final_data.append(save_gain)
+            # final_data.append(save_lose)
+            #
+            # save_gain = avg_gain
+            # save_lose = avg_lose
 
     return JsonResponse({'prices': final_data})
 
