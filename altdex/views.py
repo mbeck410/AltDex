@@ -413,7 +413,6 @@ def gainers_losers(request):
     # 'gainers': gainer_array,
 
 def rsi_calc(request):
-    differences = [1,26,27,28,29,30,31]
     displayed_prices = []
     rs_value = 0
     rsi_value = 0
@@ -421,31 +420,16 @@ def rsi_calc(request):
     avg_gain = 0
     avg_loss = 0
     smooth_rs = 0
+    day = 0
     index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
     for price in new_prices:
-        info = {}
         this_day = price.timestamp.day
-        current_date = price.timestamp
-        this_diff = abs(day - this_day)
-
-        if this_diff == 2:
-            missing_price = price.price - price.change_24
-            missing_change = missing_price - displayed_prices[-1]['price']
-            avg_change = price_diff/this_diff
-            for i in range(this_diff):
-                s_info = {}
-                date = current_date - timedelta(days=1)
-                s_info = {'change_24h': avg_change,
-                        'timestamp': date
-                }
-            displayed_prices.append(s_info)
 
         if day != this_day:
             info = {'change_24h': price.change_24,
-                    'timestamp': price.timestamp
-                    }
+                    'timestamp': price.timestamp}
 
         displayed_prices.append(info)
         day = this_day
