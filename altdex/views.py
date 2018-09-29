@@ -413,7 +413,6 @@ def gainers_losers(request):
     # 'gainers': gainer_array,
 
 def rsi_calc(request):
-    day = 0
     differences = [1,26,27,28,29,30,31]
     displayed_prices = []
     rs_value = 0
@@ -430,22 +429,28 @@ def rsi_calc(request):
         this_day = price.timestamp.day
         current_date = price.timestamp
         this_diff = abs(day - this_day)
-        if this_diff in differences:
+
+        if day != this_day:
             info = {'change_24h': price.change_24,
                     'timestamp': price.timestamp
-            }
-            displayed_prices.append(info)
-            day = this_day
-        else:
-            price_diff = price.price - info[-1]['price']
+                    }
+
+
+        if this_diff == 2:
+            missing_price = price.price - price.change_24
+            missing_change = missing_price - displayed_prices[-1]['price']
             avg_change = price_diff/this_diff
             for i in range(this_diff):
-                date = current_date - timedelta(days=i)
+                date = current_date - timedelta(days=1)
                 info = {'change_24h': avg_change,
                         'timestamp': date
                 }
-            displayed_prices.append(info)
-            day = this_day
+
+        displayed_prices.append(info)
+        day = this_day
+
+
+
     return JsonResponse({'prices': displayed_prices})
 
 # class RepeatedTimer(object):
