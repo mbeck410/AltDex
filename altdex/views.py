@@ -475,7 +475,7 @@ def rsi_calc(request):
     #         # save_gain = avg_gain
     #         # save_lose = avg_lose
     #
-            final_data.append(this_price_change)
+        final_data.append(this_price_change)
     #         final_data.append(rsi_value)
 
         # else:
