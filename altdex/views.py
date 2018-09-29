@@ -489,17 +489,17 @@ def rsi_calc(request):
             avg_gain = ((float(save_gain) * 13) + this_gain) / 14
             avg_lose = ((float(save_lose) * 13) + this_lose) / 14
 
-            rs_value = float(avg_gain) / float(avg_lose)
-
-            rsi_value = 100 - (100 / (1 + float(rs_value)))
+            # rs_value = float(avg_gain) / float(avg_lose)
+            #
+            # rsi_value = 100 - (100 / (1 + float(rs_value)))
 
             # interval_data = {'rsi': rsi_value,
             #                  'timestamp': displayed_prices[i]['date']}
 
             # final_data.append(interval_data)
 
-            final_data.append(rs_value)
-            final_data.append(rsi_value)
+            final_data.append(avg_gain)
+            final_data.append(avg_lose)
 
             save_gain = avg_gain
             save_lose = avg_lose
