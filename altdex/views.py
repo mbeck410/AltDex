@@ -465,9 +465,7 @@ def rsi_calc(request):
             avg_gain = float(gain) / 14
             avg_lose = float(lose) / 14
 
-            final_data.append(avg_gain)
-            final_data.append(avg_lose)
-            rs_value = float(avg_gain) / float(avg_loss)
+            rs_value = float(avg_gain) / float(avg_lose)
             rsi_value = 100 - (100 / (1 + float(rs_value)))
     #         #
     #         # interval_data = {'rsi': rsi_value,
