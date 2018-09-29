@@ -438,8 +438,8 @@ def rsi_calc(request):
             displayed_prices.append(info)
             day = this_day
 
-    # gain = 0
-    # lose = 0
+    gain = 0
+    lose = 0
     # save_gain = 0
     # save_lose = 0
     #
