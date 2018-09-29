@@ -449,7 +449,7 @@ def rsi_calc(request):
     for i in range(1, len(displayed_prices)):
         this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
         if i < 14:
-            if this_price_change => 0:
+            if this_price_change >= 0:
                 gain += this_price_change
             else:
                 lose += abs(this_price_change)
@@ -466,7 +466,7 @@ def rsi_calc(request):
             final_data.append(interval_data)
 
         else:
-            if this_price_change => 0:
+            if this_price_change >= 0:
                 this_gain = this_price_change
                 this_loss = 0
             else:
