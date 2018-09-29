@@ -486,8 +486,8 @@ def rsi_calc(request):
                 this_lose = abs(this_price_change)
                 this_gain = 0
 
-            avg_gain = ((float(avg_gain) * 13) + this_gain) / 14
-            avg_lose = ((float(avg_lose) * 13) + this_lose) / 14
+            # avg_gain = ((float(avg_gain) * 13) + this_gain) / 14
+            # avg_lose = ((float(avg_lose) * 13) + this_lose) / 14
 
             # rs_value = float(avg_gain) / float(avg_lose)
             #
