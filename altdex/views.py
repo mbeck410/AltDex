@@ -426,12 +426,25 @@ def rsi_calc(request):
     new_prices = prices.filter(timestamp__hour=19)
     for price in new_prices:
         this_day = price.timestamp.day
+        day_diff = abs(this_day - day)
+
+        if day_diff === 2:
+            missing_day = this_day - timedelta(days = 1)
+            missing_price = price.price - price.change_24h
+            s_info = {'date' :missing_day,
+                      'price': missing_price
+            }
+
+            displayed_prices.append(s_info)
+
         if this_day != day:
             info = {'date': price.timestamp,
                     'price': price.price}
-                    
+
             displayed_prices.append(info)
             day = this_day
+
+
     return JsonResponse({'prices': displayed_prices})
 
 # class RepeatedTimer(object):
