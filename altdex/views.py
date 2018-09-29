@@ -423,7 +423,7 @@ def rsi_calc(request):
     smooth_rs = 0
     index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
-    new_prices = prices.filter(timestamp__hour=4)
+    new_prices = prices.filter(timestamp__hour=19)
     for price in new_prices:
         this_day = price.timestamp.day
         if this_day != day:
