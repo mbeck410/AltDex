@@ -414,6 +414,7 @@ def gainers_losers(request):
 
 def rsi_calc(request):
     day = 0
+    differences = [1,26,27,28,29,30,31]
     displayed_prices = []
     rs_value = 0
     rsi_value = 0
@@ -425,9 +426,25 @@ def rsi_calc(request):
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
     for price in new_prices:
+        info = {}
         this_day = price.timestamp.day
-        if this_day != day:
-            displayed_prices.append(price.timestamp)
+        current_date = price.timestamp
+        this_diff = abs(day - this_day)
+        if this_diff in differences:
+            info = {'change_24h': price.change_24,
+                    'timestamp': price.timestamp
+            }
+            displayed_prices.append(info)
+            day = this_day
+        else:
+            price_diff = price.price - info[-1]['price']
+            avg_change = price_diff/this_diff
+            for i in range(this_diff):
+                date = current_date - timedelta(days=i)
+                info = {'change_24h':
+                        'timestamp': date
+                }
+            displayed_prices.append(info)
             day = this_day
     return JsonResponse({'prices': displayed_prices})
 
