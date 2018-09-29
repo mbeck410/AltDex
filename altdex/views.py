@@ -440,9 +440,9 @@ def rsi_calc(request):
 
     gain = 0
     lose = 0
-    # save_gain = 0
-    # save_lose = 0
-    #
+    avg_gain = 0
+    avg_lose = 0
+
     for i in range(1, len(displayed_prices)):
     #     rs_value = 0
     #     rsi_value = 0
@@ -454,9 +454,6 @@ def rsi_calc(request):
             else:
                 lose += abs(this_price_change)
 
-            final_data.append(gain)
-            final_data.append(lose)
-
         elif i == 14:
 
             if this_price_change >= 0:
@@ -464,11 +461,11 @@ def rsi_calc(request):
             else:
                 lose += abs(this_price_change)
 
-            final_data.append(gain)
-            final_data.append(lose)
+            avg_gain = float(gain) / 14
+            avg_lose = float(lose) / 14
 
-    #         avg_gain = float(gain) / 14
-    #         avg_lose = float(lose) / 14
+            final_data.append(avg_gain)
+            final_data.append(avg_lose)
     #         rs_value = float(avg_gain) / float(avg_loss)
     #         rsi_value = 100 - (100 / (1 + float(rs_value)))
     #         #
