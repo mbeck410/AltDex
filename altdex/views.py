@@ -493,7 +493,7 @@ def rsi_calc(request):
 
 
             avg_gain = (float(avg_gain) * (13) + float(this_gain)) / 14
-            avg_lose = (float(avg_gain) * (13) + float(this_lose)) / 14
+            avg_lose = (float(avg_lose) * (13) + float(this_lose)) / 14
 
             final_data.append(avg_gain)
             final_data.append(avg_lose)
