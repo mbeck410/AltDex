@@ -480,7 +480,7 @@ def rsi_calc(request):
             # save_gain = avg_gain
             # save_lose = avg_lose
 
-        else:
+        elif i > 14:
             final_data.append(this_price_change)
         #     if this_price_change >= 0:
         #         this_gain = this_price_change
