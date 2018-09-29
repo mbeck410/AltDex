@@ -441,7 +441,7 @@ def rsi_calc(request):
             avg_change = price_diff/this_diff
             for i in range(this_diff):
                 date = current_date - timedelta(days=i)
-                info = {'change_24h':
+                info = {'change_24h': avg_change,
                         'timestamp': date
                 }
             displayed_prices.append(info)
