@@ -443,10 +443,10 @@ def rsi_calc(request):
     # save_gain = 0
     # save_lose = 0
     #
-    # for i in range(1, len(displayed_prices)):
+    for i in range(1, len(displayed_prices)):
     #     rs_value = 0
     #     rsi_value = 0
-    #     this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
+        this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
     #     if i < 14:
     #         if this_price_change >= 0:
     #             gain += this_price_change
@@ -475,7 +475,7 @@ def rsi_calc(request):
     #         # save_gain = avg_gain
     #         # save_lose = avg_lose
     #
-    #         final_data.append(rs_value)
+            final_data.append(this_price_change)
     #         final_data.append(rsi_value)
 
         # else:
@@ -504,7 +504,7 @@ def rsi_calc(request):
             # save_gain = avg_gain
             # save_lose = avg_lose
 
-    return JsonResponse({'prices': displayed_prices})
+    return JsonResponse({'prices': final_data})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
