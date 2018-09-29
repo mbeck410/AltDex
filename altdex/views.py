@@ -457,29 +457,33 @@ def rsi_calc(request):
             else:
                 lose += abs(this_price_change)
 
+            final_data.append(gain)
+            final_data.append(lose)
+
         elif i == 14:
             if this_price_change >= 0:
                 gain += this_price_change
             else:
                 lose += abs(this_price_change)
 
-            avg_gain = float(gain) / 14
-            avg_lose = float(lose) / 14
-            rs_value = float(avg_gain) / float(avg_lose)
-            rsi_value = 100 - (100 / (1 + float(rs_value)))
-            #
+            # avg_gain = float(gain) / 14
+            # avg_lose = float(lose) / 14
+            # rs_value = float(avg_gain) / float(avg_lose)
+            # rsi_value = 100 - (100 / (1 + float(rs_value)))
+            # #
             # interval_data = {'rsi': rsi_value,
             #                  'timestamp': displayed_prices[i]['date']}
             #
             # final_data.append(interval_data)
             #
 
-            final_data.append(rs_value)
-            final_data.append(rsi_value)
+            final_data.append(gain)
+            final_data.append(lose)
             # save_gain = avg_gain
             # save_lose = avg_lose
 
-        # else:
+        else:
+            final_data.append(i)
         #     if this_price_change >= 0:
         #         this_gain = this_price_change
         #         this_lose = 0
