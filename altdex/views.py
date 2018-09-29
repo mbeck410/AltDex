@@ -414,6 +414,8 @@ def gainers_losers(request):
 
 def rsi_calc(request):
     day = 0
+    gain = 0
+    loss = 0
     displayed_prices = []
     final_data = []
     index = Index.objects.get(name="AltDex100")
@@ -447,6 +449,11 @@ def rsi_calc(request):
                 lose += abs(this_price_change)
 
         if i == 14:
+            if this_price_change >= 0:
+                gain += this_price_change
+            else:
+                lose += abs(this_price_change)
+
             avg_gain = gain / 14
             avg_lose = lose / 14
             rs_value = avg_gain / avg_loss
