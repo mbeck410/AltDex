@@ -415,6 +415,7 @@ def gainers_losers(request):
 def rsi_calc(request):
     day = 0
     displayed_prices = []
+    final_data = []
     rs_value = 0
     rsi_value = 0
     n = 14
@@ -443,8 +444,12 @@ def rsi_calc(request):
             displayed_prices.append(info)
             day = this_day
 
+    for i in range(1, len(displayed_prices)):
+        this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
+        final_data.append(this_price_change)
 
-    return JsonResponse({'prices': displayed_prices})
+
+    return JsonResponse({'prices': final_data})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
