@@ -438,16 +438,18 @@ def rsi_calc(request):
             displayed_prices.append(info)
             day = this_day
 
+
+    gain = 0.0
+    lose = 0.0
+    avg_gain = 0.0
+    avg_lose = 0.0
+    # save_gain = 0.0
+    # save_lose = 0.0
+
     for i in range(1, len(displayed_prices)):
         this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
-        gain = 0.0
-        lose = 0.0
-        save_gain = 0.0
-        save_lose = 0.0
         rs_value = 0.0
         rsi_value = 0.0
-        avg_gain = 0.0
-        avg_lose = 0.0
 
         if i < 14:
             if this_price_change >= 0:
