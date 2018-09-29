@@ -472,24 +472,24 @@ def rsi_calc(request):
             #
             # final_data.append(interval_data)
             #
-            # save_gain = avg_gain
-            # save_lose = avg_lose
 
             final_data.append(rs_value)
             final_data.append(rsi_value)
+            # save_gain = avg_gain
+            # save_lose = avg_lose
 
         else:
             if this_price_change >= 0:
                 this_gain = this_price_change
-                this_loss = 0
+                this_lose = 0
             else:
-                this_loss = abs(this_price_change)
+                this_lose = abs(this_price_change)
                 this_gain = 0
 
-            avg_gain = ((avg_gain * 13) + this_gain) / 14
-            avg_lose = ((avg_lose * 13) + this_loss) / 14
+            avg_gain = ((float(avg_gain) * 13) + this_gain) / 14
+            avg_lose = ((float(avg_lose) * 13) + this_lose) / 14
 
-            rs_value = avg_gain / avg_lose
+            rs_value = float(avg_gain) / float(avg_lose)
 
             rsi_value = 100 - (100 / (1 + rs_value))
 
