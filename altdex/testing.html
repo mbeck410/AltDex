@@ -2129,78 +2129,78 @@
             // console.log(y_low);
             // console.log(y_high);
 
-            let layout_light = {
-                autosize: true,
-                margin: {
-                    l: 50,
-                    r: 50,
-                    b: 50,
-                    t: 20,
-                },
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                xaxis: {
-                    range: [line_data[0].x[0], line_data[0].x[data_length]],
-                    type: 'date',
-                    title: 'Date',
-                    showgrid: false,
-                    zeroline: false,
-                    showline: true,
-                    autotick: true,
-                    ticks: '',
-                    showticklabels: true,
-                },
-                yaxis: {
-                    range: [y_low, y_high],
-                    showgrid: true,
-                    autotick: true,
-                    showline: true,
-                    ticks: '',
-                    showticklabels: true,
-                }
-            };
-
-            let layout_dark = {
-                autosize: true,
-                margin: {
-                    l: 50,
-                    r: 50,
-                    b: 50,
-                    t: 20,
-                },
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                xaxis: {
-                    color: '#D0D0D0',
-                    linecolor: '#D0D0D0',
-                    range: [line_data[0].x[0], line_data[0].x[data_length]],
-                    type: 'date',
-                    title: 'Date',
-                    showgrid: false,
-                    zeroline: false,
-                    showline: true,
-                    autotick: true,
-                    ticks: '',
-                    showticklabels: true,
-                },
-                yaxis: {
-                    color: '#D0D0D0',
-                    linecolor: '#D0D0D0',
-                    range: [y_low, y_high],
-                    showgrid: true,
-                    autotick: true,
-                    showline: true,
-                    ticks: '',
-                    showticklabels: true,
-                    gridcolor: '#707070'
-                }
-            };
-
-            if (mode === 'light') {
-                Plotly.react('index_chart', line_data, layout_light).then(showPage());
-            } else {
-                Plotly.react('index_chart', line_data, layout_dark).then(showPage());
+        let layout_light = {
+            autosize: true,
+            margin: {
+                l: 50,
+                r: 50,
+                b: 50,
+                t: 20,
+            },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: {
+                range: [line_data[0].x[0], line_data[0].x[data_length]],
+                type: 'date',
+                title: 'Date',
+                showgrid: false,
+                zeroline: false,
+                showline: true,
+                autotick: true,
+                ticks: '',
+                showticklabels: true,
+            },
+            yaxis: {
+                range: [y_low, y_high],
+                showgrid: true,
+                autotick: true,
+                showline: true,
+                ticks: '',
+                showticklabels: true,
             }
+        };
+
+        let layout_dark = {
+            autosize: true,
+            margin: {
+                l: 50,
+                r: 50,
+                b: 50,
+                t: 20,
+            },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: {
+                color: '#D0D0D0',
+                linecolor: '#D0D0D0',
+                range: [line_data[0].x[0], line_data[0].x[data_length]],
+                type: 'date',
+                title: 'Date',
+                showgrid: false,
+                zeroline: false,
+                showline: true,
+                autotick: true,
+                ticks: '',
+                showticklabels: true,
+            },
+            yaxis: {
+                color: '#D0D0D0',
+                linecolor: '#D0D0D0',
+                range: [y_low, y_high],
+                showgrid: true,
+                autotick: true,
+                showline: true,
+                ticks: '',
+                showticklabels: true,
+                gridcolor: '#707070'
+            }
+        };
+
+        if (mode === 'light') {
+            Plotly.react('index_chart', line_data, layout_light).then(showPage());
+        } else {
+            Plotly.react('index_chart', line_data, layout_dark).then(showPage());
+          }
         });
     }
 
