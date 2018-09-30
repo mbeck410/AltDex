@@ -499,7 +499,7 @@ def rsi_calc(request):
             rsi_values.append(rsi_value)
             times.append(displayed_prices[i]['date'])
 
-    index_dict = {'x': times, 'y': rsi_values, 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
+    index_dict = {'x': times, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
 
     return JsonResponse({'prices': index_dict})
 
