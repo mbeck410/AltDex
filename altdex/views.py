@@ -415,7 +415,6 @@ def gainers_losers(request):
 def rsi_calc(request):
     day = 0
     displayed_prices = []
-    final_data = []
     index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
@@ -442,6 +441,8 @@ def rsi_calc(request):
     lose = 0
     avg_gain = 0
     avg_lose = 0
+    rsi_values = []
+    times = []
 
     for i in range(1, len(displayed_prices)):
         this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
@@ -467,12 +468,9 @@ def rsi_calc(request):
 
             rs_value = float(avg_gain) / float(avg_lose)
             rsi_value = 100 - (100 / (1 + float(rs_value)))
-    #         #
-    #         # interval_data = {'rsi': rsi_value,
-    #         #                  'timestamp': displayed_prices[i]['date']}
 
-            final_data.append(rs_value)
-            final_data.append(rsi_value)
+            rsi_values.append(rsi_value)
+            times.append(displayed_prices[i]['timestamp'])
 
         else:
             this_gain = 0
@@ -498,10 +496,12 @@ def rsi_calc(request):
             #
             # final_data.append(interval_data)
 
-            final_data.append(rs_value)
-            final_data.append(rsi_value)
+            rsi_values.append(rsi_value)
+            times.append(displayed_prices[i]['timestamp'])
 
-    return JsonResponse({'prices': final_data})
+    index_dict = {'x': times, 'y': rsi_values, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
+
+    return JsonResponse({'prices': index_dict})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
