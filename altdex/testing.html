@@ -2135,12 +2135,12 @@
             last_x = line_data[0].x[data_length];
             // console.log(y_low);
             // console.log(y_high);
-        });
+
 
         http_get(url2, function (data) {
           let full2 = data.prices;
           line_data.push(full2)
-        })
+
 
         let layout_light = {
             autosize: true,
@@ -2222,6 +2222,8 @@
         } else {
             Plotly.react('index_chart', line_data, layout_dark).then(showPage());
         }
+        });
+      });
     };
 
 
