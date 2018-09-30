@@ -470,7 +470,7 @@ def rsi_calc(request):
             rsi_value = 100 - (100 / (1 + float(rs_value)))
 
             rsi_values.append(rsi_value)
-            times.append(displayed_prices[i]['timestamp'])
+            times.append(displayed_prices[i]['date'])
 
         else:
             this_gain = 0
@@ -497,9 +497,9 @@ def rsi_calc(request):
             # final_data.append(interval_data)
 
             rsi_values.append(rsi_value)
-            times.append(displayed_prices[i]['timestamp'])
+            times.append(displayed_prices[i]['date'])
 
-    index_dict = {'x': times, 'y': rsi_values, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
+    index_dict = {'x': times, 'y': rsi_values, 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
 
     return JsonResponse({'prices': index_dict})
 
