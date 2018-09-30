@@ -2112,7 +2112,11 @@
 
     // Index Chart Pull
     function index_all() {
-        line_data = [];
+        let line_data = [];
+        let first_x = 0;
+        let last_x = 0;
+        let y_low = 0;
+        let y_high = 0;
         let url = '/getindexall/';
         //alert('test');
         http_get(url, function (data) {
@@ -2140,7 +2144,7 @@
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
             xaxis: {
-                range: [line_data[0].x[0], line_data[0].x[data_length]],
+                range: [first_x, last_x],
                 type: 'date',
                 title: 'Date',
                 showgrid: false,
@@ -2173,7 +2177,7 @@
             xaxis: {
                 color: '#D0D0D0',
                 linecolor: '#D0D0D0',
-                range: [line_data[0].x[0], line_data[0].x[data_length]],
+                range: [first_x, last_x],
                 type: 'date',
                 title: 'Date',
                 showgrid: false,
