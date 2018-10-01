@@ -2118,7 +2118,7 @@
         let y_low = 0;
         let y_high = 0;
         let url = '/getindexall/';
-        let url2 = '/rsi_calc/';
+        // let url2 = '/rsi_calc/';
         let y_range_border = 0;
         let data_length = 0;
         //alert('test');
@@ -2137,9 +2137,9 @@
             // console.log(y_high);
 
 
-        http_get(url2, function (data) {
-          let full2 = data.prices;
-          line_data.push(full2)
+        // http_get(url2, function (data) {
+          // let full2 = data.prices;
+          // line_data.push(full2)
 
 
         let layout_light = {
@@ -2164,24 +2164,24 @@
                 showticklabels: true,
             },
             yaxis: {
-                domain: [0.3, 1],
+                // domain: [0.3, 1],
                 range: [y_low, y_high],
                 showgrid: true,
                 autotick: true,
                 showline: true,
                 ticks: '',
                 showticklabels: true,
-            },
-            yaxis2: {
-                domain: [0, 0.3],
-                range: [0, 100],
-                showgrid: true,
-                autotick: false,
-                dtick: 10,
-                showline: true,
-                ticks: '',
-                showticklabels: true,
             }
+            //yaxis2: {
+              //  domain: [0, 0.3],
+              //  range: [0, 100],
+              //  showgrid: true,
+              //  autotick: false,
+              //  dtick: 10,
+              //  showline: true,
+              //  ticks: '',
+              //  showticklabels: true,
+            // }
         };
 
         let layout_dark = {
@@ -2208,24 +2208,24 @@
                 showticklabels: true,
             },
             yaxis: {
-                domain: [0.3, 1],
+                // domain: [0.3, 1],
                 range: [y_low, y_high],
                 showgrid: true,
                 autotick: true,
                 showline: true,
                 ticks: '',
                 showticklabels: true,
-            },
-            yaxis2: {
-                domain: [0, 0.3],
-                range: [0, 100],
-                showgrid: true,
-                autotick: false,
-                dtick: 10,
-                showline: true,
-                ticks: '',
-                showticklabels: true,
             }
+            //yaxis2: {
+            //    domain: [0, 0.3],
+            //    range: [0, 100],
+            //    showgrid: true,
+            //    autotick: false,
+            //    dtick: 10,
+            //    showline: true,
+            //    ticks: '',
+            //    showticklabels: true,
+          //  }
         };
 
         if (mode === 'light') {
