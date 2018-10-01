@@ -531,10 +531,10 @@ def rsi_calc(request):
     index_dict1 = {'x': times, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
     index_dict2 = {'x': twelve_ema_times, 'y': twelve_ema, 'type': 'scatter', 'yaxis': 'y3',  'mode': 'lines'}
 
-    index_dict.append(index_dict1)
-    index_dict.append(index_dict2)
+    # index_dict.append(index_dict1)
+    # index_dict.append(index_dict2)
 
-    return JsonResponse({'prices': index_dict})
+    return JsonResponse({'prices': index_dict1})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
