@@ -452,6 +452,7 @@ def rsi_calc(request):
     # twentysix_ema_times = []
     #
     # 12 Day EMA
+    test = []
     period = 12
     multiplier = (2 / (period + 1))
     sum = 0
@@ -460,17 +461,18 @@ def rsi_calc(request):
     for j in range(1, len(displayed_prices)):
         if j <= range:
             sum += displayed_prices[j]['price']
+            test.append(sum)
 
-        elif j == (range + 1):
-            sma = float(sum) / float(range)
-            ema = (displayed_prices[j]['price'] - sma) * multiplier + sma
-            twelve_ema.append(ema)
-            twelve_ema_times.append(displayed_prices[j]['date'])
+        # elif j == (range + 1):
+        #     sma = float(sum) / float(range)
+        #     ema = (displayed_prices[j]['price'] - sma) * multiplier + sma
+        #     twelve_ema.append(ema)
+        #     twelve_ema_times.append(displayed_prices[j]['date'])
 
-        else:
-            ema = (displayed_prices[j]['price'] - ema) * multiplier + ema
-            twelve_ema.append(ema)
-            twelve_ema_times.append(displayed_prices[j]['date'])
+        # else:
+        #     ema = (displayed_prices[j]['price'] - ema) * multiplier + ema
+        #     twelve_ema.append(ema)
+        #     twelve_ema_times.append(displayed_prices[j]['date'])
 
 
     # RSI Calculation
@@ -527,12 +529,12 @@ def rsi_calc(request):
     # index_dict = []
 
     # index_dict1 = {'x': times, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
-    index_dict2 = {'x': twelve_ema_times, 'y': twelve_ema, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
+    # index_dict2 = {'x': twelve_ema_times, 'y': twelve_ema, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
 
     # index_dict.append(index_dict1)
     # index_dict.append(index_dict2)
 
-    return JsonResponse({'prices': index_dict2})
+    return JsonResponse({'prices': test})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
