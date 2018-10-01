@@ -197,6 +197,9 @@ def getcoinscurrent(request):
         elif name_lower == 'horizen':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/1698.png'
 
+        elif name_lower == 'ambrosus':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2081.png'
+
         elif ' ' in name_lower:
             hyphened_name = name_lower.replace(' ', '-')
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
