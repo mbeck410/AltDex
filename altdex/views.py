@@ -469,10 +469,12 @@ def rsi_calc(request):
             test.append(ema)
             test.append(displayed_prices[j]['date'])
 
-        # else:
-        #     ema = (displayed_prices[j]['price'] - ema) * multiplier + ema
-        #     twelve_ema.append(ema)
-        #     twelve_ema_times.append(displayed_prices[j]['date'])
+        else:
+            ema = ((float(displayed_prices[j]['price']) - float(ema)) * multiplier) + float(ema)
+            # twelve_ema.append(ema)
+            # twelve_ema_times.append(displayed_prices[j]['date'])
+            test.append(ema)
+            test.append(displayed_prices[j]['date'])
 
 
     # RSI Calculation
