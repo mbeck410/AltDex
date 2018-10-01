@@ -443,7 +443,34 @@ def rsi_calc(request):
     avg_lose = 0
     rsi_values = []
     times = []
+    twelve_ema = []
+    twelve_ema_times = []
+    twentysix_ema = []
+    twentysix_ema_times = []
 
+    # 12 Day EMA
+    for j in range(1, len(displayed_prices)):
+        ema = 0
+        period = 12
+        multiplier = (2 / (period + 1))
+        sum = 0
+
+        if j <= range:
+            sum += displayed_prices[j]['price']
+
+        elif j == (range + 1):
+            sma = sum / range
+            ema = (displayed_prices[j]['price'] - sma) * multiplier + sma
+            twelve_ema.append(ema)
+            twelve_ema_times.append(displayed_prices[j]['date'])
+
+        else:
+            ema = (displayed_prices[j]['price'] - ema) * multiplier + ema
+            twelve_ema.append(ema)
+            twelve_ema_times.append(displayed_prices[j]['date'])
+
+
+    # RSI Calculation
     for i in range(1, len(displayed_prices)):
         this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
 
@@ -499,7 +526,13 @@ def rsi_calc(request):
             rsi_values.append(rsi_value)
             times.append(displayed_prices[i]['date'])
 
-    index_dict = {'x': times, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
+    index_dict = []
+
+    index_dict1 = {'x': times, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
+    index_dict2 = {'x': twelve_ema_times, 'y': twelve_ema, 'type': 'scatter', 'yaxis': 'y3',  'mode': 'lines'}
+
+    index_dict.append(index_dict1)
+    index_dict.append(index_dict2)
 
     return JsonResponse({'prices': index_dict})
 
