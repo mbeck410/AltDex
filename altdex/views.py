@@ -465,8 +465,8 @@ def rsi_calc(request):
 
         elif j == (period + 1):
             sma = float(sum) / float(period)
-            # ema = (displayed_prices[j]['price'] - sma) * multiplier + sma
-            test.append(sma)
+            ema = ((float(displayed_prices[j]['price']) - float(sma)) * multiplier) + float(sma)
+            test.append(ema)
             test.append(displayed_prices[j]['date'])
 
         # else:
