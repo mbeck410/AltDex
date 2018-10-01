@@ -454,7 +454,7 @@ def rsi_calc(request):
     # 12 Day EMA
     test = []
     period = 12
-    multiplier = (2 / (period + 1))
+    multiplier = float(2 / (period + 1))
     sum = 0
     sma = 0
 
@@ -465,8 +465,8 @@ def rsi_calc(request):
 
         elif j == (period + 1):
             sma = float(sum) / float(period)
-            ema = (displayed_prices[j]['price'] - sma) * multiplier + sma
-            test.append(ema)
+            # ema = (displayed_prices[j]['price'] - sma) * multiplier + sma
+            test.append(sma)
             test.append(displayed_prices[j]['date'])
 
         # else:
