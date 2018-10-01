@@ -451,14 +451,13 @@ def rsi_calc(request):
     # twentysix_ema = []
     # twentysix_ema_times = []
     #
-    # # 12 Day EMA
-    for j in range(1, len(displayed_prices)):
-        ema = 0
-        period = 12
-        multiplier = (2 / (period + 1))
-        sum = 0
-        sma = 0
+    # 12 Day EMA
+    period = 12
+    multiplier = (2 / (period + 1))
+    sum = 0
+    sma = 0
 
+    for j in range(1, len(displayed_prices)):
         if j <= range:
             sum += displayed_prices[j]['price']
 

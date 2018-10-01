@@ -1957,12 +1957,12 @@
         })
     }
 
-    // function rsi_pull() {
-    //   let url = '/rsi_calc/';
-    //   http_get(url, function (data) {
-    //     console.log(data)
-    //   })
-    // }
+    function rsi_pull() {
+        let url = '/rsi_calc/';
+        http_get(url, function (data) {
+          console.log(data)
+       })
+     }
 
 
     // Coin Table Pull
@@ -2248,7 +2248,7 @@
     index_all();
     index_metrics();
     top_gainers_losers();
-    // rsi_pull();
+    rsi_pull();
     // setInterval(function () {
     //         top_gainers_losers();
     //         update_coin(current_index);
