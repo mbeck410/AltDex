@@ -446,24 +446,24 @@ def rsi_calc(request):
     # avg_lose = 0
     # rsi_values = []
     # times = []
-    twelve_ema = []
-    twelve_ema_times = []
+    # twelve_ema = []
+    # twelve_ema_times = []
     # twentysix_ema = []
     # twentysix_ema_times = []
     #
     # 12 Day EMA
     test = []
-    period = 12
-    multiplier = (2 / (period + 1))
-    sum = 0
+    # period = 12
+    # multiplier = (2 / (period + 1))
+    # sum = 0
     sma = 0
 
     for j in range(1, len(displayed_prices)):
-        if j <= range:
+        if j <= period:
             sum += displayed_prices[j]['price']
             test.append(sum)
 
-        # elif j == (range + 1):
+        # elif j == (period + 1):
         #     sma = float(sum) / float(range)
         #     ema = (displayed_prices[j]['price'] - sma) * multiplier + sma
         #     twelve_ema.append(ema)
