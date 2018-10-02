@@ -453,27 +453,54 @@ def rsi_calc(request):
     #
     # 12 Day EMA
     test = []
-    period = 12
-    multiplier = float(2 / (period + 1))
-    sum = 0
-    sma = 0
+    period_26 = 26
+    period_12 = 12
+    multiplier_12 = float(2 / (period_12 + 1))
+    multiplier_26 = float(2 / (period_26 + 1))
+    sum_26 = 0
+    sum_12 = 0
+    sma_12 = 0
+    sma_26 = 0
 
     for j in range(len(displayed_prices)):
-        if j <= period:
-            sum += displayed_prices[j]['price']
+        if j <= period_12:
+            sum_12 += displayed_prices[j]['price']
+            sum_26 += displayed_prices[j]['price']
             # test.append(sum)
 
-        elif j == (period + 1):
-            sma = float(sum) / float(period)
-            ema = ((float(displayed_prices[j]['price']) - float(sma)) * multiplier) + float(sma)
-            test.append(ema)
+        elif j == (period_12 + 1):
+            sma_12 = float(sum_12) / float(period_12)
+            ema_12 = ((float(displayed_prices[j]['price']) - float(sma_12)) * multiplier_12) + float(sma_12)
+            test.append(ema_12)
+            test.append(displayed_prices[j]['date'])
+
+            sum_26 += displayed_prices[j]['price']
+
+        elif (period_12 + 1) < j <= period_26:
+            ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+
+            sum_26 += displayed_prices[j]['price']
+
+            test.append(ema_12)
+            test.append(displayed_prices[j]['date'])
+
+        elif j == (period_26 + 1):
+            ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+
+            sma_26 = float(sum_26) / float(period_26)
+            ema_26 = ((float(displayed_prices[j]['price']) - float(sma_26)) * multiplier_26) + float(sma_26)
+
+            test.append(ema_12)
+            test.append(ema_26)
             test.append(displayed_prices[j]['date'])
 
         else:
-            ema = ((float(displayed_prices[j]['price']) - float(ema)) * multiplier) + float(ema)
-            # twelve_ema.append(ema)
-            # twelve_ema_times.append(displayed_prices[j]['date'])
-            test.append(ema)
+            ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+
+            ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+
+            test.append(ema_12)
+            test.append(ema_26)
             test.append(displayed_prices[j]['date'])
 
 
