@@ -494,8 +494,6 @@ def rsi_calc(request):
 
             sum_macd += difference
 
-            test.append(sum_macd)
-
         elif (period_26 + 1) < j <= (period_26 + 9):
             ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
 
@@ -504,8 +502,6 @@ def rsi_calc(request):
             difference = ema_12 - ema_26
 
             sum_macd += difference
-
-            test.append(sum_macd)
 
         elif j == (period_26 + 10):
             ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
