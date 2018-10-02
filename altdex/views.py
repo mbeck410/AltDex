@@ -452,7 +452,9 @@ def rsi_calc(request):
     # twentysix_ema_times = []
     #
     # 12 Day EMA
-    test = []
+    times = []
+    differences = []
+    ema_9 = []
     period_26 = 26
     period_12 = 12
     multiplier_12 = float(2 / (period_12 + 1))
@@ -516,6 +518,10 @@ def rsi_calc(request):
 
             ema_macd = ((float(difference) - float(sma_macd)) * multiplier_9) + float(sma_macd)
 
+            times.append(displayed_prices[j]['date'])
+            differences.append(difference)
+            ema_9.append(ema_macd)
+
         else:
             ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
 
@@ -527,7 +533,9 @@ def rsi_calc(request):
 
             # test.append(ema_12)
             # test.append(ema_26)
-            # test.append(displayed_prices[j]['date'])
+            times.append(displayed_prices[j]['date'])
+            differences.append(difference)
+            ema_9.append(ema_macd)
 
 
     # RSI Calculation
@@ -588,6 +596,8 @@ def rsi_calc(request):
 
     # index_dict.append(index_dict1)
     # index_dict.append(index_dict2)
+
+    test = {'times': times, 'difference': differences, 'EMA9': ema_9}
 
     return JsonResponse({'prices': test})
 
