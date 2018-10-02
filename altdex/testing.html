@@ -1957,12 +1957,12 @@
         })
     }
 
-    function rsi_pull() {
-        let url = '/rsi_calc/';
-        http_get(url, function (data) {
-          console.log(data)
-       })
-     }
+    // function rsi_pull() {
+        // let url = '/rsi_calc/';
+        // http_get(url, function (data) {
+          // console.log(data)
+       // })
+     // }
 
 
     // Coin Table Pull
@@ -2137,10 +2137,11 @@
             // console.log(y_high);
 
 
-        // http_get(url2, function (data) {
-          // let full2 = data.prices;
-          // line_data.push(full2)
-
+        http_get(url2, function (data) {
+          let full2 = data.test[0];
+          let full2 = data.test[1];
+          line_data.push(full2)
+          line_data.push(full2)
 
         let layout_light = {
             autosize: true,
@@ -2164,7 +2165,7 @@
                 showticklabels: true,
             },
             yaxis: {
-                // domain: [0.3, 1],
+                domain: [0.3, 1],
                 range: [y_low, y_high],
                 showgrid: true,
                 autotick: true,
@@ -2172,16 +2173,16 @@
                 ticks: '',
                 showticklabels: true,
             }
-            //yaxis2: {
-              //  domain: [0, 0.3],
-              //  range: [0, 100],
-              //  showgrid: true,
-              //  autotick: false,
-              //  dtick: 10,
-              //  showline: true,
-              //  ticks: '',
-              //  showticklabels: true,
-            // }
+            yaxis2: {
+              domain: [0, 0.3],
+              range: [0, 100],
+              showgrid: true,
+              autotick: false,
+              dtick: 10,
+              showline: true,
+              ticks: '',
+              showticklabels: true,
+            }
         };
 
         let layout_dark = {
@@ -2208,7 +2209,7 @@
                 showticklabels: true,
             },
             yaxis: {
-                // domain: [0.3, 1],
+                domain: [0.3, 1],
                 range: [y_low, y_high],
                 showgrid: true,
                 autotick: true,
@@ -2216,16 +2217,16 @@
                 ticks: '',
                 showticklabels: true,
             }
-            //yaxis2: {
-            //    domain: [0, 0.3],
-            //    range: [0, 100],
-            //    showgrid: true,
-            //    autotick: false,
-            //    dtick: 10,
-            //    showline: true,
-            //    ticks: '',
-            //    showticklabels: true,
-          //  }
+            yaxis2: {
+                domain: [0, 0.3],
+                range: [-8, 8],
+                showgrid: true,
+                autotick: true,
+                dtick: 10,
+                showline: true,
+                ticks: '',
+                showticklabels: true,
+            }
         };
 
         if (mode === 'light') {
@@ -2234,7 +2235,7 @@
             Plotly.react('index_chart', line_data, layout_dark).then(showPage());
         }
         });
-      // });
+      });
     };
 
 

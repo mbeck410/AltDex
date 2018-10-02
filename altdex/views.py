@@ -593,7 +593,13 @@ def rsi_calc(request):
     # index_dict.append(index_dict1)
     # index_dict.append(index_dict2)
 
-    test = {'times': times, 'difference': differences, 'EMA9': ema_9}
+    test = []
+
+    trace1 = {'x': times, 'y': differences, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
+    trace2 = {'x': times, 'y': ema_9, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines'}
+
+    test.append(trace1)
+    test.append(trace2)
 
     return JsonResponse({'prices': test})
 
