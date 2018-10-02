@@ -457,10 +457,13 @@ def rsi_calc(request):
     period_12 = 12
     multiplier_12 = float(2 / (period_12 + 1))
     multiplier_26 = float(2 / (period_26 + 1))
+    multiplier_9 = float(2 / (9 + 1))
     sum_26 = 0
     sum_12 = 0
+    sma_macd = 0
     sma_12 = 0
     sma_26 = 0
+    sum_macd = 0
 
     for j in range(len(displayed_prices)):
         if j <= period_12:
@@ -471,8 +474,6 @@ def rsi_calc(request):
         elif j == (period_12 + 1):
             sma_12 = float(sum_12) / float(period_12)
             ema_12 = ((float(displayed_prices[j]['price']) - float(sma_12)) * multiplier_12) + float(sma_12)
-            test.append(ema_12)
-            test.append(displayed_prices[j]['date'])
 
             sum_26 += displayed_prices[j]['price']
 
@@ -481,27 +482,52 @@ def rsi_calc(request):
 
             sum_26 += displayed_prices[j]['price']
 
-            test.append(ema_12)
-            test.append(displayed_prices[j]['date'])
-
         elif j == (period_26 + 1):
             ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
 
             sma_26 = float(sum_26) / float(period_26)
             ema_26 = ((float(displayed_prices[j]['price']) - float(sma_26)) * multiplier_26) + float(sma_26)
 
-            test.append(ema_12)
-            test.append(ema_26)
-            test.append(displayed_prices[j]['date'])
+            difference = ema_12 - ema_26
+
+            sum_macd += difference
+
+            test.append(sum_macd)
+
+        elif (period_26 + 1) < j <= (period_26 + 9):
+            ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+
+            ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+
+            difference = ema_12 - ema_26
+
+            sum_macd += difference
+
+            test.append(sum_macd)
+
+        elif j == (period_26 + 10):
+            ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+
+            ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+
+            difference = ema_12 - ema_26
+
+            sma_macd = float(sum_macd) / float(9)
+
+            ema_macd = ((float(difference) - float(sma_macd)) * multiplier_9) + float(sma_macd)
 
         else:
             ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
 
             ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
 
-            test.append(ema_12)
-            test.append(ema_26)
-            test.append(displayed_prices[j]['date'])
+            difference = ema_12 - ema_26
+
+            ema_macd = ((float(difference) - float(ema_macd)) * multiplier_9) + float(ema_macd)
+
+            # test.append(ema_12)
+            # test.append(ema_26)
+            # test.append(displayed_prices[j]['date'])
 
 
     # RSI Calculation
