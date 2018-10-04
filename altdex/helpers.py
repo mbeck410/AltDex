@@ -22,7 +22,7 @@ def collect():
     # sym_str1 = ','.join(symbols)
     # sym_str2 = ','.join(symbols2)
 
-    url1 = 'http://coincap.io/front'
+    url1 = 'https://api.coincap.io/v2/assets'
     # url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str1 + '&tsyms=USD'
     # url3 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str2 + '&tsyms=USD'
 
