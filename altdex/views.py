@@ -447,12 +447,11 @@ def rsi_calc(request):
     rsi_values = []
     times = []
     twelve_ema = []
-    twelve_ema_times = []
     twentysix_ema = []
-    twentysix_ema_times = []
 
     # 12 Day EMA
     times = []
+    times2 = []
     differences = []
     ema_9 = []
     period_26 = 26
@@ -561,7 +560,7 @@ def rsi_calc(request):
             rsi_value = 100 - (100 / (1 + float(rs_value)))
 
             rsi_values.append(rsi_value)
-            times.append(displayed_prices[i]['date'])
+            times2.append(displayed_prices[i]['date'])
 
         else:
             this_gain = 0
@@ -583,7 +582,7 @@ def rsi_calc(request):
             rsi_value = 100 - (100 / (1 + float(rs_value)))
 
             rsi_values.append(rsi_value)
-            times.append(displayed_prices[i]['date'])
+            times2.append(displayed_prices[i]['date'])
 
 
 
@@ -594,7 +593,7 @@ def rsi_calc(request):
 
     trace1 = {'x': times, 'y': differences, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'MACD'}
     trace2 = {'x': times, 'y': ema_9, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'Signal Line'}
-    trace3 = {'x': times, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'RSI'}
+    trace3 = {'x': times2, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y3',  'mode': 'lines', 'name': 'RSI'}
 
     test.append(trace1)
     test.append(trace2)
