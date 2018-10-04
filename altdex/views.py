@@ -584,11 +584,6 @@ def rsi_calc(request):
             rsi_values.append(rsi_value)
             times2.append(displayed_prices[i]['date'])
 
-
-
-    index_dict.append(index_dict1)
-    index_dict.append(index_dict2)
-
     test = []
 
     trace1 = {'x': times, 'y': differences, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'MACD'}
