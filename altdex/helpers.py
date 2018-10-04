@@ -66,7 +66,7 @@ def collect():
         #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
         else:
             for i in range(len(data_1)):
-                entry = data_1[0][i]
+                entry = data_1['data'][i]
                 if coin.symbol == '$PAC':
                     symbol = 'PAC'
                 else:
