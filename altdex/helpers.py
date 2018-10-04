@@ -65,12 +65,14 @@ def collect():
         #
         #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
         else:
-            for i in range(len(coins)):
-                entry = data_1['data'][i]
+            entries = data_1['data']
+            for i in range(len(entries)):
                 if coin.symbol == '$PAC':
                     symbol = 'PAC'
                 else:
                     symbol = coin.symbol
+
+                entry = entries[i]
 
                 if entry['symbol'] == symbol:
 
