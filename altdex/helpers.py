@@ -22,29 +22,31 @@ def collect():
 
     for coin in coins:
 
-        entries = data_1['data']
+        if coin.name == 'Cobinhood':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/'
+            r2 = requests.get(url2)
 
-        for i in range(len(entries)):
-
-            if coin.name == 'Cobinhood':
-                url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/'
+            while r2.status_code != 200:
+                sleep(10)
                 r2 = requests.get(url2)
 
-                while r2.status_code != 200:
-                    sleep(10)
-                    r2 = requests.get(url2)
+            data = json.loads(r2.text)
 
-                data = json.loads(r2.text)
+            coin.price = float(data['data']['quotes']['USD']['price'])
+            coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
+            coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
+            coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
+            coin.percent_weight = 0
 
-                coin.price = float(data['data']['quotes']['USD']['price'])
-                coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
-                coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
-                coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
-                coin.percent_weight = 0
+            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
-                coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+        entries = data_1['data']
 
-            elif entries[i]['name'] == coin.name:
+        else:
+
+            for i in range(len(entries)):
+
+                coin.name == entries[i]['name']:
 
                 coin.price = float(entries[i]['priceUsd'])
                 coin.price_percent_change = '{0:.2f}'.format(float(entries[i]['changePercent24Hr']))
