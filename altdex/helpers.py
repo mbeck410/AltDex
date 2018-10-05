@@ -9,22 +9,8 @@ from .models import Index, Coin, IndexPrice
 def collect():
     coins = Coin.objects.all()
     indices = Index.objects.all()
-    # coins_cc = Coin.objects.filter(api='CryptoCompare')
-    # symbols = []
-    # symbols2 = []
-    #
-    # for coin in coins_cc:
-    #     if len(symbols) < 40:
-    #         symbols.append(coin.symbol)
-    #     else:
-    #         symbols2.append(coin.symbol)
-    #
-    # sym_str1 = ','.join(symbols)
-    # sym_str2 = ','.join(symbols2)
 
     url1 = 'https://api.coincap.io/v2/assets?limit=600'
-    # url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str1 + '&tsyms=USD'
-    # url3 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str2 + '&tsyms=USD'
 
     r1 = requests.get(url1)
 
@@ -33,70 +19,38 @@ def collect():
         r1 = requests.get(url1)
 
     data_1 = json.loads(r1.text)
-    # data_2 = json.loads(r2.text)
-    # data_3 = json.loads(r3.text)
 
     for coin in coins:
 
-        if coin.name == 'Pundi X':
-            url2 = 'https://api.coinmarketcap.com/v2/ticker/2603/'
-            r2 = requests.get(url2)
+        entries = data_1['data']
+        
+        for i in range(len(entries)):
 
-            while r2.status_code != 200:
-                sleep(10)
-                r2 = requests.get(url2)
+            if entries[i]['symbol'] == coin.symbol:
 
-            data_2 = json.loads(r2.text)
+                coin.price = float(entries[i]['priceUsd'])
+                coin.price_percent_change = '{0:.2f}'.format(float(entries[i]['changePercent24Hr']))
+                coin.volume = '{0:.0f}'.format(float(entries[i]['volumeUsd24Hr']))
+                coin.market_cap = '{0:.0f}'.format(float(entries[i]['marketCapUsd']))
+                coin.percent_weight = 0
 
-            coin.price = float(data_2['data']['quotes']['USD']['price'])
-            coin.price_percent_change = '{0:.2f}'.format(float(data_2['data']['quotes']['USD']['percent_change_24h']))
-            coin.volume = '{0:.0f}'.format(float(data_2['data']['quotes']['USD']['volume_24h']))
-            coin.market_cap = '{0:.0f}'.format(float(data_2['data']['quotes']['USD']['market_cap']))
-            coin.percent_weight = 0
+                if entries[i]['symbol'] == 'CMT':
+                    url2 = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
+                    r2 = requests.get(url2)
 
-            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-        #
-        # elif coin.symbol in symbols2:
-        #     coin.price = float(data_3['RAW'][coin.symbol]['USD']['PRICE'])
-        #     coin.price_percent_change = '{0:.2f}'.format(float(data_3['RAW'][coin.symbol]['USD']['CHANGEPCT24HOUR']))
-        #     coin.volume = '{0:.0f}'.format(float(data_3['RAW'][coin.symbol]['USD']['TOTALVOLUME24H']))
-        #     coin.market_cap = '{0:.0f}'.format(float(data_3['RAW'][coin.symbol]['USD']['MKTCAP']))
-        #     coin.percent_weight = 0
-        #
-        #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-        else:
-            entries = data_1['data']
-            for i in range(len(entries)):
-                if coin.symbol == '$PAC':
-                    symbol = 'PAC'
-                else:
-                    symbol = coin.symbol
-
-                if entries[i]['symbol'] == symbol:
-
-                    coin.price = float(entries[i]['priceUsd'])
-                    coin.price_percent_change = '{0:.2f}'.format(float(entries[i]['changePercent24Hr']))
-                    coin.volume = '{0:.0f}'.format(float(entries[i]['volumeUsd24Hr']))
-                    coin.market_cap = '{0:.0f}'.format(float(entries[i]['marketCapUsd']))
-                    coin.percent_weight = 0
-
-                    if entries[i]['symbol'] == 'CMT':
-                        url2 = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
+                    while r2.status_code != 200:
+                        sleep(10)
                         r2 = requests.get(url2)
 
-                        while r2.status_code != 200:
-                            sleep(10)
-                            r2 = requests.get(url2)
+                    data = json.loads(r2.text)
 
-                        data = json.loads(r2.text)
+                    coin.price = float(data['data']['quotes']['USD']['price'])
+                    coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
+                    coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
+                    coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
+                    coin.percent_weight = 0
 
-                        coin.price = float(data['data']['quotes']['USD']['price'])
-                        coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
-                        coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
-                        coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
-                        coin.percent_weight = 0
-
-                    coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+                coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
     for dex in indices:
 
