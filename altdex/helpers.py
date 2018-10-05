@@ -22,7 +22,7 @@ def collect():
     # sym_str1 = ','.join(symbols)
     # sym_str2 = ','.join(symbols2)
 
-    url1 = 'https://api.coincap.io/v2/assets'
+    url1 = 'https://api.coincap.io/v2/assets?limit=1000'
     # url2 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str1 + '&tsyms=USD'
     # url3 = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + sym_str2 + '&tsyms=USD'
 
@@ -66,7 +66,7 @@ def collect():
         #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
         else:
             entries = data_1['data']
-            for i in range(len(entries)):
+            for i in range(len(coins) - 1):
                 if coin.symbol == '$PAC':
                     symbol = 'PAC'
                 else:
