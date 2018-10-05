@@ -203,8 +203,6 @@ def getcoinscurrent(request):
         elif name_lower == 'hypercash':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/1903.png'
 
-            https://s2.coinmarketcap.com/static/img/coins/32x32/1903.png
-
         elif ' ' in name_lower:
             hyphened_name = name_lower.replace(' ', '-')
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
