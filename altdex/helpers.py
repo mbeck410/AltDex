@@ -24,7 +24,7 @@ def collect():
 
         entries = data_1['data']
 
-        if str(coin.name) == 'Cobinhood':
+        if coin.symbol == 'COB':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/'
             r2 = requests.get(url2)
 
@@ -46,7 +46,7 @@ def collect():
 
             for i in range(len(entries)):
 
-                coin.name == entries[i]['name']:
+                coin.symbol == entries[i]['name']:
 
                 coin.price = float(entries[i]['priceUsd'])
                 coin.price_percent_change = '{0:.2f}'.format(float(entries[i]['changePercent24Hr']))
