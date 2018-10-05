@@ -24,7 +24,7 @@ def collect():
 
         entries = data_1['data']
 
-        if coin.name == 'Cobinhood':
+        if str(coin.name) == 'Cobinhood':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/'
             r2 = requests.get(url2)
 
