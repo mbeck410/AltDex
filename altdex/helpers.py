@@ -54,6 +54,8 @@ def collect():
                 coin.market_cap = '{0:.0f}'.format(float(entries[i]['marketCapUsd']))
                 coin.percent_weight = 0
 
+            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+
     for dex in indices:
 
         if dex.name != 'Null':
