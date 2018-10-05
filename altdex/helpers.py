@@ -66,23 +66,21 @@ def collect():
         #     coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
         else:
             entries = data_1['data']
-            for i in range(entries):
+            for i in range(len(entries)):
                 if coin.symbol == '$PAC':
                     symbol = 'PAC'
                 else:
                     symbol = coin.symbol
 
-                entry = entries[i]
+                if entries[i]['symbol'] == symbol:
 
-                if entry['symbol'] == symbol:
-
-                    coin.price = float(entry['priceUsd'])
-                    coin.price_percent_change = '{0:.2f}'.format(float(entry['changePercent24Hr']))
-                    coin.volume = '{0:.0f}'.format(float(entry['volumeUsd24Hr']))
-                    coin.market_cap = '{0:.0f}'.format(float(entry['marketCapUsd']))
+                    coin.price = float(entries[i]['priceUsd'])
+                    coin.price_percent_change = '{0:.2f}'.format(float(entries[i]['changePercent24Hr']))
+                    coin.volume = '{0:.0f}'.format(float(entries[i]['volumeUsd24Hr']))
+                    coin.market_cap = '{0:.0f}'.format(float(entries[i]['marketCapUsd']))
                     coin.percent_weight = 0
 
-                    if entry['symbol'] == 'CMT':
+                    if entries[i]['symbol'] == 'CMT':
                         url2 = 'https://api.coinmarketcap.com/v2/ticker/' + str(coin.coin_marketcap_id)
                         r2 = requests.get(url2)
 
