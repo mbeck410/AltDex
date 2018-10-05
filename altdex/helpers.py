@@ -10,7 +10,7 @@ def collect():
     coins = Coin.objects.all()
     indices = Index.objects.all()
 
-    url1 = 'https://api.coincap.io/v2/assets?limit=500'
+    url1 = 'https://api.coincap.io/v2/assets?limit=2000'
 
     r1 = requests.get(url1)
 
@@ -26,7 +26,7 @@ def collect():
 
         for i in range(len(entries)):
 
-            if entries[i]['symbol'] == 'COB':
+            if entries[i]['name'] == 'Cobinhood':
                 url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/'
                 r2 = requests.get(url2)
 
@@ -44,7 +44,7 @@ def collect():
 
                 coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
-            elif entries[i]['symbol'] == coin.symbol:
+            elif entries[i]['name'] == coin.name:
 
                 coin.price = float(entries[i]['priceUsd'])
                 coin.price_percent_change = '{0:.2f}'.format(float(entries[i]['changePercent24Hr']))
