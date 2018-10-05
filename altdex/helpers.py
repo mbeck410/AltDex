@@ -27,7 +27,7 @@ def collect():
         for i in range(len(entries)):
 
             if entries[i]['symbol'] == 'COB':
-                url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/''
+                url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/'
                 r2 = requests.get(url2)
 
                 while r2.status_code != 200:
