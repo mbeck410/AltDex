@@ -24,7 +24,7 @@ def collect():
 
         entries = data_1['data']
 
-        if coin.symbol == 'COB':
+        if coin.name == 'Cobinhood':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/'
             r2 = requests.get(url2)
 
@@ -46,13 +46,13 @@ def collect():
 
             for i in range(len(entries)):
 
-                coin.symbol == entries[i]['name']:
+                 if coin.name == entries[i]['name']:
 
-                coin.price = float(entries[i]['priceUsd'])
-                coin.price_percent_change = '{0:.2f}'.format(float(entries[i]['changePercent24Hr']))
-                coin.volume = '{0:.0f}'.format(float(entries[i]['volumeUsd24Hr']))
-                coin.market_cap = '{0:.0f}'.format(float(entries[i]['marketCapUsd']))
-                coin.percent_weight = 0
+                    coin.price = float(entries[i]['priceUsd'])
+                    coin.price_percent_change = '{0:.2f}'.format(float(entries[i]['changePercent24Hr']))
+                    coin.volume = '{0:.0f}'.format(float(entries[i]['volumeUsd24Hr']))
+                    coin.market_cap = '{0:.0f}'.format(float(entries[i]['marketCapUsd']))
+                    coin.percent_weight = 0
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
