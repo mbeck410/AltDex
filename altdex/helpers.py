@@ -168,6 +168,24 @@ def collect():
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
+        elif coin.symbol == 'R':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/2135/'
+            r2 = requests.get(url2)
+
+            while r2.status_code != 200:
+                sleep(10)
+                r2 = requests.get(url2)
+
+            data = json.loads(r2.text)
+
+            coin.price = float(data['data']['quotes']['USD']['price'])
+            coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
+            coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
+            coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
+            coin.percent_weight = 0
+
+            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+
         elif coin.symbol == 'HC':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/1903/'
             r2 = requests.get(url2)
