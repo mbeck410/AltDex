@@ -57,4 +57,4 @@ class IndexDay(models.Model):
 
     def __str__(self):
 
-        return self.name
+        return self.index.name + ' - ' + str(self.timestamp)
