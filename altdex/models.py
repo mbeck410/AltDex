@@ -40,3 +40,21 @@ class IndexPrice(models.Model):
 
     def __str__(self):
         return self.index.name + ' - ' + str(self.timestamp)
+
+class IndexDay(models.Model):
+    index = models.ForeignKey(Index, on_delete=models.CASCADE)
+    day_high = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
+    day_low = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
+    rsi = models.DecimalField(max_digits=10, decimal_places=5, default=0.0)
+    sma_12 = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
+    sma_26 = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
+    ema_12 = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
+    ema_26 = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
+    macd = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
+    macd_trend = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
+    fib = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
+    day = models.DateTimeField(auto_now_add=False)
+
+    def __str__(self):
+
+        return self.name
