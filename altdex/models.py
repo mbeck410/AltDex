@@ -45,6 +45,7 @@ class IndexDay(models.Model):
     index = models.ForeignKey(Index, on_delete=models.CASCADE)
     day_high = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
     day_low = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
+    price_change = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
     rs = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
     rsi = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
     sma_12 = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
