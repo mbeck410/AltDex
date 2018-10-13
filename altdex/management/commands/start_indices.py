@@ -12,15 +12,15 @@ class Command(BaseCommand):
         # print('Do you wish to delete all index prices?')
         # response = input('y or n?: ')
         # if response is 'y':
-            try:
-                # print('Collecting...')
-                test = rsi_calc_init()
-                # print('Setting prices...')
-                # test2 = first_weight()
-                print('Done')
+        try:
+            # print('Collecting...')
+            test = rsi_calc_init()
+            # print('Setting prices...')
+            # test2 = first_weight()
+            print('Done')
 
-            except:
-                raise CommandError("Error")
+        except:
+            raise CommandError("Error")
 
-        else:
-            return
+        # else:
+        #     return
