@@ -62,7 +62,7 @@ class IndexDay(models.Model):
         return self.index.name
 
 class Test(models.Model):
-    name = symbol = models.CharField(max_length=5)
+    name = models.CharField(max_length=5)
 
     def __str__(self):
 
