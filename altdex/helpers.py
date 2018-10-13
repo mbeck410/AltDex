@@ -457,7 +457,7 @@ def rsi_calc_init():
             rs_value = float(avg_gain) / float(avg_lose)
             rsi_value = 100 - (100 / (1 + float(rs_value)))
 
-            new_day_history = IndexDay(index=dex,
+            new_day_history = IndexDay(index=index,
                                      day=displayed_prices[i]['date'],
                                      rs_14=rs_value,
                                      rsi_14=rsi_value
