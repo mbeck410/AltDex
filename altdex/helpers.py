@@ -437,19 +437,21 @@ def rsi_calc_init():
     print('4')
     # RSI Calculation
     for i in range(1, len(displayed_prices)):
-        print('5')
+
         this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
 
         rs_value = 0
         rsi_value = 0
 
         if i < 14:
+            print('5')
             if this_price_change >= 0:
                 gain += this_price_change
             else:
                 lose += abs(this_price_change)
 
         elif i == 14:
+            print('6')
 
             if this_price_change >= 0:
                 gain += this_price_change
@@ -463,7 +465,7 @@ def rsi_calc_init():
             rsi_value = 100 - (100 / (1 + float(rs_value)))
 
             new_day_history = IndexDay(index=index,
-                                     day=displayed_prices[i]['date'],
+                                     timestamp=displayed_prices[i]['date'],
                                      rs_14=rs_value,
                                      rsi_14=rsi_value
                                      )
@@ -471,6 +473,7 @@ def rsi_calc_init():
             new_day_history.save()
 
         else:
+            print('7')
             this_gain = 0
             this_lose = 0
 
@@ -490,12 +493,15 @@ def rsi_calc_init():
             rsi_value = 100 - (100 / (1 + float(rs_value)))
 
             new_day_history = IndexDay(index=dex,
-                                     day=displayed_prices[i]['date'],
+                                     timestamp=displayed_prices[i]['date'],
                                      rs_14=rs_value,
                                      rsi_14=rsi_value
                                      )
 
             new_day_history.save()
+            print('Done')
+
+    return
 
 
 def first_weight():
