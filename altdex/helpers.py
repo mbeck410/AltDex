@@ -434,8 +434,10 @@ def rsi_calc_init():
     #         ema_9.append(ema_macd)
 
 
+    print('4')
     # RSI Calculation
     for i in range(1, len(displayed_prices)):
+        print('5')
         this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
 
         rs_value = 0
