@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from ...helpers import collect, first_weight
+from ...helpers import rsi_calc_init
 
 class Command(BaseCommand):
 
@@ -9,14 +9,14 @@ class Command(BaseCommand):
 
 
     def my_test(self):
-        print('Do you wish to delete all index prices?')
-        response = input('y or n?: ')
-        if response is 'y':
+        # print('Do you wish to delete all index prices?')
+        # response = input('y or n?: ')
+        # if response is 'y':
             try:
-                print('Collecting...')
-                test = collect()
-                print('Setting prices...')
-                test2 = first_weight()
+                # print('Collecting...')
+                test = rsi_calc_init()
+                # print('Setting prices...')
+                # test2 = first_weight()
                 print('Done')
 
             except:
@@ -24,4 +24,3 @@ class Command(BaseCommand):
 
         else:
             return
-
