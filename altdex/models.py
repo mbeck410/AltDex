@@ -55,7 +55,7 @@ class IndexDay(models.Model):
     macd = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
     macd_trend = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
     fib = models.DecimalField(max_digits=20, decimal_places=10, default=0.0)
-    day = models.DateTimeField(auto_now_add=False)
+    timestamp = models.DateTimeField(auto_now_add=False)
 
     def __str__(self):
 
