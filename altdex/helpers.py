@@ -309,7 +309,7 @@ def clear_price():
     n = 1
     entries = Index.objects.all()
     for entry in entries:
-        print(entries.name)
+        print(entry.name)
     # print('Deleting...')
     # entries.delete()
 

@@ -60,3 +60,10 @@ class IndexDay(models.Model):
     def __str__(self):
 
         return self.index.name
+
+class Test(models.Model):
+    name = symbol = models.CharField(max_length=5)
+
+    def __str__(self):
+
+        return self.name
