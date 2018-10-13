@@ -13,6 +13,7 @@ urlpatterns = [
     path('getindexall/', views.getindexall, name='getindexall'),
     path('getcoinscurrent/', views.getcoinscurrent, name='getcoinscurrent'),
     path('getindexperformance/', views.getindexperformance, name='getindexperformance'),
+    path('rsi_calc/', views.rsi_calc, name='rsi_calc'),
     path('privacy_policy/', views.privacy_policy, name='privacy_policy'),
     path('gainers_losers/', views.gainers_losers, name='gainers_losers'),
     path('about/', views.about, name='about'),
