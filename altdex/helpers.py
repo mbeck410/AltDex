@@ -307,10 +307,11 @@ def collect():
 
 def clear_price():
     n = 1
-    entries = IndexDay.objects.all()
-    print(entries.rsi_14)
-    print('Deleting...')
-    entries.delete()
+    entries = Index.objects.all()
+    for entry in entries:
+        print(entries.name)
+    # print('Deleting...')
+    # entries.delete()
 
     print('Done')
 
