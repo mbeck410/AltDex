@@ -314,11 +314,13 @@ def clear_price():
     print('Done')
 
 def rsi_calc_init():
+    print('1')
     day = 0
     displayed_prices = []
     index = Index.objects.get(name="Exchange")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
+    print('2')
     for price in new_prices:
         this_day = price.timestamp.day
         day_diff = abs(this_day - day)
@@ -337,13 +339,14 @@ def rsi_calc_init():
 
             displayed_prices.append(info)
             day = this_day
+    print('3')
 
     gain = 0
     lose = 0
     avg_gain = 0
     avg_lose = 0
-    rsi_values = []
-    times = []
+    # rsi_values = []
+    # times = []
     # twelve_ema = []
     # twentysix_ema = []
 
