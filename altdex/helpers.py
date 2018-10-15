@@ -332,18 +332,18 @@ def rsi_calc_init():
             missing_day = price.timestamp - timedelta(days=1)
             missing_price = price.price - price.change_24h
             s_info = {'date' :missing_day,
-                      'price': missing_price}
+                      'price': float(missing_price)}
 
             displayed_prices.append(s_info)
 
         if this_day != day:
             info = {'date': price.timestamp,
-                    'price': price.price}
+                    'price': float(price.price)}
 
             displayed_prices.append(info)
             day = this_day
 
-    print(displayed_prices)
+    print(displayed_prices.price)
 
     # gain = 0
     # lose = 0
