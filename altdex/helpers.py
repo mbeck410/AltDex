@@ -320,7 +320,7 @@ def rsi_calc_init():
     print('1')
     day = 0
     displayed_prices = []
-    index = Index.objects.get(name="Exchange")
+    index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
     print('2')
