@@ -342,12 +342,13 @@ def rsi_calc_init():
 
             displayed_prices.append(info)
             day = this_day
-    print('3')
 
-    gain = 0
-    lose = 0
-    avg_gain = 0
-    avg_lose = 0
+    print(displayed_prices)
+
+    # gain = 0
+    # lose = 0
+    # avg_gain = 0
+    # avg_lose = 0
     # rsi_values = []
     # times = []
     # twelve_ema = []
@@ -437,72 +438,72 @@ def rsi_calc_init():
     #         ema_9.append(ema_macd)
 
 
-    print('4')
-    # RSI Calculation
-    for i in range(1, len(displayed_prices)):
-
-        this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
-
-        rs_value = 0
-        rsi_value = 0
-
-        if i < 14:
-            print('5')
-            if this_price_change >= 0:
-                gain += this_price_change
-            else:
-                lose += abs(this_price_change)
-
-        elif i == 14:
-            print('6')
-
-            if this_price_change >= 0:
-                gain += this_price_change
-            else:
-                lose += abs(this_price_change)
-
-            avg_gain = float(gain) / 14
-            avg_lose = float(lose) / 14
-
-            rs_value = float(avg_gain) / float(avg_lose)
-            rsi_value = 100 - (100 / (1 + float(rs_value)))
-
-            new_day_history = IndexDay(index=index,
-                                     timestamp=displayed_prices[i]['date'],
-                                     rs_14=rs_value,
-                                     rsi_14=rsi_value
-                                     )
-
-            new_day_history.save()
-
-        else:
-            print('7')
-            this_gain = 0
-            this_lose = 0
-
-            if this_price_change >= 0:
-                this_gain = this_price_change
-
-            else:
-                this_lose = abs(this_price_change)
-
-
-            avg_gain = ((float(avg_gain) * (13)) + float(this_gain)) / 14
-            avg_lose = ((float(avg_lose) * (13)) + float(this_lose)) / 14
-
-
-            rs_value = float(avg_gain) / float(avg_lose)
-
-            rsi_value = 100 - (100 / (1 + float(rs_value)))
-
-            new_day_history = IndexDay(index=dex,
-                                     timestamp=displayed_prices[i]['date'],
-                                     rs_14=rs_value,
-                                     rsi_14=rsi_value
-                                     )
-
-            new_day_history.save()
-            print('Done')
+    # print('4')
+    # # RSI Calculation
+    # for i in range(1, len(displayed_prices)):
+    #
+    #     this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
+    #
+    #     rs_value = 0
+    #     rsi_value = 0
+    #
+    #     if i < 14:
+    #         print('5')
+    #         if this_price_change >= 0:
+    #             gain += this_price_change
+    #         else:
+    #             lose += abs(this_price_change)
+    #
+    #     elif i == 14:
+    #         print('6')
+    #
+    #         if this_price_change >= 0:
+    #             gain += this_price_change
+    #         else:
+    #             lose += abs(this_price_change)
+    #
+    #         avg_gain = float(gain) / 14
+    #         avg_lose = float(lose) / 14
+    #
+    #         rs_value = float(avg_gain) / float(avg_lose)
+    #         rsi_value = 100 - (100 / (1 + float(rs_value)))
+    #
+    #         new_day_history = IndexDay(index=index,
+    #                                  timestamp=displayed_prices[i]['date'],
+    #                                  rs_14=rs_value,
+    #                                  rsi_14=rsi_value
+    #                                  )
+    #
+    #         new_day_history.save()
+    #
+    #     else:
+    #         print('7')
+    #         this_gain = 0
+    #         this_lose = 0
+    #
+    #         if this_price_change >= 0:
+    #             this_gain = this_price_change
+    #
+    #         else:
+    #             this_lose = abs(this_price_change)
+    #
+    #
+    #         avg_gain = ((float(avg_gain) * (13)) + float(this_gain)) / 14
+    #         avg_lose = ((float(avg_lose) * (13)) + float(this_lose)) / 14
+    #
+    #
+    #         rs_value = float(avg_gain) / float(avg_lose)
+    #
+    #         rsi_value = 100 - (100 / (1 + float(rs_value)))
+    #
+    #         new_day_history = IndexDay(index=dex,
+    #                                  timestamp=displayed_prices[i]['date'],
+    #                                  rs_14=rs_value,
+    #                                  rsi_14=rsi_value
+    #                                  )
+    #
+    #         new_day_history.save()
+    #         print('Done')
 
     return
 
