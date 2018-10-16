@@ -344,8 +344,7 @@ def rsi_calc_init():
             day = this_day
 
     for j in range(len(displayed_prices)):
-        print(displayed_prices[j]['price'])
-        print(displayed_prices[j]['timestamp'].day)
+        print(displayed_prices[j]['price'] + ' - ' + displayed_prices[j]['date'].day)
 
     # gain = 0
     # lose = 0
