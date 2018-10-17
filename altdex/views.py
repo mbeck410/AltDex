@@ -421,7 +421,7 @@ def gainers_losers(request):
 def rsi_calc(request):
     day = 0
     displayed_prices = []
-    index = Index.objects.get(name="Exchange")
+    index = Index.objects.get(name="AltDex100")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
     for price in new_prices:
