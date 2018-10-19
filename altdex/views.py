@@ -591,7 +591,7 @@ def rsi_calc(request):
 
     # trace1 = {'x': times, 'y': differences, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'MACD'}
     # trace2 = {'x': times, 'y': ema_9, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'Signal Line'}
-    trace3 = {'x': times2, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'RSI'}
+    trace3 = {'x': times2, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2',  'xaxis': 'x2', 'mode': 'lines', 'name': 'RSI'}
 
     # test.append(trace1)
     # test.append(trace2)
