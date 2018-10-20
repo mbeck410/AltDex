@@ -2110,6 +2110,13 @@
 
     let line_data = [];
 
+    function stupid() {
+      console.log(1);
+      setTimeout(function(){console.log(2)}, 1000);
+      setTimeout(function(){console.log(3)}, 0);
+      console.log(4);
+    }
+
     // Index Chart Pull
     function index_all() {
         let line_data = [];
@@ -2162,17 +2169,7 @@
                 ticks: '',
                 showticklabels: true,
             },
-            yaxis2: {
-              domain: [0, 0.3],
-              range: [0, 100],
-              showgrid: true,
-              autotick: false,
-              dtick: .2,
-              showline: true,
-              ticks: '',
-              showticklabels: true,
-            }
-            xaxis2: {
+            xaxis: {
                 range: [first_x, last_x],
                 type: 'date',
                 title: 'Date',
@@ -2183,6 +2180,16 @@
                 ticks: '',
                 showticklabels: true,
             },
+            yaxis2: {
+              domain: [0, 0.3],
+              range: [0, 100],
+              showgrid: true,
+              autotick: false,
+              dtick: .2,
+              showline: true,
+              ticks: '',
+              showticklabels: true,
+            }
         };
 
         let layout_dark = {
@@ -2204,17 +2211,7 @@
                 ticks: '',
                 showticklabels: true,
             },
-            yaxis2: {
-                domain: [0, 0.3],
-                range: [0, 100],
-                showgrid: true,
-                autotick: true,
-                dtick: .2,
-                showline: true,
-                ticks: '',
-                showticklabels: true,
-            }
-            xaxis2: {
+            xaxis: {
                 color: '#D0D0D0',
                 linecolor: '#D0D0D0',
                 range: [first_x, last_x],
@@ -2227,6 +2224,16 @@
                 ticks: '',
                 showticklabels: true,
             },
+            yaxis2: {
+                domain: [0, 0.3],
+                range: [0, 100],
+                showgrid: true,
+                autotick: true,
+                dtick: .2,
+                showline: true,
+                ticks: '',
+                showticklabels: true,
+            }
         };
 
         if (mode === 'light') {
@@ -2250,6 +2257,7 @@
     index_metrics();
     top_gainers_losers();
     rsi_pull();
+    stupid();
     // setInterval(function () {
     //         top_gainers_losers();
     //         update_coin(current_index);
