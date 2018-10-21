@@ -2137,11 +2137,11 @@
             // console.log(y_high);
 
 
-          http_get(url2, function (data) {
-            let full2 = data.prices[0];
-            // let full3 = data.prices[1];
-            line_data.push(full2);
-            // line_data.push(full3)
+        http_get(url2, function (data) {
+          let full2 = data.prices[0];
+          // let full3 = data.prices[1];
+          line_data.push(full2);
+          // line_data.push(full3)
 
         let layout_light = {
             autosize: true,
@@ -2162,16 +2162,6 @@
                 ticks: '',
                 showticklabels: true,
             },
-            yaxis2: {
-              domain: [0, 0.3],
-              range: [0, 100],
-              showgrid: true,
-              autotick: false,
-              dtick: .2,
-              showline: true,
-              ticks: '',
-              showticklabels: true,
-            },
             xaxis: {
               range: [first_x, last_x],
               type: 'date',
@@ -2182,7 +2172,17 @@
               autotick: true,
               ticks: '',
               showticklabels: true,
-            }
+            },
+            yaxis2: {
+              domain: [0, 0.3],
+              range: [0, 100],
+              showgrid: true,
+              autotick: false,
+              dtick: .2,
+              showline: true,
+              ticks: '',
+              showticklabels: true,
+            },
         };
 
         let layout_dark = {
@@ -2204,16 +2204,6 @@
                 ticks: '',
                 showticklabels: true,
             },
-            yaxis2: {
-                domain: [0, 0.3],
-                range: [0, 100],
-                showgrid: true,
-                autotick: true,
-                dtick: .2,
-                showline: true,
-                ticks: '',
-                showticklabels: true,
-            },
             xaxis: {
               color: '#D0D0D0',
               linecolor: '#D0D0D0',
@@ -2226,7 +2216,17 @@
               autotick: true,
               ticks: '',
               showticklabels: true,
-            }
+            },
+            yaxis2: {
+                domain: [0, 0.3],
+                range: [0, 100],
+                showgrid: true,
+                autotick: true,
+                dtick: .2,
+                showline: true,
+                ticks: '',
+                showticklabels: true,
+            },
         };
 
         if (mode === 'light') {
