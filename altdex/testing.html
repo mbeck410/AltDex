@@ -2110,13 +2110,6 @@
 
     let line_data = [];
 
-    function stupid() {
-      console.log(1);
-      setTimeout(function(){console.log(2)}, 1000);
-      setTimeout(function(){console.log(3)}, 0);
-      console.log(4);
-    }
-
     // Index Chart Pull
     function index_all() {
         let line_data = [];
@@ -2169,17 +2162,17 @@
                 ticks: '',
                 showticklabels: true,
             },
-            xaxis: {
-                range: [first_x, last_x],
-                type: 'date',
-                title: 'Date',
-                showgrid: false,
-                zeroline: false,
-                showline: true,
-                autotick: true,
-                ticks: '',
-                showticklabels: true,
-            },
+            // xaxis: {
+              //  range: [first_x, last_x],
+              //  type: 'date',
+              //  title: 'Date',
+              //  showgrid: false,
+              //  zeroline: false,
+              //  showline: true,
+              //  autotick: true,
+              //  ticks: '',
+              //  showticklabels: true,
+            // },
             yaxis2: {
               domain: [0, 0.3],
               range: [0, 100],
@@ -2211,19 +2204,19 @@
                 ticks: '',
                 showticklabels: true,
             },
-            xaxis: {
-                color: '#D0D0D0',
-                linecolor: '#D0D0D0',
-                range: [first_x, last_x],
-                type: 'date',
-                title: 'Date',
-                showgrid: false,
-                zeroline: false,
-                showline: true,
-                autotick: true,
-                ticks: '',
-                showticklabels: true,
-            },
+            // xaxis: {
+              //  color: '#D0D0D0',
+              //  linecolor: '#D0D0D0',
+              //  range: [first_x, last_x],
+              //  type: 'date',
+              //  title: 'Date',
+              //  showgrid: false,
+              //  zeroline: false,
+              //  showline: true,
+              //  autotick: true,
+              //  ticks: '',
+              //  showticklabels: true,
+            // },
             yaxis2: {
                 domain: [0, 0.3],
                 range: [0, 100],
@@ -2256,7 +2249,6 @@
     index_all();
     index_metrics();
     top_gainers_losers();
-    stupid();
     // setInterval(function () {
     //         top_gainers_losers();
     //         update_coin(current_index);
