@@ -2139,9 +2139,9 @@
 
         http_get(url2, function (data) {
           let full2 = data.prices[0];
-          // let full3 = data.prices[1];
+          let full3 = data.prices[1];
           line_data.push(full2);
-          // line_data.push(full3)
+          line_data.push(full3)
 
         let layout_light = {
             autosize: true,
@@ -2175,10 +2175,10 @@
             },
             yaxis2: {
               domain: [0, 0.3],
-              range: [-1, 1],
+              range: [-10, 6],
               showgrid: true,
               autotick: false,
-              dtick: .3,
+              dtick: 2,
               showline: true,
               ticks: '',
               showticklabels: true,
@@ -2219,10 +2219,10 @@
             },
             yaxis2: {
                 domain: [0, 0.3],
-                range: [-1, 1],
+                range: [-10, 6],
                 showgrid: true,
                 autotick: true,
-                dtick: .3,
+                dtick: 2,
                 showline: true,
                 ticks: '',
                 showticklabels: true,
