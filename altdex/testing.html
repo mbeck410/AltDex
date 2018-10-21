@@ -2122,6 +2122,12 @@
         let y_range_border = 0;
         let data_length = 0;
         //alert('test');
+        http_get(url2, function (data) {
+          let full2 = data.prices[0];
+          // let full3 = data.prices[1];
+          line_data.push(full2);
+          // line_data.push(full3);
+          
         http_get(url, function (data) {
             let full_data = data.dict_key;
             let entry = full_data[0];
@@ -2137,11 +2143,7 @@
             // console.log(y_high);
 
 
-        http_get(url2, function (data) {
-          let full2 = data.prices[0];
-          // let full3 = data.prices[1];
-          line_data.push(full2)
-          // line_data.push(full3)
+
 
         let layout_light = {
             autosize: true,
