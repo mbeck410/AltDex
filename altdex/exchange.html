@@ -506,10 +506,18 @@
 
         /*Gainers/Losers*/
         .gl_title {
-            font-size: 1.0vw;
+            font-size: 1.1vw;
             font-weight: bold;
             padding-bottom: 3px;
             padding-top: 3px;
+            color: white;
+            background-color: #222842;
+            text-align: center;
+        }
+
+        #news_headline {
+          border-bottom: 11px;
+          margin-bottom: 11px;
         }
 
         .gl_data {
@@ -522,18 +530,6 @@
 
         .gl_data:last-child {
             border-bottom: 0;
-        }
-
-        #gainerz {
-            color: white;
-            background-color: #222842;
-            text-align: center;
-        }
-
-        #lozerz {
-            color: white;
-            background-color: #222842;
-            text-align: center;
         }
 
         .gl_name {
@@ -1653,6 +1649,7 @@
 
             <!--News Widget-->
             <div id="news_feed" class="well">
+              <div id="news_headline" class="gl_title">Crypto News</div>
                 <div class="feedgrabbr_widget" id="fgid_ebd3b2ea855fd4e14daaf2e86"></div>
                 <div class="feedgrabbr_widget2" id="fgid_9f812ca49f268ac46a24c3fb3"></div>
             </div>
