@@ -2177,10 +2177,10 @@
             let entry = full_data[0];
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
-            // let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
-            //    10;
-            // y_high = Math.max(...line_data[0].y) + y_range_border;
-            // y_low = Math.min(...line_data[0].y) - y_range_border;
+            let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
+               10;
+            y_high = Math.max(...line_data[0].y) + y_range_border;
+            y_low = Math.min(...line_data[0].y) - y_range_border;
             first_x = line_data[0].x[0];
             last_x = line_data[0].x[data_length];
             // console.log(y_low);
@@ -2208,7 +2208,7 @@
                     showticklabels: true,
                 },
                 yaxis: {
-                    range: [63, 115],
+                    range: [y_low, y_high],
                     showgrid: true,
                     autotick: true,
                     showline: true,
@@ -2243,7 +2243,7 @@
                 yaxis: {
                     color: '#D0D0D0',
                     linecolor: '#D0D0D0',
-                    range: [63, 115],
+                    range: [y_low, y_high],
                     showgrid: true,
                     autotick: true,
                     showline: true,
