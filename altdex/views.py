@@ -92,7 +92,7 @@ def getindexall(request):
 
         indices_all_output.append(index_dict)
 
-        time_range = {'left': dex_price_entries[0], 'right': dex_price_entries[-1]}
+        # time_range = {'left': dex_price_entries[0], 'right': dex_price_entries[-1]}
 
 
     return JsonResponse({'dict_key': indices_all_output})
