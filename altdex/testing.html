@@ -1640,8 +1640,8 @@
 <script>
     // Variables
 
-    let current_index = 'Privacy';
-    let current_id = '2';
+    let current_index = 'AltDex100';
+    let current_id = '0';
     let first_x = 0;
     let last_x = 0;
     let amount_gainers = 0;
@@ -1749,34 +1749,34 @@
 
         if (time_frame === 'year') {                                //Range: Year
             x_update = [first_x, last_x];
-            y_update = [y_low, y_high];//
+            y_update = [55, 115];
         } else if (time_frame === 'three_month') {                  //Range: 3 Months
             date_update.setMonth(date_update.getMonth() - 3);
             x_update = [date_update, last_x];
-            y_update = [y_low, y_high];
+            y_update = [55, 115];
         } else if (time_frame === 'one_month') {                    //Range: 1 Month
             date_update.setMonth(date_update.getMonth() - 1);
             x_update = [date_update, last_x];
-            y_update = [y_low, y_high]
+            y_update = [last_y - 9, last_y + 3]
         } else if (time_frame === 'seven_day') {                    //Range: 7 Day
             date_update.setDate(date_update.getDate() - 7);
             x_update = [date_update, last_x];
-            y_update = [last_y - 20, last_y + 20]
+            y_update = [last_y - 9, last_y + 2]
         } else if (time_frame === 'one_day') {                      //Range: 24 Hour
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
             let buffer = Math.abs(price_change) + 3;
-            if (price_change >= 5) {
+            if (price_change >= 3) {
                 y_update = [last_y - buffer, last_y + 3]
-            } else if (price_change <= -5) {
+            } else if (price_change <= -3) {
                 y_update = [last_y - 3, last_y + buffer]
             } else {
-                y_update = [last_y - 8, last_y + 8]
+                y_update = [last_y - 3, last_y + 3]
             }
         } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
             x_update = [date_update, last_x];
-            y_update = [last_y - 4, last_y + 4]
+            y_update = [last_y - 1.5, last_y + 1.5]
         }
 
         let update = {
@@ -2112,8 +2112,8 @@
         let line_data = [];
         let first_x = 0;
         let last_x = 0;
-        let y_low = 0;
-        let y_high = 0;
+        // let y_low = 0;
+        // let y_high = 0;
         let url = '/getindexall/';
         let url2 = '/rsi_calc/';
         let y_range_border = 0;
@@ -2124,10 +2124,10 @@
             let entry = full_data[0];
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
-            let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
-                10;
-            y_high = Math.max(...line_data[0].y) + y_range_border;
-            y_low = Math.min(...line_data[0].y) - y_range_border;
+            // let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
+                // 10;
+            // y_high = Math.max(...line_data[0].y) + y_range_border;
+            // y_low = Math.min(...line_data[0].y) - y_range_border;
             first_x = line_data[0].x[0];
             last_x = line_data[0].x[data_length];
             // console.log(y_low);
