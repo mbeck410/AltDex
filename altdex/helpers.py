@@ -186,8 +186,8 @@ def collect():
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
-        elif coin.symbol == 'AURA':
-            url2 = 'https://api.coinmarketcap.com/v2/ticker/2423/'
+        elif coin.symbol == 'DGTX':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/2772/'
             r2 = requests.get(url2)
 
             while r2.status_code != 200:
