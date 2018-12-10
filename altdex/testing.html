@@ -92,6 +92,10 @@
 
 
     <style>
+        #index_info {
+          display: flex;
+        }
+
         /*Navbar*/
         .my_navbar {
             background-color: #222842;
@@ -310,6 +314,11 @@
 
         .t--light .main_div {
             background-color: #ededed;
+        }
+
+        .t--light .well {
+            background-color: white;
+            color: black;
         }
 
 
@@ -630,12 +639,12 @@
     <div class="row content">
 
         <!--Fix Left Sidebar-->
-        <div id="left_bar" class="col-sm-4 sidenav">
-            <h1 class="well">TEST</h1>
+        <div id="left_bar" class="col-sm-3 sidenav">
+            <h1>TEST</h1>
         </div>
 
         <!--Center Div-->
-        <div id="main_bar" class="col-sm-8">
+        <div id="main_bar" class="col-sm-9">
           <index-info
             v-for="post in posts"
             v-bind:post="post"
@@ -699,8 +708,14 @@ Vue.component('index-info', {
 props: ['post'],
 template: `
   <div class="index-info well">
-    <h3>{{ post.name }}</h3>
-    <h3>{{ post.price }}</h3>
+    <div>
+      <h3>{{ post.name }}</h3>
+      <h1>{{ post.price }}</h3>
+    </div>
+    <div>
+      <h2>{{ post.price_percent }}</h2>
+      <h2>{{ post.change_24h }}</h2>
+    </div>
   </div>
 `
 })
