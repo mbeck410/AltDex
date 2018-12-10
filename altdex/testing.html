@@ -709,12 +709,12 @@ props: ['row'],
 template: `
   <div class="index-info well">
     <div>
-      <h3>{{ post.symbol }}</h3>
-      <h1>{{ post.price }}</h3>
+      <h3>{{ row.symbol }}</h3>
+      <h1>{{ row.price }}</h3>
     </div>
     <div>
-      <h2>{{ post.price_percent }}</h2>
-      <h2>{{ post.change_24h }}</h2>
+      <h2>{{ row.price_percent }}%</h2>
+      <h2>{{ row.change_24h }}</h2>
     </div>
   </div>
 `
@@ -730,7 +730,7 @@ new Vue({
     // can access it inside the promise function
     let vm = this
     let other_data = []
-    // Fetch our array of posts from an API
+    // Fetch our array of row from an API
     fetch('/getindexcurrent/')
       .then(function (response) {
         return response.json()
@@ -743,35 +743,6 @@ new Vue({
       })
   }
 })
-
-  // function http_get(url, success) {
-  //     let xhttp = new XMLHttpRequest();
-  //     xhttp.onreadystatechange = function () {
-  //         // console.log(this.status);
-  //         if (this.readyState === 4 && this.status === 200) {
-  //             let data = JSON.parse(xhttp.responseText);
-  //             success(data);
-  //         }
-  //     };
-  //     xhttp.open("GET", url);
-  //     xhttp.send();
-  // }
-  //
-  // function index_current() {
-  //     let new_data = [];
-  //     app.rows = [];
-  //     let url = '/getindexcurrent/';
-  //     //alert('test');
-  //     http_get(url, function (data) {
-  //         for (let i = 0; i < data.dict_key.length; ++i) {
-  //             new_data.push(data.dict_key[i])
-  //         }
-  //         app.rows = new_data;
-  //     });
-  //     console.log(new_data)
-  // }
-  //
-  // index_current();
 
 </script>
 </body>
