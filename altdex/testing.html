@@ -639,7 +639,7 @@
         <div id="indices-main">
           <index-info
             v-for="row in rows"
-            v-bind:post="row"
+            v-bind:row="row"
           ></index-info>
         </div>
     </div>
@@ -696,35 +696,35 @@
 
 <!--Javascript-->
 <script>
-Vue.component('index-info', {
-props: ['row'],
-template: `
-  <div class="index-info">
-    <h3>{{ row.name }}</h3>
-    <h3>{{ row.price }}</h3>
-  </div>
-`
-})
+  Vue.component('index-info', {
+    props: ['row'],
+    template: `
+      <div class="index-info">
+        <h3>{{ row.name }}</h3>
+        <h3>{{ row.price }}</h3>
+      </div>
+    `
+  })
 
-new Vue({
-  el: '#indices-main',
-  data: {
-    rows: []
-  },
-  created: function () {
-    // Alias the component instance as `vm`, so that we
-    // can access it inside the promise function
-    var vm = this
-    // Fetch our array of posts from an API
-    fetch('/getindexcurrent/')
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (data) {
-        vm.rows = data
-      })
-  }
-})
+  new Vue({
+    el: '#indices-main',
+    data: {
+      rows: []
+    },
+    created: function () {
+      // Alias the component instance as `vm`, so that we
+      // can access it inside the promise function
+      var vm = this
+      // Fetch our array of posts from an API
+      fetch('/getindexcurrent/')
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          vm.rows = data
+        })
+    }
+  })
 
   // function http_get(url, success) {
   //     let xhttp = new XMLHttpRequest();
