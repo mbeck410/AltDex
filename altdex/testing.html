@@ -636,11 +636,11 @@
         </div>
 
         <!--Center Div-->
-        <div id="blog-post-demo" class="demo">
-          <blog-post
-            v-for="post in posts"
-            v-bind:post="post"
-          ></blog-post>
+        <div id="indices-main">
+          <index-info
+            v-for="row in rows"
+            v-bind:post="row"
+          ></index-info>
         </div>
     </div>
 </div>
@@ -696,19 +696,20 @@
 
 <!--Javascript-->
 <script>
-Vue.component('blog-post', {
-props: ['post'],
+Vue.component('index-info', {
+props: ['row'],
 template: `
-  <div class="blog-post">
-    <h3>{{ post }}</h3>
+  <div class="index-info">
+    <h3>{{ row.name }}</h3>
+    <h3>{{ row.price }}</h3>
   </div>
 `
 })
 
 new Vue({
-  el: '#blog-post-demo',
+  el: '#indices-main',
   data: {
-    posts: []
+    rows: []
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
@@ -720,7 +721,7 @@ new Vue({
         return response.json()
       })
       .then(function (data) {
-        vm.posts = data
+        vm.rows = data
       })
   }
 })
