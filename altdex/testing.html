@@ -715,7 +715,7 @@ new Vue({
     // can access it inside the promise function
     var vm = this
     // Fetch our array of posts from an API
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('/getindexcurrent/')
       .then(function (response) {
         return response.json()
       })
