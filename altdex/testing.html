@@ -637,11 +637,9 @@
 
         <!--Center Div-->
         <div id="center" class="col-sm-8 text-left">
-            <index_info
-            v-for="row in rows"
-            v-bind
-            v-bind:row="row"
-            ></index_info>
+            <div v-for="row in rows">
+              <div>{{row.name}}</div>
+            </div>
         </div>
     </div>
 </div>
@@ -697,49 +695,57 @@
 
 <!--Javascript-->
 <script>
-  Vue.component('index_info', {
-    props: ['row'],
-    template:
-      '<div class="well">{{row.name}}</div>'
-  })
+  // Vue.component('index_info', {
+  //   props: ['row'],
+  //   template:
+  //     '<div class="well">{{row.name}}</div>'
+  // })
 
   let app = new Vue({
     el: '#center',
     data: {
-        ascending: false,
-        sortColumn: '',
-        rows: [],
+        rows: []
+    },
+    created: function(){
+      var vm = this
+      fetch('/getindexcurrent/')
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          vm.rows = data
+        }
     }
   })
 
-  function http_get(url, success) {
-      let xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-          // console.log(this.status);
-          if (this.readyState === 4 && this.status === 200) {
-              let data = JSON.parse(xhttp.responseText);
-              success(data);
-          }
-      };
-      xhttp.open("GET", url);
-      xhttp.send();
-  }
-
-  function index_current() {
-      let new_data = [];
-      app.rows = [];
-      let url = '/getindexcurrent/';
-      //alert('test');
-      http_get(url, function (data) {
-          for (let i = 0; i < data.dict_key.length; ++i) {
-              new_data.push(data.dict_key[i])
-          }
-          app.rows = new_data;
-      });
-      console.log(app.rows)
-  }
-
-  index_current();
+  // function http_get(url, success) {
+  //     let xhttp = new XMLHttpRequest();
+  //     xhttp.onreadystatechange = function () {
+  //         // console.log(this.status);
+  //         if (this.readyState === 4 && this.status === 200) {
+  //             let data = JSON.parse(xhttp.responseText);
+  //             success(data);
+  //         }
+  //     };
+  //     xhttp.open("GET", url);
+  //     xhttp.send();
+  // }
+  //
+  // function index_current() {
+  //     let new_data = [];
+  //     app.rows = [];
+  //     let url = '/getindexcurrent/';
+  //     //alert('test');
+  //     http_get(url, function (data) {
+  //         for (let i = 0; i < data.dict_key.length; ++i) {
+  //             new_data.push(data.dict_key[i])
+  //         }
+  //         app.rows = new_data;
+  //     });
+  //     console.log(new_data)
+  // }
+  //
+  // index_current();
 
 </script>
 </body>
