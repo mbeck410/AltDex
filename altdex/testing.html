@@ -92,8 +92,16 @@
 
 
     <style>
-        .index_info {
+        .index-info {
           display: flex;
+        }
+
+        #index_time {
+            text-size: 1.0vw;
+        }
+
+        #index_price {
+            text-size: 4.0vw;
         }
 
         /*Navbar*/
@@ -709,8 +717,10 @@ props: ['row'],
 template: `
   <div class="index-info well">
     <div>
-      <h3>{{ row.symbol }}</h3>
-      <h1>{{ row.price }}</h3>
+      <div id="index_price">{{ row.price }}</h3>
+      <div id="index_time">
+        Last Update: {{row.time.slice(0,19)}} UTC
+      </div>
     </div>
     <div>
       <h2>{{ row.price_percent }}%</h2>
