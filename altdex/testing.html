@@ -636,10 +636,8 @@
         </div>
 
         <!--Center Div-->
-        <div id="center" class="col-sm-8 text-left">
-            <div v-for="row in rows">
-              <div>{{row.name}}</div>
-            </div>
+        <div id="center" class="col-sm-8 text-left" v-for="row in rows">
+              <div>{{row.price}}</div>
         </div>
     </div>
 </div>
@@ -714,7 +712,7 @@
         })
         .then(function (data) {
           vm.rows = data
-        }
+        })
     }
   })
 
