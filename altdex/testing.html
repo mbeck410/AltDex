@@ -93,6 +93,10 @@
 
     <style>
 
+        #left_bar {
+          height: 100%;
+        }
+
         /*Navbar*/
         .my_navbar {
             background-color: #222842;
@@ -636,7 +640,7 @@
         </div>
 
         <!--Center Div-->
-        <div id="blog-post-demo" class="demo">
+        <div id="blog-post-demo">
           <blog-post
             v-for="post in posts"
             v-bind:post="post"
@@ -699,7 +703,7 @@
 Vue.component('blog-post', {
 props: ['post'],
 template: `
-  <div class="blog-post">
+  <div class="blog-post well">
     <h3>{{ post.name }}</h3>
     <h3>{{ post.price }}</h3>
   </div>
