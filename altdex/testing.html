@@ -92,11 +92,6 @@
 
 
     <style>
-
-        #left_bar {
-          height: 100%;
-        }
-
         /*Navbar*/
         .my_navbar {
             background-color: #222842;
@@ -635,16 +630,16 @@
     <div class="row content">
 
         <!--Fix Left Sidebar-->
-        <div id="left_bar" class="widget_div col-sm-4 sidenav">
+        <div id="left_bar" class="col-sm-4 sidenav">
             <h1 class="well">TEST</h1>
         </div>
 
         <!--Center Div-->
-        <div id="blog-post-demo">
-          <blog-post
+        <div id="main_bar" class="col-sm-8">
+          <index-info
             v-for="post in posts"
             v-bind:post="post"
-          ></blog-post>
+          ></index-info>
         </div>
     </div>
 </div>
@@ -700,10 +695,10 @@
 
 <!--Javascript-->
 <script>
-Vue.component('blog-post', {
+Vue.component('index-info', {
 props: ['post'],
 template: `
-  <div class="blog-post well">
+  <div class="index-info well">
     <h3>{{ post.name }}</h3>
     <h3>{{ post.price }}</h3>
   </div>
@@ -711,7 +706,7 @@ template: `
 })
 
 new Vue({
-  el: '#blog-post-demo',
+  el: '#main_bar',
   data: {
     posts: []
   },
