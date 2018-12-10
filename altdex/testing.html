@@ -713,14 +713,18 @@ new Vue({
   created: function () {
     // Alias the component instance as `vm`, so that we
     // can access it inside the promise function
-    var vm = this
+    let vm = this
+    let other_data = []
     // Fetch our array of posts from an API
     fetch('/getindexcurrent/')
       .then(function (response) {
         return response.json()
       })
       .then(function (data) {
-        vm.posts = data
+        for (let i = 0; i < data.dict_key.length; ++i) {
+            other_data.push(data.dict_key[i])
+        }
+        vm.posts = other_data
       })
   }
 })
