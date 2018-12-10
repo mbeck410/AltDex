@@ -92,7 +92,7 @@
 
 
     <style>
-        #index_info {
+        .index_info {
           display: flex;
         }
 
@@ -646,8 +646,8 @@
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
           <index-info
-            v-for="post in posts"
-            v-bind:post="post"
+            v-for="row in rows"
+            v-bind:row="row"
           ></index-info>
         </div>
     </div>
@@ -705,11 +705,11 @@
 <!--Javascript-->
 <script>
 Vue.component('index-info', {
-props: ['post'],
+props: ['row'],
 template: `
   <div class="index-info well">
     <div>
-      <h3>{{ post.name }}</h3>
+      <h3>{{ post.symbol }}</h3>
       <h1>{{ post.price }}</h3>
     </div>
     <div>
@@ -723,7 +723,7 @@ template: `
 new Vue({
   el: '#main_bar',
   data: {
-    posts: []
+    rows: []
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
@@ -739,7 +739,7 @@ new Vue({
         for (let i = 0; i < data.dict_key.length; ++i) {
             other_data.push(data.dict_key[i])
         }
-        vm.posts = other_data
+        vm.rows = other_data
       })
   }
 })
