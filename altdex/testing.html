@@ -775,14 +775,16 @@ new Vue({
     let vm = this
     let index_data = []
     // Fetch our array of row from an API
-    fetch('/getindexcurrent/')
+    fetch('/gainers_losers/')
       .then(function (response) {
         return response.json()
       })
       .then(function (data) {
-        for (let i = 0; i < data.dict_key.length; ++i) {
-            index_data.push(data.dict_key[i])
-        }
+        for (let i = 0; i < data.gainers.length; ++i) {
+            for (let j = 0; j < data.gainers[i].length; ++j) {
+              index_data.push(data.gainers[i][j])
+            }
+          }
         vm.rows = index_data
       })
     },
