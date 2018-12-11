@@ -669,7 +669,6 @@
           <index-info
             v-for="row in rows"
             v-bind:row="row"
-            v-bind:gainer="gainer"
           ></index-info>
         </div>
     </div>
@@ -740,10 +739,6 @@ template: `
       <div>{{ row.price_percent }}%</div>
       <div>{{ row.change_24h }}</div>
     </div>
-    <ul v-for="coin in gainer"
-    v-bind:gainer="gainer">
-      <li>{{gainer.symbol}}</li>
-    </ul>
   </div>
 `
 })
@@ -807,6 +802,7 @@ new Vue({
           }
           vm.gainers = gainer_data
         })
+        console.log(gainer_data)
     }
 })
 
