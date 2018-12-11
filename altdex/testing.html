@@ -729,7 +729,8 @@ Vue.component('index-info', {
 props: ['row'],
 template: `
   <div class="index-info well indices">
-    <div>{{ row }}</div>
+    <div>{{ row.0 }}</div>
+    <div>{{ row[0] }}</div>
   </div>
 `
 })
@@ -774,7 +775,6 @@ new Vue({
     // can access it inside the promise function
     let vm = this
     let index_data = []
-    let coins = []
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
       .then(function (response) {
@@ -782,11 +782,7 @@ new Vue({
       })
       .then(function (data) {
         for (let i = 0; i < data.gainers.length; ++i) {
-          coins = []
-          for (let j = 0; j < data.gainers[i].length; ++j) {
-            coins.push(data.gainers[i][j])
-          }
-          index_data.push(coins)
+          index_data.push(data.gainers[i])
         }
       vm.rows = index_data
       })
