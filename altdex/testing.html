@@ -774,6 +774,7 @@ new Vue({
     // can access it inside the promise function
     let vm = this
     let index_data = []
+    let coins = []
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
       .then(function (response) {
@@ -781,11 +782,13 @@ new Vue({
       })
       .then(function (data) {
         for (let i = 0; i < data.gainers.length; ++i) {
-            for (let j = 0; j < data.gainers[i].length; ++j) {
-              index_data.push(data.gainers[i][j])
-            }
+          coins = []
+          for (let j = 0; j < data.gainers[i].length; ++j) {
+            coins.push(data.gainers[i][j])
           }
-        vm.rows = index_data
+          index_data.push(coins)
+        }
+      vm.rows = index_data
       })
     },
     // function () {
