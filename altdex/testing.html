@@ -729,7 +729,7 @@ Vue.component('index-info', {
 props: ['row'],
 template: `
   <div class="index-info well indices">
-    {{row}}
+    {{ row }}
   </div>
 `
 })
@@ -772,39 +772,39 @@ new Vue({
   created: function () {
     // Alias the component instance as `vm`, so that we
     // can access it inside the promise function
-    // let vm = this
-    // let index_data = []
+    let vm = this
+    let index_data = []
     // Fetch our array of row from an API
-    // fetch('/getindexcurrent/')
-    //   .then(function (response) {
-    //     return response.json()
-    //   })
-    //   .then(function (data) {
-    //     for (let i = 0; i < data.dict_key.length; ++i) {
-    //         index_data.push(data.dict_key[i])
-    //     }
-    //     vm.rows = index_data
-    //   })
-    // },
+    fetch('/getindexcurrent/')
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.dict_key.length; ++i) {
+            index_data.push(data.dict_key[i])
+        }
+        vm.rows = index_data
+      })
+    },
     // function () {
-      let vm = this
-      let coins = []
-      let gainer_data = []
-      // Fetch our array of row from an API
-      fetch('/gainers_losers/')
-        .then(function (response) {
-          return response.json()
-        })
-        .then(function (data) {
-          for (let i = 0; i < data.length; ++i) {
-            for (let j = 0; i < data.gainers.length; ++j) {
-              coins.push(data.gainers[i][j])
-            }
-            gainer_data.push(coins)
-          }
-          vm.rows = gainer_data
-        })
-    }
+    //   let vm = this
+    //   let coins = []
+    //   let gainer_data = []
+    //   // Fetch our array of row from an API
+    //   fetch('/gainers_losers/')
+    //     .then(function (response) {
+    //       return response.json()
+    //     })
+    //     .then(function (data) {
+    //       for (let i = 0; i < data.length; ++i) {
+    //         for (let j = 0; i < data.gainers.length; ++j) {
+    //           coins.push(data.gainers[i][j])
+    //         }
+    //         gainer_data.push(coins)
+    //       }
+    //       vm.rows = gainer_data
+    //     })
+    // }
 })
 
 </script>
