@@ -98,11 +98,15 @@
         }
 
         #index_time {
-            font-size: 1.0vw;
+            font-size: 0.7vw;
         }
 
         #index_price {
-            font-size: 4.0vw;
+            font-size: 3.0vw;
+        }
+
+        .changes {
+          font-size: 2.5vw;
         }
 
         /*Navbar*/
@@ -723,9 +727,9 @@ template: `
         Last Update: {{row.time.slice(0,19)}} UTC
       </div>
     </div>
-    <div>
-      <h2>{{ row.price_percent }}%</h2>
-      <h2>{{ row.change_24h }}</h2>
+    <div class="changes">
+      <div>{{ row.price_percent }}%</div>
+      <div>{{ row.change_24h }}</div>
     </div>
   </div>
 `
