@@ -780,8 +780,8 @@ new Vue({
         return response.json()
       })
       .then(function (data) {
-        for (let i = 0; i < data.gainers.length; ++i) {
-            index_data.push(data.gainers[i])
+        for (let i = 0; i < data.dict_key.length; ++i) {
+            index_data.push(data.dict_key[i])
         }
         vm.rows = index_data
       })
