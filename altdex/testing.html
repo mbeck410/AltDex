@@ -92,8 +92,9 @@
 
 
     <style>
-        .test {
+        .indices {
           display: flex;
+          width: 100%;
         }
 
         #index_time {
@@ -715,7 +716,7 @@
 Vue.component('index-info', {
 props: ['row'],
 template: `
-  <div class="index-info well test">
+  <div class="index-info well indices">
     <div>
       <div id="index_price">{{ row.price }}</div>
       <div id="index_time">
