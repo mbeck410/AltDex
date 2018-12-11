@@ -669,6 +669,7 @@
           <index-info
             v-for="row in rows"
             v-bind:row="row"
+            v-bind:gainer="gainer"
           ></index-info>
         </div>
     </div>
@@ -726,7 +727,7 @@
 <!--Javascript-->
 <script>
 Vue.component('index-info', {
-props: ['row'],
+props: ['row', 'gainer'],
 template: `
   <div class="index-info well indices">
     <div>
@@ -739,20 +740,43 @@ template: `
       <div>{{ row.price_percent }}%</div>
       <div>{{ row.change_24h }}</div>
     </div>
+    <ul v-for="coin in gainer"
+    v-bind:gainer="gainer">
+      <li>{{gainer.symbol}}</li>
+    </ul>
   </div>
 `
 })
 
+// Vue.component('gainer-info', {
+// props: ['gainer'],
+// template: `
+//   <div class="gainer-info well">
+//     <div>
+//       <div id="index_price">{{ row.price }}</div>
+//       <div id="index_time">
+//         Last Update: {{row.time.slice(0,19)}} UTC
+//       </div>
+//     </div>
+//     <div class="changes">
+//       <div>{{ row.price_percent }}%</div>
+//       <div>{{ row.change_24h }}</div>
+//     </div>
+//   </div>
+// `
+// })
+
 new Vue({
   el: '#main_bar',
   data: {
-    rows: []
+    rows: [],
+    gainers: [],
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
     // can access it inside the promise function
     let vm = this
-    let other_data = []
+    let index_data = []
     // Fetch our array of row from an API
     fetch('/getindexcurrent/')
       .then(function (response) {
@@ -762,9 +786,28 @@ new Vue({
         for (let i = 0; i < data.dict_key.length; ++i) {
             other_data.push(data.dict_key[i])
         }
-        vm.rows = other_data
+        vm.rows = index_data
       })
-  }
+    },
+    function () {
+      let vm = this
+      let coins = []
+      let gainer_data = []
+      // Fetch our array of row from an API
+      fetch('/gainers_losers/')
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          for (let i = 0; i < data.length; ++i) {
+            for (let j = 0; i < data.gainers.length; ++j) {
+              coins.push(data.gainers[i][j])
+            }
+            gainer_data.push(coins)
+          }
+          vm.gainers = gainer_data
+        })
+    }
 })
 
 </script>
