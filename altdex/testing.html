@@ -92,18 +92,16 @@
 
 
     <style>
-        .index-info {
+        .test {
           display: flex;
-          flex-direction: row;
-          width: 100%;
         }
 
         #index_time {
-            text-size: 1.0vw;
+            font-size: 1.0vw;
         }
 
         #index_price {
-            text-size: 4.0vw;
+            font-size: 4.0vw;
         }
 
         /*Navbar*/
@@ -717,9 +715,9 @@
 Vue.component('index-info', {
 props: ['row'],
 template: `
-  <div class="index-info well">
+  <div class="index-info well test">
     <div>
-      <div id="index_price">{{ row.price }}</h3>
+      <div id="index_price">{{ row.price }}</div>
       <div id="index_time">
         Last Update: {{row.time.slice(0,19)}} UTC
       </div>
