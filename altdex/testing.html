@@ -728,8 +728,8 @@
 Vue.component('index-info', {
 props: ['row'],
 template: `
-  <div class="index-info well indices" v-for="coin in row">
-    <div>{{ coin }}</div>
+  <div class="index-info well indices">
+    <div>{{ row }}</div>
   </div>
 `
 })
@@ -775,7 +775,7 @@ new Vue({
     let vm = this
     let index_data = []
     // Fetch our array of row from an API
-    fetch('/gainers_losers/')
+    fetch('/getindexcurrent/')
       .then(function (response) {
         return response.json()
       })
