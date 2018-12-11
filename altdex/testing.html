@@ -726,22 +726,24 @@
 <!--Javascript-->
 <script>
 Vue.component('index-info', {
-props: ['row', 'gainer'],
+props: ['row'],
 template: `
   <div class="index-info well indices">
-    <div>
-      <div id="index_price">{{ row.price }}</div>
-      <div id="index_time">
-        Last Update: {{row.time.slice(0,19)}} UTC
-      </div>
-    </div>
-    <div class="changes">
-      <div>{{ row.price_percent }}%</div>
-      <div>{{ row.change_24h }}</div>
-    </div>
+    {{row}}
   </div>
 `
 })
+
+// <div>
+//   <div id="index_price">{{ row.price }}</div>
+//   <div id="index_time">
+//     Last Update: {{row.time.slice(0,19)}} UTC
+//   </div>
+// </div>
+// <div class="changes">
+//   <div>{{ row.price_percent }}%</div>
+//   <div>{{ row.change_24h }}</div>
+// </div>
 
 // Vue.component('gainer-info', {
 // props: ['gainer'],
@@ -765,7 +767,7 @@ new Vue({
   el: '#main_bar',
   data: {
     rows: [],
-    gainers: [],
+    // gainers: [],
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
@@ -773,17 +775,17 @@ new Vue({
     let vm = this
     let index_data = []
     // Fetch our array of row from an API
-    fetch('/getindexcurrent/')
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (data) {
-        for (let i = 0; i < data.dict_key.length; ++i) {
-            index_data.push(data.dict_key[i])
-        }
-        vm.rows = index_data
-      })
-    },
+    // fetch('/getindexcurrent/')
+    //   .then(function (response) {
+    //     return response.json()
+    //   })
+    //   .then(function (data) {
+    //     for (let i = 0; i < data.dict_key.length; ++i) {
+    //         index_data.push(data.dict_key[i])
+    //     }
+    //     vm.rows = index_data
+    //   })
+    // },
     function () {
       let vm = this
       let coins = []
@@ -800,9 +802,8 @@ new Vue({
             }
             gainer_data.push(coins)
           }
-          vm.gainers = gainer_data
+          vm.rows = gainer_data
         })
-        console.log(gainer_data)
     }
 })
 
