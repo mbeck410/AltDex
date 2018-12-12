@@ -667,7 +667,7 @@
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
           <div v-for="row in rows">
-            {{row}}
+            {{ row }}
           </div>
         </div>
     </div>
@@ -790,8 +790,8 @@ new Vue({
         return response.json()
       })
       .then(function (data) {
-        for (let i = 0; i < data.data_dict.length; ++i) {
-          index_data.push(data.data_dict[i])
+        for (let i = 0; i < data.dict_key.length; ++i) {
+          index_data.push(data.dict_keyt[i])
         }
       vm.rows = index_data
       })
