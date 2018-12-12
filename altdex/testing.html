@@ -666,7 +666,11 @@
 
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
-          <div v-for="row in rows">{{ row }}</div>
+          <div v-for="row in rows">
+            <div v-for="line in row">
+              {{ line }}
+            </div>
+          </div>
         </div>
     </div>
 </div>
