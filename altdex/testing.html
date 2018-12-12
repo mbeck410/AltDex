@@ -666,10 +666,10 @@
 
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
-          <div
-          v-for="row in rows"
-          v-bind:row="row">
-            <index-info></index-info>
+          <div v-for="row in rows">
+            <div v-for="line in row">
+              {{ line }}
+            </div>
           </div>
         </div>
     </div>
@@ -737,14 +737,14 @@
 // `
 // })
 //
-Vue.component('index-info', {
-props: ['row'],
-template: `
-  <div class="index-info well indices">
-    <div v-for="line in row">{{ line }}</div>
-  </div>
-`
-})
+// Vue.component('index-info', {
+// props: ['row'],
+// template: `
+//   <div class="index-info well indices">
+//     <div v-for="line in row">{{ line }}</div>
+//   </div>
+// `
+// })
 
 // <div>
 //   <div id="index_price">{{ row.price }}</div>
