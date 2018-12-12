@@ -666,8 +666,9 @@
 
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
-          <div v-for="row in rows">
-            {{ row }}
+          <div v-for="row in rows"
+          v-bind:row="rows">
+            <index-info></index-info>
           </div>
         </div>
     </div>
@@ -755,23 +756,23 @@
 //   <div>{{ row.change_24h }}</div>
 // </div>
 
-// Vue.component('gainer-info', {
-// props: ['row'],
-// template: `
-//   <div class="index-info well indices">
-//     <div>
-//       <div id="index_price">{{ row.price }}</div>
-//       <div id="index_time">
-//         Last Update: {{row.time.slice(0,19)}} UTC
-//       </div>
-//     </div>
-//     <div class="changes">
-//       <div>{{ row.price_percent }}%</div>
-//       <div>{{ row.change_24h }}</div>
-//     </div>
-//   </div>
-// `
-// })
+Vue.component('index-info', {
+props: ['row'],
+template: `
+  <div class="index-info well indices">
+    <div>
+      <div id="index_price">{{ row.price }}</div>
+      <div id="index_time">
+        Last Update: {{row.time.slice(0,19)}} UTC
+      </div>
+    </div>
+    <div class="changes">
+      <div>{{ row.price_percent }}%</div>
+      <div>{{ row.change_24h }}</div>
+    </div>
+  </div>
+`
+})
 
 new Vue({
   el: '#main_bar',
