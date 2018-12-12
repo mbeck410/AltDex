@@ -779,7 +779,7 @@ new Vue({
   el: '#main_bar',
   data: {
     rows: [],
-    // gainers: [],
+    gainers: [],
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
@@ -787,36 +787,32 @@ new Vue({
     let vm = this
     let index_data = []
     // Fetch our array of row from an API
-    fetch('/gainers_losers/')
+    fetch('/getindexcurrent/')
       .then(function (response) {
         return response.json()
       })
       .then(function (data) {
-        for (let i = 0; i < data.gainers.length; ++i) {
-          index_data.push(data.gainers[i])
+        for (let i = 0; i < data.data_dict.length; ++i) {
+          index_data.push(data.data_dict[i])
         }
       vm.rows = index_data
       })
     },
-    // function () {
-    //   let vm = this
-    //   let coins = []
-    //   let gainer_data = []
-    //   // Fetch our array of row from an API
-    //   fetch('/gainers_losers/')
-    //     .then(function (response) {
-    //       return response.json()
-    //     })
-    //     .then(function (data) {
-    //       for (let i = 0; i < data.length; ++i) {
-    //         for (let j = 0; i < data.gainers.length; ++j) {
-    //           coins.push(data.gainers[i][j])
-    //         }
-    //         gainer_data.push(coins)
-    //       }
-    //       vm.rows = gainer_data
-    //     })
-    // }
+    function () {
+      let vm = this
+      let gainer_data = []
+      // Fetch our array of row from an API
+      fetch('/gainers_losers/')
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          for (let i = 0; i < data.gainers.length; ++i) {
+            gainer_data.push(data.gainers[i])
+          }
+      vm.rows = gainer_data
+      })
+    }
 })
 
 </script>
