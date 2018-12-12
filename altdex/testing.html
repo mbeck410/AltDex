@@ -670,9 +670,9 @@
           v-for="row in rows"
           v-bind:row="row">
             ></index-info> -->
-          <gainer-info
+          <div
           v-for="gainer in gainers"
-          v-bind:gainer="gainer"></gainer-info>
+          >{{gainer}}</div>
         </div>
       </div>
 </div>
@@ -747,17 +747,6 @@ template: `
   </div>
 `
 })
-
-// <div>
-//   <div id="index_price">{{ row.price }}</div>
-//   <div id="index_time">
-//     Last Update: {{row.time.slice(0,19)}} UTC
-//   </div>
-// </div>
-// <div class="changes">
-//   <div>{{ row.price_percent }}%</div>
-//   <div>{{ row.change_24h }}</div>
-// </div>
 
 Vue.component('index-info', {
 props: ['row'],
