@@ -666,9 +666,8 @@
 
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
-          <div v-for="row in rows"
-          v-bind:row="rows">
-            <index-info></index-info>
+          <index-info v-bind:rows="rows">
+            ></index-info>
           </div>
         </div>
     </div>
@@ -757,9 +756,9 @@
 // </div>
 
 Vue.component('index-info', {
-props: ['row'],
+props: ['rows'],
 template: `
-  <div class="index-info well indices">
+  <div class="index-info indices"  v-for="row in rows">
     <div>
       <div id="index_price">{{ row.price }}</div>
       <div id="index_time">
