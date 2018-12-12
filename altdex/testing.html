@@ -670,7 +670,7 @@
           v-for="row in rows"
           v-bind:row="row">
             ></index-info> -->
-          <div v-for="row in rows">
+          <div v-for="row in gainers">
             <div>{{ row }}</div>
           </div>
         </div>
@@ -769,26 +769,29 @@ template: `
 new Vue({
   el: '#main_bar',
   data: {
-    rows: [],
+//     rows: [{ "link": "/", "name": "AltDex100", "price": 39.7, "change_24h": 0.84, "price_percent": 2.16, "market_cap": 103815590112, "time": "2018-12-12 22:07:22.694471+00:00", "symbol": "ALT100" },
+// { "link": "/exchange", "name": "Exchange", "price": 34.53, "change_24h": 1.6, "price_percent": 4.86, "market_cap": 1566212863, "time": "2018-12-12 22:07:09.787062+00:00", "symbol": "ALTEXC" },
+// { "link": "/privacy", "name": "Privacy", "price": 31.41, "change_24h": 1.05, "price_percent": 3.46, "market_cap": 1567859807, "time": "2018-12-12 22:07:14.417390+00:00", "symbol": "ALTPRV" },
+// { "link": "/masternode", "name": "Masternode", "price": 25.91, "change_24h": 0.49, "price_percent": 1.91, "market_cap": 965677242, "time": "2018-12-12 22:07:18.132377+00:00", "symbol": "ALTMSN" }],
     gainers: [],
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
     // can access it inside the promise function
-    let vm = this
-    let index_data = []
+    // let vm = this
+    // let index_data = []
     // Fetch our array of row from an API
-    fetch('/getindexcurrent/')
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (data) {
-        for (let i = 0; i < data.dict_key.length; ++i) {
-          index_data.push(data.dict_key[i])
-        }
-      vm.rows = index_data
-      })
-    },
+    // fetch('/getindexcurrent/')
+    //   .then(function (response) {
+    //     return response.json()
+    //   })
+    //   .then(function (data) {
+    //     for (let i = 0; i < data.dict_key.length; ++i) {
+    //       index_data.push(data.dict_key[i])
+    //     }
+    //   vm.rows = index_data
+    //   })
+    // },
     function () {
       let vm = this
       let gainer_data = []
@@ -801,7 +804,7 @@ new Vue({
           for (let i = 0; i < data.gainers.length; ++i) {
             gainer_data.push(data.gainers[i])
           }
-      vm.gainers = gainer_data
+        vm.gainers = gainer_data
       })
     }
 })
