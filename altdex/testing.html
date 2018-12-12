@@ -667,9 +667,7 @@
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
           <div v-for="row in rows">
-            <div v-for="line in row">
-              {{ line }}
-            </div>
+            <index-info></index-info>
           </div>
         </div>
     </div>
@@ -737,15 +735,14 @@
 // `
 // })
 //
-// Vue.component('index-info', {
-// props: ['row'],
-// template: `
-//   <div class="index-info well indices">
-//     <div>{{ row }}</div>
-//     <gl-table></gl-table>
-//   </div>
-// `
-// })
+Vue.component('index-info', {
+props: ['row'],
+template: `
+  <div class="index-info well indices">
+    <div v-for="line in row">{{ line }}</div>
+  </div>
+`
+})
 
 // <div>
 //   <div id="index_price">{{ row.price }}</div>
@@ -759,9 +756,9 @@
 // </div>
 
 // Vue.component('gainer-info', {
-// props: ['gainer'],
+// props: ['row'],
 // template: `
-//   <div class="gainer-info well">
+//   <div class="index-info well indices">
 //     <div>
 //       <div id="index_price">{{ row.price }}</div>
 //       <div id="index_time">
