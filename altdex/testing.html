@@ -725,12 +725,23 @@
 
 <!--Javascript-->
 <script>
+Vue.component('gl_table', {
+props: ['coin'],
+template: `
+  <div class="index-info well indices"
+  v-for="coin in row"
+  v-bind:coin="coin">
+    <div>{{ coin }}</div>
+  </div>
+`
+})
+
 Vue.component('index-info', {
 props: ['row'],
 template: `
-  <div class="index-info well indices"
-    v-for="coin in row">
-    <div>{{ coin }}</div>
+  <div class="index-info well indices">
+    <div>{{ row }}</div>
+    <gl-table></gl-table>
   </div>
 `
 })
