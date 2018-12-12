@@ -728,9 +728,9 @@
 Vue.component('index-info', {
 props: ['row'],
 template: `
-  <div class="index-info well indices">
-    <div>{{ row.0 }}</div>
-    <div>{{ row[0] }}</div>
+  <div class="index-info well indices"
+    v-for="coin in row">
+    <div>{{ coin }}</div>
   </div>
 `
 })
