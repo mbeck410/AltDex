@@ -666,10 +666,7 @@
 
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
-          <index-info
-            v-for="row in rows"
-            v-bind:row="row"
-          ></index-info>
+          <div v-for="row in rows">{{ row }}</div>
         </div>
     </div>
 </div>
@@ -725,26 +722,26 @@
 
 <!--Javascript-->
 <script>
-Vue.component('gl_table', {
-props: ['coin'],
-template: `
-  <div class="index-info well indices"
-  v-for="coin in row"
-  v-bind:coin="coin">
-    <div>{{ coin }}</div>
-  </div>
-`
-})
-
-Vue.component('index-info', {
-props: ['row'],
-template: `
-  <div class="index-info well indices">
-    <div>{{ row }}</div>
-    <gl-table></gl-table>
-  </div>
-`
-})
+// Vue.component('gl_table', {
+// props: ['coin'],
+// template: `
+//   <div class="index-info well indices"
+//   v-for="coin in row"
+//   v-bind:coin="coin">
+//     <div>{{ coin }}</div>
+//   </div>
+// `
+// })
+//
+// Vue.component('index-info', {
+// props: ['row'],
+// template: `
+//   <div class="index-info well indices">
+//     <div>{{ row }}</div>
+//     <gl-table></gl-table>
+//   </div>
+// `
+// })
 
 // <div>
 //   <div id="index_price">{{ row.price }}</div>
