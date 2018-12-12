@@ -666,7 +666,9 @@
 
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
-          <div v-for="row in rows">
+          <div
+          v-for="row in rows"
+          v-bind:row="row">
             <index-info></index-info>
           </div>
         </div>
