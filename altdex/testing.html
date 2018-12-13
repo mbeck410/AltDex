@@ -679,6 +679,9 @@
             <gainer-info
               v-bind:gainer="gainers[index]">
             </gainer-info>
+            <gainer-info
+              v-bind:gainer="losers[index]">
+            </gainer-info>
           </div>
         </div>
       </div>
@@ -796,6 +799,7 @@ new Vue({
   data: {
     rows: [],
     gainers: [],
+    losers:[],
 //     rows: [{ "link": "/", "name": "AltDex100", "price": 39.7, "change_24h": 0.84, "price_percent": 2.16, "market_cap": 103815590112, "time": "2018-12-12 22:07:22.694471+00:00", "symbol": "ALT100" },
 // { "link": "/exchange", "name": "Exchange", "price": 34.53, "change_24h": 1.6, "price_percent": 4.86, "market_cap": 1566212863, "time": "2018-12-12 22:07:09.787062+00:00", "symbol": "ALTEXC" },
 // { "link": "/privacy", "name": "Privacy", "price": 31.41, "change_24h": 1.05, "price_percent": 3.46, "market_cap": 1567859807, "time": "2018-12-12 22:07:14.417390+00:00", "symbol": "ALTPRV" },
@@ -812,6 +816,7 @@ new Vue({
     let vm = this
     let index_data = []
     let gainer_data = []
+    let loser_data = []
     // Fetch our array of row from an API
     fetch('/getindexcurrent/')
       .then(function (response) {
@@ -831,8 +836,10 @@ new Vue({
         .then(function (data) {
           for (let i = 0; i < data.gainers.length; ++i) {
             gainer_data.push(data.gainers[i])
+            loser_data.push(data.losers[i])
           }
         vm.gainers = gainer_data
+        vm.losers = loser_data
       })
     },
 })
