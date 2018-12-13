@@ -676,14 +676,17 @@
             <index-info class="indices"
               v-bind:row="row"
               ></index-info>
-            <gainer-info
-              v-bind:gainer="gainers[index]">
-            </gainer-info>
+            <div>
+              <div>Top Gainers</div>
+              <gainer-info
+                v-bind:gainer="gainers[index]">
+              </gainer-info>
+            </div>
             <div>
               <div>Top Losers</div>
-            <gainer-info
-              v-bind:gainer="losers[index]">
-            </gainer-info>
+              <gainer-info
+                v-bind:gainer="losers[index]">
+              </gainer-info>
             </div>
           </div>
         </div>
