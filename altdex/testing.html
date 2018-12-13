@@ -676,17 +676,12 @@
             <index-info class="indices"
               v-bind:row="row"
               ></index-info>
-
-            <h4>Biggest Gainers</h4>
             <gainer-info
               v-bind:gainer="gainers[index]">
             </gainer-info>
-          <div>
-            <h4>Biggest Losers</h4>
             <gainer-info
               v-bind:gainer="losers[index]">
             </gainer-info>
-          </div>
           </div>
         </div>
       </div>
@@ -773,7 +768,7 @@ Vue.component('coin-list', {
 Vue.component('gainer-info', {
 props: ['gainer'],
 template: `
-  <div>
+  <div id="gainerz">
     <coin-list v-for="coin in gainer"
     v-bind:coin="coin"></coin-list>
   </div>
