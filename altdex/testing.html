@@ -811,6 +811,7 @@ new Vue({
     // can access it inside the promise function
     let vm = this
     let index_data = []
+    let gainer_data = []
     // Fetch our array of row from an API
     fetch('/getindexcurrent/')
       .then(function (response) {
@@ -822,10 +823,6 @@ new Vue({
         }
       vm.rows = index_data
       })
-    },
-    function () {
-      let vm = this
-      let gainer_data = []
       // Fetch our array of row from an API
       fetch('/gainers_losers/')
         .then(function (response) {
@@ -837,7 +834,7 @@ new Vue({
           }
         vm.gainers = gainer_data
       })
-    }
+    },
 })
 
 </script>
