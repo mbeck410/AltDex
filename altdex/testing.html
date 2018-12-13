@@ -812,7 +812,7 @@ new Vue({
     let vm = this
     let index_data = []
     // Fetch our array of row from an API
-    fetch('/gainers_losers/')
+    fetch('/getindexcurrent/')
       .then(function (response) {
         return response.json()
       })
