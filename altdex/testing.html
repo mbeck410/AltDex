@@ -871,16 +871,18 @@ function http_get(url, success) {
 
 }
 
-function index_metrics() {
+function index_trend() {
     let url = '/index_trend/';
+    dict = [];
     http_get(url, function (data) {
       for (let i = 0; i < data.dict_key.length; ++i) {
-        console.log(data.dict_key[i]);
+        dict.push(data.dict_key[i]);
       }
+      console.log(dict)
     });
 }
 
-index_metrics()
+index_trend()
 
 </script>
 </body>
