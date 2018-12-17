@@ -429,6 +429,26 @@ def gainers_losers(request):
     return JsonResponse({'losers': loser_array, 'gainers': gainer_array})
     # 'gainers': gainer_array,
 
+
+def index_trend(request):
+    indices = Index.objects.order_by('id')
+    price_array = []
+    for index in indices:
+        prices = []
+        if index.name != 'Null':
+            index_prices = index.indexprice_set.order_by('timestamp')
+            index_length = index_prices.length
+            prices_start = index_length - 1042
+            for x in range(prices_start, index_length, 50):
+                prices.append(index_prices[x])
+
+        price_array.append[prices]
+
+        else: continue
+
+    return JsonResponse({'dict_key': price_array})
+
+
 def rsi_calc(request):
     day = 0
     displayed_prices = []
