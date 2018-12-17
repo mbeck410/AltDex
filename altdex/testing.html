@@ -811,16 +811,8 @@ new Vue({
   data: {
     rows: [],
     gainers: [],
-    losers:[],
-//     rows: [{ "link": "/", "name": "AltDex100", "price": 39.7, "change_24h": 0.84, "price_percent": 2.16, "market_cap": 103815590112, "time": "2018-12-12 22:07:22.694471+00:00", "symbol": "ALT100" },
-// { "link": "/exchange", "name": "Exchange", "price": 34.53, "change_24h": 1.6, "price_percent": 4.86, "market_cap": 1566212863, "time": "2018-12-12 22:07:09.787062+00:00", "symbol": "ALTEXC" },
-// { "link": "/privacy", "name": "Privacy", "price": 31.41, "change_24h": 1.05, "price_percent": 3.46, "market_cap": 1567859807, "time": "2018-12-12 22:07:14.417390+00:00", "symbol": "ALTPRV" },
-// { "link": "/masternode", "name": "Masternode", "price": 25.91, "change_24h": 0.49, "price_percent": 1.91, "market_cap": 965677242, "time": "2018-12-12 22:07:18.132377+00:00", "symbol": "ALTMSN" }],
-//     gainers: [
-//     [{ "symbol": "BTCP", "website": "https://btcprivate.org/", "price": "2.67", "price_percent": "31.20" }, { "symbol": "WAVES", "website": "https://wavesplatform.com/", "price": "1.98", "price_percent": "19.77" }, { "symbol": "XTZ", "website": "https://www.tezos.com/", "price": "0.414609", "price_percent": "8.97" }, { "symbol": "POLY", "website": "https://polymath.network/", "price": "0.128795", "price_percent": "8.87" }, { "symbol": "ETN", "website": "https://electroneum.com/", "price": "0.006999", "price_percent": "8.37" }],
-//     [{ "symbol": "WAVES", "website": "https://wavesplatform.com/", "price": "1.98", "price_percent": "19.77" }, { "symbol": "COSS", "website": "https://coss.io/", "price": "0.071216", "price_percent": "19.44" }, { "symbol": "EDO", "website": "https://eidoo.io/", "price": "0.705878", "price_percent": "7.71" }, { "symbol": "BTS", "website": "https://bitshares.org/", "price": "0.037878", "price_percent": "5.34" }, { "symbol": "BNB", "website": "https://www.binance.com/", "price": "5.00", "price_percent": "4.18" }],
-//     [{ "symbol": "BTCP", "website": "https://btcprivate.org/", "price": "2.67", "price_percent": "31.20" }, { "symbol": "CLOAK", "website": "https://www.cloakcoin.com/", "price": "1.16", "price_percent": "13.68" }, { "symbol": "SKY", "website": "https://www.skycoin.net/", "price": "0.917186", "price_percent": "5.27" }, { "symbol": "KMD", "website": "https://komodoplatform.com/", "price": "0.572607", "price_percent": "3.72" }, { "symbol": "MAID", "website": "https://maidsafe.net/", "price": "0.142662", "price_percent": "3.32" }],
-//     [{ "symbol": "AMB", "website": "http://ambrosus.com/", "price": "0.056982", "price_percent": "4.19" }, { "symbol": "SMART", "website": "https://smartcash.cc/", "price": "0.024010", "price_percent": "2.96" }, { "symbol": "NULS", "website": "https://nuls.io/", "price": "0.404684", "price_percent": "2.72" }, { "symbol": "SYS", "website": "http://www.syscoin.org/", "price": "0.031348", "price_percent": "2.13" }, { "symbol": "DASH", "website": "https://www.dash.org/", "price": "64.29", "price_percent": "2.01" }]]
+    losers: [],
+    trend: [],
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
@@ -829,6 +821,7 @@ new Vue({
     let index_data = []
     let gainer_data = []
     let loser_data = []
+    let trend_line = []
     // Fetch our array of row from an API
     fetch('/getindexcurrent/')
       .then(function (response) {
@@ -853,36 +846,18 @@ new Vue({
         vm.gainers = gainer_data
         vm.losers = loser_data
       })
+      fetch('/index_trend/')
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          for (let i = 0; i < data.dict_key.length; ++i) {
+            trend_line.push(data.dict_key[i])
+          }
+        vm.trend = trend_line
+        })
     },
 })
-
-
-function http_get(url, success) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        // console.log(this.status);
-        if (this.readyState === 4 && this.status === 200) {
-            let data = JSON.parse(xhttp.responseText);
-            success(data);
-        }
-    };
-    xhttp.open("GET", url);
-    xhttp.send();
-
-}
-
-function index_trend() {
-    let url = '/rsi_calc/';
-    dict = [];
-    http_get(url, function (data) {
-      for (let i = 0; i < data.dict_key.length; ++i) {
-        dict.push(data.dict_key[i]);
-      }
-      console.log(dict)
-    });
-}
-
-index_trend()
 
 </script>
 </body>

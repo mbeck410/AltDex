@@ -1845,19 +1845,19 @@
 
         if (time_frame === 'year') {                                //Range: Year
             x_update = [first_x, last_x];
-            y_update = [30, 115];
+            y_update = [25, 115];
         } else if (time_frame === 'three_month') {                  //Range: 3 Months
             date_update.setMonth(date_update.getMonth() - 3);
             x_update = [date_update, last_x];
-            y_update = [30, 95];
+            y_update = [25, 95];
         } else if (time_frame === 'one_month') {                    //Range: 1 Month
             date_update.setMonth(date_update.getMonth() - 1);
             x_update = [date_update, last_x];
-            y_update = [30, 75];
+            y_update = [25, 75];
         } else if (time_frame === 'seven_day') {                    //Range: 7 Day
             date_update.setDate(date_update.getDate() - 7);
             x_update = [date_update, last_x];
-            y_update = [30, 50];
+            y_update = [25, 50];
         } else if (time_frame === 'one_day') {                      //Range: 24 Hour
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
@@ -2224,7 +2224,7 @@
                     showticklabels: true,
                 },
                 yaxis: {
-                    range: [30, 115],
+                    range: [25, 115],
                     showgrid: true,
                     autotick: true,
                     showline: true,
@@ -2259,7 +2259,7 @@
                 yaxis: {
                     color: '#D0D0D0',
                     linecolor: '#D0D0D0',
-                    range: [30, 115],
+                    range: [25, 115],
                     showgrid: true,
                     autotick: true,
                     showline: true,
