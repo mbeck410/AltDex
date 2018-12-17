@@ -15,13 +15,6 @@ import json
 from .helpers import collect
 from .models import Index, Coin, IndexPrice
 
-# month_index = 0
-# week_index = 0
-# week_high_index = 0
-# week_low_index = 0
-# month_high_index = 0
-# month_low_index = 0
-
 
 def altdex(request):
     with open('./altdex/altdex.html') as file:
@@ -450,193 +443,209 @@ def index_trend(request):
 
 
 def rsi_calc(request):
-    day = 0
-    displayed_prices = []
-    index = Index.objects.get(name="AltDex100")
-    prices = index.indexprice_set.order_by('timestamp')
-    new_prices = prices.filter(timestamp__hour=19)
-
-    #Finds and stores price from each day at 19:00 UTC, or averages difference if missing
-    for price in new_prices:
-        this_day = price.timestamp.day
-        day_diff = abs(this_day - day)
-
-        if day_diff == 2:
-            missing_day = price.timestamp - timedelta(days=1)
-            missing_price = price.price - price.change_24h
-            s_info = {'date' :missing_day,
-                      'price': missing_price}
-
-            displayed_prices.append(s_info)
-
-        if this_day != day:
-            info = {'date': price.timestamp,
-                    'price': price.price}
-
-            displayed_prices.append(info)
-            day = this_day
-
-    gain = 0
-    lose = 0
-    avg_gain = 0
-    avg_lose = 0
-    rsi_values = []
-    twelve_ema = []
-    twentysix_ema = []
-    times2 = []
-
-    # 12 Day EMA
-    # times = []
-    # differences = []
-    # ema_9 = []
-    # period_26 = 26
-    # period_12 = 12
-    # multiplier_12 = float(2 / (period_12 + 1))
-    # multiplier_26 = float(2 / (period_26 + 1))
-    # multiplier_9 = float(2 / (9 + 1))
-    # sum_26 = 0
-    # sum_12 = 0
-    # sma_macd = 0
-    # sma_12 = 0
-    # sma_26 = 0
-    # sum_macd = 0
-
-    #MACD Calculation
-    # for j in range(len(displayed_prices)):
+    # day = 0
+    # displayed_prices = []
+    # index = Index.objects.get(name="AltDex100")
+    # prices = index.indexprice_set.order_by('timestamp')
+    # new_prices = prices.filter(timestamp__hour=19)
     #
-    #     #Summing up prices for EMA Calculaions
-    #     if j <= period_12:
-    #         sum_12 += displayed_prices[j]['price']
-    #         sum_26 += displayed_prices[j]['price']
-    #         # test.append(sum)
+    # #Finds and stores price from each day at 19:00 UTC, or averages difference if missing
+    # for price in new_prices:
+    #     this_day = price.timestamp.day
+    #     day_diff = abs(this_day - day)
     #
-    #     #Starting EMA 12 Calculation, while continuing to sum for EMA 26
-    #     elif j == (period_12 + 1):
-    #         sma_12 = float(sum_12) / float(period_12)
-    #         ema_12 = ((float(displayed_prices[j]['price']) - float(sma_12)) * multiplier_12) + float(sma_12)
+    #     if day_diff == 2:
+    #         missing_day = price.timestamp - timedelta(days=1)
+    #         missing_price = price.price - price.change_24h
+    #         s_info = {'date' :missing_day,
+    #                   'price': missing_price}
     #
-    #         sum_26 += displayed_prices[j]['price']
+    #         displayed_prices.append(s_info)
     #
-    #     elif (period_12 + 1) < j <= period_26:
-    #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    #     if this_day != day:
+    #         info = {'date': price.timestamp,
+    #                 'price': price.price}
     #
-    #         sum_26 += displayed_prices[j]['price']
+    #         displayed_prices.append(info)
+    #         day = this_day
     #
-    #     #Starting EMA 26 Calculations and differences for MACD
-    #     elif j == (period_26 + 1):
-    #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    # gain = 0
+    # lose = 0
+    # avg_gain = 0
+    # avg_lose = 0
+    # rsi_values = []
+    # twelve_ema = []
+    # twentysix_ema = []
+    # times2 = []
     #
-    #         sma_26 = float(sum_26) / float(period_26)
-    #         ema_26 = ((float(displayed_prices[j]['price']) - float(sma_26)) * multiplier_26) + float(sma_26)
+    # # 12 Day EMA
+    # # times = []
+    # # differences = []
+    # # ema_9 = []
+    # # period_26 = 26
+    # # period_12 = 12
+    # # multiplier_12 = float(2 / (period_12 + 1))
+    # # multiplier_26 = float(2 / (period_26 + 1))
+    # # multiplier_9 = float(2 / (9 + 1))
+    # # sum_26 = 0
+    # # sum_12 = 0
+    # # sma_macd = 0
+    # # sma_12 = 0
+    # # sma_26 = 0
+    # # sum_macd = 0
     #
-    #         difference = ema_12 - ema_26
+    # #MACD Calculation
+    # # for j in range(len(displayed_prices)):
+    # #
+    # #     #Summing up prices for EMA Calculaions
+    # #     if j <= period_12:
+    # #         sum_12 += displayed_prices[j]['price']
+    # #         sum_26 += displayed_prices[j]['price']
+    # #         # test.append(sum)
+    # #
+    # #     #Starting EMA 12 Calculation, while continuing to sum for EMA 26
+    # #     elif j == (period_12 + 1):
+    # #         sma_12 = float(sum_12) / float(period_12)
+    # #         ema_12 = ((float(displayed_prices[j]['price']) - float(sma_12)) * multiplier_12) + float(sma_12)
+    # #
+    # #         sum_26 += displayed_prices[j]['price']
+    # #
+    # #     elif (period_12 + 1) < j <= period_26:
+    # #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    # #
+    # #         sum_26 += displayed_prices[j]['price']
+    # #
+    # #     #Starting EMA 26 Calculations and differences for MACD
+    # #     elif j == (period_26 + 1):
+    # #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    # #
+    # #         sma_26 = float(sum_26) / float(period_26)
+    # #         ema_26 = ((float(displayed_prices[j]['price']) - float(sma_26)) * multiplier_26) + float(sma_26)
+    # #
+    # #         difference = ema_12 - ema_26
+    # #
+    # #         sum_macd += difference
+    # #
+    # #     elif (period_26 + 1) < j <= (period_26 + 9):
+    # #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    # #
+    # #         ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+    # #
+    # #         difference = ema_12 - ema_26
+    # #
+    # #         sum_macd += difference
+    # #
+    # #     #Starting EMA for MACD
+    # #     elif j == (period_26 + 10):
+    # #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    # #
+    # #         ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+    # #
+    # #         difference = ema_12 - ema_26
+    # #
+    # #         sma_macd = float(sum_macd) / float(9)
+    # #
+    # #         ema_macd = ((float(difference) - float(sma_macd)) * multiplier_9) + float(sma_macd)
+    # #
+    # #         times.append(displayed_prices[j]['date'])
+    # #         differences.append(difference)
+    # #         ema_9.append(ema_macd)
+    # #
+    # #     else:
+    # #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    # #
+    # #         ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+    # #
+    # #         difference = ema_12 - ema_26
+    # #
+    # #         ema_macd = ((float(difference) - float(ema_macd)) * multiplier_9) + float(ema_macd)
+    # #
+    # #         # test.append(ema_12)
+    # #         # test.append(ema_26)
+    # #         times.append(displayed_prices[j]['date'])
+    # #         differences.append(difference)
+    # #         ema_9.append(ema_macd)
     #
-    #         sum_macd += difference
     #
-    #     elif (period_26 + 1) < j <= (period_26 + 9):
-    #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    # # RSI Calculation
+    # for i in range(1, len(displayed_prices)):
+    #     this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
     #
-    #         ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+    #     rs_value = 0
+    #     rsi_value = 0
     #
-    #         difference = ema_12 - ema_26
+    #     if i < 14:
+    #         if this_price_change >= 0:
+    #             gain += this_price_change
+    #         else:
+    #             lose += abs(this_price_change)
     #
-    #         sum_macd += difference
+    #     elif i == 14:
     #
-    #     #Starting EMA for MACD
-    #     elif j == (period_26 + 10):
-    #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    #         if this_price_change >= 0:
+    #             gain += this_price_change
+    #         else:
+    #             lose += abs(this_price_change)
     #
-    #         ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+    #         avg_gain = float(gain) / 14
+    #         avg_lose = float(lose) / 14
     #
-    #         difference = ema_12 - ema_26
+    #         rs_value = float(avg_gain) / float(avg_lose)
+    #         rsi_value = 100 - (100 / (1 + float(rs_value)))
     #
-    #         sma_macd = float(sum_macd) / float(9)
-    #
-    #         ema_macd = ((float(difference) - float(sma_macd)) * multiplier_9) + float(sma_macd)
-    #
-    #         times.append(displayed_prices[j]['date'])
-    #         differences.append(difference)
-    #         ema_9.append(ema_macd)
+    #         rsi_values.append(rsi_value)
+    #         times2.append(displayed_prices[i]['date'])
     #
     #     else:
-    #         ema_12 = ((float(displayed_prices[j]['price']) - float(ema_12)) * multiplier_12) + float(ema_12)
+    #         this_gain = 0
+    #         this_lose = 0
     #
-    #         ema_26 = ((float(displayed_prices[j]['price']) - float(ema_26)) * multiplier_26) + float(ema_26)
+    #         if this_price_change >= 0:
+    #             this_gain = this_price_change
     #
-    #         difference = ema_12 - ema_26
+    #         else:
+    #             this_lose = abs(this_price_change)
     #
-    #         ema_macd = ((float(difference) - float(ema_macd)) * multiplier_9) + float(ema_macd)
     #
-    #         # test.append(ema_12)
-    #         # test.append(ema_26)
-    #         times.append(displayed_prices[j]['date'])
-    #         differences.append(difference)
-    #         ema_9.append(ema_macd)
+    #         avg_gain = ((float(avg_gain) * (13)) + float(this_gain)) / 14
+    #         avg_lose = ((float(avg_lose) * (13)) + float(this_lose)) / 14
+    #
+    #
+    #         rs_value = float(avg_gain) / float(avg_lose)
+    #
+    #         rsi_value = 100 - (100 / (1 + float(rs_value)))
+    #
+    #         rsi_values.append(rsi_value)
+    #         times2.append(displayed_prices[i]['date'])
+    #
+    # test = []
+    #
+    # #Saving to JSON dictionary for plotly.js
+    # # trace1 = {'x': times, 'y': differences, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'MACD'}
+    # # trace2 = {'x': times, 'y': ema_9, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'Signal Line'}
+    # trace3 = {'x': times2, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2', 'mode': 'lines', 'name': 'RSI'}
+    #
+    # # test.append(trace1)
+    # # test.append(trace2)
+    # test.append(trace3)
+    #
+    # return JsonResponse({'prices': test})
+    indices = Index.objects.order_by('id')
+    price_array = []
+    for index in indices:
+        prices = []
+        if index.name != 'Null':
+            index_prices = index.indexprice_set.order_by('timestamp')
+            index_length = index_prices.length
+            prices_start = index_length - 1042
+            for x in range(prices_start, index_length, 50):
+                prices.append(index_prices[x])
 
+            price_array.append[prices]
 
-    # RSI Calculation
-    for i in range(1, len(displayed_prices)):
-        this_price_change = displayed_prices[i]['price'] - displayed_prices[i-1]['price']
+        else: continue
 
-        rs_value = 0
-        rsi_value = 0
-
-        if i < 14:
-            if this_price_change >= 0:
-                gain += this_price_change
-            else:
-                lose += abs(this_price_change)
-
-        elif i == 14:
-
-            if this_price_change >= 0:
-                gain += this_price_change
-            else:
-                lose += abs(this_price_change)
-
-            avg_gain = float(gain) / 14
-            avg_lose = float(lose) / 14
-
-            rs_value = float(avg_gain) / float(avg_lose)
-            rsi_value = 100 - (100 / (1 + float(rs_value)))
-
-            rsi_values.append(rsi_value)
-            times2.append(displayed_prices[i]['date'])
-
-        else:
-            this_gain = 0
-            this_lose = 0
-
-            if this_price_change >= 0:
-                this_gain = this_price_change
-
-            else:
-                this_lose = abs(this_price_change)
-
-
-            avg_gain = ((float(avg_gain) * (13)) + float(this_gain)) / 14
-            avg_lose = ((float(avg_lose) * (13)) + float(this_lose)) / 14
-
-
-            rs_value = float(avg_gain) / float(avg_lose)
-
-            rsi_value = 100 - (100 / (1 + float(rs_value)))
-
-            rsi_values.append(rsi_value)
-            times2.append(displayed_prices[i]['date'])
-
-    test = []
-
-    #Saving to JSON dictionary for plotly.js
-    # trace1 = {'x': times, 'y': differences, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'MACD'}
-    # trace2 = {'x': times, 'y': ema_9, 'type': 'scatter', 'yaxis': 'y2',  'mode': 'lines', 'name': 'Signal Line'}
-    trace3 = {'x': times2, 'y': rsi_values, 'type': 'scatter', 'yaxis': 'y2', 'mode': 'lines', 'name': 'RSI'}
-
-    # test.append(trace1)
-    # test.append(trace2)
-    test.append(trace3)
-
-    return JsonResponse({'prices': test})
+    return JsonResponse({'dict_key': price_array})
 
 # class RepeatedTimer(object):
 #     def __init__(self, interval, function, *args, **kwargs):
