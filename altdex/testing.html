@@ -846,7 +846,7 @@ new Vue({
         vm.gainers = gainer_data
         vm.losers = loser_data
       })
-      fetch('/index_trend/')
+      fetch('/rsi_calc/')
         .then(function (response) {
           return response.json()
         })
