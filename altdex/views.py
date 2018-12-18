@@ -434,7 +434,7 @@ def index_trend(request):
             for i in range(0, 50):
                 prices.append(i.price)
 
-            price_array.append(reversed)
+            price_array.append(prices)
 
         else: continue
 
