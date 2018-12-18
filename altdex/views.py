@@ -430,13 +430,9 @@ def index_trend(request):
         prices = []
         if index.name != 'Null':
             index_prices = index.indexprice_set.order_by('-timestamp')
-            count = 0
 
-            while (count <= 1000):
-                prices.append(index_prices[count].price)
-                count += 50
-
-            reversed = prices.reverse()
+            for i in range(0, 50):
+                prices.append(i.price)
 
             price_array.append(reversed)
 
