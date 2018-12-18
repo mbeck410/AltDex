@@ -2235,17 +2235,6 @@
     let gainers_div = document.querySelector('#gainers');
     let losers_div = document.querySelector('#losers');
 
-    function index_trend() {
-        let url = '/index_trend/';
-        http_get(url, function (data) {
-          for (let i = 0; i < data.dict_key.length; ++i) {
-            console.log(data.dict_key[i]);
-          }
-        });
-    }
-
-    index_trend()
-
 
     index_current(current_id);
     coin_current(current_index);

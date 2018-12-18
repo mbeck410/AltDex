@@ -673,31 +673,34 @@
 
         <!--Center Div-->
         <div id="main_bar" class="col-sm-9">
-          <div class="well" v-for="(row, index) in rows">
+        <div class="well" v-for="(row, index) in rows">
 
-            <trend
-              :data="trend[index]"
-              :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
-              auto-draw
-              smooth>
-            </trend>
+          <trend
+            :data="trend[index]"
+            :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+            auto-draw
+            smooth>
+          </trend>
 
-            <index-info class="indices"
-              v-bind:row="row"
-              ></index-info>
-            <div>
-              <div>Top Gainers</div>
-              <gainer-info
-                v-bind:gainer="gainers[index]">
-              </gainer-info>
-              <div>Top Losers</div>
-              <gainer-info
-                v-bind:gainer="losers[index]">
-              </gainer-info>
-            </div>
+          <index-info class="indices"
+            v-bind:row="row"
+            ></index-info>
+          <div>
+            <div>Top Gainers</div>
+            <gainer-info
+              v-bind:gainer="gainers[index]">
+            </gainer-info>
+          </div>
+          <div>
+            <div>Top Losers</div>
+            <gainer-info
+              v-bind:gainer="losers[index]">
+            </gainer-info>
+          </div>
         </div>
       </div>
-</div>
+    </div>
+  </div>
 
 <!--Footer-->
 <footer class="container-fluid text-center">
