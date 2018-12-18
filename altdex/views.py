@@ -433,7 +433,7 @@ def index_trend(request):
             count = 0
 
             for i in range(0, 1049, 50):
-                prices.append(index_prices[i].price)
+                prices.append(float(index_prices[i].price))
 
             price_array.append(prices[::-1])
 
