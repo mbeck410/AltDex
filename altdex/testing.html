@@ -132,6 +132,10 @@
             width: 33%;
         }
 
+        .gl_title {
+          text-align: center
+        }
+
         .well {
           margin: 0;
           padding: 1.0vw;
@@ -718,13 +722,11 @@
             v-bind:row="row"
             ></index-info>
           <div class="gainers_losers">
-            <div>Top Gainers</div>
+            <div class="gl_title">Top Gainers</div>
             <gainer-info
               v-bind:gainer="gainers[index]">
-            </gainer-info>
-          </div>
-          <div>
-            <div>Top Losers</div>
+              </gainer-info>
+            <div class="gl_title">Top Losers</div>
             <gainer-info
               v-bind:gainer="losers[index]">
             </gainer-info>
