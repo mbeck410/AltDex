@@ -106,21 +106,23 @@
           width: 30%
         }
 
-        .blade > .gain_lose {
+        .blade > .gain_lose:first-child {
           width: 20%;
-          display: flex;
+          padding-left: 2%;
+          padding-right: 1%;
+        }
+
+        .blade > .gain_lose:last-child {
+          width: 20%;
+          padding-left: 1%;
+          padding-right: 2%;
         }
 
         #top_gainers {
           display: flex;
-          width: 100%;
         }
 
         /* Gainer/Loser styling */
-        #gainerz {
-          width: 100%;
-        }
-
         .gl_name {
             font-weight: bold;
             font-size: 0.9vw;
