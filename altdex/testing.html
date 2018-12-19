@@ -96,12 +96,22 @@
 
         .blade {
           display: flex;
-          justify-content: space-evenly;
+        }
+
+        .blade > trend {
+          width: 35%
+        }
+
+        .blade > index-info {
+          width: 30%
+        }
+
+        .blade > .gainers_losers {
+          width: 35%
         }
 
         #top_gainers {
           display: flex;
-          justify-content: space-evenly;
         }
 
         .well {
@@ -690,7 +700,7 @@
           <index-info class="indices"
             v-bind:row="row"
             ></index-info>
-          <div>
+          <div class="gainers_losers">
             <div>Top Gainers</div>
             <gainer-info
               v-bind:gainer="gainers[index]">
