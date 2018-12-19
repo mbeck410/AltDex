@@ -112,7 +112,6 @@
 
         #top_gainers {
           display: flex;
-          width: 100%
         }
 
         /* Gainer/Loser styling */
@@ -120,13 +119,12 @@
           display: flex
         }
 
-        .titles > div {
-          width: 50%
+        .gain_lose {
+          display: flex;
         }
 
-        .gainers_losers {
-          display: flex;
-          width: 100%;
+        .titles > div {
+          width: 50%
         }
 
         .gl_name {
@@ -737,18 +735,14 @@
             v-bind:row="row"
             ></index-info>
           <div class="gain_lose">
-            <div class="gainers_losers">
               <!-- <div class="gl_title">Top Gainers</div> -->
               <gainer-info
                 v-bind:gainer="gainers[index]">
                 </gainer-info>
-              </div>
               <!-- <div class="gl_title">Top Losers</div> -->
-              <div class="gainers_losers">
               <gainer-info
                 v-bind:gainer="losers[index]">
               </gainer-info>
-            </div>
             </div>
           </div>
         </div>
