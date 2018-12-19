@@ -115,6 +115,14 @@
         }
 
         /* Gainer/Loser styling */
+        .titles {
+          display: flex
+        }
+
+        .titles > div {
+          width: 50%
+        }
+
         .gainers_losers {
           display: flex;
         }
@@ -718,6 +726,8 @@
             <trend
               :data="trend[index]"
               :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+              height:"100"
+              width:"350"
               auto-draw
               smooth>
             </trend>
@@ -725,15 +735,19 @@
           <index-info class="indices"
             v-bind:row="row"
             ></index-info>
-          <div class="gainers_losers">
-            <div class="gl_title">Top Gainers</div>
-            <gainer-info
-              v-bind:gainer="gainers[index]">
+          <div>
+            <div class="titles">
+              <div class="gl_title">Top Gainers</div>
+              <div class="gl_title">Top Losers</div>
+            </div>
+            <div class="gainers_losers">
+              <gainer-info
+                v-bind:gainer="gainers[index]">
+                </gainer-info>
+              <gainer-info
+                v-bind:gainer="losers[index]">
               </gainer-info>
-            <div class="gl_title">Top Losers</div>
-            <gainer-info
-              v-bind:gainer="losers[index]">
-            </gainer-info>
+            </div>
           </div>
         </div>
       </div>
