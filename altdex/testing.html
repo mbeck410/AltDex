@@ -99,7 +99,7 @@
         }
 
         .blade > .trend {
-          width: 35%
+          width: 30%
         }
 
         .blade > .indices {
@@ -107,7 +107,7 @@
         }
 
         .blade > .gain_lose {
-          width: 35%;
+          width: 10%;
           display: flex;
         }
 
@@ -731,21 +731,22 @@
           <index-info class="indices"
             v-bind:row="row"
             ></index-info>
-          <div class="gain_lose">
+            <div class="gain_lose">
               <!-- <div class="gl_title">Top Gainers</div> -->
               <gainer-info
-                v-bind:gainer="gainers[index]">
-                </gainer-info>
+              v-bind:gainer="gainers[index]">
+              </gainer-info>
+            </div>
+            <div class="gain_lose">
               <!-- <div class="gl_title">Top Losers</div> -->
-              <gainer-info
-                v-bind:gainer="losers[index]">
+                <gainer-info
+                  v-bind:gainer="losers[index]">
               </gainer-info>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 <!--Footer-->
 <footer class="container-fluid text-center">
