@@ -94,6 +94,11 @@
 
     <style>
 
+        .blade {
+          display: flex;
+          justify-content: space-evenly;
+        }
+
         #top_gainers {
           display: flex;
           justify-content: space-evenly;
@@ -673,7 +678,7 @@
 
       <!--Center Div-->
       <div id="main_bar" class="col-sm-9">
-        <div class="well indices" v-for="(row, index) in rows">
+        <div class="well blade" v-for="(row, index) in rows">
 
           <trend
             :data="trend[index]"
