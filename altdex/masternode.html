@@ -1828,7 +1828,7 @@
         } else if (time_frame === 'seven_day') {                    //Range: 7 Day
             date_update.setDate(date_update.getDate() - 7);
             x_update = [date_update, last_x];
-            y_update = [20, 34]
+            y_update = [22, 36]
         } else if (time_frame === 'one_day') {                      //Range: 24 Hour
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
@@ -1838,7 +1838,7 @@
             } else if (price_change <= -3) {
                 y_update = [last_y - 3, last_y + buffer]
             } else {
-                y_update = [last_y - 4, last_y + 1]
+                y_update = [last_y - 5, last_y + 2]
             }
         } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
