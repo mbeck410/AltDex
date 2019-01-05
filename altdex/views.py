@@ -204,6 +204,12 @@ def getcoinscurrent(request):
         elif name_lower == 'digitex futures':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2772.png'
 
+        elif name_lower == 'swarm':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2506.png'
+
+        elif name_lower == 'maximine coin':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3115.png'
+
         elif ' ' in name_lower:
             hyphened_name = name_lower.replace(' ', '-')
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
