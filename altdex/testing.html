@@ -711,6 +711,8 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
+          <main-coin-list v-for="coin in coins"
+          v-bind:coin="coin"></coin-list>
       </div>
 
       <!--Center Div-->
@@ -824,6 +826,22 @@ Vue.component('coin-list', {
   `
 })
 
+Vue.component('main-coin-chart', {
+  props: ['coin'],
+  template:`
+  <div id="top_gainers">
+      <div class="gl_name"><a class="light_blue_links" :href="coin.website" target="_blank">{{coin.symbol}}</a>
+          </div>
+          <div class="gl_price">{{coin.price}}</div>
+          <div class="gl_percent"
+               v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
+              {{coin.price_percent}}%
+          </div>
+      </div>
+  </div>
+  `
+})
+
 Vue.component('gainer-info', {
 props: ['gainer'],
 template: `
@@ -904,6 +922,28 @@ new Vue({
       })
     },
 })
+
+new Vue({
+  el: '#left_bar',
+  data: {
+    coins: []
+  },
+  created: function () {
+    // Alias the component instance as `vm`, so that we
+    // can access it inside the promise function
+    let vm = this
+    let coin_data = []
+    // Fetch our array of row from an API
+    fetch('/getcoinscurrent/')
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.dict_key.length; ++i) {
+          coin_data.push(data.dict_key[0])
+        }
+      vm.coins = coin_data
+      })
 
 </script>
 </body>
