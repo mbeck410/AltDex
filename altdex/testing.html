@@ -942,9 +942,9 @@ new Vue({
       })
       .then(function (data) {
         // for (let i = 0; i < data.dict_key.length; ++i) {
-        //   coin_data.push(data.dict_key[i])
+          coin_data.push(data.dict_key[2])
         // }
-      vm.coins = data.dict_key[3]
+      vm.coins = coin_data
       })
     },
 })
