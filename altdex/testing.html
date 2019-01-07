@@ -711,8 +711,10 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
-          <main-coin-list v-for="coin in coins"
-          :coin="coin"></main-coin-list>
+          <div v-for="coin in coins">
+            <main-coin-list
+            :coin="coin"></main-coin-list>
+          </div>
       </div>
 
       <!--Center Div-->
