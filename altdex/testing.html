@@ -941,10 +941,10 @@ new Vue({
         return response.json()
       })
       .then(function (data) {
-        for (let i = 0; i < data.dict_key.length; ++i) {
-          coin_data.push(data.dict_key[i])
-        }
-      vm.coins = coin_data
+        // for (let i = 0; i < data.dict_key.length; ++i) {
+        //   coin_data.push(data.dict_key[i])
+        // }
+      vm.coins = data.dict_key[3]
       })
     },
 })
