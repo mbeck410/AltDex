@@ -853,7 +853,7 @@ Vue.component('main-coin-chart', {
   props: ['coin'],
   template:`
   <div id="coin_list">
-      <div class="coin_name" class="row_name"><a :href="coin.website" target="_blank">
+      <div class="coin_name"><a :href="coin.website" target="_blank">
           <img :src="coin.icon"></a> &nbsp; <a class="light_blue_links" :href="coin.website"
                                               target="_blank">{{coin.name}}</a>
       </div>
