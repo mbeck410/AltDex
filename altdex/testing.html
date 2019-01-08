@@ -125,13 +125,6 @@
         .gl_name {
             font-weight: bold;
             font-size: 0.9vw;
-            width: 30%;
-            text-align: left;
-        }
-
-        .gl_symbol {
-            font-weight: bold;
-            font-size: 0.9vw;
             width: 22%;
             text-align: left;
         }
@@ -823,9 +816,9 @@ Vue.component('coin-list', {
   props: ['coin'],
   template:`
   <div id="top_gainers">
-      <div class="gl_symbol"><a class="light_blue_links" :href="coin.website" target="_blank">{{coin.symbol}}</a>
+      <div class="gl_name"><a class="light_blue_links" :href="coin.website" target="_blank">{{coin.symbol}}</a>
           </div>
-          <div class="gl_price">$ {{coin.pretty_price.toLocaleString('en', {useGrouping:true}) }}</div>
+          <div class="gl_price">${{coin.pretty_price.toLocaleString('en', {useGrouping:true})}}</div>
           <div class="gl_percent"
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
               {{coin.price_percent}}%
@@ -843,7 +836,7 @@ Vue.component('main-coin-chart', {
           <img :src="coin.icon"></a> &nbsp; <a class="light_blue_links" :href="coin.website"
                                               target="_blank">{{coin.name}}</a>
       </div>
-          <div class="gl_price">$ {{coin.pretty_price.toLocaleString('en', {useGrouping:true}) }}</div>
+          <div class="gl_price">${{coin.pretty_price.toLocaleString('en', {useGrouping:true})}}</div>
           <div class="gl_percent"
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
               {{coin.price_percent}}%
