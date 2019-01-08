@@ -712,8 +712,8 @@
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
           <div v-for="coin in coins">
-            <coin-list
-            v-bind:coin="coin"></coin-list>
+            <main-coin-chart
+            v-bind:coin="coin"></main-coin-chart>
           </div>
       </div>
 
@@ -832,8 +832,10 @@ Vue.component('main-coin-chart', {
   props: ['coin'],
   template:`
   <div id="top_gainers">
-      <div class="gl_name"><a class="light_blue_links" :href="coin.website" target="_blank">{{coin.symbol}}</a>
-          </div>
+      <div class="gl_name" class="row_name"><a :href="coin.website" target="_blank">
+          <img :src="coin.icon"></a> &nbsp; <a class="light_blue_links" :href="coin.website"
+                                              target="_blank">{{coin.name}}</a>
+      </div>
           <div class="gl_price">{{coin.price}}</div>
           <div class="gl_percent"
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
