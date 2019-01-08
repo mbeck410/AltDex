@@ -712,8 +712,8 @@
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
           <div v-for="coin in coins">
-            <div>{{coin.name}}</div>
-            <div>{{coin.price}}</div>
+            <coin-list
+            v-bind:coin="coin"></coin-list>
           </div>
       </div>
 
@@ -941,9 +941,9 @@ new Vue({
         return response.json()
       })
       .then(function (data) {
-        // for (let i = 0; i < data.dict_key.length; ++i) {
-          coin_data.push(data.dict_key[2])
-        // }
+        for (let i = 0; i < data.dict_key.length; ++i) {
+          coin_data.push(data.dict_key[i])
+        }
       vm.coins = coin_data
       })
     },
