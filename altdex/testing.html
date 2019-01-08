@@ -121,6 +121,27 @@
           display: flex;
         }
 
+        .coin_list{
+          display: flex
+        }
+
+        .coin_name {
+            font-weight: bold;
+            font-size: 0.9vw;
+            width: 40%;
+            text-align: left;
+        }
+
+        .coin_price {
+            text-align: right;
+            width: 30%;
+        }
+
+        .coin_percent {
+            text-align: right;
+            width: 30%;
+        }
+
         /* Gainer/Loser styling */
         .gl_name {
             font-weight: bold;
@@ -818,7 +839,7 @@ Vue.component('coin-list', {
   <div id="top_gainers">
       <div class="gl_name"><a class="light_blue_links" :href="coin.website" target="_blank">{{coin.symbol}}</a>
           </div>
-          <div class="gl_price">{{coin.price.toLocaleString('en', {useGrouping:true})}}</div>
+          <div class="gl_price">&#36;{{coin.price.toLocaleString('en', {useGrouping:true})}}</div>
           <div class="gl_percent"
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
               {{coin.price_percent}}%
@@ -831,13 +852,13 @@ Vue.component('coin-list', {
 Vue.component('main-coin-chart', {
   props: ['coin'],
   template:`
-  <div id="top_gainers">
-      <div class="gl_name" class="row_name"><a :href="coin.website" target="_blank">
+  <div id="coin_list">
+      <div class="coin_name" class="row_name"><a :href="coin.website" target="_blank">
           <img :src="coin.icon"></a> &nbsp; <a class="light_blue_links" :href="coin.website"
                                               target="_blank">{{coin.name}}</a>
       </div>
-          <div class="gl_price">&#36;{{coin.pretty_price.toLocaleString('en', {useGrouping:true})}}</div>
-          <div class="gl_percent"
+          <div class="coin_price">&#36;{{coin.pretty_price.toLocaleString('en', {useGrouping:true})}}</div>
+          <div class="coin_percent"
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
               {{coin.price_percent}}%
           </div>
