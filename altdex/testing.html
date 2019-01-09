@@ -732,7 +732,7 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
-          <div v-for="coin in coins">
+          <div v-for="coin in filterCoins">
             <main-coin-chart
             v-bind:coin="coin"></main-coin-chart>
           </div>
@@ -970,6 +970,14 @@ new Vue({
       vm.coins = coin_data
       })
     },
+    computed: {
+      filterCoins: function () {
+        let index = 'Exchange'
+        return this.coins.filter(function (coin) {
+          return coin.indices.includes(index) === true
+        })
+      }
+    }
 })
 
 </script>
