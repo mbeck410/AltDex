@@ -873,6 +873,7 @@ Vue.component('main-coin-chart', {
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
               {{coin.price_percent}}%
           </div>
+          <div class="coin_market">{{coin.market_cap.toLocaleString('en', {useGrouping:true})}}<div>
       </div>
   </div>
   `
