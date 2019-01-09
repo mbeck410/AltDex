@@ -125,6 +125,11 @@
           display: flex
         }
 
+        #index_buttons {
+          display: flex;
+          justify-content: space-evenly;
+        }
+
         .coin_name {
             font-weight: bold;
             font-size: 0.9vw;
@@ -732,6 +737,10 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
+          <div id="index_buttons">
+            <button v-on:click="filter('AltDex')">ALT100</button>
+            <button v-on:click="filter('Privacy')">ALTPRV</button>
+          </div>
           <div v-for="coin in filter('Exchange')">
             <main-coin-chart
             v-bind:coin="coin"></main-coin-chart>
