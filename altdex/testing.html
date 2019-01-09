@@ -737,11 +737,11 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
-          <div id="index_buttons">
+          <!-- <div id="index_buttons">
             <button @click="filter('AltDex')">ALT100</button>
             <button v-on:click="filter('Privacy')">ALTPRV</button>
-          </div>
-          <div v-for="coin in coins">
+          </div> -->
+          <div v-for="coin in filterCoins">
             <main-coin-chart
             v-bind:coin="coin"></main-coin-chart>
           </div>
@@ -960,7 +960,8 @@ new Vue({
 new Vue({
   el: '#left_bar',
   data: {
-    coins: []
+    coins: [],
+    current_index: 'Privacy',
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
@@ -979,10 +980,10 @@ new Vue({
       vm.coins = coin_data
       })
     },
-    methods: {
-      filter: function (index) {
+    computed: {
+      filterCoins: function () {
         return this.coins.filter(function (coin) {
-          return coin.indices.includes(index) === true
+          return coin.indices.includes(this.current_index) === true
         })
       }
     }
