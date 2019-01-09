@@ -739,7 +739,9 @@
           <h1>TEST</h1>
           <div id="index_buttons">
             <button @click="filter('AltDex')">ALT100</button>
-            <button v-on:click="filter('Privacy')">ALTPRV</button>
+            <button v-on:click="filter('Exchange')">ALTEXC</button>
+            <button @click="filter('Privacy')">ALTPRV</button>
+            <button v-on:click="filter('Masternode')">ALTMSN</button>
           </div>
           <div v-for="coin in filterCoins">
             <main-coin-chart
@@ -961,7 +963,7 @@ new Vue({
   el: '#left_bar',
   data: {
     coins: [],
-    current_index: 'Exchange',
+    current_index: 'AltDex',
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
