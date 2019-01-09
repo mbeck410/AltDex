@@ -982,8 +982,9 @@ new Vue({
     },
     computed: {
       filterCoins: function () {
+        let index = 'Privacy'
         return this.coins.filter(function (coin) {
-          return coin.indices.includes(this.current_index) === true
+          return coin.indices.includes(index) === true
         })
       }
     }
