@@ -961,7 +961,7 @@ new Vue({
   el: '#left_bar',
   data: {
     coins: [],
-    current_index: 'Privacy',
+    current_index: 'Exchange',
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
@@ -982,7 +982,7 @@ new Vue({
     },
     computed: {
       filterCoins: function () {
-        let index = 'Privacy'
+        let index = this.current_index
         return this.coins.filter(function (coin) {
           return coin.indices.includes(index) === true
         })
