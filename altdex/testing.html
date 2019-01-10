@@ -132,27 +132,27 @@
 
         .coin_name {
             font-weight: bold;
-            font-size: 0.7vw;
-            width: 40%;
+            font-size: 0.8vw;
+            width: 45%;
             text-align: left;
         }
 
         .coin_price {
             text-align: right;
             width: 15%;
-            font-size: 0.7vw;
+            font-size: 0.8vw;
         }
 
         .coin_percent {
             text-align: right;
             width: 15%;
-            font-size: 0.7vw;
+            font-size: 0.8vw;
         }
 
         .coin_market {
             text-align: right;
-            width: 30%;
-            font-size: 0.7vw;
+            width: 25%;
+            font-size: 0.8vw;
         }
 
 
@@ -882,7 +882,7 @@ Vue.component('main-coin-chart', {
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
               {{coin.price_percent}}%
           </div>
-          <div class="coin_market">{{coin.market_cap.toLocaleString('en', {useGrouping:true})}}<div>
+          <div class="coin_market">&#36;{{coin.market_cap.toLocaleString('en', {useGrouping:true})}}<div>
       </div>
   </div>
   `
