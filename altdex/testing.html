@@ -164,24 +164,28 @@
             font-size: 0.75vw;
             width: 45%;
             text-align: left;
+            padding-left: 10%
         }
 
         #header_price {
             text-align: right;
             width: 15%;
             font-size: 0.75vw;
+            font-weight: bold;
         }
 
         #header_percent {
             text-align: right;
             width: 15%;
             font-size: 0.75vw;
+            font-weight: bold;
         }
 
-        #header_market {
+        #header_cap {
             text-align: right;
             width: 25%;
             font-size: 0.75vw;
+            font-weight: bold;
         }
 
 
@@ -784,7 +788,7 @@
           <div id="coin_headers">
             <div id="header_name" @click="sort('name')">Name</div>
             <div id="header_price" @click="sort('price')">Price</div>
-            <div id="header_change">%Change</div>
+            <div id="header_percent">%Change</div>
             <div id="header_cap">Market Cap</div>
           </div>
           <div v-for="coin in filter(sortedCoins)">
