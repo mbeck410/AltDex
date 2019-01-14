@@ -164,7 +164,7 @@
             font-size: 0.75vw;
             width: 45%;
             text-align: left;
-            padding-left: 10%
+            padding-left: 6%
         }
 
         #header_price {
@@ -781,15 +781,15 @@
           <h1>TEST</h1>
           <div id="index_buttons">
             <button @click="changeFilter('AltDex')">ALT100</button>
-            <button v-on:click="changeFilter('Exchange')">ALTEXC</button>
+            <button @click="changeFilter('Exchange')">ALTEXC</button>
             <button @click="changeFilter('Privacy')">ALTPRV</button>
-            <button v-on:click="changeFilter('Masternode')">ALTMSN</button>
+            <button @click="changeFilter('Masternode')">ALTMSN</button>
           </div>
           <div id="coin_headers">
             <div id="header_name" @click="sort('name')">Name</div>
             <div id="header_price" @click="sort('price')">Price</div>
-            <div id="header_percent">%Change</div>
-            <div id="header_cap">Market Cap</div>
+            <div id="header_percent" @click="sort('price_percent')">%Change</div>
+            <div id="header_cap" @click="sort('market_cap')">Market Cap</div>
           </div>
           <div v-for="coin in filter(sortedCoins)">
             <main-coin-chart
