@@ -155,6 +155,10 @@
             font-size: 0.75vw;
         }
 
+        #coin_headers {
+          display: flex;
+        }
+
         #header_name {
             font-weight: bold;
             font-size: 0.75vw;
@@ -772,10 +776,10 @@
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
           <div id="index_buttons">
-            <button @click="filter('AltDex')">ALT100</button>
-            <button v-on:click="filter('Exchange')">ALTEXC</button>
-            <button @click="filter('Privacy')">ALTPRV</button>
-            <button v-on:click="filter('Masternode')">ALTMSN</button>
+            <button @click="changeFilter('AltDex')">ALT100</button>
+            <button v-on:click="changeFilter('Exchange')">ALTEXC</button>
+            <button @click="changeFilter('Privacy')">ALTPRV</button>
+            <button v-on:click="changeFilter('Masternode')">ALTMSN</button>
           </div>
           <div id="coin_headers">
             <div id="header_name" @click="sort('name')">Name</div>
@@ -783,7 +787,7 @@
             <div id="header_change">%Change</div>
             <div id="header_cap">Market Cap</div>
           </div>
-          <div v-for="coin in sortedCoins">
+          <div v-for="coin in filter(sortedCoins)">
             <main-coin-chart
             v-bind:coin="coin"></main-coin-chart>
           </div>
@@ -1026,8 +1030,14 @@ new Vue({
       })
     },
     methods: {
-      filter: function(index) {
+      changeFilter: function(index) {
         this.current_index = index;
+      },
+      filter: function(coins) {
+        index = this.current_index;
+        return this.coins.filter(function (coin) {
+          return coin.indices.includes(index) === true
+        })
       },
       sort: function (s) {
           if (s === this.current_sort) {
@@ -1044,10 +1054,6 @@ new Vue({
       //   })
       // },
       sortedCoins: function () {
-          let index = this.current_index
-          return this.coins.filter(function (coin) {
-            return coin.indices.includes(index) === true
-          })
           return this.coins.sort((a, b) => {
               let modifier = 1;
               if (this.current_dir === 'desc') modifier = -1;
