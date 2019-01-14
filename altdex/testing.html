@@ -155,6 +155,31 @@
             font-size: 0.75vw;
         }
 
+        #header_name {
+            font-weight: bold;
+            font-size: 0.75vw;
+            width: 45%;
+            text-align: left;
+        }
+
+        #header_price {
+            text-align: right;
+            width: 15%;
+            font-size: 0.75vw;
+        }
+
+        #header_percent {
+            text-align: right;
+            width: 15%;
+            font-size: 0.75vw;
+        }
+
+        #header_market {
+            text-align: right;
+            width: 25%;
+            font-size: 0.75vw;
+        }
+
 
         /* Gainer/Loser styling */
         .gl_name {
@@ -752,7 +777,13 @@
             <button @click="filter('Privacy')">ALTPRV</button>
             <button v-on:click="filter('Masternode')">ALTMSN</button>
           </div>
-          <div v-for="coin in filterCoins">
+          <div id="coin_headers">
+            <div id="header_name" @click="sort('name')">Name</div>
+            <div id="header_price" @click="sort('price')">Price</div>
+            <div id="header_change">%Change</div>
+            <div id="header_cap">Market Cap</div>
+          </div>
+          <div v-for="coin in sortedCoins">
             <main-coin-chart
             v-bind:coin="coin"></main-coin-chart>
           </div>
@@ -974,6 +1005,8 @@ new Vue({
   data: {
     coins: [],
     current_index: 'AltDex',
+    current_sort: 'market_cap',
+    current_dir: 'desc'
   },
   created: function () {
     // Alias the component instance as `vm`, so that we
@@ -995,15 +1028,34 @@ new Vue({
     methods: {
       filter: function(index) {
         this.current_index = index;
+      },
+      sort: function (s) {
+          if (s === this.current_sort) {
+              this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
+          }
+          this.current_sort = s;
       }
     },
     computed: {
-      filterCoins: function () {
-        let index = this.current_index
-        return this.coins.filter(function (coin) {
-          return coin.indices.includes(index) === true
-        })
-      }
+      // filterCoins: function () {
+      //   let index = this.current_index
+      //   return this.coins.filter(function (coin) {
+      //     return coin.indices.includes(index) === true
+      //   })
+      // },
+      sortedCoins: function () {
+          let index = this.current_index
+          return this.coins.filter(function (coin) {
+            return coin.indices.includes(index) === true
+          })
+          return this.coins.sort((a, b) => {
+              let modifier = 1;
+              if (this.current_dir === 'desc') modifier = -1;
+              if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
+              if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
+              return 0;
+          });
+      },
     }
 })
 
