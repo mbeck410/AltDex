@@ -179,6 +179,13 @@ def getcoinscurrent(request):
         else:
             coin_price = '{0:.6f}'.format(float(this_coin.price))
 
+        if float(this_coin.market_cap) >= 1000000000:
+            divided_cap = this_coin.market_cap/1000000000
+            pretty_cap = '{:,.3f}'.format(float(this_coin.divided_cap)) + 'B'
+        else:
+            divided_cap = this_coin.market_cap/1000000
+            pretty_cap = '{:,.3f}'.format(float(this_coin.divided_cap)) + 'M'
+
         name_lower = str(this_coin.name).lower()
         if name_lower == 'metaverse ep':
             coin_icon_url = 'https://files.bitscreener.com/static/img/coins/16x16/metaverse.png'
@@ -261,7 +268,8 @@ def getcoinscurrent(request):
                         'weight_2': weight_2,
                         'weight_3': weight_3,
                         'weight_4': weight_4,
-                        'icon': coin_icon_url
+                        'icon': coin_icon_url,
+                        'pretty_cap': pretty_cap
                         }
 
         coin_table.append(coin_dict)
