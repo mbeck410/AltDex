@@ -180,11 +180,11 @@ def getcoinscurrent(request):
             coin_price = '{0:.6f}'.format(float(this_coin.price))
 
         if float(this_coin.market_cap) >= 1000000000:
-            divided_cap = this_coin.market_cap/1000000000
-            pretty_cap = '{:,.3f}'.format(float(this_coin.divided_cap)) + 'B'
+            divided_cap = float(this_coin.market_cap)/1000000000
+            pretty_cap = str('{:,.3f}'.format(float(this_coin.divided_cap))) + 'B'
         else:
-            divided_cap = this_coin.market_cap/1000000
-            pretty_cap = '{:,.3f}'.format(float(this_coin.divided_cap)) + 'M'
+            divided_cap = float(this_coin.market_cap)/1000000
+            pretty_cap = str('{:,.3f}'.format(float(this_coin.divided_cap))) + 'M'
 
         name_lower = str(this_coin.name).lower()
         if name_lower == 'metaverse ep':
