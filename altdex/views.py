@@ -187,7 +187,7 @@ def getcoinscurrent(request):
             pretty_cap = str('{:,.2f}'.format(float(divided_cap))) + 'B'
         elif 1000000000 <  float(this_coin.market_cap) >= 100000000:
             divided_cap = float(this_coin.market_cap)/1000000000
-            pretty_cap = str('{:,.2f}'.format(float(divided_cap))) + 'M'
+            pretty_cap = str('{:,.2f}'.format(float(divided_cap))) + 'B'
         elif 100000000 <  float(this_coin.market_cap) >= 10000000:
             divided_cap = float(this_coin.market_cap)/1000000
             pretty_cap = str('{:,.0f}'.format(float(divided_cap))) + 'M'
