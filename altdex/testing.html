@@ -922,11 +922,13 @@ Vue.component('main-coin-chart', {
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
               {{coin.price_percent}}%
           </div>
-          <div class="coin_market">&#36;{{coin.market_cap.toLocaleString('en', {useGrouping:true})}}<div>
+          <div class="coin_market">&#36;{{prettyCap}}<div>
       </div>
   </div>
   `
 })
+
+          // <div class="coin_market">&#36;{{coin.market_cap.toLocaleString('en', {useGrouping:true})}}<div>
 
 Vue.component('gainer-info', {
 props: ['gainer'],
@@ -1067,14 +1069,10 @@ new Vue({
               return 0;
           });
       },
-      // prettyCap: function () {
-      //   if (this.coin.market_cap >= 1000000000) {
-      //     return String(this.coin.market_cap/1000000000).slice(0, 3) + 'B'
-      //   };
-      //   else {
-      //     return String(this.coin.market_cap/1000000).slice(0, 3) + 'M'
-      //   }
-      // }
+      prettyCap: function () {
+          return this.coin.market_cap/1000000000
+        }
+      }
     }
 })
 
