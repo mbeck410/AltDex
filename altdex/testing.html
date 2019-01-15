@@ -1071,7 +1071,7 @@ new Vue({
       },
       prettyCap: function () {
         return this.coins.filter(function (coin) {
-          return this.coin.market_cap/1000000000
+          return coin.market_cap/1000000000
         })
       }
     }
