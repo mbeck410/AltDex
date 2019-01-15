@@ -922,7 +922,7 @@ Vue.component('main-coin-chart', {
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
               {{coin.price_percent}}%
           </div>
-          <div class="coin_market">&#36;{{coin.prettyCap}}<div>
+          <div class="coin_market">&#36;{{prettyCap(coin.market_cap)}}<div>
       </div>
   </div>
   `
@@ -1046,6 +1046,9 @@ new Vue({
           return coin.indices.includes(index) === true
         })
       },
+      prettyCap: function(market_cap) {
+        return market_cap/1000000000
+      },
       sort: function (s) {
           if (s === this.current_sort) {
               this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
@@ -1069,11 +1072,6 @@ new Vue({
               return 0;
           });
       },
-      prettyCap: function () {
-        return this.coins.filter(function (coin) {
-          return coin.market_cap/1000000000
-        })
-      }
     }
 })
 
