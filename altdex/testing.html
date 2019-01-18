@@ -236,6 +236,10 @@
           font-size: 2.5vw;
         }
 
+        .period_data {
+          display: flex
+        }
+
         /*Navbar*/
         .my_navbar {
             background-color: #222842;
@@ -797,7 +801,7 @@
             v-bind:coin="coin"></main-coin-chart>
           </div>
 
-          <div v-for="test in indices">
+          <div>
             <index-performance
             v-bind:dex="indices[0]"></index-performance>
           </div>
