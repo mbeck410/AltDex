@@ -797,8 +797,10 @@
             v-bind:coin="coin"></main-coin-chart>
           </div>
 
-          <index-performance
-          v-bind:dex="indices[0]"></index-performance>
+          <div v-for="test in indices">
+            <index-performance
+            v-bind:dex="indices[0]"></index-performance>
+          <div>
       </div>
 
       <!--Center Div-->
@@ -954,8 +956,6 @@ template: `
 Vue.component('index-performance', {
   props: ['dex'],
   template: `
-      <div id="perf_price">{{ dex.price }}</div>
-      <div id="perf_time">Last Update: {{dex.time.slice(0,19)}} UTC</div>
       <div id="period_changes" class="p_tab">
         <div class="period_data">
           <div class="data_period">24h</div>
@@ -975,6 +975,9 @@ Vue.component('index-performance', {
       </div>
   `
 })
+
+// <div id="perf_price">{{ dex.price }}</div>
+// <div id="perf_time">Last Update: {{dex.time.slice(0,19)}} UTC</div>
 
 new Vue({
   el: '#main_bar',
