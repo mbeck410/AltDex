@@ -240,6 +240,18 @@
           display: flex
         }
 
+        .data_period {
+          width: 33%;
+        }
+
+        .perf_change {
+          width: 33%;
+        }
+
+        .perf_percent {
+          width: 33%;
+        }
+
         /*Navbar*/
         .my_navbar {
             background-color: #222842;
@@ -803,7 +815,7 @@
 
           <div>
             <index-performance
-            v-bind:dex="indices[0]"></index-performance>
+            v-bind:dex="indices[current_number]"></index-performance>
           </div>
       </div>
 
