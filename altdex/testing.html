@@ -815,7 +815,8 @@
 
           <div>
             <index-performance
-            v-bind:dex="indices[current_number]"></index-performance>
+            v-bind:dex="indices[current_number]"
+            v-bind:info="info[current_number]"></index-performance>
           </div>
       </div>
 
@@ -970,13 +971,13 @@ template: `
 })
 
 Vue.component('index-performance', {
-  props: ['dex'],
+  props: ['dex', 'info'],
   template: `
       <div id="period_changes" class="p_tab">
         <div class="period_data">
           <div class="data_period">24h</div>
-          <div class="perf_change" id="perf_day_change">test</div>
-          <div class="perf_percent" id="perf_day_percent">test</div>
+          <div class="perf_change" id="perf_day_change">{{ info.change_24h }}</div>
+          <div class="perf_percent" id="perf_day_percent">{{ info.price_percent }}</div>
         </div>
         <div class="period_data">
           <div class="data_period">7d</div>
@@ -1010,6 +1011,7 @@ let side_app = new Vue({
   data: {
     coins: [],
     indices: [],
+    info: [],
     current_index: 'AltDex',
     current_number: 0,
     current_sort: 'market_cap',
@@ -1056,6 +1058,7 @@ function pull_main() {
   // Alias the component instance as `vm`, so that we
   // can access it inside the promise function
   let vm = index_app;
+  let cm = side_app;
   let index_data = [];
   let gainer_data = [];
   let loser_data = [];
@@ -1080,6 +1083,7 @@ function pull_main() {
         index_data.push(data.dict_key[i])
       }
     vm.rows = index_data
+    cm.info = index_data
     })
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
