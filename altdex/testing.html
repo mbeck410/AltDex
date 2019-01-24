@@ -1003,49 +1003,6 @@ let index_app = new Vue({
     gainers: [],
     losers: [],
   },
-  created: function () {
-    // Alias the component instance as `vm`, so that we
-    // can access it inside the promise function
-    let vm = this
-    let index_data = []
-    let gainer_data = []
-    let loser_data = []
-    let trend_line = []
-    // Fetch our array of row from an API
-    fetch('/index_trend/')
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (data) {
-        for (let i = 0; i < data.dict_key.length; ++i) {
-          trend_line.push(data.dict_key[i])
-        }
-      vm.trend = trend_line
-      })
-    fetch('/getindexcurrent/')
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (data) {
-        for (let i = 0; i < data.dict_key.length; ++i) {
-          index_data.push(data.dict_key[i])
-        }
-      vm.rows = index_data
-      })
-      // Fetch our array of row from an API
-      fetch('/gainers_losers/')
-        .then(function (response) {
-          return response.json()
-        })
-        .then(function (data) {
-          for (let i = 0; i < data.gainers.length; ++i) {
-            gainer_data.push(data.gainers[i])
-            loser_data.push(data.losers[i])
-          }
-        vm.gainers = gainer_data
-        vm.losers = loser_data
-      })
-    },
 })
 
 let side_app = new Vue({
@@ -1095,6 +1052,50 @@ let side_app = new Vue({
     }
 })
 
+function pull_main() {
+  // Alias the component instance as `vm`, so that we
+  // can access it inside the promise function
+  let vm = this
+  let index_data = []
+  let gainer_data = []
+  let loser_data = []
+  let trend_line = []
+  // Fetch our array of row from an API
+  fetch('/index_trend/')
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        trend_line.push(data.dict_key[i])
+      }
+    vm.trend = trend_line
+    })
+  fetch('/getindexcurrent/')
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        index_data.push(data.dict_key[i])
+      }
+    vm.rows = index_data
+    })
+    // Fetch our array of row from an API
+    fetch('/gainers_losers/')
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.gainers.length; ++i) {
+          gainer_data.push(data.gainers[i])
+          loser_data.push(data.losers[i])
+        }
+      vm.gainers = gainer_data
+      vm.losers = loser_data
+    })
+  }
+
 function pull_side() {
   // Alias the component instance as `vm`, so that we
   // can access it inside the promise function
@@ -1125,6 +1126,7 @@ function pull_side() {
   }
 
 pull_side();
+pull_main();
 
 </script>
 </body>
