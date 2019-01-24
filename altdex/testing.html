@@ -1050,7 +1050,7 @@ let side_app = new Vue({
               if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
               return 0;
           });
-      },
+      }
     }
 })
 
@@ -1098,7 +1098,7 @@ function pull_main() {
       vm.gainers = gainer_data
       vm.losers = loser_data
     })
-  },
+  }
 
 function pull_side() {
   // Alias the component instance as `vm`, so that we
