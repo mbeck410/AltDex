@@ -1055,11 +1055,11 @@ let side_app = new Vue({
 function pull_main() {
   // Alias the component instance as `vm`, so that we
   // can access it inside the promise function
-  let vm = this
-  let index_data = []
-  let gainer_data = []
-  let loser_data = []
-  let trend_line = []
+  let vm = index_app;
+  let index_data = [];
+  let gainer_data = [];
+  let loser_data = [];
+  let trend_line = [];
   // Fetch our array of row from an API
   fetch('/index_trend/')
     .then(function (response) {
@@ -1125,8 +1125,8 @@ function pull_side() {
     })
   }
 
-pull_side();
 pull_main();
+pull_side();
 
 </script>
 </body>
