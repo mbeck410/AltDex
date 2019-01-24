@@ -815,7 +815,8 @@
 
           <div>
             <index-performance
-            v-bind:dex="indices[current_number]"></index-performance>
+            v-bind:dex="indices[current_number]"
+            v-bind:dex2="indices2[current_number]"></index-performance>
           </div>
       </div>
 
@@ -970,13 +971,13 @@ template: `
 })
 
 Vue.component('index-performance', {
-  props: ['dex'],
+  props: ['dex' , 'dex2'],
   template: `
       <div id="period_changes" class="p_tab">
         <div class="period_data">
           <div class="data_period">24h</div>
-          <div class="perf_change" id="perf_day_change">test</div>
-          <div class="perf_percent" id="perf_day_percent">test</div>
+          <div class="perf_change" id="perf_day_change">{{ dex2.change_24h }}%</div>
+          <div class="perf_percent" id="perf_day_percent">{{ dex2.price_percent }}</div>
         </div>
         <div class="period_data">
           <div class="data_period">7d</div>
@@ -995,57 +996,14 @@ Vue.component('index-performance', {
 // <div id="perf_price">{{ dex.price }}</div>
 // <div id="perf_time">Last Update: {{dex.time.slice(0,19)}} UTC</div>
 
-let index_app = new Vue({
+let main_app = new Vue({
   el: '#main_bar',
   data: {
     trend: [],
     rows: [],
     gainers: [],
     losers: [],
-  },
-  created: function () {
-    // Alias the component instance as `vm`, so that we
-    // can access it inside the promise function
-    let vm = this
-    let index_data = []
-    let gainer_data = []
-    let loser_data = []
-    let trend_line = []
-    // Fetch our array of row from an API
-    fetch('/index_trend/')
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (data) {
-        for (let i = 0; i < data.dict_key.length; ++i) {
-          trend_line.push(data.dict_key[i])
-        }
-      vm.trend = trend_line
-      })
-    fetch('/getindexcurrent/')
-      .then(function (response) {
-        return response.json()
-      })
-      .then(function (data) {
-        for (let i = 0; i < data.dict_key.length; ++i) {
-          index_data.push(data.dict_key[i])
-        }
-      vm.rows = index_data
-      })
-      // Fetch our array of row from an API
-      fetch('/gainers_losers/')
-        .then(function (response) {
-          return response.json()
-        })
-        .then(function (data) {
-          for (let i = 0; i < data.gainers.length; ++i) {
-            gainer_data.push(data.gainers[i])
-            loser_data.push(data.losers[i])
-          }
-        vm.gainers = gainer_data
-        vm.losers = loser_data
-      })
-    },
+  }
 })
 
 let side_app = new Vue({
@@ -1053,6 +1011,7 @@ let side_app = new Vue({
   data: {
     coins: [],
     indices: [],
+    indices2: [],
     current_index: 'AltDex',
     current_number: 0,
     current_sort: 'market_cap',
@@ -1095,7 +1054,53 @@ let side_app = new Vue({
     }
 })
 
-function pull_index() {
+function pull_main() {
+  // Alias the component instance as `vm`, so that we
+  // can access it inside the promise function
+  let vm = main_app
+  let vm2 - side_app
+  let index_data = []
+  let gainer_data = []
+  let loser_data = []
+  let trend_line = []
+  // Fetch our array of row from an API
+  fetch('/index_trend/')
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        trend_line.push(data.dict_key[i])
+      }
+    vm.trend = trend_line
+    })
+  fetch('/getindexcurrent/')
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        index_data.push(data.dict_key[i])
+      }
+    vm.rows = index_data
+    cm.indices2 = index_data
+    })
+    // Fetch our array of row from an API
+    fetch('/gainers_losers/')
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.gainers.length; ++i) {
+          gainer_data.push(data.gainers[i])
+          loser_data.push(data.losers[i])
+        }
+      vm.gainers = gainer_data
+      vm.losers = loser_data
+    })
+  },
+
+function pull_side() {
   // Alias the component instance as `vm`, so that we
   // can access it inside the promise function
   let vm = side_app;
@@ -1124,7 +1129,8 @@ function pull_index() {
     })
   }
 
-pull_index();
+pull_main();
+pull_side();
 
 </script>
 </body>
