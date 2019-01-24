@@ -1098,29 +1098,29 @@ let side_app = new Vue({
 function pull_index() {
   // Alias the component instance as `vm`, so that we
   // can access it inside the promise function
-  let vm = index_app
-  let coin_data = []
-  let index_data = []
+  let vm = side_app;
+  let coin_data = [];
+  let index_data = [];
   // Fetch our array of row from an API
   fetch('/getcoinscurrent/')
     .then(function (response) {
-      return response.json()
+      return response.json();
     })
     .then(function (data) {
       for (let i = 0; i < data.dict_key.length; ++i) {
         coin_data.push(data.dict_key[i])
       }
-    vm.coins = coin_data
+    vm.coins = coin_data;
     })
   fetch('/getindexperformance/')
     .then(function (response) {
-      return response.json()
+      return response.json();
     })
     .then(function (data) {
       for (let i = 0; i < data.dict_key.length; ++i) {
-        index_data.push(data.dict_key[i])
+        index_data.push(data.dict_key[i]);
       }
-    vm.indices = index_data
+    vm.indices = index_data;
     })
   }
 
