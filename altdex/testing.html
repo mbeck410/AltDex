@@ -995,7 +995,7 @@ Vue.component('index-performance', {
 // <div id="perf_price">{{ dex.price }}</div>
 // <div id="perf_time">Last Update: {{dex.time.slice(0,19)}} UTC</div>
 
-new Vue({
+let index_app = new Vue({
   el: '#main_bar',
   data: {
     trend: [],
@@ -1048,7 +1048,7 @@ new Vue({
     },
 })
 
-new Vue({
+let side_app = new Vue({
   el: '#left_bar',
   data: {
     coins: [],
