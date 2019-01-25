@@ -973,11 +973,17 @@ template: `
 Vue.component('index-performance', {
   props: ['dex', 'info'],
   template: `
+      <div>
+        <div id="index_price">{{ info.price }}</div>
+        <div id="index_time">
+          Last Update: {{info.time.slice(0,19)}} UTC
+        </div>
+      </div>
       <div id="period_changes" class="p_tab">
         <div class="period_data">
           <div class="data_period">24h</div>
           <div class="perf_change" id="perf_day_change">{{ info.change_24h }}</div>
-          <div class="perf_percent" id="perf_day_percent">{{ info.price_percent }}</div>
+          <div class="perf_percent" id="perf_day_percent">{{ info.price_percent }}%</div>
         </div>
         <div class="period_data">
           <div class="data_period">7d</div>
