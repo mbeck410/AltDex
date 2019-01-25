@@ -796,18 +796,6 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
-          <div id="index_buttons">
-            <button @click="changeFilter('AltDex', 0)">ALT100</button>
-            <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
-            <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
-            <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
-          </div>
-          <div id="coin_headers">
-            <div id="header_name" @click="sort('name')">Name</div>
-            <div id="header_price" @click="sort('price')">Price</div>
-            <div id="header_percent" @click="sort('price_percent')">%Change</div>
-            <div id="header_cap" @click="sort('market_cap')">Mkt Cap</div>
-          </div>
           <div v-for="coin in filter(sortedCoins)">
             <main-coin-chart
             v-bind:coin="coin"></main-coin-chart>
@@ -905,6 +893,16 @@
 <!--Javascript-->
 <script>
 
+Vue.component('index-buttons', {
+  template:`<div id="index_buttons">
+    <button @click="changeFilter('AltDex', 0)">ALT100</button>
+    <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
+    <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
+    <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
+  </div>
+  `
+})
+
 Vue.component('coin-list', {
   props: ['coin'],
   template:`
@@ -924,6 +922,13 @@ Vue.component('coin-list', {
 Vue.component('main-coin-chart', {
   props: ['coin'],
   template:`
+  <div>
+  <div id="coin_headers">
+    <div id="header_name" @click="sort('name')">Name</div>
+    <div id="header_price" @click="sort('price')">Price</div>
+    <div id="header_percent" @click="sort('price_percent')">%Change</div>
+    <div id="header_cap" @click="sort('market_cap')">Mkt Cap</div>
+  </div>
   <div id="coin_list">
       <div class="coin_name"><a :href="coin.website" target="_blank">
           <img :src="coin.icon"></a> &nbsp; <a class="light_blue_links" :href="coin.website"
@@ -936,6 +941,7 @@ Vue.component('main-coin-chart', {
           </div>
           <div class="coin_market">&#36;{{coin.pretty_cap}}<div>
       </div>
+  </div>
   </div>
   `
 })
