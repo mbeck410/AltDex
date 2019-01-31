@@ -796,17 +796,6 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
 
-        <div class="container" id="info_switch">
-
-          <ul id="info_bts" class="nav nav-pills">
-              <li class="active"><a data-toggle="pill" href="#coin_info">Coins</a></li>
-              <li id="performance_btn"><a data-toggle="pill" href="#performance_tab">Performance</a></li>
-          </ul>
-
-          <div class="tab-content">
-
-            <div class="tab-pane fade in active" id="coin_info">
-
               <div class="index_buttons">
                 <button @click="changeFilter('AltDex', 0)">ALT100</button>
                 <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
@@ -824,26 +813,18 @@
                 v-bind:coin="coin"></main-coin-chart>
               </div>
 
-            </div>
-
-            <div class="tab-pane fade" id="perfomance_tab">
-
-              <div class="index_buttons">
+              <!-- <div class="index_buttons">
                 <button @click="changeFilter('AltDex', 0)">ALT100</button>
                 <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
                 <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
                 <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
-              </div>
+              </div> -->
 
               <div>
                 <index-performance
                 v-bind:dex="indices[current_number]"
                 v-bind:info="info[current_number]"></index-performance>
               </div>
-
-            </div>
-          </div>
-        </div>
       </div>
 
       <!--Center Div-->
