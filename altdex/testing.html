@@ -796,7 +796,12 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
           <h1>TEST</h1>
-          <index-buttons></index-buttons>
+          <div id="index_buttons">
+            <button @click="changeFilter('AltDex', 0)">ALT100</button>
+            <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
+            <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
+            <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
+          </div>
           <div id="coin_headers">
             <div id="header_name" @click="sort('name')">Name</div>
             <div id="header_price" @click="sort('price')">Price</div>
@@ -899,16 +904,6 @@
 
 <!--Javascript-->
 <script>
-
-Vue.component('index-buttons', {
-  template:`<div id="index_buttons">
-    <button @click="changeFilter('AltDex', 0)">ALT100</button>
-    <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
-    <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
-    <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
-  </div>
-  `
-})
 
 Vue.component('coin-list', {
   props: ['coin'],
