@@ -125,7 +125,7 @@
           display: flex
         }
 
-        #index_buttons {
+        .index_buttons {
           display: flex;
           justify-content: space-evenly;
         }
@@ -795,29 +795,53 @@
 
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
-          <h1>TEST</h1>
-          <div id="index_buttons">
-            <button @click="changeFilter('AltDex', 0)">ALT100</button>
-            <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
-            <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
-            <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
-          </div>
-          <div id="coin_headers">
-            <div id="header_name" @click="sort('name')">Name</div>
-            <div id="header_price" @click="sort('price')">Price</div>
-            <div id="header_percent" @click="sort('price_percent')">%Change</div>
-            <div id="header_cap" @click="sort('market_cap')">Mkt Cap</div>
-          </div>
-          <div v-for="coin in filter(sortedCoins)">
-            <main-coin-chart
-            v-bind:coin="coin"></main-coin-chart>
+        <ul id="info_bts" class="nav nav-pills">
+            <li class="active"><a data-toggle="pill" href="#coin_info">Coins</a></li>
+            <li id="performance_btn"><a data-toggle="pill" href="#performance_tab">Performance</a></li>
+            <!-- <li><a data-toggle="pill" href="#info">Info</a></li> -->
+        </ul>
+
+        <div class="tab-content">
+
+          <div class="tab-pane fade in active well" id="coin_info">
+
+            <div class="index_buttons">
+              <button @click="changeFilter('AltDex', 0)">ALT100</button>
+              <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
+              <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
+              <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
+            </div>
+            <div id="coin_headers">
+              <div id="header_name" @click="sort('name')">Name</div>
+              <div id="header_price" @click="sort('price')">Price</div>
+              <div id="header_percent" @click="sort('price_percent')">%Change</div>
+              <div id="header_cap" @click="sort('market_cap')">Mkt Cap</div>
+            </div>
+            <div v-for="coin in filter(sortedCoins)">
+              <main-coin-chart
+              v-bind:coin="coin"></main-coin-chart>
+            </div>
+
           </div>
 
-          <div>
-            <index-performance
-            v-bind:dex="indices[current_number]"
-            v-bind:info="info[current_number]"></index-performance>
+          <div class="tab-pane fade in active well" id="perfomance_info">
+
+            <div class="index_buttons">
+              <button @click="changeFilter('AltDex', 0)">ALT100</button>
+              <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
+              <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
+              <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
+            </div>
+
+            <div>
+              <index-performance
+              v-bind:dex="indices[current_number]"
+              v-bind:info="info[current_number]"></index-performance>
+            </div>
+
           </div>
+
+        </div>
       </div>
 
       <!--Center Div-->
