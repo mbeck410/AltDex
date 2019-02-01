@@ -60,8 +60,8 @@ def collect():
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
-        elif coin.symbol == 'DEX':
-            url2 = 'https://api.coinmarketcap.com/v2/ticker/3515/'
+        elif coin.symbol == 'MONA':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/213/'
             r2 = requests.get(url2)
 
             while r2.status_code != 200:
