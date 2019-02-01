@@ -202,6 +202,15 @@ def getcoinscurrent(request):
         elif name_lower == 'stakenet':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2633.png'
 
+        elif name_lower == 'project pai':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2900.png'
+
+        elif name_lower == 'project pai':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3635.png'
+
+        elif name_lower == 'trade token x':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3642.png'
+
         elif name_lower == 'airswap':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2058.png'
 
