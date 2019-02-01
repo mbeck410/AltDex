@@ -190,6 +190,16 @@
         }
 
 
+        /* Slider Div */
+        .bar {
+          height: 3.0vw;
+          width: 0.3vw;
+          background-color: #6dc0eb;
+          text-align: center;
+          margin: auto;
+        }
+
+
         /* Gainer/Loser styling */
         .gl_name {
             font-weight: bold;
@@ -398,15 +408,6 @@
             padding-top: 6px;
             padding-right: 12px;
             padding-left: 12px;
-        }
-
-        .bar {
-          width: 85%;
-          height: 0.4vw;
-          background-color: #6dc0eb;
-          text-align: center;
-          margin: auto;
-          /* margin-bottom: 1.0vw; */
         }
 
         /*Dark Theme*/
@@ -1016,6 +1017,13 @@ Vue.component('index-performance', {
           <div class="perf_percent" id="perf_month_percent">{{ dex.month_percent }}%</div>
         </div>
       </div>
+        <div id="range_div">
+          <div>
+            <div>{{ dex.day_high }}</div>
+            <div class="bar"><div>
+            <div>{{ dex.day_low }}</div>
+          </div>
+        </div>
     </div>
   `
 })
