@@ -192,11 +192,19 @@
 
         /* Slider Div */
         .bar {
-          height: 3.0vw;
-          width: 0.3vw;
+          height: 15.0vw;
+          width: 0.5vw;
           background-color: #6dc0eb;
           text-align: center;
           margin: auto;
+        }
+
+        .range{
+          display: flex;
+        }
+
+        .slider{
+          diplay: flex;
         }
 
 
@@ -1020,7 +1028,13 @@ Vue.component('index-performance', {
         <div id="range_div">
           <div>
             <div>{{ dex.day_high }}</div>
-            <div class="bar"></div>
+            <div class="range">
+              <div class="slider">
+                <div>{{ info.price }}</div>
+                <i class="fa fa-caret-right"></i>
+              </div>
+              <div class="bar"></div>
+            </div>
             <div>{{ dex.day_low }}</div>
           </div>
         </div>
