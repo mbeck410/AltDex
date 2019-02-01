@@ -206,7 +206,6 @@
         .slider{
           display: flex;
           height: 1.0vw;
-          vertical-align: middle;
         }
 
 
@@ -1032,8 +1031,8 @@ Vue.component('index-performance', {
             <div>{{ dex.day_high }}</div>
             <div class="range">
               <div class="slider">
-                <span style=" vertical-align: middle;">{{ info.price }}&nbsp;</span>
-                <span class="fa fa-caret-right" style=" vertical-align: middle;"></span>
+                <div>{{ info.price }}&nbsp;</span>
+                <span class="fa fa-caret-right" style=" vertical-align: middle;"></div>
               </div>
               <div class="bar"></div>
             </div>
