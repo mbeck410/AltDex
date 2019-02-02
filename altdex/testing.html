@@ -885,7 +885,7 @@
               </gainer-info>
             </div>
             <div class="gain_lose">
-              <div class="gl_title">Biggest Losers</div>
+              <div class="gl_title" :style="{color: testColor}">Biggest Losers</div>
                 <gainer-info
                   v-bind:gainer="losers[index]">
               </gainer-info>
@@ -1055,7 +1055,7 @@ Vue.component('index-performance', {
               <div class="range">
                 <div class="slider">
                   <div>{{ info.price }}&nbsp;</div>
-                  <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
+                  <span class="fa fa-caret-right"></span>
                 </div>
                 <div class="bar"></div>
               </div>
@@ -1068,7 +1068,7 @@ Vue.component('index-performance', {
               <div class="range">
                 <div class="slider">
                   <div>{{ info.price }}&nbsp;</div>
-                  <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
+                  <span class="fa fa-caret-right"></span>
                 </div>
                 <div class="bar"></div>
               </div>
@@ -1100,7 +1100,8 @@ let side_app = new Vue({
     current_index: 'AltDex',
     current_number: 0,
     current_sort: 'market_cap',
-    current_dir: 'desc'
+    current_dir: 'desc',
+    testColor: 'red'
   },
     methods: {
       changeFilter: function(index, num) {
