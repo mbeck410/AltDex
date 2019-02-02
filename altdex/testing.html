@@ -191,6 +191,10 @@
 
 
         /* Slider Div */
+        #all_ranges{
+          display: flex;
+        }
+
         .bar {
           height: 15.0vw;
           width: 0.5vw;
@@ -1030,44 +1034,46 @@ Vue.component('index-performance', {
           <div class="perf_percent" id="perf_month_percent">{{ dex.month_percent }}%</div>
         </div>
       </div>
-        <div class="range_div">
+        <div id="all_ranges">
+          <div class="range_div">
 
-            <div>{{ dex.day_high }}</div>
-            <div class="range">
-              <div class="slider">
-                <div>{{ info.price }}&nbsp;</div>
-                <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
+              <div>{{ dex.day_high }}</div>
+              <div class="range">
+                <div class="slider">
+                  <div>{{ info.price }}&nbsp;</div>
+                  <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
+                </div>
+                <div class="bar"></div>
               </div>
-              <div class="bar"></div>
-            </div>
-            <div>{{ dex.day_low }}</div>
+              <div>{{ dex.day_low }}</div>
 
-        </div>
-        <div class="range_div">
+          </div>
+          <div class="range_div">
 
-            <div>{{ dex.week_high }}</div>
-            <div class="range">
-              <div class="slider">
-                <div>{{ info.price }}&nbsp;</div>
-                <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
+              <div>{{ dex.week_high }}</div>
+              <div class="range">
+                <div class="slider">
+                  <div>{{ info.price }}&nbsp;</div>
+                  <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
+                </div>
+                <div class="bar"></div>
               </div>
-              <div class="bar"></div>
-            </div>
-            <div>{{ dex.week_low }}</div>
+              <div>{{ dex.week_low }}</div>
 
-        </div>
-        <div class="range_div">
+          </div>
+          <div class="range_div">
 
-            <div>{{ dex.month_high }}</div>
-            <div class="range">
-              <div class="slider">
-                <div>{{ info.price }}&nbsp;</div>
-                <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
+              <div>{{ dex.month_high }}</div>
+              <div class="range">
+                <div class="slider">
+                  <div>{{ info.price }}&nbsp;</div>
+                  <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
+                </div>
+                <div class="bar"></div>
               </div>
-              <div class="bar"></div>
-            </div>
-            <div>{{ dex.month_low }}</div>
+              <div>{{ dex.month_low }}</div>
 
+          </div>
         </div>
     </div>
   `
