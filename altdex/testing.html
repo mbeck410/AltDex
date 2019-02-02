@@ -902,7 +902,7 @@
 
         <!--Disclaimer-->
         <div id="disclaimer">
-            <p :style="{color: red}">The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
+            <p>The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
                 is
                 provided solely for informational and educational purposes and does not constitute investment
                 advice. It
@@ -1041,7 +1041,7 @@ Vue.component('index-performance', {
               <div>{{ dex.day_high }}</div>
               <div class="range">
                 <div class="slider">
-                  <div>{{ info.price }}&nbsp;</div>
+                  <div :style="{ color: red }">{{ info.price }}&nbsp;</div>
                   <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
                 </div>
                 <div class="bar"></div>
