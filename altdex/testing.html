@@ -1047,6 +1047,7 @@ Vue.component('index-performance', {
                 <div class="bar"></div>
               </div>
               <div>{{ dex.day_low }}</div>
+              <div>{{ dayHeight }}</div>
 
           </div>
           <div class="range_div">
@@ -1101,7 +1102,6 @@ let side_app = new Vue({
     current_number: 0,
     current_sort: 'market_cap',
     current_dir: 'desc',
-    testColor: 'red'
   },
     methods: {
       changeFilter: function(index, num) {
@@ -1122,12 +1122,11 @@ let side_app = new Vue({
       }
     },
     computed: {
-      // filterCoins: function () {
-      //   let index = this.current_index
-      //   return this.coins.filter(function (coin) {
-      //     return coin.indices.includes(index) === true
-      //   })
-      // },
+      dayHeight: function() {
+        let day_range_diff = this.indices[current_number].day_high - this.indices[current_number].day_low;
+        let current_day_diff = this.indices[current_number].price - this.indices[current_number].day_low;
+        return current_day_diff / day_range_diff;
+      },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
               let modifier = 1;
