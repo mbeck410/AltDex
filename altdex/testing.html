@@ -879,7 +879,7 @@
             v-bind:row="row"
             ></index-info>
             <div class="gain_lose">
-              <div v-bind:style='{color: blue}' class="gl_title">Biggest Gainers</div>
+              <div v-bind:style='{color: blue}'>Biggest Gainers</div>
               <gainer-info
               v-bind:gainer="gainers[index]">
               </gainer-info>
@@ -1080,8 +1080,6 @@ Vue.component('index-performance', {
   `
 })
 
-// <div id="perf_price">{{ dex.price }}</div>
-// <div id="perf_time">Last Update: {{dex.time.slice(0,19)}} UTC</div>
 
 let index_app = new Vue({
   el: '#main_bar',
