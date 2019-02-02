@@ -879,7 +879,7 @@
             v-bind:row="row"
             ></index-info>
             <div class="gain_lose">
-              <div v-bind:style="{color: blue}">Biggest Gainers</div>
+              <div class="gl_title">Biggest Gainers</div>
               <gainer-info
               v-bind:gainer="gainers[index]">
               </gainer-info>
@@ -1066,7 +1066,7 @@ Vue.component('index-performance', {
 
               <div>{{ dex.month_high }}</div>
               <div class="range">
-                <div v-bind:style='{color: blue}' class="slider">
+                <div class="slider">
                   <div>{{ info.price }}&nbsp;</div>
                   <span class="fa fa-caret-right" style="vertical-align:bottom;"></span>
                 </div>
