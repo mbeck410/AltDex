@@ -199,7 +199,7 @@
           margin: auto;
         }
 
-        .range{
+        .range_div{
           display: flex;
         }
 
@@ -1026,18 +1026,18 @@ Vue.component('index-performance', {
           <div class="perf_percent" id="perf_month_percent">{{ dex.month_percent }}%</div>
         </div>
       </div>
-        <div id="range_div">
-
+        <div class="range_div">
+          <div class="slider">
+            <div>{{ info.price }}&nbsp;</div>
+            <span class="fa fa-caret-right"></span>
+          </div>
+          <div>
             <div>{{ dex.day_high }}</div>
             <div class="range">
-              <div class="slider">
-                <div>{{ info.price }}&nbsp;</div>
-                <span class="fa fa-caret-right"></span>
-              </div>
               <div class="bar"></div>
             </div>
             <div>{{ dex.day_low }}</div>
-          
+          </div>
         </div>
     </div>
   `
