@@ -1073,7 +1073,7 @@ Vue.component('index-performance', {
           </div>
           <div class="range_div">
               <div>Weekly Range</div>
-              <div>Week High: {{ dex.week_high }}</div>
+              <div>High: {{ dex.week_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': weekHeight + 'vw'}">
                   <div>{{ info.price }}&nbsp;</div>
@@ -1081,12 +1081,12 @@ Vue.component('index-performance', {
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Week Low: {{ dex.week_low }}</div>
+              <div>Low: {{ dex.week_low }}</div>
 
           </div>
           <div class="range_div">
               <div>Monthly Range</div>
-              <div>Month High: {{ dex.month_high }}</div>
+              <div>High: {{ dex.month_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': monthHeight + 'vw'}">
                   <div>{{ info.price }}&nbsp;</div>
@@ -1094,7 +1094,7 @@ Vue.component('index-performance', {
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Month Low: {{ dex.month_low }}</div>
+              <div>Low: {{ dex.month_low }}</div>
 
           </div>
         </div>
