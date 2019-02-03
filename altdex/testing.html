@@ -1020,7 +1020,19 @@ Vue.component('index-performance', {
       let day_range_diff = this.dex.day_high - this.dex.day_low;
       let current_day_diff = this.info.price - this.dex.day_low;
       let day_height = (current_day_diff / day_range_diff) * 14;
-      return 14 - day_height.toFixed(3)
+      return (14 - day_height).toFixed(1)
+    },
+    weekHeight: function() {
+      let week_range_diff = this.dex.week_high - this.dex.week_low;
+      let current_week_diff = this.info.price - this.dex.week_low;
+      let week_height = (current_week_diff / week_range_diff) * 14;
+      return (14 - week_height).toFixed(1)
+    },
+    monthHeight: function() {
+      let month_range_diff = this.dex.month_high - this.dex.month_low;
+      let current_week_diff = this.info.price - this.dex.month_low;
+      let month_height = (current_month_diff / month_range_diff) * 14;
+      return (14 - week_height).toFixed(1)
     }
   },
   template: `
@@ -1063,7 +1075,7 @@ Vue.component('index-performance', {
 
               <div>{{ dex.week_high }}</div>
               <div class="range">
-                <div class="slider">
+                <div class="slider" :style="{'margin-top': weekHeight + 'vw'}">
                   <div>{{ info.price }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
@@ -1076,7 +1088,7 @@ Vue.component('index-performance', {
 
               <div>{{ dex.month_high }}</div>
               <div class="range">
-                <div class="slider" :style="{'margin-top': '14vw'}">
+                <div class="slider" :style="{'margin-top': monthHeight + 'vw'}">
                   <div>{{ info.price }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
