@@ -855,8 +855,7 @@
               <div>
                 <index-performance
                 v-bind:dex="indices[current_number]"
-                v-bind:info="info[current_number]"
-                :dayHeight="dayHeight"></index-performance>
+                v-bind:info="info[current_number]"></index-performance>
               </div>
 
             </div>
@@ -1015,7 +1014,14 @@ template: `
 })
 
 Vue.component('index-performance', {
-  props: ['dex', 'info', 'dayHeight'],
+  props: ['dex', 'info'],
+  computed: {
+    dayHeight: function() {
+      let day_range_diff = this.dex.day_high - this.dex.day_low;
+      let current_day_diff = this.info.price - this.dex.day_low;
+      return current_day_diff / day_range_diff;
+    }
+  },
   template: `
     <div>
       <div id="index_price">{{ info.price }}</div>
@@ -1124,11 +1130,6 @@ let side_app = new Vue({
       }
     },
     computed: {
-      dayHeight: function() {
-        let day_range_diff = this.indices[current_number].day_high - this.indices[current_number].day_low;
-        let current_day_diff = this.indices[current_number].price - this.indices[current_number].day_low;
-        return current_day_diff / day_range_diff;
-      },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
               let modifier = 1;
