@@ -1032,7 +1032,7 @@ Vue.component('index-performance', {
       let month_range_diff = this.dex.month_high - this.dex.month_low;
       let current_month_diff = this.info.price - this.dex.month_low;
       let month_height = (current_month_diff / month_range_diff) * 14;
-      return (14 - week_height).toFixed(1)
+      return (14 - month_height).toFixed(1)
     }
   },
   template: `
