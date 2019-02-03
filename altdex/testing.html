@@ -1019,7 +1019,8 @@ Vue.component('index-performance', {
     dayHeight: function() {
       let day_range_diff = this.dex.day_high - this.dex.day_low;
       let current_day_diff = this.info.price - this.dex.day_low;
-      return current_day_diff / day_range_diff;
+      let day_height = (current_day_diff / day_range_diff).toFixed(4) * 14;
+      return 14 - day_height
     }
   },
   template: `
