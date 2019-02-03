@@ -855,7 +855,8 @@
               <div>
                 <index-performance
                 v-bind:dex="indices[current_number]"
-                v-bind:info="info[current_number]"></index-performance>
+                v-bind:info="info[current_number]"
+                :dayHeight="dayHeight"></index-performance>
               </div>
 
             </div>
@@ -1014,7 +1015,7 @@ template: `
 })
 
 Vue.component('index-performance', {
-  props: ['dex', 'info'],
+  props: ['dex', 'info', 'dayHeight'],
   template: `
     <div>
       <div id="index_price">{{ info.price }}</div>
@@ -1048,6 +1049,7 @@ Vue.component('index-performance', {
                 <div class="bar"></div>
               </div>
               <div>{{ dex.day_low }}</div>
+              <div>{{ dayHeight }}</div>
 
           </div>
           <div class="range_div">
