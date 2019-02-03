@@ -193,7 +193,7 @@
         /* Slider Div */
         #all_ranges{
           display: flex;
-          margin-top: 3vw;
+          margin-top: 2vw;
         }
 
         .bar {
@@ -1059,8 +1059,8 @@ Vue.component('index-performance', {
       </div>
         <div id="all_ranges">
           <div class="range_div">
-
-              <div>Day High: {{ dex.day_high }}</div>
+              <div>Daily Range</div>
+              <div>High: {{ dex.day_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': dayHeight + 'vw'}">
                   <div>{{ info.price }}&nbsp;</div>
@@ -1068,11 +1068,11 @@ Vue.component('index-performance', {
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Day Low: {{ dex.day_low }}</div>
+              <div>Low: {{ dex.day_low }}</div>
 
           </div>
           <div class="range_div">
-
+              <div>Weekly Range</div>
               <div>Week High: {{ dex.week_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': weekHeight + 'vw'}">
@@ -1085,7 +1085,7 @@ Vue.component('index-performance', {
 
           </div>
           <div class="range_div">
-
+              <div>Monthly Range</div>
               <div>Month High: {{ dex.month_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': monthHeight + 'vw'}">
