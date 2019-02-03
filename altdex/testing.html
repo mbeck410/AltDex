@@ -1019,8 +1019,8 @@ Vue.component('index-performance', {
     dayHeight: function() {
       let day_range_diff = this.dex.day_high - this.dex.day_low;
       let current_day_diff = this.info.price - this.dex.day_low;
-      let day_height = (current_day_diff / day_range_diff).toFixed(4) * 14;
-      return 14 - day_height
+      let day_height = (current_day_diff / day_range_diff) * 14;
+      return 14 - day_height.toFixed(3)
     }
   },
   template: `
@@ -1049,7 +1049,7 @@ Vue.component('index-performance', {
 
               <div>{{ dex.day_high }}</div>
               <div class="range">
-                <div class="slider">
+                <div class="slider" :style="{'margin-top': dayHeight + 'vw'}">
                   <div>{{ info.price }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
