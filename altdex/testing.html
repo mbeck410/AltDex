@@ -47,6 +47,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/vue-chartkick@0.5.0"></script>
     <!-- <script src="https://unpkg.com/vuetrend"></script> -->
 
     <!--News Widget-->
@@ -868,6 +870,7 @@
       <div id="main_bar" class="col-sm-9">
         <div class="well blade" v-for="(row, index) in rows">
           <div class="trend">
+            <line-chart :data="trend[index]"></line-chart>
             <!-- <trend
               :data="trend[index]"
               :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
@@ -876,7 +879,7 @@
               width="300"
               smooth>
             </trend> -->
-            {{ trend[index] }}
+            <!-- {{ trend[index] }} -->
           </div>
           <index-info class="indices"
             v-bind:row="row"
