@@ -459,15 +459,19 @@ def index_trend(request):
     indices = Index.objects.order_by('id')
     price_array = []
     for index in indices:
-        prices = []
         if index.name != 'Null':
             index_prices = index.indexprice_set.order_by('-timestamp')
-            count = 0
-
+            prices = []
+            times = []
             for i in range(0, 1049, 50):
+                times.append(index_prices[i].timestamp)
                 prices.append(float(index_prices[i].price))
 
-            price_array.append(prices[::-1])
+            keys = times[::-1]
+            values = prices[::-1]
+            values_dict = dict(zip(keys, values))
+            price_array.append(values_dict)
+            # price_array.append(prices[::-1])
 
         else: continue
 
