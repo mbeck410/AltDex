@@ -870,7 +870,7 @@
       <div id="main_bar" class="col-sm-9">
         <div class="well blade" v-for="(row, index) in rows">
           <div class="trend">
-            <line-chart :data="trend[index]" height="150px" :min="null" :max="null"></line-chart>
+            <line-chart :data="trend[index]" height="150px" :min="null" :max="null" :pointRadius="0"></line-chart>
             <!-- <trend
               :data="trend[index]"
               :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
