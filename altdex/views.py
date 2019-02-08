@@ -469,8 +469,7 @@ def index_trend(request):
 
             keys = times[::-1]
             values = prices[::-1]
-            values_dict = dict(zip(keys, values))
-            price_array.append(values_dict)
+            price_array.append(dict(zip(keys, values)))
             # price_array.append(prices[::-1])
 
         else: continue
