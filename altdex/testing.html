@@ -844,7 +844,7 @@
                 <main-coin-chart
                 v-bind:coin="coin"></main-coin-chart>
               </div>
-              <div>{{ pieCoins }}</div>
+              <div>{{pieCoins}}</div>
             </div>
 
             <div id="performance_tab" class="tab-pane fade">
@@ -1153,7 +1153,7 @@ let side_app = new Vue({
           pie_data.push(pie_piece);
         }
         return pie_data;
-      }
+      },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
               let modifier = 1;
