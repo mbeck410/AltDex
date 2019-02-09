@@ -844,6 +844,7 @@
                 <main-coin-chart
                 v-bind:coin="coin"></main-coin-chart>
               </div>
+              <div>{{ pieCoins }}</div>
             </div>
 
             <div id="performance_tab" class="tab-pane fade">
@@ -1142,6 +1143,17 @@ let side_app = new Vue({
       }
     },
     computed: {
+      pieCoins: function () {
+        let pie_data = [];
+        let sum = 0;
+        let index = this.current_number + 1;
+        let weight_string = 'weight_' + index;
+        for(let i=0; i<=10, ++i) {
+          let pie_piece = [this.coins[i].name, this.coins[i].weight_string];
+          pie_data.push(pie_piece);
+        }
+        return pie_data;
+      }
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
               let modifier = 1;
