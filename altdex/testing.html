@@ -870,16 +870,10 @@
       <div id="main_bar" class="col-sm-9">
         <div class="well blade" v-for="(row, index) in rows">
           <div class="trend">
-            <line-chart :data="trend[index]" height="150px" :min="null" :max="null" :pointRadius="0"></line-chart>
-            <!-- <trend
-              :data="trend[index]"
-              :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
-              auto-draw
-              height="100"
-              width="300"
-              smooth>
-            </trend> -->
-            <!-- {{ trend[index] }} -->
+            <area-chart :data="trend[index]" height="180px" 
+            :min="null"
+            :max="null"
+            :color="#6dc0eb"></area-chart>
           </div>
           <index-info class="indices"
             v-bind:row="row"
