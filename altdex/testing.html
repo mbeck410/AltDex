@@ -870,11 +870,11 @@
       <div id="main_bar" class="col-sm-9">
         <div class="well blade" v-for="(row, index) in rows">
           <div class="trend">
-            <line-chart :data="trend[index]"
-            height="180px"
+            <area-chart :data="trend[index]"
+            height="160px"
             :min="null"
             :max="null"
-            :colors="['#6dc0eb']"></line-chart>
+            :colors="['#6dc0eb']"></area-chart>
           </div>
           <index-info class="indices"
             v-bind:row="row"
