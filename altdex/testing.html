@@ -1146,19 +1146,16 @@ let side_app = new Vue({
       pieCoins: function () {
         let sum = 0;
         let pie_data = [];
-        if (this.current_sort === 'market_cap') {
-          if (this.current_sort === 'desc') {
-            if (this.current_number === 0) {
+        if (this.current_number === 0) {
 
-              for(let i=0; i<=10; ++i) {
-                let pie_piece = [this.coins[i].name, this.coins[i].weight_1.toFixed(2)];
-                pie_data.push(pie_piece);
-                sum += this.coins[i].weight_1;
-              }
-              let last_piece = ['Others', (100 - sum).toFixed(2)];
-              pie_data.push(last_piece);
-              return pie_data
-            }}}
+          for(let i=0; i<=10; ++i) {
+            let pie_piece = [this.coins[i].name, this.coins[i].weight_1.toFixed(2)];
+            pie_data.push(pie_piece);
+            sum += this.coins[i].weight_1;
+          }
+          let last_piece = ['Others', (100 - sum).toFixed(2)];
+          pie_data.push(last_piece);
+          return pie_data
       },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
