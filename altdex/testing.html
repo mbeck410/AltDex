@@ -1125,19 +1125,21 @@ let side_app = new Vue({
     current_sort: 'market_cap',
     current_dir: 'desc',
   },
-    methods: {
-      pieCoins: function () {
-        let sum = 0;
-        if (this.current_number === 0) {
-          for(let i=0; i<=10; ++i) {
-            let pie_piece = [this.coins[i].name, this.coins[i].weight_1.toFixed(2)];
-            this.pie_data.push(pie_piece);
-            sum += this.coins[i].weight_1;
-          }
-          let last_piece = ['Others', (100 - sum).toFixed(2)];
-          this.pie_data.push(last_piece);
+  created: {
+    pieCoins: function () {
+      let sum = 0;
+      if (this.current_number === 0) {
+        for(let i=0; i<=10; ++i) {
+          let pie_piece = [this.coins[i].name, this.coins[i].weight_1.toFixed(2)];
+          this.pie_data.push(pie_piece);
+          sum += this.coins[i].weight_1;
         }
-      },
+        let last_piece = ['Others', (100 - sum).toFixed(2)];
+        this.pie_data.push(last_piece);
+      }
+    }
+  },
+    methods: {
       changeFilter: function(index, num) {
         this.current_index = index;
         this.current_number = num;
