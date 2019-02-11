@@ -1117,6 +1117,7 @@ let side_app = new Vue({
   el: '#left_bar',
   data: {
     coins: [],
+    pie_coins: [],
     indices: [],
     info: [],
     current_index: 'AltDex',
@@ -1145,14 +1146,12 @@ let side_app = new Vue({
     computed: {
       pieCoins: function () {
         let pie_data = [];
-        this.current_sort === 'market_cap'
-        this.current_dir === 'desc'
         let sum = 0;
         if (this.current_number === 0) {
           for(let i=0; i<=10; ++i) {
-            let pie_piece = [this.coins[i].name, this.coins[i].weight_1.toFixed(2)];
+            let pie_piece = [this.pie_coins[i].name, this.pie_coins[i].weight_1.toFixed(2)];
             pie_data.push(pie_piece);
-            sum += this.coins[i].weight_1;
+            sum += this.pie_coins[i].weight_1;
           }
           let last_piece = ['Others', (100 - sum).toFixed(2)];
           pie_data.push(last_piece);
@@ -1160,8 +1159,7 @@ let side_app = new Vue({
         }
       },
       sortedCoins: function () {
-        let sorted = this.coins
-          return sorted.sort((a, b) => {
+          return this.coins.sort((a, b) => {
               let modifier = 1;
               if (this.current_dir === 'desc') modifier = -1;
               if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
@@ -1234,6 +1232,7 @@ function pull_side() {
         coin_data.push(data.dict_key[i])
       }
     vm.coins = coin_data;
+    vm.pie_coins = coin_data;
     })
   fetch('/getindexperformance/')
     .then(function (response) {
