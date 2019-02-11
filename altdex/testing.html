@@ -1146,13 +1146,16 @@ let side_app = new Vue({
       pieCoins: function () {
         let pie_data = [];
         let sum = 0;
-        let index = this.current_number + 1;
-        let weight_string = 'weight_' + index;
-        for(let i=0; i<=10, ++i) {
-          let pie_piece = [this.coins[i].name, this.coins[i].weight_string];
-          pie_data.push(pie_piece);
+        if (this.current_number === 0) {
+          for(let i=0; i<=10, ++i) {
+            let pie_piece = [this.coins[i].name, this.coins[i].weight_1];
+            pie_data.push(pie_piece);
+            sum += this.coins[i].weight_1;
+          }
+          let last_piece = ['Others', (100 - sum)];
+          pie_data.push last piece;
+          return pie_data;
         }
-        return pie_data;
       },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
