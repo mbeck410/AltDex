@@ -1146,11 +1146,12 @@ let side_app = new Vue({
       pieCoins: function () {
         let pie_data = [];
         let sum = 0;
+        const market_coins = this.coins;
         if (this.current_number === 0) {
           for(let i=0; i<=10; ++i) {
-            let pie_piece = [this.coins[i].name, this.coins[i].weight_1];
+            let pie_piece = [market_coins[i].name, market_coins[i].weight_1.toFixed(2)];
             pie_data.push(pie_piece);
-            sum += this.coins[i].weight_1;
+            sum += market_coins[i].weight_1.toFixed(2);
           }
           let last_piece = ['Others', (100 - sum)];
           pie_data.push(last_piece);
