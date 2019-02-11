@@ -1147,7 +1147,7 @@ let side_app = new Vue({
         let pie_data = [];
         let sum = 0;
         if (this.current_number === 0) {
-          for(let i=0; i<=10, ++i) {
+          for(let i=0; i<=10; ++i) {
             let pie_piece = [this.coins[i].name, this.coins[i].weight_1];
             pie_data.push(pie_piece);
             sum += this.coins[i].weight_1;
