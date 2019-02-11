@@ -1160,7 +1160,8 @@ let side_app = new Vue({
         }
       },
       sortedCoins: function () {
-          return this.coins.sort((a, b) => {
+        let sorted = this.coins
+          return sorted.sort((a, b) => {
               let modifier = 1;
               if (this.current_dir === 'desc') modifier = -1;
               if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
