@@ -1148,8 +1148,8 @@ let side_app = new Vue({
         let pie_data = [];
         if (this.current_number === 0) {
 
-          for(let i=0; i<=(coins.length - 1); ++i) {
-            if (this.coins[i].weight_1 >= 1){
+          for(let i=0; i<coins.length; ++i) {
+            if (this.coins[i].weight_1 >= 1) {
               let pie_piece = [this.coins[i].name, this.coins[i].weight_1.toFixed(2)];
               pie_data.push(pie_piece);
             }
