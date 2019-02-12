@@ -1227,6 +1227,14 @@ function pull_side() {
   let vm = side_app;
   let coin_data = [];
   let index_data = [];
+  let wdata_1 = [];
+  let wdata_2 = [];
+  let wdata_3 = [];
+  let wdata_4 = [];
+  let sum_1 = 0;
+  let sum_2 = 0;
+  let sum_3 = 0;
+  let sum_4 = 0;
   let pie_chart = [];
   // Fetch our array of row from an API
   fetch('/getcoinscurrent/')
@@ -1237,11 +1245,23 @@ function pull_side() {
       for (let i = 0; i < data.dict_key.length; ++i) {
         coin_data.push(data.dict_key[i]);
         if (data.dict_key[i].weight_1 >= 1) {
-          let piece = [data.dict_key[i].name, data.dict_key[i].weight_1];
-          pie_chart.push(piece)
+          let piece_1 = [data.dict_key[i].name, data.dict_key[i].weight_1];
+          wdata_1.push(piece_1)
+          sum_1 += data.dict_key[i].weight_1
+        }
+        if (data.dict_key[i].weight_2 >= 1) {
+          let piece_2 = [data.dict_key[i].name, data.dict_key[i].weight_2];
+          wdata_2.push(piece_2)
+          sum_2 += data.dict_key[i].weight_2
         }
       }
+    let last_piece_1 = ['Others', (100-sum_1)];
+    let last_piece_2 = ['Others', (100-sum_2)];
+    wdata_1.push(last_piece_1);
+    wdata_2.push(last_piece_2);
     vm.coins = coin_data;
+    pie_chart.push(w_data_1);
+    pie_chart.push(w_data_2);
     vm.pie_data = pie_chart;
     })
   fetch('/getindexperformance/')
