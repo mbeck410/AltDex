@@ -1229,12 +1229,12 @@ function pull_side() {
   let index_data = [];
   let wdata_1 = [];
   let wdata_2 = [];
-  // let wdata_3 = [];
-  // let wdata_4 = [];
+  let wdata_3 = [];
+  let wdata_4 = [];
   let sum_1 = 0;
   let sum_2 = 0;
-  // let sum_3 = 0;
-  // let sum_4 = 0;
+  let sum_3 = 0;
+  let sum_4 = 0;
   let pie_chart = [];
   // Fetch our array of row from an API
   fetch('/getcoinscurrent/')
@@ -1254,13 +1254,29 @@ function pull_side() {
           wdata_2.push(piece_2);
           sum_2 += data.dict_key[i].weight_2;
         }
+        if (data.dict_key[i].indices.includes('Privacy') === true && data.dict_key[i].weight_3 >= 1) {
+          let piece_3 = [data.dict_key[i].name, data.dict_key[i].weight_3];
+          wdata_3.push(piece_3);
+          sum_3 += data.dict_key[i].weight_3;
+        }
+        if (data.dict_key[i].indices.includes('Masternode') === true && data.dict_key[i].weight_4 >= 1) {
+          let piece_4 = [data.dict_key[i].name, data.dict_key[i].weight_4];
+          wdata_4.push(piece_4);
+          sum_4 += data.dict_key[i].weight_4;
+        }
       }
     let last_piece_1 = ['Others', (100-sum_1).toFixed(2)];
     let last_piece_2 = ['Others', (100-sum_2).toFixed(2)];
+    let last_piece_3 = ['Others', (100-sum_3).toFixed(2)];
+    let last_piece_4 = ['Others', (100-sum_4).toFixed(2)];
     wdata_1.push(last_piece_1);
     wdata_2.push(last_piece_2);
+    wdata_3.push(last_piece_3);
+    wdata_4.push(last_piece_4);
     pie_chart.push(wdata_1);
     pie_chart.push(wdata_2);
+    pie_chart.push(wdata_3);
+    pie_chart.push(wdata_4);
     vm.pie_data = pie_chart;
     vm.coins = coin_data;
     })
