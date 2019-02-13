@@ -866,6 +866,7 @@
             :max="null"
             :colors="['#6dc0eb']"></area-chart>
           </div>
+          <h2 id="index_symbol">{{ row.symbol }}</h3>
           <index-info class="indices"
             v-bind:row="row"
             ></index-info>
@@ -989,7 +990,6 @@ Vue.component('index-info', {
 props: ['row'],
 template: `
   <div>
-    <h3 id="index_symbol">{{ row.symbol }}</h3>
     <div>
       <div id="index_price">{{ row.price }}</div>
       <div id="index_time">
