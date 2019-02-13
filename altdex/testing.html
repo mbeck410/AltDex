@@ -869,6 +869,7 @@
         <div class="well blade" v-for="(row, index) in rows">
           <div class="trend">
             <area-chart :data="trend[index]"
+            :dataset="{pointRadius: 0}"
             height="160px"
             :min="null"
             :max="null"
