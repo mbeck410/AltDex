@@ -123,6 +123,7 @@
 
         .blade > .indices {
           width: 30%
+          justify-content: space-evenly;
         }
 
         .blade > .gain_lose {
@@ -261,9 +262,12 @@
           border-radius: none;
         }
 
-        .indices {
-          display: flex;
+        /* .indices {
           justify-content: space-evenly;
+        } */
+
+        .indices_data {
+          display: flex;
         }
 
         #index_time {
@@ -866,7 +870,7 @@
             :max="null"
             :colors="['#6dc0eb']"></area-chart>
           </div>
-          <h2 id="index_symbol">{{ row.symbol }}</h3>
+
           <index-info class="indices"
             v-bind:row="row"
             ></index-info>
@@ -990,15 +994,18 @@ Vue.component('index-info', {
 props: ['row'],
 template: `
   <div>
-    <div>
-      <div id="index_price">{{ row.price }}</div>
-      <div id="index_time">
-        Last Update: {{row.time.slice(0,19)}} UTC
+    <h2 id="index_symbol">{{ row.symbol }}</h2>
+    <div class="indices_data">
+      <div>
+        <div id="index_price">{{ row.price }}</div>
+        <div id="index_time">
+          Last Update: {{row.time.slice(0,19)}} UTC
+        </div>
       </div>
-    </div>
-    <div class="changes">
-      <div>{{ row.price_percent }}%</div>
-      <div>{{ row.change_24h }}</div>
+      <div class="changes">
+        <div>{{ row.price_percent }}%</div>
+        <div>{{ row.change_24h }}</div>
+      </div>
     </div>
   </div>
 `
