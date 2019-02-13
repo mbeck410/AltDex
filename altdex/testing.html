@@ -270,6 +270,10 @@
           display: flex;
         }
 
+        .index_symbol {
+          font-size: 3.2vw;
+        }
+
         #index_time {
             font-size: 0.7vw;
         }
@@ -994,7 +998,7 @@ Vue.component('index-info', {
 props: ['row'],
 template: `
   <div>
-    <h2 id="index_symbol">{{ row.symbol }}</h2>
+    <div id="index_symbol">{{ row.symbol }}</div>
     <div class="indices_data">
       <div>
         <div id="index_price">{{ row.price }}</div>
