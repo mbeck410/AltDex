@@ -123,7 +123,7 @@
 
         .blade > .indices {
           width: 30%
-          justify-content: space-evenly;
+          /* justify-content: space-evenly; */
         }
 
         .blade > .gain_lose {
@@ -271,7 +271,7 @@
         }
 
         #index_symbol {
-          font-size: 2.4vw;
+          font-size: 2.0vw;
         }
 
         #index_time {
@@ -1002,14 +1002,14 @@ template: `
     <div class="indices_data">
       <div>
         <div id="index_price">{{ row.price }}</div>
+        <div id="index_time">
+          Last Update: {{row.time.slice(0,19)}} UTC
+        </div>
       </div>
       <div class="changes">
         <div>{{ row.price_percent }}%</div>
         <div>{{ row.change_24h }}</div>
       </div>
-    </div>
-    <div id="index_time">
-      Last Update: {{row.time.slice(0,19)}} UTC
     </div>
   </div>
 `
