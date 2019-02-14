@@ -96,7 +96,7 @@
 
     <style>
         .row {
-          height: 97.4vh;
+          height: 117.4vh;
           overflow: hidden;
         }
 
@@ -278,7 +278,8 @@
         #index_symbol {
           font-size: 2.0vw;
           font-weight: bold;
-          text-align: left
+          text-align: left;
+          padding-left: 16.3;
         }
 
         #index_time {
@@ -872,9 +873,9 @@
       </div>
 
       <!--Center Div-->
-      <div id="main_bar" class="col-sm-9">
+      <div id="main_bar" class="col-sm-9" v-cloak>
         <div v-for="(row, index) in rows">
-          <div id="index_symbol">{{ row.name }} ({{ row.symbol }})</div>
+          <div id="index_symbol" v-cloak>{{ row.name }} ({{ row.symbol }})</div>
           <div class="well blade">
             <div class="trend">
               <area-chart :data="trend[index]"
