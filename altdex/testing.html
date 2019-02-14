@@ -872,21 +872,22 @@
       </div>
 
       <!--Center Div-->
-      <div id="main_bar" class="col-sm-9"  v-for="(row, index) in rows">
-        <div id="index_symbol">{{ row.name }} ({{ row.symbol }})</div>
-        <div class="well blade">
-          <div class="trend">
-            <area-chart :data="trend[index]"
-            :library="{scales: {xAxes: [{display: false}]}}"
-            height="160px"
-            :min="null"
-            :max="null"
-            :colors="['#6dc0eb']"></area-chart>
-          </div>
+      <div id="main_bar" class="col-sm-9">
+        <div v-for="(row, index) in rows">
+          <div id="index_symbol">{{ row.name }} ({{ row.symbol }})</div>
+          <div class="well blade">
+            <div class="trend">
+              <area-chart :data="trend[index]"
+              :library="{scales: {xAxes: [{display: false}]}}"
+              height="160px"
+              :min="null"
+              :max="null"
+              :colors="['#6dc0eb']"></area-chart>
+            </div>
 
-          <index-info class="indices"
-            v-bind:row="row"
-            ></index-info>
+            <index-info class="indices"
+              v-bind:row="row"
+              ></index-info>
             <div class="gain_lose" id="coin_gain">
               <div class="gl_title">Biggest Gainers</div>
               <gainer-info
@@ -900,6 +901,7 @@
               </gainer-info>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
