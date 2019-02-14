@@ -872,8 +872,9 @@
       </div>
 
       <!--Center Div-->
-      <div id="main_bar" class="col-sm-9">
-        <div class="well blade" v-for="(row, index) in rows">
+      <div id="main_bar" class="col-sm-9"  v-for="(row, index) in rows">
+        <div id="index_symbol">{{ row.name }} ({{ row.symbol }})</div>
+        <div class="well blade">
           <div class="trend">
             <area-chart :data="trend[index]"
             :library="{scales: {xAxes: [{display: false}]}}"
@@ -1006,7 +1007,6 @@ Vue.component('index-info', {
 props: ['row'],
 template: `
   <div>
-    <div id="index_symbol">{{ row.name }}({{ row.symbol }})</div>
     <div class="indices_data">
       <div>
         <div id="index_price">{{ row.price }}</div>
