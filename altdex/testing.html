@@ -123,11 +123,11 @@
         }
 
         .blade > .indices {
-          width: 34%
+          width: 33%
         }
 
         .blade > .gain_lose {
-          width: 18%;
+          width: 18.5%;
         }
 
         #coin_gain {
@@ -278,6 +278,7 @@
         #index_symbol {
           font-size: 2.0vw;
           font-weight: bold;
+          text-align: left
         }
 
         #index_time {
@@ -1005,7 +1006,7 @@ Vue.component('index-info', {
 props: ['row'],
 template: `
   <div>
-    <div id="index_symbol">{{ row.symbol }}</div>
+    <div id="index_symbol">{{ row.name }}({{ row.symbol }})</div>
     <div class="indices_data">
       <div>
         <div id="index_price">{{ row.price }}</div>
