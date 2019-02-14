@@ -127,6 +127,9 @@
 
         .blade > .gain_lose {
           width: 20%;
+        }
+
+        #coin_lose {
           padding-left: 3%;
         }
 
@@ -875,13 +878,13 @@
           <index-info class="indices"
             v-bind:row="row"
             ></index-info>
-            <div class="gain_lose">
+            <div class="gain_lose" id="coin_gain">
               <div class="gl_title">Biggest Gainers</div>
               <gainer-info
               v-bind:gainer="gainers[index]">
               </gainer-info>
             </div>
-            <div class="gain_lose">
+            <div class="gain_lose" id="coin_lose">
               <div class="gl_title">Biggest Losers</div>
                 <gainer-info
                   v-bind:gainer="losers[index]">
