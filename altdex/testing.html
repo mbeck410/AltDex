@@ -96,7 +96,7 @@
 
     <style>
         .row {
-          height: 120vh;
+          height: 118vh;
           overflow: hidden;
         }
 
@@ -880,7 +880,7 @@
       <!--Center Div-->
       <div id="main_bar" class="col-sm-9" v-cloak>
         <div v-for="(row, index) in rows">
-          <div id="index_symbol" v-cloak>{{ row.name }} ({{ row.symbol }})</div>
+          <div id="index_symbol" v-cloak>{{ row.name }} Index ({{ row.symbol }})</div>
           <div class="well blade">
             <div class="trend">
               <area-chart :data="trend[index]"
