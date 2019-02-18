@@ -11,6 +11,7 @@ urlpatterns = [
     path('pullcurrent/', views.pullcurrent, name='pullcurrent'),
     path('getindexcurrent/', views.getindexcurrent, name='getindexcurrent'),
     path('getindexall/', views.getindexall, name='getindexall'),
+    path('getmsnindexall/', views.getmsnindexall, name='getmsnindexall'),
     path('getcoinscurrent/', views.getcoinscurrent, name='getcoinscurrent'),
     path('getindexperformance/', views.getindexperformance, name='getindexperformance'),
     path('rsi_calc/', views.rsi_calc, name='rsi_calc'),

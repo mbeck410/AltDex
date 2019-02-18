@@ -91,6 +91,29 @@ def getindexall(request):
     return JsonResponse({'dict_key': indices_all_output})
 
 
+def getmsnindexall(request):
+    dex = Index.objects.filter(name='Masternode')
+    indices_all_output = []
+
+    dex_price_entries = dex.indexprice_set.order_by('timestamp')
+    prices = []
+    times = []
+    for i in dex_price_entries:
+        prices.append(i.price)
+        times.append(i.timestamp)
+
+    index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
+                    # 'market_cap': float('{0:.0f}'.format(i.market_cap)),
+                    # 'volume': float('{0:.0f}'.format(i.volume)),
+
+    indices_all_output.append(index_dict)
+
+        # time_range = {'left': dex_price_entries[0], 'right': dex_price_entries[-1]}
+
+
+    return JsonResponse({'dict_key': indices_all_output})
+
+
 def getindexcurrent(request):
     indices = Index.objects.order_by('id')
     indices_current = []
