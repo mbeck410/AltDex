@@ -2145,11 +2145,10 @@
     // Index Chart Pull
     function index_all() {
         line_data = [];
-        let url = '/getindexall/';
+        let url = '/getexchangeindex/';
         //alert('test');
         http_get(url, function (data) {
-            let full_data = data.dict_key;
-            let entry = full_data[1];
+            let entry = data.dict_key;
             line_data.push(entry);
             let data_length = line_data[0].x.length - 1;
             // let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
