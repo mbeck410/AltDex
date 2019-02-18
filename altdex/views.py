@@ -91,7 +91,7 @@ def getindexall(request):
     return JsonResponse({'dict_key': indices_all_output})
 
 
-def getmsnindexall(request):
+def getmasterindex(request):
     dex = Index.objects.filter(name='Masternode')
     indices_all_output = []
 
