@@ -563,14 +563,14 @@ def rsi_calc(request):
             displayed_prices.append(info)
             day = this_day
     #
-    # gain = 0
-    # lose = 0
-    # avg_gain = 0
-    # avg_lose = 0
-    # rsi_values = []
-    # twelve_ema = []
-    # twentysix_ema = []
-    # times2 = []
+    gain = 0
+    lose = 0
+    avg_gain = 0
+    avg_lose = 0
+    rsi_values = []
+    twelve_ema = []
+    twentysix_ema = []
+    times2 = []
     #
     # # 12 Day EMA
     # # times = []
