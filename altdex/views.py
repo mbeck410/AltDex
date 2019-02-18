@@ -537,31 +537,31 @@ def index_trend(request):
 
 
 def rsi_calc(request):
-    # day = 0
-    # displayed_prices = []
-    # index = Index.objects.get(name="AltDex100")
-    # prices = index.indexprice_set.order_by('timestamp')
-    # new_prices = prices.filter(timestamp__hour=19)
-    #
-    # #Finds and stores price from each day at 19:00 UTC, or averages difference if missing
-    # for price in new_prices:
-    #     this_day = price.timestamp.day
-    #     day_diff = abs(this_day - day)
-    #
-    #     if day_diff == 2:
-    #         missing_day = price.timestamp - timedelta(days=1)
-    #         missing_price = price.price - price.change_24h
-    #         s_info = {'date' :missing_day,
-    #                   'price': missing_price}
-    #
-    #         displayed_prices.append(s_info)
-    #
-    #     if this_day != day:
-    #         info = {'date': price.timestamp,
-    #                 'price': price.price}
-    #
-    #         displayed_prices.append(info)
-    #         day = this_day
+    day = 0
+    displayed_prices = []
+    index = Index.objects.get(name="AltDex100")
+    prices = index.indexprice_set.order_by('timestamp')
+    new_prices = prices.filter(timestamp__hour=19)
+
+    #Finds and stores price from each day at 19:00 UTC, or averages difference if missing
+    for price in new_prices:
+        this_day = price.timestamp.day
+        day_diff = abs(this_day - day)
+
+        if day_diff == 2:
+            missing_day = price.timestamp - timedelta(days=1)
+            missing_price = price.price - price.change_24h
+            s_info = {'date' :missing_day,
+                      'price': missing_price}
+
+            displayed_prices.append(s_info)
+
+        if this_day != day:
+            info = {'date': price.timestamp,
+                    'price': price.price}
+
+            displayed_prices.append(info)
+            day = this_day
     #
     # gain = 0
     # lose = 0
