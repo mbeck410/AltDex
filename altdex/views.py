@@ -92,7 +92,7 @@ def getindexall(request):
 
 
 def getmasterindex(request):
-    dex = Index.objects.filter(name='Masternode')
+    dex = Index.objects.get(name='Masternode')
     # indices_all_output = []
 
     dex_price_entries = dex.indexprice_set.order_by('timestamp')
