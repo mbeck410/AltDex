@@ -93,7 +93,7 @@ def getindexall(request):
 
 def getmasterindex(request):
     dex = Index.objects.filter(name='Masternode')
-    indices_all_output = []
+    # indices_all_output = []
 
     dex_price_entries = dex.indexprice_set.order_by('timestamp')
     prices = []
@@ -106,12 +106,12 @@ def getmasterindex(request):
                     # 'market_cap': float('{0:.0f}'.format(i.market_cap)),
                     # 'volume': float('{0:.0f}'.format(i.volume)),
 
-    indices_all_output.append(index_dict)
+    # indices_all_output.append(index_dict)
 
         # time_range = {'left': dex_price_entries[0], 'right': dex_price_entries[-1]}
 
 
-    return JsonResponse({'dict_key': indices_all_output})
+    return JsonResponse({'dict_key': index_dict})
 
 
 def getindexcurrent(request):
