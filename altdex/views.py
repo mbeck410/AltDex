@@ -66,6 +66,14 @@ def testing(request):
     else:
         return HttpResponse('error')
 
+def testing2(request):
+    if request.user.is_superuser:
+        with open('./altdex/testing2.html') as file:
+            contents = file.read()
+            return HttpResponse(contents)
+    else:
+        return HttpResponse('error')
+
 
 def getindexall(request):
     indices = Index.objects.order_by('id')
