@@ -1282,9 +1282,9 @@ function pull_side() {
     .then(function (data) {
       for (let i = 0; i < data.dict_key.length; ++i) {
         coin_data.push(data.dict_key[i]);
-        if (data.dict_key[i].indices.includes('AltDex') === true {
+        if (data.dict_key[i].indices.includes('AltDex') === true) {
           count_1 += 1;
-          if (data.dict_key[i].weight_1 >= 1)
+          if (data.dict_key[i].weight_1 >= 1) {}
             let piece_1 = [data.dict_key[i].name, data.dict_key[i].weight_1];
             wdata_1.push(piece_1);
             sum_1 += data.dict_key[i].weight_1;
