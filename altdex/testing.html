@@ -156,7 +156,8 @@
         }
 
         #drop_btn {
-          width: 50%;
+          width: 100%;
+          margin: 1vw;
         }
 
         .index_buttons {
@@ -895,7 +896,10 @@
       <!--Center Div-->
       <div id="main_bar" class="col-sm-9" v-cloak>
         <div v-for="(row, index) in rows">
-          <div id="index_symbol" v-cloak>{{ row.name }} Index ({{ row.symbol }})</div>
+          <div id=index_header>
+            <div id="index_symbol" v-cloak>{{ row.name }} Index ({{ row.symbol }})</div>
+            <div id="constituents" v-cloak>{ {constituents[0] }}</div>
+          </div>
           <div class="well blade">
             <div class="trend">
               <area-chart :data="trend[index]"
@@ -1142,6 +1146,7 @@ let index_app = new Vue({
     rows: [],
     gainers: [],
     losers: [],
+    constituents:[],
   },
 })
 
@@ -1267,6 +1272,7 @@ function pull_side() {
   let sum_2 = 0;
   let sum_3 = 0;
   let sum_4 = 0;
+  let count_1 =0;
   let pie_chart = [];
   // Fetch our array of row from an API
   fetch('/getcoinscurrent/')
@@ -1276,10 +1282,13 @@ function pull_side() {
     .then(function (data) {
       for (let i = 0; i < data.dict_key.length; ++i) {
         coin_data.push(data.dict_key[i]);
-        if (data.dict_key[i].indices.includes('AltDex') === true && data.dict_key[i].weight_1 >= 1) {
-          let piece_1 = [data.dict_key[i].name, data.dict_key[i].weight_1];
-          wdata_1.push(piece_1);
-          sum_1 += data.dict_key[i].weight_1;
+        if (data.dict_key[i].indices.includes('AltDex') === true {
+          count_1 += 1;
+          if (data.dict_key[i].weight_1 >= 1)
+            let piece_1 = [data.dict_key[i].name, data.dict_key[i].weight_1];
+            wdata_1.push(piece_1);
+            sum_1 += data.dict_key[i].weight_1;
+          }
         }
         if (data.dict_key[i].indices.includes('Exchange') === true && data.dict_key[i].weight_2 >= 1) {
           let piece_2 = [data.dict_key[i].name, data.dict_key[i].weight_2];
@@ -1309,6 +1318,7 @@ function pull_side() {
     pie_chart.push(wdata_2);
     pie_chart.push(wdata_3);
     pie_chart.push(wdata_4);
+    index_app.constituents.push(count_1)
     vm.pie_data = pie_chart;
     vm.coins = coin_data;
     })
