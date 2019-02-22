@@ -1127,14 +1127,14 @@ Vue.component('index-performance', {
         <div class="period_data">
           <div class="data_period">24h</div>
           <div class="perf_change" id="perf_day_change" v-bind:class="{'pos' : info.change_24h>0, 'neg' : info.change_24h<0}"
-          >{{ info.change_24h.toFixed(2) }}</div>
+          >{{ info.change_24h }}</div>
           <div class="perf_percent" id="perf_day_percent" v-bind:class="{'pos' : info.price_percent>0, 'neg' : info.price_percent<0}"
-          >{{ info.price_percent.toFixed(2) }}%</div>
+          >{{ info.price_percent }}%</div>
         </div>
         <div class="period_data">
           <div class="data_period">7d</div>
           <div class="perf_change" id="perf_week_change" v-bind:class="{'pos' : dex.week>0, 'neg' : dex.week<0}"
-          >{{ dex.week.toFixed(2) }}</div>
+          >{{ dex.week }}</div>
           <div class="perf_percent" id ="perf_week_percent" v-bind:class="{'pos' : dex.week_percent>0, 'neg' : dex.week_percent<0}"
           >{{ dex.week_percent }}%</div>
         </div>
@@ -1149,7 +1149,7 @@ Vue.component('index-performance', {
         <div id="all_ranges">
           <div class="range_div">
               <div>Daily Range</div>
-              <div>High: {{ dex.day_high.toFixed(2) }}</div>
+              <div>High: {{ dex.day_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': dayHeight + 'vw'}">
                   <div>{{ info.price.toFixed(2) }}&nbsp;</div>
@@ -1157,12 +1157,12 @@ Vue.component('index-performance', {
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Low: {{ dex.day_low.toFixed(2) }}</div>
+              <div>Low: {{ dex.day_low }}</div>
 
           </div>
           <div class="range_div">
               <div>Weekly Range</div>
-              <div>High: {{ dex.week_high.toFixed(2) }}</div>
+              <div>High: {{ dex.week_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': weekHeight + 'vw'}">
                   <div>{{ info.price.toFixed(2) }}&nbsp;</div>
@@ -1170,12 +1170,12 @@ Vue.component('index-performance', {
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Low: {{ dex.week_low.toFixed(2) }}</div>
+              <div>Low: {{ dex.week_low) }}</div>
 
           </div>
           <div class="range_div">
               <div>Monthly Range</div>
-              <div>High: {{ dex.month_high.toFixed(2) }}</div>
+              <div>High: {{ dex.month_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': monthHeight + 'vw'}">
                   <div>{{ info.price.toFixed(2) }}&nbsp;</div>
@@ -1183,7 +1183,7 @@ Vue.component('index-performance', {
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Low: {{ dex.month_low.toFixed(2) }}</div>
+              <div>Low: {{ dex.month_low }}</div>
 
           </div>
         </div>
