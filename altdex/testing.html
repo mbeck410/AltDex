@@ -1121,7 +1121,7 @@ Vue.component('index-performance', {
   },
   template: `
     <div>
-      <div id="index_price">{{ info.price }}</div>
+      <div id="index_price">{{ info.price.toFixed(2) }}</div>
       <div id="index_time"> Last Update: {{info.time.slice(0,19)}} UTC</div>
       <div id="period_changes" class="p_tab">
         <div class="period_data">
