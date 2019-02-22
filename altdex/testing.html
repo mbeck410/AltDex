@@ -1040,7 +1040,7 @@ Vue.component('coin-list', {
           </div>
           <div class="gl_price">&#36;{{coin.price.toLocaleString('en', {useGrouping:true})}}</div>
           <div class="gl_percent">
-              {{ coin.price_percent.toFixed(2) }}%
+              {{ coin.price_percent }}%
           </div>
       </div>
   </div>
@@ -1068,7 +1068,6 @@ Vue.component('main-coin-chart', {
   `
 })
 
-          // <div class="coin_market">&#36;{{coin.market_cap.toLocaleString('en', {useGrouping:true})}}<div>
 
 Vue.component('gainer-info', {
 props: ['gainer'],
