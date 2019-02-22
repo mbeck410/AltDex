@@ -217,6 +217,7 @@
         #coin_headers {
           display: flex;
           padding-bottom: .2vw;
+          padding-top: .2vw;
         }
 
         #header_name {
@@ -940,7 +941,7 @@
           <div class="well blade">
             <div class="trend">
               <area-chart :data="trend[index]"
-              :library="{scales: {xAxes: [{display: false}]}}"
+              :library="{title: {display: true, text: '24hr Chart'}, scales: {xAxes: [{display: false}]}}"
               height="160px"
               :min="null"
               :max="null"
