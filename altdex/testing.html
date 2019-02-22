@@ -513,6 +513,14 @@
             padding-left: 12px;
         }
 
+        .pos {
+          color: green;
+        }
+
+        .neg {
+          color: red;
+        }
+
         /*Dark Theme*/
         .t--dark {
             background-color: #262626;
@@ -1033,7 +1041,7 @@ Vue.component('coin-list', {
           <div class="gl_price">&#36;{{coin.price.toLocaleString('en', {useGrouping:true})}}</div>
           <div class="gl_percent"
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
-              {{coin.price_percent}}%
+              {{coin.price_percent.toFixed(2)}}%
           </div>
       </div>
   </div>
@@ -1051,7 +1059,7 @@ Vue.component('main-coin-chart', {
           <div class="coin_price">&#36;{{coin.pretty_price.toLocaleString('en', {useGrouping:true})}}</div>
           <div class="coin_percent"
                v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
-              {{coin.price_percent}}%
+              {{coin.price_percent.toFixed(2)}}%
           </div>
           <div class="coin_market">&#36;{{coin.pretty_cap}}<div>
       </div>
@@ -1077,14 +1085,14 @@ template: `
   <div>
     <div class="indices_data">
       <div>
-        <div id="index_price">{{ row.price }}</div>
+        <div id="index_price">{{ row.price.toFixed(2) }}</div>
         <div id="index_time">
           Last Update: {{row.time.slice(0,19)}} UTC
         </div>
       </div>
       <div class="changes">
-        <div>{{ row.price_percent }}%</div>
-        <div>{{ row.change_24h }}</div>
+        <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
+        <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
       </div>
     </div>
   </div>
@@ -1120,58 +1128,64 @@ Vue.component('index-performance', {
       <div id="period_changes" class="p_tab">
         <div class="period_data">
           <div class="data_period">24h</div>
-          <div class="perf_change" id="perf_day_change">{{ info.change_24h }}</div>
-          <div class="perf_percent" id="perf_day_percent">{{ info.price_percent }}%</div>
+          <div class="perf_change" id="perf_day_change" v-bind:class="{'pos' : info.change_24h>0, 'neg' : info.change_24h<0}"
+          >{{ info.change_24h.toFixed(2) }}</div>
+          <div class="perf_percent" id="perf_day_percent" v-bind:class="{'pos' : info.price_percent>0, 'neg' : info.price_percent<0}"
+          >{{ info.price_percent.toFixed(2) }}%</div>
         </div>
         <div class="period_data">
           <div class="data_period">7d</div>
-          <div class="perf_change" id="perf_week_change">{{ dex.week }}</div>
-          <div class="perf_percent" id ="perf_week_percent">{{ dex.week_percent }}%</div>
+          <div class="perf_change" id="perf_week_change" v-bind:class="{'pos' : dex.week>0, 'neg' : dex.week<0}"
+          >{{ dex.week.toFixed(2) }}</div>
+          <div class="perf_percent" id ="perf_week_percent" v-bind:class="{'pos' : dex.week_percent>0, 'neg' : dex.week_percent<0}"
+          >{{ dex.week_percent.toFixed(2) }}%</div>
         </div>
         <div class="period_data">
           <div class="data_period">1m</div>
-          <div class="perf_change" id="perf_month_change">{{ dex.month_change }}</div>
-          <div class="perf_percent" id="perf_month_percent">{{ dex.month_percent }}%</div>
+          <div class="perf_change" id="perf_month_change" v-bind:class="{'pos' : dex.month_change>0, 'neg' : dex.month_change<0}"
+          >{{ dex.month_change.toFixed(2) }}</div>
+          <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : dex.month_percent>0, 'neg' : dex.month_percent<0}"
+          >{{ dex.month_percent.toFixed(2) }}%</div>
         </div>
       </div>
         <div id="all_ranges">
           <div class="range_div">
               <div>Daily Range</div>
-              <div>High: {{ dex.day_high }}</div>
+              <div>High: {{ dex.day_high.toFixed(2) }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': dayHeight + 'vw'}">
-                  <div>{{ info.price }}&nbsp;</div>
+                  <div>{{ info.price.toFixed(2) }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Low: {{ dex.day_low }}</div>
+              <div>Low: {{ dex.day_low.toFixed(2) }}</div>
 
           </div>
           <div class="range_div">
               <div>Weekly Range</div>
-              <div>High: {{ dex.week_high }}</div>
+              <div>High: {{ dex.week_high.toFixed(2) }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': weekHeight + 'vw'}">
-                  <div>{{ info.price }}&nbsp;</div>
+                  <div>{{ info.price.toFixed(2) }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Low: {{ dex.week_low }}</div>
+              <div>Low: {{ dex.week_low.toFixed(2) }}</div>
 
           </div>
           <div class="range_div">
               <div>Monthly Range</div>
-              <div>High: {{ dex.month_high }}</div>
+              <div>High: {{ dex.month_high.toFixed(2) }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': monthHeight + 'vw'}">
-                  <div>{{ info.price }}&nbsp;</div>
+                  <div>{{ info.price.toFixed(2) }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Low: {{ dex.month_low }}</div>
+              <div>Low: {{ dex.month_low.toFixed(2) }}</div>
 
           </div>
         </div>
@@ -1222,25 +1236,6 @@ let side_app = new Vue({
       }
     },
     computed: {
-      // pieCoins: function () {
-      //   let sum = 0;
-      //   let pie_data = [];
-      //   if (this.current_number === 0) {
-      //
-      //     for(let i=0; i<coins.length; ++i) {
-      //       if (this.coins[i].weight_1 >= 1) {
-      //         let pie_piece = [this.coins[i].name, this.coins[i].weight_1.toFixed(2)];
-      //         pie_data.push(pie_piece);
-      //       }
-      //       else {
-      //         sum += this.coins[i].weight_1;
-      //       }
-      //     }
-      //     let last_piece = ['Others', sum.toFixed(2)];
-      //     pie_data.push(last_piece);
-      //     return pie_data
-      //   }
-      // },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
               let modifier = 1;
