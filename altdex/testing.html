@@ -1121,7 +1121,7 @@ Vue.component('index-performance', {
   },
   template: `
     <div>
-      <div id="index_price">{{ info.price.toFixed(2) }}</div>
+      <div id="index_price">{{ info.price }}</div>
       <div id="index_time"> Last Update: {{info.time.slice(0,19)}} UTC</div>
       <div id="period_changes" class="p_tab">
         <div class="period_data">
@@ -1152,7 +1152,6 @@ Vue.component('index-performance', {
                 <div class="bar"></div>
               </div>
               <div>Low: {{ dex.day_low }}</div>
-
           </div>
           <div class="range_div">
               <div>Weekly Range</div>
@@ -1164,8 +1163,7 @@ Vue.component('index-performance', {
                 </div>
                 <div class="bar"></div>
               </div>
-              <div>Low: {{ dex.week_low) }}</div>
-
+              <div>Low: {{ dex.week_low }}</div>
           </div>
           <div class="range_div">
               <div>Monthly Range</div>
@@ -1178,7 +1176,6 @@ Vue.component('index-performance', {
                 <div class="bar"></div>
               </div>
               <div>Low: {{ dex.month_low }}</div>
-
           </div>
         </div>
     </div>
