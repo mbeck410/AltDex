@@ -1126,24 +1126,18 @@ Vue.component('index-performance', {
       <div id="period_changes" class="p_tab">
         <div class="period_data">
           <div class="data_period">24h</div>
-          <div class="perf_change" id="perf_day_change" v-bind:class="{'pos' : info.change_24h>0, 'neg' : info.change_24h<0}"
-          >{{ info.change_24h }}</div>
-          <div class="perf_percent" id="perf_day_percent" v-bind:class="{'pos' : info.price_percent>0, 'neg' : info.price_percent<0}"
-          >{{ info.price_percent }}%</div>
+          <div class="perf_change" id="perf_day_change">{{ info.change_24h }}</div>
+          <div class="perf_percent" id="perf_day_percent">{{ info.price_percent }}%</div>
         </div>
         <div class="period_data">
           <div class="data_period">7d</div>
-          <div class="perf_change" id="perf_week_change" v-bind:class="{'pos' : dex.week>0, 'neg' : dex.week<0}"
-          >{{ dex.week }}</div>
-          <div class="perf_percent" id ="perf_week_percent" v-bind:class="{'pos' : dex.week_percent>0, 'neg' : dex.week_percent<0}"
-          >{{ dex.week_percent }}%</div>
+          <div class="perf_change" id="perf_week_change">{{ dex.week }}</div>
+          <div class="perf_percent" id ="perf_week_percent">{{ dex.week_percent }}%</div>
         </div>
         <div class="period_data">
           <div class="data_period">1m</div>
-          <div class="perf_change" id="perf_month_change" v-bind:class="{'pos' : dex.month_change>0, 'neg' : dex.month_change<0}"
-          >{{ dex.month_change }}</div>
-          <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : dex.month_percent>0, 'neg' : dex.month_percent<0}"
-          >{{ dex.month_percent }}%</div>
+          <div class="perf_change" id="perf_month_change">{{ dex.month_change }}</div>
+          <div class="perf_percent" id="perf_month_percent">{{ dex.month_percent }}%</div>
         </div>
       </div>
         <div id="all_ranges">
