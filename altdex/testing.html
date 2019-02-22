@@ -1141,7 +1141,7 @@ Vue.component('index-performance', {
         <div class="period_data">
           <div class="data_period">1m</div>
           <div class="perf_change" id="perf_month_change" v-bind:class="{'pos' : dex.month_change>0, 'neg' : dex.month_change<0}"
-          >{{ dex.month_change.toFixed(2) }}</div>
+          >{{ dex.month_change }}</div>
           <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : dex.month_percent>0, 'neg' : dex.month_percent<0}"
           >{{ dex.month_percent }}%</div>
         </div>
@@ -1152,7 +1152,7 @@ Vue.component('index-performance', {
               <div>High: {{ dex.day_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': dayHeight + 'vw'}">
-                  <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+                  <div>{{ info.price }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
                 <div class="bar"></div>
@@ -1165,7 +1165,7 @@ Vue.component('index-performance', {
               <div>High: {{ dex.week_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': weekHeight + 'vw'}">
-                  <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+                  <div>{{ info.price }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
                 <div class="bar"></div>
@@ -1178,7 +1178,7 @@ Vue.component('index-performance', {
               <div>High: {{ dex.month_high }}</div>
               <div class="range">
                 <div class="slider" :style="{'margin-top': monthHeight + 'vw'}">
-                  <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+                  <div>{{ info.price }}&nbsp;</div>
                   <span class="fa fa-caret-right"></span>
                 </div>
                 <div class="bar"></div>
