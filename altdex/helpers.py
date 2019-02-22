@@ -24,8 +24,8 @@ def collect():
 
         entries = data_1['data']
 
-        if coin.symbol == 'COB':
-            url2 = 'https://api.coinmarketcap.com/v2/ticker/2006/'
+        if coin.symbol == 'BCO':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/2033/'
             r2 = requests.get(url2)
 
             while r2.status_code != 200:
@@ -188,6 +188,25 @@ def collect():
 
         elif coin.symbol == 'KCS':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/2087/'
+            r2 = requests.get(url2)
+
+            while r2.status_code != 200:
+                sleep(10)
+                r2 = requests.get(url2)
+
+            data = json.loads(r2.text)
+
+            coin.price = float(data['data']['quotes']['USD']['price'])
+            coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
+            # coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
+            coin.volume = 0
+            coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
+            coin.percent_weight = 0
+
+            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+
+        elif coin.symbol == 'NEC':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/2538/'
             r2 = requests.get(url2)
 
             while r2.status_code != 200:
