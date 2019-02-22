@@ -198,8 +198,7 @@ def collect():
 
             coin.price = float(data['data']['quotes']['USD']['price'])
             coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
-            # coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
-            coin.volume = 0
+            coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
             coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
             coin.percent_weight = 0
 
@@ -217,8 +216,7 @@ def collect():
 
             coin.price = float(data['data']['quotes']['USD']['price'])
             coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
-            # coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
-            coin.volume = 0
+            coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
             coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
             coin.percent_weight = 0
 
