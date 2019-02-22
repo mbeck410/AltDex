@@ -941,7 +941,7 @@
           <div class="well blade">
             <div class="trend">
               <area-chart :data="trend[index]"
-              :library="{scales: {xAxes: [{display: false}]}}"
+              :library="{title: {text: '24hr chart', display: true, fontSize: 6, fontStyle: 'normal'}, scales: {xAxes: [{display: false}]}}"
               height="160px"
               :min="null"
               :max="null"
