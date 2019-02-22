@@ -941,7 +941,7 @@
           <div class="well blade">
             <div class="trend">
               <area-chart :data="trend[index]"
-              :library="{title: {display: true, text: '24hr Chart'}, scales: {xAxes: [{display: false}]}}"
+              :library="{scales: {xAxes: [{display: false}]}}"
               height="160px"
               :min="null"
               :max="null"
@@ -952,13 +952,13 @@
               v-bind:row="row"
               ></index-info>
             <div class="gain_lose" id="coin_gain">
-              <div class="gl_title">Biggest Gainers</div>
+              <div class="gl_title">Best Performers</div>
               <gainer-info
               v-bind:gainer="gainers[index]">
               </gainer-info>
             </div>
             <div class="gain_lose" id="coin_lose">
-              <div class="gl_title">Biggest Losers</div>
+              <div class="gl_title">Worst Performers</div>
                 <gainer-info
                   v-bind:gainer="losers[index]">
               </gainer-info>
