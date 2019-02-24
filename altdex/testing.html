@@ -115,7 +115,7 @@
         }
 
         .intro {
-          font-size: 2.0vw;
+          font-size: 1.6vw;
         }
 
         .blade {
@@ -1150,12 +1150,15 @@ Vue.component('index-performance', {
       <div id="period_changes" class="p_tab">
         <div class="period_data">
           <div class="data_period">24h</div>
-          <div class="perf_change" id="perf_day_change">{{ info.change_24h.toFixed(2) }}</div>
-          <div class="perf_percent" id="perf_day_percent">{{ info.price_percent.toFixed(2) }}%</div>
+          <div class="perf_change" id="perf_day_change" v-bind:class="{'pos' : info.change_24h>0, 'neg' : info.change_24h<0}"
+          >{{ info.change_24h.toFixed(2) }}</div>
+          <div class="perf_percent" id="perf_day_percent" v-bind:class="{'pos' : info.change_24h>0, 'neg' : info.change_24h<0}"
+          >{{ info.price_percent.toFixed(2) }}%</div>
         </div>
         <div class="period_data">
           <div class="data_period">7d</div>
-          <div class="perf_change" id="perf_week_change">{{ dex.week }}</div>
+          <div class="perf_change" id="perf_week_change" v-bind:class="{'pos' : dex.week>0, 'neg' : dex.week<0}"
+          >{{ dex.week }}</div>
           <div class="perf_percent" id ="perf_week_percent">{{ dex.week_percent }}%</div>
         </div>
         <div class="period_data">
