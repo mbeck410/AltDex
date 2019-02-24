@@ -188,6 +188,10 @@
           text-align: left;
         }
 
+        .des_name {
+          text-align: center;
+        }
+
         .index_buttons {
           display: flex;
           justify-content: space-evenly;
@@ -915,7 +919,7 @@
             </div>
 
               <div id="description">
-                <h4 v-cloak><b>{{ index_names[current_number] }}</b></h4>
+                <h4 class='des_name' v-cloak><b>{{ index_names[current_number] }}</b></h4>
                 <p v-cloak>{{ descriptions[current_number] }}</p>
                 <ul>
                   <li v-cloak>Number of Constituents: {{ constituents[current_number] }}</li>
