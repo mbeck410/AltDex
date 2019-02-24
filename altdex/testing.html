@@ -903,6 +903,15 @@
 
           <div id="coins_tab" class="tab-pane fade in active">
 
+              <div id="description">
+                <h4><b>{{ index_names[current_number] }}</b></h4>
+                <p>{{ descriptions[current_number] }}</p>
+                <ul>
+                  <li>Number of Constituents: {{ constituents[current_number] }}</li>
+                  <li>{{ second_para[current_number] }}</li>
+                </ul>
+              </div>
+
               <div class="index_buttons">
                 <button @click="changeFilter('AltDex', 0)">ALT100</button>
                 <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
@@ -1201,6 +1210,19 @@ let side_app = new Vue({
     pie_data: [],
     indices: [],
     info: [],
+    constituents:[100, 22, 16, 12],
+    index_names: ['AltDex 100 Cryptocurrency Index (ALT100) ',
+                  'AltDex Exchange Token Index (ALTEXC)',
+                  'AltDex Privacy Coin Index (ALTPRV)',
+                  'AltDex Masternode Index (ALTMSN)'],
+    descriptions: ['The AltDex 100 is a market capitalization-weighted benchmark index for large-cap cryptocurrencies and tokens',
+                  'The AltDex Exchange Index is a market capitalization-weighted benchmark index for the industry&#39;s leading crypto exchange tokens.',
+                  'The AltDex Privacy Index is a market capitalization-benchmark index for cryptocurrencies and tokens focused on privacy or security.',
+                  'The AltDex Masternode Index is a market capitalization-weighted benchmark index for cryptocurrencies that leverage masternodes to support network functionality without hyperinflation.'],
+    second_para: ['Trailing 30 day average daily trading volume $100,000.',
+                  'Market capitalization greater than $5,000,000.',
+                  'Market capitalization greater than $5,000,000.',
+                  'Market capitalization greater than $5,000,000.']
     current_index: 'AltDex',
     current_number: 0,
     current_sort: 'market_cap',
