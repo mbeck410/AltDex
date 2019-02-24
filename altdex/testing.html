@@ -184,6 +184,10 @@
           width: 100%;
         }
 
+        #description {
+          text-align: right;
+        }
+
         .index_buttons {
           display: flex;
           justify-content: space-evenly;
@@ -903,6 +907,13 @@
 
           <div id="coins_tab" class="tab-pane fade in active">
 
+            <div class="index_buttons">
+              <button @click="changeFilter('AltDex', 0)">ALT100</button>
+              <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
+              <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
+              <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
+            </div>
+
               <div id="description">
                 <h4><b>{{ index_names[current_number] }}</b></h4>
                 <p>{{ descriptions[current_number] }}</p>
@@ -912,12 +923,6 @@
                 </ul>
               </div>
 
-              <div class="index_buttons">
-                <button @click="changeFilter('AltDex', 0)">ALT100</button>
-                <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
-                <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
-                <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
-              </div>
               <div id="coin_headers">
                 <div id="header_name" @click="sort('name')">Name</div>
                 <div id="header_price" @click="sort('price')">Price</div>
