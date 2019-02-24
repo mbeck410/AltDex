@@ -185,7 +185,7 @@
         }
 
         #description {
-          text-align: right;
+          text-align: left;
         }
 
         .index_buttons {
@@ -915,11 +915,11 @@
             </div>
 
               <div id="description">
-                <h4><b>{{ index_names[current_number] }}</b></h4>
-                <p>{{ descriptions[current_number] }}</p>
+                <h4 v-cloak><b>{{ index_names[current_number] }}</b></h4>
+                <p v-cloak>{{ descriptions[current_number] }}</p>
                 <ul>
-                  <li>Number of Constituents: {{ constituents[current_number] }}</li>
-                  <li>{{ second_para[current_number] }}</li>
+                  <li v-cloak>Number of Constituents: {{ constituents[current_number] }}</li>
+                  <li v-cloak>{{ second_para[current_number] }}</li>
                 </ul>
               </div>
 
