@@ -203,6 +203,11 @@
           justify-content: space-evenly;
         }
 
+        .higlight {
+          background-color: #6dc0eb;
+          color: black;
+        }
+
         .coin_name {
             font-weight: bold;
             font-size: 0.75vw;
@@ -929,7 +934,8 @@
           <div id="coins_tab" class="tab-pane fade in active">
 
             <div class="index_buttons">
-              <button class="btn dex_btn" @click="changeFilter('AltDex', 0)">ALT100</button>
+              <button class="btn dex_btn" @click="changeFilter('AltDex', 0)"
+              v-bind:class="{'higlight' : current_number=0}">ALT100</button>
               <button class="btn dex_btn" @click="changeFilter('Exchange', 1)">ALTEXC</button>
               <button class="btn dex_btn" @click="changeFilter('Privacy', 2)">ALTPRV</button>
               <button class="btn dex_btn" @click="changeFilter('Masternode', 3)">ALTMSN</button>
