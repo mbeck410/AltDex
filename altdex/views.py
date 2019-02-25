@@ -532,12 +532,14 @@ def index_trend(request):
     price_array = []
     for index in indices:
         if index.name != 'Null':
-            index_prices = index.indexprice_set.order_by('-timestamp')
+            index_prices = index.indexprice_set.order_by('timestamp')
+            data_length = index_prices.length
+            lower_bound = data_length - 1049
             prices = []
-            for i in range(0, 1040, 1):
+            for i in range(lower_bound, data_length, 50):
                 prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
 
-            price_array.append(prices[::-1])
+            # price_array.append(prices[::-1])
 
         else: continue
 
