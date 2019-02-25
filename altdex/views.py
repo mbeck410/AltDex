@@ -533,7 +533,7 @@ def index_trend(request):
     for index in indices:
         if index.name != 'Null':
             index_prices = index.indexprice_set.order_by('timestamp')
-            data_length = index_prices.length
+            data_length = len(index_prices)
             lower_bound = data_length - 1049
             prices = []
             for i in range(lower_bound, data_length, 50):
