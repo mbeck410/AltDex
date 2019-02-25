@@ -435,11 +435,9 @@
             padding-bottom: 5px;
         }
 
-        .btn {
+        .dex_butt {
             background-color: #222842;
             color: white;
-            border-radius: 2px;
-            padding: 4px 8px;
         }
 
         [v-cloak] {
@@ -958,10 +956,10 @@
             <div id="performance_tab" class="tab-pane fade">
 
               <div class="index_buttons">
-                <button @click="changeFilter('AltDex', 0)">ALT100</button>
-                <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
-                <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
-                <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
+                <button class='dex_butt' @click="changeFilter('AltDex', 0)">ALT100</button>
+                <button class='dex_butt' @click="changeFilter('Exchange', 1)">ALTEXC</button>
+                <button class='dex_butt' @click="changeFilter('Privacy', 2)">ALTPRV</button>
+                <button class='dex_butt' @click="changeFilter('Masternode', 3)">ALTMSN</button>
               </div>
 
               <div>
