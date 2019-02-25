@@ -435,9 +435,14 @@
             padding-bottom: 5px;
         }
 
-        .dex_butt {
+        .btn {
             background-color: #222842;
             color: white;
+            border-radius: 2px;
+        }
+
+        .dex_btn {
+          padding: 4px 8px;
         }
 
         [v-cloak] {
@@ -924,10 +929,10 @@
           <div id="coins_tab" class="tab-pane fade in active">
 
             <div class="index_buttons">
-              <button @click="changeFilter('AltDex', 0)">ALT100</button>
-              <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
-              <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
-              <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
+              <button class="btn dex_btn" @click="changeFilter('AltDex', 0)">ALT100</button>
+              <button class="btn dex_btn" @click="changeFilter('Exchange', 1)">ALTEXC</button>
+              <button class="btn dex_btn" @click="changeFilter('Privacy', 2)">ALTPRV</button>
+              <button class="btn dex_btn" @click="changeFilter('Masternode', 3)">ALTMSN</button>
             </div>
 
               <div id="description">
@@ -956,10 +961,10 @@
             <div id="performance_tab" class="tab-pane fade">
 
               <div class="index_buttons">
-                <button class='dex_butt' @click="changeFilter('AltDex', 0)">ALT100</button>
-                <button class='dex_butt' @click="changeFilter('Exchange', 1)">ALTEXC</button>
-                <button class='dex_butt' @click="changeFilter('Privacy', 2)">ALTPRV</button>
-                <button class='dex_butt' @click="changeFilter('Masternode', 3)">ALTMSN</button>
+                <button class="btn dex_btn" @click="changeFilter('AltDex', 0)">ALT100</button>
+                <button class="btn dex_btn" @click="changeFilter('Exchange', 1)">ALTEXC</button>
+                <button class="btn dex_btn" @click="changeFilter('Privacy', 2)">ALTPRV</button>
+                <button class="btn dex_btn" @click="changeFilter('Masternode', 3)">ALTMSN</button>
               </div>
 
               <div>
