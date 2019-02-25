@@ -439,6 +439,7 @@
             background-color: #222842;
             color: white;
             border-radius: 2px;
+            padding: 4px 8px;
         }
 
         [v-cloak] {
@@ -925,10 +926,10 @@
           <div id="coins_tab" class="tab-pane fade in active">
 
             <div class="index_buttons">
-              <button class='btn' @click="changeFilter('AltDex', 0)">ALT100</button>
-              <button class='btn' @click="changeFilter('Exchange', 1)">ALTEXC</button>
-              <button class='btn' @click="changeFilter('Privacy', 2)">ALTPRV</button>
-              <button class='btn' @click="changeFilter('Masternode', 3)">ALTMSN</button>
+              <button @click="changeFilter('AltDex', 0)">ALT100</button>
+              <button @click="changeFilter('Exchange', 1)">ALTEXC</button>
+              <button @click="changeFilter('Privacy', 2)">ALTPRV</button>
+              <button @click="changeFilter('Masternode', 3)">ALTMSN</button>
             </div>
 
               <div id="description">
