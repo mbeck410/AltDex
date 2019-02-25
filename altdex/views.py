@@ -534,7 +534,7 @@ def index_trend(request):
         if index.name != 'Null':
             index_prices = index.indexprice_set.order_by('-timestamp')
             prices = []
-            for i in range(0, 1049, 50):
+            for i in range(0, 1040):
                 prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
 
             price_array.append(prices[::-1])
@@ -730,7 +730,7 @@ def rsi_calc(request):
     test.append(trace1)
     test.append(trace2)
     # test.append(trace3)
-    
+
     return JsonResponse({'prices': test})
 
 # class RepeatedTimer(object):
