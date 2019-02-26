@@ -935,7 +935,7 @@
 
             <div class="index_buttons">
               <button class="btn dex_btn" @click="changeFilter('AltDex', 0)"
-              v-bind:class="{'highlight' : current_number=0}">ALT100</button>
+              v-bind:class="{'highlight' : current_number===0}">ALT100</button>
               <button class="btn dex_btn" @click="changeFilter('Exchange', 1)">ALTEXC</button>
               <button class="btn dex_btn" @click="changeFilter('Privacy', 2)">ALTPRV</button>
               <button class="btn dex_btn" @click="changeFilter('Masternode', 3)">ALTMSN</button>
