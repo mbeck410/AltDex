@@ -377,8 +377,8 @@ def getindexperformance(request):
             entries = index.indexprice_set.order_by('-timestamp')
             entries2 = index.indexprice_set.order_by('price')
 
-            max_price = entries2.first()
-            min_price = entries2.last()
+            max_price = entries2.first().price
+            min_price = entries2.last().price
 
             latest_entry = entries[0]
 
