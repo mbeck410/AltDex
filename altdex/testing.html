@@ -1222,16 +1222,13 @@ let marquee_app = new Vue ({
       let headlines = '';
       let dex = this.index_prices
       for (let i=0; i<dex.length; i++) {
-        let string = dex[i].name + ' ';
-        headlines += string;
-      //   if (dex[i].price_percent > 3) {
-      //     headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is up ' + dex[i].price_percent + '% in the last 24 hours. ');
-      //   }
-      //   else if (dex[i].price_percent < 3) {
-      //     headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is down ' + dex[i].price_percent + '% in the last 24 hours. ');
-      //   }
-      //   else {
-      //     headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is flat (' + dex[i].price_percent + ')% in the last 24 hours. ');
+        if (dex[i].price_percent > 3) {
+          headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is up ' + dex[i].price_percent + '% in the last 24 hours. ');
+        } else if (dex[i].price_percent < 3) {
+          headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is down ' + dex[i].price_percent + '% in the last 24 hours. ');
+        } else {
+          headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is flat (' + dex[i].price_percent + ')% in the last 24 hours. ');
+        }
       }
       return headlines;
     }
