@@ -1167,20 +1167,20 @@ Vue.component('index-performance', {
       // let current_day_diff = this.info.price - this.dex.day_low;
       // let day_height = (current_day_diff / day_range_diff) * 85;
       // return day_height.toFixed(1)
-      return 85
+      return 0
     },
-    // weekHeight: function() {
-    //   let week_range_diff = this.dex.week_high - this.dex.week_low;
-    //   let current_week_diff = this.info.price - this.dex.week_low;
-    //   let week_height = (current_week_diff / week_range_diff) * 14;
-    //   return (14 - week_height).toFixed(1)
-    // },
-    // monthHeight: function() {
-    //   let month_range_diff = this.dex.month_high - this.dex.month_low;
-    //   let current_month_diff = this.info.price - this.dex.month_low;
-    //   let month_height = (current_month_diff / month_range_diff) * 14;
-    //   return (14 - month_height).toFixed(1)
-    // }
+    weekHeight: function() {
+      let week_range_diff = this.dex.week_high - this.dex.week_low;
+      let current_week_diff = this.info.price - this.dex.week_low;
+      let week_height = (current_week_diff / week_range_diff) * 85;
+      return week_height.toFixed(1)
+    },
+    monthHeight: function() {
+      let month_range_diff = this.dex.month_high - this.dex.month_low;
+      let current_month_diff = this.info.price - this.dex.month_low;
+      let month_height = (current_month_diff / month_range_diff) * 85;
+      return month_height.toFixed(1)
+    }
   },
   template: `
     <div>
@@ -1211,16 +1211,44 @@ Vue.component('index-performance', {
       </div>
         <div id="all_ranges">
           <div class="range_div">
-              <div class="range_label">Daily Range</div>
-              <div class="range">
-                <div class="slider_low">Low: {{ dex.day_low }}</div>
-                <div class="slider_high">High: {{ dex.day_high }}</div>
-              </div>
-              <div class="bar"></div>
-              <div class="slider" :style="{'margin-left': dayHeight + '%'}">
-                <span class="fa fa-caret-up"></span>
-                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
-              </div>
+            <div class="range_label">Daily Range</div>
+            <div class="range">
+              <div class="slider_low">Low: {{ dex.day_low }}</div>
+              <div class="slider_high">High: {{ dex.day_high }}</div>
+            </div>
+            <div class="bar"></div>
+            <div class="slider" :style="{'margin-left': dayHeight + '%'}">
+              <span class="fa fa-caret-up"></span>
+              <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <div id="all_ranges">
+          <div class="range_div">
+            <div class="range_label">Weekly Range</div>
+            <div class="range">
+              <div class="slider_low">Low: {{ dex.week_low }}</div>
+              <div class="slider_high">High: {{ dex.week_high }}</div>
+            </div>
+            <div class="bar"></div>
+            <div class="slider" :style="{'margin-left': weekHeight + '%'}">
+              <span class="fa fa-caret-up"></span>
+              <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <div id="all_ranges">
+          <div class="range_div">
+            <div class="range_label">Daily Range</div>
+            <div class="range">
+              <div class="slider_low">Low: {{ dex.month_low }}</div>
+              <div class="slider_high">High: {{ dex.month_high }}</div>
+            </div>
+            <div class="bar"></div>
+            <div class="slider" :style="{'margin-left': monthHeight + '%'}">
+              <span class="fa fa-caret-up"></span>
+              <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+            </div>
           </div>
         </div>
     </div>
