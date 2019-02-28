@@ -845,7 +845,7 @@
 
 <div id="m_news">
   <div class="marquee_news">
-    <h3>{{ indexHeadlines }}</h3>
+    <h3>{{ index_prices }}</h3>
   </div>
 </div>
 
@@ -1214,27 +1214,27 @@ Vue.component('index-performance', {
 let marquee_app = new Vue ({
   el: '#m_news',
   data: {
-    index_prices: [],
-    coins: [],
+    index_prices: 'Lick my balls',
+    // coins: [],
   },
-  computed: {
-    indexHeadlines: function () {
-      let headlines = '';
-      let dex = this.index_prices
-      for (let i=0, i>dex.length; i++) {
-        if (dex[i].price_percent > 3) {
-          headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is up ' + dex[i].price_percent + '% in the last 24 hours. ');
-        }
-        else if (dex[i].price_percent < 3) {
-          headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is down ' + dex[i].price_percent + '% in the last 24 hours. ');
-        }
-        else {
-          headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is flat ' + dex[i].price_percent + '% in the last 24 hours. ');
-        }
-        return headlines;
-      }
-    }
-  },
+  // computed: {
+  //   indexHeadlines: function () {
+  //     let headlines = '';
+  //     let dex = this.index_prices
+  //     for (let i=0, i>dex.length; i++) {
+  //       if (dex[i].price_percent > 3) {
+  //         headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is up ' + dex[i].price_percent + '% in the last 24 hours. ');
+  //       }
+  //       else if (dex[i].price_percent < 3) {
+  //         headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is down ' + dex[i].price_percent + '% in the last 24 hours. ');
+  //       }
+  //       else {
+  //         headlines += ('Market Alert: The ' dex[i].name + '(' + dex[i].symbol + ') is flat ' + dex[i].price_percent + '% in the last 24 hours. ');
+  //       }
+  //       return headlines;
+  //     }
+  //   }
+  // },
 })
 
 
@@ -1336,7 +1336,7 @@ function pull_main() {
       }
     vm.rows = index_data
     cm.info = index_data
-    marquee_app.index_prices = index_data
+    // marquee_app.index_prices = index_data
     })
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
