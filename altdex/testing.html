@@ -111,10 +111,9 @@
            font-size: 2em;
            color: black;
            position: absolute;
-           /* width: 200%; */
            height: 100%;
            margin: 0;
-           line-height: 50px;
+           vertical-align: middle;
            text-align: center;
            /* Starting position */
            -moz-transform:translateX(100%);
@@ -1234,7 +1233,7 @@ let marquee_app = new Vue ({
       return headlines;
     },
     headlineLength: function () {
-      return this.indexHeadlines.length;
+      return (this.indexHeadlines.length - 30);
     }
   },
 })
