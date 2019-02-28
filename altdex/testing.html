@@ -289,21 +289,29 @@
         }
 
         #all_ranges{
-          display: flex;
           margin-top: 1.0vw;
         }
 
         .bar {
-          width: 0.5vw;
+          width: 85%;
+          height: 0.4vw;
           background-color: #6dc0eb;
-          margin-top: 6%;
-          margin-bottom: 6%;
         }
 
         .range {
           display: flex;
-          margin-left: 20%;
-          height: 15.1vw;
+          width: 85%;
+          margin: auto;
+        }
+
+        .slider_high {
+          width: 50%;
+          text-align: right;
+        }
+
+        .slider_low {
+          width: 50%;
+          text-align: left;
         }
 
         .range_label {
@@ -316,7 +324,7 @@
         }
 
         .range_div {
-          width: 33%;
+          width: 100%;
         }
 
 
@@ -1201,17 +1209,16 @@ Vue.component('index-performance', {
       </div>
         <div id="all_ranges">
           <div class="range_div">
-              <div class="range_label">Daily</div>
-              <div class="range_label">Range</div>
-              <div>High: {{ dex.day_high }}</div>
+              <div class="range_label">Daily Range</div>
               <div class="range">
-                <div class="slider" :style="{'margin-top': dayHeight + 'vw'}">
-                  <div>{{ info.price.toFixed(2) }}&nbsp;</div>
-                  <span class="fa fa-caret-right"></span>
-                </div>
-                <div class="bar"></div>
+                <div class="slider_high">High: {{ dex.day_high }}</div>
+                <div class="slider_low">Low: {{ dex.day_low }}</div>
               </div>
-              <div>Low: {{ dex.day_low }}</div>
+              <div class="bar"></div>
+              <div class="slider" :style="{'margin-left': dayHeight + 'vw'}">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
           </div>
           <div class="range_div">
               <div class="range_label">Weekly</div>
