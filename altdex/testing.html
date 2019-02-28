@@ -1163,10 +1163,11 @@ Vue.component('index-performance', {
   props: ['dex', 'info'],
   computed: {
     dayHeight: function() {
-      let day_range_diff = this.dex.day_high - this.dex.day_low;
-      let current_day_diff = this.info.price - this.dex.day_low;
-      let day_height = (current_day_diff / day_range_diff) * 85;
-      return day_height.toFixed(1)
+      // let day_range_diff = this.dex.day_high - this.dex.day_low;
+      // let current_day_diff = this.info.price - this.dex.day_low;
+      // let day_height = (current_day_diff / day_range_diff) * 85;
+      // return day_height.toFixed(1)
+      return 85
     },
     // weekHeight: function() {
     //   let week_range_diff = this.dex.week_high - this.dex.week_low;
