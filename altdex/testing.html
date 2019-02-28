@@ -324,6 +324,10 @@
           text-align: center;
         }
 
+        .slider_div {
+          text-align: left;
+        }
+
         .range_div {
           width: 100%;
         }
@@ -1230,9 +1234,11 @@ Vue.component('index-performance', {
               <div class="slider_high">High: {{ dex.week_high }}</div>
             </div>
             <div class="bar"></div>
-            <div class="slider" :style="{'margin-left': 0 + '%'}">
-              <span class="fa fa-caret-up"></span>
-              <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+            <div> class="slider_div" :style="{'margin-left': weekHeight + '%'}">
+              <div class="slider">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
             </div>
           </div>
         </div>
