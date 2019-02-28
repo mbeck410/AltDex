@@ -1163,11 +1163,10 @@ Vue.component('index-performance', {
   props: ['dex', 'info'],
   computed: {
     dayHeight: function() {
-      // let day_range_diff = this.dex.day_high - this.dex.day_low;
-      // let current_day_diff = this.info.price - this.dex.day_low;
-      // let day_height = (current_day_diff / day_range_diff) * 85;
-      // return day_height.toFixed(1)
-      return 0
+      let day_range_diff = this.dex.day_high - this.dex.day_low;
+      let current_day_diff = this.info.price - this.dex.day_low;
+      let day_height = (current_day_diff / day_range_diff) * 85;
+      return day_height.toFixed(1)
     },
     weekHeight: function() {
       let week_range_diff = this.dex.week_high - this.dex.week_low;
@@ -1231,7 +1230,7 @@ Vue.component('index-performance', {
               <div class="slider_high">High: {{ dex.week_high }}</div>
             </div>
             <div class="bar"></div>
-            <div class="slider" :style="{'margin-left': weekHeight + '%'}">
+            <div class="slider" :style="{'margin-left': 0 + '%'}">
               <span class="fa fa-caret-up"></span>
               <div>{{ info.price.toFixed(2) }}&nbsp;</div>
             </div>
