@@ -845,7 +845,7 @@
 
 <div id="m_news">
   <div class="marquee_news">
-    <h3 :style="{'width' : indexHeight.length + 'em'}">{{ indexHeadlines }}</h3>
+    <h3>{{ headlineLength }}</h3>
   </div>
 </div>
 
@@ -1232,6 +1232,9 @@ let marquee_app = new Vue ({
         }
       }
       return headlines;
+    },
+    headlineLength: function () {
+      return this.indexHeadlines.lenth;
     }
   },
 })
