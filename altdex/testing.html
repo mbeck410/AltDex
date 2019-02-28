@@ -1221,9 +1221,11 @@ Vue.component('index-performance', {
               <div class="slider_high">High: {{ dex.day_high }}</div>
             </div>
             <div class="bar"></div>
-            <div class="slider" :style="{'margin-left': dayHeight + '%'}">
-              <span class="fa fa-caret-up"></span>
-              <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+            <div class="slider_div" :style="{'margin-left': 85 + '%'}">
+              <div class="slider">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1235,7 +1237,7 @@ Vue.component('index-performance', {
               <div class="slider_high">High: {{ dex.week_high }}</div>
             </div>
             <div class="bar"></div>
-            <div class="slider_div" :style="{'margin-left': 0 + '%'}">
+            <div class="slider_div" :style="{'margin-left': weekHeight + '%'}">
               <div class="slider">
                 <span class="fa fa-caret-up"></span>
                 <div>{{ info.price.toFixed(2) }}&nbsp;</div>
@@ -1251,9 +1253,11 @@ Vue.component('index-performance', {
               <div class="slider_high">High: {{ dex.month_high }}</div>
             </div>
             <div class="bar"></div>
-            <div class="slider" :style="{'margin-left': monthHeight + '%'}">
-              <span class="fa fa-caret-up"></span>
-              <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+            <div class="slider_div" :style="{'margin-left': monthHeight + '%'}">
+              <div class="slider">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
             </div>
           </div>
         </div>
