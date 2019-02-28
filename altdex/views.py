@@ -375,7 +375,11 @@ def getindexperformance(request):
 
         if index.name != 'Null':
             entries = index.indexprice_set.order_by('-timestamp')
-            entries2 = index.indexprice_set.order_by('timestamp')
+            entries2 = index.indexprice_set.order_by('price')
+
+            max_price = entries2.first()
+            min_price = entries2.last()
+
             latest_entry = entries[0]
 
             current_price = latest_entry.price
@@ -466,6 +470,8 @@ def getindexperformance(request):
                             'month_low':month_low,
                             'day_high': day_high,
                             'day_low': day_low,
+                            'min_price': min_price,
+                            'max_price': max_price,
                             'month_percent': '{0:.2f}'.format(month_percent),
                             'week_percent': '{0:.2f}'.format(week_percent),
                         }

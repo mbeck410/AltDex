@@ -1185,7 +1185,13 @@ Vue.component('index-performance', {
       let current_month_diff = this.info.price - this.dex.month_low;
       let month_height = (current_month_diff / month_range_diff) * 85;
       return month_height.toFixed(1)
-    }
+    },
+    allHeight: function() {
+      let all_range_diff = this.dex.max_price - this.dex.min_price;
+      let all_diff = this.info.price - this.dex.min_price;
+      let all_height = (all_diff / all_range_diff) * 85;
+      return all_height.toFixed(1)
+    },
   },
   template: `
     <div>
@@ -1255,6 +1261,22 @@ Vue.component('index-performance', {
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': monthHeight + '%'}">
+              <div class="slider">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="all_ranges">
+          <div class="range_div">
+            <div class="range_label">Daily Range</div>
+            <div class="range">
+              <div class="slider_low">Low: {{ dex.min_price }}</div>
+              <div class="slider_high">High: {{ dex.max_price }}</div>
+            </div>
+            <div class="bar"></div>
+            <div class="slider_div" :style="{'margin-left': allHeight + '%'}">
               <div class="slider">
                 <span class="fa fa-caret-up"></span>
                 <div>{{ info.price.toFixed(2) }}&nbsp;</div>
