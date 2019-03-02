@@ -59,12 +59,9 @@ def pullcurrent(request):
 
 
 def testing(request):
-    if request.user.is_superuser:
-        with open('./altdex/testing.html') as file:
-            contents = file.read()
-            return HttpResponse(contents)
-    else:
-        return HttpResponse('error')
+    with open('./altdex/testing.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
 
 def testing2(request):
     if request.user.is_superuser:
