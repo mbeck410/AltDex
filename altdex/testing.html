@@ -203,6 +203,10 @@
           text-align: center;
         }
 
+        #index_chart_info {
+          display: flex
+        }
+
         .index_buttons {
           display: flex;
           justify-content: space-evenly;
@@ -880,6 +884,13 @@
                 <p><a href="/about/">Learn More</a></p>
               </div>
 
+              <div id="index_chart_info">
+                <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].symbol }}</div>
+                <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].price }}</div>
+                <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].price_percent }}</div>
+                <div id="chart_dex_symbol" v-cloak>{{ indexCap }}</div>
+              </div>
+
               <div id="coin_headers">
                 <div id="header_name" @click="sort('name')">Name</div>
                 <div id="header_price" @click="sort('price')">Price</div>
@@ -1317,7 +1328,18 @@ let side_app = new Vue({
               if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
               return 0;
           });
-      }
+      },
+      indexCap: function () {
+        let our_cap = this.indices[this.current_number].market_cap;
+        if (our_cap < 1000000000000) {
+          let final_cap = (our_cap / 1000000000).toPrecision(3);
+          let cap_string = final_cap.toString() + 'B'
+        } else if (our_cap >= 1000000000000) {
+          let final_cap = (our_cap / 1000000000000).toPrecision(3);
+          let cap_string = final_cap.toString() + 'T'
+        }
+        return cap_string;
+      },
     }
 })
 
