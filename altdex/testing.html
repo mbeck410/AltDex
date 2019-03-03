@@ -835,12 +835,6 @@
     </div>
 </nav>
 
-<!-- <div id="m_news">
-  <div class="marquee_news">
-    <h3 :style="{'width' : headlineLength + 'ch'}" v-cloak>{{ indexHeadlines }}</h3>
-  </div>
-</div> -->
-
 <!--Main Div-->
 <div class="main_div container-fluid text-center">
 
@@ -850,7 +844,7 @@
       <div id="left_bar" class="col-sm-3 sidenav">
 
         <ul class="nav nav-pills" id="tabs">
-          <li class="dropdown" id="drop_btn">
+          <li class="dropdown" id="drop_btn" v-cloak>
             <a id="menu_button" class="btn dropdown-toggle active" data-toggle="dropdown" href="#" v-cloak>
               {{ menu[menu_number] }} <span class="caret"></span>
             </a>
