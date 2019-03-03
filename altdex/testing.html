@@ -1153,10 +1153,10 @@ template: `
 `
 })
 
-<div class="changes">
-  <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
-  <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
-</div>
+// <div class="changes">
+//   <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
+//   <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
+// </div>
 
 Vue.component('index-performance', {
   props: ['dex', 'info'],
