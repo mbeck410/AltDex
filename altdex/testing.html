@@ -430,7 +430,6 @@
 
         .well {
           margin: 0;
-          /* padding: 1.0vw; */
           background-color: none;
           border-radius: none;
         }
@@ -445,7 +444,7 @@
           font-weight: bold;
           text-align: left;
           padding-left: 1vw;
-          width: 50%
+          width: 30%
           /* color: white; */
         }
 
@@ -454,11 +453,21 @@
           align-items: center;
         }
 
-        #constituents {
+        /* #constituents {
           text-align: right;
           font-size: 1.5vw;
           width: 50%;
           padding-right: 1vw;
+        } */
+
+        #dex_change {
+          font-size: 1.5vw;
+          width: 5%;
+        }
+
+        #dex_price {
+          font-size: 1.5vw;
+          width: 5%;
         }
 
         #index_time {
@@ -983,10 +992,12 @@
         </div>
 
         <div v-for="(row, index) in info">
-          <div id=index_header>
+          <div id=index_header v-cloak>
             <div id="index_symbol" v-cloak>{{ row.name }} Index ({{ row.symbol }})</div>
-            <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
-            <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
+            <div id="dex_change"
+            v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}" v-cloak>{{ row.change_24h.toFixed(2) }}</div>
+            <div id="dex_percent"
+            v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}" v-cloak>{{ row.price_percent.toFixed(2) }}%</div>
             <!-- <div id="constituents" v-cloak>Number of Constituents: {{ constituents[index] }}</div> -->
           </div>
           <div class="well blade">
