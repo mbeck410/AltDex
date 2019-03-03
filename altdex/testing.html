@@ -843,12 +843,12 @@
       <!--Fix Left Sidebar-->
       <div id="left_bar" class="col-sm-3 sidenav">
 
-        <ul class="nav nav-pills" id="tabs">
+        <ul class="nav nav-pills" id="tabs" v-cloak>
           <li class="dropdown" id="drop_btn" v-cloak>
             <a id="menu_button" class="btn dropdown-toggle active" data-toggle="dropdown" href="#" v-cloak>
-              {{ menu[menu_number] }} <span class="caret"></span>
+              <div v-cloak>{{ menu[menu_number] }}</div> <span class="caret" v-cloak></span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" v-cloak>
             	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
           		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performace</a></li>
               <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
