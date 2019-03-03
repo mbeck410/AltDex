@@ -216,19 +216,16 @@
         #index_chart_price {
           width: 20%;
           text-align: right;
-          font-weight: bold;
         }
 
         #index_chart_percent {
           width: 15%;
           text-align: right;
-          font-weight: bold;
         }
 
         #index_chart_cap {
           width: 15%;
           text-align: right;
-          font-weight: bold;
         }
 
         .index_buttons {
@@ -910,7 +907,7 @@
 
               <div id="index_chart_info" v-cloak>
                 <div id="index_chart_symbol" v-cloak>{{ info[current_number].symbol }}</div>
-                <div id="index_chart_price" v-cloak>{{ info[current_number].price }}</div>
+                <div id="index_chart_price" v-cloak>{{ info[current_number].price.toFixed(2) }}</div>
                 <div id="index_chart_percent"
                 v-bind:class="{'pos' : info[current_number].price_percent>0, 'neg' : info[current_number].price_percent<0}"
                 v-cloak>{{ info[current_number].price_percent }}%</div>
