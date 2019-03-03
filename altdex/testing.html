@@ -915,7 +915,7 @@
                 <div id="index_chart_percent"
                 v-bind:class="{'pos' : info[current_number].price_percent>0, 'neg' : info[current_number].price_percent<0}"
                 v-cloak>{{ info[current_number].price_percent }}%</div>
-                <div id="index_chart_cap" v-cloak>{{ indexCap }}</div>
+                <div id="index_chart_cap" v-cloak>${{ indexCap }}</div>
               </div>
 
               <div id="coin_headers">
@@ -984,7 +984,9 @@
         <div v-for="(row, index) in info">
           <div id=index_header>
             <div id="index_symbol" v-cloak>{{ row.name }} Index ({{ row.symbol }})</div>
-            <div id="constituents" v-cloak>Number of Constituents: {{ constituents[index] }}</div>
+            <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
+            <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
+            <!-- <div id="constituents" v-cloak>Number of Constituents: {{ constituents[index] }}</div> -->
           </div>
           <div class="well blade">
             <div class="trend">
@@ -1125,14 +1127,15 @@ template: `
           Last Update: {{row.time.slice(0,19)}} UTC
         </div>
       </div>
-      <div class="changes">
-        <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
-        <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
-      </div>
     </div>
   </div>
 `
 })
+
+// <div class="changes">
+//   <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
+//   <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
+// </div>
 
 Vue.component('index-performance', {
   props: ['dex', 'info'],
