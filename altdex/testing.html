@@ -481,7 +481,8 @@
         }
 
         .changes {
-          font-size: 2.5vw;
+          font-size: 2.0vw;
+          display: flex;
         }
 
         /*Navbar*/
@@ -996,10 +997,10 @@
         <div v-for="(row, index) in info">
           <div id=index_header v-cloak>
             <div id="index_symbol" v-cloak>{{ row.name }} Index ({{ row.symbol }})</div>
-            <div id="dex_change"
+            <!-- <div id="dex_change"
             v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}" v-cloak>{{ row.change_24h.toFixed(2) }}</div>
             <div id="dex_percent"
-            v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}" v-cloak>{{ row.price_percent.toFixed(2) }}%</div>
+            v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}" v-cloak>{{ row.price_percent.toFixed(2) }}%</div> -->
             <!-- <div id="constituents" v-cloak>Number of Constituents: {{ constituents[index] }}</div> -->
           </div>
           <div class="well blade">
@@ -1134,22 +1135,26 @@ Vue.component('index-info', {
 props: ['row'],
 template: `
   <div>
-    <div class="indices_data">
-      <div>
+    <div>
+      <div class="indices_data">
         <div id="index_price">{{ row.price.toFixed(2) }}</div>
         <div id="index_time">
           Last Update: {{row.time.slice(0,19)}} UTC
         </div>
+      </div>
+      <div class="changes">
+        <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
+        <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
       </div>
     </div>
   </div>
 `
 })
 
-// <div class="changes">
-//   <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
-//   <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
-// </div>
+<div class="changes">
+  <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
+  <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
+</div>
 
 Vue.component('index-performance', {
   props: ['dex', 'info'],
