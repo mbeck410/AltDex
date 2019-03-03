@@ -884,12 +884,12 @@
                 <p><a href="/about/">Learn More</a></p>
               </div>
 
-              <!-- <div id="index_chart_info">
-                <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].symbol }}</div>
-                <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].price }}</div>
-                <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].price_percent }}</div>
-                <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].market_cap }}</div>
-              </div> -->
+              <div id="index_chart_info">
+                <div id="chart_dex_symbol" v-cloak>{{ info[current_number].symbol }}</div>
+                <div id="chart_dex_symbol" v-cloak>{{ info[current_number].price }}</div>
+                <div id="chart_dex_symbol" v-cloak>{{ info[current_number].price_percent }}</div>
+                <div id="chart_dex_symbol" v-cloak>{{ info[current_number].market_cap }}</div>
+              </div>
 
               <div id="coin_headers">
                 <div id="header_name" @click="sort('name')">Name</div>
@@ -1373,7 +1373,6 @@ function pull_main() {
       }
     vm.rows = index_data
     cm.info = index_data
-    marquee_app.index_prices = index_data
     })
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
