@@ -534,15 +534,15 @@ def gainers_losers(request):
 
 
 def index_trend(request):
-    indices = Index.objects.all().exclude(name='Null')
+    indices = Index.objects.all().exclude(name='Null').order_by('id')
     price_array = []
     for index in indices:
 
-        index_prices = index.indexprice_set.order_by('-timestamp')
+        # index_prices = index.indexprice_set.order_by('-timestamp')
         prices = []
 
         for i in range(0, 1049, 50):
-            prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
+            prices.append([index.indexprice_set.order_by('-timestamp')[i].timestamp, float(index.indexprice_set.order_by('-timestamp')[i].price)])
 
         price_array.append(prices[::-1])
 
