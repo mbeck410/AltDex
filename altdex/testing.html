@@ -212,7 +212,7 @@
         }
 
         #menu_button {
-          font-size: 1.4vw;
+          font-size: 1.2vw;
         }
 
         .nav .open>a {
@@ -900,13 +900,13 @@
 
         <ul class="nav nav-pills" id="tabs">
           <li class="dropdown" id="drop_btn">
-            <a id="menu_button" class="btn dropdown-toggle active" data-toggle="dropdown" href="#">
+            <a id="menu_button" class="btn dropdown-toggle active" data-toggle="dropdown" href="#" v-cloak>
               {{ menu[menu_number] }} <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-            	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Coins</a></li>
+            	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
           		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performace</a></li>
-              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Crypto News</a></li>
+              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
             </ul>
           </li>
       </ul>
@@ -1326,7 +1326,7 @@ let side_app = new Vue({
     pie_data: [],
     indices: [],
     info: [],
-    menu: ['Coins','Performace','Crypto News'],
+    menu: ['Cryptocurrencies','Performace','Newswire'],
     menu_number: 0,
     constituents:[100, 23, 17, 14],
     index_names: ['AltDex 100 Cryptocurrency Index (ALT100) ',
