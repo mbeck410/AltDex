@@ -211,6 +211,10 @@
           font-size: 1.4vw;
         }
 
+        #menu_button {
+          font-size: 1.4vw;
+        }
+
         .nav .open>a {
           background-color: #6dc0eb;
         }
@@ -895,8 +899,8 @@
       <div id="left_bar" class="col-sm-3 sidenav">
 
         <ul class="nav nav-pills" id="tabs">
-          <li class="dropdown">
-            <a  id="drop_btn" class="btn dropdown-toggle active" data-toggle="dropdown" href="#">
+          <li class="dropdown" id="drop_btn">
+            <a id="menu_button" class="btn dropdown-toggle active" data-toggle="dropdown" href="#">
               {{ menu[menu_number] }} <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -927,7 +931,6 @@
                 <p v-cloak>{{ descriptions[current_number] }}</p>
                 <ul>
                   <li v-cloak>Number of Constituents: {{ constituents[current_number] }}</li>
-                  <li v-cloak>{{ second_para[current_number] }}</li>
                 </ul>
                 <p><a href="/about/">Learn More</a></p>
               </div>
@@ -1334,10 +1337,6 @@ let side_app = new Vue({
                   'The AltDex Exchange Index is a market capitalization-weighted benchmark index for the industry&#39;s leading crypto exchange tokens.',
                   'The AltDex Privacy Index is a market capitalization-benchmark index for cryptocurrencies and tokens focused on privacy or security.',
                   'The AltDex Masternode Index is a market capitalization-weighted benchmark index for cryptocurrencies that leverage masternodes to support network functionality without hyperinflation.'],
-    second_para: ['Trailing 30 day average daily trading volume $100,000.',
-                  'Market capitalization greater than $5,000,000.',
-                  'Market capitalization greater than $5,000,000.',
-                  'Market capitalization greater than $5,000,000.'],
     current_index: 'AltDex',
     current_number: 0,
     current_sort: 'market_cap',
