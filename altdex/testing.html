@@ -207,6 +207,26 @@
           display: flex
         }
 
+        #index_chart_symbol {
+          width: 50%;
+          text-align: left;
+        }
+
+        #index_chart_price {
+          width: 20%;
+          text-align: right;
+        }
+
+        #index_chart_percent {
+          width: 15%;
+          text-align: right;
+        }
+
+        #index_chart_cap {
+          width: 15%;
+          text-align: right;
+        }
+
         .index_buttons {
           display: flex;
           justify-content: space-evenly;
@@ -884,11 +904,11 @@
                 <p><a href="/about/">Learn More</a></p>
               </div>
 
-              <div id="index_chart_info">
-                <div id="chart_dex_symbol" v-cloak>{{ info[current_number].symbol }}</div>
-                <div id="chart_dex_symbol" v-cloak>{{ info[current_number].price }}</div>
-                <div id="chart_dex_symbol" v-cloak>{{ info[current_number].price_percent }}</div>
-                <div id="chart_dex_symbol" v-cloak>{{ info[current_number].market_cap }}</div>
+              <div id="index_chart_info" v-cloak>
+                <div id="index_chart_symbol" v-cloak>{{ info[current_number].symbol }}</div>
+                <div id="index_chart_price" v-cloak>{{ info[current_number].price }}</div>
+                <div id="index_chart_percent" v-cloak>{{ info[current_number].price_percent }}</div>
+                <div id="index_chart_cap" v-cloak>{{ indexCap }}</div>
               </div>
 
               <div id="coin_headers">
@@ -1329,17 +1349,17 @@ let side_app = new Vue({
               return 0;
           });
       },
-      // indexCap: function () {
-      //   let our_cap = this.indices[0].market_cap;
-      //   // if (our_cap < 1000000000000) {
-      //   //   let final_cap = (our_cap / 1000000000).toPrecision(3);
-      //   //   let cap_string = final_cap.toString() + 'B'
-      //   // } else if (our_cap >= 1000000000000) {
-      //   //   let final_cap = (our_cap / 1000000000000).toPrecision(3);
-      //   //   let cap_string = final_cap.toString() + 'T'
-      //   // }
-      //   return our_cap;
-      // },
+      indexCap: function () {
+        let our_cap = this.info[this.current_number].market_cap;
+        if (our_cap < 1000000000000) {
+          let final_cap = (our_cap / 1000000000).toPrecision(3);
+          let cap_string = final_cap.toString() + 'B'
+        } else if (our_cap >= 1000000000000) {
+          let final_cap = (our_cap / 1000000000000).toPrecision(3);
+          let cap_string = final_cap.toString() + 'T'
+        }
+        return our_cap;
+      },
     }
 })
 
