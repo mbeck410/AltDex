@@ -538,7 +538,7 @@ def index_trend(request):
     price_array = []
     for index in indices:
 
-        index_prices = index.indexprice_set.order_by('-timestamp').values('price', 'timestamp')
+        index_prices = index.indexprice_set.order_by('-timestamp')
         prices = []
 
         for i in range(0, 1049, 50):
