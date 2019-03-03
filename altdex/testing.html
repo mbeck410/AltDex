@@ -96,65 +96,18 @@
           overflow: hidden;
         }
 
-        /* Marquee News */
-          /* .marquee_news {
-           height: 24px;
-           overflow: hidden;
-           position: relative;
-          }
-
-          .marquee_news h3 {
-           font-size: 1.4em;
-           color: black;
-           position: absolute;
-           height: 100%;
-           margin: auto;
-           vertical-align: middle;
-           text-align: center; */
-           /* Starting position */
-           /* -moz-transform:translateX(100%);
-           -webkit-transform:translateX(100%);
-           transform:translateX(100%); */
-           /* Apply animation to this element */
-           /* -moz-animation: marquee_news 80s linear infinite;
-           -webkit-animation: marquee_news 80s linear infinite;
-           animation: marquee_news 80s linear infinite; */
-          }
-
-          /* Move it (define the animation) */
-          /* @-moz-keyframes marquee_news {
-           0%   { -moz-transform: translateX(100%); }
-           100% { -moz-transform: translateX(-100%); }
-          }
-          @-webkit-keyframes marquee_news {
-           0%   { -webkit-transform: translateX(100%); }
-           100% { -webkit-transform: translateX(-100%); }
-          }
-          @keyframes marquee_news {
-           0%   {
-           -moz-transform: translateX(50%);
-           -webkit-transform: translateX(50%);
-           transform: translateX(50%);
-           }
-           100% {
-           -moz-transform: translateX(-100%);
-           -webkit-transform: translateX(-100%);
-           transform: translateX(-100%);
-           }
-          }  */
+        #main_bar {
+          padding: 0;
+          height: 100%;
+          overflow-y: auto;
+          background-color: #ededed;
+        }
 
         #left_bar {
           height: 100%;
           overflow-y: scroll;
           background-color: white;
           overflow-x: hidden;
-        }
-
-        #main_bar {
-          padding: 0;
-          height: 100%;
-          overflow-y: auto;
-          background-color: #ededed;
         }
 
         .intro {
@@ -907,7 +860,7 @@
               <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
             </ul>
           </li>
-      </ul>
+        </ul>
 
         <div class="tab-content">
 
