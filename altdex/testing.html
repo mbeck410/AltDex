@@ -1354,12 +1354,15 @@ let side_app = new Vue({
         let final_cap = 0;
         if (1000000000 <= our_cap < 1000000000000) {
           final_cap = our_cap / 1000000000;
+          final_cap.toPrecision(3)
           // let cap_string = final_cap.toString() + 'B'
         } else if (our_cap >= 1000000000000) {
           final_cap = our_cap / 1000000000000;
+          final_cap.toPrecision(3)
           // cap_string = final_cap.toString() + 'T'
         } else {
           final_cap = our_cap / 1000000;
+          final_cap.toPrecision(3)
           // let cap_string = final_cap.toString() + 'M'
         }
         return final_cap;
