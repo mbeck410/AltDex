@@ -1352,19 +1352,20 @@ let side_app = new Vue({
       indexCap: function () {
         let our_cap = this.info[this.current_number].market_cap;
         let final_cap = 0;
-        let test = 0;
+        let decimal = 0;
+        let cap_string = '';
         if (1000000000 <= our_cap < 1000000000000) {
           final_cap = our_cap / 1000000000;
-          test = final_cap.toPrecision(3)
-          let cap_string = test.toString() + 'B'
+          decimal = final_cap.toPrecision(3)
+          let cap_string = decimal.toString() + 'B'
         } else if (our_cap >= 1000000000000) {
           final_cap = our_cap / 1000000000000;
-          test = final_cap.toPrecision(3)
-          cap_string = test.toString() + 'T'
+          decimal = final_cap.toPrecision(3)
+          cap_string = decimal.toString() + 'T'
         } else {
           final_cap = our_cap / 1000000;
-          test = final_cap.toPrecision(3)
-          let cap_string = test.toString() + 'M'
+          decimal = final_cap.toPrecision(3)
+          cap_string = decimal.toString() + 'M'
         }
         return cap_string;
       },
