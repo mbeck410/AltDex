@@ -431,7 +431,8 @@
         }
 
         .well {
-          margin: 0;
+          margin-top: 0;
+          margin-bottom: 0;
           background-color: none;
           /* border-radius: none; */
         }
@@ -1138,7 +1139,7 @@ props: ['row'],
 template: `
   <div>
     <div>
-      <div class="indices_data">
+      <div>
         <div id="index_price">{{ row.price.toFixed(2) }}</div>
         <div id="index_time">
           Last Update: {{row.time.slice(0,19)}} UTC
