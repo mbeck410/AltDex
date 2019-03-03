@@ -1310,7 +1310,7 @@ let side_app = new Vue({
                   'AltDex Privacy Coin Index (ALTPRV)',
                   'AltDex Masternode Index (ALTMSN)'],
     descriptions: ['The AltDex 100 is a market capitalization-weighted benchmark index for large-cap cryptocurrencies and tokens',
-                  'The AltDex Exchange Index is a market capitalization-weighted benchmark index for the industry&#39;s leading crypto exchange tokens.',
+                  'The AltDex Exchange Index is a market capitalization-weighted benchmark index for the industry' + "'" + 's leading crypto exchange tokens.',
                   'The AltDex Privacy Index is a market capitalization-benchmark index for cryptocurrencies and tokens focused on privacy or security.',
                   'The AltDex Masternode Index is a market capitalization-weighted benchmark index for cryptocurrencies that leverage masternodes to support network functionality without hyperinflation.'],
     current_index: 'AltDex',
@@ -1356,15 +1356,15 @@ let side_app = new Vue({
         if (1000000000 <= our_cap < 1000000000000) {
           final_cap = our_cap / 1000000000;
           test = final_cap.toPrecision(3)
-          // let cap_string = final_cap.toString() + 'B'
+          let cap_string = test.toString() + 'B'
         } else if (our_cap >= 1000000000000) {
           final_cap = our_cap / 1000000000000;
           test = final_cap.toPrecision(3)
-          // cap_string = final_cap.toString() + 'T'
+          cap_string = test.toString() + 'T'
         } else {
           final_cap = our_cap / 1000000;
           test = final_cap.toPrecision(3)
-          // let cap_string = final_cap.toString() + 'M'
+          let cap_string = test.toString() + 'M'
         }
         return test;
       },
