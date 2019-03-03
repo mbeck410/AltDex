@@ -896,12 +896,12 @@
         <ul class="nav nav-pills" id="tabs">
           <li class="dropdown" id="drop_btn">
             <a class="btn dropdown-toggle active" data-toggle="dropdown" href="#">
-              Menu <span class="caret"></span>
+              {{ menu[menu_number] }} <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-            	<li><a href="#coins_tab" data-toggle="tab">Coins</a></li>
-          		<li><a href="#performance_tab" data-toggle="tab">Performace</a></li>
-              <li><a href="#news_tab" data-toggle="tab">Crypto News</a></li>
+            	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Coins</a></li>
+          		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performace</a></li>
+              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Crypto News</a></li>
             </ul>
           </li>
       </ul>
@@ -966,7 +966,7 @@
             </div>
 
             <div id="news_tab" class="tab-pane fade">
-              <h2 id="news_header">Crypto News</h2>
+              <!-- <h2 id="news_header">Crypto News</h2> -->
 
               <div class="feedgrabbr_widget" id="fgid_038586913a98322aa78993bf8"></div>
 
@@ -1322,6 +1322,8 @@ let side_app = new Vue({
     pie_data: [],
     indices: [],
     info: [],
+    menu: ['Coins','Performace','Crypto News'],
+    menu_number: 0,
     constituents:[100, 23, 17, 14],
     index_names: ['AltDex 100 Cryptocurrency Index (ALT100) ',
                   'AltDex Exchange Token Index (ALTEXC)',
@@ -1344,6 +1346,9 @@ let side_app = new Vue({
       changeFilter: function(index, num) {
         this.current_index = index;
         this.current_number = num;
+      },
+      changeMenu: function(number) {
+        this.menu_number = number;
       },
       filter: function(coins) {
         index = this.current_index;
