@@ -888,7 +888,7 @@
                 <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].symbol }}</div>
                 <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].price }}</div>
                 <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].price_percent }}</div>
-                <div id="chart_dex_symbol" v-cloak>{{ indexCap }}</div>
+                <div id="chart_dex_symbol" v-cloak>{{ indices[current_number].market_cap }}</div>
               </div>
 
               <div id="coin_headers">
@@ -1329,17 +1329,17 @@ let side_app = new Vue({
               return 0;
           });
       },
-      indexCap: function () {
-        let our_cap = this.indices[0].market_cap;
-        // if (our_cap < 1000000000000) {
-        //   let final_cap = (our_cap / 1000000000).toPrecision(3);
-        //   let cap_string = final_cap.toString() + 'B'
-        // } else if (our_cap >= 1000000000000) {
-        //   let final_cap = (our_cap / 1000000000000).toPrecision(3);
-        //   let cap_string = final_cap.toString() + 'T'
-        // }
-        return our_cap;
-      },
+      // indexCap: function () {
+      //   let our_cap = this.indices[0].market_cap;
+      //   // if (our_cap < 1000000000000) {
+      //   //   let final_cap = (our_cap / 1000000000).toPrecision(3);
+      //   //   let cap_string = final_cap.toString() + 'B'
+      //   // } else if (our_cap >= 1000000000000) {
+      //   //   let final_cap = (our_cap / 1000000000000).toPrecision(3);
+      //   //   let cap_string = final_cap.toString() + 'T'
+      //   // }
+      //   return our_cap;
+      // },
     }
 })
 
