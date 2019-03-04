@@ -724,6 +724,144 @@
             color: black;
         }
 
+        /*Themes*/
+
+        /*Dark Theme*/
+        .t--dark {
+            background-color: #262626;
+            color: #D0D0D0;
+            -webkit-font-smoothing: antialiased !important;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+            -webkit-text-stroke: 1px transparent;
+        }
+
+        .t--dark .main_div {
+            background-color: #262626;
+        }
+
+        .t--dark .w_name_link {
+            color: #D0D0D0;
+        }
+
+        .t--dark .coin_row {
+            background-color: #444444;
+            border-color: #808080;
+        }
+
+        .t--dark .w_name {
+            color: #D0D0D0;
+            font-weight: bold;
+        }
+
+        .t--dark .well {
+            background-color: #444444;
+            color: #D0D0D0;
+        }
+
+        .t--dark .pos {
+            color: #00ff00;
+        }
+
+        .t--dark .neg {
+            color: #ec1313;
+        }
+
+        .t--dark #title_gainers {
+            color: #00ff00
+        }
+
+        .t--dark #title_losers {
+            color: #ec1313;
+        }
+
+        .t--dark #dark_bt {
+            background-color: #6dc0eb;
+            content: 'Light';
+        }
+
+        .t--dark .gl_data:hover {
+            color: black;
+        }
+
+        .t--dark .gl_data {
+            border-color: #808080;
+        }
+
+        .t--dark .w_data {
+            border-color: #808080;
+        }
+
+        .t--dark .coin_row:hover {
+            color: black;
+            background-color: #ededed;
+        }
+
+        .t--dark .feedgrabbr_widget2 {
+            display: inline;
+        }
+
+        .t--dark .feedgrabbr_widget {
+            display: none;
+        }
+
+        /*Light Mode*/
+
+        .t--light {
+            background-color: #ededed;
+            color: black;
+        }
+
+        .t--light .pos {
+            color: green;
+        }
+
+        .t--light .neg {
+            color: red;
+        }
+
+        .t--light #title_gainers {
+            color: green;
+            /*color: #00ff00;*/
+        }
+
+        .t--light #title_losers {
+            color: red;
+        }
+
+        .t--light .main_div {
+            background-color: #ededed;
+        }
+
+        .t--light .w_name_link {
+            color: black;
+            font-weight: bold;
+        }
+
+        .t--light .coin_row {
+            background-color: white;
+        }
+
+        .t--light .w_name {
+            color: black;
+            font-weight: bold;
+        }
+
+        .t--light #dark_bt {
+            background-color: #262626;
+        }
+
+        .t--light .coin_row:hover {
+            color: black;
+            background-color: #ededed;
+        }
+
+        .t--light .feedgrabbr_widget {
+            display: initial;
+        }
+
+        .t--light .feedgrabbr_widget2 {
+            display: none;
+        }
 
         @media screen and (max-width: 767px) {
 
@@ -1090,6 +1228,86 @@
 
 <!--Javascript-->
 <script>
+
+let dark_bt = document.querySelector('#dark_bt');
+let mode = localStorage.getItem("mode");
+let body = document.querySelector('body');
+
+// Getting and Setting Theme from localStorage 'mode'
+if (mode === null) {
+    localStorage.setItem("mode", "light");
+    body.classList.add('t--light');
+} else if (mode === 'dark') {
+    body.classList.remove('t--light');
+    body.classList.add('t--dark');
+} else {
+    body.classList.remove('t--dark');
+    body.classList.add('t--light');
+}
+
+function change_color(div) {
+  let my_div = document.getElementById(div);
+  let color = my_div.style.color;
+  // console.log(color)
+  if (color === 'green') {
+    my_div.style.color = 'rgb(0, 255, 0)';
+  }
+  else if (color === 'rgb(0, 255, 0)') {
+    my_div.style.color = 'green';
+  }
+  else if (color === 'red') {
+    my_div.style.color = 'rgb(236, 19, 19)';
+  }
+  else if (color === 'rgb(236, 19, 19)') {
+    my_div.style.color = 'red';
+  }
+}
+
+// Changing Mode/Theme on button click
+dark_bt.onclick = function () {
+    change_color('perf_day_change')
+    change_color('perf_day_percent')
+    change_color('perf_week_change')
+    change_color('perf_week_percent')
+    change_color('perf_month_change')
+    change_color('perf_month_percent')
+
+    // Light to Dark
+    if (body.classList.contains('t--light')) {
+        body.classList.remove('t--light');
+        body.classList.add('t--dark');
+        localStorage.setItem("mode", "dark");
+    }
+
+    // Dark to Light
+    else {
+        body.classList.remove('t--dark');
+        body.classList.add('t--light');
+        localStorage.setItem("mode", "light");
+    }
+};
+
+// Div Colored Values Functions
+function set_value_color(div, value) {
+  this_div = document.getElementById(div)
+  this_div.innerHTML = value
+  if (value > 0) {
+    if (body.classList.contains('t--light')) {
+      this_div.style.color = 'green';
+    }
+    else {
+      this_div.style.color = 'rgb(0, 255, 0)';
+    }
+  }
+  else if (value < 0) {
+    if (body.classList.contains('t--light')) {
+      this_div.style.color = 'red';
+    }
+    else {
+      this_div.style.color = 'rgb(236, 19, 19)';
+    }
+  }
+};
 
 Vue.component('coin-list', {
   props: ['coin'],
