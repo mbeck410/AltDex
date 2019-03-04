@@ -1097,7 +1097,7 @@
           <div class="well blade">
             <div class="trend">
               <area-chart :data="trend[index]"
-              :library="{title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'}, scales: {xAxes: [{display: false}]}}"
+              :library=light_chart
               height="160px"
               :min="null"
               :max="null"
@@ -1488,6 +1488,7 @@ Vue.component('index-performance', {
 let one_app = new Vue({
   el: '#one_app',
   data: {
+    light_chart: {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'}, scales: {xAxes: [{display: false}]}},
     coins: [],
     pie_data: [],
     indices: [],
