@@ -304,6 +304,70 @@
           padding-bottom: 1vw;
         }
 
+        /* Loading Wheel */
+
+        #performance_div {
+          display: none;
+        }
+
+        #loader {
+            position: relative;
+            left: 46%;
+            top: 50%;
+            z-index: 1;
+            /*width: 75px;*/
+            /*height: 75px;*/
+            /*margin: -75px 0 0 -75px;*/
+            border: 10px solid lightgray;
+            border-radius: 50%;
+            border-top: 10px solid #6dc0eb;
+            width: 75px;
+            height: 75px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            /*text-align: center;*/
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
+            to {
+                bottom: 0px;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+
         /* Mailchimp */
         #mc_embed_signup  {
           background:#fff;
@@ -1059,7 +1123,9 @@
                 v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
               </div>
 
-              <div>
+              <div id="loader">
+
+              <div id="performance_div">
                 <index-performance
                 v-bind:dex="indices[current_number]"
                 v-bind:info="info[current_number]"></index-performance>
@@ -1553,6 +1619,12 @@ function pull_news() {
       fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
 }
 
+function showPage() {
+    document.getElementById("loader").style.display = "none";
+    // document.getElementById("time_bts").style.display = "block";
+    document.getElementById("performance_div").style.display = "block";
+}
+
 // pull_news();
 
 function pull_big() {
@@ -1570,7 +1642,7 @@ function pull_big() {
         index_data.push(data.dict_key[i]);
       }
     vm.indices = index_data;
-    })
+  }).then(showPage())
   fetch('/index_trend/')
     .then(function (response) {
       return response.json()
@@ -1667,10 +1739,11 @@ function pull_small() {
     pie_chart.push(wdata_4);
     vm.pie_data = pie_chart;
     vm.coins = coin_data;
-  }).then(pull_news())
+  })
   };
 
 function get_data() {
+  pull_news()
   pull_small();
   pull_big();
 };
