@@ -931,7 +931,7 @@
 
               <div id="index_chart_info" v-cloak>
                 <div id="index_chart_symbol" v-cloak><a class="light_blue_links" :href="info.link" target="_blank"
-                  >{{ info[current_number].symbol }}<a></div>
+                  >{{ info[current_number].symbol }}</a></div>
                 <div id="index_chart_price" v-cloak>{{ info[current_number].price.toFixed(2) }}</div>
                 <div id="index_chart_percent"
                 v-bind:class="{'pos' : info[current_number].price_percent>0, 'neg' : info[current_number].price_percent<0}"
@@ -1005,7 +1005,8 @@
 
         <div v-for="(row, index) in info">
           <div id=index_header v-cloak>
-            <div id="index_symbol" v-cloak>{{ row.name }} Index <a class="light_blue_links" :href="row.link" target="_blank">({{ row.symbol }})<a></div>
+            <div id="index_symbol" v-cloak>{{ row.name }} Index
+              <a class="light_blue_links" :href="row.link" target="_blank">({{ row.symbol }})</a></div>
           </div>
           <div class="well blade">
             <div class="trend">
