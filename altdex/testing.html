@@ -1621,8 +1621,6 @@ function pull_news() {
 
 function showPage() {
     document.getElementById("loader").style.display = "none";
-    // document.getElementById("time_bts").style.display = "block";
-    // document.getElementById("performance_div").style.display = "block";
 }
 
 // pull_news();
@@ -1633,16 +1631,6 @@ function pull_big() {
   let vm = one_app;
   let index_data = [];
   let trend_line = [];
-  fetch('/getindexperformance/')
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      for (let i = 0; i < data.dict_key.length; ++i) {
-        index_data.push(data.dict_key[i]);
-      }
-    vm.indices = index_data;
-  }).then(showPage())
   fetch('/index_trend/')
     .then(function (response) {
       return response.json()
@@ -1653,6 +1641,16 @@ function pull_big() {
       }
     vm.trend = trend_line
     })
+  fetch('/getindexperformance/')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        index_data.push(data.dict_key[i]);
+      }
+    vm.indices = index_data;
+  }).then(showPage())
   };
 
 function pull_small() {
