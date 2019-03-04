@@ -1097,7 +1097,7 @@
           <div class="well blade">
             <div class="trend">
               <area-chart :data="trend[index]"
-              :library=chartSettings
+              :library=chart_settings
               height="160px"
               :min="null"
               :max="null"
@@ -1447,8 +1447,8 @@ Vue.component('index-performance', {
 let one_app = new Vue({
   el: '#one_app',
   data: {
-    // light_chart: {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'},
-    //               scales: {xAxes: [{display: false}]}},
+    chart_settings: {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom', fontColor: '#D0D0D0'},
+                  scales: {xAxes: [{display: false}]}},
     coins: [],
     pie_data: [],
     indices: [],
@@ -1494,16 +1494,15 @@ let one_app = new Vue({
       }
     },
     computed: {
-      chartSettings: function () {
-        let mode = this.localStorage.getItem("mode");
-        if (mode === 'dark') {
-          return {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom', fontColor: '#D0D0D0'},
-                        scales: {xAxes: [{display: false}]}},
-        } else {
-          return {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'},
-                        scales: {xAxes: [{display: false}]}},
-        }
-      },
+      // chartSettings: function () {
+      //   let mode = this.localStorage.getItem("mode");
+      //   if (mode === 'dark') {
+      //
+      //   } else {
+      //     return {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'},
+      //                   scales: {xAxes: [{display: false}]}},
+      //   }
+      // },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
               let modifier = 1;
