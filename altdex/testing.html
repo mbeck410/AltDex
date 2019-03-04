@@ -1553,7 +1553,7 @@ function pull_news() {
       fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
 }
 
-pull_news();
+// pull_news();
 
 function pull_big() {
   // Alias the component instance as `vm`, so that we
@@ -1667,7 +1667,7 @@ function pull_small() {
     pie_chart.push(wdata_4);
     vm.pie_data = pie_chart;
     vm.coins = coin_data;
-    })
+  }).then(pull_news())
   };
 
 function get_data() {
