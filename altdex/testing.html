@@ -1123,8 +1123,6 @@
                 v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
               </div>
 
-              <div id="loader"></div>
-
               <div id="performance_div">
                 <index-performance
                 v-bind:dex="indices[current_number]"
@@ -1171,12 +1169,15 @@
           </div>
           <div class="well blade">
             <div class="trend">
-              <area-chart :data="trend[index]"
-              :library=chart_settings
-              height="160px"
-              :min="null"
-              :max="null"
-              :colors="['#6dc0eb']"></area-chart>
+              <div id="loader"></div>
+              <div id="charts">
+                <area-chart :data="trend[index]"
+                :library=chart_settings
+                height="160px"
+                :min="null"
+                :max="null"
+                :colors="['#6dc0eb']"></area-chart>
+              </div>
             </div>
 
             <index-info class="indices"
@@ -1620,8 +1621,8 @@ function pull_news() {
 }
 
 function showPage() {
-    document.querySelectorAll(".tab-content>.tab-pane>#loader").style.display = "none";
-    // document.getElementById("time_bts").style.display = "block";
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("charts").style.display = "block";
     // document.getElementById("performance_div").style.display = "block";
 }
 
@@ -1633,16 +1634,6 @@ function pull_big() {
   let vm = one_app;
   let index_data = [];
   let trend_line = [];
-  fetch('/index_trend/')
-    .then(function (response) {
-      return response.json()
-    })
-    .then(function (data) {
-      for (let i = 0; i < data.dict_key.length; ++i) {
-        trend_line.push(data.dict_key[i])
-      }
-    vm.trend = trend_line
-    })
   fetch('/getindexperformance/')
     .then(function (response) {
       return response.json();
@@ -1652,7 +1643,17 @@ function pull_big() {
         index_data.push(data.dict_key[i]);
       }
     vm.indices = index_data;
-  }).then(showPage())
+  })
+  fetch('/index_trend/')
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        trend_line.push(data.dict_key[i])
+      }
+    vm.trend = trend_line
+    }).then(showPage())
   };
 
 function pull_small() {
