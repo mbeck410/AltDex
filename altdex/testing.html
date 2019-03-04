@@ -989,7 +989,7 @@
             <ul class="dropdown-menu" v-cloak>
             	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
           		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performace</a></li>
-              <li><a id="news_btn" href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
+              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
             </ul>
           </li>
         </ul>
@@ -1545,9 +1545,7 @@ let one_app = new Vue({
     }
 })
 
-let news_btn = document.querySelector("#news_btn");
-
-news_btn.onclick = function() {
+function pull_news() {
   if (typeof (fg_widgets) === "undefined") {
       fg_widgets = new Array();
   }
@@ -1669,6 +1667,8 @@ function pull_small() {
     vm.coins = coin_data;
     })
   };
+
+pull_news();
 
 function get_data() {
   pull_small();
