@@ -1670,7 +1670,7 @@ function pull_small() {
   };
 
 function get_data() {
-  pull_small().then(pull_big());
+  pull_small().then(return pull_big());
 };
 
 get_data();
