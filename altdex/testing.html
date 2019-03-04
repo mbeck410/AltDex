@@ -1609,6 +1609,7 @@ function pull_small() {
       }
     vm.info = index_data
     })
+    .then(pull_news())
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
       .then(function (response) {
@@ -1672,8 +1673,6 @@ function get_data() {
   pull_small();
   pull_big();
 };
-
-pull_news().then(get_data())
 
 </script>
 </body>
