@@ -1545,12 +1545,15 @@ let one_app = new Vue({
     }
 })
 
-
+function pull_news() {
   if (typeof (fg_widgets) === "undefined") {
       fg_widgets = new Array();
   }
       fg_widgets.push("fgid_038586913a98322aa78993bf8");
       fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
+}
+
+pull_news();
 
 function pull_big() {
   // Alias the component instance as `vm`, so that we
