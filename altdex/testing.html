@@ -1599,8 +1599,8 @@ function pull_small() {
   let sum_4 = 0;
   let pie_chart = [];
   // Fetch our array of row from an API
+  pull_news();
   fetch('/getindexcurrent/')
-  pull_news()
     .then(function (response) {
       return response.json()
     })
