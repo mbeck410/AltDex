@@ -1557,6 +1557,8 @@ function pull_big() {
   // Alias the component instance as `vm`, so that we
   // can access it inside the promise function
   let vm = one_app;
+  let index_data = [];
+  let trend_line = [];
   fetch('/getindexperformance/')
     .then(function (response) {
       return response.json();
@@ -1586,9 +1588,7 @@ function pull_small() {
   let index_data = [];
   let gainer_data = [];
   let loser_data = [];
-  let trend_line = [];
   let coin_data = [];
-  let index_data = [];
   let wdata_1 = [];
   let wdata_2 = [];
   let wdata_3 = [];
