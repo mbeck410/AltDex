@@ -1495,7 +1495,7 @@ let one_app = new Vue({
     },
     computed: {
       chartSettings: function () {
-        let mode = localStorage.getItem("mode");
+        let mode = this.localStorage.getItem("mode");
         if (mode === 'dark') {
           return {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom', fontColor: '#D0D0D0'},
                         scales: {xAxes: [{display: false}]}},
