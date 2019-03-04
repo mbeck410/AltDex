@@ -1600,6 +1600,7 @@ function pull_small() {
   let pie_chart = [];
   // Fetch our array of row from an API
   fetch('/getindexcurrent/')
+  pull_news()
     .then(function (response) {
       return response.json()
     })
@@ -1667,8 +1668,6 @@ function pull_small() {
     vm.coins = coin_data;
     })
   };
-
-pull_news();
 
 function get_data() {
   pull_small();
