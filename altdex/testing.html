@@ -1447,8 +1447,8 @@ Vue.component('index-performance', {
 let one_app = new Vue({
   el: '#one_app',
   data: {
-    light_chart: {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'},
-                  scales: {xAxes: [{display: false}]}},
+    // light_chart: {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'},
+    //               scales: {xAxes: [{display: false}]}},
     coins: [],
     pie_data: [],
     indices: [],
@@ -1503,7 +1503,7 @@ let one_app = new Vue({
           return {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'},
                         scales: {xAxes: [{display: false}]}},
         }
-      }
+      },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
               let modifier = 1;
