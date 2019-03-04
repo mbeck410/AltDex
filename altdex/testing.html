@@ -52,13 +52,6 @@
     <script src="https://unpkg.com/vue-chartkick@0.5.0"></script>
 
     <!--News Widget-->
-    <script>
-      if (typeof (fg_widgets) === "undefined") {
-          fg_widgets = new Array();
-      }
-          fg_widgets.push("fgid_038586913a98322aa78993bf8");
-          fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
-    </script>
     <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
 
     <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
@@ -1552,15 +1545,29 @@ let one_app = new Vue({
     }
 })
 
-function pull_main() {
+function pull_news() {
+  if (typeof (fg_widgets) === "undefined") {
+      fg_widgets = new Array();
+  }
+      fg_widgets.push("fgid_038586913a98322aa78993bf8");
+      fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
+}
+
+function pull_big() {
   // Alias the component instance as `vm`, so that we
   // can access it inside the promise function
   let vm = one_app;
-  let index_data = [];
-  let gainer_data = [];
-  let loser_data = [];
-  let trend_line = [];
-  // Fetch our array of row from an API
+  fetch('/getindexperformance/')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        index_data.push(data.dict_key[i]);
+      }
+    vm.indices = index_data;
+    })
+  }
   fetch('/index_trend/')
     .then(function (response) {
       return response.json()
@@ -1571,6 +1578,29 @@ function pull_main() {
       }
     vm.trend = trend_line
     })
+  };
+
+function pull_small() {
+  // Alias the component instance as `vm`, so that we
+  // can access it inside the promise function
+  let vm = one_app;
+  let index_data = [];
+  let gainer_data = [];
+  let loser_data = [];
+  let trend_line = [];
+  let coin_data = [];
+  let index_data = [];
+  let wdata_1 = [];
+  let wdata_2 = [];
+  let wdata_3 = [];
+  let wdata_4 = [];
+  let sum_1 = 0;
+  let sum_2 = 0;
+  let sum_3 = 0;
+  let sum_4 = 0;
+  let pie_chart = [];
+  // Fetch our array of row from an API
+  pull_news();
   fetch('/getindexcurrent/')
     .then(function (response) {
       return response.json()
@@ -1594,23 +1624,6 @@ function pull_main() {
       vm.gainers = gainer_data
       vm.losers = loser_data
     })
-  }
-
-function pull_side() {
-  // Alias the component instance as `vm`, so that we
-  // can access it inside the promise function
-  let vm = one_app;
-  let coin_data = [];
-  let index_data = [];
-  let wdata_1 = [];
-  let wdata_2 = [];
-  let wdata_3 = [];
-  let wdata_4 = [];
-  let sum_1 = 0;
-  let sum_2 = 0;
-  let sum_3 = 0;
-  let sum_4 = 0;
-  let pie_chart = [];
   // Fetch our array of row from an API
   fetch('/getcoinscurrent/')
     .then(function (response) {
@@ -1655,20 +1668,13 @@ function pull_side() {
     vm.pie_data = pie_chart;
     vm.coins = coin_data;
     })
-  fetch('/getindexperformance/')
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      for (let i = 0; i < data.dict_key.length; ++i) {
-        index_data.push(data.dict_key[i]);
-      }
-    vm.indices = index_data;
-    })
-  }
+  };
 
-pull_main();
-pull_side();
+function get_data(first, second) {
+  pull_small().then(pull_big());
+};
+
+get_data();
 
 </script>
 </body>
