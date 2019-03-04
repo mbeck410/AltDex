@@ -301,6 +301,11 @@
             font-weight: bold;
         }
 
+        #pie_div {
+          padding-top: 1vw;
+          padding-bottom: 1vw;
+        }
+
         /* Mailchimp */
         #mc_embed_signup  {
           background:#fff;
@@ -1035,7 +1040,12 @@
                 <main-coin-chart
                 v-bind:coin="coin"></main-coin-chart>
               </div>
-              <div><pie-chart :data="pie_data[current_number]" suffix='%'></pie-chart></div>
+              <div id="pie_div">
+                <pie-chart :data="pie_data[current_number]"
+                            :library='pie_settings'
+                            suffix='%'
+                            ></pie-chart>
+              </div>
             </div>
 
             <div id="performance_tab" class="tab-pane fade">
@@ -1449,6 +1459,7 @@ let one_app = new Vue({
   data: {
     chart_settings: {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom', fontColor: '#696969'},
                   scales: {xAxes: [{display: false}]}},
+    pie_settings: {legend: {labels: {fontColor: '#696969'}}},
     coins: [],
     pie_data: [],
     indices: [],
