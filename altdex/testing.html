@@ -396,10 +396,6 @@
           background-color: #222842;
         }
 
-        #btn_text {
-          display: none;
-        }
-
         #sign_up {
           width: 80%;
           margin-top: 2vw;
@@ -1056,9 +1052,7 @@
             </a>
             <ul class="dropdown-menu" v-cloak>
             	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
-          		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">
-                <div id="perf_btn"><i class="fa fa-circle-o-notch fa-spin"></i>Loading</div>
-              <div id="btn_text">Performace</div></a></li>
+          		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performace</a></li>
               <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
             </ul>
           </li>
@@ -1626,8 +1620,9 @@ function pull_news() {
 }
 
 function showPage() {
-    document.getElementById("perf_btn").style.display = "none";
-    document.getElementById("btn_text").style.display = "block";
+    document.querySelectorAll(".tab-content>.tab-pane>#loader").style.display = "none";
+    // document.getElementById("time_bts").style.display = "block";
+    // document.getElementById("performance_div").style.display = "block";
 }
 
 // pull_news();
