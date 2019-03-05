@@ -1309,28 +1309,6 @@ dark_bt.onclick = function () {
     }
 };
 
-// Div Colored Values Functions
-function set_value_color(div, value) {
-  this_div = document.getElementById(div)
-  this_div.innerHTML = value
-  if (value > 0) {
-    if (body.classList.contains('t--light')) {
-      this_div.style.color = 'green';
-    }
-    else {
-      this_div.style.color = 'rgb(0, 255, 0)';
-    }
-  }
-  else if (value < 0) {
-    if (body.classList.contains('t--light')) {
-      this_div.style.color = 'red';
-    }
-    else {
-      this_div.style.color = 'rgb(236, 19, 19)';
-    }
-  }
-};
-
 Vue.component('coin-list', {
   props: ['coin'],
   template:`
@@ -1626,7 +1604,7 @@ function pull_news() {
 }
 
 function showPage() {
-    loader.style.display = "none";
+    document.getElementById("loader").style.display = "none";
     document.getElementById("charts").style.display = "block";
     // document.getElementById("performance_div").style.display = "block";
 }
@@ -1658,7 +1636,7 @@ function pull_big() {
         trend_line.push(data.dict_key[i])
       }
     vm.trend = trend_line
-    }).then(showPage())
+    })
   };
 
 function pull_small() {
@@ -1751,7 +1729,7 @@ function pull_small() {
 function get_data() {
   pull_news()
   pull_small();
-  pull_big();
+  pull_big().then(showPage);
 };
 
 get_data();
