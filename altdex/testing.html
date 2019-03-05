@@ -51,6 +51,9 @@
     <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
     <script src="https://unpkg.com/vue-chartkick@0.5.0"></script>
 
+    <!--News Widget-->
+    <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+
     <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
     <script>window.twttr = (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
@@ -1082,7 +1085,7 @@
             <ul class="dropdown-menu" v-cloak>
             	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
           		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performance</a></li>
-              <!-- <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li> -->
+              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
             </ul>
           </li>
         </ul>
@@ -1164,10 +1167,10 @@
 
             </div>
 
-            <!-- <div id="news_tab" class="tab-pane fade">
+            <div id="news_tab" class="tab-pane fade">
               <div class="feedgrabbr_widget" id="fgid_038586913a98322aa78993bf8"></div>
               <div class="feedgrabbr_widget2" id="fgid_4305fbf1c4e6a699d3bd484b7"></div>
-            </div> -->
+            </div>
 
           </div>
       </div>
@@ -1412,77 +1415,62 @@ template: `
 
 Vue.component('index-performance', {
   props: ['dex', 'info'],
-  data: function () {
-    return {
-      dayMin: this.dex.day_low,
-      dayMax: this.dex.day_high,
-      weekMin: this.dex.week_low,
-      weekMax: this.dex.week_high,
-      monthMin: this.dex.month_low,
-      monthMax: this.dex.month_high,
-      allMin: this.dex.min_price,
-      allMax: this.dex.max_price,
-    }
-  },
   watch: {
     checked () {
       if (this.info.price < this.dayMin) {
-        this.dayMin = this.info.price
+        this.dex.day_low = this.info.price
       }
       if (this.info.price > this.dayMax) {
-        this.dayMax = this.info.price
+        this.day_high = this.info.price
       }
       if (this.info.price < this.weekMin) {
-        this.weekMin = this.info.price
+        this.dex.week_low = this.info.price
       }
       if (this.info.price > this.weekMax) {
-        this.weekMax = this.info.price
+        this.dex.week_high= this.info.price
       }
       if (this.info.price < this.monthMin) {
-        this.monthMin = this.info.price
+        this.dex.month_low = this.info.price
       }
       if (this.info.price > this.monthMax) {
-        this.monthMax = this.info.price
+        this.dex.month_high = this.info.price
       }
       if (this.info.price < this.allMin) {
-        this.allMin = this.info.price
+        this.dex.min_price = this.info.price
       }
       if (this.info.price > this.allMax) {
-        this.allMax = this.info.price
+        this.dex.max_price = this.info.price
       }
     }
   },
   computed: {
     dayHeight: function() {
-      let day_range_diff = this.dayMax - this.dayMin;
-      let current_day_diff = this.info.price - this.dayMin;
+      let day_range_diff = this.dex.day_high - this.dex.day_low;
+      let current_day_diff = this.info.price - this.dex.day_low;
       let day_height = (current_day_diff / day_range_diff) * 85;
       return day_height.toFixed(1)
     },
     weekHeight: function() {
-      let week_range_diff = this.weekMax - this.weekMin;
-      let current_week_diff = this.info.price - this.weekMin;
+      let week_range_diff = this.dex.week_high - this.dex.week_low;
+      let current_week_diff = this.info.price - this.dex.week_low;
       let week_height = (current_week_diff / week_range_diff) * 85;
       return week_height.toFixed(1)
     },
     monthHeight: function() {
-      let month_range_diff = this.monthMax - this.monthMin;
-      let current_month_diff = this.info.price - this.monthMin;
+      let month_range_diff = this.dex.month_high - this.dex.month_low;
+      let current_month_diff = this.info.price - this.dex.month_low;
       let month_height = (current_month_diff / month_range_diff) * 85;
       return month_height.toFixed(1)
     },
     allHeight: function() {
-      let all_range_diff = this.allMax - this.allMin;
-      let all_diff = this.info.price - this.allMin;
+      let all_range_diff = this.dex.max_price - this.dex.min_price;
+      let all_diff = this.info.price - this.dex.min_price;
       let all_height = (all_diff / all_range_diff) * 85;
       return all_height.toFixed(1)
     },
     allReturn: function() {
       return this.info.price - 100
     },
-    allPercent: function() {
-      retun (this.info.price - 100)
-    }
   },
   template: `
     <div>
@@ -1522,8 +1510,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Daily Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dayMin }}</div>
-              <div class="slider_high">High: {{ dayMax }}</div>
+              <div class="slider_low">Low: {{ dex.day_low }}</div>
+              <div class="slider_high">High: {{ dex.day_high }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': dayHeight + '%'}">
@@ -1538,8 +1526,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Weekly Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ weekMin }}</div>
-              <div class="slider_high">High: {{ weekMax }}</div>
+              <div class="slider_low">Low: {{ dex.week_low }}</div>
+              <div class="slider_high">High: {{ dex.week_high }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': weekHeight + '%'}">
@@ -1554,8 +1542,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Monthly Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dex.monthMin }}</div>
-              <div class="slider_high">High: {{ dex.monthMax }}</div>
+              <div class="slider_low">Low: {{ dex.month_low }}</div>
+              <div class="slider_high">High: {{ dex.month_high }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': monthHeight + '%'}">
@@ -1570,8 +1558,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">All Time Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ allMin }}</div>
-              <div class="slider_high">High: {{ allMax }}</div>
+              <div class="slider_low">Low: {{ dex.min_price }}</div>
+              <div class="slider_high">High: {{ dex.max_price }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': allHeight + '%'}">
@@ -1754,6 +1742,13 @@ function pull_small() {
       }
     vm.info = index_data
     })
+    .then(function () {
+      if (typeof (fg_widgets) === "undefined") {
+          fg_widgets = new Array();
+      }
+          fg_widgets.push("fgid_038586913a98322aa78993bf8");
+          fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
+    })
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
       .then(function (response) {
@@ -1819,10 +1814,6 @@ function get_data() {
 };
 
 get_data();
-setInterval(function () {
-        pull_small()
-    },
-    40000);
 
 </script>
 </body>
