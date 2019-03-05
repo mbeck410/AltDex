@@ -51,9 +51,6 @@
     <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
     <script src="https://unpkg.com/vue-chartkick@0.5.0"></script>
 
-    <!--News Widget-->
-    <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
-
     <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
     <script>window.twttr = (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
@@ -1085,7 +1082,7 @@
             <ul class="dropdown-menu" v-cloak>
             	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
           		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performance</a></li>
-              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
+              <!-- <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li> -->
             </ul>
           </li>
         </ul>
@@ -1167,10 +1164,10 @@
 
             </div>
 
-            <div id="news_tab" class="tab-pane fade">
+            <!-- <div id="news_tab" class="tab-pane fade">
               <div class="feedgrabbr_widget" id="fgid_038586913a98322aa78993bf8"></div>
               <div class="feedgrabbr_widget2" id="fgid_4305fbf1c4e6a699d3bd484b7"></div>
-            </div>
+            </div> -->
 
           </div>
       </div>
@@ -1573,8 +1570,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">All Time Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dex.allMin }}</div>
-              <div class="slider_high">High: {{ dex.allMax }}</div>
+              <div class="slider_low">Low: {{ allMin }}</div>
+              <div class="slider_high">High: {{ allMax }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': allHeight + '%'}">
@@ -1757,13 +1754,6 @@ function pull_small() {
       }
     vm.info = index_data
     })
-    .then(function () {
-      if (typeof (fg_widgets) === "undefined") {
-          fg_widgets = new Array();
-      }
-          fg_widgets.push("fgid_038586913a98322aa78993bf8");
-          fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
-    })
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
       .then(function (response) {
@@ -1829,6 +1819,10 @@ function get_data() {
 };
 
 get_data();
+setInterval(function () {
+        pull_small()
+    },
+    40000);
 
 </script>
 </body>
