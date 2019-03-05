@@ -1454,8 +1454,8 @@ Vue.component('index-performance', {
   },
   computed: {
     dayHeight: function() {
-      let day_range_diff = this.dayMax - this.dayLow;
-      let current_day_diff = this.info.price - this.dayLow;
+      let day_range_diff = this.dayMax - this.dayMin;
+      let current_day_diff = this.info.price - this.dayMin;
       let day_height = (current_day_diff / day_range_diff) * 85;
       return day_height.toFixed(1)
     },
@@ -1522,7 +1522,7 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Daily Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dayLow }}</div>
+              <div class="slider_low">Low: {{ dayMin }}</div>
               <div class="slider_high">High: {{ dayMax }}</div>
             </div>
             <div class="bar"></div>
