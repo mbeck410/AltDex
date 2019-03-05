@@ -1412,15 +1412,17 @@ template: `
 
 Vue.component('index-performance', {
   props: ['dex', 'info'],
-  data: {
-    dayMin: this.dex.day_low,
-    dayMax: this.dex.day_high,
-    weekMin: this.dex.week_low,
-    weekMax: this.dex.week_high,
-    monthMin: this.dex.month_low,
-    monthMax: this.dex.month_high,
-    allMin: this.dex.min_price,
-    allMax: this.dex.max_price,
+  data: () {
+    return {
+      dayMin: this.dex.day_low,
+      dayMax: this.dex.day_high,
+      weekMin: this.dex.week_low,
+      weekMax: this.dex.week_high,
+      monthMin: this.dex.month_low,
+      monthMax: this.dex.month_high,
+      allMin: this.dex.min_price,
+      allMax: this.dex.max_price,
+    }
   },
   watch: {
     checked () {
