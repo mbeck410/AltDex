@@ -1703,13 +1703,13 @@ function pull_small() {
         index_data.push(data.dict_key[i])
       }
     vm.info = index_data
+    })
     .then(function () {
       if (typeof (fg_widgets) === "undefined") {
           fg_widgets = new Array();
       }
           fg_widgets.push("fgid_038586913a98322aa78993bf8");
           fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
-    })
     })
     // Fetch our array of row from an API
     fetch('/gainers_losers/')
