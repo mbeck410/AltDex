@@ -1603,12 +1603,6 @@ function pull_news() {
       fg_widgets.push("fgid_4305fbf1c4e6a699d3bd484b7");
 }
 
-function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("charts").style.display = "block";
-    // document.getElementById("performance_div").style.display = "block";
-}
-
 // pull_news();
 
 function pull_big() {
@@ -1636,7 +1630,10 @@ function pull_big() {
         trend_line.push(data.dict_key[i])
       }
     vm.trend = trend_line
-    })
+  }).then(
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("charts").style.display = "block";
+  )
   };
 
 function pull_small() {
@@ -1727,13 +1724,12 @@ function pull_small() {
   };
 
 function get_data() {
-  pull_news();
   pull_small();
   pull_big();
 };
 
+pull_news();
 get_data();
-showPage();
 
 </script>
 </body>
