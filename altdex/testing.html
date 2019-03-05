@@ -1630,10 +1630,10 @@ function pull_big() {
         trend_line.push(data.dict_key[i])
       }
     vm.trend = trend_line
-  }).then(
+  }).then(function () {
     document.getElementById("loader").style.display = "none";
     document.getElementById("charts").style.display = "block";
-  )
+  })
   };
 
 function pull_small() {
