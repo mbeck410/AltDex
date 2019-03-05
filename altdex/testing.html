@@ -1413,37 +1413,49 @@ template: `
 Vue.component('index-performance', {
   props: ['dex', 'info'],
   data: {
-    dayLow: this.dex.day_low,
-    dayHigh: this.dex.day_high,
-    weekLow: this.dex.week_low,
-    weekHigh: this.dex.week_high,
-  }
-  computed: {
-    dayMin: function() {
-      if (this.info.price < this.dayLow) {
-        this.dayLow = this.info.price
+    dayMin: this.dex.day_low,
+    dayMax: this.dex.day_high,
+    weekMin: this.dex.week_low,
+    weekMax: this.dex.week_high,
+    monthMin: this.dex.month_low,
+    monthMax: this.dex.month_high,
+    allMin: this.dex.min_price,
+    allMax: this.dex.max_price,
+  },
+  watch: {
+    checked () {
+      if (this.info.price < this.dayMin) {
+        this.dayMin = this.info.price
       }
-    },
-    dayMax: function() {
-      if (this.info.price >= this.dex.day_high) {
-        return this.info.price
-      } else {return this.dex.day_high}
-    },
+      if (this.info.price > this.dayMax) {
+        this.dayMax = this.info.price
+      }
+      if (this.info.price < this.weekMin) {
+        this.weekMin = this.info.price
+      }
+      if (this.info.price > this.weekMax) {
+        this.weekMax = this.info.price
+      }
+      if (this.info.price < this.monthMin) {
+        this.monthMin = this.info.price
+      }
+      if (this.info.price > this.monthMax) {
+        this.monthMax = this.info.price
+      }
+      if (this.info.price < this.allMin) {
+        this.allMin = this.info.price
+      }
+      if (this.info.price > this.allMax) {
+        this.allMax = this.info.price
+      }
+    }
+  },
+  computed: {
     dayHeight: function() {
       let day_range_diff = this.dayMax - this.dayLow;
       let current_day_diff = this.info.price - this.dayLow;
       let day_height = (current_day_diff / day_range_diff) * 85;
       return day_height.toFixed(1)
-    },
-    weekMin: function() {
-      if (this.info.price <= this.dex.week_low) {
-        return this.info.price
-      } else {return this.dex.week_low}
-    },
-    weekMax: function() {
-      if (this.info.price >= this.dex.week_high) {
-        return this.info.price
-      } else {return this.dex.week_high}
     },
     weekHeight: function() {
       let week_range_diff = this.weekMax - this.weekMin;
@@ -1451,31 +1463,11 @@ Vue.component('index-performance', {
       let week_height = (current_week_diff / week_range_diff) * 85;
       return week_height.toFixed(1)
     },
-    monthMin: function() {
-      if (this.info.price <= this.dex.month_low) {
-        return this.info.price
-      } else {return this.dex.month_low}
-    },
-    monthMax: function() {
-      if (this.info.price >= this.dex.month_high) {
-        return this.info.price
-      } else {return this.dex.month_high}
-    },
     monthHeight: function() {
       let month_range_diff = this.monthMax - this.monthMin;
       let current_month_diff = this.info.price - this.monthMin;
       let month_height = (current_month_diff / month_range_diff) * 85;
       return month_height.toFixed(1)
-    },
-    allMin: function() {
-      if (this.info.price <= this.dex.min_price) {
-        return this.info.price
-      } else {return this.dex.min_price}
-    },
-    allMax: function() {
-      if (this.info.price >= this.dex.max_price) {
-        return this.info.price
-      } else {return this.dex.max_price}
     },
     allHeight: function() {
       let all_range_diff = this.allMax - this.allMin;
@@ -1528,7 +1520,7 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Daily Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dayMin }}</div>
+              <div class="slider_low">Low: {{ dayLow }}</div>
               <div class="slider_high">High: {{ dayMax }}</div>
             </div>
             <div class="bar"></div>
