@@ -1412,7 +1412,7 @@ template: `
 
 Vue.component('index-performance', {
   props: ['dex', 'info'],
-  data: () {
+  data: function () {
     return {
       dayMin: this.dex.day_low,
       dayMax: this.dex.day_high,
