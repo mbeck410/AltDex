@@ -1416,11 +1416,31 @@ template: `
 Vue.component('index-performance', {
   props: ['dex', 'info'],
   computed: {
+    dayMin: function() {
+      if (this.info.price <= this.dex.day_low) {
+        return this.info.price
+      } else {return this.dex.daylow}
+    },
+    dayMax: function() {
+      if (this.info.price >= this.dex.day_high) {
+        return this.info.price
+      } else {return this.dex.day_high}
+    },
     dayHeight: function() {
-      let day_range_diff = this.dex.day_high - this.dex.day_low;
-      let current_day_diff = this.info.price - this.dex.day_low;
+      let day_range_diff = this.dayMax - this.dayMin;
+      let current_day_diff = this.info.price - this.dex.dayMin;
       let day_height = (current_day_diff / day_range_diff) * 85;
       return day_height.toFixed(1)
+    },
+    weekMin: function() {
+      if (this.info.price <= this.dex.week_low) {
+        return this.info.price
+      } else {return this.dex.week_low}
+    },
+    weekMax: function() {
+      if (this.info.price >= this.dex.week_high) {
+        return this.info.price
+      } else {return this.dex.week_high}
     },
     weekHeight: function() {
       let week_range_diff = this.dex.week_high - this.dex.week_low;
@@ -1485,8 +1505,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Daily Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dex.day_low }}</div>
-              <div class="slider_high">High: {{ dex.day_high }}</div>
+              <div class="slider_low">Low: {{ dayMin }}</div>
+              <div class="slider_high">High: {{ dayMax }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': dayHeight + '%'}">
@@ -1501,8 +1521,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Weekly Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dex.week_low }}</div>
-              <div class="slider_high">High: {{ dex.week_high }}</div>
+              <div class="slider_low">Low: {{ weekMin }}</div>
+              <div class="slider_high">High: {{ weekMax }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': weekHeight + '%'}">
