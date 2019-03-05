@@ -420,7 +420,7 @@ def getindexperformance(request):
                     day_high = month_high
                     day_low = month_low
 
-                if i == 1300:
+                if i == 1050:
                     if day_high == day_low:
                         day_high = month_high
                         day_low = month_low
