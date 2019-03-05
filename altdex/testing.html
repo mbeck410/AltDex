@@ -1173,8 +1173,8 @@
           </div>
           <div class="well blade">
             <div class="trend">
-              <div id="loader"></div>
-              <div id="charts">
+              <div class="loader"></div>
+              <div class="charts">
                 <area-chart :data="trend[index]"
                 :library=chart_settings
                 height="160px"
@@ -1260,7 +1260,6 @@
 let dark_bt = document.querySelector('#dark_bt');
 let mode = localStorage.getItem("mode");
 let body = document.querySelector('body');
-let loader = document.querySelector("#loader")
 
 // Getting and Setting Theme from localStorage 'mode'
 if (mode === null) {
@@ -1631,8 +1630,8 @@ function pull_big() {
       }
     vm.trend = trend_line
   }).then(function () {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("charts").style.display = "block";
+    document.querySelector(".loader").style.display = "none";
+    document.querySelector(".charts").style.display = "block";
   })
   };
 
