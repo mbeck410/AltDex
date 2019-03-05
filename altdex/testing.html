@@ -1260,6 +1260,7 @@
 let dark_bt = document.querySelector('#dark_bt');
 let mode = localStorage.getItem("mode");
 let body = document.querySelector('body');
+let loader = document.querySelector("#loader")
 
 // Getting and Setting Theme from localStorage 'mode'
 if (mode === null) {
@@ -1625,7 +1626,7 @@ function pull_news() {
 }
 
 function showPage() {
-    document.getElementById("loader").style.display = "none";
+    loader.style.display = "none";
     document.getElementById("charts").style.display = "block";
     // document.getElementById("performance_div").style.display = "block";
 }
