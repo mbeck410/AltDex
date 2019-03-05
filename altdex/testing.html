@@ -1274,10 +1274,10 @@
 
         <!--Other Links-->
         <div class="footer_bottom">
-            <!-- <div class="footer_link"> &#169AltDex 2018. All rights reserved. </div> -->
-            <!-- <div><a href="mailto:admin@altdex.co" class="fa" target="_blank">&#x2709</a><a
+            <div class="footer_link"> &#169AltDex 2018. All rights reserved. </div>
+            <div><a href="mailto:admin@altdex.co" class="fa" target="_blank">&#x2709</a><a
                     href="https://twitter.com/altcoindex"
-                    class="fa fa-twitter" target="_blank"></a></div> -->
+                    class="fa fa-twitter" target="_blank"></a></div>
             <div class="footer_link">From the creators of <a href="https://sludgefeed.com/"
                                                              target="_blank">SludgeFeed</a></div>
             <div class="footer_link">Select market data provided by <a href="http://coincap.io/"
@@ -1440,6 +1440,12 @@ Vue.component('index-performance', {
       let all_height = (all_diff / all_range_diff) * 85;
       return all_height.toFixed(1)
     },
+    allReturn: function() {
+      return this.info.price - 100
+    },
+    allPercent: function() {
+      retun (this.info.price - 100)
+    }
   },
   template: `
     <div>
@@ -1466,6 +1472,13 @@ Vue.component('index-performance', {
           >{{ dex.month_change }}</div>
           <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : dex.month_change>0, 'neg' : dex.month_change<0}"
           >{{ dex.month_percent }}%</div>
+        </div>
+        <div class="period_data">
+          <div class="data_period">All Time</div>
+          <div class="perf_change" id="perf_month_change" v-bind:class="{'pos' : allReturn>0, 'neg' : allReturn<0}"
+          >{{ allReturn }}</div>
+          <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : allReturn>0, 'neg' : allReturn<0}"
+          >{{ allReturn }}%</div>
         </div>
       </div>
         <div id="all_ranges">
