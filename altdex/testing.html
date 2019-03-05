@@ -1412,11 +1412,17 @@ template: `
 
 Vue.component('index-performance', {
   props: ['dex', 'info'],
+  data: {
+    dayLow: this.dex.day_low,
+    dayHigh: this.dex.day_high,
+    weekLow: this.dex.week_low,
+    weekHigh: this.dex.week_high,
+  }
   computed: {
     dayMin: function() {
-      if (this.info.price <= this.dex.day_low) {
-        return this.info.price
-      } else {return this.dex.day_low}
+      if (this.info.price < this.dayLow) {
+        this.dayLow = this.info.price
+      }
     },
     dayMax: function() {
       if (this.info.price >= this.dex.day_high) {
@@ -1424,8 +1430,8 @@ Vue.component('index-performance', {
       } else {return this.dex.day_high}
     },
     dayHeight: function() {
-      let day_range_diff = this.dayMax - this.dayMin;
-      let current_day_diff = this.info.price - this.dayMin;
+      let day_range_diff = this.dayMax - this.dayLow;
+      let current_day_diff = this.info.price - this.dayLow;
       let day_height = (current_day_diff / day_range_diff) * 85;
       return day_height.toFixed(1)
     },
