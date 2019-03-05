@@ -1419,7 +1419,7 @@ Vue.component('index-performance', {
     dayMin: function() {
       if (this.info.price <= this.dex.day_low) {
         return this.info.price
-      } else {return this.dex.daylow}
+      } else {return this.dex.day_low}
     },
     dayMax: function() {
       if (this.info.price >= this.dex.day_high) {
@@ -1443,8 +1443,8 @@ Vue.component('index-performance', {
       } else {return this.dex.week_high}
     },
     weekHeight: function() {
-      let week_range_diff = this.dex.week_high - this.dex.week_low;
-      let current_week_diff = this.info.price - this.dex.week_low;
+      let week_range_diff = this.weekMax - this.dex.weekMin;
+      let current_week_diff = this.info.price - this.weekMin;
       let week_height = (current_week_diff / week_range_diff) * 85;
       return week_height.toFixed(1)
     },
