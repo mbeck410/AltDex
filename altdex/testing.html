@@ -1637,6 +1637,7 @@ function pull_big() {
       }
     vm.trend = trend_line
     })
+  showPage();
   };
 
 function pull_small() {
@@ -1727,9 +1728,9 @@ function pull_small() {
   };
 
 function get_data() {
-  pull_news()
+  pull_news();
   pull_small();
-  pull_big().then(showPage);
+  pull_big();
 };
 
 get_data();
