@@ -328,6 +328,24 @@
             /*text-align: center;*/
         }
 
+        .loader2 {
+            position: relative;
+            left: 46%;
+            top: 50%;
+            z-index: 1;
+            /*width: 75px;*/
+            /*height: 75px;*/
+            /*margin: -75px 0 0 -75px;*/
+            border: 10px solid lightgray;
+            border-radius: 50%;
+            border-top: 10px solid #6dc0eb;
+            width: 75px;
+            height: 75px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            /*text-align: center;*/
+        }
+
         @-webkit-keyframes spin {
             0% {
                 -webkit-transform: rotate(0deg);
@@ -1127,6 +1145,7 @@
                 v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
               </div>
 
+              <div class="loader2"></div>
               <div id="performance_div">
                 <index-performance
                 v-bind:dex="indices[current_number]"
@@ -1619,7 +1638,9 @@ function pull_big() {
         index_data.push(data.dict_key[i]);
       }
     vm.indices = index_data;
-  })
+  }).then(function () {
+    document.querySelector(".loader2").style.display = "none";
+  });
   fetch('/index_trend/')
     .then(function (response) {
       return response.json()
