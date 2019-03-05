@@ -1466,7 +1466,7 @@ Vue.component('index-performance', {
       return all_height.toFixed(1)
     },
     allReturn: function() {
-      return this.info.price - 100
+      return (this.info.price - 100).toFixed(2)
     },
   },
   template: `
