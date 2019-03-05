@@ -309,10 +309,15 @@
         /* #performance_div {
           display: none;
         } */
+        .loader_div2 {
+          text-align: center;
+          margin: auto;
+          padding-top: 1.5vw
+        }
 
         .loader {
             position: relative;
-            left: 46%;
+            /* left: 46%; */
             top: 50%;
             z-index: 1;
             /*width: 75px;*/
@@ -1145,7 +1150,10 @@
                 v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
               </div>
 
-              <div class="loader2"></div>
+              <div class="loader_div2">
+                <div class="loader2"></div>
+              </div>
+
               <div id="performance_div">
                 <index-performance
                 v-bind:dex="indices[current_number]"
@@ -1639,7 +1647,7 @@ function pull_big() {
       }
     vm.indices = index_data;
   }).then(function () {
-    document.querySelector(".loader2").style.display = "none";
+    document.querySelector(".loader_div2").style.display = "none";
   });
   fetch('/index_trend/')
     .then(function (response) {
