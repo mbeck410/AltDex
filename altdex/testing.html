@@ -1814,7 +1814,10 @@ function get_data() {
 };
 
 get_data();
-
+setInterval(function () {
+        pull_small();
+    },
+    40000);
 </script>
 </body>
 </html>
