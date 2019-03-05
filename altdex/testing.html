@@ -315,9 +315,14 @@
           padding-top: 1.5vw
         }
 
+        .loader_div {
+          height: 160px;
+        }
+
         .loader {
             position: relative;
             /* left: 46%; */
+            margin: auto;
             top: 50%;
             z-index: 1;
             /*width: 75px;*/
@@ -1200,7 +1205,9 @@
           </div>
           <div class="well blade">
             <div class="trend">
-              <div class="loader"></div>
+              <div class="loader_div">
+                <div class="loader"></div>
+              </div>
               <div class="charts">
                 <area-chart :data="trend[index]"
                 :library=chart_settings
@@ -1660,9 +1667,11 @@ function pull_big() {
     vm.trend = trend_line
   }).then(function () {
     let loader = document.getElementsByClassName('loader');
+    let loader_div = document.getElementsByClassName('loader_div');
     let charts = document.getElementsByClassName('charts')
     for (let i=0;i<loader.length;i+=1) {
       loader[i].style.display = 'none';
+      loader_div[i].style.display = 'none';
       charts[i].style.display = 'block';
     }
   })
