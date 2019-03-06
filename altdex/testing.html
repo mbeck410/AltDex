@@ -1754,7 +1754,7 @@ function pull_big() {
   })
   };
 
-function pull_small() {
+function update_small() {
   // Alias the component instance as `vm`, so that we
   // can access it inside the promise function
   let vm = one_app;
@@ -1841,6 +1841,120 @@ function pull_small() {
   })
   };
 
+  function pull_small() {
+    // Alias the component instance as `vm`, so that we
+    // can access it inside the promise function
+    let vm = one_app;
+    let index_data = [];
+    let gainer_data = [];
+    let loser_data = [];
+    let coin_data = [];
+    let wdata_1 = [];
+    let wdata_2 = [];
+    let wdata_3 = [];
+    let wdata_4 = [];
+    let sum_1 = 0;
+    let sum_2 = 0;
+    let sum_3 = 0;
+    let sum_4 = 0;
+    let pie_chart = [];
+    // Fetch our array of row from an API
+    fetch('/getindexcurrent/')
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.dict_key.length; ++i) {
+          index_data.push(data.dict_key[i])
+        }
+      vm.info = index_data
+      })
+      // Fetch our array of row from an API
+      fetch('/gainers_losers/')
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          for (let i = 0; i < data.gainers.length; ++i) {
+            gainer_data.push(data.gainers[i])
+            loser_data.push(data.losers[i])
+          }
+        vm.gainers = gainer_data
+        vm.losers = loser_data
+      })
+    // Fetch our array of row from an API
+    fetch('/getcoinscurrent/')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.dict_key.length; ++i) {
+          coin_data.push(data.dict_key[i]);
+          if (data.dict_key[i].indices.includes('AltDex') === true && data.dict_key[i].weight_1 >= 1) {
+            let piece_1 = [data.dict_key[i].name, data.dict_key[i].weight_1];
+            wdata_1.push(piece_1);
+            sum_1 += data.dict_key[i].weight_1;
+          }
+          if (data.dict_key[i].indices.includes('Exchange') === true && data.dict_key[i].weight_2 >= 1) {
+            let piece_2 = [data.dict_key[i].name, data.dict_key[i].weight_2];
+            wdata_2.push(piece_2);
+            sum_2 += data.dict_key[i].weight_2;
+          }
+          if (data.dict_key[i].indices.includes('Privacy') === true && data.dict_key[i].weight_3 >= 1) {
+            let piece_3 = [data.dict_key[i].name, data.dict_key[i].weight_3];
+            wdata_3.push(piece_3);
+            sum_3 += data.dict_key[i].weight_3;
+          }
+          if (data.dict_key[i].indices.includes('Masternode') === true && data.dict_key[i].weight_4 >= 1) {
+            let piece_4 = [data.dict_key[i].name, data.dict_key[i].weight_4];
+            wdata_4.push(piece_4);
+            sum_4 += data.dict_key[i].weight_4;
+          }
+        }
+      let last_piece_1 = ['Others', (100-sum_1).toFixed(2)];
+      let last_piece_2 = ['Others', (100-sum_2).toFixed(2)];
+      let last_piece_3 = ['Others', (100-sum_3).toFixed(2)];
+      let last_piece_4 = ['Others', (100-sum_4).toFixed(2)];
+      wdata_1.push(last_piece_1);
+      wdata_2.push(last_piece_2);
+      wdata_3.push(last_piece_3);
+      wdata_4.push(last_piece_4);
+      pie_chart.push(wdata_1);
+      pie_chart.push(wdata_2);
+      pie_chart.push(wdata_3);
+      pie_chart.push(wdata_4);
+      vm.pie_data = pie_chart;
+      vm.coins = coin_data;
+    }).then(function () {
+      for (let i=0; i<vm.indices.length; i++) {
+        if (vm.info.price < vm.indices[i].day_low) {
+          vm.indices[i].day_low = vm.info.price
+        }
+        if (vm.info.price > vm.indices[i].day_high) {
+          vm.indices[i].day_high = vm.info.price
+        }
+        if (vm.info.price < vm.indices[i].week_low) {
+          vm.indices[i].week_low = vm.info.price
+        }
+        if (vm.info.price > vm.indices[i].week_high) {
+          vm.indices[i].week_high = vm.info.price
+        }
+        if (vm.info.price < vm.indices[i].month_low) {
+          vm.indices[i].month_low = vm.info.price
+        }
+        if (vm.info.price > vm.indices[i].month_high) {
+          vm.indices[i].month_high = vm.info.price
+        }
+        if (vm.info.price < vm.indices[i].min_price) {
+          vm.indices[i].min_price = vm.info.price
+        }
+        if (vm.info.price > vm.indices[i].max_price) {
+          vm.indices[i].max_price = vm.info.price
+        }
+      }
+    })
+    };
+
 function get_data() {
   pull_small();
   pull_big();
@@ -1848,35 +1962,7 @@ function get_data() {
 
 get_data();
 setInterval(function () {
-      pull_small().then(function () {
-        let vm = one_app;
-        for (let i=0; i<vm.indices.length; i++) {
-          if (vm.info.price < vm.indices[i].day_low) {
-            vm.indices[i].day_low = vm.info.price
-          }
-          if (vm.info.price > vm.indices[i].day_high) {
-            vm.indices[i].day_high = vm.info.price
-          }
-          if (vm.info.price < vm.indices[i].week_low) {
-            vm.indices[i].week_low = vm.info.price
-          }
-          if (vm.info.price > vm.indices[i].week_high) {
-            vm.indices[i].week_high = vm.info.price
-          }
-          if (vm.info.price < vm.indices[i].month_low) {
-            vm.indices[i].month_low = vm.info.price
-          }
-          if (vm.info.price > vm.indices[i].month_high) {
-            vm.indices[i].month_high = vm.info.price
-          }
-          if (vm.info.price < vm.indices[i].min_price) {
-            vm.indices[i].min_price = vm.info.price
-          }
-          if (vm.info.price > vm.indices[i].max_price) {
-            vm.indices[i].max_price = vm.info.price
-          }
-        }
-      })
+      update_small()
     },
     60000);
 </script>
