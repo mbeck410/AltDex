@@ -151,6 +151,8 @@
 
         #asterick {
           text-align: left;
+          padding-top: 1em;
+          padding-bottom: 1em;
         }
 
         .trend {
@@ -581,7 +583,7 @@
           font-weight: bold;
           text-align: left;
           padding-left: 1vw;
-          width: 40%
+          width: 100%
           /* color: white; */
         }
 
@@ -1491,34 +1493,6 @@ template: `
 
 Vue.component('index-performance', {
   props: ['dex', 'info'],
-  watch: {
-    checked () {
-      if (this.info.price < this.dex.day_low) {
-        this.dex.day_low = this.info.price
-      }
-      if (this.info.price > this.dex.day_high) {
-        this.dex.day_high = this.info.price
-      }
-      if (this.info.price < this.dex.week_low) {
-        this.dex.week_low = this.info.price
-      }
-      if (this.info.price > this.dex.week_high) {
-        this.dex.week_high = this.info.price
-      }
-      if (this.info.price < this.dex.month_low) {
-        this.dex.month_low = this.info.price
-      }
-      if (this.info.price > this.dex.month_high) {
-        this.dex.month_high = this.info.price
-      }
-      if (this.info.price < this.dex.min_price) {
-        this.dex.min_price = this.info.price
-      }
-      if (this.info.price > this.dex.max_price) {
-        this.dex.max_price = this.info.price
-      }
-    }
-  },
   computed: {
     dayHeight: function() {
       let day_range_diff = this.dex.day_high - this.dex.day_low;
@@ -1689,6 +1663,34 @@ let one_app = new Vue({
     current_dir: 'desc',
   },
     methods: {
+      checked () {
+        for (let i=0;i<indices.length; i++) {
+          if (this.info.price < this.indices[i].day_low) {
+            this.indices[i].day_low = this.info.price
+          }
+          if (this.info.price > this.indices[i].day_high) {
+            this.indices[i].day_high = this.info.price
+          }
+          if (this.info.price < this.indices[i].week_low) {
+            this.indices[i].week_low = this.info.price
+          }
+          if (this.info.price > this.indices[i].week_high) {
+            this.indices[i].week_high = this.info.price
+          }
+          if (this.info.price < this.indices[i].month_low) {
+            this.indices[i].month_low = this.info.price
+          }
+          if (this.info.price > this.indices[i].month_high) {
+            this.indices[i].month_high = this.info.price
+          }
+          if (this.info.price < this.indices[i].min_price) {
+            this.indices[i].min_price = this.info.price
+          }
+          if (this.info.price > this.indices[i].max_price) {
+            this.indices[i].max_price = this.info.price
+          }
+        }
+      },
       changeFilter: function(index, num) {
         this.current_index = index;
         this.current_number = num;
@@ -1885,6 +1887,7 @@ function get_data() {
 get_data();
 setInterval(function () {
         pull_small();
+        one_app.checked();
     },
     40000);
 </script>
