@@ -296,10 +296,10 @@ def getcoinscurrent(request):
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3602.png'
 
         elif name_lower == 'digitex futures':
-            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2600.png'
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2772.png'
 
         elif name_lower == 'lgo exchange':
-            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2772.png'
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2600.png'
 
         elif name_lower == 'swarm':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2506.png'
