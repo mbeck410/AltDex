@@ -1217,9 +1217,10 @@
 
             <div class="side_ads">
               <ins class="adsbygoogle"
-                   style="display:inline-block;"
+                   style="display:block;"
                    data-ad-client="ca-pub-9873470958093574"
-                   data-ad-slot="5347610936"></ins>
+                   data-ad-slot="5347610936"
+                   data-ad-format="auto"></ins>
              </div>
 
           </div>
@@ -1847,8 +1848,8 @@ function get_data() {
 
 get_data();
 setInterval(function () {
-    let vm = one_app;
       pull_small().then({
+        let vm = one_app;
         for (let i=0; i<vm.indices.length; i++) {
           if (vm.info.price < vm.indices[i].day_low) {
             vm.indices[i].day_low = vm.info.price
