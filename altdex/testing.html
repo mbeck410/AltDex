@@ -1564,7 +1564,7 @@ Vue.component('index-performance', {
           >{{ dex.month_percent }}%</div>
         </div>
         <div class="period_data">
-          <div class="data_period">All Time</div>
+          <div class="data_period">All Time*</div>
           <div class="perf_change" id="perf_month_change" v-bind:class="{'pos' : allReturn>0, 'neg' : allReturn<0}"
           >{{ allReturn }}</div>
           <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : allReturn>0, 'neg' : allReturn<0}"
@@ -1621,7 +1621,7 @@ Vue.component('index-performance', {
         </div>
         <div id="all_ranges">
           <div class="range_div">
-            <div class="range_label">All Time Range</div>
+            <div class="range_label">All Time Range*</div>
             <div class="range">
               <div class="slider_low">Low: {{ dex.min_price }}</div>
               <div class="slider_high">High: {{ dex.max_price }}</div>
@@ -1635,6 +1635,7 @@ Vue.component('index-performance', {
             </div>
           </div>
         </div>
+        <div id="asterick">* Launch Data</div>
     </div>
   `
 })
