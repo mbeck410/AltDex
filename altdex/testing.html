@@ -1548,7 +1548,7 @@ Vue.component('index-performance', {
       return (this.info.price - 100).toFixed(2)
     },
     asterickText: function() {
-      if (dex.name === 'Masternode') {
+      if (this.dex.name === 'Masternode') {
         return '*Launched August 2018'
       } else {
         return '*Launched July 2018'
