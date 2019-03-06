@@ -1847,35 +1847,35 @@ function get_data() {
 
 get_data();
 setInterval(function () {
-  let vm = one_app
-        pull_small().then({
-          for (let i=0;i<indices.length; i++) {
-            if (vm.info.price < vm.indices[i].day_low) {
-              vm.indices[i].day_low = vm.info.price
-            }
-            if (vm.info.price > vm.indices[i].day_high) {
-              vm.indices[i].day_high = vm.info.price
-            }
-            if (vm.info.price < vm.indices[i].week_low) {
-              vm.indices[i].week_low = vm.info.price
-            }
-            if (vm.info.price > vm.indices[i].week_high) {
-              vm.indices[i].week_high = vm.info.price
-            }
-            if (vm.info.price < vm.indices[i].month_low) {
-              vm.indices[i].month_low = vm.info.price
-            }
-            if (vm.info.price > vm.indices[i].month_high) {
-              vm.indices[i].month_high = vm.info.price
-            }
-            if (vm.info.price < vm.indices[i].min_price) {
-              vm.indices[i].min_price = vm.info.price
-            }
-            if (vm.info.price > vm.indices[i].max_price) {
-              vm.indices[i].max_price = vm.info.price
-            }
+    let vm = one_app;
+      pull_small().then({
+        for (let i=0; i<vm.indices.length; i++) {
+          if (vm.info.price < vm.indices[i].day_low) {
+            vm.indices[i].day_low = vm.info.price
           }
-        })
+          if (vm.info.price > vm.indices[i].day_high) {
+            vm.indices[i].day_high = vm.info.price
+          }
+          if (vm.info.price < vm.indices[i].week_low) {
+            vm.indices[i].week_low = vm.info.price
+          }
+          if (vm.info.price > vm.indices[i].week_high) {
+            vm.indices[i].week_high = vm.info.price
+          }
+          if (vm.info.price < vm.indices[i].month_low) {
+            vm.indices[i].month_low = vm.info.price
+          }
+          if (vm.info.price > vm.indices[i].month_high) {
+            vm.indices[i].month_high = vm.info.price
+          }
+          if (vm.info.price < vm.indices[i].min_price) {
+            vm.indices[i].min_price = vm.info.price
+          }
+          if (vm.info.price > vm.indices[i].max_price) {
+            vm.indices[i].max_price = vm.info.price
+          }
+        }
+      })
     },
     40000);
 </script>
