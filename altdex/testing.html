@@ -104,8 +104,8 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         (adsbygoogle = window.adsbygoogle || []).push({});
         (adsbygoogle = window.adsbygoogle || []).push({});
-        // (adsbygoogle = window.adsbygoogle || []).push({});
-        // (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 
 
@@ -1482,28 +1482,28 @@ Vue.component('index-performance', {
   props: ['dex', 'info'],
   watch: {
     checked () {
-      if (this.info.price < this.dayMin) {
+      if (this.info.price < this.dex.day_low) {
         this.dex.day_low = this.info.price
       }
-      if (this.info.price > this.dayMax) {
-        this.day_high = this.info.price
+      if (this.info.price > this.dex.day_high) {
+        this.dex.day_high = this.info.price
       }
-      if (this.info.price < this.weekMin) {
+      if (this.info.price < this.dex.week_low) {
         this.dex.week_low = this.info.price
       }
-      if (this.info.price > this.weekMax) {
-        this.dex.week_high= this.info.price
+      if (this.info.price > this.dex.week_high) {
+        this.dex.week_high = this.info.price
       }
-      if (this.info.price < this.monthMin) {
+      if (this.info.price < this.dex.month_low) {
         this.dex.month_low = this.info.price
       }
-      if (this.info.price > this.monthMax) {
+      if (this.info.price > this.dex.month_high) {
         this.dex.month_high = this.info.price
       }
-      if (this.info.price < this.allMin) {
+      if (this.info.price < this.dex.min_price) {
         this.dex.min_price = this.info.price
       }
-      if (this.info.price > this.allMax) {
+      if (this.info.price > this.dex.max_price) {
         this.dex.max_price = this.info.price
       }
     }
