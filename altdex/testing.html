@@ -1663,34 +1663,6 @@ let one_app = new Vue({
     current_dir: 'desc',
   },
     methods: {
-      checked () {
-        for (let i=0;i<indices.length; i++) {
-          if (this.info.price < this.indices[i].day_low) {
-            this.indices[i].day_low = this.info.price
-          }
-          if (this.info.price > this.indices[i].day_high) {
-            this.indices[i].day_high = this.info.price
-          }
-          if (this.info.price < this.indices[i].week_low) {
-            this.indices[i].week_low = this.info.price
-          }
-          if (this.info.price > this.indices[i].week_high) {
-            this.indices[i].week_high = this.info.price
-          }
-          if (this.info.price < this.indices[i].month_low) {
-            this.indices[i].month_low = this.info.price
-          }
-          if (this.info.price > this.indices[i].month_high) {
-            this.indices[i].month_high = this.info.price
-          }
-          if (this.info.price < this.indices[i].min_price) {
-            this.indices[i].min_price = this.info.price
-          }
-          if (this.info.price > this.indices[i].max_price) {
-            this.indices[i].max_price = this.info.price
-          }
-        }
-      },
       changeFilter: function(index, num) {
         this.current_index = index;
         this.current_number = num;
@@ -1886,11 +1858,35 @@ function get_data() {
 
 get_data();
 setInterval(function () {
-        pull_small();
-        setTimeout(function () {
-          one_app.checked();
-        },
-        2000);
+  let vm = one_app
+        pull_small().then({
+          for (let i=0;i<indices.length; i++) {
+            if (vm.info.price < vm.indices[i].day_low) {
+              vm.indices[i].day_low = vm.info.price
+            }
+            if (vm.info.price > vm.indices[i].day_high) {
+              vm.indices[i].day_high = vm.info.price
+            }
+            if (vm.info.price < vm.indices[i].week_low) {
+              vm.indices[i].week_low = vm.info.price
+            }
+            if (vm.info.price > vm.indices[i].week_high) {
+              vm.indices[i].week_high = vm.info.price
+            }
+            if (vm.info.price < vm.indices[i].month_low) {
+              vm.indices[i].month_low = vm.info.price
+            }
+            if (vm.info.price > vm.indices[i].month_high) {
+              vm.indices[i].month_high = vm.info.price
+            }
+            if (vm.info.price < vm.indices[i].min_price) {
+              vm.indices[i].min_price = vm.info.price
+            }
+            if (vm.info.price > vm.indices[i].max_price) {
+              vm.indices[i].max_price = vm.info.price
+            }
+          }
+        })
     },
     40000);
 </script>
