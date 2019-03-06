@@ -111,7 +111,7 @@
 
     <style>
         .row {
-          height: 147.7vh;
+          height: 160vh;
           overflow: hidden;
         }
 
@@ -147,6 +147,10 @@
           background-color: white;
           box-shadow: 0 0 3px gray;
           /* border-radius: 0 */
+        }
+
+        #asterick {
+          text-align: left;
         }
 
         .trend {
@@ -1220,6 +1224,13 @@
               <div class="feedgrabbr_widget2" id="fgid_e193389b25317bb961e6b582a"></div>
             </div>
 
+            <div class="side_ads">
+              <ins class="adsbygoogle"
+                   style="display:inline-block;"
+                   data-ad-client="ca-pub-9873470958093574"
+                   data-ad-slot="5347610936"></ins>
+             </div>
+
           </div>
       </div>
 
@@ -1536,6 +1547,13 @@ Vue.component('index-performance', {
     allReturn: function() {
       return (this.info.price - 100).toFixed(2)
     },
+    asterickText: function() {
+      if (dex.name === 'Masternode') {
+        return '*Launched August 2018'
+      } else {
+        return '*Launched July 2018'
+      }
+    }
   },
   template: `
     <div>
@@ -1635,7 +1653,7 @@ Vue.component('index-performance', {
             </div>
           </div>
         </div>
-        <div id="asterick">* Launch Data</div>
+        <div id="asterick">asterickText</div>
     </div>
   `
 })
