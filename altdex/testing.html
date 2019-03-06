@@ -71,6 +71,16 @@
         return t;
     }(document, "script", "twitter-wjs"));</script>
 
+    <!--News Widget-->
+    <script>
+        if (typeof (fg_widgets) === "undefined") {
+            fg_widgets = new Array();
+        }
+        fg_widgets.push("fgid_ebd3b2ea855fd4e14daaf2e86");
+        fg_widgets.push("fgid_e193389b25317bb961e6b582a");
+    </script>
+    <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+
     <!--Google ad/webdata-->
     <!--Global site tag (gtag.js) - Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
@@ -1158,6 +1168,14 @@
                             suffix='%'
                             ></pie-chart>
               </div>
+
+              <div class="side_ads">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;"
+                     data-ad-client="ca-pub-9873470958093574"
+                     data-ad-slot="5347610936"></ins>
+               </div>
+
             </div>
 
             <div id="performance_tab" class="tab-pane fade">
@@ -1181,14 +1199,23 @@
                 <index-performance
                 v-bind:dex="indices[current_number]"
                 v-bind:info="info[current_number]"></index-performance>
+
+                <div class="side_ads">
+                  <ins class="adsbygoogle"
+                       style="display:inline-block;"
+                       data-ad-client="ca-pub-9873470958093574"
+                       data-ad-slot="5347610936"></ins>
+                 </div>
               </div>
+
+
 
             </div>
 
-            <!-- <div id="news_tab" class="tab-pane fade">
-              <div class="feedgrabbr_widget" id="fgid_038586913a98322aa78993bf8"></div>
-              <div class="feedgrabbr_widget2" id="fgid_4305fbf1c4e6a699d3bd484b7"></div>
-            </div> -->
+            <div id="news_tab" class="tab-pane fade">
+              <div class="feedgrabbr_widget" id="fgid_ffd55116db5fb3420a5452387"></div>
+              <div class="feedgrabbr_widget2" id="fgid_e193389b25317bb961e6b582a"></div>
+            </div>
 
           </div>
       </div>
@@ -1262,6 +1289,15 @@
             </div>
           </div>
         </div>
+
+          <div id="bottom_ad">
+            <ins id="footer_ad" class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9873470958093574"
+                 data-ad-slot="5597159466"
+                 data-ad-format="auto"></ins>
+          </div>
+
         </div>
       </div>
     </div>
