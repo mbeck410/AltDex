@@ -1849,8 +1849,7 @@ function get_data() {
 get_data();
 setInterval(function () {
       pull_small().then({
-        let vm = one_app;
-        for (let i=0; i<vm.indices.length; i++) {
+        for (let i=0; i<one_app.indices.length; i++) {
           if (vm.info.price < vm.indices[i].day_low) {
             vm.indices[i].day_low = vm.info.price
           }
