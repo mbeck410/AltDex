@@ -1488,6 +1488,13 @@ template: `
 Vue.component('index-performance', {
   props: ['dex', 'info'],
   computed: {
+    dayHigh: function {
+      return dex.length
+    }
+      <!-- if (this.info.price > this.dex.day_high) {
+        Vue.set(this.dex, 8, 'day_high'))
+      }
+    } -->
     dayHeight: function() {
       let day_range_diff = this.dex.day_high - this.dex.day_low;
       let current_day_diff = this.info.price - this.dex.day_low;
@@ -1622,6 +1629,7 @@ Vue.component('index-performance', {
           </div>
         </div>
         <div id="asterick">{{ asterickText }}</div>
+        <div>dayHigh</div>
     </div>
   `
 })
