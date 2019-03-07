@@ -1495,10 +1495,10 @@ Vue.component('index-performance', {
   computed: {
     dayHigh: function() {
       return this.dex.length
-    }
+    },
     testStuff: function() {
       return this.dex[8];
-    }
+    },
     dayHeight: function() {
       let day_range_diff = this.dex.day_high - this.dex.day_low;
       let current_day_diff = this.info.price - this.dex.day_low;
