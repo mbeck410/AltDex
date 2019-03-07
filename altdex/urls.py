@@ -25,4 +25,5 @@ urlpatterns = [
     path('testing/', views.testing, name='testing'),
     path('testing2/', views.testing2, name='testing2'),
     path('index_trend/', views.index_trend, name='index_trend'),
+    path('trend_test/', views.trend_test, name='trend_test'),
 ]

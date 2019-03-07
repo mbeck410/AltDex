@@ -1798,7 +1798,7 @@ function pull_big() {
   }).then(function () {
     document.querySelector(".loader_div2").style.display = "none";
   });
-  fetch('/index_trend/')
+  fetch('/trend_test/')
     .then(function (response) {
       return response.json()
     })

@@ -491,6 +491,28 @@ def getindexperformance(request):
 
     return JsonResponse({'dict_key': performance_table})
 
+
+def trend_test(request):
+    indices = Index.objects.all().exclude(name='Null').order_by('id')
+    price_array = []
+    for index in indices:
+
+        index_prices = index.get().indexprice_set.all()
+        count = index_prices.count()
+        lower = count - 1050
+        prices = []
+
+        for i in range(lower, count, 50):
+            prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
+
+        # price_array.append(prices[::-1])
+
+
+    return JsonResponse({'dict_key': price_array})
+
+    # return JsonResponse({'dict_key': index_dict})
+
+
 def gainers_losers(request):
     indices = Index.objects.order_by('id')
     loser_array = []
