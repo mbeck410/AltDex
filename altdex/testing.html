@@ -1585,7 +1585,7 @@ Vue.component('index-performance', {
       return (this.info.price - 100).toFixed(2)
     },
     asterickText: function() {
-      if (this.dex.name == 'Masternode') {
+      if (this.info.name == 'Masternode') {
         return '*Launched August 2018'
       } else {
         return '*Launched July 2018'
@@ -1690,7 +1690,7 @@ Vue.component('index-performance', {
             </div>
           </div>
         </div>
-        <div id="asterick">{{ asterickText }} {{dayHigh}}</div>
+        <div id="asterick">{{ asterickText }}</div>
     </div>
   `
 })
