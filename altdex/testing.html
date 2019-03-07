@@ -1630,8 +1630,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Daily Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dex.day_low }}</div>
-              <div class="slider_high">High: {{ dex.day_high }}</div>
+              <div class="slider_low">Low: {{ dayLow }}</div>
+              <div class="slider_high">High: {{ dayHigh }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': dayHeight + '%'}">
@@ -1646,8 +1646,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Weekly Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dex.week_low }}</div>
-              <div class="slider_high">High: {{ dex.week_high }}</div>
+              <div class="slider_low">Low: {{ weekLow }}</div>
+              <div class="slider_high">High: {{ weekHigh }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': weekHeight + '%'}">
@@ -1662,8 +1662,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">Monthly Range</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dex.month_low }}</div>
-              <div class="slider_high">High: {{ dex.month_high }}</div>
+              <div class="slider_low">Low: {{ monthLow }}</div>
+              <div class="slider_high">High: {{ monthHigh }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': monthHeight + '%'}">
@@ -1678,8 +1678,8 @@ Vue.component('index-performance', {
           <div class="range_div">
             <div class="range_label">All Time Range*</div>
             <div class="range">
-              <div class="slider_low">Low: {{ dex.min_price }}</div>
-              <div class="slider_high">High: {{ dex.max_price }}</div>
+              <div class="slider_low">Low: {{ allLow }}</div>
+              <div class="slider_high">High: {{ allHigh }}</div>
             </div>
             <div class="bar"></div>
             <div class="slider_div" :style="{'margin-left': allHeight + '%'}">
