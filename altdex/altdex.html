@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>AltDex | Cryptocurrency Index (ALT100)</title>
+    <title>AltDex | Cryptocurrency Index Platform</title>
 
     <!--Meta Inf0-->
     <meta charset="UTF-8">
-    <meta name="description"
-          content="The market-cap weighted AltDex 100 Index tracks large-cap cryptocurrencies and tokens.">
-          <meta name="keywords"
-                content="Cryptocurrency, Bitcoin, AltDex, Index, Altcoin, coin, chart, Investing, Exchange, Trading, indices
-                Market, price, masternode, masternodes, crypto, ICO, ETF, BTC, XRP, Ripple, ETH, Ethereum, privacy, masternode,
-                token">
+    <meta name="description" content="Market Capitalization-Weighted Cryptocurrency Indices">
+    <meta name="keywords"
+          content="Cryptocurrency, Bitcoin, AltDex, Index, Altcoin, coin, chart, Investing, Exchange, Trading, indices
+          Market, price, masternode, masternodes, crypto, ICO, ETF, BTC, XRP, Ripple, ETH, Ethereum, privacy, masternode,
+          token">
     <meta name="author" content="Peer, LLC">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="twitter:image" content="https://sludgefeed.com/wp-content/uploads/2018/08/Altdex-Trading-Logo.png">
+    <meta name="twitter:image" content="https://sludgefeed.com/wp-content/uploads/2018/07/Altdex-Laptop-Logo.png">
     <meta name="twitter:site" content="@altcoindex">
     <meta property="fb:app_id" content="250619782212260">
 
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
-    <meta property="og:image" content="https://sludgefeed.com/wp-content/uploads/2018/08/Altdex-Trading-Logo.png">
+    <meta property="og:image" content="https://sludgefeed.com/wp-content/uploads/2018/07/Altdex-Laptop-Logo.png">
     <meta property="og:site_name" content="AltDex"/> <!-- website name -->
     <meta property="og:site" content="https://www.altdex.co/"/> <!-- website link -->
-    <meta property="og:title" content="AltDex 100 Cryptocurrency Index"/> <!-- title shown in the actual shared post -->
-    <meta property="og:description" content="Market Capitalization-Weighted Cryptocurrency Index"/>
+    <meta property="og:title" content="AltDex Cryptocurrency Indices"/> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="Market Capitalization-Weighted Cryptocurrency Indices"/>
 
     <!-- description shown in the actual shared post -->
     <meta property="og:url" content="https://www.altdex.co/"/> <!-- where do you want your post to link to -->
     <meta property="og:type" content="article"/>
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AltDex 100 Cryptocurrency Index">
-    <meta name="twitter:description" content="Market Capitalization-Weighted Cryptocurrency Index">
+    <meta name="twitter:title" content="AltDex Cryptocurrency Indices">
+    <meta name="twitter:description" content="Market Capitalization-Weighted Cryptocurrency Indices">
 
     <!--Links-->
+    <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
     <!--Fonts/Characters-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -50,17 +50,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/vue-chartkick@0.5.0"></script>
 
-    <!--News Widget-->
-    <script>
-        if (typeof (fg_widgets) === "undefined") {
-            fg_widgets = new Array();
-        }
-        fg_widgets.push("fgid_ebd3b2ea855fd4e14daaf2e86");
-        fg_widgets.push("fgid_e193389b25317bb961e6b582a");
-    </script>
-    <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Twitter -->
     <script>window.twttr = (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
             t = window.twttr || {};
@@ -78,8 +71,19 @@
         return t;
     }(document, "script", "twitter-wjs"));</script>
 
+    <!--News Widget-->
+    <!-- <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+    <script>
+        if (typeof (fg_widgets) === "undefined") {
+            fg_widgets = new Array();
+        }
+        fg_widgets.push("fgid_ebd3b2ea855fd4e14daaf2e86");
+        fg_widgets.push("fgid_e193389b25317bb961e6b582a");
+    </script> -->
+
     <!--Google ad/webdata-->
     <!--Global site tag (gtag.js) - Google Analytics-->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -100,177 +104,525 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         (adsbygoogle = window.adsbygoogle || []).push({});
         (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        // (adsbygoogle = window.adsbygoogle || []).push({});
+        // (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
+
+
     <style>
-        /* Remove the navbar's default margin-bottom and rounded borders */
-        .affix {
-            top: 20px;
-            z-index: 9999 !important;
-            width: 14.7%;
+        .row {
+          height: 160vh;
+          overflow: hidden;
         }
 
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {
-            /*height: 4484.65px;*/
+        #main_bar {
+          padding: 0;
+          height: 100%;
+          overflow-y: auto;
+          background-color: #ededed;
         }
 
-        /* Set gray background color and 100% height */
-        .sidenav {
-            padding-top: 20px;
-            /*background-color: whitesmoke;*/
-            height: 100%;
+        #left_bar {
+          height: 100%;
+          overflow-y: scroll;
+          background-color: white;
+          overflow-x: hidden;
         }
 
-        /* Set black background color, white text and some padding */
+        .intro {
+          font-size: 1.3vw;
+          text-align: left;
+          padding-left: 1.5vw;
+        }
 
-        /* On small screens, set height to 'auto' for sidenav and grid */
+        .blade {
+          display: flex;
+          align-items: center;
+          padding-left: 3%;
+          padding-right: 3%;
+          margin-left: 1vw;
+          margin-right: 1vw;
+          border: 0;
+          /* background-color: #ededed; */
+          background-color: white;
+          box-shadow: 0 0 3px gray;
+          /* border-radius: 0 */
+        }
 
-        /*Main Stuff*/
+        #asterick {
+          text-align: left;
+          padding-top: 1em;
+          padding-bottom: 1em;
+          width: 85%;
+          margin: auto;
+        }
 
-        #center {
-            padding-top: 20px;
+        .trend {
+          width: 35%;
+          padding-right: 1%;
+        }
+
+        .indices {
+          width: 25%
+        }
+
+        .gain_lose {
+          width: 20%;
+        }
+
+        #coin_gain {
+          padding-left: 1%;
+          padding-right: 1%;
+        }
+
+        #coin_lose {
+          padding-left: 2%;
+        }
+
+        #top_gainers {
+          display: flex;
+        }
+
+        #coin_list{
+          display: flex
+        }
+
+        #drop_btn {
+          width: 100%;
+          margin-top: 1vw;
+          margin-bottom: 1vw;
+        }
+
+        #menu_button {
+          font-size: 1.2vw;
+        }
+
+        .nav .open>a {
+          background-color: #6dc0eb;
+        }
+
+        .nav .open>a:focus  {
+          background-color: #6dc0eb;
+        }
+
+        .nav .open>a:hover {
+          background-color: #6dc0eb;
+        }
+
+        .nav>li>a:hover {
+          background-color: #6dc0eb;
+        }
+
+        .nav>li>a:focus {
+          background-color: #6dc0eb;
+        }
+
+        .dropdown-menu {
+          width: 100%;
+        }
+
+        /* Ads */
+
+        #main_ad {
+          margin: auto;
+          padding-top: 1vw;
+          padding-bottom: 1vw;
+        }
+
+        /* #news_header {
+          margin-top: 0;
+          font-weight: bold;
+        } */
+
+        #description {
+          text-align: left;
+        }
+
+        .des_name {
+          text-align: center;
+          margin-top: 1vw;
+        }
+
+        #index_chart_info {
+          display: flex;
+          padding-bottom: 0.2em;
+        }
+
+        #index_chart_symbol {
+          width: 50%;
+          text-align: left;
+          font-weight: bold;
+        }
+
+        #index_chart_price {
+          width: 20%;
+          text-align: right;
+        }
+
+        #index_chart_percent {
+          width: 15%;
+          text-align: right;
+        }
+
+        #index_chart_cap {
+          width: 15%;
+          text-align: right;
+        }
+
+        .index_buttons {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+        }
+
+        .index_buttons> button:hover{
+          color: lightgray;
+        }
+
+        .coin_name {
+            font-weight: bold;
+            font-size: 0.75vw;
+            width: 50%;
+            text-align: left;
+        }
+
+        .coin_price {
+            text-align: right;
+            width: 20%;
+            font-size: 0.75vw;
+        }
+
+        .coin_percent {
+            text-align: right;
+            width: 15%;
+            font-size: 0.75vw;
+        }
+
+        .coin_market {
+            text-align: right;
+            width: 15%;
+            font-size: 0.75vw;
+        }
+
+        #coin_headers {
+          display: flex;
+          padding-bottom: .2vw;
+          padding-top: .2vw;
+          cursor: pointer;
+        }
+
+        #header_name {
+            font-weight: bold;
+            font-size: 0.65vw;
+            width: 50%;
+            text-align: left;
+            padding-left: 7%;
+        }
+
+        #header_price {
+            text-align: right;
+            width: 20%;
+            font-size: 0.65vw;
+            font-weight: bold;
+        }
+
+        #header_percent {
+            text-align: right;
+            width: 15%;
+            font-size: 0.65vw;
+            font-weight: bold;
+        }
+
+        #header_cap {
+            text-align: right;
+            width: 15%;
+            font-size: 0.65vw;
+            font-weight: bold;
+        }
+
+        #pie_div {
+          padding-top: 1vw;
+          padding-bottom: 1vw;
+        }
+
+        /* Loading Wheel */
+
+        /* #performance_div {
+          display: none;
+        } */
+        .loader_div2 {
+          padding-top: 1.5vw;
+          padding-bottom: 1.5vw;
+        }
+
+        .loader_div {
+          height: 160px;
+          /* margin: auto; */
+          vertical-align: middle;
+        }
+
+        .loader {
+            position: relative;
+            /* left: 46%; */
+            margin: auto;
+            top: 25%;
+            z-index: 1;
+            /*width: 75px;*/
+            /*height: 75px;*/
+            /*margin: -75px 0 0 -75px;*/
+            border: 10px solid lightgray;
+            border-radius: 50%;
+            border-top: 10px solid #6dc0eb;
+            width: 75px;
+            height: 75px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            /*text-align: center;*/
+        }
+
+        .loader2 {
+            position: relative;
+            margin: auto;
+            top: 50%;
+            z-index: 1;
+            /*width: 75px;*/
+            /*height: 75px;*/
+            /*margin: -75px 0 0 -75px;*/
+            border: 10px solid lightgray;
+            border-radius: 50%;
+            border-top: 10px solid #6dc0eb;
+            width: 75px;
+            height: 75px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            /*text-align: center;*/
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
+            to {
+                bottom: 0px;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+
+        /* Mailchimp */
+        #mc_embed_signup  {
+          background:#fff;
+          clear:left;
+          font:14px Helvetica,Arial,sans-serif;
+          width:100%;
+        }
+
+        .mail_text {
+          text-align: center;
+          margin: auto;
+        }
+
+        #small_mail_text {
+          font-size: 16px;
+        }
+
+        #bottom_mail_text {
+          font-size: 16px;
+          padding-top: 5.2px;
+          padding-bottom: 5.2px;
+          height: 26.4px;
+        }
+
+        #mc_embed_signup .button {
+          background-color: #222842;
+        }
+
+        #sign_up {
+          width: 80%;
+          margin-top: 2vw;
+          /* margin-bottom: 2vw; */
+          text-align: center;
+          margin-right: auto;
+          margin-left: auto;
+        }
+
+        /* Slider Div */
+        #period_changes {
+          padding-top: 1vw;
+        }
+
+        .period_data {
+          display: flex;
+          align-items: center;
+        }
+
+        .perf_change {
+          font-size: 1.3vw;
+          width: 33%;
+        }
+
+        .perf_percent {
+          font-size: 1.3vw;
+          width: 33%;
+        }
+
+        .data_period {
+          width: 33%;
+        }
+
+        #all_ranges{
+          margin-top: 1.0vw;
+        }
+
+        .range {
+          display: flex;
+          width: 85%;
+          margin: auto;
+          text-align: center;
+        }
+
+        .bar {
+          width: 85%;
+          height: 0.4vw;
+          background-color: #6dc0eb;
+          margin: auto;
+        }
+
+        .slider_high {
+          width: 50%;
+          text-align: right;
+        }
+
+        .slider_low {
+          width: 50%;
+          text-align: left;
+        }
+
+        .range_label {
+          font-weight: bold;
+        }
+
+        .slider {
+          text-align: center;
+          width: 15%;
+        }
+
+        .slider_div {
+          text-align: left;
+          width: 100%;
+        }
+
+        .range_div {
+          width: 100%;
+        }
+
+
+        /* Gainer/Loser styling */
+        .gl_name {
+            font-weight: bold;
+            font-size: 0.9vw;
+            width: 22%;
+            text-align: left;
+        }
+
+        .gl_price {
+            text-align: right;
+            width: 45%;
+        }
+
+        .gl_percent {
+            text-align: right;
+            width: 33%;
+        }
+
+        .gl_title {
+          text-align: center;
+          font-weight: bold;
+          font-size: 1.1vw;
+          padding-bottom: 0.2vw;
         }
 
         .well {
-            background-color: white;
-            box-shadow: 0 0 3px gray;
-            border: 0;
+          margin-top: 0;
+          margin-bottom: 0;
+          background-color: none;
+          /* border-radius: none; */
         }
 
-        h1 {
-            font-size: 50px;
-            margin: 0px;
-            padding: 0px;
+        .indices_data {
+          display: flex;
+          justify-content: space-evenly;
         }
 
-        h3 {
-            margin: 0px;
-            padding: 0px;
-            font-size: 40px;
+        #index_symbol {
+          font-size: 2.0vw;
+          font-weight: bold;
+          text-align: left;
+          padding-left: 1vw;
+          width: 100%
+          /* color: white; */
         }
 
-        .main_div {
-            background-color: #ededed;
+        #index_header {
+          display: flex;
+          align-items: center;
         }
 
-        .pos {
-            color: green;
+        #dex_change {
+          text-align: left;
+          font-size: 1.7vw;
+          width: 7%;
         }
 
-        .neg {
-            color: red;
+        #dex_percent {
+          text-align: left;
+          font-size: 1.7vw;
+          width: 12%;
         }
 
-        /*Coin Table Style*/
-        table.table {
-            background-color: white;
-            margin: 0;
+        #index_time {
+            font-size: 0.7vw;
         }
 
-        /*Table Headers*/
-        table.table th {
-            background-color: #222842;
-            color: white;
+        #index_price {
+            font-size: 3.5vw;
+            height: 68px;
         }
 
-        #table_head {
-            cursor: pointer;
-            border-top: 0;
-        }
-
-        #table_head > th {
-            border: 0;
-        }
-
-        table.table th:nth-child(n+3) {
-            text-align: right;
-        }
-
-        /*Table Rows*/
-        table.table td:nth-child(n+3) {
-            text-align: right;
-        }
-
-        table.table td:first-child {
-            font-weight: bold;
-        }
-
-        table.table td:nth-child(2) {
-            font-weight: bold;
-        }
-
-        table.table td:nth-child(-n+7) {
-            border-top: 0;
-        }
-
-        .coin_row {
-            border-bottom: 1px solid lightgray;
-        }
-
-        .coin_row:last-child {
-            border: 0;
-        }
-
-        .row_name {
-            width: 10%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        /*Widget*/
-        #widget_fixed {
-            margin: auto;
-        }
-
-        .t-w_name {
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .w_name > a {
-            color: black;
-        }
-
-        .w_name > a:hover {
-            color: #6dc0eb;
-        }
-
-        #w_percent {
-            font-size: 0.7em;
-        }
-
-        .w_info {
-            margin-top: 20px;
-            font-size: 10px;
-        }
-
-        .w_data {
-            display: flex;
-            width: 100%;
-            border-bottom: 1px solid lightgray;
-            padding-bottom: 5px;
-            padding-top: 5px;
-
-        }
-
-        .w_data > div:first-child {
-            text-align: center;
-            font-size: 1.6vw;
-            /*width: 60%;*/
-            margin: auto;
-        }
-
-        .w_data > div:nth-child(2) {
-            text-align: center;
-            font-size: 1.4vw;
-            margin: auto;
-        }
-
-        .w_info {
-            font-size: 10px;
+        .changes {
+          padding-bottom: 0.5vw;
+          font-size: 1.8vw;
+          display: flex;
+          justify-content: space-evenly;
         }
 
         /*Navbar*/
@@ -328,123 +680,12 @@
             border-radius: 2px;
         }
 
-        .table2 .info {
-            font-size: 10px;
-        }
-
-        .time_bts > button:hover {
-            color: lightgray;
-        }
-
-        .main_price {
-            display: flex;
-        }
-
-        .gainers_losers {
-            margin: auto;
-            text-align: center;
-            width: 40%;
-        }
-
-        .gainers_losers tr:nth-child(2) {
-            font-size: 1.8em;
-        }
-
-        #twitter_link2 {
-            display: none;
-        }
-
-        #title_gainers {
-            color: green;
-        }
-
-        #title_losers {
-            color: red;
-        }
-
-        .main_price {
-            display: flex;
-        }
-
-        .pricing {
-            display: flex;
-            width: 70%;
-        }
-
-        .gain {
-            margin: auto;
-        }
-
-        .lose {
-            margin: auto;
-        }
-
-        .gainers_losers {
-            display: flex;
-            width: 30%;
-            text-align: center;
-            border-left: solid 1px lightgray;
+        .dex_btn {
+          padding: 4px 8px;
         }
 
         [v-cloak] {
             display: none;
-        }
-
-        #title_gainers {
-            color: #00ff00;
-        }
-
-        #title_losers {
-            color: #ec1313;
-        }
-
-        #gainers {
-            font-size: 1.8em;
-        }
-
-        #losers {
-            font-size: 1.8em;
-        }
-
-        .info {
-            font-size: 10px;
-            width: 50%;
-        }
-
-        #middle_price {
-            font-size: 3.0em;
-            width: 40%;
-            text-align: center;
-        }
-
-        #values_main {
-            font-size: 2.2em;
-        }
-
-        .dex_name {
-            font-size: 3.0em;
-            font-weight: bold;
-            text-align: left;
-            width: 60%;
-            padding-left: 10px;
-        }
-
-        .middle_name {
-            text-align: left;
-            width: 100%;
-            display: flex;
-        }
-
-        .middle_value {
-            text-align: center;
-            width: 100%;
-            display: flex;
-        }
-
-        .middle_data {
-            text-align: center;
-            width: 25%;
-            margin: auto;
         }
 
         /*Footer*/
@@ -493,81 +734,11 @@
             padding: auto;
         }
 
-        #side_ad {
-            margin-bottom: 20px
+        .charts {
+          display: none;
         }
 
         #footer_ad {
-            margin-bottom: 20px;
-        }
-
-        #top_gain_lose {
-            margin: auto;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        /*Gainers/Losers*/
-        .gl_title {
-            font-size: 1.1vw;
-            font-weight: bold;
-            padding-bottom: 3px;
-            padding-top: 3px;
-            color: white;
-            background-color: #222842;
-            text-align: center;
-        }
-
-        #news_headline {
-          border-bottom: 11px;
-          margin-bottom: 11px;
-        }
-
-        .gl_data {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid lightgray;
-            display: flex;
-            font-size: .9vw;
-        }
-
-        .gl_data:last-child {
-            border-bottom: 0;
-        }
-
-        .gl_name {
-            font-weight: bold;
-            font-size: 0.9vw;
-            width: 22%;
-            text-align: left;
-        }
-
-        .gl_price {
-            text-align: right;
-            width: 45%;
-        }
-
-        .gl_percent {
-            text-align: right;
-            width: 33%;
-        }
-
-        .gl_data:hover {
-            background-color: #f5f5f5;
-        }
-
-        #delayed_text {
-            text-align: left;
-            width: 60%;
-            padding-left: 10px;
-        }
-
-        #middle_time {
-            width: 40%;
-            text-align: center;
-        }
-
-        .r_ad {
             margin-bottom: 20px;
         }
 
@@ -592,218 +763,38 @@
             margin-left: 15px;
         }
 
-        #main_index_price {
-            width: 100%;
-            display: flex;
+        .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+            background-color: #222842;
+            /*margin-bottom: 7px;*/
+            border-radius: 2px;
+            padding-bottom: 6px;
+            padding-top: 6px;
+            padding-right: 12px;
+            padding-left: 12px;
         }
 
-        #middle_shit {
-            width: 75%;
+        .nav-pills>li>a {
+            border-radius: 2px;
+            padding-bottom: 6px;
+            padding-top: 6px;
+            padding-right: 12px;
+            padding-left: 12px;
+        }
+
+        .pos {
+          color: green;
+        }
+
+        .neg {
+          color: red;
+        }
+
+        .highlight {
+          background-color: #6dc0eb;
         }
 
         .light_blue_links {
             color: #6dc0eb;;
-        }
-
-        #middle_time {
-            width: 40%;
-            text-align: center;
-        }
-
-        .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-            background-color: #222842;
-            margin-bottom: 7px;
-            border-radius: 2px;
-            padding-bottom: 6px;
-            padding-top: 6px;
-            padding-right: 12px;
-            padding-left: 12px;
-        }
-
-        .nav-pills > li > a {
-            border-radius: 2px;
-            padding-bottom: 6px;
-            padding-top: 6px;
-            padding-right: 12px;
-            padding-left: 12px;
-            color: #6dc0eb;
-        }
-
-        .nav-pills > li > a:hover {
-            background-color: #444444;
-        }
-
-        #info_switch {
-            width: 100%;
-            padding: 0;
-        }
-
-        #middle_time {
-            width: 40%;
-            text-align: center;
-        }
-
-        .bar {
-          width: 85%;
-          height: 0.4vw;
-          background-color: #6dc0eb;
-          text-align: center;
-          margin: auto;
-          /* margin-bottom: 1.0vw; */
-        }
-
-        #performance {
-          display: flex;
-        }
-
-        #performance_price {
-          margin: auto;
-          width: 30%;
-          text-align: center;
-        }
-
-        #performance_current {
-          font-size: 3.0vw;
-        }
-
-        #period_changes {
-          text-align: center;
-          font-size: 2.0vw;
-          width: 30%;
-        }
-
-        #ranges {
-          text-align: right;
-          margin: auto;
-          width: 40%
-        }
-
-        #perf_dex_name {
-          font-size: 2.5vw;
-          font-weight: bold;
-        }
-
-        #labels {
-          font-size: 1.0vw;
-          display: flex;
-        }
-
-        .range_data {
-          display: flex;
-          width: 85%;
-          margin: auto;
-        }
-
-        .range_low {
-          width: 50%;
-          text-align: left;
-        }
-
-        .range_high {
-          text-align: right;
-          width: 50%;
-        }
-
-        .period_data {
-          display: flex;
-          width: 100%;
-          height: 33%;
-        }
-
-        .data_period {
-          width: 16%;
-          text-align: right;
-          margin: auto;
-          font-size: 1.3vw;
-        }
-
-        .perf_change {
-          width: 42%;
-          margin: auto;
-        }
-
-        .perf_percent {
-          width: 42%;
-          margin: auto;
-        }
-
-        .slider {
-          text-align: center;
-          width: 15%;
-        }
-
-        .period_data:first-child {
-          border-bottom: solid 1px gray;
-        }
-
-        .period_data:nth-child(2) {
-          border-bottom: solid 1px gray;
-        }
-
-        #loader {
-            position: relative;
-            left: 46%;
-            top: 50%;
-            z-index: 1;
-            /*width: 75px;*/
-            /*height: 75px;*/
-            /*margin: -75px 0 0 -75px;*/
-            border: 10px solid lightgray;
-            border-radius: 50%;
-            border-top: 10px solid #6dc0eb;
-            width: 75px;
-            height: 75px;
-            -webkit-animation: spin 2s linear infinite;
-            animation: spin 2s linear infinite;
-            /*text-align: center;*/
-        }
-
-        @-webkit-keyframes spin {
-            0% {
-                -webkit-transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @-webkit-keyframes animatebottom {
-            from {
-                bottom: -100px;
-                opacity: 0
-            }
-            to {
-                bottom: 0px;
-                opacity: 1
-            }
-        }
-
-        @keyframes animatebottom {
-            from {
-                bottom: -100px;
-                opacity: 0
-            }
-            to {
-                bottom: 0;
-                opacity: 1
-            }
-        }
-
-        #temp {
-            color: orangered;
-        }
-
-        #mobile_symbol {
-          display: none;
         }
 
         /*Themes*/
@@ -817,7 +808,15 @@
             -webkit-text-stroke: 1px transparent;
         }
 
-        .t--dark .main_div {
+        .t--dark #mc_embed_signup {
+          background-color: #444444;
+        }
+
+        .t--dark #left_bar {
+            background-color: #444444;
+        }
+
+        .t--dark #main_bar {
             background-color: #262626;
         }
 
@@ -893,6 +892,10 @@
             color: black;
         }
 
+        .t--light #mc_embed_signup {
+          background-color: white;
+        }
+
         .t--light .pos {
             color: green;
         }
@@ -910,7 +913,11 @@
             color: red;
         }
 
-        .t--light .main_div {
+        .t--light #left_bar {
+            background-color: white;
+        }
+
+        .t--light #main_bar {
             background-color: #ededed;
         }
 
@@ -945,76 +952,64 @@
             display: none;
         }
 
-        @media screen and (min-width: 768px) and (max-width: 1200px) {
-            #right_bar {
-                display: none;
-            }
-
-            /*.widget_div {*/
-            /*display: none;*/
-            /*}*/
-            #left_bar {
-                width: 20%;
-            }
-
-            #center {
-                width: 80%
-            }
-
-            #w_ad {
-                display: none;
-            }
-        }
-
         @media screen and (max-width: 767px) {
 
-            #center {
-                width: 100%;
-                padding-top: 12px;
-            }
+          #left_bar {
+            display: none;
+          }
 
-            .affix-top {
-                width: 96%;
-                top: 0;
-            }
+          #main_bar {
+            width: 100%
+          }
 
-            .affix {
-                top: 0;
-                z-index: 9999 !important;
-                width: 100%;
-                display: flex;
-            }
+          .gain_lose {
+            display: none;
+            width: 0%
+          }
 
-            #left_ad {
-                display: none;
-            }
+          .trend {
+            width: 65%;
+          }
 
-            .well {
-                padding: 5px;
-                border-radius: 2px;
-                box-shadow: none;
-                margin: 10px;
-                margin-top: 0;
-            }
+          .indices {
+            width: 35%;
+            height: 100%;
+          }
 
-            .w_info {
-                display: none;
-            }
+          .indices_data {
+            display: block;
+            height: 100%;
+          }
 
-            .widget_div {
-                padding: 0;
-            }
+          #index_time {
+            font-size: 0.8vh;
+            height: 50%;
+            vertical-align: middle;
+            margin: auto;
+            padding-bottom: 1.2vh
+          }
 
-            .main_div {
-                padding: 5px;
-            }
+          #index_price {
+            font-size: 3.5vh;
+            height: 50%;
+            margin: auto;
+            vertical-align: middle;
+          }
 
-            .col-sm-8 {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
+          #index_symbol {
+            font-size: 1.8vh;
+          }
 
-            .time_bts {
+          #constituents {
+            font-size: 1.5vh;
+          }
+
+          .changes {
+            font-size: 2.5vh;
+            margin: auto;
+          }
+
+            #time_bts {
                 display: none;
             }
 
@@ -1027,157 +1022,12 @@
                 height: auto;
             }
 
-            #chart_div {
-                display: none;
+            #twitter_link2 {
+                display: block;
+                margin-top: 11px;
             }
 
-            #w_well {
-                border-radius: 0;
-                box-shadow: none;
-                background-color: #222842;
-                color: white;
-                margin: auto;
-                border: 0;
-                padding-left: 5px;
-                padding-right: 5px;
-                display: flex;
-                width: 100%;
-            }
-
-            .w_name_link {
-                font-size: 3.2vw
-            }
-
-            .t--light .w_name_link {
-                color: #6dc0eb;
-            }
-
-            .t--dark .w_name_link {
-                color: #6dc0eb;
-            }
-
-            #w_percent {
-                display: none;
-            }
-
-            .lose {
-                display: none;
-            }
-
-            .gain {
-                display: none;
-            }
-
-            #desktop_symbol {
-                display: none;
-            }
-
-            #mobile_symbol {
-              display: inline;
-            }
-
-            /* #coin_symbol_value {
-                display: none;
-            } */
-
-            #coin_market_title {
-                display: none;
-            }
-
-            #coin_market_value {
-                display: none;
-            }
-
-            #coin_volume_title {
-                display: none;
-            }
-
-            #coin_volume_value {
-                display: none;
-            }
-
-            #coin_name_title {
-                display: none;
-            }
-
-            #coin_name_value {
-                display: none;
-            }
-
-            .gainers_losers {
-                display: none;
-                margin: auto;
-            }
-
-            .coin_row > td {
-              width: 25%
-            }
-
-            .coin_row > th {
-              width: 25%
-            }
-
-            .coin_row > td:first-child {
-              width: 30%
-            }
-
-            .coin_row > th:first-child {
-              width: 30%
-            }
-
-            .coin_row > td:nth-child(3) {
-              width: 20%
-            }
-
-            .coin_row > th:nth-child(3) {
-              width: 20%
-            }
-
-            .main_price > div.gainers_losers {
-                margin: auto;
-                display: none;
-            }
-
-            #main_index_price {
-                margin: 0;
-                width: 100%;
-            }
-
-            .pricing {
-                /*margin: auto;*/
-                width: 100%;
-            }
-
-            .middle_name {
-                text-align: center;
-                font-size: 3.0vw;
-                margin: auto;
-            }
-
-            #performance_btn {
-              display: none;
-            }
-
-            .middle_value {
-                margin: auto;
-                font-size: 3.0vw;
-            }
-
-            #middle_price {
-                width: 40%;
-                text-align: left;
-            }
-
-            .middle_data {
-                margin: auto;
-                font-size: 2.4vw;
-            }
-
-            #right_bar {
-                display: none;
-            }
-
-            .primary {
+            #twitter_link {
                 display: none;
             }
 
@@ -1190,82 +1040,31 @@
                 margin-left: 7px;
             }
 
-            #index_chart {
+            #desktop_symbol {
                 display: none;
+            }
+
+            #mobile_symbol {
+              display: inline;
             }
 
             #barz {
                 display: flex;
             }
 
-            .main_div {
-                padding-top: 0;
-            }
-
-            #footer_ad {
-                padding: 0;
-            }
-
-            .w_data {
-                border-bottom: none;
-                padding: 0;
-                /*padding-top: 3px;*/
-                /*padding-bottom: 3px;*/
-            }
-
-            .widget {
-                width: 25%;
-                text-align: center;
-                padding-left: 3px;
-                padding-right: 3px;
-            }
-
-            #w_price {
-                font-size: 3.0vw;
-            }
-
-            .w_name {
-                font-size: 3.0vw;
-            }
-
-            #delayed_text {
+            .primary {
                 display: none;
             }
 
-            #middle_time {
-                width: 100%;
-                text-align: center;
-                text-size: 10px;
-                padding-bottom: 5px;
+            #sign_up {
+              display: none;
             }
 
-            /*.my_navbar {*/
-            /*width: 100%;*/
-            /*}*/
-            .r_ad {
-                display: none;
-            }
-
-            .adsbygoogle {
-                display: none;
-            }
-
-            #info_bts {
-                padding-left: 10px;
-            }
-
-            #twitter_link2 {
-                display: block;
-                margin-top: 11px;
-            }
-
-            #twitter_link {
-                display: none;
-            }
         }
 
     </style>
 </head>
+
 <body>
 
 <!--NavBar-->
@@ -1287,13 +1086,13 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="secondary dropdown-menu">
-                    <li><a href="/">AltDex 100</a></li>
+                    <li><a href="/alt100">AltDex 100</a></li>
                     <li><a href="/exchange">Exchange</a></li>
                     <li><a href="/privacy">Privacy</a></li>
                     <li><a href="/masternode">Masternode</a></li>
                 </ul>
             </li>
-            <li><a href="https://sludgefeed.com/" target="_blank">News</a></li>
+            <!-- <li><a href="https://sludgefeed.com/" target="_blank">News</a></li> -->
             <li><a href="/about">About</a></li>
 
         </ul>
@@ -1305,13 +1104,6 @@
                    href="https://twitter.com/altcoindex"
                    data-size="large">Follow @TwitterDev</a>
             </div>
-            <div id="twitter_link2">
-                <a class="twitter-follow-button"
-                   href="https://twitter.com/altcoindex"
-                   data-size="large"
-                   data-show-count="false"
-                   data-show-screen-name="false">Follow @TwitterDev</a>
-            </div>
             <div id="dark_bt_div">
                 <button id="dark_bt" type="button" class="btn navbar-btn dark_bt">Mode</button>
             </div>
@@ -1321,376 +1113,207 @@
 
 <!--Main Div-->
 <div class="main_div container-fluid text-center">
-    <div class="row content">
 
-        <!--Fix Left Sidebar-->
-        <div id="left_bar" class="widget_div col-sm-2 sidenav">
-            <div id="widget_fixed" data-spy="affix" data-offset-top="50.8">
+    <div class="row content" id="one_app">
 
-                <!--Index Price Widget-->
-                <div id="w_well" class="well">
-                    <div v-cloak class="widget" v-for="row in rows">
-                        <div class="w_data">
-                            <div class="w_name"><a class="w_name_link" :href="row.link">{{row.symbol}}</a></div>
-                            <div>
-                                <div id="w_price">
-                                  {{row.price.toFixed(2)}}
-                                </div>
-                                <div id="w_percent" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                    {{row.price_percent.toFixed(2)}}%
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w_info">
-                        <div>Last Updated Values</div>
-                        <div>All Values Delayed</div>
-                    </div>
-                </div>
+      <!--Fix Left Sidebar-->
+      <div id="left_bar" class="col-sm-3 sidenav">
 
-                <!--Fixed Ad-->
-                <div id="left_ad">
-                    <ins class="adsbygoogle"
-                         style="display:inline-block;width:225px;height:250px"
-                         data-ad-client="ca-pub-9873470958093574"
-                         data-ad-slot="5347610936"></ins>
-                </div>
+        <ul class="nav nav-pills" id="tabs" v-cloak>
+          <li class="dropdown" id="drop_btn" v-cloak>
+            <a class="btn dropdown-toggle active" data-toggle="dropdown" href="#" v-cloak>
+              <div id="menu_button" v-cloak>{{ menu[menu_number] }} <span class="caret" v-cloak></span></div>
+            </a>
+            <ul class="dropdown-menu" v-cloak>
+            	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
+          		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performance</a></li>
+              <!-- <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li> -->
+            </ul>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+
+          <div id="coins_tab" class="tab-pane fade in active">
+
+            <div class="index_buttons">
+              <button class="btn dex_btn" @click="changeFilter('AltDex', 0)"
+              v-bind:class="{'highlight' : (current_number === 0)}">ALT100</button>
+              <button class="btn dex_btn" @click="changeFilter('Exchange', 1)"
+              v-bind:class="{'highlight' : (current_number === 1)}">ALTEXC</button>
+              <button class="btn dex_btn" @click="changeFilter('Privacy', 2)"
+              v-bind:class="{'highlight' : (current_number === 2)}">ALTPRV</button>
+              <button class="btn dex_btn" @click="changeFilter('Masternode', 3)"
+              v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
             </div>
+
+              <div id="description">
+                <h4 class='des_name' v-cloak><b>{{ index_names[current_number] }}</b></h4>
+                <p v-cloak>{{ descriptions[current_number] }}</p>
+                <ul>
+                  <li v-cloak>Number of Constituents: {{ constituents[current_number] }}</li>
+                </ul>
+                <p><a class="light_blue_links" href="/about/">Learn More</a></p>
+              </div>
+
+              <div id="index_chart_info" v-cloak>
+                <div id="index_chart_symbol" v-cloak><a class="light_blue_links" :href="info.link" target="_blank"
+                  >{{ info[current_number].symbol }}</a></div>
+                <div id="index_chart_price" v-cloak>{{ info[current_number].price.toFixed(2) }}</div>
+                <div id="index_chart_percent"
+                v-bind:class="{'pos' : info[current_number].price_percent>0, 'neg' : info[current_number].price_percent<0}"
+                v-cloak>{{ info[current_number].price_percent }}%</div>
+                <div id="index_chart_cap" v-cloak>${{ indexCap }}</div>
+              </div>
+
+              <div id="coin_headers">
+                <div id="header_name" @click="sort('name')">Name</div>
+                <div id="header_price" @click="sort('price')">Price</div>
+                <div id="header_percent" @click="sort('price_percent')">%Change</div>
+                <div id="header_cap" @click="sort('market_cap')">Mkt Cap</div>
+              </div>
+              <div v-for="coin in filter(sortedCoins)">
+                <main-coin-chart
+                v-bind:coin="coin"></main-coin-chart>
+              </div>
+              <div id="pie_div">
+                <pie-chart :data="pie_data[current_number]"
+                            :library='pie_settings'
+                            suffix='%'
+                            ></pie-chart>
+              </div>
+
+
+
+            </div>
+
+            <div id="performance_tab" class="tab-pane fade">
+
+              <div class="index_buttons">
+                <button class="btn dex_btn" @click="changeFilter('AltDex', 0)"
+                v-bind:class="{'highlight' : (current_number === 0)}">ALT100</button>
+                <button class="btn dex_btn" @click="changeFilter('Exchange', 1)"
+                v-bind:class="{'highlight' : (current_number === 1)}">ALTEXC</button>
+                <button class="btn dex_btn" @click="changeFilter('Privacy', 2)"
+                v-bind:class="{'highlight' : (current_number === 2)}">ALTPRV</button>
+                <button class="btn dex_btn" @click="changeFilter('Masternode', 3)"
+                v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
+              </div>
+
+              <div class="loader_div2">
+                <div class="loader2"></div>
+              </div>
+
+              <div id="performance_div">
+                <index-performance
+                v-bind:dex="indices[current_number]"
+                v-bind:info="info[current_number]"></index-performance>
+              </div>
+
+
+
+            </div>
+
+            <!-- <div id="news_tab" class="tab-pane fade">
+              <div class="feedgrabbr_widget" id="fgid_ffd55116db5fb3420a5452387"></div>
+              <div class="feedgrabbr_widget2" id="fgid_e193389b25317bb961e6b582a"></div> -->
+              <!-- <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="104061/"></script> -->
+            <!-- </div> -->
+
+            <div class="side_ads">
+              <ins class="adsbygoogle"
+                   style="display:block;"
+                   data-ad-client="ca-pub-9873470958093574"
+                   data-ad-slot="5347610936"
+                   data-ad-format="auto"></ins>
+             </div>
+
+          </div>
+      </div>
+
+      <!--Center Div-->
+      <div id="main_bar" class="col-sm-9" v-cloak>
+
+        <div id="sign_up" class="well blade">
+          <!-- Begin Mailchimp Signup Form -->
+          <div id="mc_embed_signup">
+            <h3 class="mail_text">Subscribe to Receive Updates About New Features</h3>
+            <!-- <div class="mail_text" id="small_mail_text">Includes exclusive trading signals, market alerts, and more</div> -->
+            <form action="https://sludgefeed.us17.list-manage.com/subscribe/post?u=c7321325d890635b7bf62a58d&amp;id=273b9b86ec" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+
+              <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c7321325d890635b7bf62a58d_273b9b86ec" tabindex="-1" value=""></div>
+                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                </div>
+            </form>
+              <div class="mail_text" id="bottom_mail_text">Have a Feature Request?
+                <a class="light_blue_links" href="https://goo.gl/forms/sA1eOK1WKGt3aQLW2" target="_blank">Fill Out This Form</a></div>
+          </div>
+
+          <!--End mc_embed_signup-->
         </div>
 
-        <!--Center Div-->
-        <div id="center" class="col-sm-8 text-left">
+        <div id="main_ad">
+          <ins class="adsbygoogle"
+               style="display:block;margin:auto;"
+               data-ad-client="ca-pub-9873470958093574"
+               data-ad-slot="5597159466"
+               data-ad-format="auto"></ins>
+        </div>
 
-            <!--Index Price Chart-->
-            <div id="chart_div" class="well">
-
-                <!--Resize Buttons-->
-                <div class="time_bts">
-                    <button type="button" class="btn" onclick="change_range('hour')">1 hr</button>
-                    <button type="button" class="btn" onclick="change_range('one_day')">24 hr</button>
-                    <button type="button" class="btn" onclick="change_range('seven_day')">7 d</button>
-                    <button type="button" class="btn" onclick="change_range('one_month')">1 m</button>
-                    <button type="button" class="btn" onclick="change_range('three_month')">3 m</button>
-                    <button type="button" class="btn" onclick="change_range('year')">ALL</button>
-                </div>
-
-                <div id="loader"></div>
-
-                <!--Chart-->
-                <div id="index_chart"></div>
+        <div v-for="(row, index) in info">
+          <div id=index_header v-cloak>
+            <div id="index_symbol" v-cloak>{{ row.name }} Index
+              (<a class="light_blue_links" :href="row.link" target="_blank">{{ row.symbol }}</a>)</div>
+          </div>
+          <div class="well blade">
+            <div class="trend">
+              <div class="loader_div">
+                <div class="loader"></div>
+              </div>
+              <div class="charts">
+                <area-chart :data="trend[index]"
+                :library=chart_settings
+                height="160px"
+                :min="null"
+                :max="null"
+                :colors="['#6dc0eb']"></area-chart>
+              </div>
             </div>
 
-            <!--Main Index Info Div-->
-            <div class="container" id="info_switch">
-
-                <!--Index Data-->
-                <ul id="info_bts" class="nav nav-pills">
-                    <li class="active"><a data-toggle="pill" href="#price_info">Price</a></li>
-                    <li id="performance_btn"><a data-toggle="pill" href="#performance_tab">Performance</a></li>
-                    <li><a data-toggle="pill" href="#info">Info</a></li>
-                </ul>
-
-                <div class="tab-content">
-                    <!--Main Index Info Div-->
-                    <div class="tab-pane fade in active well" id="price_info">
-
-                        <div id="index_info" class="main_price">
-
-                            <!--Index Data-->
-                            <div v-cloak class="pricing">
-                                <div id="main_index_price" v-for="row in rows">
-                                    <div id="middle_shit">
-
-                                        <!--Index Name-->
-                                        <div class="middle_name">
-                                            <div class="dex_name">ALT100</div>
-                                            <div id="middle_price">{{row.price.toFixed(2)}}</div>
-                                        </div>
-
-                                        <!--Index Value-->
-                                        <div class="middle_value">
-                                            <div id="delayed_text" class="info">AltDex 100 Cryptocurrency Index - ALT100
-                                                Delayed Value
-                                            </div>
-                                            <div id="middle_time" class="info">Last Update: {{row.time.slice(0,19)}}
-                                                UTC
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="middle_data">
-                                        <div id="values_main" v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                            {{row.price_percent.toFixed(2)}}%
-                                            <div id="middle_percent" v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">
-                                                {{row.change_24h.toFixed(2)}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Number Gainers/Losers-->
-                            <div class="gainers_losers">
-
-                                <!--Gainers-->
-                                <div class="gain">
-                                    <div id="title_gainers">Gainers</div>
-                                    <div id="gainers"></div>
-                                </div>
-
-                                <!--Losers-->
-                                <div class="lose">
-                                    <div id="title_losers">Losers</div>
-                                    <div id="losers"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div id="temp">* 24 hour calculations have been reset following routine maintenence.</div> -->
-                    </div>
-
-                    <!--Index Info-->
-                    <div id="info" class="tab-pane fade well">
-                        <h4><b>AltDex 100 (ALT100)</b></h4>
-                        <p>The AltDex 100 is a market capitalization-weighted benchmark index for large-cap
-                            cryptocurrencies and tokens.</p>
-                        <ul>
-                            <li>Number of Constituents: 100</li>
-                            <li>Trailing 30 day average daily trading volume $100,000.</li>
-                        </ul>
-                        <p><a href="/about/" class="light_blue_links">Learn More</a></p>
-                    </div>
-
-                    <!-- Performace Tab -->
-                    <div class="tab-pane fade well" id="performance_tab">
-                      <div id="performance">
-                      <div id="performance_price">
-                        <div id="perf_dex_name">ALT100</div>
-                        <div id="performance_current"></div>
-                        <div id="performance_time"></div>
-                      </div>
-
-                      <div id="period_changes" class="p_tab">
-                        <div class="period_data">
-                          <div class="data_period">24h</div>
-                          <div class="perf_change" id="perf_day_change"></div>
-                          <div class="perf_percent" id="perf_day_percent"></div>
-                        </div>
-                        <div class="period_data">
-                          <div class="data_period">7d</div>
-                          <div class="perf_change" id="perf_week_change"></div>
-                          <div class="perf_percent" id ="perf_week_percent"></div>
-                        </div>
-                        <div class="period_data">
-                          <div class="data_period">1m</div>
-                          <div class="perf_change" id="perf_month_change"></div>
-                          <div class="perf_percent" id="perf_month_percent"></div>
-                        </div>
-                      </div>
-
-                      <div id="ranges" class="p_tab">
-
-
-                        <div id="day_range">
-                          <div class="range_data">
-                            <div class="range_low">
-                              <div>24 Hour Low</div>
-                              <div id="day_low"></div>
-                            </div>
-                            <div class="range_high">
-                              <div>24 Hour High</div>
-                              <div id="day_high"></div>
-                            </div>
-                          </div>
-                          <div class=bar></div>
-
-                          <div id="day_slider" class="slider">
-                            <i class="fa fa-caret-up"></i>
-                            <div id="day_slider_value"></div>
-                          </div>
-                        </div>
-
-                        <div id="week_range">
-                          <div class="range_data">
-                            <div class="range_low">
-                              <div>7 Day Low</div>
-                              <div id="week_low"></div>
-                            </div>
-                            <div class="range_high">
-                              <div>7 Day High</div>
-                              <div id="week_high"></div>
-                            </div>
-                          </div>
-                          <div class=bar></div>
-                          <div id="week_slider" class="slider">
-                            <i class="fa fa-caret-up"></i>
-                            <div id="week_slider_value"></div>
-                          </div>
-                        </div>
-
-                        <div id="month_range">
-                          <div class="range_data">
-                            <div class="range_low">
-                              <div>1 Month Low</div>
-                              <div id="month_low"></div>
-                            </div>
-                            <div class="range_high">
-                              <div>1 Month High</div>
-                              <div id="month_high"></div>
-                            </div>
-                          </div>
-                          <div class=bar></div>
-                          <div id="month_slider" class="slider">
-                            <i class="fa fa-caret-up"></i>
-                            <div id="month_slider_value"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <index-info class="indices"
+              v-bind:row="row"
+              ></index-info>
+            <div class="gain_lose" id="coin_gain">
+              <div class="gl_title">Best Performers</div>
+              <gainer-info
+              v-bind:gainer="gainers[index]">
+              </gainer-info>
             </div>
-
-            <!--Coin Table-->
-            <div class="well">
-                <table v-cloak id="coin_table" class="table">
-
-                    <!--Table Headers-->
-                    <tr id="table_head">
-                        <th @click="sort('symbol')" id="coin_symbol_title">
-                            Symbol &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('name')" id="coin_name_title">
-                            Name &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('market_cap')" id="coin_market_title">
-                            Market Cap &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('price')">
-                            Last &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('price_percent')">
-                            Change (24h) &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('volume')" id="coin_volume_title">
-                            Volume (24h) &nbsp; <i class="fas fa-sort"></i></th>
-                        <th @click="sort('market_cap')" id="coin_weight_title">
-                            % Weight &nbsp; <i class="fas fa-sort"></i></th>
-                    </tr>
-
-                    <!--Table Rows-->
-                    <tr class="coin_row" v-for="row in sortedCoins">
-
-                        <!--Symbol-->
-                        <td id="coin_symbol_value" class="row_symbol">
-                          <div id="mobile_symbol">
-                            <a :href="row.website" target="_blank"><img :src="row.icon"></a>
-                            &nbsp; <a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
-                          </div>
-
-                          <div id="desktop_symbol">{{row.symbol}}</div>
-                        </td>
-
-                        <!--Name-->
-                        <td id="coin_name_value" class="row_name"><a :href="row.website" target="_blank">
-                            <img :src="row.icon"></a> &nbsp; <a class="light_blue_links" :href="row.website"
-                                                                target="_blank">{{row.name}}</a>
-                        </td>
-
-                        <!--Market Cap-->
-                        <td id="coin_market_value">${{row.market_cap.toLocaleString('en', {useGrouping:true})}}</td>
-
-                        <!--Last-->
-                        <td>${{row.pretty_price.toLocaleString('en', {useGrouping:true})}}</td>
-
-                        <!--Percent_Change-->
-                        <td class="row_percent" v-bind:class="{'pos':row.price_percent>0, 'neg':row.price_percent<0}">
-                            {{row.price_percent.toFixed(2)}}%
-                        </td>
-
-                        <!--Volume-->
-                        <td id="coin_volume_value">${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
-
-                        <!--% Weight-->
-                        <td id="coin_weight_value">{{row.weight_1}}%</td>
-                    </tr>
-                </table>
+            <div class="gain_lose" id="coin_lose">
+              <div class="gl_title">Worst Performers</div>
+                <gainer-info
+                  v-bind:gainer="losers[index]">
+              </gainer-info>
             </div>
-            <!--Footer Ad-->
-            <ins id="footer_ad" class="adsbygoogle"
-                 style="display:block"
+          </div>
+        </div>
+
+          <div id="bottom_ad">
+            <ins class="adsbygoogle"
+                 style="display:block;margin:auto;"
                  data-ad-client="ca-pub-9873470958093574"
                  data-ad-slot="5597159466"
                  data-ad-format="auto"></ins>
+          </div>
+
         </div>
-
-        <!--Right Bar-->
-        <div id="right_bar" class="col-sm-2 sidenav">
-
-            <!--Top Ad-->
-            <div class="r_ad">
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:225px;height:190px"
-                     data-ad-client="ca-pub-9873470958093574"
-                     data-ad-slot="5347610936"></ins>
-            </div>
-
-            <!--Top Gainers/Losers-->
-            <div v-cloak class="well" id="top_gain_lose">
-                <div id="gl_all">
-
-                    <!--Gainers-->
-                    <div id="top_gainers">
-                        <div id="gainerz" class="gl_title">Best Performers</div>
-                        <div class="gl_data" v-for="row in rows2">
-                            <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
-                            </div>
-                            <div class="gl_price">${{row.price}}</div>
-                            <div class="gl_percent"
-                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                {{row.price_percent}}%
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Losers-->
-                    <div id="top_losers">
-                        <div id="lozerz" class="gl_title">Worst Performers</div>
-                        <div class="gl_data" v-for="row in rows">
-                            <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
-                            </div>
-                            <div class="gl_price">${{row.price}}</div>
-                            <div class="gl_percent"
-                                 v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
-                                {{row.price_percent}}%
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--Middle Ad-->
-            <div class="r_ad">
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:225px;height:190px"
-                     data-ad-client="ca-pub-9873470958093574"
-                     data-ad-slot="5347610936"></ins>
-            </div>
-
-            <!--News Widget-->
-            <div id="news_feed" class="well">
-              <div id="news_headline" class="gl_title">Crypto News</div>
-                <div class="feedgrabbr_widget" id="fgid_ffd55116db5fb3420a5452387"></div>
-                <div class="feedgrabbr_widget2" id="fgid_e193389b25317bb961e6b582a"></div>
-            </div>
-
-            <div class="r_ad">
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:225px;height:190px"
-                     data-ad-client="ca-pub-9873470958093574"
-                     data-ad-slot="5347610936"></ins>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
 
 <!--Footer-->
-
 <footer class="container-fluid text-center">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
@@ -1699,583 +1322,627 @@
         <div id="disclaimer">
             <p>The information provided by AltDex is not guaranteed to be complete, accurate or timely. It
                 is
-                provided solely for informational and educational purposes and does not constitute investment advice. It
+                provided solely for informational and educational purposes and does not constitute investment
+                advice. It
                 shall
-                not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor its
+                not be deemed to be an offer to buy or sell any security or cryptocurrency. Neither AltDex nor
+                its
                 content
-                providers are responsible for any damages or losses arising from any use of this information. Past
+                providers are responsible for any damages or losses arising from any use of this information.
+                Past
                 performance
                 is no guarantee of future results.
             <p>
-            <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your experience, but
-                you can opt-out if you wish <a class="light_blue_links" href="/privacy_policy/">Privacy Policy</a>.
+            <p>AltDex uses cookies to improve your experience. Disabling them may negatively impact your
+                experience, but
+                you can opt-out if you wish <a href="/privacy_policy/">Privacy Policy</a>.
             </p>
 
             <!--Page Links-->
             <div class="footer_pages">
-                <div id="footer_left_link"><a class="light_blue_links" href="/about/">About</a> &nbsp; &nbsp; | &nbsp;
-                    &nbsp; <a
-                            class="light_blue_links" href="/privacy_policy/">Privacy Policy</a></div>
+                <div id="footer_left_link"><a href="/about/" target="_blank">About</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a
+                        href="/privacy_policy/" target="_blank">Privacy Policy</a></div>
             </div>
         </div>
 
         <!--Other Links-->
         <div class="footer_bottom">
-            <div class="footer_link">&#169<a href="https://www.peerco.io/" class="light_blue_links" target="_blank">Peer, LLC.</a> All rights reserved.</div>
-            <div><a href="mailto:admin@altdex.co" class="fa light_blue_links" target="_blank">&#x2709</a><a
+            <div class="footer_link"> &#169AltDex 2018. All rights reserved. </div>
+            <div><a href="mailto:admin@altdex.co" class="fa" target="_blank">&#x2709</a><a
                     href="https://twitter.com/altcoindex"
-                    class="fa fa-twitter light_blue_links" target="_blank"></a></div>
-            <div class="footer_link">From the creators of <a class="light_blue_links" href="https://sludgefeed.com/"
+                    class="fa fa-twitter" target="_blank"></a></div>
+            <div class="footer_link">From the creators of <a href="https://sludgefeed.com/"
                                                              target="_blank">SludgeFeed</a></div>
-            <div class="footer_link">Select market data provided by <a class="light_blue_links"
-                                                                       href="http://coincap.io/"
+            <div class="footer_link">Select market data provided by <a href="http://coincap.io/"
                                                                        target="_blank">CoinCap</a> & <a
-                    class="light_blue_links" href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
+                    href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></div>
         </div>
     </div>
     <div class="col-sm-2"></div>
 </footer>
+
+
 <!--Javascript-->
 <script>
-    // Variables
-    let current_index = 'AltDex';
-    let current_id = '0';
-    let first_x = 0;
-    let last_x = 0;
-    let amount_gainers = 0;
-    let amount_losers = 0;
-    let last_y = 0;
-    let y_low = 0;
-    let y_high = 0;
-    let price_change = 0;
-    let dark_bt = document.querySelector('#dark_bt');
-    let mode = localStorage.getItem("mode");
-    let body = document.querySelector('body');
 
-    // Getting and Setting Theme from localStorage 'mode'
-    if (mode === null) {
-        localStorage.setItem("mode", "light");
-        body.classList.add('t--light');
-    } else if (mode === 'dark') {
+let dark_bt = document.querySelector('#dark_bt');
+let mode = localStorage.getItem("mode");
+let body = document.querySelector('body');
+
+// Getting and Setting Theme from localStorage 'mode'
+if (mode === null) {
+    localStorage.setItem("mode", "light");
+    body.classList.add('t--light');
+} else if (mode === 'dark') {
+    body.classList.remove('t--light');
+    body.classList.add('t--dark');
+} else {
+    body.classList.remove('t--dark');
+    body.classList.add('t--light');
+}
+
+function change_color(div) {
+  let my_div = document.getElementById(div);
+  let color = my_div.style.color;
+  // console.log(color)
+  if (color === 'green') {
+    my_div.style.color = 'rgb(0, 255, 0)';
+  }
+  else if (color === 'rgb(0, 255, 0)') {
+    my_div.style.color = 'green';
+  }
+  else if (color === 'red') {
+    my_div.style.color = 'rgb(236, 19, 19)';
+  }
+  else if (color === 'rgb(236, 19, 19)') {
+    my_div.style.color = 'red';
+  }
+}
+
+// Changing Mode/Theme on button click
+dark_bt.onclick = function () {
+    // Light to Dark
+    if (body.classList.contains('t--light')) {
         body.classList.remove('t--light');
         body.classList.add('t--dark');
-    } else {
+        localStorage.setItem("mode", "dark");
+    }
+
+    // Dark to Light
+    else {
         body.classList.remove('t--dark');
         body.classList.add('t--light');
+        localStorage.setItem("mode", "light");
     }
+};
 
-    function showPage() {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("index_chart").style.display = "block";
+Vue.component('coin-list', {
+  props: ['coin'],
+  template:`
+  <div id="top_gainers">
+      <div class="gl_name"><a class="light_blue_links" :href="coin.website" target="_blank">{{coin.symbol}}</a>
+          </div>
+          <div class="gl_price">&#36;{{coin.price.toLocaleString('en', {useGrouping:true})}}</div>
+          <div class="gl_percent" v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
+              {{ coin.price_percent }}%
+          </div>
+      </div>
+  </div>
+  `
+})
+
+Vue.component('main-coin-chart', {
+  props: ['coin'],
+  template:`
+  <div id="coin_list">
+      <div class="coin_name"><a :href="coin.website" target="_blank">
+          <img :src="coin.icon"></a> &nbsp; <a class="light_blue_links" :href="coin.website"
+                                              target="_blank">{{coin.name}}</a>
+      </div>
+          <div class="coin_price">&#36;{{coin.pretty_price.toLocaleString('en', {useGrouping:true})}}</div>
+          <div class="coin_percent"
+               v-bind:class="{'pos' : coin.price_percent>0, 'neg' : coin.price_percent<0}">
+              {{coin.price_percent.toFixed(2)}}%
+          </div>
+          <div class="coin_market">&#36;{{coin.pretty_cap}}<div>
+      </div>
+  </div>
+  `
+})
+
+
+Vue.component('gainer-info', {
+props: ['gainer'],
+template: `
+  <div id="gainerz">
+    <coin-list v-for="coin in gainer"
+    v-bind:coin="coin"></coin-list>
+  </div>
+`
+})
+
+Vue.component('index-info', {
+props: ['row'],
+template: `
+  <div>
+    <div>
+      <div>
+        <div id="index_price">{{ row.price.toFixed(2) }}</div>
+        <div class="changes">
+          <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
+          <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
+        </div>
+        <div id="index_time">
+          Last Update: {{row.time.slice(0,19)}} UTC
+        </div>
+      </div>
+    </div>
+  </div>
+`
+})
+
+// <div class="changes">
+//   <div v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">{{ row.price_percent.toFixed(2) }}%</div>
+//   <div v-bind:class="{'pos' : row.change_24h>0, 'neg' : row.change_24h<0}">{{ row.change_24h.toFixed(2) }}</div>
+// </div>
+
+// if (this.info.price > this.dex.day_high) {
+//  Vue.set(this.dex, 8, 'day_high'))
+//}
+//}
+
+Vue.component('index-performance', {
+  props: ['dex', 'info'],
+  computed: {
+    dayLow: function () {
+      if (this.info.price < this.dex.day_low) {
+        Vue.set(this.dex, 'day_low', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.day_low
+      }
+    },
+    dayHigh: function () {
+      if (this.info.price > this.dex.day_high) {
+        Vue.set(this.dex, 'day_high', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.day_high
+      }
+    },
+    weekLow: function () {
+      if (this.info.price < this.dex.week_low) {
+        Vue.set(this.dex, 'week_low', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.week_low
+      }
+    },
+    weekHigh: function () {
+      if (this.info.price > this.dex.week_high) {
+        Vue.set(this.dex, 'week_high', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.week_high
+      }
+    },
+    monthLow: function () {
+      if (this.info.price < this.dex.month_low) {
+        Vue.set(this.dex, 'month_low', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.month_low
+      }
+    },
+    monthHigh: function () {
+      if (this.info.price > this.dex.month_high) {
+        Vue.set(this.dex, 'month_high', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.month_high
+      }
+    },
+    allLow: function () {
+      if (this.info.price < this.dex.min_price) {
+        Vue.set(this.dex, 'min_price', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.min_price
+      }
+    },
+    allHigh: function () {
+      if (this.info.price > this.dex.max_price) {
+        Vue.set(this.dex, 'max_price', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.max_price
+      }
+    },
+    dayHeight: function() {
+      let day_range_diff = this.dex.day_high - this.dex.day_low;
+      let current_day_diff = this.info.price - this.dex.day_low;
+      let day_height = (current_day_diff / day_range_diff) * 85;
+      return day_height.toFixed(1)
+    },
+    weekHeight: function() {
+      let week_range_diff = this.dex.week_high - this.dex.week_low;
+      let current_week_diff = this.info.price - this.dex.week_low;
+      let week_height = (current_week_diff / week_range_diff) * 85;
+      return week_height.toFixed(1)
+    },
+    monthHeight: function() {
+      let month_range_diff = this.dex.month_high - this.dex.month_low;
+      let current_month_diff = this.info.price - this.dex.month_low;
+      let month_height = (current_month_diff / month_range_diff) * 85;
+      return month_height.toFixed(1)
+    },
+    allHeight: function() {
+      let all_range_diff = this.dex.max_price - this.dex.min_price;
+      let all_diff = this.info.price - this.dex.min_price;
+      let all_height = (all_diff / all_range_diff) * 85;
+      return all_height.toFixed(1)
+    },
+    allReturn: function() {
+      return (this.info.price - 100).toFixed(2)
+    },
+    asterickText: function() {
+      if (this.info.name == 'Masternode') {
+        return '*Launched August 2018'
+      } else {
+        return '*Launched July 2018'
+      }
     }
+  },
+  template: `
+    <div>
+      <div id="index_price">{{ info.price.toFixed(2) }}</div>
+      <div id="index_time"> Last Update: {{info.time.slice(0,19)}} UTC</div>
+      <div id="period_changes" class="p_tab">
+        <div class="period_data">
+          <div class="data_period">24h</div>
+          <div class="perf_change" id="perf_day_change" v-bind:class="{'pos' : info.change_24h>0, 'neg' : info.change_24h<0}"
+          >{{ info.change_24h.toFixed(2) }}</div>
+          <div class="perf_percent" id="perf_day_percent" v-bind:class="{'pos' : info.change_24h>0, 'neg' : info.change_24h<0}"
+          >{{ info.price_percent.toFixed(2) }}%</div>
+        </div>
+        <div class="period_data">
+          <div class="data_period">7d</div>
+          <div class="perf_change" id="perf_week_change" v-bind:class="{'pos' : dex.week>0, 'neg' : dex.week<0}"
+          >{{ dex.week }}</div>
+          <div class="perf_percent" id ="perf_week_percent" v-bind:class="{'pos' : dex.week>0, 'neg' : dex.week<0}"
+          >{{ dex.week_percent }}%</div>
+        </div>
+        <div class="period_data">
+          <div class="data_period">1m</div>
+          <div class="perf_change" id="perf_month_change" v-bind:class="{'pos' : dex.month_change>0, 'neg' : dex.month_change<0}"
+          >{{ dex.month_change }}</div>
+          <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : dex.month_change>0, 'neg' : dex.month_change<0}"
+          >{{ dex.month_percent }}%</div>
+        </div>
+        <div class="period_data">
+          <div class="data_period">All Time*</div>
+          <div class="perf_change" id="perf_month_change" v-bind:class="{'pos' : allReturn>0, 'neg' : allReturn<0}"
+          >{{ allReturn }}</div>
+          <div class="perf_percent" id="perf_month_percent" v-bind:class="{'pos' : allReturn>0, 'neg' : allReturn<0}"
+          >{{ allReturn }}%</div>
+        </div>
+      </div>
+        <div id="all_ranges">
+          <div class="range_div">
+            <div class="range_label">Daily Range</div>
+            <div class="range">
+              <div class="slider_low">Low: {{ dayLow }}</div>
+              <div class="slider_high">High: {{ dayHigh }}</div>
+            </div>
+            <div class="bar"></div>
+            <div class="slider_div" :style="{'margin-left': dayHeight + '%'}">
+              <div class="slider">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="all_ranges">
+          <div class="range_div">
+            <div class="range_label">Weekly Range</div>
+            <div class="range">
+              <div class="slider_low">Low: {{ weekLow }}</div>
+              <div class="slider_high">High: {{ weekHigh }}</div>
+            </div>
+            <div class="bar"></div>
+            <div class="slider_div" :style="{'margin-left': weekHeight + '%'}">
+              <div class="slider">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="all_ranges">
+          <div class="range_div">
+            <div class="range_label">Monthly Range</div>
+            <div class="range">
+              <div class="slider_low">Low: {{ monthLow }}</div>
+              <div class="slider_high">High: {{ monthHigh }}</div>
+            </div>
+            <div class="bar"></div>
+            <div class="slider_div" :style="{'margin-left': monthHeight + '%'}">
+              <div class="slider">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="all_ranges">
+          <div class="range_div">
+            <div class="range_label">All Time Range*</div>
+            <div class="range">
+              <div class="slider_low">Low: {{ allLow }}</div>
+              <div class="slider_high">High: {{ allHigh }}</div>
+            </div>
+            <div class="bar"></div>
+            <div class="slider_div" :style="{'margin-left': allHeight + '%'}">
+              <div class="slider">
+                <span class="fa fa-caret-up"></span>
+                <div>{{ info.price.toFixed(2) }}&nbsp;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="asterick">{{ asterickText }}</div>
+    </div>
+  `
+})
 
-    function change_color(div) {
-      let my_div = document.getElementById(div);
-      let color = my_div.style.color;
-      console.log(color)
-      if (color === 'green') {
-        my_div.style.color = 'rgb(0, 255, 0)';
-      }
-      else if (color === 'rgb(0, 255, 0)') {
-        my_div.style.color = 'green';
-      }
-      else if (color === 'red') {
-        my_div.style.color = 'rgb(236, 19, 19)';
-      }
-      else if (color === 'rgb(236, 19, 19)') {
-        my_div.style.color = 'red';
-      }
-    }
 
-    function set_slider(div, range_low, range_high, current) {
-      let my_div = document.getElementById(div)
-      let range = range_high - range_low
-      let difference = current - range_low
-      let percent = difference / range * 85
-      let pretty_percent = String(percent.toFixed(0)) + '%'
-      my_div.style.marginLeft = pretty_percent
-    }
-
-    // Changing Mode/Theme on button click
-    dark_bt.onclick = function () {
-        let plot_lines = '';        //Index axis color
-        let grid_color = '';        //Index grid color
-        change_color('perf_day_change')
-        change_color('perf_day_percent')
-        change_color('perf_week_change')
-        change_color('perf_week_percent')
-        change_color('perf_month_change')
-        change_color('perf_month_percent')
-
-        // Light to Dark
-        if (body.classList.contains('t--light')) {
-            plot_lines = '#D0D0D0';
-            body.classList.remove('t--light');
-            body.classList.add('t--dark');
-            localStorage.setItem("mode", "dark");
-            grid_color = '#707070';
+let one_app = new Vue({
+  el: '#one_app',
+  data: {
+    chart_settings: {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom', fontColor: '#696969'},
+                  scales: {xAxes: [{display: false}]}},
+    pie_settings: {legend: {labels: {fontColor: '#696969'}}},
+    coins: [],
+    pie_data: [],
+    indices: [],
+    info: [],
+    gainers: [],
+    losers: [],
+    trend: [],
+    menu: ['Cryptocurrencies','Performance', 'Newswire'],
+    menu_number: 0,
+    constituents:[100, 23, 17, 14],
+    index_names: ['AltDex 100 Cryptocurrency Index (ALT100) ',
+                  'AltDex Exchange Token Index (ALTEXC)',
+                  'AltDex Privacy Coin Index (ALTPRV)',
+                  'AltDex Masternode Index (ALTMSN)'],
+    descriptions: ['Benchmark market capitalization-weighted index for large cap cryptocurrencies and tokens.',
+                  'Benchmark market capitalization-weighted index for the leading crypto exchange tokens.',
+                  'Benchmark market capitalization-weighted index for cryptocurrencies and tokens focused on privacy or security.',
+                  'Benchmark market capitalization-weighted index for cryptocurrencies to support the network without hyperinflation.'],
+    current_index: 'AltDex',
+    current_number: 0,
+    current_sort: 'market_cap',
+    current_dir: 'desc',
+  },
+    methods: {
+      changeFilter: function(index, num) {
+        this.current_index = index;
+        this.current_number = num;
+      },
+      changeMenu: function(number) {
+        this.menu_number = number;
+      },
+      filter: function(coins) {
+        index = this.current_index;
+        return this.coins.filter(function (coin) {
+          return coin.indices.includes(index) === true
+        })
+      },
+      sort: function (s) {
+          if (s === this.current_sort) {
+              this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
+          }
+          this.current_sort = s;
+      }
+    },
+    computed: {
+      sortedCoins: function () {
+          return this.coins.sort((a, b) => {
+              let modifier = 1;
+              if (this.current_dir === 'desc') modifier = -1;
+              if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
+              if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
+              return 0;
+          });
+      },
+      indexCap: function () {
+        let our_cap = this.info[this.current_number].market_cap;
+        let final_cap = 0;
+        let decimal = 0;
+        let cap_string = '';
+        if (1000000000 <= our_cap < 1000000000000) {
+          final_cap = our_cap / 1000000000;
+          decimal = final_cap.toPrecision(3)
+          cap_string = decimal.toString() + 'B'
+        } else if (our_cap >= 1000000000000) {
+          final_cap = our_cap / 1000000000000;
+          decimal = final_cap.toPrecision(3)
+          cap_string = decimal.toString() + 'T'
+        } else {
+          final_cap = our_cap / 1000000;
+          decimal = final_cap.toPrecision(3)
+          cap_string = decimal.toString() + 'M'
         }
+        return cap_string;
+      },
+    }
+})
 
-        // Dark to Light
-        else {
-            body.classList.remove('t--dark');
-            body.classList.add('t--light');
-            localStorage.setItem("mode", "light");
-            grid_color = 'default';
-            plot_lines = 'default';
+function pull_big() {
+  // Alias the component instance as `vm`, so that we
+  // can access it inside the promise function
+  let vm = one_app;
+  let index_data = [];
+  let trend_line = [];
+  fetch('/getindexperformance/')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        index_data.push(data.dict_key[i]);
+      }
+    vm.indices = index_data;
+  }).then(function () {
+    document.querySelector(".loader_div2").style.display = "none";
+  });
+  fetch('/index_trend/')
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.dict_key.length; ++i) {
+        trend_line.push(data.dict_key[i])
+      }
+    vm.trend = trend_line
+  }).then(function () {
+    let loader = document.getElementsByClassName('loader');
+    let loader_div = document.getElementsByClassName('loader_div');
+    let charts = document.getElementsByClassName('charts')
+    for (let i=0;i<loader.length;i+=1) {
+      loader[i].style.display = 'none';
+      loader_div[i].style.display = 'none';
+      charts[i].style.display = 'block';
+    }
+  })
+  };
+
+  function pull_small() {
+    // Alias the component instance as `vm`, so that we
+    // can access it inside the promise function
+    let vm = one_app;
+    let index_data = [];
+    let gainer_data = [];
+    let loser_data = [];
+    let coin_data = [];
+    let wdata_1 = [];
+    let wdata_2 = [];
+    let wdata_3 = [];
+    let wdata_4 = [];
+    let sum_1 = 0;
+    let sum_2 = 0;
+    let sum_3 = 0;
+    let sum_4 = 0;
+    let pie_chart = [];
+    // Fetch our array of row from an API
+    fetch('/getindexcurrent/')
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.dict_key.length; ++i) {
+          index_data.push(data.dict_key[i])
         }
-
-        // Updating Index Chart
-        let update = {
-            'yaxis.color': plot_lines,
-            'xaxis.color': plot_lines,
-            'xaxis.linecolor': plot_lines,
-            'yaxis.linecolor': plot_lines,
-            'yaxis.gridcolor': grid_color
-        };
-        Plotly.relayout('index_chart', update)
+      vm.info = index_data
+      })
+      // Fetch our array of row from an API
+      fetch('/gainers_losers/')
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          for (let i = 0; i < data.gainers.length; ++i) {
+            gainer_data.push(data.gainers[i])
+            loser_data.push(data.losers[i])
+          }
+        vm.gainers = gainer_data
+        vm.losers = loser_data
+      })
+    // Fetch our array of row from an API
+    fetch('/getcoinscurrent/')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.dict_key.length; ++i) {
+          coin_data.push(data.dict_key[i]);
+          if (data.dict_key[i].indices.includes('AltDex') === true && data.dict_key[i].weight_1 >= 1) {
+            let piece_1 = [data.dict_key[i].name, data.dict_key[i].weight_1];
+            wdata_1.push(piece_1);
+            sum_1 += data.dict_key[i].weight_1;
+          }
+          if (data.dict_key[i].indices.includes('Exchange') === true && data.dict_key[i].weight_2 >= 1) {
+            let piece_2 = [data.dict_key[i].name, data.dict_key[i].weight_2];
+            wdata_2.push(piece_2);
+            sum_2 += data.dict_key[i].weight_2;
+          }
+          if (data.dict_key[i].indices.includes('Privacy') === true && data.dict_key[i].weight_3 >= 1) {
+            let piece_3 = [data.dict_key[i].name, data.dict_key[i].weight_3];
+            wdata_3.push(piece_3);
+            sum_3 += data.dict_key[i].weight_3;
+          }
+          if (data.dict_key[i].indices.includes('Masternode') === true && data.dict_key[i].weight_4 >= 1) {
+            let piece_4 = [data.dict_key[i].name, data.dict_key[i].weight_4];
+            wdata_4.push(piece_4);
+            sum_4 += data.dict_key[i].weight_4;
+          }
+        }
+      let last_piece_1 = ['Others', (100-sum_1).toFixed(2)];
+      let last_piece_2 = ['Others', (100-sum_2).toFixed(2)];
+      let last_piece_3 = ['Others', (100-sum_3).toFixed(2)];
+      let last_piece_4 = ['Others', (100-sum_4).toFixed(2)];
+      wdata_1.push(last_piece_1);
+      wdata_2.push(last_piece_2);
+      wdata_3.push(last_piece_3);
+      wdata_4.push(last_piece_4);
+      pie_chart.push(wdata_1);
+      pie_chart.push(wdata_2);
+      pie_chart.push(wdata_3);
+      pie_chart.push(wdata_4);
+      vm.pie_data = pie_chart;
+      vm.coins = coin_data;
+    }).then(function () {
+      for (let i=0; i<vm.indices.length; i++) {
+        if (vm.info.price < vm.indices[i].day_low) {
+          vm.indices[i].day_low = vm.info.price
+        }
+        if (vm.info.price > vm.indices[i].day_high) {
+          vm.indices[i].day_high = vm.info.price
+        }
+        if (vm.info.price < vm.indices[i].week_low) {
+          vm.indices[i].week_low = vm.info.price
+        }
+        if (vm.info.price > vm.indices[i].week_high) {
+          vm.indices[i].week_high = vm.info.price
+        }
+        if (vm.info.price < vm.indices[i].month_low) {
+          vm.indices[i].month_low = vm.info.price
+        }
+        if (vm.info.price > vm.indices[i].month_high) {
+          vm.indices[i].month_high = vm.info.price
+        }
+        if (vm.info.price < vm.indices[i].min_price) {
+          vm.indices[i].min_price = vm.info.price
+        }
+        if (vm.info.price > vm.indices[i].max_price) {
+          vm.indices[i].max_price = vm.info.price
+        }
+      }
+    })
     };
 
-    //Chart Resize Button Functions
-    let change_range = function (time_frame) {
-        let now = new Date();
-        let date_update = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
-        let y_update = [];
-        let x_update = [];
+function get_data() {
+  pull_small();
+  pull_big();
+};
 
-        if (time_frame === 'year') {                                //Range: Year
-            x_update = [first_x, last_x];
-            y_update = [35, 115];
-        } else if (time_frame === 'three_month') {                  //Range: 3 Months
-            date_update.setMonth(date_update.getMonth() - 3);
-            x_update = [date_update, last_x];
-            y_update = [35, 88];
-        } else if (time_frame === 'one_month') {                    //Range: 1 Month
-            date_update.setMonth(date_update.getMonth() - 1);
-            x_update = [date_update, last_x];
-            y_update = [35, 60]
-        } else if (time_frame === 'seven_day') {                    //Range: 7 Day
-            date_update.setDate(date_update.getDate() - 7);
-            x_update = [date_update, last_x];
-            y_update = [35, 50]
-        } else if (time_frame === 'one_day') {                      //Range: 24 Hour
-            date_update.setDate(date_update.getDate() - 1);
-            x_update = [date_update, last_x];
-            let buffer = Math.abs(price_change) + 3;
-            if (price_change >= 3) {
-                y_update = [last_y - buffer, last_y + 3]
-            } else if (price_change <= -3) {
-                y_update = [last_y - 3, last_y + buffer]
-            } else {
-                y_update = [last_y - 6, last_y + 1.5]
-            }
-        } else if (time_frame === 'hour') {                         //Range: Hour
-            date_update.setHours(date_update.getHours() - 1);
-            x_update = [date_update, last_x];
-            y_update = [last_y - 2, last_y + .5]
-        }
-
-        let update = {
-            'xaxis.range': x_update,        // updates the end of the x axis range
-            'yaxis.range': y_update         // updates the y axis range
-        };
-
-        Plotly.relayout('index_chart', update)
-    };
-
-    // Div Values Function
-    function set_value(div, value) {
-      this_div = document.getElementById(div)
-      this_div.innerHTML = value
-    }
-
-    // Div Colored Values Functions
-    function set_value_color(div, value) {
-      this_div = document.getElementById(div)
-      this_div.innerHTML = value
-      if (value > 0) {
-        if (body.classList.contains('t--light')) {
-          this_div.style.color = 'green';
-        }
-        else {
-          this_div.style.color = 'rgb(0, 255, 0)';
-        }
-      }
-      else if (value < 0) {
-        if (body.classList.contains('t--light')) {
-          this_div.style.color = 'red';
-        }
-        else {
-          this_div.style.color = 'rgb(236, 19, 19)';
-        }
-      }
-    }
-
-    function set_value_percent(div, value) {
-      this_div = document.getElementById(div)
-      this_div.innerHTML = String(value) + '%'
-      if (value > 0) {
-        if (body.classList.contains('t--light')) {
-          this_div.style.color = 'green';
-        }
-        else {
-          this_div.style.color = '#00ff00';
-        }
-      }
-      else if (value < 0) {
-        if (body.classList.contains('t--light')) {
-          this_div.style.color = 'red';
-        }
-        else {
-          this_div.style.color = '#ec1313';
-        }
-      }
-    }
-
-
-    let app = new Vue({
-        el: '#coin_table',
-
-        data: {
-            rows: [],
-            current_sort: 'market_cap',
-            current_dir: 'desc'
-        },
-        methods: {
-            sort: function (s) {
-                if (s === this.current_sort) {
-                    this.current_dir = this.current_dir === 'asc' ? 'desc' : 'asc';
-                }
-                this.current_sort = s;
-            }
-        },
-        computed: {
-            sortedCoins: function () {
-                return this.rows.sort((a, b) => {
-                    let modifier = 1;
-                    if (this.current_dir === 'desc') modifier = -1;
-                    if (a[this.current_sort] < b[this.current_sort]) return -1 * modifier;
-                    if (a[this.current_sort] > b[this.current_sort]) return 1 * modifier;
-                    return 0;
-                });
-            },
-        },
-    });
-
-    let app2 = new Vue({
-        el: '#index_info',
-        data: {
-            ascending: false,
-            sortColumn: '',
-            rows: [],
-            rows2: [],
-        }
-    });
-
-    let app3 = new Vue({
-        el: '#widget_fixed',
-        data: {
-            ascending: false,
-            sortColumn: '',
-            rows: [],
-        }
-    });
-
-    let app4 = new Vue({
-        el: '#top_gain_lose',
-        data: {
-            ascending: false,
-            sortColumn: '',
-            rows: [],
-            rows2: [],
-        }
-    });
-
-
-    function http_get(url, success) {
-        let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            // console.log(this.status);
-            if (this.readyState === 4 && this.status === 200) {
-                let data = JSON.parse(xhttp.responseText);
-                success(data);
-            }
-        };
-        xhttp.open("GET", url);
-        xhttp.send();
-
-    }
-
-
-    function coin_current(index) {
-        let new_coins = [];
-        amount_gainers = 0;
-        amount_losers = 0;
-        let count = 0;
-        let url = '/getcoinscurrent/';
-        http_get(url, function (data) {
-
-            for (let i = 0; i < data.dict_key.length; ++i) {
-                let entry = data.dict_key[i];
-                let index_name = entry.indices;
-                if (index_name.includes(index) === true) {
-                    if (entry.price_percent > 0) {
-                        amount_gainers++;
-                    }
-                    else if (entry.price_percent < 0) {
-                        amount_losers++;
-                    }
-                    new_coins.push(entry);
-                    count++;
-                }
-                // let index_name = entry.indices;
-                // if (index_name.includes(index) === true) {
-
-            }
-
-            let percent_gainers = amount_gainers / count * 100;
-            let percent_losers = amount_losers / count * 100;
-            let new_gain = percent_gainers.toFixed(0);
-            let new_lose = percent_losers.toFixed(0);
-            gainers_div.innerHTML = new_gain.toString() + '%';
-            losers_div.innerHTML = new_lose.toString() + '%';
-            app.rows = new_coins;
-        });
-    }
-
-    // Index Metrics Pull
-    function index_metrics() {
-        let dex_data = [];
-        let url = '/getindexperformance/';
-        http_get(url, function (data) {
-          set_value_color('perf_week_change', data.dict_key[0]['week']);
-          set_value_color('perf_month_change', data.dict_key[0]['month_change']);
-          set_value('day_low', data.dict_key[0]['day_low']);
-          set_value('day_high', data.dict_key[0]['day_high']);
-          set_value('week_low', data.dict_key[0]['week_low']);
-          set_value('week_high', data.dict_key[0]['week_high']);
-          set_value('month_low', data.dict_key[0]['month_low']);
-          set_value('month_high', data.dict_key[0]['month_high']);
-          set_value_percent('perf_week_percent', data.dict_key[0]['week_percent']);
-          set_value_percent('perf_month_percent', data.dict_key[0]['month_percent']);
-          set_slider('day_slider', data.dict_key[0]['day_low'], data.dict_key[0]['day_high'], data.dict_key[0]['current']);
-          set_slider('week_slider', data.dict_key[0]['week_low'], data.dict_key[0]['week_high'], data.dict_key[0]['current']);
-          set_slider('month_slider', data.dict_key[0]['month_low'], data.dict_key[0]['month_high'], data.dict_key[0]['current']);
-        })
-    }
-
-    function top_gainers_losers() {
-        let gain_data = [];
-        let lose_data = [];
-        let url = '/gainers_losers/';
-        http_get(url, function (data) {
-            for (let i = 0; i < data.losers[0].length; i++) {
-                lose_data.push(data.losers[0][i]);
-            }
-
-            for (let i = 0; i < data.gainers[0].length; i++) {
-                gain_data.push(data.gainers[0][i]);
-            }
-
-            app4.rows = lose_data;
-            app4.rows2 = gain_data;
-        })
-    }
-
-    function update_coin(index) {
-        let new_coins = [];
-        amount_gainers = 0;
-        amount_losers = 0;
-        let count = 0;
-        let url = '/getcoinscurrent/';
-        http_get(url, function (data) {
-
-            for (let i = 0; i < data.dict_key.length; ++i) {
-                let entry = data.dict_key[i];
-                let index_name = entry.indices;
-                if (index_name.includes(index) === true) {
-                    if (entry.price_percent > 0) {
-                        amount_gainers++;
-                    }
-                    else if (entry.price_percent < 0) {
-                        amount_losers++;
-                    }
-                    new_coins.push(entry);
-                    count++;
-                }
-            }
-
-            let percent_gainers = amount_gainers / count * 100;
-            let percent_losers = amount_losers / count * 100;
-            let new_gain = percent_gainers.toFixed(0);
-            let new_lose = percent_losers.toFixed(0);
-            gainers_div.innerHTML = new_gain.toString() + '%';
-            losers_div.innerHTML = new_lose.toString() + '%';
-            app.rows = new_coins;
-        });
-    }
-
-
-    function index_current(index_id) {
-        let new_data = [];
-        let other_data = [];
-        app2.rows = [];
-        app3.rows = [];
-        let url = '/getindexcurrent/';
-        last_y = 0;
-        //alert('test');
-        http_get(url, function (data) {
-            for (let i = 0; i < data.dict_key.length; ++i) {
-                other_data.push(data.dict_key[i])
-            }
-            new_data.push(data.dict_key[index_id]);
-            last_y = data.dict_key[index_id].price;
-            app2.rows = new_data;
-            app3.rows = other_data;
-            price_change = data.dict_key[index_id].change_24h.toFixed(2)
-            price_percent = data.dict_key[index_id].price_percent.toFixed(2)
-            now_price = data.dict_key[index_id].price.toFixed(2)
-            pretty_time = 'Last Update: ' + data.dict_key[index_id].time.slice(0,19) + ' UTC'
-            set_value('performance_time', pretty_time)
-            set_value_color('perf_day_change', price_change);
-            set_value('performance_current', now_price);
-            set_value_percent('perf_day_percent', price_percent);
-            set_value('day_slider_value', now_price);
-            set_value('week_slider_value', now_price);
-            set_value('month_slider_value', now_price);
-        });
-    }
-
-    function update_index(index_id) {
-        let new_data = [];
-        let other_data = [];
-        let url = '/getindexcurrent/';
-        //alert('test');
-        http_get(url, function (data) {
-            for (let i = 0; i < data.dict_key.length; ++i) {
-                other_data.push(data.dict_key[i])
-            }
-            new_data.push(data.dict_key[index_id]);
-            app2.rows = new_data;
-            app3.rows = other_data;
-            // }
-        });
-    }
-
-
-    let line_data = [];
-
-    // Index Chart Pull
-    function index_all() {
-        line_data = [];
-        let url = '/getmainindex/';
-        //alert('test');
-        http_get(url, function (data) {
-            let entry = data.dict_key;
-            line_data.push(entry);
-            let data_length = line_data[0].x.length - 1;
-            //  let y_range_border = (Math.max(...line_data[0].y) - Math.min(...line_data[0].y)) /
-            //  10;
-            //  y_high = Math.max(...line_data[0].y) + y_range_border;
-            //  y_low = Math.min(...line_data[0].y) - y_range_border;
-            first_x = line_data[0].x[0];
-            last_x = line_data[0].x[data_length];
-            // console.log(y_low);
-            // console.log(y_high);
-
-            let layout_light = {
-                autosize: true,
-                margin: {
-                    l: 50,
-                    r: 50,
-                    b: 50,
-                    t: 20,
-                },
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                xaxis: {
-                    range: [line_data[0].x[0], line_data[0].x[data_length]],
-                    type: 'date',
-                    title: 'Date',
-                    showgrid: false,
-                    zeroline: false,
-                    showline: true,
-                    autotick: true,
-                    ticks: '',
-                    showticklabels: true,
-                },
-                yaxis: {
-                    range: [35, 115],
-                    showgrid: true,
-                    autotick: true,
-                    showline: true,
-                    ticks: '',
-                    showticklabels: true,
-                }
-            };
-
-            let layout_dark = {
-                autosize: true,
-                margin: {
-                    l: 50,
-                    r: 50,
-                    b: 50,
-                    t: 20,
-                },
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                xaxis: {
-                    color: '#D0D0D0',
-                    linecolor: '#D0D0D0',
-                    range: [line_data[0].x[0], line_data[0].x[data_length]],
-                    type: 'date',
-                    title: 'Date',
-                    showgrid: false,
-                    zeroline: false,
-                    showline: true,
-                    autotick: true,
-                    ticks: '',
-                    showticklabels: true,
-                },
-                yaxis: {
-                    color: '#D0D0D0',
-                    linecolor: '#D0D0D0',
-                    range: [35, 115],
-                    showgrid: true,
-                    autotick: true,
-                    showline: true,
-                    ticks: '',
-                    showticklabels: true,
-                    gridcolor: '#707070'
-                }
-            };
-
-            if (mode === 'light') {
-                Plotly.react('index_chart', line_data, layout_light).then(showPage());
-            } else {
-                Plotly.react('index_chart', line_data, layout_dark).then(showPage());
-            }
-
-        });
-    }
-
-
-    let gainers_div = document.querySelector('#gainers');
-    let losers_div = document.querySelector('#losers');
-
-
-    index_current(current_id);
-    coin_current(current_index);
-    index_all();
-    index_metrics();
-    top_gainers_losers();
-    setInterval(function () {
-            top_gainers_losers();
-            update_coin(current_index);
-            update_index(current_id);
-        },
-        40000);
-
+get_data();
+setInterval(function () {
+      pull_small()
+    },
+    40000);
 </script>
 </body>
 </html>

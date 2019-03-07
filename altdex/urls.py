@@ -5,6 +5,7 @@ app_name = 'altdex'
 
 urlpatterns = [
     path('', views.altdex, name='altdex'),
+    path('alt100/', views.alt100, name='alt100'),
     path('exchange/', views.exchange, name='exchange'),
     path('privacy/', views.privacy, name='privacy'),
     path('masternode/', views.masternode, name='masternode'),

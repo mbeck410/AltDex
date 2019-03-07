@@ -22,6 +22,12 @@ def altdex(request):
     return HttpResponse(contents)
 
 
+def alt100(request):
+    with open('./altdex/alt100.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
+
+
 def exchange(request):
     with open('./altdex/exchange.html') as file:
         contents = file.read()
@@ -59,9 +65,12 @@ def pullcurrent(request):
 
 
 def testing(request):
-    with open('./altdex/testing.html') as file:
-        contents = file.read()
-    return HttpResponse(contents)
+    if request.user.is_superuser:
+        with open('./altdex/testing.html') as file:
+            contents = file.read()
+            return HttpResponse(contents)
+    else:
+        return HttpResponse('error')
 
 def testing2(request):
     if request.user.is_superuser:
@@ -168,7 +177,7 @@ def getindexcurrent(request):
         if dex.name != 'Null':
             link = ''
             if dex.name == 'AltDex100':
-                link = '/'
+                link = '/alt100'
                 symbol = 'ALT100'
             elif dex.name == 'Exchange':
                 link = '/exchange'
