@@ -1529,7 +1529,7 @@ Vue.component('index-performance', {
       return (this.info.price - 100).toFixed(2)
     },
     asterickText: function() {
-      if (this.dex.name = 'Masternode') {
+      if (this.dex.name == 'Masternode') {
         return '*Launched August 2018'
       } else {
         return '*Launched July 2018'
@@ -1691,15 +1691,6 @@ let one_app = new Vue({
       }
     },
     computed: {
-      // chartSettings: function () {
-      //   let mode = this.localStorage.getItem("mode");
-      //   if (mode === 'dark') {
-      //
-      //   } else {
-      //     return {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom'},
-      //                   scales: {xAxes: [{display: false}]}},
-      //   }
-      // },
       sortedCoins: function () {
           return this.coins.sort((a, b) => {
               let modifier = 1;
