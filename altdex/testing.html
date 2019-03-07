@@ -351,8 +351,8 @@
           display: none;
         } */
         .loader_div2 {
-          padding-top: 1.5vw
-          padding-bottom: 1.5vw
+          padding-top: 1.5vw;
+          padding-bottom: 1.5vw;
         }
 
         .loader_div {
@@ -1493,11 +1493,13 @@ template: `
 Vue.component('index-performance', {
   props: ['dex', 'info'],
   computed: {
-    dayHigh: function() {
-      return this.dex.length
-    },
-    testStuff: function() {
-      return this.dex[8];
+    dayHigh: function () {
+      if (this.info.price > this.dex.day_high) {
+        Vue.set(this.dex, 'day_high', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.day_high
+      }
     },
     dayHeight: function() {
       let day_range_diff = this.dex.day_high - this.dex.day_low;
@@ -1632,8 +1634,7 @@ Vue.component('index-performance', {
             </div>
           </div>
         </div>
-        <div id="asterick">{{ asterickText }} {{ dex.length }}</div>
-        <div>{{ dex[5] }}</div>
+        <div id="asterick">{{ asterickText }} {{dayHigh}}</div>
     </div>
   `
 })
