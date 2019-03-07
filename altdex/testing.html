@@ -1493,12 +1493,68 @@ template: `
 Vue.component('index-performance', {
   props: ['dex', 'info'],
   computed: {
+    dayLow: function () {
+      if (this.info.price < this.dex.day_low) {
+        Vue.set(this.dex, 'day_low', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.day_low
+      }
+    },
     dayHigh: function () {
       if (this.info.price > this.dex.day_high) {
         Vue.set(this.dex, 'day_high', this.info.price);
         return this.info.price
       } else {
         return this.dex.day_high
+      }
+    },
+    weekLow: function () {
+      if (this.info.price < this.dex.week_low) {
+        Vue.set(this.dex, 'week_low', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.week_low
+      }
+    },
+    weekHigh: function () {
+      if (this.info.price > this.dex.week_high) {
+        Vue.set(this.dex, 'week_high', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.week_high
+      }
+    },
+    monthLow: function () {
+      if (this.info.price < this.dex.month_low) {
+        Vue.set(this.dex, 'month_low', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.month_low
+      }
+    },
+    monthHigh: function () {
+      if (this.info.price > this.dex.month_high) {
+        Vue.set(this.dex, 'month_high', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.month_high
+      }
+    },
+    allLow: function () {
+      if (this.info.price < this.dex.min_price) {
+        Vue.set(this.dex, 'min_price', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.min_price
+      }
+    },
+    allHigh: function () {
+      if (this.info.price > this.dex.max_price) {
+        Vue.set(this.dex, 'max_price', this.info.price);
+        return this.info.price
+      } else {
+        return this.dex.max_price
       }
     },
     dayHeight: function() {
