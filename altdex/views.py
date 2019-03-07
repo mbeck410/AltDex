@@ -497,7 +497,7 @@ def trend_test(request):
     price_array = []
     for index in indices:
 
-        index_prices = index.get().indexprice_set.all()
+        index_prices = index.indexprice_set.all()
         count = index_prices.count()
         lower = count - 1050
         prices = []
