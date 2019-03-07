@@ -505,7 +505,7 @@ def trend_test(request):
         for i in range(lower, count, 50):
             prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
 
-        # price_array.append(prices[::-1])
+        price_array.append(prices)
 
 
     return JsonResponse({'dict_key': price_array})
