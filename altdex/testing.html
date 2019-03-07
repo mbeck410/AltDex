@@ -1493,11 +1493,11 @@ template: `
 Vue.component('index-performance', {
   props: ['dex', 'info'],
   computed: {
-    dayHigh: function {
-      return dex.length
+    dayHigh: function() {
+      return this.dex.length
     }
-    testStuff: {
-      return dex[8];
+    testStuff: function() {
+      return this.dex[8];
     }
     dayHeight: function() {
       let day_range_diff = this.dex.day_high - this.dex.day_low;
