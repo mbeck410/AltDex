@@ -1159,7 +1159,7 @@
               </div>
 
               <div id="index_chart_info" v-cloak>
-                <div id="index_chart_symbol" v-cloak><a class="light_blue_links" :href="info.link" target="_blank"
+                <div id="index_chart_symbol" v-cloak><a class="light_blue_links" :href="info[current_number].link" target="_blank"
                   >{{ info[current_number].symbol }}</a></div>
                 <div id="index_chart_price" v-cloak>{{ info[current_number].price.toFixed(2) }}</div>
                 <div id="index_chart_percent"
