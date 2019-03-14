@@ -141,7 +141,7 @@ def getexchangeindex(request):
     dex = Index.objects.get(name='Exchange')
     # indices_all_output = []
 
-    dex_price_entries = dex.indexprice_set.all().values('price', 'timestamp')
+    dex_price_entries = dex.indexprice_set.values('price', 'timestamp')
     prices = []
     times = []
     for i in dex_price_entries:
