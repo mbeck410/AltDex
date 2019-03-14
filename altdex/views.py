@@ -141,12 +141,12 @@ def getexchangeindex(request):
     dex = Index.objects.get(id=1)
     # indices_all_output = []
 
-    length = dex.indexprice_set.all().count()
+    dex_price_entries = dex.indexprice_set.all()
     prices = []
     times = []
-    for i in range(length - 1):
-        prices.append(dex.indexprice_set.get(id=i).price)
-        times.append(dex.indexprice_set.get(id=i).timestamp)
+    for i in dex_price_entries:
+        prices.append(i.price)
+        times.append(i.timestamp)
 
     index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
 
