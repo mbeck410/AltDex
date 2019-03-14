@@ -142,13 +142,14 @@ def getexchangeindex(request):
     # indices_all_output = []
 
     dex_price_entries = dex.indexprice_set.values('price', 'timestamp')
-    prices = []
-    times = []
-    for i in dex_price_entries:
-        prices.append(i.price)
-        times.append(i.timestamp)
-
-    index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
+    index_dict = list(dex_price_entries)
+    # prices = []
+    # times = []
+    # for i in dex_price_entries:
+    #     prices.append(i.price)
+    #     times.append(i.timestamp)
+    #
+    # index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
 
     return JsonResponse({'dict_key': index_dict})
 
