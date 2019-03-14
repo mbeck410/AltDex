@@ -144,7 +144,7 @@ def getexchangeindex(request):
     length = dex.indexprice_set.all().count()
     prices = []
     times = []
-    for i in range(dex_price_entries - 1):
+    for i in range(length - 1):
         prices.append(dex.indexprice_set.get(id=i).price)
         times.append(dex.indexprice_set.get(id=i).timestamp)
 
