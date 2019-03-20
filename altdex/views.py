@@ -585,7 +585,7 @@ def index_trend(request):
 def rsi_calc(request):
     day = 0
     displayed_prices = []
-    index = Index.objects.get(name="Exchange")
+    index = Index.objects.get(name="Privacy")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=19)
 
