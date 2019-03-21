@@ -96,8 +96,8 @@ def collect():
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
-        elif coin.symbol == 'XIN':
-            url2 = 'https://api.coinmarketcap.com/v2/ticker/2349/'
+        elif coin.symbol == 'BTCP':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/2575/'
             r2 = requests.get(url2)
 
             while r2.status_code != 200:
