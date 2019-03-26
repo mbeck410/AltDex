@@ -2036,7 +2036,7 @@
                     new_coins.push(entry);
                     count++;
                 }
-                data.dict_key[i].push({'rank': i+1});
+                entry['rank'] = rank;
                 rank++;
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
@@ -2113,7 +2113,7 @@
                     }
                     new_coins.push(entry);
                     count++;
-                    data.dict_key[i].push({'rank': rank});
+                    entry['rank'] = rank;
                     rank++;
                 }
             }
