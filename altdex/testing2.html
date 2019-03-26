@@ -1554,7 +1554,7 @@
 
             <!--Coin Table-->
             <div class="well">
-                <table v-cloak id="coin_table" class="table" v-for="(row, index) in sortedCoins">
+                <table v-cloak id="coin_table" class="table">
 
                     <!--Table Headers-->
                     <tr id="table_head">
@@ -1577,7 +1577,7 @@
                     </tr>
 
                     <!--Table Rows-->
-                    <tr class="coin_row">
+                    <tr class="coin_row" v-for="(row, index) in sortedCoins">
 
                       <!--Rank-->
                       <!-- <td id="coin_rank">${{index}}</td> -->
