@@ -1554,10 +1554,12 @@
 
             <!--Coin Table-->
             <div class="well">
-                <table v-cloak id="coin_table" class="table">
+                <table v-cloak id="coin_table" class="table" v-for="(row, index) in sortedCoins">
 
                     <!--Table Headers-->
                     <tr id="table_head">
+                        <th @click="sort('market_cap')" id="coin_symbol_rank">
+                            Rank &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('symbol')" id="coin_symbol_title">
                             Symbol &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('name')" id="coin_name_title">
@@ -1575,7 +1577,10 @@
                     </tr>
 
                     <!--Table Rows-->
-                    <tr class="coin_row" v-for="row in sortedCoins">
+                    <tr class="coin_row">
+
+                      <!--Rank-->
+                      <td id="coin_rank">${{index}}</td>
 
                         <!--Symbol-->
                         <td id="coin_symbol_value" class="row_symbol">
