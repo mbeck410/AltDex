@@ -1559,7 +1559,7 @@
                     <!--Table Headers-->
                     <tr id="table_head">
                         <th @click="sort('market_cap')" id="coin_symbol_rank">
-                            Rank &nbsp; <i class="fas fa-sort"></i></th> -->
+                            Rank &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('symbol')" id="coin_symbol_title">
                             Symbol &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('name')" id="coin_name_title">
@@ -1577,10 +1577,10 @@
                     </tr>
 
                     <!--Table Rows-->
-                    <tr class="coin_row" v-for="(row, index) in sortedCoins">
+                    <tr class="coin_row" v-for="row in sortedCoins">
 
                       <!--Rank-->
-                      <td id="coin_rank">${{index}}</td>
+                      <td id="coin_rank">{{ row.rank }}</td>
 
                         <!--Symbol-->
                         <td id="coin_symbol_value" class="row_symbol">
@@ -2019,6 +2019,7 @@
         amount_gainers = 0;
         amount_losers = 0;
         let count = 0;
+        let rank = 1;
         let url = '/getcoinscurrent/';
         http_get(url, function (data) {
 
@@ -2035,6 +2036,8 @@
                     new_coins.push(entry);
                     count++;
                 }
+                data.dict_key[i].push({'rank': i+1});
+                rank++;
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
 
@@ -2094,6 +2097,7 @@
         amount_gainers = 0;
         amount_losers = 0;
         let count = 0;
+        let rank = 1;
         let url = '/getcoinscurrent/';
         http_get(url, function (data) {
 
@@ -2109,6 +2113,8 @@
                     }
                     new_coins.push(entry);
                     count++;
+                    data.dict_key[i].push({'rank': rank});
+                    rank++;
                 }
             }
 
