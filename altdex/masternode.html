@@ -186,20 +186,29 @@
             border: 0;
         }
 
-        table.table th:nth-child(n+3) {
+        table.table th:nth-child(n+4) {
             text-align: right;
         }
 
+        table.table th:first-child {
+            text-align: center;
+        }
+
         /*Table Rows*/
-        table.table td:nth-child(n+3) {
+        table.table td:nth-child(n+4) {
             text-align: right;
         }
 
         table.table td:first-child {
             font-weight: bold;
+            text-align: center;
         }
 
         table.table td:nth-child(2) {
+            font-weight: bold;
+        }
+
+        table.table td:nth-child(3) {
             font-weight: bold;
         }
 
@@ -1532,6 +1541,8 @@
 
                     <!--Table Headers-->
                     <tr id="table_head">
+                        <th @click="sort('market_cap')" id="coin_symbol_rank">
+                            Rank &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('symbol')" id="coin_symbol_title">
                             Symbol &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('name')" id="coin_name_title">
@@ -1550,6 +1561,9 @@
 
                     <!--Table Rows-->
                     <tr class="coin_row" v-for="row in sortedCoins">
+
+                      <!--Rank-->
+                      <td id="coin_rank">{{ row.rank }}</td>
 
                         <!--Symbol-->
                         <td id="coin_symbol_value" class="row_symbol">
@@ -1983,6 +1997,7 @@
         amount_gainers = 0;
         amount_losers = 0;
         let count = 0;
+        let rank = 14;
         let url = '/getcoinscurrent/';
         http_get(url, function (data) {
 
@@ -1998,6 +2013,8 @@
                     }
                     new_coins.push(entry);
                     count++;
+                    entry['rank'] = rank;
+                    rank--;
                 }
                 // let index_name = entry.indices;
                 // if (index_name.includes(index) === true) {
@@ -2058,6 +2075,7 @@
         amount_gainers = 0;
         amount_losers = 0;
         let count = 0;
+        let rank = 14;
         let url = '/getcoinscurrent/';
         http_get(url, function (data) {
 
@@ -2073,6 +2091,8 @@
                     }
                     new_coins.push(entry);
                     count++;
+                    entry['rank'] = rank;
+                    rank--;
                 }
             }
 
