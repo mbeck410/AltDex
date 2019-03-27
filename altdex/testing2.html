@@ -207,6 +207,10 @@
             font-weight: bold;
         }
 
+        table.table td:nth-child(3) {
+            font-weight: bold;
+        }
+
         table.table td:nth-child(-n+7) {
             border-top: 0;
         }
@@ -1564,7 +1568,7 @@
                     <!--Table Headers-->
                     <tr id="table_head">
                         <th @click="sort('market_cap')" id="coin_symbol_rank">
-                            # &nbsp; <i class="fas fa-sort"></i></th>
+                            Rank &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('symbol')" id="coin_symbol_title">
                             Symbol &nbsp; <i class="fas fa-sort"></i></th>
                         <th @click="sort('name')" id="coin_name_title">
