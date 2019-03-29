@@ -44,6 +44,14 @@ def masternode(request):
         contents = file.read()
     return HttpResponse(contents)
 
+def news(request):
+    if request.user.is_superuser:
+        with open('./altdex/news.html') as file:
+            contents = file.read()
+            return HttpResponse(contents)
+    else:
+        return HttpResponse('error')
+
 def about(request):
     with open('./altdex/about.html') as file:
         contents = file.read()
