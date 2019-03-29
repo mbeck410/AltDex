@@ -44,7 +44,7 @@
             fg_widgets = new Array();
         }
         fg_widgets.push("fgid_c6f8a95bbf4890c152b5cf13f");
-        // fg_widgets.push("fgid_e193389b25317bb961e6b582a");
+        fg_widgets.push("fgid_03539892db922c0d560160899");
     </script>
     <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
 
@@ -128,61 +128,8 @@
             color: red;
         }
 
-        /*Coin Table Style*/
-        table.table {
-            background-color: white;
-            margin: 0;
-        }
-
-        /*Table Headers*/
-        table.table th {
-            background-color: #222842;
-            color: white;
-        }
-
-        #table_head {
-            cursor: pointer;
-            border-top: 0;
-        }
-
-        #table_head > th {
-            border: 0;
-        }
-
-        table.table th:nth-child(n+3) {
-            text-align: right;
-        }
-
-        /*Table Rows*/
-        table.table td:nth-child(n+3) {
-            text-align: right;
-        }
-
-        table.table td:first-child {
+        #news_title {
             font-weight: bold;
-        }
-
-        table.table td:nth-child(2) {
-            font-weight: bold;
-        }
-
-        table.table td:nth-child(-n+7) {
-            border-top: 0;
-        }
-
-        .t-coin_row {
-            border-bottom: 1px solid lightgray;
-        }
-
-        .t-coin_row:last-child {
-            border: 0;
-        }
-
-        .row_name {
-            width: 10%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
 
         /*Widget*/
@@ -1068,9 +1015,9 @@
         <div id="center" class="col-sm-8 text-left about_display">
 
             <div id="news_feed" class="well">
-              <h2>Crypto News</h2>
+              <h2 id="news_title">News Feed</h2>
                 <div class="feedgrabbr_widget" id="fgid_c6f8a95bbf4890c152b5cf13f"></div>
-                <div class="feedgrabbr_widget2" id="fgid_e193389b25317bb961e6b582a"></div>
+                <div class="feedgrabbr_widget2" id="fgid_03539892db922c0d560160899"></div>
             </div>
 
             <!--Footer Ad-->
