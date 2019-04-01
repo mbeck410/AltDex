@@ -421,15 +421,16 @@ def collect():
     for dex in indices:
 
         if dex.name != 'Null':
+            dex_coins = dex.coin_set.all()
+            dex_market_cap = 0.0
+
+            for dex_coin in dex_coins:
+                dex_market_cap += float(dex_coin.market_cap)
+
+            dex_price = float(dex_market_cap) / float(dex.divisor)
+            dex_percent_change = 0
+
             if dex.name != 'Gaming':
-                dex_coins = dex.coin_set.all()
-                dex_market_cap = 0.0
-
-                for dex_coin in dex_coins:
-                    dex_market_cap += float(dex_coin.market_cap)
-
-                dex_price = float(dex_market_cap) / float(dex.divisor)
-                dex_percent_change = 0
 
                 entries = dex.indexprice_set.order_by('-timestamp')
                 latest_entry = entries[0]
@@ -456,16 +457,18 @@ def collect():
                         this_change = latest_entry.change_24h
                         dex_percent_change = latest_entry.price_percent_change
                         break
+            else:
+                this_change = 0
 
-                new_dex_history = IndexPrice(index=dex,
-                                             price=dex_price,
-                                             change_24h=this_change,
-                                             price_percent_change=dex_percent_change,
-                                             market_cap=dex_market_cap,
-                                             divisor=dex.divisor
-                                             )
+            new_dex_history = IndexPrice(index=dex,
+                                         price=dex_price,
+                                         change_24h=this_change,
+                                         price_percent_change=dex_percent_change,
+                                         market_cap=dex_market_cap,
+                                         divisor=dex.divisor
+                                         )
 
-                new_dex_history.save()
+            new_dex_history.save()
 
     sleep(60)
 
