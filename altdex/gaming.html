@@ -2108,8 +2108,7 @@
     }
 
 
-    // function index_current(index_id) {
-    function index_current() {
+    function index_current(index_id) {
         let new_data = [];
         let other_data = [];
         app2.rows = [];
@@ -2139,8 +2138,7 @@
         });
     }
 
-    // function update_index(index_id) {
-    function update_index() {
+    function update_index(index_id) {
         let new_data = [];
         let other_data = [];
         let url = '/getgamingcurrent/';
@@ -2258,7 +2256,7 @@
     let losers_div = document.querySelector('#losers');
 
 
-    index_current();
+    index_current(current_id);
     coin_current(current_index);
     index_all();
     index_metrics();
@@ -2266,7 +2264,7 @@
     setInterval(function () {
             top_gainers_losers();
             update_coin(current_index);
-            update_index();
+            update_index(current_id);
         },
         40000);
 
