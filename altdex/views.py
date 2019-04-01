@@ -216,7 +216,7 @@ def getgamingcurrent(request):
 
     indices_current.append(index_dict)
 
-return JsonResponse({'dict_key': indices_current})
+    return JsonResponse({'dict_key': indices_current})
 
 
 def getindexcurrent(request):
