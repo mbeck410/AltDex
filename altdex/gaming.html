@@ -1440,7 +1440,7 @@
                         <h4><b>AltDex Masternode Index (ALTMSN)</b></h4>
                         <p>The AltDex Masternode Index is a market capitalization-weighted benchmark index for cryptocurrencies that leverage masternodes to support network functionality without hyperinflation.</p>
                         <ul>
-                            <li>Number of Constituents: 14</li>
+                            <li>Number of Constituents: 11</li>
                             <li>Market capitalization greater than $5,000,000.</li>
                             <p><a href="/about/" class="light_blue_links">Learn More</a></p>
                         </ul>
@@ -1597,7 +1597,7 @@
                         <td id="coin_volume_value">${{row.volume.toLocaleString('en', {useGrouping:true})}}</td>
 
                         <!--% Weight-->
-                        <td id="coin_weight_value">{{row.weight_4}}%</td>
+                        <td id="coin_weight_value">{{row.weight_5}}%</td>
                     </tr>
                 </table>
             </div>
@@ -1998,7 +1998,7 @@
         amount_gainers = 0;
         amount_losers = 0;
         let count = 0;
-        let rank = 14;
+        let rank = 11;
         let url = '/getcoinscurrent/';
         http_get(url, function (data) {
 
@@ -2076,7 +2076,7 @@
         amount_gainers = 0;
         amount_losers = 0;
         let count = 0;
-        let rank = 14;
+        let rank = 11;
         let url = '/getcoinscurrent/';
         http_get(url, function (data) {
 
