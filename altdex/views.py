@@ -182,6 +182,42 @@ def getprivacyindex(request):
 
     return JsonResponse({'dict_key': index_dict})
 
+def getgamingindex(request):
+    dex = Index.objects.get(name='Gaming')
+    # indices_all_output = []
+
+    dex_price_entries = dex.indexprice_set.order_by('timestamp')
+    prices = []
+    times = []
+    for i in dex_price_entries:
+        prices.append(i.price)
+        times.append(i.timestamp)
+
+    index_dict = {'x': times, 'y': prices, 'fill': 'tozeroy', 'type': 'scatter', 'line': {'color': '#6dc0eb'},  'mode': 'lines'}
+
+    return JsonResponse({'dict_key': index_dict})
+
+
+def getgamingcurrent(request):
+    dex = Index.objects.get(name='Gaming')
+    indices_current = []
+    dex_current = dex.indexprice_set.last()
+    link = '/gaming'
+    symbol = 'ALTGME'
+    index_dict = {  'link': link,
+                    'name': dex.name,
+                    'price': float('{0:.2f}'.format(dex_current.price)),
+                    'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
+                    'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
+                    'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
+                    'time': str(dex_current.timestamp),
+                    'symbol': symbol
+                }
+
+    indices_current.append(index_dict)
+
+return JsonResponse({'dict_key': indices_current})
+
 
 def getindexcurrent(request):
     indices = Index.objects.order_by('id')

@@ -2058,12 +2058,12 @@
         let lose_data = [];
         let url = '/gainers_losers/';
         http_get(url, function (data) {
-            for (let i = 0; i < data.losers[3].length; i++) {
-                lose_data.push(data.losers[3][i]);
+            for (let i = 0; i < data.losers[4].length; i++) {
+                lose_data.push(data.losers[4][i]);
             }
 
-            for (let i = 0; i < data.gainers[3].length; i++) {
-                gain_data.push(data.gainers[3][i]);
+            for (let i = 0; i < data.gainers[4].length; i++) {
+                gain_data.push(data.gainers[4][i]);
             }
 
             app4.rows = lose_data;
@@ -2108,12 +2108,13 @@
     }
 
 
-    function index_current(index_id) {
+    // function index_current(index_id) {
+    function index_current() {
         let new_data = [];
         let other_data = [];
         app2.rows = [];
         app3.rows = [];
-        let url = '/getindexcurrent/';
+        let url = '/getgamingcurrent/';
         last_y = 0;
         //alert('test');
         http_get(url, function (data) {
@@ -2138,10 +2139,11 @@
         });
     }
 
-    function update_index(index_id) {
+    // function update_index(index_id) {
+    function update_index() {
         let new_data = [];
         let other_data = [];
-        let url = '/getindexcurrent/';
+        let url = '/getgamingcurrent/';
         //alert('test');
         http_get(url, function (data) {
             for (let i = 0; i < data.dict_key.length; ++i) {
@@ -2160,7 +2162,7 @@
     // Index Chart Pull
     function index_all() {
         line_data = [];
-        let url = '/getmasterindex/';
+        let url = '/getgamingindex/';
         //alert('test');
         http_get(url, function (data) {
             let entry = data.dict_key;
@@ -2256,7 +2258,7 @@
     let losers_div = document.querySelector('#losers');
 
 
-    index_current(current_id);
+    index_current();
     coin_current(current_index);
     index_all();
     index_metrics();
@@ -2264,7 +2266,7 @@
     setInterval(function () {
             top_gainers_losers();
             update_coin(current_index);
-            update_index(current_id);
+            update_index();
         },
         40000);
 
