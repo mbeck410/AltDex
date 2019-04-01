@@ -516,19 +516,20 @@ def getindexperformance(request):
 
 
 def trend_test(request):
-    indices = Index.objects.all().exclude(name='Null', name='Gaming').order_by('id')
+    indices = Index.objects.all().exclude(name='Null').order_by('id')
     price_array = []
     for index in indices:
+        if index.name != 'Gaming':
 
-        index_prices = index.indexprice_set.all()
-        count = index_prices.count()
-        lower = count - 1050
-        prices = []
+            index_prices = index.indexprice_set.all()
+            count = index_prices.count()
+            lower = count - 1050
+            prices = []
 
-        for i in range(lower, count, 50):
-            prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
+            for i in range(lower, count, 50):
+                prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
 
-        price_array.append(prices)
+            price_array.append(prices)
 
 
     return JsonResponse({'dict_key': price_array})
@@ -588,17 +589,18 @@ def gainers_losers(request):
 
 
 def index_trend(request):
-    indices = Index.objects.all().exclude(name='Null', name='Gaming').order_by('id')
+    indices = Index.objects.all().exclude(name='Null').order_by('id')
     price_array = []
     for index in indices:
+        if index.name != 'Gaming':
 
-        index_prices = index.indexprice_set.order_by('-timestamp')
-        prices = []
+            index_prices = index.indexprice_set.order_by('-timestamp')
+            prices = []
 
-        for i in range(0, 1049, 50):
-            prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
+            for i in range(0, 1049, 50):
+                prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
 
-        price_array.append(prices[::-1])
+            price_array.append(prices[::-1])
 
 
     return JsonResponse({'dict_key': price_array})
