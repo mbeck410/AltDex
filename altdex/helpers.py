@@ -673,7 +673,7 @@ def rsi_calc_init():
 
 
 def first_weight():
-    index = Index.objects.filter(name='Masternode')
+    index = Index.objects.filter(name='Gaming')
 
     cap = 0
     divisor = 0

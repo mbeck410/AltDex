@@ -44,6 +44,14 @@ def masternode(request):
         contents = file.read()
     return HttpResponse(contents)
 
+def gaming(request):
+    if request.user.is_superuser:
+        with open('./altdex/gaming.html') as file:
+            contents = file.read()
+            return HttpResponse(contents)
+    else:
+        return HttpResponse('error')
+
 def news(request):
     with open('./altdex/news.html') as file:
         contents = file.read()
@@ -181,32 +189,33 @@ def getindexcurrent(request):
 
     for dex in indices:
         if dex.name != 'Null':
-            link = ''
-            if dex.name == 'AltDex100':
-                link = '/alt100'
-                symbol = 'ALT100'
-            elif dex.name == 'Exchange':
-                link = '/exchange'
-                symbol = 'ALTEXC'
-            elif dex.name == 'Privacy':
-                link = '/privacy'
-                symbol = 'ALTPRV'
-            elif dex.name == 'Masternode':
-                link = '/masternode'
-                symbol = 'ALTMSN'
+            if dex.name != 'Gaming':
+                link = ''
+                if dex.name == 'AltDex100':
+                    link = '/alt100'
+                    symbol = 'ALT100'
+                elif dex.name == 'Exchange':
+                    link = '/exchange'
+                    symbol = 'ALTEXC'
+                elif dex.name == 'Privacy':
+                    link = '/privacy'
+                    symbol = 'ALTPRV'
+                elif dex.name == 'Masternode':
+                    link = '/masternode'
+                    symbol = 'ALTMSN'
 
-            dex_current = dex.indexprice_set.last()
-            index_dict = {  'link': link,
-                            'name': dex.name,
-                            'price': float('{0:.2f}'.format(dex_current.price)),
-                            'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
-                            'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
-                            'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
-                            'time': str(dex_current.timestamp),
-                            'symbol': symbol
-                        }
+                dex_current = dex.indexprice_set.last()
+                index_dict = {  'link': link,
+                                'name': dex.name,
+                                'price': float('{0:.2f}'.format(dex_current.price)),
+                                'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
+                                'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
+                                'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
+                                'time': str(dex_current.timestamp),
+                                'symbol': symbol
+                            }
 
-            indices_current.append(index_dict)
+                indices_current.append(index_dict)
 
     return JsonResponse({'dict_key': indices_current})
 
@@ -395,117 +404,119 @@ def getindexperformance(request):
     for index in indices:
 
         if index.name != 'Null':
-            entries = index.indexprice_set.order_by('-timestamp')
-            entries2 = index.indexprice_set.order_by('price')
+            if index.name != 'Gaming':
+                entries = index.indexprice_set.order_by('-timestamp')
+                entries2 = index.indexprice_set.order_by('price')
 
-            min_price = entries2.first().price
-            max_price = entries2.last().price
+                min_price = entries2.first().price
+                max_price = entries2.last().price
 
-            latest_entry = entries[0]
+                latest_entry = entries[0]
 
-            current_price = latest_entry.price
-            current_date = latest_entry.timestamp
-            current_seconds = current_date.second
-            currrent_microseconds = current_date.microsecond
+                current_price = latest_entry.price
+                current_date = latest_entry.timestamp
+                current_seconds = current_date.second
+                currrent_microseconds = current_date.microsecond
 
-            week_change = 0.0
-            month_change = 0.0
-            week_percent = 0.0
-            month_percent = 0.0
-            day_low = current_price
-            day_high = current_price
-            week_low = current_price
-            week_high = current_price
-            month_high = current_price
-            month_low = current_price
+                week_change = 0.0
+                month_change = 0.0
+                week_percent = 0.0
+                month_percent = 0.0
+                day_low = current_price
+                day_high = current_price
+                week_low = current_price
+                week_high = current_price
+                month_high = current_price
+                month_low = current_price
 
-            one_day = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
-            one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
-            seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
+                one_day = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
+                one_m = current_date - timedelta(days=31, seconds=current_seconds, microseconds=currrent_microseconds)
+                seven = current_date - timedelta(days=7, seconds=current_seconds, microseconds=currrent_microseconds)
 
-            for i in range(0, len(entries)):
-                if entries[i].price > month_high:
-                    month_high = entries[i].price
-                    # month_high_index = i
+                for i in range(0, len(entries)):
+                    if entries[i].price > month_high:
+                        month_high = entries[i].price
+                        # month_high_index = i
 
-                if entries[i].price < month_low:
-                    month_low = entries[i].price
-                    # month_low_index = i
+                    if entries[i].price < month_low:
+                        month_low = entries[i].price
+                        # month_low_index = i
 
-                last_time = entries[i].timestamp
-                last_seconds = last_time.second
-                last_micro = last_time.microsecond
-                strip_time = last_time - timedelta(seconds=last_seconds, microseconds=last_micro)
+                    last_time = entries[i].timestamp
+                    last_seconds = last_time.second
+                    last_micro = last_time.microsecond
+                    strip_time = last_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
-                if strip_time == one_day:
-                    day_high = month_high
-                    day_low = month_low
-
-                if i == 1050:
-                    if day_high == day_low:
+                    if strip_time == one_day:
                         day_high = month_high
                         day_low = month_low
 
-                if strip_time == seven:
-                    week_change = current_price - entries[i].price
-                    week_index = i
-                    week_high = month_high
-                    week_low = month_low
-                    week_percent = week_change / entries[i].price * 100
-                    # week_high_index = month_high_index
-                    # week_low_index = month_low_index
+                    if i == 1050:
+                        if day_high == day_low:
+                            day_high = month_high
+                            day_low = month_low
 
-                if i == 9000:
-                    if week_high == week_low:
-                        week_change = current_price - entries[8660].price
-                        week_percent = week_change / entries[8660].price * 100
+                    if strip_time == seven:
+                        week_change = current_price - entries[i].price
+                        week_index = i
                         week_high = month_high
                         week_low = month_low
+                        week_percent = week_change / entries[i].price * 100
+                        # week_high_index = month_high_index
+                        # week_low_index = month_low_index
 
-                if strip_time == one_m:
-                    month_change = current_price - entries[i].price
-                    month_index = i
-                    month_percent = month_change / entries[i].price * 100
-                    break
+                    if i == 9000:
+                        if week_high == week_low:
+                            week_change = current_price - entries[8660].price
+                            week_percent = week_change / entries[8660].price * 100
+                            week_high = month_high
+                            week_low = month_low
 
-                if i == 32600:
-                    # week_change = current_price - entries[8660].price
-                    month_change = current_price - entries[32600].price
-                    # week_percent = week_change / entries[8660].price * 100
-                    month_percent = month_change / entries[32600].price * 100
-                    # week_high = entries[week_high_index].price
-                    # week_low = entries[week_low_index].price
-                    # week_high = '-'
-                    # week_low = '-'
-                    break
+                    if strip_time == one_m:
+                        month_change = current_price - entries[i].price
+                        month_index = i
+                        month_percent = month_change / entries[i].price * 100
+                        break
 
-            change_dict = { 'current': current_price,
-                            'week': week_change,
-                            'month': one_m,
-                            'month_change': month_change,
-                            # 'week_index': week_index,
-                            # 'month_index':month_index,
-                            'week_high': week_high,
-                            'week_low': week_low,
-                            'month_high': month_high,
-                            'month_low':month_low,
-                            'day_high': day_high,
-                            'day_low': day_low,
-                            'min_price': min_price,
-                            'max_price': max_price,
-                            'month_percent': '{0:.2f}'.format(month_percent),
-                            'week_percent': '{0:.2f}'.format(week_percent),
-                        }
+                    if i == 32600:
+                        # week_change = current_price - entries[8660].price
+                        month_change = current_price - entries[32600].price
+                        # week_percent = week_change / entries[8660].price * 100
+                        month_percent = month_change / entries[32600].price * 100
+                        # week_high = entries[week_high_index].price
+                        # week_low = entries[week_low_index].price
+                        # week_high = '-'
+                        # week_low = '-'
+                        break
 
-            performance_table.append(change_dict)
+                change_dict = { 'current': current_price,
+                                'week': week_change,
+                                'month': one_m,
+                                'month_change': month_change,
+                                # 'week_index': week_index,
+                                # 'month_index':month_index,
+                                'week_high': week_high,
+                                'week_low': week_low,
+                                'month_high': month_high,
+                                'month_low':month_low,
+                                'day_high': day_high,
+                                'day_low': day_low,
+                                'min_price': min_price,
+                                'max_price': max_price,
+                                'month_percent': '{0:.2f}'.format(month_percent),
+                                'week_percent': '{0:.2f}'.format(week_percent),
+                            }
 
+                performance_table.append(change_dict)
+
+            else: continue
         else: continue
 
     return JsonResponse({'dict_key': performance_table})
 
 
 def trend_test(request):
-    indices = Index.objects.all().exclude(name='Null').order_by('id')
+    indices = Index.objects.all().exclude(name='Null', name='Gaming').order_by('id')
     price_array = []
     for index in indices:
 
@@ -577,7 +588,7 @@ def gainers_losers(request):
 
 
 def index_trend(request):
-    indices = Index.objects.all().exclude(name='Null').order_by('id')
+    indices = Index.objects.all().exclude(name='Null', name='Gaming').order_by('id')
     price_array = []
     for index in indices:
 

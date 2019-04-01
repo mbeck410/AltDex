@@ -9,6 +9,7 @@ urlpatterns = [
     path('exchange/', views.exchange, name='exchange'),
     path('privacy/', views.privacy, name='privacy'),
     path('masternode/', views.masternode, name='masternode'),
+    path('gaming/', views.gaming, name='gaming'),
     path('news/', views.news, name='news'),
     path('pullcurrent/', views.pullcurrent, name='pullcurrent'),
     path('getindexcurrent/', views.getindexcurrent, name='getindexcurrent'),
