@@ -286,6 +286,12 @@ def getcoinscurrent(request):
         elif name_lower == 'stakenet':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2633.png'
 
+        elif name_lower == 'ttc protocol':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3175.png'
+
+        elif name_lower == 'iexec rlc':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/1637.png'
+
         elif name_lower == 'project pai':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2900.png'
 
