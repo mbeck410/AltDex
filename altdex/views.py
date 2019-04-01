@@ -323,9 +323,9 @@ def getcoinscurrent(request):
                 weight_5 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
                 dices += str(dex.name)
                 if weight_5 >= 1:
-                    weight_5 = float('{0:.3f}'.format(weight_4))
+                    weight_5 = float('{0:.3f}'.format(weight_5))
                 else:
-                    weight_5 = float('{0:.6f}'.format(weight_4))
+                    weight_5 = float('{0:.6f}'.format(weight_5))
             else:
                 continue
 
