@@ -281,6 +281,7 @@ def getcoinscurrent(request):
     weight_2 = 0
     weight_3 = 0
     weight_4 = 0
+    weight_5 = 0
 
     for this_coin in coins:
         # percent_weight = '{0:.3f}'.format(float(this_coin.market_cap) / (float(index.market_cap))*100)
