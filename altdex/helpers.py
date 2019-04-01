@@ -421,50 +421,51 @@ def collect():
     for dex in indices:
 
         if dex.name != 'Null':
-            dex_coins = dex.coin_set.all()
-            dex_market_cap = 0.0
+            if dex.name != 'Gaming':
+                dex_coins = dex.coin_set.all()
+                dex_market_cap = 0.0
 
-            for dex_coin in dex_coins:
-                dex_market_cap += float(dex_coin.market_cap)
+                for dex_coin in dex_coins:
+                    dex_market_cap += float(dex_coin.market_cap)
 
-            dex_price = float(dex_market_cap) / float(dex.divisor)
-            dex_percent_change = 0
+                dex_price = float(dex_market_cap) / float(dex.divisor)
+                dex_percent_change = 0
 
-            entries = dex.indexprice_set.order_by('-timestamp')
-            latest_entry = entries[0]
+                entries = dex.indexprice_set.order_by('-timestamp')
+                latest_entry = entries[0]
 
-            current_date = latest_entry.timestamp
-            current_seconds = current_date.second
-            currrent_microseconds = current_date.microsecond
+                current_date = latest_entry.timestamp
+                current_seconds = current_date.second
+                currrent_microseconds = current_date.microsecond
 
-            yesterday = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
-            yesterday2 = yesterday + timedelta(minutes=1)
+                yesterday = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
+                yesterday2 = yesterday + timedelta(minutes=1)
 
-            for last in entries:
-                last_24_time = last.timestamp
-                last_seconds = last_24_time.second
-                last_micro = last_24_time.microsecond
-                day_change = 0
-                strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
+                for last in entries:
+                    last_24_time = last.timestamp
+                    last_seconds = last_24_time.second
+                    last_micro = last_24_time.microsecond
+                    day_change = 0
+                    strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
 
-                if strip_time == yesterday2:
-                    this_change = float(dex_price) - float(last.price)
-                    dex_percent_change = float(this_change) / float(last.price) * 100
-                    break
-                elif int(latest_entry.id) - int(last.id) > 7000:
-                    this_change = latest_entry.change_24h
-                    dex_percent_change = latest_entry.price_percent_change
-                    break
+                    if strip_time == yesterday2:
+                        this_change = float(dex_price) - float(last.price)
+                        dex_percent_change = float(this_change) / float(last.price) * 100
+                        break
+                    elif int(latest_entry.id) - int(last.id) > 7000:
+                        this_change = latest_entry.change_24h
+                        dex_percent_change = latest_entry.price_percent_change
+                        break
 
-            new_dex_history = IndexPrice(index=dex,
-                                         price=dex_price,
-                                         change_24h=this_change,
-                                         price_percent_change=dex_percent_change,
-                                         market_cap=dex_market_cap,
-                                         divisor=dex.divisor
-                                         )
+                new_dex_history = IndexPrice(index=dex,
+                                             price=dex_price,
+                                             change_24h=this_change,
+                                             price_percent_change=dex_percent_change,
+                                             market_cap=dex_market_cap,
+                                             divisor=dex.divisor
+                                             )
 
-            new_dex_history.save()
+                new_dex_history.save()
 
     sleep(60)
 
