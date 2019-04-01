@@ -300,6 +300,13 @@ def getcoinscurrent(request):
                     weight_4 = float('{0:.3f}'.format(weight_4))
                 else:
                     weight_4 = float('{0:.6f}'.format(weight_4))
+            if dex.name == 'Gaming':
+                weight_5 = this_coin.market_cap / dex.indexprice_set.last().market_cap * 100
+                dices += str(dex.name)
+                if weight_5 >= 1:
+                    weight_5 = float('{0:.3f}'.format(weight_4))
+                else:
+                    weight_5 = float('{0:.6f}'.format(weight_4))
             else:
                 continue
 
@@ -424,6 +431,7 @@ def getcoinscurrent(request):
                         'weight_2': weight_2,
                         'weight_3': weight_3,
                         'weight_4': weight_4,
+                        'weight_5': weight_5,
                         'icon': coin_icon_url,
                         'pretty_cap': pretty_cap
                         }
