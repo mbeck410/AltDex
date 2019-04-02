@@ -500,8 +500,10 @@ def collect():
 
             new_dex_history = IndexPrice(index=dex,
                                          price=dex_price,
-                                         change_24h=this_change,
-                                         price_percent_change=dex_percent_change,
+                                         # change_24h=this_change,
+                                         change_24h='-',
+                                         # price_percent_change=dex_percent_change,
+                                         price_percent_change='-',
                                          market_cap=dex_market_cap,
                                          divisor=dex.divisor
                                          )
