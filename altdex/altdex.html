@@ -1591,6 +1591,8 @@ Vue.component('index-performance', {
     asterickText: function() {
       if (this.info.name == 'Masternode') {
         return '*Launched August 2018'
+      } else if (this.info.name == 'Gaming') {
+        return '*Launched April 2019'
       } else {
         return '*Launched July 2018'
       }
@@ -1715,15 +1717,17 @@ let one_app = new Vue({
     trend: [],
     menu: ['Cryptocurrencies','Performance', 'Newswire'],
     menu_number: 0,
-    constituents:[100, 24, 17, 14],
+    constituents:[100, 24, 17, 14, 11],
     index_names: ['AltDex 100 Cryptocurrency Index (ALT100) ',
                   'AltDex Exchange Token Index (ALTEXC)',
                   'AltDex Privacy Coin Index (ALTPRV)',
-                  'AltDex Masternode Index (ALTMSN)'],
+                  'AltDex Masternode Index (ALTMSN)',
+                  'AltDex Gaming Index (ALTGME)'],
     descriptions: ['Benchmark market capitalization-weighted index for large cap cryptocurrencies and tokens.',
                   'Benchmark market capitalization-weighted index for the leading crypto exchange tokens.',
                   'Benchmark market capitalization-weighted index for cryptocurrencies and tokens focused on privacy or security.',
-                  'Benchmark market capitalization-weighted index for cryptocurrencies to support the network without hyperinflation.'],
+                  'Benchmark market capitalization-weighted index for cryptocurrencies to support the network without hyperinflation.',
+                  'Benchmark market capitalization-weighted index for cryptocurrencies directly related to gaming, esports or other similar decentralized applications.'],
     current_index: 'AltDex',
     current_number: 0,
     current_sort: 'market_cap',
