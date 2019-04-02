@@ -467,7 +467,51 @@ def getindexperformance(request):
     for index in indices:
 
         if index.name != 'Null':
-            if index.name != 'Gaming':
+            if index.name = 'Gaming':
+                entries = index.indexprice_set.order_by('-timestamp')
+                entries2 = index.indexprice_set.order_by('price')
+
+                min_price = entries2.first().price
+                max_price = entries2.last().price
+
+                latest_entry = entries[0]
+
+                current_price = latest_entry.price
+                current_date = latest_entry.timestamp
+                current_seconds = current_date.second
+                currrent_microseconds = current_date.microsecond
+
+                day_low = current_price
+                day_high = current_price
+
+                week_low = 0
+                week_high = 0
+                month_high = 0
+                month_low = 0
+                week_change = 0.0
+                month_change = 0.0
+                week_percent = 0.0
+                month_percent = 0.0
+
+                one_day = current_date - timedelta(days=1, seconds=current_seconds, microseconds=currrent_microseconds)
+
+                for i in range(0, len(entries)):
+                    last_time = entries[i].timestamp
+                    last_seconds = last_time.second
+                    last_micro = last_time.microsecond
+                    strip_time = last_time - timedelta(seconds=last_seconds, microseconds=last_micro)
+
+                    if strip_time == one_day:
+                        day_high = month_high
+                        day_low = month_low
+
+                    if i == 1050:
+                        if day_high == day_low:
+                            day_high = month_high
+                            day_low = month_low
+
+
+            else:
                 entries = index.indexprice_set.order_by('-timestamp')
                 entries2 = index.indexprice_set.order_by('price')
 
@@ -552,27 +596,26 @@ def getindexperformance(request):
                         # week_low = '-'
                         break
 
-                change_dict = { 'current': current_price,
-                                'week': week_change,
-                                'month': one_m,
-                                'month_change': month_change,
-                                # 'week_index': week_index,
-                                # 'month_index':month_index,
-                                'week_high': week_high,
-                                'week_low': week_low,
-                                'month_high': month_high,
-                                'month_low':month_low,
-                                'day_high': day_high,
-                                'day_low': day_low,
-                                'min_price': min_price,
-                                'max_price': max_price,
-                                'month_percent': '{0:.2f}'.format(month_percent),
-                                'week_percent': '{0:.2f}'.format(week_percent),
-                            }
+            change_dict = { 'current': current_price,
+                            'week': week_change,
+                            'month': one_m,
+                            'month_change': month_change,
+                            # 'week_index': week_index,
+                            # 'month_index':month_index,
+                            'week_high': week_high,
+                            'week_low': week_low,
+                            'month_high': month_high,
+                            'month_low':month_low,
+                            'day_high': day_high,
+                            'day_low': day_low,
+                            'min_price': min_price,
+                            'max_price': max_price,
+                            'month_percent': '{0:.2f}'.format(month_percent),
+                            'week_percent': '{0:.2f}'.format(week_percent),
+                        }
 
-                performance_table.append(change_dict)
+            performance_table.append(change_dict)
 
-            else: continue
         else: continue
 
     return JsonResponse({'dict_key': performance_table})
