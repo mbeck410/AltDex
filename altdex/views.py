@@ -257,9 +257,9 @@ def getindexcurrent(request):
                 elif dex.name == 'Masternode':
                     link = '/masternode'
                     symbol = 'ALTMSN'
-                elif dex.name == 'Gaming':
-                    link = '/gaming'
-                    symbol = 'ALTGME'
+                # elif dex.name == 'Gaming':
+                #     link = '/gaming'
+                #     symbol = 'ALTGME'
 
                 dex_current = dex.indexprice_set.last()
                 index_dict = {  'link': link,
