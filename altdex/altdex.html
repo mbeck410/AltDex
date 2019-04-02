@@ -1151,13 +1151,15 @@
               v-bind:class="{'highlight' : (current_number === 1)}">ALTEXC</button>
               <button class="btn dex_btn" @click="changeFilter('Privacy', 2)"
               v-bind:class="{'highlight' : (current_number === 2)}">ALTPRV</button>
+              <button class="btn dex_btn" @click="changeFilter('Masternode', 3)"
+              v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
             </div>
-            <div class="index_buttons" id="bt_row2">
+            <!-- <div class="index_buttons" id="bt_row2">
               <button class="btn dex_btn" @click="changeFilter('Masternode', 3)"
               v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
               <button class="btn dex_btn" @click="changeFilter('Gaming', 4)"
               v-bind:class="{'highlight' : (current_number === 4)}">ALTGME</button>
-            </div>
+            </div> -->
 
               <div id="description">
                 <h4 class='des_name' v-cloak><b>{{ index_names[current_number] }}</b></h4>
