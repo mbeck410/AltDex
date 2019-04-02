@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: AltDex22-dev
+    environment: AltDex22-env
     group_suffix: null
 global:
   application_name: AltDex22
