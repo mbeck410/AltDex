@@ -240,24 +240,6 @@ def collect():
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
-        elif coin.symbol == 'WICC':
-            url2 = 'https://api.coinmarketcap.com/v2/ticker/2346/'
-            r2 = requests.get(url2)
-
-            while r2.status_code != 200:
-                sleep(10)
-                r2 = requests.get(url2)
-
-            data = json.loads(r2.text)
-
-            coin.price = float(data['data']['quotes']['USD']['price'])
-            coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
-            coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
-            coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
-            coin.percent_weight = 0
-
-            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
-
         elif coin.symbol == 'NEC':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/2538/'
             r2 = requests.get(url2)
@@ -403,6 +385,24 @@ def collect():
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
+        elif coin.symbol == 'WICC':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/2346/'
+            r2 = requests.get(url2)
+
+            while r2.status_code != 200:
+                sleep(10)
+                r2 = requests.get(url2)
+
+            data = json.loads(r2.text)
+
+            coin.price = float(data['data']['quotes']['USD']['price'])
+            coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
+            coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
+            coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
+            coin.percent_weight = 0
+
+            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+
         elif coin.symbol == 'DTR':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/2298/'
             r2 = requests.get(url2)
@@ -465,18 +465,15 @@ def collect():
                 last_micro = last_24_time.microsecond
                 day_change = 0
                 strip_time = last_24_time - timedelta(seconds=last_seconds, microseconds=last_micro)
-                count = 0
 
                 if strip_time == yesterday2:
                     this_change = float(dex_price) - float(last.price)
                     dex_percent_change = float(this_change) / float(last.price) * 100
                     break
-                elif count > 1100:
+                elif int(latest_entry.id) - int(last.id) > 7000:
                     this_change = latest_entry.change_24h
                     dex_percent_change = latest_entry.price_percent_change
                     break
-                else:
-                    count += 1
 
 
             new_dex_history = IndexPrice(index=dex,
