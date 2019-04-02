@@ -281,6 +281,10 @@
           color: lightgray;
         }
 
+        #bt_row2 {
+          justify-content: space-evenly;
+        }
+
         .coin_name {
             font-weight: bold;
             font-size: 0.75vw;
@@ -1146,8 +1150,12 @@
               v-bind:class="{'highlight' : (current_number === 1)}">ALTEXC</button>
               <button class="btn dex_btn" @click="changeFilter('Privacy', 2)"
               v-bind:class="{'highlight' : (current_number === 2)}">ALTPRV</button>
+            </div>
+            <div class="index_buttons" id="bt_row2">
               <button class="btn dex_btn" @click="changeFilter('Masternode', 3)"
               v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
+              <button class="btn dex_btn" @click="changeFilter('Gaming', 4)"
+              v-bind:class="{'highlight' : (current_number === 4)}">ALTGME</button>
             </div>
 
               <div id="description">
@@ -1727,7 +1735,7 @@ let one_app = new Vue({
                   'Benchmark market capitalization-weighted index for the leading crypto exchange tokens.',
                   'Benchmark market capitalization-weighted index for cryptocurrencies and tokens focused on privacy or security.',
                   'Benchmark market capitalization-weighted index for cryptocurrencies to support the network without hyperinflation.',
-                  'Benchmark market capitalization-weighted index for cryptocurrencies directly related to gaming, esports or other similar decentralized applications.'],
+                  'Benchmark market capitalization-weighted index for cryptocurrencies directly related to gaming, esports or similar applications.'],
     current_index: 'AltDex',
     current_number: 0,
     current_sort: 'market_cap',
@@ -1838,10 +1846,12 @@ function pull_big() {
     let wdata_2 = [];
     let wdata_3 = [];
     let wdata_4 = [];
+    let wdata_5 = [];
     let sum_1 = 0;
     let sum_2 = 0;
     let sum_3 = 0;
     let sum_4 = 0;
+    let sum_5 = 0;
     let pie_chart = [];
     // Fetch our array of row from an API
     fetch('/getindexcurrent/')
@@ -1895,19 +1905,27 @@ function pull_big() {
             wdata_4.push(piece_4);
             sum_4 += data.dict_key[i].weight_4;
           }
+          if (data.dict_key[i].indices.includes('Gaming') === true && data.dict_key[i].weight_5 >= 1) {
+            let piece_5 = [data.dict_key[i].name, data.dict_key[i].weight_5];
+            wdata_5.push(piece_5);
+            sum_5 += data.dict_key[i].weight_5;
+          }
         }
       let last_piece_1 = ['Others', (100-sum_1).toFixed(2)];
       let last_piece_2 = ['Others', (100-sum_2).toFixed(2)];
       let last_piece_3 = ['Others', (100-sum_3).toFixed(2)];
       let last_piece_4 = ['Others', (100-sum_4).toFixed(2)];
+      let last_piece_5 = ['Others', (100-sum_5).toFixed(2)];
       wdata_1.push(last_piece_1);
       wdata_2.push(last_piece_2);
       wdata_3.push(last_piece_3);
       wdata_4.push(last_piece_4);
+      wdata_4.push(last_piece_5);
       pie_chart.push(wdata_1);
       pie_chart.push(wdata_2);
       pie_chart.push(wdata_3);
       pie_chart.push(wdata_4);
+      pie_chart.push(wdata_5);
       vm.pie_data = pie_chart;
       vm.coins = coin_data;
     }).then(function () {

@@ -1372,7 +1372,7 @@
                 <!--Index Data-->
                 <ul id="info_bts" class="nav nav-pills">
                     <li class="active"><a data-toggle="pill" href="#price_info">Price</a></li>
-                    <li id="performance_btn"><a data-toggle="pill" href="#performance_tab">Performance</a></li>
+                    <!-- <li id="performance_btn"><a data-toggle="pill" href="#performance_tab">Performance</a></li> -->
                     <li><a data-toggle="pill" href="#info">Info</a></li>
                 </ul>
 
@@ -1447,7 +1447,7 @@
                     </div>
 
                     <!-- Performace Tab -->
-                    <div class="tab-pane fade well" id="performance_tab">
+                    <!-- <div class="tab-pane fade well" id="performance_tab">
                       <div id="performance">
                       <div id="performance_price">
                         <div id="perf_dex_name">ALTGME</div>
@@ -1460,7 +1460,7 @@
                           <div class="data_period">24h</div>
                           <div class="perf_change" id="perf_day_change"></div>
                           <div class="perf_percent" id="perf_day_percent"></div>
-                        </div>
+                        </div> -->
                         <!-- <div class="period_data">
                           <div class="data_period">7d</div>
                           <div class="perf_change" id="perf_week_change"></div>
@@ -1473,7 +1473,7 @@
                         </div>
                       </div> -->
 
-                      <div id="ranges" class="p_tab">
+                      <!-- <div id="ranges" class="p_tab">
 
 
                         <div id="day_range">
@@ -1493,7 +1493,7 @@
                             <i class="fa fa-caret-up"></i>
                             <div id="day_slider_value"></div>
                           </div>
-                        </div>
+                        </div> -->
 
                         <!-- <div id="week_range">
                           <div class="range_data">
@@ -2033,25 +2033,25 @@
     }
 
     // Index Metrics Pull
-    function index_metrics() {
-        let dex_data = [];
-        let url = '/getindexperformance/';
-        http_get(url, function (data) {
+    // function index_metrics() {
+    //     let dex_data = [];
+    //     let url = '/getindexperformance/';
+    //     http_get(url, function (data) {
           // set_value_color('perf_week_change', data.dict_key[3]['week']);
           // set_value_color('perf_month_change', data.dict_key[3]['month_change']);
-          set_value('day_low', data.dict_key[3]['day_low']);
-          set_value('day_high', data.dict_key[3]['day_high']);
+          // set_value('day_low', data.dict_key[3]['day_low']);
+          // set_value('day_high', data.dict_key[3]['day_high']);
           // set_value('week_low', data.dict_key[3]['week_low']);
           // set_value('week_high', data.dict_key[3]['week_high']);
           // set_value('month_low', data.dict_key[3]['month_low']);
           // set_value('month_high', data.dict_key[3]['month_high']);
           // set_value_percent('perf_week_percent', data.dict_key[3]['week_percent']);
           // set_value_percent('perf_month_percent', data.dict_key[3]['month_percent']);
-          set_slider('day_slider', data.dict_key[3]['day_low'], data.dict_key[3]['day_high'], data.dict_key[3]['current']);
+          // set_slider('day_slider', data.dict_key[3]['day_low'], data.dict_key[3]['day_high'], data.dict_key[3]['current']);
           // set_slider('week_slider', data.dict_key[3]['week_low'], data.dict_key[3]['week_high'], data.dict_key[3]['current']);
           // set_slider('month_slider', data.dict_key[3]['month_low'], data.dict_key[3]['month_high'], data.dict_key[3]['current']);
-        })
-    }
+    //     })
+    // }
 
     function top_gainers_losers() {
         let gain_data = [];
