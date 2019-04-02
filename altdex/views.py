@@ -469,7 +469,7 @@ def getindexperformance(request):
     for index in indices:
 
         if index.name != 'Null':
-            if index.name = 'Gaming':
+            if index.name == 'Gaming':
                 entries = index.indexprice_set.order_by('-timestamp')
                 entries2 = index.indexprice_set.order_by('price')
 
