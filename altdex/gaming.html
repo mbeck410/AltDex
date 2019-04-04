@@ -1277,6 +1277,7 @@
                     <li><a href="/exchange">Exchange</a></li>
                     <li><a href="/privacy">Privacy</a></li>
                     <li><a href="/masternode">Masternode</a></li>
+                    <li><a href="/gaming">Gaming</a></li>
                 </ul>
             </li>
             <li><a href="/news">News</a></li>
@@ -1764,7 +1765,7 @@
             } else if (price_change <= -3) {
                 y_update = [last_y - 3, last_y + buffer]
             } else {
-                y_update = [last_y - 6, last_y + 3]
+                y_update = [96, 109]
             }
         } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
