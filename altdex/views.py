@@ -45,12 +45,9 @@ def masternode(request):
     return HttpResponse(contents)
 
 def gaming(request):
-    if request.user.is_superuser:
-        with open('./altdex/gaming.html') as file:
-            contents = file.read()
-            return HttpResponse(contents)
-    else:
-        return HttpResponse('error')
+    with open('./altdex/gaming.html') as file:
+        contents = file.read()
+    return HttpResponse(contents)
 
 def news(request):
     with open('./altdex/news.html') as file:
