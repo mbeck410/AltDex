@@ -402,6 +402,12 @@ def getcoinscurrent(request):
         elif name_lower == 'maximine coin':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3115.png'
 
+        elif name_lower == 'bitguild plat':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3633.png'
+
+        elif name_lower == 'plair':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3711.png'
+
         elif ' ' in name_lower:
             hyphened_name = name_lower.replace(' ', '-')
             coin_icon_url = 'https://raw.githubusercontent.com/dziungles/cryptocurrency-logos/master/coins/16x16/' + hyphened_name + '.png'
