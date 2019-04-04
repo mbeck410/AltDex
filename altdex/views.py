@@ -203,7 +203,47 @@ def getgamingcurrent(request):
     indices_current = []
 
     for dex in indices:
+        # if dex.name != 'Null':
+        #     link = ''
+        #     if dex.name == 'AltDex100':
+        #         link = '/alt100'
+        #         symbol = 'ALT100'
+        #     elif dex.name == 'Exchange':
+        #         link = '/exchange'
+        #         symbol = 'ALTEXC'
+        #     elif dex.name == 'Privacy':
+        #         link = '/privacy'
+        #         symbol = 'ALTPRV'
+        #     elif dex.name == 'Masternode':
+        #         link = '/masternode'
+        #         symbol = 'ALTMSN'
+        #     elif dex.name == 'Gaming':
+        #         link = '/gaming'
+        #         symbol = 'ALTGME'
+        #
+        #     dex_current = dex.indexprice_set.last()
+        #     index_dict = {  'link': link,
+        #                     'name': dex.name,
+        #                     'price': float('{0:.2f}'.format(dex_current.price)),
+        #                     'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
+        #                     'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
+        #                     'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
+        #                     'time': str(dex_current.timestamp),
+        #                     'symbol': symbol
+        #                 }
+
+            # indices_current.append(index_dict)
+
+    return JsonResponse({'dict_key': indices_current})
+
+
+def getindexcurrent(request):
+    indices = Index.objects.order_by('id')
+    indices_current = []
+
+    for dex in indices:
         if dex.name != 'Null':
+
             link = ''
             if dex.name == 'AltDex100':
                 link = '/alt100'
@@ -233,46 +273,6 @@ def getgamingcurrent(request):
                         }
 
             indices_current.append(index_dict)
-
-    return JsonResponse({'dict_key': indices_current})
-
-
-def getindexcurrent(request):
-    indices = Index.objects.order_by('id')
-    indices_current = []
-
-    for dex in indices:
-        if dex.name != 'Null':
-            if dex.name != 'Gaming':
-                link = ''
-                if dex.name == 'AltDex100':
-                    link = '/alt100'
-                    symbol = 'ALT100'
-                elif dex.name == 'Exchange':
-                    link = '/exchange'
-                    symbol = 'ALTEXC'
-                elif dex.name == 'Privacy':
-                    link = '/privacy'
-                    symbol = 'ALTPRV'
-                elif dex.name == 'Masternode':
-                    link = '/masternode'
-                    symbol = 'ALTMSN'
-                # elif dex.name == 'Gaming':
-                #     link = '/gaming'
-                #     symbol = 'ALTGME'
-
-                dex_current = dex.indexprice_set.last()
-                index_dict = {  'link': link,
-                                'name': dex.name,
-                                'price': float('{0:.2f}'.format(dex_current.price)),
-                                'change_24h': float('{0:.2f}'.format(dex_current.change_24h)),
-                                'price_percent': float('{0:.2f}'.format(dex_current.price_percent_change)),
-                                'market_cap': float('{0:.0f}'.format(dex_current.market_cap)),
-                                'time': str(dex_current.timestamp),
-                                'symbol': symbol
-                            }
-
-                indices_current.append(index_dict)
 
     return JsonResponse({'dict_key': indices_current})
 
@@ -707,15 +707,15 @@ def index_trend(request):
     indices = Index.objects.all().exclude(name='Null').order_by('id')
     price_array = []
     for index in indices:
-        if index.name != 'Gaming':
+        # if index.name != 'Gaming':
 
-            index_prices = index.indexprice_set.order_by('-timestamp')
-            prices = []
+        index_prices = index.indexprice_set.order_by('-timestamp')
+        prices = []
 
-            for i in range(0, 1049, 50):
-                prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
+        for i in range(0, 1049, 50):
+            prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
 
-            price_array.append(prices[::-1])
+        price_array.append(prices[::-1])
 
         # else:
         #     index_prices = index.indexprice_set.order_by('-timestamp')
