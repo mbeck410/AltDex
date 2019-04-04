@@ -13,7 +13,6 @@ urlpatterns = [
     path('news/', views.news, name='news'),
     path('pullcurrent/', views.pullcurrent, name='pullcurrent'),
     path('getindexcurrent/', views.getindexcurrent, name='getindexcurrent'),
-    path('getgamingcurrent/', views.getgamingcurrent, name='getgamingcurrent'),
     path('getindexall/', views.getindexall, name='getindexall'),
     path('getmasterindex/', views.getmasterindex, name='getmasterindex'),
     path('getmainindex/', views.getmainindex, name='getmainindex'),
