@@ -1798,7 +1798,7 @@ function pull_big() {
     vm.indices = index_data;
   }).then(function () {
     document.querySelector(".loader_div2").style.display = "none";
-  });
+  }).then(function () {
     for (let i = 0; i<=urls.length; ++i) {
       fetch(urls[i])
         .then(function (response) {
@@ -1807,7 +1807,7 @@ function pull_big() {
         .then(function (data) {
           trend_line.push(data.dict_key)
           vm.trend = trend_line
-  })}.then(function () {
+  })}}).then(function () {
     let loader = document.getElementsByClassName('loader');
     let loader_div = document.getElementsByClassName('loader_div');
     let charts = document.getElementsByClassName('charts')
