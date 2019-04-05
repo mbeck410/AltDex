@@ -690,11 +690,11 @@ def main_trend(request):
     return JsonResponse({'dict_key': price_array})
 
 def exchange_trend(request):
-    dex = Index.objects.get(name='Exchange')
+    index = Index.objects.get(name='Exchange')
 
     length = dex.indexprice_set.count()
     lower = length - 1050
-    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length:50]
     prices_list = list(prices)
     # for i in range(lower, length):
     #     prices.append([i['timestamp'], i['price']])
@@ -702,11 +702,11 @@ def exchange_trend(request):
     return JsonResponse({'dict_key': prices_list})
 
 def privacy_trend(request):
-    dex = Index.objects.get(name='Privacy')
+    index = Index.objects.get(name='Privacy')
 
     length = dex.indexprice_set.count()
     lower = length - 1050
-    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length:50]
     prices_list = list(prices)
     # for i in range(lower, length):
     #     prices.append([i['timestamp'], i['price']])
@@ -714,11 +714,11 @@ def privacy_trend(request):
     return JsonResponse({'dict_key': prices_list})
 
 def master_trend(request):
-    dex = Index.objects.get(name='Masternode')
+    index = Index.objects.get(name='Masternode')
 
     length = dex.indexprice_set.count()
     lower = length - 1050
-    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length:50]
     prices_list = list(prices)
     # for i in range(lower, length):
     #     prices.append([i['timestamp'], i['price']])
@@ -726,16 +726,17 @@ def master_trend(request):
     return JsonResponse({'dict_key': prices_list})
 
 def gaming_trend(request):
-    dex = Index.objects.get(name='Gaming')
+    index = Index.objects.get(name='Gaming')
 
-    length = dex.indexprice_set.count()
-    lower = length - 1050
-    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
-    prices_list = list(prices)
-    # for i in range(lower, length):
-    #     prices.append([i['timestamp'], i['price']])
+    index_prices = index.indexprice_set.order_by('-timestamp')
+    prices = []
 
-    return JsonResponse({'dict_key': prices_list})
+    for i in range(0, 1049, 50):
+        prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
+
+    price_array.append(prices[::-1])
+
+    return JsonResponse({'dict_key': price_array})
 
 
 def rsi_calc(request):
