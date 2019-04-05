@@ -665,7 +665,6 @@ def index_trend(request):
     indices = Index.objects.all().exclude(name='Null').order_by('id')
     price_array = []
     for index in indices:
-        # if index.name != 'Gaming':
 
         index_prices = index.indexprice_set.order_by('-timestamp')
         prices = []
@@ -675,30 +674,20 @@ def index_trend(request):
 
         price_array.append(prices[::-1])
 
-        # else:
-        #     index_prices = index.indexprice_set.order_by('-timestamp')
-        #     length = index_prices.count()
-        #     prices = []
-        #
-        #     for i in range(0, length, 50):
-        #         prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
-        #
-        #     price_array.append(prices[::-1])
-
-
     return JsonResponse({'dict_key': price_array})
 
 def main_trend(request):
-    dex = Index.objects.get(name='AltDex100')
+    index = Index.objects.get(name='AltDex100')
 
-    length = dex.indexprice_set.count()
-    lower = length - 1050
-    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
-    prices_list = list(prices)
-    # for i in range(lower, length):
-    #     prices.append([i['timestamp'], i['price']])
+    index_prices = index.indexprice_set.order_by('-timestamp')
+    prices = []
 
-    return JsonResponse({'dict_key': prices_list})
+    for i in range(0, 1049, 50):
+        prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
+
+    price_array.append(prices[::-1])
+
+    return JsonResponse({'dict_key': price_array})
 
 def exchange_trend(request):
     dex = Index.objects.get(name='Exchange')
