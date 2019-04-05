@@ -678,6 +678,7 @@ def index_trend(request):
 
 def main_trend(request):
     index = Index.objects.get(name='AltDex100')
+    price_array = []
 
     index_prices = index.indexprice_set.order_by('-timestamp')
     prices = []
@@ -727,6 +728,7 @@ def master_trend(request):
 
 def gaming_trend(request):
     index = Index.objects.get(name='Gaming')
+    price_array = []
 
     index_prices = index.indexprice_set.order_by('-timestamp')
     prices = []
