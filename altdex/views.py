@@ -700,6 +700,54 @@ def main_trend(request):
 
     return JsonResponse({'dict_key': prices_list})
 
+def exchange_trend(request):
+    dex = Index.objects.get(name='Exchange')
+
+    length = dex.indexprice_set.count()
+    lower = length - 1050
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
+    prices_list = list(prices)
+    # for i in range(lower, length):
+    #     prices.append([i['timestamp'], i['price']])
+
+    return JsonResponse({'dict_key': prices_list})
+
+def privacy_trend(request):
+    dex = Index.objects.get(name='Privacy')
+
+    length = dex.indexprice_set.count()
+    lower = length - 1050
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
+    prices_list = list(prices)
+    # for i in range(lower, length):
+    #     prices.append([i['timestamp'], i['price']])
+
+    return JsonResponse({'dict_key': prices_list})
+
+def master_trend(request):
+    dex = Index.objects.get(name='Masternode')
+
+    length = dex.indexprice_set.count()
+    lower = length - 1050
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
+    prices_list = list(prices)
+    # for i in range(lower, length):
+    #     prices.append([i['timestamp'], i['price']])
+
+    return JsonResponse({'dict_key': prices_list})
+
+def gaming_trend(request):
+    dex = Index.objects.get(name='Gaming')
+
+    length = dex.indexprice_set.count()
+    lower = length - 1050
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
+    prices_list = list(prices)
+    # for i in range(lower, length):
+    #     prices.append([i['timestamp'], i['price']])
+
+    return JsonResponse({'dict_key': prices_list})
+
 
 def rsi_calc(request):
     day = 0

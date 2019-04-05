@@ -28,6 +28,10 @@ urlpatterns = [
     path('testing/', views.testing, name='testing'),
     path('testing2/', views.testing2, name='testing2'),
     path('index_trend/', views.index_trend, name='index_trend'),
+    path('exchange_trend/', views.exchange_trend, name='exchange_trend'),
+    path('privacy_trend/', views.privacy_trend, name='privacy_trend'),
+    path('master_trend/', views.master_trend, name='master_trend'),
+    path('gaming_trend/', views.gaming_trend, name='gaming_trend'),
     path('main_trend/', views.main_trend, name='main_trend'),
     path('trend_test/', views.trend_test, name='trend_test'),
 ]
