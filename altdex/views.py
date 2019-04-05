@@ -698,7 +698,7 @@ def main_trend(request):
     # for i in range(lower, length):
     #     prices.append([i['timestamp'], i['price']])
 
-    return JsonResponse({'dict_key': prices_list})
+    return JsonResponse({prices_list})
 
 def exchange_trend(request):
     dex = Index.objects.get(name='Exchange')
