@@ -7,18 +7,18 @@
     <meta charset="UTF-8">
     <meta name="description" content="Market Capitalization-Weighted Cryptocurrency Indices">
     <meta name="keywords"
-          content="Cryptocurrency, Bitcoin, AltDex, Index, Altcoin, Coin, Chart, Investing, Exchange, Trading, indices
-          Market, Price, Masternode, Masternodes, crypto, ICO, ETF, BTC, XRP, Ripple, ETH, Ethereum, Privacy,
-          Token, Doge, Dogecoin, Market Cap, Volume, Price Data, Moon, Leverage, Monitor, EOS, Cardano, ADA, TRON, TRX, Binance, OKEx, Huobi, KuCoin, BNB, HODL, Litecoin, LTC, Tether, Stablecoin, USDT, Monero, XMR, IOTA, Dash, Maker, MKR, NEO, NEM, XEM, Zcash, Ontology, ONT, Waves, VeChain, Tezos, USDC, Coinbase, Basic Attention Token, TrueUSD, Qtum, OmiseGO, Decred, Chainlink, API, Stop Loss, Margin, Lisk, 0x, Zilliqa, Steem, Paxos, Verge, Gemini, Ark, Electroneum, Decentraland, Bancor, Gas, Pomp, Research">
+          content="Cryptocurrency, Bitcoin, AltDex, Index, Altcoin, coin, chart, Investing, Exchange, Trading, indices
+          Market, price, masternode, masternodes, crypto, ICO, ETF, BTC, XRP, Ripple, ETH, Ethereum, privacy, masternode,
+          token">
     <meta name="author" content="Peer, LLC">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="twitter:image" content="https://sludgefeed.com/wp-content/uploads/2018/08/Altdex-Trading-Logo.png">
+    <meta name="twitter:image" content="https://sludgefeed.com/wp-content/uploads/2018/07/Altdex-Laptop-Logo.png">
     <meta name="twitter:site" content="@altcoindex">
     <meta property="fb:app_id" content="250619782212260">
 
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
-    <meta property="og:image" content="https://sludgefeed.com/wp-content/uploads/2018/08/Altdex-Trading-Logo.png">
+    <meta property="og:image" content="https://sludgefeed.com/wp-content/uploads/2018/07/Altdex-Laptop-Logo.png">
     <meta property="og:site_name" content="AltDex"/> <!-- website name -->
     <meta property="og:site" content="https://www.altdex.co/"/> <!-- website link -->
     <meta property="og:title" content="AltDex Cryptocurrency Indices"/> <!-- title shown in the actual shared post -->
@@ -28,7 +28,7 @@
     <meta property="og:url" content="https://www.altdex.co/"/> <!-- where do you want your post to link to -->
     <meta property="og:type" content="article"/>
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AltDex Cryptocurrency Index Platform">
+    <meta name="twitter:title" content="AltDex Cryptocurrency Indices">
     <meta name="twitter:description" content="Market Capitalization-Weighted Cryptocurrency Indices">
 
     <!--Links-->
@@ -111,7 +111,7 @@
 
     <style>
         .row {
-          height: 190vh;
+          height: 160vh;
           overflow: hidden;
         }
 
@@ -227,8 +227,6 @@
           margin: auto;
           padding-top: 1vw;
           padding-bottom: 1vw;
-          padding-left: 1vw;
-          padding-right: 1vw;
         }
 
         /* #news_header {
@@ -273,17 +271,12 @@
 
         .index_buttons {
           display: flex;
-          justify-content: space-evenly;
+          justify-content: space-between;
           width: 100%;
         }
 
         .index_buttons> button:hover{
           color: lightgray;
-        }
-
-        #bt_row2 {
-          margin-top: 0.5vw;
-          justify-content: space-evenly;
         }
 
         .coin_name {
@@ -1093,16 +1086,14 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="secondary dropdown-menu">
-                    <li><a href="/alt100">AltDex 100</a></li>
+                    <li><a href="/">AltDex 100</a></li>
                     <li><a href="/exchange">Exchange</a></li>
                     <li><a href="/privacy">Privacy</a></li>
                     <li><a href="/masternode">Masternode</a></li>
-                    <li><a href="/gaming">Gaming</a></li>
                 </ul>
             </li>
-            <li><a href="/news">News</a></li>
+            <!-- <li><a href="https://sludgefeed.com/" target="_blank">News</a></li> -->
             <li><a href="/about">About</a></li>
-            <li><a href="https://medium.com/altdex-blog" target="_blank">Blog</a></li>
 
         </ul>
 
@@ -1152,12 +1143,8 @@
               v-bind:class="{'highlight' : (current_number === 1)}">ALTEXC</button>
               <button class="btn dex_btn" @click="changeFilter('Privacy', 2)"
               v-bind:class="{'highlight' : (current_number === 2)}">ALTPRV</button>
-            </div>
-            <div class="index_buttons" id="bt_row2">
               <button class="btn dex_btn" @click="changeFilter('Masternode', 3)"
               v-bind:class="{'highlight' : (current_number === 3)}">ALTMSN</button>
-              <button class="btn dex_btn" @click="changeFilter('Gaming', 4)"
-              v-bind:class="{'highlight' : (current_number === 4)}">ALTGME</button>
             </div>
 
               <div id="description">
@@ -1170,7 +1157,7 @@
               </div>
 
               <div id="index_chart_info" v-cloak>
-                <div id="index_chart_symbol" v-cloak><a class="light_blue_links" :href="info[current_number].link"
+                <div id="index_chart_symbol" v-cloak><a class="light_blue_links" :href="info.link" target="_blank"
                   >{{ info[current_number].symbol }}</a></div>
                 <div id="index_chart_price" v-cloak>{{ info[current_number].price.toFixed(2) }}</div>
                 <div id="index_chart_percent"
@@ -1279,7 +1266,7 @@
         <div v-for="(row, index) in info">
           <div id=index_header v-cloak>
             <div id="index_symbol" v-cloak>{{ row.name }} Index
-              (<a class="light_blue_links" :href="row.link">{{ row.symbol }}</a>)</div>
+              (<a class="light_blue_links" :href="row.link" target="_blank">{{ row.symbol }}</a>)</div>
           </div>
           <div class="well blade">
             <div class="trend">
@@ -1287,7 +1274,7 @@
                 <div class="loader"></div>
               </div>
               <div class="charts">
-                <area-chart data='/main_trend'
+                <area-chart :data="trend[index]"
                 :library=chart_settings
                 height="160px"
                 :min="null"
@@ -1601,8 +1588,6 @@ Vue.component('index-performance', {
     asterickText: function() {
       if (this.info.name == 'Masternode') {
         return '*Launched August 2018'
-      } else if (this.info.name == 'Gaming') {
-        return '*Launched April 2019'
       } else {
         return '*Launched July 2018'
       }
@@ -1718,26 +1703,24 @@ let one_app = new Vue({
     chart_settings: {title: {text: '24 Hour Chart', display: true, fontSize: 10, fontStyle: 'normal', position: 'bottom', fontColor: '#696969'},
                   scales: {xAxes: [{display: false}]}},
     pie_settings: {legend: {labels: {fontColor: '#696969'}}},
-    coins:        [],
-    pie_data:     [],
-    indices:      [],
-    info:         [],
-    gainers:      [],
-    losers:       [],
-    menu:         ['Cryptocurrencies','Performance', 'Newswire'],
-    menu_number:  0,
-    constituents: [100, 24, 17, 14, 13],
-    index_names:  ['AltDex 100 Cryptocurrency Index (ALT100) ',
+    coins: [],
+    pie_data: [],
+    indices: [],
+    info: [],
+    gainers: [],
+    losers: [],
+    trend: [],
+    menu: ['Cryptocurrencies','Performance', 'Newswire'],
+    menu_number: 0,
+    constituents:[100, 23, 17, 14],
+    index_names: ['AltDex 100 Cryptocurrency Index (ALT100) ',
                   'AltDex Exchange Token Index (ALTEXC)',
                   'AltDex Privacy Coin Index (ALTPRV)',
-                  'AltDex Masternode Index (ALTMSN)',
-                  'AltDex Gaming Index (ALTGME)'],
+                  'AltDex Masternode Index (ALTMSN)'],
     descriptions: ['Benchmark market capitalization-weighted index for large cap cryptocurrencies and tokens.',
                   'Benchmark market capitalization-weighted index for the leading crypto exchange tokens.',
                   'Benchmark market capitalization-weighted index for cryptocurrencies and tokens focused on privacy or security.',
-                  'Benchmark market capitalization-weighted index for cryptocurrencies to support the network without hyperinflation.',
-                  'Benchmark market capitalization-weighted index for cryptocurrencies directly related to gaming, esports or similar applications.'],
-    endpoints:    ['/main_trend/', '/exchange_trend/', '/privacy_trend/', '/master_trend/', '/gaming_trend/'],
+                  'Benchmark market capitalization-weighted index for cryptocurrencies to support the network without hyperinflation.'],
     current_index: 'AltDex',
     current_number: 0,
     current_sort: 'market_cap',
@@ -1803,6 +1786,7 @@ function pull_big() {
   let vm = one_app;
   let index_data = [];
   let trend_line = [];
+  let urls = ['/main_trend/', '/exchange_trend/', '/privacy_trend/', '/main_trend/', '/gaming_trend/']
   fetch('/getindexperformance/')
     .then(function (response) {
       return response.json();
@@ -1814,6 +1798,17 @@ function pull_big() {
     vm.indices = index_data;
   }).then(function () {
     document.querySelector(".loader_div2").style.display = "none";
+  });
+  for (let i = 0; i<=urls.length; ++i)
+    fetch(urls[i])
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.dict_key.length; ++i) {
+          trend_line.push(data.dict_key[i])
+        }
+      vm.trend = trend_line
   }).then(function () {
     let loader = document.getElementsByClassName('loader');
     let loader_div = document.getElementsByClassName('loader_div');
@@ -1838,12 +1833,10 @@ function pull_big() {
     let wdata_2 = [];
     let wdata_3 = [];
     let wdata_4 = [];
-    let wdata_5 = [];
     let sum_1 = 0;
     let sum_2 = 0;
     let sum_3 = 0;
     let sum_4 = 0;
-    let sum_5 = 0;
     let pie_chart = [];
     // Fetch our array of row from an API
     fetch('/getindexcurrent/')
@@ -1897,27 +1890,19 @@ function pull_big() {
             wdata_4.push(piece_4);
             sum_4 += data.dict_key[i].weight_4;
           }
-          if (data.dict_key[i].indices.includes('Gaming') === true && data.dict_key[i].weight_5 >= 1) {
-            let piece_5 = [data.dict_key[i].name, data.dict_key[i].weight_5];
-            wdata_5.push(piece_5);
-            sum_5 += data.dict_key[i].weight_5;
-          }
         }
       let last_piece_1 = ['Others', (100-sum_1).toFixed(2)];
       let last_piece_2 = ['Others', (100-sum_2).toFixed(2)];
       let last_piece_3 = ['Others', (100-sum_3).toFixed(2)];
       let last_piece_4 = ['Others', (100-sum_4).toFixed(2)];
-      let last_piece_5 = ['Others', (100-sum_5).toFixed(2)];
       wdata_1.push(last_piece_1);
       wdata_2.push(last_piece_2);
       wdata_3.push(last_piece_3);
       wdata_4.push(last_piece_4);
-      wdata_4.push(last_piece_5);
       pie_chart.push(wdata_1);
       pie_chart.push(wdata_2);
       pie_chart.push(wdata_3);
       pie_chart.push(wdata_4);
-      pie_chart.push(wdata_5);
       vm.pie_data = pie_chart;
       vm.coins = coin_data;
     }).then(function () {
