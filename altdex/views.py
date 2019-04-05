@@ -691,14 +691,14 @@ def index_trend(request):
 def main_trend(request):
     dex = Index.objects.get(name='AltDex100')
 
-    dex_price_entries = dex.indexprice_set.values('price', 'timestamp')
-    length = dex_price_entries.count()
+    length = dex.indexprice_set.count()
     lower = length - 1050
-    prices = []
-    for i in range(lower, length):
-        prices.append([i['timestamp'], i['price']])
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length]
+    prices_list = list(prices)
+    # for i in range(lower, length):
+    #     prices.append([i['timestamp'], i['price']])
 
-    return JsonResponse({'dict_key': index_dict})
+    return JsonResponse({'dict_key': prices_list})
 
 
 def rsi_calc(request):
