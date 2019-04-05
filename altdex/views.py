@@ -688,6 +688,18 @@ def index_trend(request):
 
     return JsonResponse({'dict_key': price_array})
 
+def main_trend(request):
+    dex = Index.objects.get(name='AltDex100')
+
+    dex_price_entries = dex.indexprice_set.values('price', 'timestamp')
+    length = dex_price_entries.count()
+    lower = length - 1050
+    prices = []
+    for i in range(lower, length):
+        prices.append([i['timestamp'], i['price']])
+
+    return JsonResponse({'dict_key': index_dict})
+
 
 def rsi_calc(request):
     day = 0
