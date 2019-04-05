@@ -691,7 +691,7 @@ def main_trend(request):
     return JsonResponse({'dict_key': price_array})
 
 def exchange_trend(request):
-    index = Index.objects.get(name='Exchange')
+    dex = Index.objects.get(name='Exchange')
 
     length = dex.indexprice_set.count()
     lower = length - 1050
@@ -703,7 +703,7 @@ def exchange_trend(request):
     return JsonResponse({'dict_key': prices_list})
 
 def privacy_trend(request):
-    index = Index.objects.get(name='Privacy')
+    dex = Index.objects.get(name='Privacy')
 
     length = dex.indexprice_set.count()
     lower = length - 1050
