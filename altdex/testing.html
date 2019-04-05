@@ -1799,7 +1799,7 @@ function pull_big() {
   }).then(function () {
     document.querySelector(".loader_div2").style.display = "none";
   }).then(function () {
-    for (let i = 0; i<=urls.length; ++i) {
+    for (let i = 0; i < urls.length; ++i) {
       fetch(urls[i])
         .then(function (response) {
           return response.json()

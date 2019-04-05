@@ -677,18 +677,15 @@ def index_trend(request):
     return JsonResponse({'dict_key': price_array})
 
 def main_trend(request):
-    index = Index.objects.get(name='AltDex100')
-    price_array = []
+    dex = Index.objects.get(name='AltDex100')
+    length = dex.indexprice_set.count()
+    lower = length - 1050
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length:50]
+    prices_list = list(prices)
+    # for i in range(lower, length):
+    #     prices.append([i['timestamp'], i['price']])
 
-    index_prices = index.indexprice_set.order_by('-timestamp')
-    prices = []
-
-    for i in range(0, 1049, 50):
-        prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
-
-    price_array.append(prices[::-1])
-
-    return JsonResponse({'dict_key': price_array})
+    return JsonResponse({'dict_key': prices_list})
 
 def exchange_trend(request):
     dex = Index.objects.get(name='Exchange')
@@ -715,7 +712,7 @@ def privacy_trend(request):
     return JsonResponse({'dict_key': prices_list})
 
 def master_trend(request):
-    index = Index.objects.get(name='Masternode')
+    dex = Index.objects.get(name='Masternode')
 
     length = dex.indexprice_set.count()
     lower = length - 1050
@@ -727,18 +724,16 @@ def master_trend(request):
     return JsonResponse({'dict_key': prices_list})
 
 def gaming_trend(request):
-    index = Index.objects.get(name='Gaming')
-    price_array = []
+    dex = Index.objects.get(name='Gaming')
 
-    index_prices = index.indexprice_set.order_by('-timestamp')
-    prices = []
+    length = dex.indexprice_set.count()
+    lower = length - 1050
+    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length:50]
+    prices_list = list(prices)
+    # for i in range(lower, length):
+    #     prices.append([i['timestamp'], i['price']])
 
-    for i in range(0, 1049, 50):
-        prices.append([index_prices[i].timestamp, float(index_prices[i].price)])
-
-    price_array.append(prices[::-1])
-
-    return JsonResponse({'dict_key': price_array})
+    return JsonResponse({'dict_key': prices_list})
 
 
 def rsi_calc(request):
