@@ -680,7 +680,7 @@ def main_trend(request):
     dex = Index.objects.get(name='AltDex100')
     length = dex.indexprice_set.count()
     lower = length - 1050
-    prices = dex.indexprice_set.values_list('timestamp','price')[lower:length:50]
+    prices = reversed(dex.indexprice_set).values_list('timestamp','price')[0:1050:50]
     prices_list = list(prices)
     # for i in range(lower, length):
     #     prices.append([i['timestamp'], i['price']])
