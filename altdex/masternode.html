@@ -1836,15 +1836,15 @@
         } else if (time_frame === 'three_month') {                  //Range: 3 Months
             date_update.setMonth(date_update.getMonth() - 3);
             x_update = [date_update, last_x];
-            y_update = [20, 41];
+            y_update = [20, 56];
         } else if (time_frame === 'one_month') {                    //Range: 1 Month
             date_update.setMonth(date_update.getMonth() - 1);
             x_update = [date_update, last_x];
-            y_update = [28, 41]
+            y_update = [28, 56]
         } else if (time_frame === 'seven_day') {                    //Range: 7 Day
             date_update.setDate(date_update.getDate() - 7);
             x_update = [date_update, last_x];
-            y_update = [35, 40]
+            y_update = [46, 56]
         } else if (time_frame === 'one_day') {                      //Range: 24 Hour
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
@@ -1854,7 +1854,7 @@
             } else if (price_change <= -3) {
                 y_update = [last_y - 3, last_y + buffer]
             } else {
-                y_update = [last_y - 1, last_y + 1]
+                y_update = [last_y - 2.5, last_y + 2]
             }
         } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
