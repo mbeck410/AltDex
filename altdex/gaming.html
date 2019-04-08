@@ -1759,11 +1759,11 @@
         } else if (time_frame === 'one_day') {                      //Range: 24 Hour
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
-            let buffer = Math.abs(price_change) + 3;
+            let buffer = Math.abs(price_change) + 5;
             if (price_change >= 3) {
                 y_update = [last_y - buffer, last_y + 3]
             } else if (price_change <= -3) {
-                y_update = [last_y - 3, last_y + buffer]
+                y_update = [last_y - 4, last_y + buffer]
             } else {
                 y_update = [last_y - 2, last_y + 5]
             }
