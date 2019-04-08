@@ -1760,13 +1760,7 @@
             date_update.setDate(date_update.getDate() - 1);
             x_update = [date_update, last_x];
             let buffer = Math.abs(price_change) + 8;
-            if (price_change >= 3) {
-                y_update = [last_y - buffer, last_y + 3]
-            } else if (price_change <= -3) {
-                y_update = [last_y - 6, last_y + buffer]
-            } else {
-                y_update = [last_y - 2, last_y + 5]
-            }
+            y_update = [last_y - 4, last_y + 8]
         } else if (time_frame === 'hour') {                         //Range: Hour
             date_update.setHours(date_update.getHours() - 1);
             x_update = [date_update, last_x];
