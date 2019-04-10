@@ -741,7 +741,7 @@ def rsi_calc(request):
     displayed_prices = []
     index = Index.objects.get(name="Masternode")
     prices = index.indexprice_set.order_by('timestamp')
-    new_prices = prices.filter(timestamp__hour=17)
+    new_prices = prices.filter(timestamp__hour=16)
 
     #Finds and stores price from each day at 19:00 UTC, or averages difference if missing
     for price in new_prices:
