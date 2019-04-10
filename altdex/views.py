@@ -739,7 +739,7 @@ def gaming_trend(request):
 def rsi_calc(request):
     day = 0
     displayed_prices = []
-    index = Index.objects.get(name="AltDex100")
+    index = Index.objects.get(name="Exchange")
     prices = index.indexprice_set.order_by('timestamp')
     new_prices = prices.filter(timestamp__hour=16)
 
