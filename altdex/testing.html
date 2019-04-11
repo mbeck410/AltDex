@@ -1127,7 +1127,7 @@
             <ul class="dropdown-menu" v-cloak>
             	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
           		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performance</a></li>
-              <!-- <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li> -->
+              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
             </ul>
           </li>
         </ul>
@@ -1214,11 +1214,10 @@
 
             </div>
 
-            <!-- <div id="news_tab" class="tab-pane fade">
-              <div class="feedgrabbr_widget" id="fgid_ffd55116db5fb3420a5452387"></div>
-              <div class="feedgrabbr_widget2" id="fgid_e193389b25317bb961e6b582a"></div> -->
-              <!-- <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="104061/"></script> -->
-            <!-- </div> -->
+            <div id="news_tab" class="tab-pane fade">
+              <a href="https://cryptopanic.com/" target="_blank" data-news_feed="trending" data-bg_color="#FFFFFF" data-text_color="#333333" data-link_color="#0091C2" data-header_bg_color="#30343B" data-header_text_color="#FFFFFF" data-posts_limit="10" class="CryptoPanicWidget">Latest News</a>
+              <script src="https://static.cryptopanic.com/static/js/widgets.min.js"></script>
+            </div>
 
             <div class="side_ads">
               <ins class="adsbygoogle"
