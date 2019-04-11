@@ -229,10 +229,12 @@
           padding-bottom: 1vw;
         }
 
-        /* #news_header {
-          margin-top: 0;
-          font-weight: bold;
-        } */
+        /* News Widget */
+
+        .ccontrol_header {
+          display: none;
+        }
+        /* END */
 
         #description {
           text-align: left;
@@ -1209,9 +1211,6 @@
                 v-bind:dex="indices[current_number]"
                 v-bind:info="info[current_number]"></index-performance>
               </div>
-
-
-
             </div>
 
             <div id="news_tab" class="tab-pane fade">
