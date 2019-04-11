@@ -1062,6 +1062,40 @@
                  style="display:inline-block;width:225px;height:600px"
                  data-ad-client="ca-pub-9873470958093574"
                  data-ad-slot="2227010612"></ins>
+
+             <!--Top Gainers/Losers-->
+             <div v-cloak class="well" id="top_gain_lose">
+                 <div id="gl_all">
+
+                     <!--Gainers-->
+                     <div id="top_gainers">
+                         <div id="gainerz" class="gl_title">Best Performers</div>
+                         <div class="gl_data" v-for="row in rows2">
+                             <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
+                             </div>
+                             <div class="gl_price">${{row.price}}</div>
+                             <div class="gl_percent"
+                                  v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                 {{row.price_percent}}%
+                             </div>
+                         </div>
+                     </div>
+
+                     <!--Losers-->
+                     <div id="top_losers">
+                         <div id="lozerz" class="gl_title">Worst Performers</div>
+                         <div class="gl_data" v-for="row in rows">
+                             <div class="gl_name"><a class="light_blue_links" :href="row.website" target="_blank">{{row.symbol}}</a>
+                             </div>
+                             <div class="gl_price">${{row.price}}</div>
+                             <div class="gl_percent"
+                                  v-bind:class="{'pos' : row.price_percent>0, 'neg' : row.price_percent<0}">
+                                 {{row.price_percent}}%
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
         </div>
     </div>
 </div>
@@ -1150,6 +1184,16 @@
         }
     });
 
+    let app4 = new Vue({
+        el: '#top_gain_lose',
+        data: {
+            ascending: false,
+            sortColumn: '',
+            rows: [],
+            rows2: [],
+        }
+    });
+
     function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -1161,6 +1205,24 @@
         xhttp.open("GET", url);
         xhttp.send();
 
+    }
+
+    function top_gainers_losers() {
+        let gain_data = [];
+        let lose_data = [];
+        let url = '/gainers_losers/';
+        http_get(url, function (data) {
+            for (let i = 0; i < data.losers[0].length; i++) {
+                lose_data.push(data.losers[0][i]);
+            }
+
+            for (let i = 0; i < data.gainers[0].length; i++) {
+                gain_data.push(data.gainers[0][i]);
+            }
+
+            app4.rows = lose_data;
+            app4.rows2 = gain_data;
+        })
     }
 
     function index_current(index_id) {
@@ -1192,9 +1254,11 @@
     }
 
     index_current();
+    top_gainers_losers();
 
     setInterval(function () {
             update_index();
+            top_gainers_losers();
         },
         30000);
 
