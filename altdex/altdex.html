@@ -71,16 +71,6 @@
         return t;
     }(document, "script", "twitter-wjs"));</script>
 
-    <!--News Widget-->
-    <!-- <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
-    <script>
-        if (typeof (fg_widgets) === "undefined") {
-            fg_widgets = new Array();
-        }
-        fg_widgets.push("fgid_ebd3b2ea855fd4e14daaf2e86");
-        fg_widgets.push("fgid_e193389b25317bb961e6b582a");
-    </script> -->
-
     <!--Google ad/webdata-->
     <!--Global site tag (gtag.js) - Google Analytics-->
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -231,10 +221,39 @@
           padding-right: 1vw;
         }
 
-        /* #news_header {
-          margin-top: 0;
-          font-weight: bold;
-        } */
+        /* News Widget */
+        .cryptocontrol-embed {
+          border: none;
+          background-color: inherit;
+          text-align: left;
+        }
+
+        .ccontrol-link-title {
+          color: #6dc0eb !important;
+        }
+
+        .ccontrol-embed {
+          border: none !important;
+          background-color: inherit !important;
+        }
+
+        .ccontrol-entry {
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+
+        .ccontrol-entry:first-child {
+          margin-top: 0 !important;
+        }
+
+        .ccontrol-embed-content {
+          padding: 0 !important;
+        }
+
+        .ccontrol-header {
+          display: none;
+        }
+        /* END */
 
         #description {
           text-align: left;
@@ -1136,7 +1155,7 @@
             <ul class="dropdown-menu" v-cloak>
             	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
           		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performance</a></li>
-              <!-- <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li> -->
+              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
             </ul>
           </li>
         </ul>
@@ -1227,11 +1246,11 @@
 
             </div>
 
-            <!-- <div id="news_tab" class="tab-pane fade">
-              <div class="feedgrabbr_widget" id="fgid_ffd55116db5fb3420a5452387"></div>
-              <div class="feedgrabbr_widget2" id="fgid_e193389b25317bb961e6b582a"></div> -->
-              <!-- <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="104061/"></script> -->
-            <!-- </div> -->
+            <div id="news_tab" class="tab-pane fade">
+              <div class="cryptocontrol-embed">
+              <script type="text/javascript" src="https://cryptocontrol.io/embeds/topnews.js"></script>
+              </div>
+            </div>
 
             <div class="side_ads">
               <ins class="adsbygoogle"
