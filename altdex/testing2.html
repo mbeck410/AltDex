@@ -1240,9 +1240,6 @@
                 padding-bottom: 5px;
             }
 
-            /*.my_navbar {*/
-            /*width: 100%;*/
-            /*}*/
             .r_ad {
                 display: none;
             }
@@ -1434,7 +1431,7 @@
     // Index Chart Pull
     function index_all() {
         line_data = [];
-        let url = '/getexchangeindex/';
+        let url = '/getmainindex/';
         let url2 = '/rsi_calc/';
         //alert('test');
         http_get(url, function (data) {
