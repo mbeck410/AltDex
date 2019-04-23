@@ -468,8 +468,7 @@ def collect():
             data = json.loads(r2.text)
 
             coin.price = float(data['data']['quotes']['USD']['price'])
-            coin.price_percent_change = 0
-            # float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
+            coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
             coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
             coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
             coin.percent_weight = 0
