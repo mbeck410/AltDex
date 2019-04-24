@@ -240,7 +240,7 @@
           font-size: 15px;
           font-weight: bold;
           /* line-height: 1.2em; */
-          padding-bottom: 0.8em;
+          padding-bottom: 0.5em;
         }
 
         #art_content {
@@ -1751,7 +1751,7 @@ Vue.component('index-performance', {
 Vue.component('news-well', {
   props: ['article'],
   template: `
-    <div id="nwell" class="well">
+    <div id="nwell">
       <div id="art_title">{{ article.title }}</div>
       <div id="art_content">Source: <a :href="article.references[0].url" target="_blank" class="light_blue_links">{{ article.references[0].name }}</a></div>
     </div>
