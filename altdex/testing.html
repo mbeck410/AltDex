@@ -83,27 +83,27 @@
 
     <!--Google ad/webdata-->
     <!--Global site tag (gtag.js) - Google Analytics-->
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script>
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103693878-2"></script> -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-103693878-2');
+        // window.dataLayer = window.dataLayer || [];
+        //
+        // function gtag() {
+        //     dataLayer.push(arguments);
+        // }
+        //
+        // gtag('js', new Date());
+        //
+        // gtag('config', 'UA-103693878-2');
     </script>
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-6108390557757563",
-            enable_page_level_ads: true
-        });
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        // (adsbygoogle = window.adsbygoogle || []).push({
+        //     google_ad_client: "ca-pub-6108390557757563",
+        //     enable_page_level_ads: true
+        // });
+        // (adsbygoogle = window.adsbygoogle || []).push({});
+        // (adsbygoogle = window.adsbygoogle || []).push({});
+        // (adsbygoogle = window.adsbygoogle || []).push({});
         // (adsbygoogle = window.adsbygoogle || []).push({});
         // (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
@@ -246,7 +246,7 @@
         #art_content {
           color: black;
           font-size: 13px;
-          font-weight: 500;
+          font-weight: bold;
           white-space: pre-wrap;
           text-align: left;
         }
@@ -1753,7 +1753,7 @@ Vue.component('news-well', {
   template: `
     <div id="nwell" class="well">
       <div id="art_title">{{ article.title }}</div>
-      <div id="art_content">{{ article.references[0].name }}</div>
+      <div id="art_content">Source: {{ article.references[0].name }}</div>
     </div>
   `
 })
