@@ -1274,12 +1274,9 @@
             </div>
 
             <div id="news_tab" class="tab-pane fade">
-              <div v-for='article in articles'>
-              <!-- <div class="cryptocontrol-embed">
-              <script type="text/javascript" src="https://cryptocontrol.io/embeds/topnews.js"></script>
-              </div>-->
               <div id="news_ref">Powered by:
                 <a href="https://messari.io/news" target="_blank" class="light_blue_links">Messari</a></div>
+              <div v-for='article in articles'>
                 <news-well v-bind:article="article"></news-well>
               </div>
             </div>
