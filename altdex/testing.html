@@ -1899,7 +1899,7 @@ function pull_big() {
   function get_news() {
     let news_data = [];
     let vm = one_app;
-    if (array.length == 0) {
+    if (vm.articles.length == 0) {
       fetch('https://data.messari.io/api/v1/news')
       .then(function (response) {
         return response.json()
