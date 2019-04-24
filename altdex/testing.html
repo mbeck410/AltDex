@@ -1247,7 +1247,7 @@
               </div>
               <div id="news_ref">Powered by:
                 <a href="https://cryptocontrol.io/en/" target="_blank" class="light_blue_links">CryptoControl</a></div> -->
-                <div>{{ article.title }}</div>
+                <news-well :article="article"></news-well>
               </div>
             </div>
 
@@ -1723,6 +1723,16 @@ Vue.component('index-performance', {
           </div>
         </div>
         <div id="asterick">{{ asterickText }}</div>
+    </div>
+  `
+})
+
+Vue.component('news-well', {
+  props: [article],
+  template: `
+    <div class="well">
+      <div id="art_title">{{ article.title }}</div>
+      <div id="art_content">{{ article.content }}</div>
     </div>
   `
 })
