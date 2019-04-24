@@ -230,7 +230,7 @@
         }
 
         /* News Widget */
-        news-well {
+        #nwell {
           padding-bottom: 1.0em;
         }
 
@@ -1751,7 +1751,7 @@ Vue.component('index-performance', {
 Vue.component('news-well', {
   props: ['article'],
   template: `
-    <div class="well">
+    <div id="nwell" class="well">
       <div id="art_title">{{ article.title }}</div>
       <div id="art_content">{{ article.content }}</div>
     </div>
