@@ -1189,7 +1189,7 @@
             <ul class="dropdown-menu" v-cloak>
             	<li><a href="#coins_tab" data-toggle="tab" @click="changeMenu(0)">Cryptocurrencies</a></li>
           		<li><a href="#performance_tab" data-toggle="tab" @click="changeMenu(1)">Performance</a></li>
-              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)">Newswire</a></li>
+              <li><a href="#news_tab" data-toggle="tab" @click="changeMenu(2)" @click="get_news()">Newswire</a></li>
             </ul>
           </li>
         </ul>
@@ -1277,9 +1277,9 @@
               <div v-for='article in articles'>
               <!-- <div class="cryptocontrol-embed">
               <script type="text/javascript" src="https://cryptocontrol.io/embeds/topnews.js"></script>
-              </div>
+              </div>-->
               <div id="news_ref">Powered by:
-                <a href="https://cryptocontrol.io/en/" target="_blank" class="light_blue_links">CryptoControl</a></div> -->
+                <a href="https://messari.io/news" target="_blank" class="light_blue_links">Messari</a></div> 
                 <news-well v-bind:article="article"></news-well>
               </div>
             </div>
@@ -1899,16 +1899,18 @@ function pull_big() {
   function get_news() {
     let news_data = [];
     let vm = one_app;
-    fetch('https://data.messari.io/api/v1/news')
-    .then(function (response) {
-      return response.json()
-    })
-    .then(function (data) {
-      for (let i = 0; i < data.data.length; ++i) {
-        news_data.push(data.data[i])
-      }
-      vm.articles = news_data;
-    })
+    if (array.length == 0) {
+      fetch('https://data.messari.io/api/v1/news')
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        for (let i = 0; i < data.data.length; ++i) {
+          news_data.push(data.data[i])
+        }
+        vm.articles = news_data;
+      })
+    }
   }
 
   function pull_small() {
@@ -2029,8 +2031,6 @@ function get_data() {
   pull_small();
   pull_big();
 };
-
-get_news();
 
 get_data();
 setInterval(function () {
