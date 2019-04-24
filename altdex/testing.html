@@ -1753,7 +1753,7 @@ Vue.component('news-well', {
   template: `
     <div id="nwell" class="well">
       <div id="art_title">{{ article.title }}</div>
-      <div id="art_content">{{ article.content }}</div>
+      <div id="art_content">{{ article.references[0].name }}</div>
     </div>
   `
 })
