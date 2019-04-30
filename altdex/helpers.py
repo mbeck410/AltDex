@@ -589,7 +589,7 @@ def day_data(index, hour):
     return displayed_prices
 
 
-def rsi_calc(request):
+def rsi_calc():
     # displayed_prices = day_data("AltDex100", 16)
     day = 0
     displayed_prices = []
