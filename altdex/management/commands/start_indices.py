@@ -14,7 +14,7 @@ class Command(BaseCommand):
         # if response is 'y':
         while True:
             try:
-                test = rsi_calc_init()
+                test = rsi_calc()
                 print('Done')
 
             except:
