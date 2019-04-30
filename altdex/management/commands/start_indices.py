@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from ...helpers import rsi_calc_init
+from ...helpers import rsi_calc, day_data
 
 class Command(BaseCommand):
 

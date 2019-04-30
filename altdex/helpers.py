@@ -777,7 +777,10 @@ def rsi_calc(request):
     # test.append(trace2)
     test.append(trace3)
 
-    return JsonResponse({'prices': test})
+    print(test)
+
+    return
+    # JsonResponse({'prices': test})
 
 
 def first_weight():
