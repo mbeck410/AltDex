@@ -330,6 +330,12 @@ def getcoinscurrent(request):
         elif name_lower == 'crypto.com chain':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3635.png'
 
+        elif name_lower == 'the abyss':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/2847.png'
+
+        elif name_lower == 'santiment network token':
+            coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/1807.png'
+
         elif name_lower == 'trade token x':
             coin_icon_url = 'https://s2.coinmarketcap.com/static/img/coins/16x16/3642.png'
 
