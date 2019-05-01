@@ -132,6 +132,24 @@ def collect():
 
             coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
 
+        elif coin.symbol == 'ORBS':
+            url2 = 'https://api.coinmarketcap.com/v2/ticker/3835/'
+            r2 = requests.get(url2)
+
+            while r2.status_code != 200:
+                sleep(10)
+                r2 = requests.get(url2)
+
+            data = json.loads(r2.text)
+
+            coin.price = float(data['data']['quotes']['USD']['price'])
+            coin.price_percent_change = float('{0:.2f}'.format(data['data']['quotes']['USD']['percent_change_24h']))
+            coin.volume = float('{0:.0f}'.format(data['data']['quotes']['USD']['volume_24h']))
+            coin.market_cap = float('{0:.0f}'.format(data['data']['quotes']['USD']['market_cap']))
+            coin.percent_weight = 0
+
+            coin.save(update_fields=['price', 'price_percent_change', 'volume', 'market_cap', 'percent_weight'])
+
         elif coin.symbol == 'BTT':
             url2 = 'https://api.coinmarketcap.com/v2/ticker/3718/'
             r2 = requests.get(url2)
@@ -591,32 +609,7 @@ def day_data(index, hour):
 
 def rsi_calc():
     displayed_prices = day_data("AltDex100", 16)
-    # day = 0
-    # displayed_prices = []
-    # index = Index.objects.get(name="AltDex100")
-    # prices = index.indexprice_set.order_by('timestamp')
-    # new_prices = prices.filter(timestamp__hour=16)
-    #
-    # #Finds and stores price from each day at 16:00 UTC, or averages difference if missing
-    # for price in new_prices:
-    #     this_day = price.timestamp.day
-    #     day_diff = abs(this_day - day)
-    #
-    #     if day_diff == 2:
-    #         missing_day = price.timestamp - timedelta(days=1)
-    #         missing_price = price.price - price.change_24h
-    #         s_info = {'date' :missing_day,
-    #                   'price': missing_price}
-    #
-    #         displayed_prices.append(s_info)
-    #
-    #     if this_day != day:
-    #         info = {'date': price.timestamp,
-    #                 'price': price.price}
-    #
-    #         displayed_prices.append(info)
-    #         day = this_day
-    #
+
     gain = 0
     lose = 0
     avg_gain = 0
